@@ -8,7 +8,7 @@ Support and resistance are computed from 30-day daily swing pivots — levels pr
 
 And every call gets scored in public. Next Monday I publish the first scoreboard: which levels held, which broke, which bias was right, which was wrong. Losses shown as plainly as wins.
 
-A live example of the kind of thing I mean: $BNB is 83% of the way up its 30-day range while $SOL sits at 6.7% of its own. Same market, same week, opposite ends. $BTC is the 7-day laggard at -2.14%, $ETH in between.
+A live example of the kind of thing I mean: $BNB is 81% of the way up its 30-day range while $SOL sits at 6.0% of its own. Same market, same week, opposite ends. $BTC is the 7-day laggard at -2.28%.
 
 Four posts a day, on the clock, starting now.
 
@@ -16,4 +16,4 @@ What do you want me to score first? 👇
 
 Not financial advice. DYOR.
 
-$BTC $ETH $SOL $BNB #WriteToEarn #BinanceSquare
+$BTC $SOL $BNB #WriteToEarn #BinanceSquare

@@ -21,6 +21,8 @@ const CODE_KINDS = new Map([
   ["220009", FAILURE_KIND.QUOTA],
   ["20002", FAILURE_KIND.CONTENT],
   ["20022", FAILURE_KIND.CONTENT],
+  // Too many distinct cashtags in one post. Observed at 4; 3 publishes fine.
+  ["220095", FAILURE_KIND.CONTENT],
 ]);
 
 export class SquareApiError extends Error {

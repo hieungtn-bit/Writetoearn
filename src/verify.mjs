@@ -14,6 +14,12 @@ const STRUCTURAL_MAX = 100;
 /** Relative slack, so 63,250 still matches "63.2K" and "$1.08B". */
 const TOLERANCE = 0.005;
 
+/**
+ * Distinct coin pairs allowed per post. Established empirically: a post with
+ * three cashtags publishes, four is rejected with [220095].
+ */
+export const MAX_CASHTAGS = 3;
+
 const SUFFIXES = { k: 1e3, m: 1e6, b: 1e9 };
 
 /**
@@ -162,6 +168,16 @@ export function verifyStructure(text, { maxWords = 220, minWords = 40 } = {}) {
   if (words < minWords) problems.push(`${words} words is too short to be a real post`);
   if (!/#\w+/.test(text)) problems.push("no hashtags");
   if (!/\$[A-Z]{2,}/.test(text)) problems.push("no cashtags");
+
+  // The API rejects a post carrying too many distinct coin pairs with
+  // [220095]. Catching it here costs nothing; discovering it at publish time
+  // wastes the composition and, in an unattended run, drops the slot entirely.
+  const cashtags = new Set([...text.matchAll(/\$([A-Z]{2,10})\b/g)].map((m) => m[1]));
+  if (cashtags.size > MAX_CASHTAGS) {
+    problems.push(
+      `${cashtags.size} distinct cashtags (${[...cashtags].join(", ")}) exceeds the limit of ${MAX_CASHTAGS}`,
+    );
+  }
   if (!/not financial advice|nfa\b|dyor/i.test(text)) problems.push("no disclaimer");
   if (!/\?/.test(text)) problems.push("no call-to-action question");
 

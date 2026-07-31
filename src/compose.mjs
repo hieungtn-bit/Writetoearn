@@ -37,7 +37,9 @@ Required structure, in order:
 
 Language: English. Binance Square auto-translates per reader locale, so English reaches the global audience and costs nothing locally.
 
-Make ONE asset the subject of the analysis — the one with the strongest story today. But cite all four cashtags across the post, because each distinct cashtag renders its own tappable price widget and those are the highest-intent click surfaces available. Relative-strength comparisons earn the extra cashtags honestly without splitting focus.
+Make ONE asset the subject of the analysis — the one with the strongest story today.
+
+Use EXACTLY THREE distinct cashtags, no more. Each distinct cashtag renders its own tappable price widget, and those widgets are the highest-intent click surface on the post — so three is the target, not a ceiling to stay under. But a fourth gets the whole post rejected by the API, so three is a hard limit. Pick the subject asset plus the two most relevant to the story; a relative-strength comparison earns them honestly.
 
 Never promise returns, state a price target as a certainty, claim insider knowledge, or push urgency ("last chance", "ape now").
 

@@ -10,7 +10,7 @@ What the data says going into the US session:
 
 • Correlation is still tight: BTC/ETH 0.88, BTC/SOL 0.87. This is not rotation between assets. It is one market with different betas.
 
-• $ETH still holds the best 30-day return of the four at +15.74%, but has given back most of the last week.
+• ETH still holds the best 30-day return of the four at +15.74%, but has given back most of the last week.
 
 Key levels — BTC support 62,742 / resistance 64,693
 

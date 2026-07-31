@@ -1,7 +1,7 @@
 🔍 Daily levels. The numbers that define the next 24 hours.
 
 $BTC 62,759 (-3.06%) — support 62,742 / resistance 64,693
-$ETH 1,863 (-2.96%) — support 1,857 / resistance 1,937
+ETH 1,863 (-2.96%) — support 1,857 / resistance 1,937
 $SOL 73.10 (-2.10%) — support 72.32 / resistance 77.50
 $BNB 587.45 (-0.15%) — support 568.19 / resistance 593.47
 

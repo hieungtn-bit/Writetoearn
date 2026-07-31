@@ -148,10 +148,13 @@ The cashtag click is the only thing that earns. Treat it as the design goal.
   rendered three tappable price chips under it; a post with only `$ENA`
   rendered one. Widgets are the highest-intent click target on the whole post —
   a reader tapping a live price chip is one step from the trade that pays you.
-- **So: analyse one asset, but cite all four.** These two rules only look
-  contradictory. Make one asset the *subject* of the analysis, and reference the
-  other three as context — relative strength comparisons do this naturally and
-  earn their cashtags honestly. You get focus plus four widgets.
+- **Exactly three cashtags. Three is the target and also the hard cap.**
+  Established the expensive way: a four-cashtag post is rejected outright with
+  `[220095] Coin pair count exceeds the allowed limit`. So maximise to three,
+  never four. `src/verify.mjs` now blocks a fourth at draft time.
+- **Analyse one asset, cite three.** Make one asset the *subject* and bring in
+  the two most relevant as context — relative-strength comparisons earn those
+  cashtags honestly. You get focus plus the maximum number of widgets.
 - **Cashtag next to the decision, not only in a tag dump.** Write `$SOL` inline
   at the moment the reader thinks "let me look at that".
 - **Posts are auto-translated.** Confirmed: an English post renders in

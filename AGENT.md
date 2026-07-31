@@ -63,10 +63,11 @@ arithmetic over exchange data, not opinion — and they are what makes a post
 analysis rather than price reporting. `leader` and `laggard` usually carry the
 day's story.
 
-**Cite all four cashtags even though you analyse one.** Each distinct cashtag
-renders its own tappable price widget, and those widgets are the highest-intent
-click surface on the post. Relative-strength comparisons earn the extra cashtags
-honestly without splitting the post's focus.
+**Use exactly three distinct cashtags.** Each renders its own tappable price
+widget — the highest-intent click surface on the post — so three is the target.
+A fourth gets the post rejected outright with `[220095]`, so it is also a hard
+cap. Analyse one asset and bring in the two most relevant as context; a
+relative-strength comparison earns them honestly.
 
 ---
 

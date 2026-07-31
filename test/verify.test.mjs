@@ -146,3 +146,21 @@ $BTC #WriteToEarn #BinanceSquare`;
   const result = verifyPost(published, brief);
   assert.equal(result.ok, true, JSON.stringify(result.problems));
 });
+
+test("a fourth cashtag is blocked at draft time, as the API rejects it", () => {
+  const body = "word ".repeat(50) + "Does it hold? Not financial advice. #WriteToEarn ";
+
+  assert.equal(verifyStructure(`${body} $BTC $ETH $SOL`).ok, true, "three is allowed");
+
+  const four = verifyStructure(`${body} $BTC $ETH $SOL $BNB`);
+  assert.equal(four.ok, false);
+  assert.ok(
+    four.problems.some((p) => p.includes("4 distinct cashtags") && p.includes("limit of 3")),
+    `expected a cashtag-count problem, got ${JSON.stringify(four.problems)}`,
+  );
+});
+
+test("repeating the same cashtag does not count against the limit", () => {
+  const body = "word ".repeat(50) + "Does it hold? Not financial advice. #WriteToEarn ";
+  assert.equal(verifyStructure(`${body} $BTC $BTC $BTC $ETH $SOL`).ok, true);
+});
