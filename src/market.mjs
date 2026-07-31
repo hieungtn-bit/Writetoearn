@@ -55,6 +55,57 @@ export async function fetchSpot(symbols = DEFAULT_SYMBOLS, fetchImpl = globalThi
   }));
 }
 
+/**
+ * Support and resistance derived from actual traded candles, never guessed.
+ *
+ * Method is deliberately dumb and reproducible: take the last `days` daily
+ * candles and report the extremes plus the nearest swing pivot on either side
+ * of spot. A pivot is a candle whose low is the lowest of its neighbours (or
+ * whose high is the highest) — real levels price has actually turned at.
+ */
+export async function fetchLevels(symbol, days = 30, fetchImpl = globalThis.fetch) {
+  const rows = await getJson(
+    `${SPOT_BASE}/klines?symbol=${symbol}&interval=1d&limit=${days}`,
+    fetchImpl,
+  );
+  if (!rows.length) throw new Error(`no candles for ${symbol}`);
+
+  const candles = rows.map((r) => ({
+    openTime: Number(r[0]),
+    high: Number(r[2]),
+    low: Number(r[3]),
+    close: Number(r[4]),
+  }));
+
+  const spot = candles.at(-1).close;
+  const highs = candles.map((c) => c.high);
+  const lows = candles.map((c) => c.low);
+
+  const swingHighs = [];
+  const swingLows = [];
+  for (let i = 1; i < candles.length - 1; i++) {
+    const { high, low } = candles[i];
+    if (high > candles[i - 1].high && high > candles[i + 1].high) swingHighs.push(high);
+    if (low < candles[i - 1].low && low < candles[i + 1].low) swingLows.push(low);
+  }
+
+  // Nearest pivot above and below spot; fall back to the period extreme when
+  // price is already outside every pivot in the window.
+  const resistance = swingHighs.filter((h) => h > spot).sort((a, b) => a - b)[0] ?? Math.max(...highs);
+  const support = swingLows.filter((l) => l < spot).sort((a, b) => b - a)[0] ?? Math.min(...lows);
+
+  return {
+    symbol,
+    spot,
+    support,
+    resistance,
+    periodHigh: Math.max(...highs),
+    periodLow: Math.min(...lows),
+    windowDays: days,
+    method: `nearest daily swing pivot within ${days}d, ${SPOT_VENUE} candles`,
+  };
+}
+
 /** Perp funding rate. OKX, not Binance — callers must surface the venue. */
 export async function fetchFunding(instIds = ["BTC-USDT-SWAP", "ETH-USDT-SWAP"], fetchImpl = globalThis.fetch) {
   const out = [];
@@ -142,6 +193,7 @@ export async function collectBrief({
     funding: [],
     trending: [],
     news: [],
+    levels: [],
     unavailable: [],
     notes: [],
   };
@@ -151,6 +203,7 @@ export async function collectBrief({
     ["funding", () => fetchFunding(undefined, fetchImpl)],
     ["trending", () => fetchTrending(fetchImpl)],
     ["news", () => fetchNews(newsHours, fetchImpl)],
+    ["levels", () => Promise.all(symbols.map((s) => fetchLevels(s, 30, fetchImpl)))],
   ];
 
   const results = await Promise.allSettled(tasks.map(([, run]) => run()));
@@ -195,6 +248,17 @@ export function formatBrief(brief) {
     lines.push(`Funding (${FUNDING_VENUE})`);
     for (const f of brief.funding) {
       lines.push(`  ${f.instId.padEnd(15)} ${f.fundingRatePct >= 0 ? "+" : ""}${f.fundingRatePct.toFixed(4)}%  next ${f.nextFundingTime}`);
+    }
+    lines.push("");
+  }
+
+  if (brief.levels.length) {
+    lines.push("Key levels (from daily swing pivots, 30d)");
+    for (const l of brief.levels) {
+      lines.push(
+        `  ${l.symbol.padEnd(9)} support ${fmt(l.support)}  resistance ${fmt(l.resistance)}  ` +
+          `30d ${fmt(l.periodLow)}–${fmt(l.periodHigh)}`,
+      );
     }
     lines.push("");
   }
