@@ -16,6 +16,7 @@ import { publishSpec } from "./publisher.mjs";
 import { STATUS, Store, utcDayKey } from "./store.mjs";
 import { runLoop, runOnce } from "./worker.mjs";
 import { probeDurationSeconds } from "./media.mjs";
+import { collectBrief, formatBrief } from "./market.mjs";
 
 const HELP = `wte — automated publishing for Binance Square
 
@@ -76,6 +77,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdRun(flags, argv);
     case "limits":
       return cmdLimits(flags);
+    case "brief":
+      return cmdBrief(flags);
     default:
       throw new ValidationError(`Unknown command "${command}". Run \`wte help\`.`);
   }
@@ -291,6 +294,23 @@ async function cmdLimits(flags) {
   console.log(`  Queued:  ${payload.pending} pending`);
   console.log(`\nCounts are tracked locally in ${getStateDir()} and reset at UTC midnight.`);
   return 0;
+}
+
+async function cmdBrief(flags) {
+  const symbols = flags.symbols
+    ? String(flags.symbols).split(",").map((s) => s.trim().toUpperCase()).filter(Boolean)
+    : undefined;
+
+  const brief = await collectBrief({
+    symbols,
+    newsHours: flags.hours ? Number(flags.hours) : 24,
+  });
+
+  console.log(flags.json ? JSON.stringify(brief, null, 2) : formatBrief(brief));
+
+  // A brief with no prices is not a brief; fail loudly so a scheduled caller
+  // does not go on to write a post out of thin air.
+  return brief.spot.length ? 0 : 1;
 }
 
 /** Turns CLI flags into a validated post spec. */
