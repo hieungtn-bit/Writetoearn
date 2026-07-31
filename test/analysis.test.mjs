@@ -111,3 +111,43 @@ test("sma averages the trailing window only", () => {
   assert.equal(sma([1, 2, 3, 4, 5], 3), 4);
   assert.ok(Number.isNaN(sma([1, 2], 5)));
 });
+
+test("month-end classification finds the last UTC day of each month", async () => {
+  const { monthEndEffect } = await import("../src/seasonality.mjs");
+  const day = 86_400_000;
+  // Jan 29 -> Feb 2 2024, so Jan 31 is the only month-end in the window.
+  const start = Date.UTC(2024, 0, 29);
+  const candles = [0, 1, 2, 3, 4].map((i) => ({
+    openTime: start + i * day,
+    open: 100,
+    close: 100 + i, // every step is a gain
+  }));
+
+  const r = monthEndEffect(candles);
+  assert.equal(r.monthEnd.n, 1, "exactly one month-end in the window");
+  assert.equal(r.otherDays.n, 3);
+  assert.ok(r.sampleWarning, "a one-observation sample must warn");
+});
+
+test("month-end effect separates a planted seasonal pattern from noise", async () => {
+  const { monthEndEffect } = await import("../src/seasonality.mjs");
+  const day = 86_400_000;
+  const candles = [];
+  let close = 100;
+
+  // Two years of flat days, with a hard drop planted on every month-end.
+  for (let i = 0; i < 730; i++) {
+    const openTime = Date.UTC(2024, 0, 1) + i * day;
+    const next = new Date(openTime + day);
+    const isEnd = new Date(openTime).getUTCMonth() !== next.getUTCMonth();
+    const prev = close;
+    close = isEnd ? close * 0.95 : close * 1.001;
+    candles.push({ openTime, open: prev, close });
+  }
+
+  const r = monthEndEffect(candles);
+  assert.ok(r.monthEnd.meanPct < -4, `planted drop should show, got ${r.monthEnd.meanPct}`);
+  assert.ok(r.otherDays.meanPct > 0);
+  assert.equal(r.monthEnd.negativeShare, 100);
+  assert.ok(r.effectSize < -1, "a planted effect should read as large");
+});

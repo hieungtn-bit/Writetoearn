@@ -1,0 +1,22 @@
+🔍 "$BTC is down because it is month-end." I tested that claim instead of repeating it.
+
+Month-end days, n=33: mean return -0.80%, and 69.7% of them closed red.
+Every other day, n=966: mean +0.12%, 48.3% closed red.
+
+The gap is real in this sample, and it is not only BTC. $ETH month-ends average -0.74%. $SOL month-ends average -0.82%. Both are positive on every other day.
+
+Now the part that usually gets skipped:
+
+• 33 observations is thin. That is one market cycle, not a law of nature.
+• BTC, ETH and SOL are correlated around 0.89. Three assets agreeing is closer to one observation than three independent confirmations.
+• Calendar effects are notorious for working in-sample and disappearing out of it.
+
+So today's -2.87% is consistent with a month-end tendency that genuinely shows up in the data. Consistent with is not caused by, and price alone cannot separate the two.
+
+For scale: the worst month-end in the sample was -6.55%. Today is not close to it.
+
+Do you trade month-end, or ignore it? 👇
+
+Not financial advice. DYOR.
+
+#WriteToEarn #BinanceSquare
