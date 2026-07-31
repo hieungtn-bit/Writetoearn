@@ -72,6 +72,28 @@ export class Store {
     return claims.filter((c) => (scored ? c.score !== null : c.score === null));
   }
 
+  /**
+   * What the channel has already said recently.
+   *
+   * Repetition is the quiet way an automated channel dies: four days of "BNB
+   * leads the majors" and followers stop opening the posts. The writer needs to
+   * see its own recent output to avoid restating it.
+   */
+  recentPosts(days = 4) {
+    const cutoff = Date.now() - days * 86_400_000;
+    return this.load()
+      .claims.filter((c) => new Date(c.publishedAt).getTime() >= cutoff)
+      .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+      .map((c) => ({
+        publishedAt: c.publishedAt,
+        format: c.format ?? null,
+        asset: c.asset ?? null,
+        bias: c.bias ?? null,
+        angle: c.angle ?? null,
+        hook: c.hook ?? null,
+      }));
+  }
+
   scoreClaim(postId, score) {
     const state = this.load();
     const claim = state.claims.find((c) => c.postId === postId);

@@ -21,6 +21,7 @@ import { composePost } from "./compose.mjs";
 import { FORMATS, crontabLines } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
+import { runTeam } from "./team.mjs";
 
 const HELP = `wte — automated publishing for Binance Square
 
@@ -44,6 +45,8 @@ Usage
   wte slots                           The daily schedule + crontab lines
   wte score [--days <n>]              Settle past calls, print the scoreboard
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
+  wte team [--format <f>] [--dry-run] Full daily run: analyst picks the angle,
+                                      writer drafts, checker + critic gate it
 
 Post types and their options
   text     --text <content>
@@ -98,6 +101,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdSlots(flags);
     case "screen":
       return cmdScreen(flags);
+    case "team":
+      return cmdTeam(flags, argv);
     default:
       throw new ValidationError(`Unknown command "${command}". Run \`wte help\`.`);
   }
@@ -413,6 +418,90 @@ async function cmdScore(flags) {
 
   const pending = store.listClaims({ scored: false }).length;
   if (pending) console.log(`\n(${pending} call(s) still too recent to judge.)`);
+  return 0;
+}
+
+/**
+ * The full daily run: analyst picks the angle, writer drafts, checker and
+ * critic gate it, then it publishes. This is what cron should call.
+ */
+async function cmdTeam(flags, argv) {
+  const dryRun = Boolean(flags["dry-run"]);
+  const format = flags.format ?? "positioning";
+  const store = new Store();
+  const log = (m) => console.log(m);
+
+  log("Collecting market data...");
+  const brief = await collectBrief({ newsHours: flags.hours ? Number(flags.hours) : 24 });
+  if (!brief.spot.length) {
+    throw new ValidationError(
+      "No spot prices in the brief — refusing to write with no data behind it. " +
+        `Failed: ${brief.unavailable.map((u) => u.field).join(", ")}.`,
+    );
+  }
+  log(`  ${brief.spot.length} pairs, ${brief.news.length} headlines`);
+
+  // The alt screen is optional context; a failure there should not lose the slot.
+  let screenResult = null;
+  if (!flags["no-screen"]) {
+    try {
+      screenResult = await screen(ALT_UNIVERSE, {
+        onProgress: (p) => process.stderr.write(`\rscreening ${p}   `),
+      });
+      process.stderr.write("\r");
+      log(`  screened ${screenResult.rows.length} alt pairs`);
+    } catch (err) {
+      log(`  alt screen unavailable (${err.message}); continuing on majors only`);
+    }
+  }
+
+  if (!dryRun) {
+    const budget = store.checkBudget(0);
+    if (!budget.ok) throw new ValidationError(`Refusing to publish: ${budget.reason}.`);
+  }
+
+  const recentPosts = store.recentPosts(4);
+  if (recentPosts.length) log(`  ${recentPosts.length} recent post(s) in the anti-repetition window`);
+
+  const result = await runTeam({ brief, screenResult, format, recentPosts, log });
+
+  if (result.skipped) {
+    log(`\nNothing published: ${result.reason}`);
+    return 0;
+  }
+
+  log(`\n--- draft (${result.rounds} round${result.rounds === 1 ? "" : "s"}) ---`);
+  log(result.text);
+  log("--- end draft ---\n");
+
+  if (dryRun) {
+    log("Dry run — nothing was published.");
+    return 0;
+  }
+
+  const client = new SquareClient({ apiKey: resolveApiKey(argv) });
+  const outcome = await publishSpec(client, normalizePost({ type: POST_TYPE.TEXT, text: result.text }), {
+    onProgress: (m) => log(`  ${m}`),
+  });
+  store.recordUsage({ posts: 1, uploads: outcome.uploadsUsed });
+
+  const claim = extractClaim(result.text, brief);
+  store.recordClaim({
+    ...claim,
+    postId: outcome.result?.id ?? `unlinked-${Date.now()}`,
+    shareLink: outcome.result?.shareLink ?? null,
+    format,
+    angle: result.angle.thesis,
+    hook: result.text.split("\n")[0].slice(0, 120),
+    publishedAt: new Date().toISOString(),
+  });
+
+  console.log("\nPublished.");
+  console.log(`  ID:   ${outcome.result?.id ?? "unavailable"}`);
+  console.log(`  Link: ${outcome.result?.shareLink ?? "unavailable"}`);
+  if (outcome.missingPostId) {
+    console.log("  Note: gateway timed out before returning a link. The post is live — do not re-post.");
+  }
   return 0;
 }
 
