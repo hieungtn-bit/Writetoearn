@@ -95,7 +95,7 @@ test("unavailable-field checks only apply to fields actually missing", () => {
 test("structure requires tags, a disclaimer and a question", () => {
   const good =
     "🚨 BTC at 63,250. ".repeat(8) +
-    "Does support hold? Not financial advice. $BTC #WriteToEarn #BinanceSquare";
+    "Bias: WAIT. Does support hold? Not financial advice. $BTC #WriteToEarn #BinanceSquare";
   assert.equal(verifyStructure(good).ok, true);
 
   const noTags = "word ".repeat(60) + "Does it hold? Not financial advice.";
@@ -148,7 +148,7 @@ $BTC #WriteToEarn #BinanceSquare`;
 });
 
 test("a fourth cashtag is blocked at draft time, as the API rejects it", () => {
-  const body = "word ".repeat(50) + "Does it hold? Not financial advice. #WriteToEarn ";
+  const body = "word ".repeat(50) + "Bias: WAIT. Does it hold? Not financial advice. #WriteToEarn ";
 
   assert.equal(verifyStructure(`${body} $BTC $ETH $SOL`).ok, true, "three is allowed");
 
@@ -161,7 +161,7 @@ test("a fourth cashtag is blocked at draft time, as the API rejects it", () => {
 });
 
 test("repeating the same cashtag does not count against the limit", () => {
-  const body = "word ".repeat(50) + "Does it hold? Not financial advice. #WriteToEarn ";
+  const body = "word ".repeat(50) + "Bias: WAIT. Does it hold? Not financial advice. #WriteToEarn ";
   assert.equal(verifyStructure(`${body} $BTC $BTC $BTC $ETH $SOL`).ok, true);
 });
 
@@ -184,4 +184,16 @@ test("a disclosure in one sentence does not licence a claim in the next", () => 
   const result = verifyNoForbiddenClaims(mixed, brief);
   assert.equal(result.ok, false, "the second sentence is still a fabricated claim");
   assert.deepEqual(result.violations, ["openInterest"]);
+});
+
+test("a post with no stated bias is rejected, since the scoreboard parses it", () => {
+  const body = "word ".repeat(50) + "Does it hold? Not financial advice. $BTC #WriteToEarn ";
+
+  const noBias = verifyStructure(body);
+  assert.equal(noBias.ok, false);
+  assert.ok(noBias.problems.some((p) => p.includes("no bias stated")));
+
+  for (const bias of ["Bias: WAIT.", "Bias: Selective Long here.", "Bias: Selective Short."]) {
+    assert.equal(verifyStructure(`${body} ${bias}`).ok, true, `${bias} should satisfy the check`);
+  }
 });

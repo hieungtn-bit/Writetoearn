@@ -199,6 +199,13 @@ export function verifyStructure(text, { maxWords = 220, minWords = 40 } = {}) {
   if (!/not financial advice|nfa\b|dyor/i.test(text)) problems.push("no disclaimer");
   if (!/\?/.test(text)) problems.push("no call-to-action question");
 
+  // The scoreboard parses the bias out of the published text, so a post
+  // without one is unscoreable — it silently drops out of the track record
+  // the whole channel is built on.
+  if (!/selective\s+long|selective\s+short|\bWAIT\b/i.test(text)) {
+    problems.push("no bias stated (WAIT / Selective Long / Selective Short)");
+  }
+
   return { ok: problems.length === 0, problems, words };
 }
 
