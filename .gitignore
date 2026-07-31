@@ -1,0 +1,10 @@
+node_modules/
+*.log
+
+# Local runtime state: queue, publish history, quota counters.
+.wte/
+
+# Never commit credentials.
+.env
+.env.local
+openapi-key

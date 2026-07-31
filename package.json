@@ -1,0 +1,22 @@
+{
+  "name": "writetoearn",
+  "version": "0.1.0",
+  "description": "Automated publishing tool for Binance Square via the Creator Center OpenAPI",
+  "type": "module",
+  "bin": {
+    "wte": "./bin/wte.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\"",
+    "start": "node ./bin/wte.mjs"
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ],
+  "license": "MIT",
+  "private": true
+}
