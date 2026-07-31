@@ -1,0 +1,23 @@
+🔍 Why is $BTC falling? Start with the least popular answer: it is not falling as hard as it feels.
+
+$BTC 62,716, down 3.17% on the day. Measured against its own 30-day volatility, that is a 1.95 sigma day — one daily standard deviation is 1.63%. Notable. Not extraordinary.
+
+What the data supports:
+
+• Volume is ordinary. The volume z-score is +0.10, meaning today's turnover is dead average. Capitulation comes with volume 2 to 3 standard deviations above normal. This is not that.
+
+• Funding is still positive at +0.0085% on OKX perps and has risen through the session. Longs are paying to stay long into a decline. Nobody has capitulated, which usually means the flush is not finished.
+
+• It is BTC-led, not alt-led. In sigma terms BTC is the worst of the majors today at -1.95, against $ETH at -1.23 and $BNB at -0.89. That is backwards — high-beta assets normally fall harder.
+
+What I cannot tell you: open interest and liquidation data are not available to me, and that is precisely what would show whether forced selling is driving this. I am not going to guess.
+
+Price has already lost one daily pivot today. The next support underneath is 62,538.
+
+Bias: WAIT. Average volume, positive funding, broken pivot.
+
+What breaks the tie for you? 👇
+
+Not financial advice. DYOR.
+
+#WriteToEarn #BinanceSquare

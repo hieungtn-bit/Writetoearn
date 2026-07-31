@@ -222,9 +222,21 @@ export async function analyzeAsset(symbol, { fetchImpl = globalThis.fetch, candl
 
   const atr14 = atr(daily, 14);
 
+  // Today's move measured in daily standard deviations. A drop can feel violent
+  // and still be an ordinary day for the asset's own volatility — this is the
+  // number that tells the two apart, and it is the honest answer to "is this
+  // actually a big move?"
+  const vol30 = realizedVolatility(closes, { periods: 30 });
+  const dailySigmaPct = vol30 / Math.sqrt(365);
+  const todayChangePct = pctChange(closes.at(-2) ?? closes[0], price);
+  const sigmaMove = dailySigmaPct ? todayChangePct / dailySigmaPct : NaN;
+
   return {
     symbol,
     price,
+    todayChangePct,
+    dailySigmaPct,
+    sigmaMove,
     change7dPct: pctChange(closes.at(-8) ?? closes[0], price),
     change30dPct: pctChange(closes.at(-31) ?? closes[0], price),
     rsi14: rsi(closes, 14),

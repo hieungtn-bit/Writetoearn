@@ -94,6 +94,9 @@ export function collectBriefNumbers(brief) {
     push(a.sma50);
     push(a.volumeZScore);
     push(a.rangeCompressionPct);
+    push(a.todayChangePct);
+    push(a.dailySigmaPct);
+    push(a.sigmaMove);
   }
   for (const r of brief.analysis?.relativeStrength ?? []) {
     push(r.change7dPct);
@@ -145,15 +148,30 @@ const FORBIDDEN = [
 ];
 
 /**
- * Flags claims about data we never had. Saying "OI is flat" with no open
- * interest source is fabrication even though it contains no number.
+ * Language that marks a mention as a disclosure of absence rather than a claim.
+ * "Open interest is flat" is fabrication; "open interest is not available to
+ * me" is the most honest sentence in the post, and blocking it would punish
+ * exactly the behaviour the channel is built on.
+ */
+const DISCLOSURE = /\b(not available|unavailable|cannot|can't|could not|couldn't|do not have|don't have|no data|not visible|not accessible|geo-blocked|no source|without)\b/i;
+
+/**
+ * Flags claims about data we never had, while allowing honest admissions that
+ * we lack it. The check runs per sentence, so a disclosure in one sentence does
+ * not licence a fabricated claim in the next.
  */
 export function verifyNoForbiddenClaims(text, brief) {
   const missing = new Set((brief.unavailable ?? []).map((u) => u.field));
-  const violations = FORBIDDEN.filter((f) => missing.has(f.field) && f.pattern.test(text)).map(
-    (f) => f.field,
-  );
-  return { ok: violations.length === 0, violations };
+  const sentences = text.split(/(?<=[.!?\n])/);
+  const violations = new Set();
+
+  for (const sentence of sentences) {
+    if (DISCLOSURE.test(sentence)) continue;
+    for (const f of FORBIDDEN) {
+      if (missing.has(f.field) && f.pattern.test(sentence)) violations.add(f.field);
+    }
+  }
+  return { ok: violations.size === 0, violations: [...violations] };
 }
 
 /**

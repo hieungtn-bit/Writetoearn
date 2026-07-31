@@ -164,3 +164,24 @@ test("repeating the same cashtag does not count against the limit", () => {
   const body = "word ".repeat(50) + "Does it hold? Not financial advice. #WriteToEarn ";
   assert.equal(verifyStructure(`${body} $BTC $BTC $BTC $ETH $SOL`).ok, true);
 });
+
+test("admitting a field is unavailable is allowed; claiming it is not", () => {
+  const honest =
+    "Open interest is not available to me, and that is exactly what would show forced selling.";
+  assert.equal(verifyNoForbiddenClaims(honest, brief).ok, true, "disclosure must pass");
+
+  assert.equal(
+    verifyNoForbiddenClaims("I cannot see the long/short ratio here.", brief).ok,
+    true,
+  );
+
+  assert.equal(verifyNoForbiddenClaims("Open interest is climbing fast.", brief).ok, false);
+});
+
+test("a disclosure in one sentence does not licence a claim in the next", () => {
+  const mixed =
+    "Open interest is not available to me. But open interest is clearly rising.";
+  const result = verifyNoForbiddenClaims(mixed, brief);
+  assert.equal(result.ok, false, "the second sentence is still a fabricated claim");
+  assert.deepEqual(result.violations, ["openInterest"]);
+});
