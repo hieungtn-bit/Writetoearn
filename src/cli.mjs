@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import process from "node:process";
 import { SquareClient } from "./client.mjs";
 import {
@@ -18,10 +19,11 @@ import { runLoop, runOnce } from "./worker.mjs";
 import { probeDurationSeconds } from "./media.mjs";
 import { collectBrief, formatBrief } from "./market.mjs";
 import { composePost } from "./compose.mjs";
-import { FORMATS, crontabLines } from "./slots.mjs";
+import { FORMATS, crontabLines, getFormat } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
 import { promptCapturingClient, runTeam } from "./team.mjs";
+import { verifyPost } from "./verify.mjs";
 
 const HELP = `wte — automated publishing for Binance Square
 
@@ -44,6 +46,7 @@ Usage
                                       verify, publish. For cron.
   wte slots                           The daily schedule + crontab lines
   wte score [--days <n>]              Settle past calls, print the scoreboard
+  wte check <draft.txt>               Verify a draft against freshly fetched data
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
   wte team [--format <f>] [--dry-run] Full daily run: analyst picks the angle,
                                       writer drafts, checker + critic gate it
@@ -103,6 +106,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdScreen(flags);
     case "team":
       return cmdTeam(flags, argv);
+    case "check":
+      return cmdCheck(rest, flags);
     default:
       throw new ValidationError(`Unknown command "${command}". Run \`wte help\`.`);
   }
@@ -541,6 +546,40 @@ async function cmdTeam(flags, argv) {
     console.log("  Note: gateway timed out before returning a link. The post is live — do not re-post.");
   }
   return 0;
+}
+
+/**
+ * Verifies a draft against a freshly fetched brief.
+ *
+ * The gate a human — or a chat session standing in for the model — needs
+ * before publishing by hand. It refetches deliberately: figures drift within
+ * minutes, and a draft checked against a stale snapshot is not checked.
+ */
+async function cmdCheck([file], flags) {
+  if (!file) throw new ValidationError("Usage: wte check <draft.txt>");
+
+  const text = fs.readFileSync(file, "utf8");
+  const brief = await collectBrief({ newsHours: 24 });
+  if (!brief.spot.length) {
+    throw new ValidationError("Could not fetch market data, so the draft cannot be checked.");
+  }
+
+  const format = flags.format ?? "positioning";
+  const [, maxWords] = getFormat(format).words;
+  const result = verifyPost(text, brief, { maxWords: maxWords + 20, minWords: 40 });
+
+  if (flags.json) {
+    print({ ...result, checkedAt: brief.generatedAt }, flags);
+    return result.ok ? 0 : 1;
+  }
+
+  if (result.ok) {
+    console.log(`PASS — ${result.words} words, ${result.numbersChecked} figures traced to data fetched just now.`);
+    return 0;
+  }
+  console.log(`FAIL — ${result.words} words`);
+  for (const p of result.problems) console.log(`  ✗ ${p}`);
+  return 1;
 }
 
 /** Screens the altcoin universe and surfaces the statistical outliers. */
