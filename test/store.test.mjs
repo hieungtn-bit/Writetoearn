@@ -112,3 +112,29 @@ test("unknown business codes are treated as permanent, not retried forever", () 
   assert.equal(classify({ httpStatus: 401 }), FAILURE_KIND.AUTH);
   assert.equal(classify({}), FAILURE_KIND.TRANSIENT);
 });
+
+test("history feeds anti-repetition and is separate from scoreable claims", async (t) => {
+  const store = freshStore(t);
+
+  store.recordHistory({ format: "manual", asset: "BTCUSDT", hook: "BTC on support" });
+  store.recordClaim({
+    postId: "p1", asset: "BTCUSDT", bias: "WAIT", priceAtPost: 62700,
+    publishedAt: new Date().toISOString(),
+  });
+
+  assert.equal(store.recentPosts().length, 1, "the hand-written post is in the history");
+  assert.equal(
+    store.listClaims({ scored: false }).length, 1,
+    "and only the real claim is awaiting a score",
+  );
+});
+
+test("history outside the window is not shown to the writer", async (t) => {
+  const store = freshStore(t);
+  store.recordHistory({ asset: "OLD", hook: "stale", publishedAt: "2026-07-01T00:00:00Z" });
+  store.recordHistory({ asset: "NEW", hook: "fresh" });
+
+  const recent = store.recentPosts(4);
+  assert.equal(recent.length, 1);
+  assert.equal(recent[0].asset, "NEW");
+});

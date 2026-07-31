@@ -42,7 +42,7 @@ export class Store {
   load() {
     if (this.state) return this.state;
     if (!fs.existsSync(this.file)) {
-      this.state = { version: STATE_VERSION, items: [], usage: {}, claims: [] };
+      this.state = { version: STATE_VERSION, items: [], usage: {}, claims: [], history: [] };
       return this.state;
     }
     const parsed = JSON.parse(fs.readFileSync(this.file, "utf8"));
@@ -51,6 +51,7 @@ export class Store {
       items: parsed.items ?? [],
       usage: parsed.usage ?? {},
       claims: parsed.claims ?? [],
+      history: parsed.history ?? [],
     };
     return this.state;
   }
@@ -73,24 +74,45 @@ export class Store {
   }
 
   /**
+   * Records that something was published, for anti-repetition only.
+   *
+   * Kept separate from claims because the two have different eligibility: a
+   * hand-written post belongs in the history the writer must not repeat, but
+   * has no levels to score against and would otherwise sit in the scoreboard
+   * as a call that can never be settled.
+   */
+  recordHistory(entry) {
+    const state = this.load();
+    state.history = state.history ?? [];
+    state.history.push({ ...entry, publishedAt: entry.publishedAt ?? new Date().toISOString() });
+
+    // Only the recent window is ever read; anything older is dead weight.
+    const cutoff = Date.now() - 30 * 86_400_000;
+    state.history = state.history.filter((h) => new Date(h.publishedAt).getTime() >= cutoff);
+    this.save();
+    return entry;
+  }
+
+  /**
    * What the channel has already said recently.
    *
    * Repetition is the quiet way an automated channel dies: four days of "BNB
    * leads the majors" and followers stop opening the posts. The writer needs to
-   * see its own recent output to avoid restating it.
+   * see its own recent output to avoid restating it — including posts published
+   * by hand, which is why this reads the history rather than the claims.
    */
   recentPosts(days = 4) {
     const cutoff = Date.now() - days * 86_400_000;
-    return this.load()
-      .claims.filter((c) => new Date(c.publishedAt).getTime() >= cutoff)
+    return (this.load().history ?? [])
+      .filter((h) => new Date(h.publishedAt).getTime() >= cutoff)
       .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-      .map((c) => ({
-        publishedAt: c.publishedAt,
-        format: c.format ?? null,
-        asset: c.asset ?? null,
-        bias: c.bias ?? null,
-        angle: c.angle ?? null,
-        hook: c.hook ?? null,
+      .map((h) => ({
+        publishedAt: h.publishedAt,
+        format: h.format ?? null,
+        asset: h.asset ?? null,
+        bias: h.bias ?? null,
+        angle: h.angle ?? null,
+        hook: h.hook ?? null,
       }));
   }
 

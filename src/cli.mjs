@@ -21,7 +21,7 @@ import { composePost } from "./compose.mjs";
 import { FORMATS, crontabLines } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
-import { runTeam } from "./team.mjs";
+import { promptCapturingClient, runTeam } from "./team.mjs";
 
 const HELP = `wte — automated publishing for Binance Square
 
@@ -166,6 +166,16 @@ async function cmdPost([type], flags, argv) {
   }
 
   store.recordUsage({ posts: 1, uploads: outcome.uploadsUsed });
+
+  if (spec.type === POST_TYPE.TEXT) {
+    const seen = extractClaim(spec.text, { levels: [], spot: [] });
+    store.recordHistory({
+      format: "manual",
+      asset: seen.asset,
+      bias: seen.bias,
+      hook: spec.text.split("\n")[0].slice(0, 120),
+    });
+  }
 
   if (flags.json) {
     print({ id: outcome.result?.id ?? null, shareLink: outcome.result?.shareLink ?? null }, flags);
@@ -387,13 +397,15 @@ async function cmdAuto(flags, argv) {
 
   // Log what the post committed to, so the scoreboard has something to judge.
   const claim = extractClaim(text, brief);
+  const publishedAt = new Date().toISOString();
   store.recordClaim({
     ...claim,
     postId: outcome.result?.id ?? `unlinked-${Date.now()}`,
     shareLink: outcome.result?.shareLink ?? null,
     format,
-    publishedAt: new Date().toISOString(),
+    publishedAt,
   });
+  store.recordHistory({ format, asset: claim.asset, bias: claim.bias, hook: text.split("\n")[0].slice(0, 120), publishedAt });
 
   console.log("\nPublished.");
   console.log(`  ID:   ${outcome.result?.id ?? "unavailable"}`);
@@ -463,6 +475,25 @@ async function cmdTeam(flags, argv) {
   const recentPosts = store.recentPosts(4);
   if (recentPosts.length) log(`  ${recentPosts.length} recent post(s) in the anti-repetition window`);
 
+  // Without Anthropic credentials a dry run can still prove the data half by
+  // showing exactly what the analyst would be handed.
+  if (dryRun && !process.env.ANTHROPIC_API_KEY) {
+    const captured = [];
+    try {
+      await runTeam({ brief, screenResult, format, recentPosts, log, client: promptCapturingClient(captured) });
+    } catch (err) {
+      if (!err.promptPreview) throw err;
+    }
+    const [first] = captured;
+    log("\nNo ANTHROPIC_API_KEY set — showing the analyst prompt instead of calling the model.\n");
+    log("=== SYSTEM ===");
+    log(first.system);
+    log("\n=== USER ===");
+    log(first.user);
+    log("\n(Set ANTHROPIC_API_KEY to run the writer and critic too.)");
+    return 0;
+  }
+
   const result = await runTeam({ brief, screenResult, format, recentPosts, log });
 
   if (result.skipped) {
@@ -494,6 +525,13 @@ async function cmdTeam(flags, argv) {
     angle: result.angle.thesis,
     hook: result.text.split("\n")[0].slice(0, 120),
     publishedAt: new Date().toISOString(),
+  });
+  store.recordHistory({
+    format,
+    asset: claim.asset,
+    bias: claim.bias,
+    angle: result.angle.thesis,
+    hook: result.text.split("\n")[0].slice(0, 120),
   });
 
   console.log("\nPublished.");

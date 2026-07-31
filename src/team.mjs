@@ -215,6 +215,34 @@ Verdict?`;
 }
 
 /**
+ * A stand-in model that records what it was asked and answers nothing.
+ *
+ * Lets a dry run show the assembled prompts on a machine with no Anthropic
+ * credentials. A dry run that needs a paid API call before it can tell you
+ * anything is not much of a dry run, and the prompt is the part worth
+ * inspecting anyway — it is where a data-assembly bug would show up.
+ */
+export function promptCapturingClient(captured = []) {
+  return {
+    captured,
+    beta: {
+      messages: {
+        create: async (params) => {
+          captured.push({
+            structured: Boolean(params.output_config?.format),
+            system: params.system,
+            user: params.messages[0].content,
+          });
+          const err = new Error("PROMPT_PREVIEW");
+          err.promptPreview = true;
+          throw err;
+        },
+      },
+    },
+  };
+}
+
+/**
  * Runs the whole team for one slot.
  *
  * @returns {Promise<{skipped: boolean, reason?: string, text?: string, angle?: object, rounds?: number}>}
