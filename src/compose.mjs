@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { formatBrief } from "./market.mjs";
 import { verifyPost } from "./verify.mjs";
+import { getFormat } from "./slots.mjs";
 
 const MODEL = "claude-opus-5";
 
@@ -46,16 +47,26 @@ Output only the post text. No preamble, no explanation, no markdown code fences.
  * @param {Anthropic} [opts.client] Injected in tests.
  * @returns {Promise<{text: string, attempts: number, verification: object}>}
  */
-export async function composePost(brief, { effort = "high", maxRevisions = 2, onProgress = () => {}, client } = {}) {
+export async function composePost(
+  brief,
+  { effort = "high", maxRevisions = 2, onProgress = () => {}, client, format = "positioning" } = {},
+) {
   if (!brief?.spot?.length) {
     throw new Error("Refusing to compose: the brief has no spot prices.");
   }
+
+  const spec = getFormat(format);
+  const [minWords, maxWords] = spec.words;
 
   const anthropic = client ?? new Anthropic();
   const messages = [
     {
       role: "user",
-      content: `Here is today's market brief. Every number in your post must come from it.\n\n${formatBrief(brief)}\n\nWrite today's post.`,
+      content:
+        `Here is today's market brief. Every number in your post must come from it.\n\n` +
+        `${formatBrief(brief)}\n\n` +
+        `--- Format: ${spec.label} (${spec.slot}) ---\n${spec.instruction}\n\n` +
+        `Target length: ${minWords}-${maxWords} words.\n\nWrite the post.`,
     },
   ];
 
@@ -88,7 +99,7 @@ export async function composePost(brief, { effort = "high", maxRevisions = 2, on
       .join("")
       .trim();
 
-    const verification = verifyPost(text, brief);
+    const verification = verifyPost(text, brief, { maxWords: maxWords + 20, minWords: 40 });
     if (verification.ok) {
       onProgress(`draft passed checks (${verification.words} words, ${verification.numbersChecked} figures verified)`);
       return { text, attempts, verification };

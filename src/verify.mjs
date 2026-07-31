@@ -70,6 +70,31 @@ export function collectBriefNumbers(brief) {
   }
   for (const f of brief.funding ?? []) push(f.fundingRatePct);
 
+  // Computed analysis is as citable as raw price — it is arithmetic over real
+  // candles, not model output.
+  for (const a of brief.analysis?.assets ?? []) {
+    push(a.price);
+    push(a.change7dPct);
+    push(a.change30dPct);
+    push(a.rsi14);
+    push(a.atr14);
+    push(a.atrPct);
+    push(a.realizedVol30d);
+    push(a.realizedVol7d);
+    push(a.rangePosition30d);
+    push(a.high30d);
+    push(a.low30d);
+    push(a.sma20);
+    push(a.sma50);
+    push(a.volumeZScore);
+    push(a.rangeCompressionPct);
+  }
+  for (const r of brief.analysis?.relativeStrength ?? []) {
+    push(r.change7dPct);
+    push(r.vsBase7dPct);
+  }
+  for (const c of brief.analysis?.correlations ?? []) push(c.correlation30d);
+
   return values;
 }
 

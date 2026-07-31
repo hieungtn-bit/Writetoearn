@@ -7,6 +7,15 @@ Working directory: `/home/user/Writetoearn`
 
 ---
 
+The whole job runs as one command per slot:
+
+```bash
+node bin/wte.mjs auto --format <recap|europe|positioning|wrap|event>
+```
+
+`wte slots` prints the schedule and crontab lines. The steps below are what that
+command does, and what to check if it fails.
+
 ## Step 1 — Collect data
 
 ```bash
@@ -46,6 +55,18 @@ nothing.
 
 `trending` (CoinGecko) is a read on retail attention. `news` is the last 24h of
 headlines — only cite a headline that is actually in the array.
+
+The brief's `analysis` block is computed from real daily candles: relative
+strength across BTC/ETH/SOL/BNB, RSI, ATR, realised volatility, range position,
+volume z-scores, and correlations. These are as citable as raw price — they are
+arithmetic over exchange data, not opinion — and they are what makes a post
+analysis rather than price reporting. `leader` and `laggard` usually carry the
+day's story.
+
+**Cite all four cashtags even though you analyse one.** Each distinct cashtag
+renders its own tappable price widget, and those widgets are the highest-intent
+click surface on the post. Relative-strength comparisons earn the extra cashtags
+honestly without splitting the post's focus.
 
 ---
 

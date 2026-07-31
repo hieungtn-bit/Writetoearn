@@ -18,6 +18,8 @@ import { runLoop, runOnce } from "./worker.mjs";
 import { probeDurationSeconds } from "./media.mjs";
 import { collectBrief, formatBrief } from "./market.mjs";
 import { composePost } from "./compose.mjs";
+import { FORMATS, crontabLines } from "./slots.mjs";
+import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
 
 const HELP = `wte — automated publishing for Binance Square
 
@@ -36,8 +38,10 @@ Usage
   wte limits                          Today's quota usage
 
   wte brief [--json]                  Live market data, with gaps listed
-  wte auto [--dry-run] [--effort <e>] The whole daily job: research, write,
+  wte auto [--format <f>] [--dry-run] The whole daily job: research, write,
                                       verify, publish. For cron.
+  wte slots                           The daily schedule + crontab lines
+  wte score [--days <n>]              Settle past calls, print the scoreboard
 
 Post types and their options
   text     --text <content>
@@ -86,6 +90,10 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdBrief(flags);
     case "auto":
       return cmdAuto(flags, argv);
+    case "score":
+      return cmdScore(flags);
+    case "slots":
+      return cmdSlots(flags);
     default:
       throw new ValidationError(`Unknown command "${command}". Run \`wte help\`.`);
   }
@@ -345,7 +353,9 @@ async function cmdAuto(flags, argv) {
     if (!budget.ok) throw new ValidationError(`Refusing to publish: ${budget.reason}.`);
   }
 
+  const format = flags.format ?? "positioning";
   const { text, attempts, verification } = await composePost(brief, {
+    format,
     effort: flags.effort ?? "high",
     onProgress: (msg) => log(`  ${msg}`),
   });
@@ -366,12 +376,56 @@ async function cmdAuto(flags, argv) {
 
   store.recordUsage({ posts: 1, uploads: outcome.uploadsUsed });
 
+  // Log what the post committed to, so the scoreboard has something to judge.
+  const claim = extractClaim(text, brief);
+  store.recordClaim({
+    ...claim,
+    postId: outcome.result?.id ?? `unlinked-${Date.now()}`,
+    shareLink: outcome.result?.shareLink ?? null,
+    format,
+    publishedAt: new Date().toISOString(),
+  });
+
   console.log("\nPublished.");
   console.log(`  ID:   ${outcome.result?.id ?? "unavailable"}`);
   console.log(`  Link: ${outcome.result?.shareLink ?? "unavailable"}`);
+  console.log(`  Logged claim: ${claim.asset ?? "no asset"} / ${claim.bias ?? "no bias"}`);
   if (outcome.missingPostId) {
     console.log("  Note: gateway timed out before returning a link. The post is live — do not re-post.");
   }
+  return 0;
+}
+
+/** Settles matured calls and prints the scoreboard. */
+async function cmdScore(flags) {
+  const store = new Store();
+  const hours = flags.hours ? Number(flags.hours) : 24;
+
+  const settled = await scoreDueClaims(store, { hours, log: (m) => console.log(m) });
+  if (settled) console.log(`Settled ${settled} call(s).`);
+
+  const board = formatScoreboard(store.listClaims(), { days: flags.days ? Number(flags.days) : 7 });
+  console.log(`\n${board}`);
+
+  const pending = store.listClaims({ scored: false }).length;
+  if (pending) console.log(`\n(${pending} call(s) still too recent to judge.)`);
+  return 0;
+}
+
+/** Prints the daily schedule and ready-to-paste crontab lines. */
+async function cmdSlots(flags) {
+  if (flags.json) {
+    console.log(JSON.stringify(FORMATS, null, 2));
+    return 0;
+  }
+
+  console.log("Daily slots (UTC; Vietnam = UTC+7)\n");
+  for (const [name, f] of Object.entries(FORMATS)) {
+    console.log(`  ${name.padEnd(12)} ${f.slot.padEnd(10)} ${f.label} (${f.words[0]}-${f.words[1]} words)`);
+  }
+  console.log("\nCrontab:\n");
+  for (const line of crontabLines(process.cwd(), process.execPath)) console.log(`  ${line}`);
+  console.log(`\n  0 9 * * 1 cd ${process.cwd()} && ${process.execPath} bin/wte.mjs score >> wte.log 2>&1`);
   return 0;
 }
 

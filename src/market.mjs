@@ -10,6 +10,8 @@
  * NOT Binance's — see FUNDING_VENUE below.
  */
 
+import { analyzeUniverse, formatAnalysis } from "./analysis.mjs";
+
 const SPOT_BASE = "https://data-api.binance.vision/api/v3";
 const COINGECKO_BASE = "https://api.coingecko.com/api/v3";
 const OKX_BASE = "https://www.okx.com/api/v5";
@@ -23,7 +25,7 @@ const NEWS_RSS = "https://cointelegraph.com/rss";
 export const FUNDING_VENUE = "OKX perpetual swaps";
 export const SPOT_VENUE = "Binance spot";
 
-const DEFAULT_SYMBOLS = ["BTCUSDT", "ETHUSDT", "SOLUSDT"];
+const DEFAULT_SYMBOLS = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT"];
 const TIMEOUT_MS = 20_000;
 
 async function getJson(url, fetchImpl) {
@@ -194,6 +196,7 @@ export async function collectBrief({
     trending: [],
     news: [],
     levels: [],
+    analysis: null,
     unavailable: [],
     notes: [],
   };
@@ -204,6 +207,7 @@ export async function collectBrief({
     ["trending", () => fetchTrending(fetchImpl)],
     ["news", () => fetchNews(newsHours, fetchImpl)],
     ["levels", () => Promise.all(symbols.map((s) => fetchLevels(s, 30, fetchImpl)))],
+    ["analysis", () => analyzeUniverse(symbols, { fetchImpl })],
   ];
 
   const results = await Promise.allSettled(tasks.map(([, run]) => run()));
@@ -260,6 +264,11 @@ export function formatBrief(brief) {
           `30d ${fmt(l.periodLow)}–${fmt(l.periodHigh)}`,
       );
     }
+    lines.push("");
+  }
+
+  if (brief.analysis) {
+    lines.push(formatAnalysis(brief.analysis));
     lines.push("");
   }
 

@@ -143,11 +143,20 @@ click that pays.
 
 The cashtag click is the only thing that earns. Treat it as the design goal.
 
-- **Cashtag next to the decision, not in a tag dump at the bottom.** Write
-  `$SOL` inline at the moment the reader thinks "let me look at that", not only
-  in a trailing hashtag block.
-- **One primary asset per post.** A post covering four assets splits attention
-  and converts on none. Mention the others as context; make one the subject.
+- **Every distinct cashtag renders a price widget, and each widget is a
+  separate click surface.** Observed directly: a post carrying `$BTC $ETH $SOL`
+  rendered three tappable price chips under it; a post with only `$ENA`
+  rendered one. Widgets are the highest-intent click target on the whole post —
+  a reader tapping a live price chip is one step from the trade that pays you.
+- **So: analyse one asset, but cite all four.** These two rules only look
+  contradictory. Make one asset the *subject* of the analysis, and reference the
+  other three as context — relative strength comparisons do this naturally and
+  earn their cashtags honestly. You get focus plus four widgets.
+- **Cashtag next to the decision, not only in a tag dump.** Write `$SOL` inline
+  at the moment the reader thinks "let me look at that".
+- **Posts are auto-translated.** Confirmed: an English post renders in
+  Vietnamese for a Vietnamese-locale reader. Writing in English costs nothing
+  locally and buys the global audience, so English stays the default.
 - **Give a reason to act now.** "Price is at support" is a decision moment.
   "SOL had a nice week" is not.
 - **Futures readers generate far more fee than spot buyers** — leverage means
@@ -193,14 +202,59 @@ several days of stored history — which is the argument for starting it early.
 
 ---
 
-## 8. Honest expectations
+## 8. Reactivating a dormant account
 
-- **Week 1–2:** almost no commission. No audience, no clicks. The goal is
-  consistency and history for the scoreboard, not income.
-- **Week 3–6:** first commissions. The scoreboard starts having something to
-  show, which is when follows accelerate.
-- **Top-30 leaderboard:** realistic only after a sustained audience. Since the
-  multiplier is large, everything before that is an investment in reaching it.
+This channel is **not** a cold start: ~1,300 followers and ~1,000 likes already
+exist. That is real distribution — but a dormant account has two separate
+problems, and they need different fixes.
+
+**The algorithm deprioritised you.** Feed ranking favours accounts that post
+consistently. One good post after a long silence gets shown to a fraction of
+1,300 people. Only sustained cadence rebuilds reach, which is why the schedule
+matters more than any individual post in the first two weeks.
+
+**Followers forgot why they followed.** They need a reason to re-engage that is
+not just "here's a price update".
+
+### The reactivation asset you already have
+
+The bio reads: *"90% trader thua vì cảm xúc. Tôi dùng AI để loại bỏ điều đó."*
+— 90% of traders lose to emotion; I use AI to remove it.
+
+That promise is now literally true, and almost nobody else on Square can claim
+it: every figure published is checked against exchange data before it goes out,
+levels are computed from real swing pivots, and calls get scored publicly.
+**Lead the reactivation with the system itself**, because it is the one thing
+competitors cannot copy by writing harder.
+
+### First two weeks
+
+| Days | Focus |
+|---|---|
+| 1 | A single "I'm back, and here is what changed" post. State the method: every number machine-verified, levels computed, calls scored publicly next week. This is the only self-referential post — after this, the work speaks. |
+| 1–7 | All four slots, every day, without exception. Consistency is the signal the ranking responds to. Do not judge results yet. |
+| 8 | **First scoreboard.** This is the moment the reactivation either lands or doesn't — it proves the week-1 promise was real. |
+| 8–14 | Keep the cadence. Watch which slot earns, then weight toward it. |
+
+**The one thing that kills this: posting hard for three days and stopping.**
+That confirms to both the algorithm and the followers that the account is dead,
+and the next restart begins from a worse position than this one.
+
+### Also fix
+
+The bio contains an unfilled template placeholder — `{thời gian} năm` — showing
+literally on the profile. It reads as sloppy on an account whose whole pitch is
+rigour. Replace it with a real value or delete the field.
+
+## 9. Honest expectations
+
+- **Week 1–2:** little to no commission. The 1,300 followers help, but reach has
+  to be rebuilt first. Success here is measured in consistency, not income.
+- **Week 3–6:** first commissions. The scoreboard has a track record to show,
+  which is when follows and clicks compound.
+- **Top-30 leaderboard:** realistic only after a sustained audience. The
+  multiplier is large enough that everything before it is an investment in
+  getting there.
 
 The failure mode is not posting too little. It is posting a high volume of
 generic content, converting nothing, and concluding the program does not work.

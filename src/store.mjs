@@ -42,7 +42,7 @@ export class Store {
   load() {
     if (this.state) return this.state;
     if (!fs.existsSync(this.file)) {
-      this.state = { version: STATE_VERSION, items: [], usage: {} };
+      this.state = { version: STATE_VERSION, items: [], usage: {}, claims: [] };
       return this.state;
     }
     const parsed = JSON.parse(fs.readFileSync(this.file, "utf8"));
@@ -50,8 +50,36 @@ export class Store {
       version: parsed.version ?? STATE_VERSION,
       items: parsed.items ?? [],
       usage: parsed.usage ?? {},
+      claims: parsed.claims ?? [],
     };
     return this.state;
+  }
+
+  /**
+   * Records what a published post actually claimed, so it can be scored later.
+   * The scoreboard is only possible if this starts collecting from day one.
+   */
+  recordClaim(claim) {
+    const state = this.load();
+    state.claims.push({ ...claim, recordedAt: new Date().toISOString(), score: null });
+    this.save();
+    return claim;
+  }
+
+  listClaims({ scored } = {}) {
+    const claims = this.load().claims ?? [];
+    if (scored === undefined) return claims;
+    return claims.filter((c) => (scored ? c.score !== null : c.score === null));
+  }
+
+  scoreClaim(postId, score) {
+    const state = this.load();
+    const claim = state.claims.find((c) => c.postId === postId);
+    if (!claim) return null;
+    claim.score = score;
+    claim.scoredAt = new Date().toISOString();
+    this.save();
+    return claim;
   }
 
   /** Write through a temp file so a crash mid-write cannot truncate state. */
