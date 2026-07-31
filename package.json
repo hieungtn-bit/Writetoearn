@@ -18,5 +18,8 @@
     "src/"
   ],
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.115.0"
+  }
 }

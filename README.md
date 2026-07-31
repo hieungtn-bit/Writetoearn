@@ -35,6 +35,52 @@ Xem hạn mức còn lại trong ngày: `node bin/wte.mjs limits`.
 
 ---
 
+## Autonomous daily posting
+
+`wte auto` is the whole daily job in one command: collect live data, write the
+post with Claude, verify every figure against the data, publish.
+
+```bash
+export BINANCE_SQUARE_OPENAPI_KEY=...   # publishing
+export ANTHROPIC_API_KEY=...            # writing
+
+wte auto --dry-run     # research + write + verify, publish nothing
+wte auto               # the real thing
+```
+
+Cron it and it runs itself — no scheduler service required:
+
+```cron
+0 13 * * * cd /path/to/Writetoearn && /usr/bin/node bin/wte.mjs auto >> wte.log 2>&1
+```
+
+It exits non-zero on any failure, so a cron mailer or monitor catches problems.
+
+### Why the generated post can be trusted
+
+A prompt saying "never invent numbers" is not enforcement — a model writing
+market commentary will happily produce a plausible price. So the draft is
+checked against the data before anything is published:
+
+- **Every figure must trace to the brief.** Numbers are extracted from the
+  draft and matched against the fetched data, tolerant of rounding and
+  abbreviation (`63,250` ≡ `63.2K` ≡ `$63250`). An unmatched price or
+  percentage fails the post. Bare small integers (`3 charts`, `24h`) are
+  treated as structural and skipped — but anything with a decimal point or a
+  percent sign is checked.
+- **Unavailable fields cannot be written about.** Open interest and long/short
+  ratio have no source here, so any mention of them is blocked. "OI is flat" is
+  fabrication when there is no OI data, disclaimer or not.
+- **Structure is enforced** — word count, cashtags, hashtags, disclaimer, and a
+  call-to-action question.
+
+A failing draft goes back to the model with the specific problems named, up to
+two revisions. If it still fails, the run aborts and **nothing is published** —
+a bad post is worse than no post, because the API has no delete endpoint.
+
+Key levels are computed from real 30-day daily swing pivots, so support and
+resistance are as grounded as the prices.
+
 ## Install
 
 Node.js 18+ is the only hard requirement (Node 22 recommended). There are no

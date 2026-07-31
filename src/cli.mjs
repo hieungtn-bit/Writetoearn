@@ -17,6 +17,7 @@ import { STATUS, Store, utcDayKey } from "./store.mjs";
 import { runLoop, runOnce } from "./worker.mjs";
 import { probeDurationSeconds } from "./media.mjs";
 import { collectBrief, formatBrief } from "./market.mjs";
+import { composePost } from "./compose.mjs";
 
 const HELP = `wte — automated publishing for Binance Square
 
@@ -33,6 +34,10 @@ Usage
 
   wte run [--once] [--interval <s>]   Publish everything that is due
   wte limits                          Today's quota usage
+
+  wte brief [--json]                  Live market data, with gaps listed
+  wte auto [--dry-run] [--effort <e>] The whole daily job: research, write,
+                                      verify, publish. For cron.
 
 Post types and their options
   text     --text <content>
@@ -79,6 +84,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdLimits(flags);
     case "brief":
       return cmdBrief(flags);
+    case "auto":
+      return cmdAuto(flags, argv);
     default:
       throw new ValidationError(`Unknown command "${command}". Run \`wte help\`.`);
   }
@@ -311,6 +318,61 @@ async function cmdBrief(flags) {
   // A brief with no prices is not a brief; fail loudly so a scheduled caller
   // does not go on to write a post out of thin air.
   return brief.spot.length ? 0 : 1;
+}
+
+/**
+ * The whole daily job: collect data, write the post, verify it, publish.
+ * This is what a cron entry should call.
+ */
+async function cmdAuto(flags, argv) {
+  const dryRun = Boolean(flags["dry-run"]);
+  const store = new Store();
+  const log = (msg) => console.log(msg);
+
+  log("Collecting market data...");
+  const brief = await collectBrief({ newsHours: flags.hours ? Number(flags.hours) : 24 });
+
+  if (!brief.spot.length) {
+    throw new ValidationError(
+      "No spot prices in the brief — refusing to write a post with no data behind it. " +
+        `Sources that failed: ${brief.unavailable.map((u) => u.field).join(", ")}.`,
+    );
+  }
+  log(`  ${brief.spot.length} pairs, ${brief.news.length} headlines, ${brief.levels.length} level sets`);
+
+  if (!dryRun) {
+    const budget = store.checkBudget(0);
+    if (!budget.ok) throw new ValidationError(`Refusing to publish: ${budget.reason}.`);
+  }
+
+  const { text, attempts, verification } = await composePost(brief, {
+    effort: flags.effort ?? "high",
+    onProgress: (msg) => log(`  ${msg}`),
+  });
+
+  log(`\n--- draft (${verification.words} words, ${attempts} attempt${attempts === 1 ? "" : "s"}) ---`);
+  log(text);
+  log("--- end draft ---\n");
+
+  if (dryRun) {
+    log("Dry run — nothing was published.");
+    return 0;
+  }
+
+  const client = new SquareClient({ apiKey: resolveApiKey(argv) });
+  const outcome = await publishSpec(client, normalizePost({ type: POST_TYPE.TEXT, text }), {
+    onProgress: (msg) => log(`  ${msg}`),
+  });
+
+  store.recordUsage({ posts: 1, uploads: outcome.uploadsUsed });
+
+  console.log("\nPublished.");
+  console.log(`  ID:   ${outcome.result?.id ?? "unavailable"}`);
+  console.log(`  Link: ${outcome.result?.shareLink ?? "unavailable"}`);
+  if (outcome.missingPostId) {
+    console.log("  Note: gateway timed out before returning a link. The post is live — do not re-post.");
+  }
+  return 0;
 }
 
 /** Turns CLI flags into a validated post spec. */
