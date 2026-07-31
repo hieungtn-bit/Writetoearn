@@ -2,6 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { formatBrief } from "./market.mjs";
 import { verifyPost } from "./verify.mjs";
 import { getFormat } from "./slots.mjs";
+import { VOICE } from "./brand.mjs";
 
 const MODEL = "claude-opus-5";
 
@@ -14,7 +15,9 @@ const MODEL = "claude-opus-5";
  * blind retry — a second identical attempt would fail identically.
  */
 
-const SYSTEM = `You write short market posts for Binance Square, in the voice of a GenZ crypto trader: direct, mobile-readable, a little spicy, confident but never certain.
+const SYSTEM = `You write short market posts for Binance Square.
+
+${VOICE}
 
 THE RULE THAT OUTRANKS EVERYTHING: every number you write must appear in the market brief you are given. Do not recall prices from memory. Do not estimate, round to something catchier, or carry a figure over from another day. If a figure is not in the brief, it does not go in the post. Your output is checked against the brief mechanically and rejected if a number cannot be traced.
 
@@ -32,7 +35,9 @@ Required structure, in order:
 7. A short not-financial-advice line.
 8. Cashtags and hashtags, including #WriteToEarn and #BinanceSquare.
 
-Hard limits: 180-220 words maximum, English unless the topic is specific to Vietnam. Pick ONE main asset — the one with the strongest story today. A post about three coins is about nothing.
+Language: English. Binance Square auto-translates per reader locale, so English reaches the global audience and costs nothing locally.
+
+Make ONE asset the subject of the analysis — the one with the strongest story today. But cite all four cashtags across the post, because each distinct cashtag renders its own tappable price widget and those are the highest-intent click surfaces available. Relative-strength comparisons earn the extra cashtags honestly without splitting focus.
 
 Never promise returns, state a price target as a certainty, claim insider knowledge, or push urgency ("last chance", "ape now").
 
