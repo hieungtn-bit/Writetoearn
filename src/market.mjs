@@ -10,7 +10,7 @@
  * NOT Binance's — see FUNDING_VENUE below.
  */
 
-import { analyzeUniverse, formatAnalysis } from "./analysis.mjs";
+import { analyzeUniverse, fetchDailyCandles, fetchKlines, formatAnalysis } from "./analysis.mjs";
 
 const SPOT_BASE = "https://data-api.binance.vision/api/v3";
 const COINGECKO_BASE = "https://api.coingecko.com/api/v3";
@@ -65,19 +65,12 @@ export async function fetchSpot(symbols = DEFAULT_SYMBOLS, fetchImpl = globalThi
  * of spot. A pivot is a candle whose low is the lowest of its neighbours (or
  * whose high is the highest) — real levels price has actually turned at.
  */
-export async function fetchLevels(symbol, days = 30, fetchImpl = globalThis.fetch) {
-  const rows = await getJson(
-    `${SPOT_BASE}/klines?symbol=${symbol}&interval=1d&limit=${days}`,
-    fetchImpl,
-  );
-  if (!rows.length) throw new Error(`no candles for ${symbol}`);
-
-  const candles = rows.map((r) => ({
-    openTime: Number(r[0]),
-    high: Number(r[2]),
-    low: Number(r[3]),
-    close: Number(r[4]),
-  }));
+export async function fetchLevels(symbol, days = 30, fetchImpl = globalThis.fetch, preloaded) {
+  // Reuse candles already fetched for the analysis pass when available —
+  // requesting the same series twice is what pushed the brief over the
+  // exchange's burst limit.
+  const candles = (preloaded ?? (await fetchKlines(symbol, { interval: "1d", limit: days, fetchImpl }))).slice(-days);
+  if (!candles.length) throw new Error(`no candles for ${symbol}`);
 
   const spot = candles.at(-1).close;
   const highs = candles.map((c) => c.high);
@@ -201,13 +194,34 @@ export async function collectBrief({
     notes: [],
   };
 
+  // One candle fetch, shared by levels and analysis. Doing it up front also
+  // keeps the parallel block below small enough not to trip the burst limit.
+  let candlesBySymbol = null;
+  try {
+    candlesBySymbol = await fetchDailyCandles(symbols, { fetchImpl });
+  } catch (err) {
+    brief.unavailable.push({ field: "candles", reason: err.message });
+  }
+
   const tasks = [
     ["spot", () => fetchSpot(symbols, fetchImpl)],
     ["funding", () => fetchFunding(undefined, fetchImpl)],
     ["trending", () => fetchTrending(fetchImpl)],
     ["news", () => fetchNews(newsHours, fetchImpl)],
-    ["levels", () => Promise.all(symbols.map((s) => fetchLevels(s, 30, fetchImpl)))],
-    ["analysis", () => analyzeUniverse(symbols, { fetchImpl })],
+    [
+      "levels",
+      () =>
+        candlesBySymbol
+          ? Promise.all(symbols.map((s) => fetchLevels(s, 30, fetchImpl, candlesBySymbol[s])))
+          : Promise.reject(new Error("no candles available")),
+    ],
+    [
+      "analysis",
+      () =>
+        candlesBySymbol
+          ? analyzeUniverse(symbols, { fetchImpl, candlesBySymbol })
+          : Promise.reject(new Error("no candles available")),
+    ],
   ];
 
   const results = await Promise.allSettled(tasks.map(([, run]) => run()));

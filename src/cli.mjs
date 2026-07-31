@@ -20,6 +20,7 @@ import { collectBrief, formatBrief } from "./market.mjs";
 import { composePost } from "./compose.mjs";
 import { FORMATS, crontabLines } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
+import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
 
 const HELP = `wte — automated publishing for Binance Square
 
@@ -42,6 +43,7 @@ Usage
                                       verify, publish. For cron.
   wte slots                           The daily schedule + crontab lines
   wte score [--days <n>]              Settle past calls, print the scoreboard
+  wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
 
 Post types and their options
   text     --text <content>
@@ -94,6 +96,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdScore(flags);
     case "slots":
       return cmdSlots(flags);
+    case "screen":
+      return cmdScreen(flags);
     default:
       throw new ValidationError(`Unknown command "${command}". Run \`wte help\`.`);
   }
@@ -410,6 +414,26 @@ async function cmdScore(flags) {
   const pending = store.listClaims({ scored: false }).length;
   if (pending) console.log(`\n(${pending} call(s) still too recent to judge.)`);
   return 0;
+}
+
+/** Screens the altcoin universe and surfaces the statistical outliers. */
+async function cmdScreen(flags) {
+  const symbols = flags.symbols
+    ? String(flags.symbols).split(",").map((s) => s.trim().toUpperCase()).filter(Boolean)
+    : ALT_UNIVERSE;
+
+  const result = await screen(symbols, {
+    onProgress: (p) => process.stderr.write(`\rscreening ${p}   `),
+  });
+  process.stderr.write("\r");
+
+  const outliers = findOutliers(result.rows);
+  if (flags.json) {
+    console.log(JSON.stringify({ ...result, outliers }, null, 2));
+    return result.rows.length ? 0 : 1;
+  }
+  console.log(formatScreen(result, outliers));
+  return result.rows.length ? 0 : 1;
 }
 
 /** Prints the daily schedule and ready-to-paste crontab lines. */

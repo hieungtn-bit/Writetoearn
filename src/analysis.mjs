@@ -9,23 +9,62 @@
 const SPOT_BASE = "https://data-api.binance.vision/api/v3";
 const TIMEOUT_MS = 20_000;
 
-/** @returns {Promise<{openTime:number,open:number,high:number,low:number,close:number,volume:number,quoteVolume:number}[]>} */
+const RETRY_DELAYS_MS = [400, 1200, 3000];
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * Klines with retry.
+ *
+ * The exchange answers a burst of concurrent requests from one host with 503s,
+ * so a transient failure here is expected rather than exceptional. An
+ * unattended slot run that gives up on the first 503 silently loses the post.
+ */
 export async function fetchKlines(symbol, { interval = "1d", limit = 200, fetchImpl = globalThis.fetch } = {}) {
-  const res = await fetchImpl(
-    `${SPOT_BASE}/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`,
-    { signal: AbortSignal.timeout(TIMEOUT_MS) },
-  );
-  if (!res.ok) throw new Error(`klines ${symbol} ${interval}: HTTP ${res.status}`);
-  const rows = await res.json();
-  return rows.map((r) => ({
-    openTime: Number(r[0]),
-    open: Number(r[1]),
-    high: Number(r[2]),
-    low: Number(r[3]),
-    close: Number(r[4]),
-    volume: Number(r[5]),
-    quoteVolume: Number(r[7]),
-  }));
+  let lastError;
+
+  for (let attempt = 0; attempt <= RETRY_DELAYS_MS.length; attempt++) {
+    if (attempt) await sleep(RETRY_DELAYS_MS[attempt - 1]);
+    try {
+      const res = await fetchImpl(
+        `${SPOT_BASE}/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`,
+        { signal: AbortSignal.timeout(TIMEOUT_MS) },
+      );
+      if (!res.ok) throw new Error(`klines ${symbol} ${interval}: HTTP ${res.status}`);
+      const rows = await res.json();
+      return rows.map((r) => ({
+        openTime: Number(r[0]),
+        open: Number(r[1]),
+        high: Number(r[2]),
+        low: Number(r[3]),
+        close: Number(r[4]),
+        volume: Number(r[5]),
+        quoteVolume: Number(r[7]),
+      }));
+    } catch (err) {
+      lastError = err;
+    }
+  }
+  throw lastError;
+}
+
+/**
+ * Fetches daily candles for a set of symbols, a few at a time.
+ *
+ * Serialising in small batches is what keeps the whole brief from tripping the
+ * exchange's burst limit — the previous version fired every symbol at once and
+ * regularly took the entire collection down with it.
+ */
+export async function fetchDailyCandles(symbols, { limit = 120, concurrency = 2, fetchImpl = globalThis.fetch } = {}) {
+  const out = {};
+  for (let i = 0; i < symbols.length; i += concurrency) {
+    const batch = symbols.slice(i, i + concurrency);
+    const results = await Promise.all(
+      batch.map((s) => fetchKlines(s, { interval: "1d", limit, fetchImpl })),
+    );
+    batch.forEach((s, j) => (out[s] = results[j]));
+  }
+  return out;
 }
 
 // ---------------------------------------------------------------- primitives
@@ -171,8 +210,8 @@ export function rangeCompression(candles, { recent = 7, base = 30 } = {}) {
  * Full computed picture for one symbol.
  * @returns {Promise<object>} every field a number the verifier can vouch for
  */
-export async function analyzeAsset(symbol, { fetchImpl = globalThis.fetch } = {}) {
-  const daily = await fetchKlines(symbol, { interval: "1d", limit: 120, fetchImpl });
+export async function analyzeAsset(symbol, { fetchImpl = globalThis.fetch, candles } = {}) {
+  const daily = candles ?? (await fetchKlines(symbol, { interval: "1d", limit: 120, fetchImpl }));
   const closes = daily.map((c) => c.close);
   const volumes = daily.map((c) => c.quoteVolume);
   const price = closes.at(-1);
@@ -209,8 +248,11 @@ export async function analyzeAsset(symbol, { fetchImpl = globalThis.fetch } = {}
  * is moving together. Relative strength is the most useful multi-asset signal
  * available from spot data alone.
  */
-export async function analyzeUniverse(symbols, { base = "BTCUSDT", fetchImpl = globalThis.fetch } = {}) {
-  const assets = await Promise.all(symbols.map((s) => analyzeAsset(s, { fetchImpl })));
+export async function analyzeUniverse(symbols, { base = "BTCUSDT", fetchImpl = globalThis.fetch, candlesBySymbol } = {}) {
+  const candles = candlesBySymbol ?? (await fetchDailyCandles(symbols, { fetchImpl }));
+  const assets = await Promise.all(
+    symbols.map((s) => analyzeAsset(s, { fetchImpl, candles: candles[s] })),
+  );
   const byName = Object.fromEntries(assets.map((a) => [a.symbol, a]));
   const anchor = byName[base];
 
