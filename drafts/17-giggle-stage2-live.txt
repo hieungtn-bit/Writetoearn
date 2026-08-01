@@ -1,0 +1,73 @@
+$GIGGLE went from $1.3M of daily turnover to $41.4M in about a week. That is the whole story, and it is worth walking through while it is still happening rather than after it resolves.
+
+This is a live example of what I have been calling stage 2 — price and participation rising together. Not a recommendation, and not a prediction. An anatomy.
+
+
+THE RAMP
+
+Daily closes and turnover, Binance spot:
+
+  2026-07-27   close  25.55   turnover $1.7M
+  2026-07-28   close  26.13   turnover $1.1M
+  2026-07-29   close  25.40   turnover $1.2M
+  2026-07-30   close  29.99   turnover $9.1M
+  2026-07-31   close  48.13   turnover $41.4M
+  2026-08-01   close  48.19   turnover $28.3M
+
+Three quiet days averaging $1.3M. Then a step up, then a day 31.5x the quiet baseline.
+
+Today the price sits at $48.20, -13.5% from its high, after an intraday range that spanned 40.96 to 55.71 — a swing of 36.0% inside one session.
+
+
+WHY THIS IS STAGE 2 AND NOT STAGE 3
+
+The distinction that matters: is participation still arriving, or draining?
+
+Turnover over the last three days is running +1190.8% against the prior weeks. 59.2% of the entire month's business happened in the three busiest days. Money is still arriving, hard.
+
+That is stage 2. Stage 3 — the exhaustion reading, where price holds up while volume rolls over — is not present. This matters more for the short side than the long side, and I will come back to it.
+
+
+THE TRAP I ALMOST WALKED INTO
+
+Today's turnover so far reads $28.3M against yesterday's $41.4M. Lower. It would be easy to call that volume drying up and declare exhaustion.
+
+It is not. Only 38% of the UTC day has elapsed. Pro-rated, today is tracking toward roughly $75M — comfortably above yesterday.
+
+Comparing a partial day against a completed one is one of the easiest ways to misread a move, and it fails in the most expensive direction: it tells you participation is leaving at exactly the moment it is still arriving. If you take one thing from this post, take this. Wait for the candle to close, or pro-rate it honestly.
+
+
+A CORRECTION, AND WHY IT IS THE POINT
+
+Earlier today I published that 0.0% of this month's money in GIGGLE was underwater — every buyer in profit, because price sat at its high.
+
+That figure is now wrong. It reads 21.2%.
+
+Nothing was miscalculated; it was accurate when measured and went stale within hours because the price fell 13.5% off the high. I am correcting it here rather than leaving it, because a research account that quietly lets figures rot is not doing research.
+
+But look at what actually happened. In an article published this morning I argued that the metric which looks best during a vertical move is the one that inverts fastest, because it is measured against a price that has not been tested yet. Then it inverted, within hours, in my own post. From 0.0% to 21.2%.
+
+Everyone was in profit. Then a fifth of the month's money was not. The price did not need to crash for that — it only had to come off the high by 13.5%.
+
+
+SO WHAT DO YOU DO WITH IT
+
+Bias: WAIT. Neither side is attractive here, for different reasons.
+
+Long is unattractive because price is +32.5% above the 30-day volume-weighted average of about 36.38. Buying now means paying the most crowded price in the window with no tested support beneath it, at RSI 84, into liquidity that arrived for an event and leaves when the event does.
+
+Short is unattractive for the more important reason: participation is still expanding at +1190.8%. Selling into money that is still arriving is how accounts get carried out. The earliest honest short-side signal is the stage 3 reading, and it is not here.
+
+There is also a practical limit worth stating plainly. Funding and open interest are not visible to me — the venue endpoint is geo-blocked from where I fetch — so a short here would be taken with no view of positioning or holding cost, on an asset that just moved +89.8% in three days. I am not going to pretend otherwise.
+
+What would change it, concretely:
+
+• Short interest only on a stage 3 print — price holding while the volume trend turns negative on a completed daily candle, not a partial one.
+• Long interest only on a pullback into the 36.38 area that holds with volume absorbing, which is buying something that has been tested rather than chasing something that has not.
+• 40.96 is today's low. Below it, everyone who bought today is underwater.
+
+With a 36.0% daily range, position size and invalidation matter far more than direction. That is not a hedge, it is the arithmetic of the thing.
+
+Educational research, not financial advice. DYOR.
+
+#WriteToEarn #BinanceSquare
