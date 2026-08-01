@@ -1,0 +1,102 @@
+Two tokens on my screen today read exactly the same on the metric most people would check. One is being bought. The other is running out of buyers. Telling them apart is a single calculation, and it is not the one you would expect.
+
+Here is the method, with today's live numbers so you can check my work.
+
+
+THE PROBLEM WITH "IS IT A PUMP OR A DUMP"
+
+By the time a move is obviously a dump, it is priced in. By the time it is obviously a pump, you are the late buyer. The useful question is not which one is happening — it is which stage the move is in, because the stage determines your risk long before it determines the price.
+
+A move has a life cycle, and each phase leaves a different fingerprint in the volume data.
+
+
+THE ONE CALCULATION THAT SEPARATES THEM
+
+Compare the direction of price with the direction of participation.
+
+Price is easy: percentage change over the last three days.
+
+Participation is the part almost nobody computes: average daily turnover of the last three days, versus average daily turnover of the previous twenty-seven. Call it the volume trend.
+
+• Price up AND volume up = the move is still recruiting buyers.
+• Price up AND volume down = the move is running on fewer and fewer participants.
+
+That second line is the earliest observable warning there is. Price can keep rising while the crowd behind it thins. Nothing about the price chart shows you this.
+
+
+THE FIVE STAGES
+
+Stage 1 — Quiet. Turnover spread evenly, no concentration. Nothing to trade, and nothing to fear.
+
+Stage 2 — Expansion. Price rising, volume rising with it, almost every holder in profit. A real move with real participation.
+
+Stage 3 — Exhaustion. Price still rising, volume falling. Holders still in profit — which is exactly why this stage feels safest and is not.
+
+Stage 4 — Breakdown. Price drops below the period's volume-weighted average price. The share of money underwater jumps.
+
+Stage 5 — Hangover. Deep drawdown, volume gone. The event is over and liquidity left with it.
+
+
+TODAY'S READINGS
+
+Measured on 30 days of Binance spot candles.
+
+$GIGGLE — money underwater 0.0%, price vs 30-day VWAP +34.0%, three-day price +91.9%, volume trend +1179.9%, top three days = 59.0% of the month's turnover.
+Reading: Stage 2. Volume is expanding violently alongside price.
+
+$PUMP — money underwater 0.0%, price vs VWAP +20.8%, three-day price +16.9%, volume trend -20.6%, top three days = 22.9%.
+Reading: Stage 3. Price rose over three days while average turnover fell.
+
+$BANK — money underwater 99.0%, price vs VWAP -75.5%, drawdown from the 30-day high -90.5%.
+Reading: Stage 4-5. The cycle already completed.
+
+BTC, for contrast — top three days = 14.1% of turnover, price vs VWAP -1.5%. Turnover is structural, not event-driven. This is what "no event in progress" looks like.
+
+
+THE TRAP
+
+Look at the underwater figure for GIGGLE and PUMP: 0.0% and 0.0%.
+
+Effectively identical. On the metric most people would reach for — are holders in profit? — these two assets are indistinguishable. Both look excellent. Both would screenshot beautifully.
+
+Only the volume trend separates them: +1179.9% against -20.6%.
+
+This is the general lesson. The indicators that look best during a vertical move are measured against a price that has not been tested yet, so they invert the moment it is. Participation is measured against behaviour, which changes first.
+
+
+THRESHOLDS TO START FROM
+
+Calibrate these on your own data. They are starting points, not laws.
+
+• Top three days above 30% of monthly turnover: you are looking at an event, not a trend. Event liquidity leaves when the event does.
+• Three-day price up more than 5% while volume trend is below -20%: exhaustion conditions.
+• Price crossing below the 30-day VWAP: the transition from "everyone is in profit" to "distribution".
+• Underwater share above 70%: late. "It is 90% off the high" is not a reason; it is a description.
+
+
+HOW TO COMPUTE IT YOURSELF
+
+All of it comes from daily candles — no paid data required.
+
+1. Typical price per day = (high + low + close) / 3.
+2. VWAP = sum(typical price x quote volume) / sum(quote volume), over 30 days.
+3. Underwater share = turnover on days whose typical price was above today's price, divided by total turnover.
+4. Volume trend = (mean turnover of last 3 days - mean of prior 27) / mean of prior 27.
+5. Concentration = turnover of the three busiest days / total turnover.
+
+Five numbers. Any of them can be computed in a spreadsheet from a candle export.
+
+
+WHAT THIS CANNOT DO
+
+It cannot time anything. This is a risk gradient, not an entry signal.
+
+Stage 3 can persist for days and resume higher. A token reading Stage 3 today is not a forecast that it falls tomorrow, and nothing here should be read as a call on any of the assets named. I do not know what any of them do next.
+
+There is also an unavoidable asymmetry. Stage 4 is easy to identify and useless, because it has happened. Stage 2 is easy to identify and offers little, because you are already late. Stage 3 is the only one with any lead in it, and it is the noisiest. If a clean top signal existed, it would have been traded away long ago.
+
+What you actually gain is knowing which stage you are standing in. That is enough to size a position and place an invalidation. It is not enough to call a top, and anyone selling you that is selling something else.
+
+Educational research, not financial advice. DYOR.
+
+#WriteToEarn #BinanceSquare
