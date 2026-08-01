@@ -1,0 +1,82 @@
+Someone sent me the output of a narrative scanner: a ranked table of tokens about to run, with scores, market caps, volumes and stage labels. It looked like data. Columns, percentages, a timestamp.
+
+So I checked it against the exchange's own data. Here is what came back, and the method, so you can do this to any scan you are ever sent — including mine.
+
+
+FINDING 1: TWO OF THE THREE PICKS ARE NOT ON BINANCE SPOT
+
+The scan's number one pick, scored highest and described as the priority, is not listed on Binance spot. Neither is the number two. I checked against Binance's own exchangeInfo endpoint, which is the authoritative list of what actually trades.
+
+To be precise, because precision is the entire point: this does not mean those tokens are fake, worthless, or a scam. They may trade on other venues, on DEXs, or on other Binance products. What it means is narrower and more useful — none of the figures quoted about them can be checked against exchange data, and you cannot act on them on spot.
+
+A ranking whose top entries cannot be verified is not a ranking. It is a list.
+
+
+FINDING 2: THE ONE VERIFIABLE TOKEN HAD ITS VOLUME OVERSTATED
+
+$GIGGLE is listed, so it can be measured.
+
+The scan reported 24h volume of $140M-280M.
+Measured 24h quote volume: $56.3M.
+
+That is the scan's floor sitting 2.5x above the real figure, and its ceiling 5.0x above. Not a rounding difference — a different order of business.
+
+For completeness, measured on the same tick: price $48.42, 24h change +21.3%, 24h range 35.59 to 55.71, across 1,155,854 trades.
+
+
+FINDING 3: THE RANGES GIVE IT AWAY
+
+Look at how the scan quotes its numbers. A 24h change of "+15~49%". A volume of "$140M-280M". A price of "~$47-52".
+
+A 34-point band on a percentage change is not a measurement. A two-times band on volume is not a measurement. These are estimates formatted as a table, and formatting is doing the persuading.
+
+Real measurement is boring and specific: +21.3%. One number, one source, reproducible in a browser.
+
+
+FINDING 4: "EARLY" APPLIED TO SOMETHING UP 240% IN A WEEK
+
+The scan labelled its top pick "Early-Mid" while stating in its own text that the token had already risen about 240% over seven days.
+
+There is no operational definition of early that survives that. This is the central trap of momentum scanning: the screen surfaces things because they already moved, then the label reassures you that you are not late. Both statements sit in the same row of the same table.
+
+
+FINDING 5: SCORES WITHOUT A METHOD
+
+The entries carried scores — 72, 68, 64 out of 100. No inputs disclosed, no weights, no formula.
+
+A score you cannot recompute cannot be wrong. That sounds like a strength and is the opposite: nothing unfalsifiable can be evidence. If a number cannot fail, it cannot inform.
+
+
+WHERE I AGREE
+
+The scan concluded: do not chase $GIGGLE. That is right, and the measurement supports it — but for a different reason than the one given.
+
+The scan said GIGGLE is no longer early. Measured, its participation is still expanding hard: turnover over the last three days is running +1189.0% against the prior weeks, with 0.0% of the month's money underwater and price +33.1% above the 30-day volume-weighted average.
+
+That is a move still recruiting buyers. The reason not to chase it is not that the excitement faded — it plainly has not. It is that when everyone who owns it is in profit and volume is vertical, you would be buying the most crowded price in the window with no tested support beneath you.
+
+Same conclusion. Different reason. The reason is the part you can reuse next time.
+
+
+HOW TO AUDIT ANY SCAN IN UNDER A MINUTE
+
+1. Is it listed where you would trade it? Check the exchange's exchangeInfo endpoint. If the answer is no, stop — everything downstream is unverifiable.
+2. Pull the 24h ticker and compare volume and change to what you were told. One mismatch of this size invalidates the rest.
+3. Look at how numbers are quoted. Wide bands mean estimates.
+4. Ask what would make the score wrong. If nothing would, it is not a measurement.
+5. Only then look at the narrative.
+
+Notice that steps one through four never touch the story. The story is the last thing to check, not the first, because it is the part designed to be persuasive.
+
+
+WHAT I AM NOT SAYING
+
+I have not named the tool, and I am not going to. This is not about one scanner — most of them share the same weakness, and plenty of hand-written analysis does too, including posts on this platform.
+
+I am also not saying the named tokens are bad. I am saying two of them could not be checked, one of them was quoted with volume several times its actual figure, and a table with a timestamp and a score column earns no more trust than a sentence with no data at all.
+
+Apply the same to me. Every figure in this post came from public Binance endpoints, and you can pull all of them yourself in a browser. If you cannot reproduce something I publish, that is a defect and you should say so.
+
+Educational research, not financial advice. DYOR.
+
+#WriteToEarn #BinanceSquare
