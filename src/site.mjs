@@ -214,7 +214,21 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
 footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.2rem;color:var(--muted);font-size:.85rem}
 .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.15rem .6rem;font-size:.78rem;color:var(--muted);margin-right:.35rem}
 .backlink{display:inline-block;margin-bottom:1.5rem;font-size:.9rem;text-decoration:none}
-@media(max-width:480px){h1{font-size:1.6rem}body{font-size:16px}}`;
+header.site nav{margin-left:auto;display:flex;gap:1rem}
+header.site nav a{font-size:.95rem;text-decoration:none;font-weight:600}
+.chart{margin:1.4rem 0;padding:0}
+.chart svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px}
+.chart figcaption{color:var(--muted);font-size:.85rem;margin-top:.5rem;text-align:center}
+.readings{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem}
+.readings td{border-bottom:1px solid var(--line);padding:.6rem .4rem}
+.readings td:last-child{text-align:right;font-weight:700;color:var(--accent);white-space:nowrap}
+.box{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:1rem 1.1rem;margin:1.4rem 0;background:var(--card)}
+.box.warn{border-left-color:#f6465d}
+.box h4{margin:0 0 .5rem;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.box p{margin:0}
+.lvl{display:inline-block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#0b0e11;background:var(--accent);border-radius:4px;padding:.15rem .45rem;font-weight:800;margin-bottom:.6rem}
+.q{color:var(--fg);font-size:1.05rem;font-style:italic;border-left:3px solid var(--line);padding-left:.9rem;margin:0 0 1.4rem}
+@media(max-width:480px){h1{font-size:1.6rem}body{font-size:16px}.readings{font-size:.88rem}}`;
 
 function head({ title, description, canonical, image, jsonLd, site }) {
   return `<!doctype html>
@@ -243,7 +257,7 @@ ${image ? `<meta name="twitter:image" content="${image}">` : ""}
 <div class="wrap">
 <header class="site">
   <a class="brand" href="/">${escapeHtml(site.name)}</a>
-  <span class="tag">${escapeHtml(site.tagline)}</span>
+  <nav><a href="/learn/">Learn</a><a href="/">Research</a></nav>
 </header>`;
 }
 
@@ -324,9 +338,123 @@ ${cards}
 ${foot(site)}`;
 }
 
-export function renderSitemap(site, articles) {
+export function lessonUrl(site, lesson) {
+  return `${site.baseUrl.replace(/\/$/, "")}/learn/${lesson.slug}/`;
+}
+
+/**
+ * Lessons are marked up as HowTo rather than Article: each one teaches a
+ * repeatable procedure, and that is what makes it eligible to be surfaced as an
+ * answer instead of as a link.
+ */
+export function lessonJsonLd(site, lesson) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: lesson.title,
+    description: lesson.question,
+    inLanguage: site.locale,
+    isAccessibleForFree: true,
+    url: lessonUrl(site, lesson),
+    mainEntityOfPage: { "@type": "WebPage", "@id": lessonUrl(site, lesson) },
+    publisher: { "@type": "Organization", name: site.name, url: site.baseUrl },
+    step: lesson.formula.map((f, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      text: f,
+    })),
+  };
+}
+
+export function renderLessonPage(site, lesson) {
+  const e = lesson.example;
+  const rows = e.readings
+    .map(([k, v]) => `  <tr><td>${escapeHtml(k)}</td><td>${escapeHtml(v)}</td></tr>`)
+    .join("\n");
+
+  return `${head({
+    title: `${lesson.title} | ${site.name}`,
+    description: lesson.question,
+    canonical: lessonUrl(site, lesson),
+    image: `${site.baseUrl}/assets/learn-${lesson.slug}.svg`,
+    jsonLd: lessonJsonLd(site, lesson),
+    site,
+  })}
+<a class="backlink" href="/learn/">&larr; All lessons</a>
+<article>
+<span class="lvl">${escapeHtml(lesson.level)}</span>
+<h1>${escapeHtml(lesson.title)}</h1>
+<p class="q">${escapeHtml(lesson.question)}</p>
+
+<h2>The idea</h2>
+<p>${escapeHtml(lesson.concept)}</p>
+
+<h2>The formula</h2>
+<pre><code>${escapeHtml(lesson.formula.join("\n"))}</code></pre>
+
+<h2>Worked example — ${escapeHtml(e.subject)}, live data</h2>
+<table class="readings">
+${rows}
+</table>
+${e.charts.join("\n")}
+<p>${escapeHtml(e.verdict)}</p>
+
+<div class="box warn">
+  <h4>Common mistake</h4>
+  <p>${escapeHtml(lesson.mistake)}</p>
+</div>
+
+<div class="box">
+  <h4>Do it yourself</h4>
+  <p>Export daily candles for any pair, apply the formula above, and compare your number to the one on this page.
+  If they disagree, one of us is wrong and it is worth finding out which.</p>
+</div>
+</article>
+${foot(site)}`;
+}
+
+export function renderLearnIndex(site, lessons) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${site.name} — trading lessons`,
+    description: "Practical trading techniques, each with a worked example computed from live exchange data.",
+    url: `${site.baseUrl}/learn/`,
+    itemListElement: lessons.map((l, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: l.title,
+      url: lessonUrl(site, l),
+    })),
+  };
+
+  const cards = lessons.map((l) => `<a class="card" href="/learn/${l.slug}/">
+  <span class="lvl">${escapeHtml(l.level)}</span>
+  <h2>${escapeHtml(l.title)}</h2>
+  <p>${escapeHtml(l.question)}</p>
+  <span class="when">Worked example: ${escapeHtml(l.example.subject)}</span>
+</a>`).join("\n");
+
+  return `${head({
+    title: `Learn trading, with worked examples | ${site.name}`,
+    description: "Practical trading techniques, each with a worked example computed from live exchange data — not theory.",
+    canonical: `${site.baseUrl}/learn/`,
+    image: `${site.baseUrl}/assets/learn-${lessons[0]?.slug}.svg`,
+    jsonLd,
+    site,
+  })}
+<h1>Learn the measurement, not the opinion</h1>
+<p class="lede">Every lesson below teaches one technique, gives you the exact formula, and works it through on live
+exchange data. If you cannot reproduce a number here, that is a defect worth reporting.</p>
+${cards}
+${foot(site)}`;
+}
+
+export function renderSitemap(site, articles, lessons = []) {
   const urls = [
     { loc: `${site.baseUrl}/`, lastmod: articles[0]?.published, priority: "1.0" },
+    { loc: `${site.baseUrl}/learn/`, priority: "0.9" },
+    ...lessons.map((l) => ({ loc: lessonUrl(site, l), priority: "0.8" })),
     ...articles.map((a) => ({ loc: articleUrl(site, a), lastmod: a.published, priority: "0.8" })),
   ];
   const body = urls
@@ -348,16 +476,27 @@ export function renderRobots(site) {
  * Builds every file for the site.
  * @returns {{path: string, content: string}[]} Text files only; assets are copied separately.
  */
-export function buildSite(manifest, drafts) {
+export function buildSite(manifest, drafts, lessons = []) {
   const { site } = manifest;
   const articles = [...manifest.articles].sort((a, b) => b.published.localeCompare(a.published));
 
   const files = [
     { path: "style.css", content: CSS },
     { path: "index.html", content: renderIndexPage(site, articles) },
-    { path: "sitemap.xml", content: renderSitemap(site, articles) },
+    { path: "sitemap.xml", content: renderSitemap(site, articles, lessons) },
     { path: "robots.txt", content: renderRobots(site) },
   ];
+
+  if (lessons.length) {
+    files.push({ path: "learn/index.html", content: renderLearnIndex(site, lessons) });
+    for (const l of lessons) {
+      files.push({ path: `learn/${l.slug}/index.html`, content: renderLessonPage(site, l) });
+      files.push({
+        path: `assets/learn-${l.slug}.svg`,
+        content: renderCoverSvg(site, { title: l.title, assets: [l.level.toUpperCase()] }),
+      });
+    }
+  }
 
   for (const a of articles) {
     const text = drafts[a.draft];
