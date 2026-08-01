@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import path from "node:path";
 import process from "node:process";
 import { SquareClient } from "./client.mjs";
 import {
@@ -23,6 +24,7 @@ import { FORMATS, crontabLines, getFormat } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
 import { DEFAULT_DAYS, formatStage, stageOf } from "./stage.mjs";
+import { buildSite } from "./site.mjs";
 import { promptCapturingClient, runTeam } from "./team.mjs";
 import { verifyPost } from "./verify.mjs";
 
@@ -51,6 +53,7 @@ Usage
                                       --screen also traces altcoin figures
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
+  wte site [--out <dir>]              Build the indexable research site
   wte team [--format <f>] [--dry-run] Full daily run: analyst picks the angle,
                                       writer drafts, checker + critic gate it
 
@@ -109,6 +112,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdScreen(flags);
     case "stage":
       return cmdStage(rest, flags);
+    case "site":
+      return cmdSite(flags);
     case "team":
       return cmdTeam(flags, argv);
     case "check":
@@ -686,6 +691,47 @@ async function cmdStage(args, flags) {
   if (rows.length) console.log(formatStage(rows, { days }));
   for (const f of failed) console.error(`  ✗ ${f.symbol}: ${f.reason}`);
   return rows.length ? 0 : 1;
+}
+
+/**
+ * Builds the static research site from the drafts that were actually published.
+ *
+ * Square posts cannot be crawled or cited, so the same text is mirrored to
+ * pages the account owns. Reading the published draft rather than a separate
+ * copy is what stops the two from drifting apart.
+ */
+async function cmdSite(flags) {
+  const root = process.cwd();
+  const manifestPath = path.join(root, "site", "manifest.json");
+  if (!fs.existsSync(manifestPath)) {
+    throw new ValidationError(`No manifest at ${manifestPath}.`);
+  }
+
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  const drafts = {};
+  for (const a of manifest.articles) {
+    const file = path.join(root, "drafts", a.draft);
+    if (!fs.existsSync(file)) throw new ValidationError(`Draft not found: ${file}`);
+    drafts[a.draft] = fs.readFileSync(file, "utf8");
+  }
+
+  const files = buildSite(manifest, drafts);
+  const out = path.resolve(root, flags.out ?? "site/dist");
+  fs.rmSync(out, { recursive: true, force: true });
+
+  for (const f of files) {
+    const dest = path.join(out, f.path);
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.writeFileSync(dest, f.content);
+  }
+
+  if (flags.json) {
+    print({ out, files: files.length }, flags);
+    return 0;
+  }
+  console.log(`Built ${files.length} files into ${out}`);
+  for (const f of files) console.log(`  ${f.path}`);
+  return 0;
 }
 
 /** Prints the daily schedule and ready-to-paste crontab lines. */

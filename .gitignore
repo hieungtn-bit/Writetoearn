@@ -8,3 +8,4 @@ node_modules/
 .env
 .env.local
 openapi-key
+site/dist/

@@ -1,0 +1,112 @@
+{
+  "site": {
+    "name": "MAIX8 Research",
+    "tagline": "Evidence Over Emotion.",
+    "description": "Data-verified crypto market research. Every figure traces to public exchange data, and every claim states what it cannot show.",
+    "handle": "@mAix8",
+    "squareProfile": "https://app.binance.com/uni-qr/cpos/350944233694210?r=LOHZTAM2&l=en",
+    "locale": "en",
+    "baseUrl": "https://maix8-research.vercel.app"
+  },
+  "articles": [
+    {
+      "slug": "uni-volume-tripled-classifier-refused",
+      "draft": "21-uni-mixed-signal.txt",
+      "cover": "21-uni-mixed-signal-cover.png",
+      "title": "UNI's Volume Tripled and Price Went the Other Way. My Classifier Refused to Call It.",
+      "description": "UNI turnover went from $12.6M to $36.7M in a week, but the heaviest days printed at the highs and price fell since. Why a framework that always returns a label is hiding its uncertainty from you.",
+      "published": "2026-08-01T10:25:00Z",
+      "assets": ["UNI", "BTC", "ETH"],
+      "squareId": "350973341597889",
+      "topics": ["volume analysis", "distribution", "market structure"]
+    },
+    {
+      "slug": "xrp-attention-versus-participation",
+      "draft": "20-xrp-attention-gap.txt",
+      "cover": "20-xrp-attention-gap-cover.png",
+      "title": "Everyone Is Watching XRP. Its Volume Just Hit the Lowest Reading in 370 Days.",
+      "description": "XRP trends everywhere while its volume z-score prints -2.47, the lowest in 370 days, with 96.7% of the month's money underwater. Attention and participation are not the same measurement.",
+      "published": "2026-08-01T10:05:00Z",
+      "assets": ["XRP", "BTC", "ETH"],
+      "squareId": "350968858430817",
+      "topics": ["XRP", "liquidity", "volume z-score"]
+    },
+    {
+      "slug": "ena-runs-on-funding",
+      "draft": "19-ena-funding.txt",
+      "cover": "19-ena-funding-cover.png",
+      "title": "ENA Runs on Funding, and Funding Has Thinned",
+      "description": "Ethena's yield comes partly from funding collected on short perp hedges. Annualised ETH funding fell from +5.34% to +1.31% with 30% of periods negative. Measuring the revenue input instead of reading the chart.",
+      "published": "2026-08-01T09:45:00Z",
+      "assets": ["ENA", "ETH", "BTC"],
+      "squareId": "350964549096321",
+      "topics": ["Ethena", "funding rates", "delta neutral", "USDe"]
+    },
+    {
+      "slug": "btc-tightest-30-day-range",
+      "draft": "18-btc-compression.txt",
+      "cover": "18-btc-compression-cover.png",
+      "title": "BTC Just Printed Its Tightest 30-Day Range in 971 Windows",
+      "description": "Bitcoin's 30-day high-low width is 9.3%, the narrowest of 971 rolling windows. Three independent compression measures agree. Why that forecasts the size of the next move and not its direction.",
+      "published": "2026-08-01T09:20:00Z",
+      "assets": ["BTC"],
+      "squareId": "350962286617425",
+      "topics": ["Bitcoin", "volatility compression", "realized volatility"]
+    },
+    {
+      "slug": "watching-a-stage-2-in-real-time",
+      "draft": "17-giggle-stage2-live.txt",
+      "cover": "17-giggle-stage2-cover.png",
+      "title": "Watching a Stage 2 in Real Time, and a Figure of Mine That Went Stale in Hours",
+      "description": "GIGGLE's turnover ramp from $1.3M to $41.4M a day, the partial-candle trap that makes rising volume look like exhaustion, and a published correction to my own number.",
+      "published": "2026-08-01T08:55:00Z",
+      "assets": ["GIGGLE"],
+      "squareId": "350960599921009",
+      "topics": ["pump anatomy", "volume analysis", "corrections"]
+    },
+    {
+      "slug": "auditing-a-narrative-scan",
+      "draft": "16-auditing-a-scan.txt",
+      "cover": "16-auditing-a-scan-cover.png",
+      "title": "I Checked a Narrative Scan Against the Exchange. Two of Three Picks Were Not Listed.",
+      "description": "A ranked table of tokens about to run, checked against Binance's own exchangeInfo. Two top picks are not on spot at all, and the one that is had its volume quoted 2.5x above the measured figure.",
+      "published": "2026-08-01T08:35:00Z",
+      "assets": ["GIGGLE"],
+      "squareId": "350958916583137",
+      "topics": ["verification", "due diligence", "scanners"]
+    },
+    {
+      "slug": "pump-or-dump-five-stages",
+      "draft": "15-pump-stages-guide.txt",
+      "cover": "15-pump-stages-cover.png",
+      "title": "Pump or Dump? The Five Stages of a Move, and the One Calculation That Tells Them Apart",
+      "description": "The underwater-share metric reads 0% both for a move still recruiting buyers and one running out of them. Volume trend separates them. Includes the five formulas to reproduce it from a candle export.",
+      "published": "2026-08-01T08:15:00Z",
+      "assets": ["GIGGLE", "PUMP", "BANK"],
+      "squareId": "350955180819410",
+      "topics": ["pump and dump", "how to", "volume trend"]
+    },
+    {
+      "slug": "chart-is-green-money-is-red",
+      "draft": "14-pump-dump-why-we-lose.txt",
+      "cover": "14-pump-dump-cover.png",
+      "title": "The Chart Is Green, The Money Is Red: Why Most of Us Lose",
+      "description": "BANK's 30-day return is positive while 99% of the month's turnover traded above the current price. The gap between an asset's return and its holders' return, measured.",
+      "published": "2026-08-01T08:00:00Z",
+      "assets": ["BANK", "GIGGLE"],
+      "squareId": "350953578488210",
+      "topics": ["pump and dump", "money-weighted return", "market manipulation"]
+    },
+    {
+      "slug": "early-turning-point-detection-bitcoin",
+      "draft": "13-early-reversal-research.txt",
+      "cover": "13-early-reversal-cover.png",
+      "title": "Early Turning Point Detection in Bitcoin: What Actually Leads Price",
+      "description": "A quantitative survey of early trend-reversal detection: order flow imbalance, volume profile, volatility regimes, change point detection, on-chain cost basis and derivatives positioning, plus a three-layer hybrid framework.",
+      "published": "2026-08-01T07:50:00Z",
+      "assets": ["BTC"],
+      "squareId": "350946322898914",
+      "topics": ["quantitative research", "order flow", "change point detection", "regime models"]
+    }
+  ]
+}
