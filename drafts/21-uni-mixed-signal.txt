@@ -1,0 +1,72 @@
+I ran $UNI through my own stage classifier this morning. It returned "mixed — no clean stage; read the metrics directly."
+
+That is not a bug. It is the most useful thing the tool said all week, and it is worth explaining why.
+
+
+THE WEEK, IN TURNOVER
+
+Binance spot daily closes and turnover:
+
+  2026-07-26   close  3.893   turnover $12.6M
+  2026-07-27   close  3.709   turnover $11.9M
+  2026-07-28   close  3.896   turnover $17.1M
+  2026-07-29   close  3.991   turnover $22.6M
+  2026-07-30   close  4.433   turnover $32.4M
+  2026-07-31   close  4.349   turnover $36.7M
+  2026-08-01   close  4.098   turnover $11.4M
+
+Turnover went from $12.6M to $36.7M — roughly 2.9x in under a week. Participation arrived, unmistakably.
+
+Now look at where it arrived. The heaviest day closed at 4.349. The highest close of the week was 4.433. Price now sits at 4.098.
+
+The biggest volume of the week printed at the top of the week's range, and price has been lower since.
+
+
+WHY THE CLASSIFIER WON'T CALL IT
+
+My framework sorts moves into stages. Expansion is price and participation rising together. Exhaustion is price rising while participation drains. UNI fits neither, because the two signals point different ways.
+
+Arguing that this is still healthy:
+• Price is above the 20-day average at 3.791 and the 50-day at 3.364.
+• It is +28.87% over 30 days and +11.66% over 7.
+• It trades +10.3% above the 30-day volume-weighted average of 3.717, so the typical buyer this month is in profit.
+• Only 18.6% of the month's money is underwater — a minority, unusual for an asset that has pulled back.
+
+Arguing that this is distribution:
+• The two heaviest turnover days of the week were the two days closest to the highs.
+• Price has closed lower on each session since that peak.
+• RSI 61.3 and NaN% of the 30-day range — extended, not stretched.
+
+Both readings are supported by real figures. That is what "mixed" means.
+
+
+THE PART EVERYONE GETS WRONG TODAY
+
+Today's turnover reads $11.4M, far below yesterday. Do not call that a collapse: only 41% of the UTC day has elapsed. Pro-rated it tracks toward roughly $28M.
+
+Compare a partial candle to a completed one and you will read exhaustion into every morning of every day. Wait for the close, or pro-rate honestly.
+
+
+WHY A FRAMEWORK THAT ALWAYS ANSWERS IS LYING TO YOU
+
+This is the real point, and it outlives $UNI.
+
+Any classifier can be tuned to always produce a label. Loosen the thresholds and every chart becomes accumulation, distribution, or a breakout. It will feel more useful and be worth less, because the label stops carrying information the moment it is guaranteed.
+
+The honest design is to let the tool say it does not know. Genuine ambiguity exists in markets more often than confident content admits, and a framework that never returns "unclear" is not more insightful — it has simply been built to hide its uncertainty from you.
+
+When you are handed an analysis where every asset slots neatly into a category, that is the thing to be suspicious of. Real data resists tidy sorting.
+
+
+BIAS: WAIT
+
+Not because the setup is bad — the trend structure is intact and most holders are in profit — but because the strongest volume of the week transacted above the current price, and that has not yet been digested.
+
+What resolves it, concretely:
+• A completed daily candle closing above 4.433 on turnover at least matching the peak day would confirm expansion rather than distribution.
+• Losing 3.791, the 20-day average, would put the burden of proof on the other side.
+• 3.069 and 4.577 are the 30-day boundaries.
+
+Educational research, not financial advice. DYOR.
+
+$BTC $ETH #WriteToEarn #BinanceSquare
