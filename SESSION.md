@@ -78,10 +78,16 @@ Write to `drafts/<n>-<name>.txt`.
 
 ```bash
 node bin/wte.mjs check drafts/<file>.txt --format <slot>
+node bin/wte.mjs check drafts/<file>.txt --format <slot> --screen   # writing about alts
 ```
 
 Refetches the market and traces every figure. Fix whatever it names and run it
 again until it passes. It fails loudly rather than guessing.
+
+The plain check fetches the **majors brief only**, so any $ATOM or $PUMP figure
+is unverifiable and fails. Add `--screen` to fetch the 26 alt pairs too and
+trace those figures as well; it costs a second, slower fetch, which is why it is
+opt-in. If a draft cites a coin outside the brief, the failure output says so.
 
 This is for **pre-publication** checking only. Running it against an
 already-published post will fail simply because prices moved — that is
@@ -149,6 +155,11 @@ It is a strong gate, not a complete one. Eyeball these yourself:
 3. **Values below 1.** The matcher floors its comparison scale at 1, so funding
    rates are compared by absolute difference, not relative — effectively
    unchecked at the 0.5% level.
+4. **Small values rounded to one decimal get *false* failures.** Tolerance is
+   0.5% *relative*, so a z-score of -1.18 written as `-1.2` is off by 2.8% at
+   that scale and is rejected — as is `3%` for a 3.43% range position. The
+   "one decimal under 10" habit from the writing rules fights the checker here.
+   Print two decimals below 10 and four below 1, or reword to drop the figure.
 
 ## Scheduling
 

@@ -53,6 +53,47 @@ export function extractNumbers(text) {
 }
 
 /** Every figure the brief actually vouches for. */
+/**
+ * Every citable figure on one analysed asset. Shared by the majors brief and
+ * the altcoin screen, which produce the same row shape from the same candles.
+ */
+function pushAssetNumbers(push, a) {
+  push(a.price);
+  push(a.change7dPct);
+  push(a.change30dPct);
+  push(a.rsi14);
+  push(a.atr14);
+  push(a.atrPct);
+  push(a.realizedVol30d);
+  push(a.realizedVol7d);
+  push(a.rangePosition30d);
+  push(a.high30d);
+  push(a.low30d);
+  push(a.sma20);
+  push(a.sma50);
+  push(a.volumeZScore);
+  push(a.rangeCompressionPct);
+  push(a.todayChangePct);
+  push(a.dailySigmaPct);
+  push(a.sigmaMove);
+}
+
+/**
+ * Figures from an altcoin screen, so a post about the wider board can be
+ * verified too. The screen is a separate fetch from the brief, so it has to be
+ * passed in explicitly — a post citing alt figures without it fails closed.
+ *
+ * @param {{rows?: object[]}} screen A result from screen().
+ */
+export function collectScreenNumbers(screen) {
+  const values = [];
+  const push = (n) => {
+    if (typeof n === "number" && Number.isFinite(n)) values.push(Math.abs(n));
+  };
+  for (const row of screen?.rows ?? []) pushAssetNumbers(push, row);
+  return values;
+}
+
 export function collectBriefNumbers(brief) {
   const values = [];
   const push = (n) => {
@@ -78,26 +119,7 @@ export function collectBriefNumbers(brief) {
 
   // Computed analysis is as citable as raw price — it is arithmetic over real
   // candles, not model output.
-  for (const a of brief.analysis?.assets ?? []) {
-    push(a.price);
-    push(a.change7dPct);
-    push(a.change30dPct);
-    push(a.rsi14);
-    push(a.atr14);
-    push(a.atrPct);
-    push(a.realizedVol30d);
-    push(a.realizedVol7d);
-    push(a.rangePosition30d);
-    push(a.high30d);
-    push(a.low30d);
-    push(a.sma20);
-    push(a.sma50);
-    push(a.volumeZScore);
-    push(a.rangeCompressionPct);
-    push(a.todayChangePct);
-    push(a.dailySigmaPct);
-    push(a.sigmaMove);
-  }
+  for (const a of brief.analysis?.assets ?? []) pushAssetNumbers(push, a);
   for (const r of brief.analysis?.relativeStrength ?? []) {
     push(r.change7dPct);
     push(r.vsBase7dPct);
@@ -125,8 +147,9 @@ function matches(value, allowed) {
  *
  * @returns {{ok: boolean, unmatched: {raw: string, value: number}[], checked: number}}
  */
-export function verifyNumbers(text, brief) {
+export function verifyNumbers(text, brief, { screen } = {}) {
   const allowed = collectBriefNumbers(brief);
+  if (screen) allowed.push(...collectScreenNumbers(screen));
   const unmatched = [];
   let checked = 0;
 
@@ -211,12 +234,15 @@ export function verifyStructure(text, { maxWords = 220, minWords = 40 } = {}) {
 
 /** Runs every gate. Publishing should be blocked unless this passes. */
 export function verifyPost(text, brief, opts = {}) {
-  const numbers = verifyNumbers(text, brief);
+  const numbers = verifyNumbers(text, brief, { screen: opts.screen });
   const claims = verifyNoForbiddenClaims(text, brief);
   const structure = verifyStructure(text, opts);
 
+  // Naming the sources that were actually searched keeps the failure honest:
+  // "not in the brief" is misleading when an alt figure was never checkable.
+  const sources = opts.screen ? "the brief or the screen" : "the brief";
   const problems = [
-    ...numbers.unmatched.map((u) => `figure "${u.raw}" does not appear in the brief`),
+    ...numbers.unmatched.map((u) => `figure "${u.raw}" does not appear in ${sources}`),
     ...claims.violations.map((v) => `mentions ${v}, which the brief could not retrieve`),
     ...structure.problems,
   ];

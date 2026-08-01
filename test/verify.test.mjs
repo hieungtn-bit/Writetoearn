@@ -197,3 +197,65 @@ test("a post with no stated bias is rejected, since the scoreboard parses it", (
     assert.equal(verifyStructure(`${body} ${bias}`).ok, true, `${bias} should satisfy the check`);
   }
 });
+
+const altScreen = {
+  screenedAt: "2026-08-01T07:33:15.224Z",
+  rows: [
+    {
+      symbol: "ATOMUSDT",
+      price: 3.412,
+      change7dPct: -10.99,
+      change30dPct: -21.09,
+      rsi14: 19.2,
+      rangePosition30d: 3.43,
+      volumeZScore: -2.74,
+      realizedVol30d: 38.4,
+    },
+    {
+      symbol: "PUMPUSDT",
+      price: 0.00842,
+      change7dPct: 24.09,
+      change30dPct: 45.04,
+      rsi14: 65.7,
+      rangePosition30d: 95.8,
+      volumeZScore: -1.18,
+      realizedVol30d: 114.2,
+    },
+  ],
+};
+
+test("altcoin figures fail against a majors-only brief", () => {
+  const post = "ATOM RSI 19.2, volume z -2.74, down -21.09% over 30 days.";
+  const result = verifyNumbers(post, brief);
+  assert.equal(result.ok, false, "the brief has no ATOM data to trace against");
+});
+
+test("the same altcoin figures pass once the screen is supplied", () => {
+  const post = "ATOM RSI 19.2, volume z -2.74, down -21.09% over 30 days.";
+  const result = verifyNumbers(post, brief, { screen: altScreen });
+  assert.equal(result.ok, true, JSON.stringify(result.unmatched));
+});
+
+test("the screen widens the allowed set without loosening it", () => {
+  const result = verifyNumbers("PUMP ripped 31.5% this week.", brief, { screen: altScreen });
+  assert.equal(result.ok, false, "an invented alt figure is still caught");
+  assert.equal(result.unmatched[0].value, 31.5);
+});
+
+test("majors still verify when a screen is passed too", () => {
+  const result = verifyNumbers("BTC at 63,250, support 63,100.", brief, { screen: altScreen });
+  assert.equal(result.ok, true, JSON.stringify(result.unmatched));
+});
+
+test("verifyPost names the screen in its failure message when one was searched", () => {
+  const post =
+    "🚨 ATOM is washed out.\n\nATOM RSI 19.2, but PUMP ripped 31.5% this week.\n\n" +
+    "Bias: WAIT. No participation behind either extreme.\n\nWhich resolves first? 👇\n\n" +
+    "Not financial advice. DYOR.\n\n$ATOM #WriteToEarn #BinanceSquare";
+  const result = verifyPost(post, brief, { screen: altScreen, minWords: 10 });
+  assert.equal(result.ok, false);
+  assert.ok(
+    result.problems.some((p) => p.includes("the brief or the screen")),
+    `expected the screen to be named, got: ${result.problems.join("; ")}`,
+  );
+});

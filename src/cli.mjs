@@ -46,7 +46,8 @@ Usage
                                       verify, publish. For cron.
   wte slots                           The daily schedule + crontab lines
   wte score [--days <n>]              Settle past calls, print the scoreboard
-  wte check <draft.txt>               Verify a draft against freshly fetched data
+  wte check <draft.txt> [--screen]    Verify a draft against freshly fetched data.
+                                      --screen also traces altcoin figures
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
   wte team [--format <f>] [--dry-run] Full daily run: analyst picks the angle,
                                       writer drafts, checker + critic gate it
@@ -559,26 +560,64 @@ async function cmdCheck([file], flags) {
   if (!file) throw new ValidationError("Usage: wte check <draft.txt>");
 
   const text = fs.readFileSync(file, "utf8");
-  const brief = await collectBrief({ newsHours: 24 });
+
+  // The screen is a second fetch over 26 more pairs, so it is opt-in: a post
+  // about the majors should not pay for it, and a post about the wider board
+  // is unverifiable without it.
+  const [brief, screenResult] = await Promise.all([
+    collectBrief({ newsHours: 24 }),
+    flags.screen
+      ? screen(ALT_UNIVERSE, { onProgress: (p) => process.stderr.write(`\rscreening ${p}   `) })
+      : Promise.resolve(null),
+  ]);
+  if (flags.screen) process.stderr.write("\r");
+
   if (!brief.spot.length) {
     throw new ValidationError("Could not fetch market data, so the draft cannot be checked.");
+  }
+  if (flags.screen && !screenResult?.rows.length) {
+    throw new ValidationError("Could not screen the altcoin universe, so the draft cannot be checked.");
   }
 
   const format = flags.format ?? "positioning";
   const [, maxWords] = getFormat(format).words;
-  const result = verifyPost(text, brief, { maxWords: maxWords + 20, minWords: 40 });
+  const result = verifyPost(text, brief, {
+    maxWords: maxWords + 20,
+    minWords: 40,
+    screen: screenResult ?? undefined,
+  });
 
   if (flags.json) {
-    print({ ...result, checkedAt: brief.generatedAt }, flags);
+    print({ ...result, checkedAt: brief.generatedAt, screenedAt: screenResult?.screenedAt }, flags);
     return result.ok ? 0 : 1;
   }
 
   if (result.ok) {
-    console.log(`PASS — ${result.words} words, ${result.numbersChecked} figures traced to data fetched just now.`);
+    const against = screenResult
+      ? `${brief.spot.length} majors + ${screenResult.rows.length} alt pairs`
+      : `${brief.spot.length} majors`;
+    console.log(
+      `PASS — ${result.words} words, ${result.numbersChecked} figures traced to data fetched just now (${against}).`,
+    );
     return 0;
   }
   console.log(`FAIL — ${result.words} words`);
   for (const p of result.problems) console.log(`  ✗ ${p}`);
+
+  // A post about the wider board fails every alt figure at once against a
+  // majors-only brief, which reads like a dozen fabrications rather than a
+  // missing data source. Only say so when the draft actually cites a coin the
+  // brief does not cover — on a majors post a failed figure means drift, and
+  // pointing at --screen would send the reader down the wrong path.
+  const majors = new Set(brief.spot.map((s) => s.symbol.replace(/USDT$/, "")));
+  const offBrief = [...new Set([...text.matchAll(/\$([A-Z]{2,10})\b/g)].map((m) => m[1]))].filter(
+    (t) => !majors.has(t),
+  );
+  if (!flags.screen && offBrief.length && result.problems.some((p) => p.startsWith("figure "))) {
+    console.log(
+      `\n${offBrief.join(", ")} ${offBrief.length === 1 ? "is" : "are"} outside the majors brief — re-run with --screen to trace those figures.`,
+    );
+  }
   return 1;
 }
 
