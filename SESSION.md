@@ -114,6 +114,24 @@ than feels necessary.
 
 ### 6. Publish
 
+For an article, one command does everything — publishes to Square, adds the
+post to the website, commits and pushes. Vercel deploys on the push:
+
+```bash
+node bin/wte.mjs ship drafts/<file>.txt --title "<title>"
+```
+
+It derives the slug from the filename, the meta description from the first real
+paragraph, the assets from the cashtags, and generates the cover image from the
+title. Override any of them with `--slug`, `--description`, `--assets`,
+`--topics`, `--cover`. Add `--dry-run` to see what it would do, or `--no-push`
+to commit by hand.
+
+A duplicate slug or a draft already on the site stops the run **before**
+anything is published, while it is still reversible.
+
+For a short slot post, which does not go on the website:
+
 ```bash
 node bin/wte.mjs post text --text "$(cat drafts/<file>.txt)"
 ```

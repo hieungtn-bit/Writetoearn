@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import process from "node:process";
 import { SquareClient } from "./client.mjs";
@@ -24,7 +25,9 @@ import { FORMATS, crontabLines, getFormat } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
 import { DEFAULT_DAYS, formatStage, stageOf } from "./stage.mjs";
-import { buildSite } from "./site.mjs";
+import { buildSite, renderCoverSvg } from "./site.mjs";
+import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
+import { execFileSync } from "node:child_process";
 import { promptCapturingClient, runTeam } from "./team.mjs";
 import { verifyPost } from "./verify.mjs";
 
@@ -54,6 +57,9 @@ Usage
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte site [--out <dir>]              Build the indexable research site
+  wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
+           [--cover <img>] [--slug <s>]  commit and push. Vercel deploys.
+           [--no-push] [--dry-run]
   wte team [--format <f>] [--dry-run] Full daily run: analyst picks the angle,
                                       writer drafts, checker + critic gate it
 
@@ -114,6 +120,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdStage(rest, flags);
     case "site":
       return cmdSite(flags);
+    case "ship":
+      return cmdShip(rest, flags, argv);
     case "team":
       return cmdTeam(flags, argv);
     case "check":
@@ -731,6 +739,146 @@ async function cmdSite(flags) {
   }
   console.log(`Built ${files.length} files into ${out}`);
   for (const f of files) console.log(`  ${f.path}`);
+  return 0;
+}
+
+/**
+ * Locates a headless Chromium for cover rendering.
+ *
+ * Square requires a raster cover on every article. Hand-making one per post is
+ * exactly the daily friction this command exists to remove, so the card is
+ * generated from the title unless one is supplied.
+ */
+function findChrome() {
+  const candidates = [
+    process.env.CHROME_PATH,
+    "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
+    "/usr/bin/chromium",
+    "/usr/bin/google-chrome",
+  ].filter(Boolean);
+  return candidates.find((p) => fs.existsSync(p)) ?? null;
+}
+
+/** Renders the site's own SVG card to a PNG Square will accept. */
+function generateCover(site, title) {
+  const chrome = findChrome();
+  if (!chrome) {
+    throw new ValidationError(
+      "No cover supplied and no headless Chromium found to generate one. " +
+        "Pass --cover <image.png>, or set CHROME_PATH.",
+    );
+  }
+
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "wte-cover-"));
+  const svg = renderCoverSvg(site, { title, assets: [] });
+  const html = path.join(dir, "cover.html");
+  const png = path.join(dir, "cover.png");
+  fs.writeFileSync(
+    html,
+    `<!doctype html><meta charset="utf-8"><style>html,body{margin:0;width:1200px;height:630px;overflow:hidden}</style>${svg}`,
+  );
+
+  execFileSync(chrome, [
+    "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars",
+    "--force-device-scale-factor=1", "--window-size=1200,630",
+    `--screenshot=${png}`, html,
+  ], { stdio: "ignore" });
+
+  if (!fs.existsSync(png)) throw new ValidationError("Cover generation produced no image.");
+  return png;
+}
+
+/**
+ * Draft to live in one command.
+ *
+ * Publishing used to be five steps, and the one that got skipped was always
+ * updating the site manifest — which left the web archive quietly behind the
+ * feed. Ordering matters here: Square first, because that is the irreversible
+ * step, then the repository, so a git failure never leaves a post published
+ * with no record of it.
+ */
+async function cmdShip([file], flags, argv) {
+  if (!file) throw new ValidationError("Usage: wte ship <draft.txt> --title <title> [--cover <image>]");
+  if (!flags.title) throw new ValidationError("An article needs --title.");
+
+  const root = process.cwd();
+  const draftPath = path.resolve(root, file);
+  if (!fs.existsSync(draftPath)) throw new ValidationError(`Draft not found: ${draftPath}`);
+
+  const text = fs.readFileSync(draftPath, "utf8");
+  const draftName = path.basename(draftPath);
+  const slug = flags.slug ?? slugFromDraft(draftName);
+
+  const manifestPath = path.join(root, "site", "manifest.json");
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+
+  const entry = {
+    slug,
+    draft: draftName,
+    title: String(flags.title),
+    description: flags.description ? String(flags.description) : descriptionFromText(text),
+    assets: flags.assets ? String(flags.assets).split(",").map((a) => a.trim().toUpperCase()) : assetsFromText(text),
+    topics: flags.topics ? String(flags.topics).split(",").map((t) => t.trim()) : [],
+  };
+
+  // Validate the manifest change before publishing: a duplicate slug should
+  // stop the run while it is still reversible, not after the post is live.
+  addArticle(manifest, { ...entry, published: new Date().toISOString() });
+
+  const cover = flags.cover ?? generateCover(manifest.site, entry.title);
+  if (!flags.cover) console.log(`  Cover generated from the title`);
+
+  const spec = normalizePost({
+    type: POST_TYPE.ARTICLE,
+    text,
+    title: entry.title,
+    cover,
+  });
+
+  if (flags["dry-run"]) {
+    console.log("Dry run — nothing published, nothing committed.");
+    console.log(JSON.stringify({ entry, words: text.trim().split(/\s+/).length }, null, 2));
+    return 0;
+  }
+
+  const store = new Store();
+  const budget = store.checkBudget(uploadCount(spec));
+  if (!budget.ok) throw new ValidationError(`Refusing to publish: ${budget.reason}.`);
+
+  const outcome = await publishSpec(new SquareClient({ apiKey: resolveApiKey(argv) }), spec, {
+    onProgress: (msg) => console.log(`  ${msg}`),
+  });
+  store.recordUsage({ posts: 1, uploads: outcome.uploadsUsed });
+
+  const squareId = outcome.result?.id ?? null;
+  console.log(`\nPublished to Square.`);
+  console.log(`  ID:   ${squareId ?? "unavailable"}`);
+  console.log(`  Link: ${outcome.result?.shareLink ?? "unavailable"}`);
+
+  const next = addArticle(manifest, { ...entry, squareId, published: new Date().toISOString() });
+  fs.writeFileSync(manifestPath, `${JSON.stringify(next, null, 2)}\n`);
+  console.log(`  Site: /${slug}/ added to the manifest`);
+
+  if (flags["no-push"]) {
+    console.log("\n--no-push set: commit and push yourself to deploy.");
+    return 0;
+  }
+
+  // Stage only what this command touched, so an unrelated work-in-progress
+  // file is never swept into a deploy.
+  const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8" });
+  try {
+    git("add", "--", path.relative(root, draftPath), "site/manifest.json");
+    git("commit", "-m", `Publish: ${entry.title}\n\nSquare post ${squareId ?? "(id unavailable)"}.`);
+    const branch = git("rev-parse", "--abbrev-ref", "HEAD").trim();
+    git("push", "-u", "origin", branch);
+    console.log(`  Git:  pushed to ${branch} — Vercel will deploy`);
+  } catch (err) {
+    console.error(`\nPublished, but git failed: ${err.message.trim()}`);
+    console.error("The post is live. Commit and push when convenient; nothing is lost.");
+    return 1;
+  }
+
   return 0;
 }
 
