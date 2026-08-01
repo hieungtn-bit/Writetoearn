@@ -13,8 +13,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildSite } from "../src/site.mjs";
-import { buildLessons, lessonSymbols } from "../src/lessons.mjs";
-import { fetchKlines } from "../src/analysis.mjs";
+import { LESSONS } from "../src/lessons.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const out = path.resolve(root, process.argv[2] ?? "site/dist");
@@ -31,38 +30,24 @@ for (const article of manifest.articles) {
   drafts[article.draft] = fs.readFileSync(file, "utf8");
 }
 
-/**
- * Exchange endpoints return the occasional 503, and a build host retries
- * nothing by itself. Without this a transient blip takes down a deploy that
- * has nothing to do with the market.
- */
-async function withRetry(label, fn, attempts = 6) {
-  let last;
-  for (let i = 0; i < attempts; i++) {
-    try {
-      return await fn();
-    } catch (err) {
-      last = err;
-      if (i < attempts - 1) await new Promise((r) => setTimeout(r, 1500 * (i + 1)));
-    }
-  }
-  throw new Error(`${label} failed after ${attempts} attempts: ${last.message}`);
+// Worked examples come from site/lesson-data.json, captured by
+// scripts/refresh-lessons.mjs. The build stays offline on purpose: a deploy
+// must not fail because an exchange is unreachable from the build region.
+const dataPath = path.join(root, "site", "lesson-data.json");
+if (!fs.existsSync(dataPath)) {
+  console.error(`Missing ${dataPath}. Run: node scripts/refresh-lessons.mjs`);
+  process.exit(1);
 }
+const lessonData = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 
-// Lessons are computed from live candles at build time, so a deploy always
-// ships examples measured against the market as it stands, not as it was.
-//
-// A failure here fails the whole build on purpose: Vercel keeps the previous
-// successful deployment live, which is safer than silently publishing a site
-// whose lessons section has quietly gone missing.
-const candles = {};
-for (const symbol of lessonSymbols()) {
-  // 1000 candles so a percentile quoted in a lesson matches the same
-  // percentile quoted in a published article. A shorter history would silently
-  // rank the identical reading differently.
-  candles[symbol] = await withRetry(symbol, () => fetchKlines(symbol, { limit: 1000 }));
-}
-const lessons = buildLessons(candles);
+const lessons = LESSONS.map((lesson) => {
+  const example = lessonData.examples[lesson.slug];
+  if (!example) {
+    console.error(`No captured example for lesson "${lesson.slug}". Run: node scripts/refresh-lessons.mjs`);
+    process.exit(1);
+  }
+  return { ...lesson, example, measuredAt: lessonData.measuredAt };
+});
 
 const files = buildSite(manifest, drafts, lessons);
 

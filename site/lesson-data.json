@@ -1,0 +1,130 @@
+{
+  "measuredAt": "2026-08-01T17:08:53.258Z",
+  "examples": {
+    "are-holders-in-profit-vwap": {
+      "subject": "XRP",
+      "readings": [
+        [
+          "Spot",
+          "1.062"
+        ],
+        [
+          "30-day VWAP",
+          "1.106"
+        ],
+        [
+          "Spot vs VWAP",
+          "-4.0%"
+        ],
+        [
+          "Money underwater",
+          "96.7%"
+        ]
+      ],
+      "verdict": "96.7% of the month's turnover changed hands above 1.062. The average buyer paid 1.106 and is down 4.0%.",
+      "charts": [
+        "<figure class=\"chart\">\n<svg viewBox=\"0 0 720 300\" role=\"img\" aria-label=\"XRP daily close vs the 30-day VWAP\" preserveAspectRatio=\"xMidYMid meet\">\n<rect width=\"720\" height=\"300\" fill=\"#0f141a\" rx=\"10\"/>\n<line x1=\"46\" y1=\"274\" x2=\"706\" y2=\"274\" stroke=\"#20262e\"/><text x=\"40\" y=\"278\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">1.05</text><line x1=\"46\" y1=\"210\" x2=\"706\" y2=\"210\" stroke=\"#20262e\"/><text x=\"40\" y=\"214\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">1.08</text><line x1=\"46\" y1=\"146\" x2=\"706\" y2=\"146\" stroke=\"#20262e\"/><text x=\"40\" y=\"150\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">1.11</text><line x1=\"46\" y1=\"82\" x2=\"706\" y2=\"82\" stroke=\"#20262e\"/><text x=\"40\" y=\"86\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">1.14</text><line x1=\"46\" y1=\"18\" x2=\"706\" y2=\"18\" stroke=\"#20262e\"/><text x=\"40\" y=\"22\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">1.17</text><path d=\"M46 87.88 L68.76 35.66 L91.52 36.12 L114.28 64.31 L137.03 140.57 L159.79 189.56 L182.55 184.01 L205.31 157.67 L228.07 175.93 L250.83 201.11 L273.59 243.4 L296.34 141.26 L319.1 137.57 L341.86 198.11 L364.62 193.72 L387.38 184.71 L410.14 173.38 L432.9 139.65 L455.66 67.55 L478.41 71.01 L501.17 150.51 L523.93 187.02 L546.69 173.62 L569.45 138.03 L592.21 246.64 L614.97 239.94 L637.72 229.08 L660.48 207.82 L683.24 256.34 L706 256.11 L706 274 L46 274 Z\" fill=\"#f0b90b\" fill-opacity=\"0.07\"/><path d=\"M46 87.88 L68.76 35.66 L91.52 36.12 L114.28 64.31 L137.03 140.57 L159.79 189.56 L182.55 184.01 L205.31 157.67 L228.07 175.93 L250.83 201.11 L273.59 243.4 L296.34 141.26 L319.1 137.57 L341.86 198.11 L364.62 193.72 L387.38 184.71 L410.14 173.38 L432.9 139.65 L455.66 67.55 L478.41 71.01 L501.17 150.51 L523.93 187.02 L546.69 173.62 L569.45 138.03 L592.21 246.64 L614.97 239.94 L637.72 229.08 L660.48 207.82 L683.24 256.34 L706 256.11\" fill=\"none\" stroke=\"#eaecef\" stroke-width=\"2\" stroke-linejoin=\"round\"/><line x1=\"46\" y1=\"153.45\" x2=\"706\" y2=\"153.45\" stroke=\"#f0b90b\" stroke-width=\"1.5\" stroke-dasharray=\"5 4\"/><text x=\"702\" y=\"147.45\" text-anchor=\"end\" font-size=\"12\" fill=\"#f0b90b\" font-weight=\"700\">VWAP 1.106</text><text x=\"46\" y=\"292\" text-anchor=\"middle\" font-size=\"11\" fill=\"#848e9c\">07-03</text><text x=\"387.38\" y=\"292\" text-anchor=\"middle\" font-size=\"11\" fill=\"#848e9c\">07-18</text><text x=\"706\" y=\"292\" text-anchor=\"middle\" font-size=\"11\" fill=\"#848e9c\">08-01</text>\n</svg>\n<figcaption>XRP daily close vs the 30-day VWAP</figcaption>\n</figure>"
+      ]
+    },
+    "expansion-versus-exhaustion-volume-trend": {
+      "subject": "UNI",
+      "readings": [
+        [
+          "Volume trend (3d vs prior)",
+          "+115.4%"
+        ],
+        [
+          "Money underwater",
+          "19.3%"
+        ],
+        [
+          "Spot vs VWAP",
+          "+10.1%"
+        ],
+        [
+          "Heaviest day closed at",
+          "4.349"
+        ]
+      ],
+      "verdict": "Turnover is running +115.4% against the prior weeks, and the heaviest day of the week closed at 4.349 against spot 4.095. Volume arriving above the current price is the tell worth learning.",
+      "charts": [
+        "<figure class=\"chart\">\n<svg viewBox=\"0 0 720 300\" role=\"img\" aria-label=\"UNI daily turnover, last 7 completed days ($M)\" preserveAspectRatio=\"xMidYMid meet\">\n<rect width=\"720\" height=\"300\" fill=\"#0f141a\" rx=\"10\"/>\n<line x1=\"46\" y1=\"274\" x2=\"706\" y2=\"274\" stroke=\"#20262e\"/><text x=\"40\" y=\"278\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">0.0</text><line x1=\"46\" y1=\"210\" x2=\"706\" y2=\"210\" stroke=\"#20262e\"/><text x=\"40\" y=\"214\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">10.27</text><line x1=\"46\" y1=\"146\" x2=\"706\" y2=\"146\" stroke=\"#20262e\"/><text x=\"40\" y=\"150\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">20.54</text><line x1=\"46\" y1=\"82\" x2=\"706\" y2=\"82\" stroke=\"#20262e\"/><text x=\"40\" y=\"86\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">30.81</text><line x1=\"46\" y1=\"18\" x2=\"706\" y2=\"18\" stroke=\"#20262e\"/><text x=\"40\" y=\"22\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">41.08</text><rect x=\"61.09\" y=\"219.23\" width=\"64.11\" height=\"54.77\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"93.14\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-25</text><rect x=\"155.37\" y=\"195.42\" width=\"64.11\" height=\"78.58\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"187.43\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-26</text><rect x=\"249.66\" y=\"199.57\" width=\"64.11\" height=\"74.43\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"281.71\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-27</text><rect x=\"343.94\" y=\"167.59\" width=\"64.11\" height=\"106.41\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"376\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-28</text><rect x=\"438.23\" y=\"133.39\" width=\"64.11\" height=\"140.61\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"470.29\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-29</text><rect x=\"532.51\" y=\"71.89\" width=\"64.11\" height=\"202.11\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"564.57\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-30</text><rect x=\"626.8\" y=\"45.43\" width=\"64.11\" height=\"228.57\" fill=\"#f0b90b\" rx=\"2\"/><text x=\"658.86\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-31</text>\n</svg>\n<figcaption>UNI daily turnover, last 7 completed days ($M)</figcaption>\n</figure>"
+      ]
+    },
+    "rank-volatility-against-its-own-history": {
+      "subject": "BTC",
+      "readings": [
+        [
+          "30-day realized volatility",
+          "29.7%"
+        ],
+        [
+          "Percentile vs own history",
+          "10.9th"
+        ],
+        [
+          "Sample size",
+          "970 readings"
+        ],
+        [
+          "Median of that history",
+          "44.2%"
+        ]
+      ],
+      "verdict": "29.7% sounds unremarkable until it is ranked: it is the 10.9th percentile of 970 readings. The number only became information after it was compared to its own past.",
+      "charts": [
+        "<figure class=\"chart\">\n<svg viewBox=\"0 0 720 300\" role=\"img\" aria-label=\"BTC 30-day realized volatility: full history, and where today sits\" preserveAspectRatio=\"xMidYMid meet\">\n<rect width=\"720\" height=\"300\" fill=\"#0f141a\" rx=\"10\"/>\n<rect x=\"46\" y=\"261.75\" width=\"22.57\" height=\"12.25\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"69.57\" y=\"215.21\" width=\"22.57\" height=\"58.79\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"93.14\" y=\"149.06\" width=\"22.57\" height=\"124.94\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"116.71\" y=\"198.06\" width=\"22.57\" height=\"75.94\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"140.29\" y=\"129.46\" width=\"22.57\" height=\"144.54\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"163.86\" y=\"161.31\" width=\"22.57\" height=\"112.69\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"187.43\" y=\"82.92\" width=\"22.57\" height=\"191.08\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"211\" y=\"146.61\" width=\"22.57\" height=\"127.39\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"234.57\" y=\"146.61\" width=\"22.57\" height=\"127.39\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"258.14\" y=\"107.42\" width=\"22.57\" height=\"166.58\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"281.71\" y=\"41.27\" width=\"22.57\" height=\"232.73\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"305.29\" y=\"100.07\" width=\"22.57\" height=\"173.93\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"328.86\" y=\"168.66\" width=\"22.57\" height=\"105.34\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"352.43\" y=\"149.06\" width=\"22.57\" height=\"124.94\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"376\" y=\"158.86\" width=\"22.57\" height=\"115.14\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"399.57\" y=\"190.71\" width=\"22.57\" height=\"83.29\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"423.14\" y=\"198.06\" width=\"22.57\" height=\"75.94\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"446.71\" y=\"239.7\" width=\"22.57\" height=\"34.3\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"470.29\" y=\"261.75\" width=\"22.57\" height=\"12.25\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"493.86\" y=\"244.6\" width=\"22.57\" height=\"29.4\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"517.43\" y=\"217.66\" width=\"22.57\" height=\"56.34\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"541\" y=\"239.7\" width=\"22.57\" height=\"34.3\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"564.57\" y=\"232.35\" width=\"22.57\" height=\"41.65\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"588.14\" y=\"264.2\" width=\"22.57\" height=\"9.8\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"611.71\" y=\"264.2\" width=\"22.57\" height=\"9.8\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"635.29\" y=\"269.1\" width=\"22.57\" height=\"4.9\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"658.86\" y=\"217.66\" width=\"22.57\" height=\"56.34\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"682.43\" y=\"239.7\" width=\"22.57\" height=\"34.3\" fill=\"#2b3946\" rx=\"1\"/><line x1=\"135.13\" y1=\"18\" x2=\"135.13\" y2=\"274\" stroke=\"#f6465d\" stroke-width=\"2\"/><text x=\"141.13\" y=\"32\" font-size=\"12\" fill=\"#f6465d\" font-weight=\"700\">now 29.7%</text><text x=\"46\" y=\"292\" font-size=\"11\" fill=\"#848e9c\">21.19</text><text x=\"706\" y=\"292\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">83.88</text>\n</svg>\n<figcaption>BTC 30-day realized volatility: full history, and where today sits</figcaption>\n</figure>"
+      ]
+    },
+    "event-liquidity-turnover-concentration": {
+      "subject": "GIGGLE vs BTC",
+      "readings": [
+        [
+          "GIGGLE, top 3 days",
+          "64.5% of the month"
+        ],
+        [
+          "BTC, top 3 days",
+          "14.0% of the month"
+        ],
+        [
+          "GIGGLE 30d turnover",
+          "$153.8M"
+        ],
+        [
+          "Reading",
+          "event liquidity"
+        ]
+      ],
+      "verdict": "GIGGLE did 64.5% of a month's business in three days; BTC did 14.0%. Same metric, two different kinds of market — and only one of them will still have depth when the story cools.",
+      "charts": [
+        "<figure class=\"chart\">\n<svg viewBox=\"0 0 720 300\" role=\"img\" aria-label=\"GIGGLE daily turnover — the three busiest days highlighted ($M)\" preserveAspectRatio=\"xMidYMid meet\">\n<rect width=\"720\" height=\"300\" fill=\"#0f141a\" rx=\"10\"/>\n<line x1=\"46\" y1=\"274\" x2=\"706\" y2=\"274\" stroke=\"#20262e\"/><text x=\"40\" y=\"278\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">0.0</text><line x1=\"46\" y1=\"210\" x2=\"706\" y2=\"210\" stroke=\"#20262e\"/><text x=\"40\" y=\"214\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">13.51</text><line x1=\"46\" y1=\"146\" x2=\"706\" y2=\"146\" stroke=\"#20262e\"/><text x=\"40\" y=\"150\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">27.03</text><line x1=\"46\" y1=\"82\" x2=\"706\" y2=\"82\" stroke=\"#20262e\"/><text x=\"40\" y=\"86\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">40.54</text><line x1=\"46\" y1=\"18\" x2=\"706\" y2=\"18\" stroke=\"#20262e\"/><text x=\"40\" y=\"22\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">54.05</text><rect x=\"53.54\" y=\"270.31\" width=\"32.06\" height=\"3.69\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"69.57\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-19</text><rect x=\"100.69\" y=\"269.33\" width=\"32.06\" height=\"4.67\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"116.71\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-20</text><rect x=\"147.83\" y=\"266.75\" width=\"32.06\" height=\"7.25\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"163.86\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-21</text><rect x=\"194.97\" y=\"268.59\" width=\"32.06\" height=\"5.41\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"211\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-22</text><rect x=\"242.11\" y=\"269.51\" width=\"32.06\" height=\"4.49\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"258.14\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-23</text><rect x=\"289.26\" y=\"271.2\" width=\"32.06\" height=\"2.8\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"305.29\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-24</text><rect x=\"336.4\" y=\"266.69\" width=\"32.06\" height=\"7.31\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"352.43\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-25</text><rect x=\"383.54\" y=\"265.18\" width=\"32.06\" height=\"8.82\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"399.57\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-26</text><rect x=\"430.69\" y=\"266.07\" width=\"32.06\" height=\"7.93\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"446.71\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-27</text><rect x=\"477.83\" y=\"268.86\" width=\"32.06\" height=\"5.14\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"493.86\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-28</text><rect x=\"524.97\" y=\"268.4\" width=\"32.06\" height=\"5.6\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"541\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-29</text><rect x=\"572.11\" y=\"230.87\" width=\"32.06\" height=\"43.13\" fill=\"#2f6f5a\" rx=\"2\"/><text x=\"588.14\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-30</text><rect x=\"619.26\" y=\"77.83\" width=\"32.06\" height=\"196.17\" fill=\"#f0b90b\" rx=\"2\"/><text x=\"635.29\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">07-31</text><rect x=\"666.4\" y=\"45.43\" width=\"32.06\" height=\"228.57\" fill=\"#f0b90b\" rx=\"2\"/><text x=\"682.43\" y=\"292\" text-anchor=\"middle\" font-size=\"10\" fill=\"#848e9c\">08-01</text>\n</svg>\n<figcaption>GIGGLE daily turnover — the three busiest days highlighted ($M)</figcaption>\n</figure>"
+      ]
+    },
+    "attention-is-not-participation": {
+      "subject": "XRP",
+      "readings": [
+        [
+          "Volume z-score",
+          "-2.22"
+        ],
+        [
+          "Days ranking lower",
+          "0 of 970"
+        ],
+        [
+          "Volume trend (3d)",
+          "-34.6%"
+        ],
+        [
+          "Money underwater",
+          "96.7%"
+        ]
+      ],
+      "verdict": "XRP is among the most-discussed assets in crypto, and its volume z-score reads -2.22 with 0 of 970 days ranking below it. Attention is loud; participation is measurable, and they disagree.",
+      "charts": [
+        "<figure class=\"chart\">\n<svg viewBox=\"0 0 720 300\" role=\"img\" aria-label=\"XRP volume z-score: its own history, and today\" preserveAspectRatio=\"xMidYMid meet\">\n<rect width=\"720\" height=\"300\" fill=\"#0f141a\" rx=\"10\"/>\n<rect x=\"46\" y=\"263.31\" width=\"22.57\" height=\"10.69\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"69.57\" y=\"205.74\" width=\"22.57\" height=\"68.26\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"93.14\" y=\"100.48\" width=\"22.57\" height=\"173.52\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"116.71\" y=\"41.27\" width=\"22.57\" height=\"232.73\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"140.29\" y=\"147.36\" width=\"22.57\" height=\"126.64\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"163.86\" y=\"200.81\" width=\"22.57\" height=\"73.19\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"187.43\" y=\"232.88\" width=\"22.57\" height=\"41.12\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"211\" y=\"253.44\" width=\"22.57\" height=\"20.56\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"234.57\" y=\"260.84\" width=\"22.57\" height=\"13.16\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"258.14\" y=\"268.24\" width=\"22.57\" height=\"5.76\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"281.71\" y=\"262.49\" width=\"22.57\" height=\"11.51\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"305.29\" y=\"266.6\" width=\"22.57\" height=\"7.4\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"328.86\" y=\"271.53\" width=\"22.57\" height=\"2.47\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"352.43\" y=\"270.71\" width=\"22.57\" height=\"3.29\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"376\" y=\"272.36\" width=\"22.57\" height=\"1.64\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"399.57\" y=\"273.18\" width=\"22.57\" height=\"0.82\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"423.14\" y=\"274\" width=\"22.57\" height=\"0\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"446.71\" y=\"272.36\" width=\"22.57\" height=\"1.64\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"470.29\" y=\"273.18\" width=\"22.57\" height=\"0.82\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"493.86\" y=\"274\" width=\"22.57\" height=\"0\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"517.43\" y=\"274\" width=\"22.57\" height=\"0\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"541\" y=\"273.18\" width=\"22.57\" height=\"0.82\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"564.57\" y=\"274\" width=\"22.57\" height=\"0\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"588.14\" y=\"274\" width=\"22.57\" height=\"0\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"611.71\" y=\"274\" width=\"22.57\" height=\"0\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"635.29\" y=\"274\" width=\"22.57\" height=\"0\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"658.86\" y=\"273.18\" width=\"22.57\" height=\"0.82\" fill=\"#2b3946\" rx=\"1\"/><rect x=\"682.43\" y=\"273.18\" width=\"22.57\" height=\"0.82\" fill=\"#2b3946\" rx=\"1\"/><line x1=\"46\" y1=\"18\" x2=\"46\" y2=\"274\" stroke=\"#f6465d\" stroke-width=\"2\"/><text x=\"52\" y=\"32\" font-size=\"12\" fill=\"#f6465d\" font-weight=\"700\">now -2.22</text><text x=\"46\" y=\"292\" font-size=\"11\" fill=\"#848e9c\">-2.22</text><text x=\"706\" y=\"292\" text-anchor=\"end\" font-size=\"11\" fill=\"#848e9c\">12.73</text>\n</svg>\n<figcaption>XRP volume z-score: its own history, and today</figcaption>\n</figure>"
+      ]
+    }
+  }
+}

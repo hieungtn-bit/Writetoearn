@@ -392,7 +392,8 @@ export function renderLessonPage(site, lesson) {
 <h2>The formula</h2>
 <pre><code>${escapeHtml(lesson.formula.join("\n"))}</code></pre>
 
-<h2>Worked example — ${escapeHtml(e.subject)}, live data</h2>
+<h2>Worked example — ${escapeHtml(e.subject)}</h2>
+<p class="meta">Measured on Binance spot daily candles${lesson.measuredAt ? ` at <time datetime="${lesson.measuredAt}">${escapeHtml(lesson.measuredAt.slice(0, 16).replace("T", " "))} UTC</time>` : ""}. Re-run the formula on current data and you should reproduce the method, not necessarily these figures.</p>
 <table class="readings">
 ${rows}
 </table>
