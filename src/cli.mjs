@@ -22,6 +22,7 @@ import { composePost } from "./compose.mjs";
 import { FORMATS, crontabLines, getFormat } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
+import { DEFAULT_DAYS, formatStage, stageOf } from "./stage.mjs";
 import { promptCapturingClient, runTeam } from "./team.mjs";
 import { verifyPost } from "./verify.mjs";
 
@@ -49,6 +50,7 @@ Usage
   wte check <draft.txt> [--screen]    Verify a draft against freshly fetched data.
                                       --screen also traces altcoin figures
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
+  wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte team [--format <f>] [--dry-run] Full daily run: analyst picks the angle,
                                       writer drafts, checker + critic gate it
 
@@ -105,6 +107,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdSlots(flags);
     case "screen":
       return cmdScreen(flags);
+    case "stage":
+      return cmdStage(rest, flags);
     case "team":
       return cmdTeam(flags, argv);
     case "check":
@@ -639,6 +643,49 @@ async function cmdScreen(flags) {
   }
   console.log(formatScreen(result, outliers));
   return result.rows.length ? 0 : 1;
+}
+
+/**
+ * Reports which stage of a move one or more assets are in.
+ *
+ * Separate from `screen`, which ranks a fixed universe on momentum. This asks a
+ * different question — how far through a move an asset already is — and takes
+ * arbitrary symbols, because the assets worth asking about are usually the ones
+ * that just appeared on a screen rather than the ones in a fixed list.
+ */
+async function cmdStage(args, flags) {
+  const symbols = args
+    .flatMap((a) => String(a).split(","))
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  if (!symbols.length) {
+    throw new ValidationError("Usage: wte stage <SYMBOL> [SYMBOL...] [--days <n>]");
+  }
+
+  const days = flags.days ? Number(flags.days) : DEFAULT_DAYS;
+  if (!Number.isFinite(days) || days < 8) {
+    throw new ValidationError(`--days must be a number of at least 8 (got "${flags.days}").`);
+  }
+
+  const rows = [];
+  const failed = [];
+  for (const symbol of symbols) {
+    try {
+      rows.push(await stageOf(symbol, { days }));
+    } catch (err) {
+      failed.push({ symbol, reason: err.message });
+    }
+  }
+
+  if (flags.json) {
+    print({ rows, failed, days }, flags);
+    return rows.length ? 0 : 1;
+  }
+
+  if (rows.length) console.log(formatStage(rows, { days }));
+  for (const f of failed) console.error(`  ✗ ${f.symbol}: ${f.reason}`);
+  return rows.length ? 0 : 1;
 }
 
 /** Prints the daily schedule and ready-to-paste crontab lines. */

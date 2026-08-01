@@ -34,8 +34,15 @@ Working directory: the repo root. Slot is one of `recap`, `europe`,
 ```bash
 node bin/wte.mjs brief                      # majors: price, levels, analysis
 node bin/wte.mjs screen                     # 26 alt pairs, outliers flagged
+node bin/wte.mjs stage <SYM...>             # how far through a move an asset is
 node bin/wte.mjs team --format <slot> --dry-run   # prints the analyst prompt
 ```
+
+`stage` answers a different question from `screen`: not "what moved" but "how
+far through a move is it". Use it on whatever the screen surfaces. The reading
+that matters is `vol_trend` — the share of money underwater is near zero both
+for a move still recruiting buyers and one that has run out of them, so it
+cannot separate the two, and participation can.
 
 The `--dry-run` output is the exact prompt the automated analyst would get,
 including the recent-post history. Read it and answer it yourself.
