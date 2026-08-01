@@ -1,0 +1,85 @@
+Almost every post about $ENA argues from its chart. There is a better input available, and it is measurable: the funding rate, which is the raw material of the protocol's revenue.
+
+Over the last 100 funding periods, the annualised rate on $ETH perpetuals has fallen from about +5.34% to +1.31%. On $BTC, from +7.11% to +3.94%. That is the environment Ethena harvests, and it has thinned considerably.
+
+
+WHY FUNDING IS THE RIGHT THING TO WATCH
+
+Ethena issues USDe, a synthetic dollar backed by delta-neutral positions: long spot or staked collateral, short perpetual futures against it. Yield paid to holders comes from two places — staking rewards on the collateral, and the funding collected by that short perp leg.
+
+When funding is positive, shorts are paid to hold the hedge. When it is negative, they pay. So the funding rate is not background colour for this token. It is the input to the machine.
+
+That makes it one of the very few alt narratives where you can measure a fundamental driver directly instead of inferring it from price.
+
+
+THE MEASUREMENT
+
+OKX perpetual funding, last 100 periods, annualised at three payments a day:
+
+ETH perpetuals
+• Latest realised: -0.0007% per period — -0.79% annualised
+• Mean over the recent window: +2.41% annualised
+• Negative periods: 27 of 90 (30.0%)
+• Trend: +5.34% then +1.31%
+
+BTC perpetuals
+• Latest realised: 0.0026% per period — +2.84% annualised
+• Mean over the recent window: +5.06% annualised
+• Negative periods: 8 of 90 (8.9%)
+• Trend: +7.11% then +3.94%
+
+ETH funding is now negative 30.0% of the time. The basis available to harvest has compressed on both legs, and more sharply on ETH.
+
+
+WHAT THE CHART ADDS
+
+$ENA trades at 0.0808, -6.05% over 7 days and +5.35% over 30, RSI 47.0, at 16.2% turnover concentration — meaning no event is driving it. Turnover over the last three days is running -32.71% against the prior weeks. Participation is leaving, quietly.
+
+58.2% of the month's money sits underwater, and price is -1.73% against the 30-day volume-weighted average.
+
+There is a tight shelf overhead: the 30-day VWAP at 0.0822, the 50-day average at 0.0825 and the 20-day at 0.0835 all cluster between 0.0822 and 0.0835. Price sits just underneath all three. Reclaiming that band and holding it would be the first genuine change of structure.
+
+One number for scale: ENA is 90.7% below its high in this sample. Getting back there requires 980%. That is context, not a forecast, and it is the sort of arithmetic that "it is cheap now" tends to skip.
+
+
+COMPRESSION, THE SAME AS EVERYWHERE ELSE
+
+ENA's 30-day realised volatility is 68.3%. That sounds enormous until you rank it against ENA's own history: the 1.4th percentile. This token normally runs hotter than this.
+
+Same conclusion as anywhere else compression shows up — it forecasts the size of the next move, not its direction.
+
+
+IT IS NOT JUST BETA
+
+ENA correlates with ETH at 0.72 over 30 days but only 0.34 over 90. ETH and BTC, by contrast, sit at 0.88 and 0.88 — stable across both.
+
+So ENA is substantially driven by its own factors rather than by market beta. That is exactly why the funding measurement is worth the effort here and would be pointless for most tokens.
+
+
+WHAT I CANNOT SEE, AND WHY IT MATTERS
+
+This is where most ENA analysis quietly overreaches, so let me be exact.
+
+I cannot see USDe supply, protocol TVL, the sUSDe yield, or Ethena's actual revenue. No source for any of it in what I fetch. I am measuring the input to the engine, not its output.
+
+The funding above is OKX only. Ethena hedges across multiple venues at weights I do not know, so treat this as a proxy for the environment, not as their book.
+
+The funding history I can pull covers roughly 33 days. That is far too short to test statistically whether funding moves ENA's price. I am describing a mechanism, not reporting a measured relationship.
+
+And most importantly: ENA is a governance token, not USDe. The link from protocol revenue to token price is indirect. Anyone telling you compressed funding mechanically means a lower ENA price is skipping that step and hoping you do not check it.
+
+
+BIAS: WAIT
+
+No event, participation draining -32.71%, price pinned beneath a three-way moving-average shelf, and the one fundamental input I can actually measure is deteriorating. Nothing here argues for urgency in either direction.
+
+But volatility at the 1.4th percentile means that when this does move, it will move harder than the last few weeks have taught you to expect.
+
+Levels that matter:
+• 0.0822-0.0835 — the VWAP and moving-average shelf. Reclaim and hold is the first structural change.
+• 0.0723 — the 30-day low. Below it there is no reference left inside the window.
+• ETH funding returning to durably positive is the fundamental tell, and you can check it yourself on any exchange's funding page.
+
+Educational research, not financial advice. DYOR.
+
+#WriteToEarn #BinanceSquare
