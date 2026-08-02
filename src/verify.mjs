@@ -36,13 +36,24 @@ const SUFFIXES = { k: 1e3, m: 1e6, b: 1e9 };
  *
  * @returns {{raw: string, value: number, isPercent: boolean, hasDecimal: boolean}[]}
  */
+/** ISO dates: their parts are calendar labels, never market claims. */
+const ISO_DATE = /\d{4}-\d{2}-\d{2}(?:T[\d:.]+Z?)?/g;
+
 export function extractNumbers(text) {
   const out = [];
+
+  // A dated table would otherwise fail on the year: 2026 is above the
+  // structural threshold and matches nothing in any market feed, so every post
+  // that timestamps its evidence gets punished for showing its work.
+  const dateSpans = [];
+  for (const m of String(text).matchAll(ISO_DATE)) dateSpans.push([m.index, m.index + m[0].length]);
+  const insideDate = (i) => dateSpans.some(([a, b]) => i >= a && i < b);
   // A magnitude suffix has to sit flush against the digits and not begin a
   // word: without both guards, "66,956\n\nBias:" reads as 66,956 billion.
   const re = /(\d[\d,]*(?:\.\d+)?)(?:([KkMmBb])(?![A-Za-z]))?(\s*%)?/g;
 
   for (const m of text.matchAll(re)) {
+    if (insideDate(m.index)) continue;
     const [, digits, suffix, percent] = m;
     const bare = digits.replace(/,/g, "");
     let value = Number(bare);

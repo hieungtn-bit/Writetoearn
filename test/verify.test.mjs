@@ -293,3 +293,14 @@ test("without the snapshot a research figure is not citable", async () => {
     true,
   );
 });
+
+test("an ISO date is a calendar label, not a market figure", async () => {
+  const { extractNumbers } = await import("../src/verify.mjs");
+  const got = extractNumbers("On 2026-07-23 turnover was 0.222M.").map((n) => n.value);
+  assert.deepEqual(got, [222000], "the date contributes nothing, the turnover does");
+});
+
+test("a bare year-like number outside a date is still checked", async () => {
+  const { extractNumbers } = await import("../src/verify.mjs");
+  assert.ok(extractNumbers("Volume hit 2026 units.").some((n) => n.value === 2026));
+});

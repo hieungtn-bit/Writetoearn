@@ -63,7 +63,7 @@ Usage
             [--hourly <SYM,...>]        --hourly an intraday candle series,
             [--stage <SYM,...>]         --stage the move-stage metrics
             [--no-call]                 profile/announcement post: no bias needed
-            [--study <file.json>]       cite a committed research snapshot
+            [--study <a.json,b.json>]   cite committed research snapshots
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
   wte pulse [--min-volume <n>]        Scan every USDT pair for today's real event
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
@@ -676,7 +676,12 @@ async function cmdCheck([file], flags) {
     minWords: 40,
     // Only a post that states no market view may skip the bias requirement.
     requireBias: !flags["no-call"],
-    study: flags.study ? JSON.parse(fs.readFileSync(String(flags.study), "utf8")) : undefined,
+    // Several snapshots at once: an audit quotes the claims it is testing from
+    // one file and its own measurements from another, and conflating the two
+    // would be exactly the error the audit exists to expose.
+    study: flags.study
+      ? String(flags.study).split(",").map((f) => JSON.parse(fs.readFileSync(f.trim(), "utf8")))
+      : undefined,
     screen: screenResult ?? undefined,
     candles: candles.length ? candles : undefined,
     stages: stageRows.length ? stageRows : undefined,
