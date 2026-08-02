@@ -276,3 +276,20 @@ test("a profile post may skip the bias, but only when asked explicitly", async (
     false,
   );
 });
+
+test("a study snapshot vouches for research figures at any nesting depth", async () => {
+  const { collectStudyNumbers } = await import("../src/verify.mjs");
+  const v = collectStudyNumbers({ a: 5.5, b: { c: 17.2, d: [12.3, { e: 23.2 }] }, s: "skip" });
+  for (const n of [5.5, 17.2, 12.3, 23.2]) assert.ok(v.includes(n), `missing ${n}`);
+  assert.equal(v.length, 4, "strings and structure contribute nothing");
+});
+
+test("without the snapshot a research figure is not citable", async () => {
+  const { verifyNumbers } = await import("../src/verify.mjs");
+  const brief = { spot: [], levels: [], funding: [], analysis: null };
+  assert.equal(verifyNumbers("The hit rate was 17.2%.", brief).ok, false);
+  assert.equal(
+    verifyNumbers("The hit rate was 17.2%.", brief, { study: { signal: { hitPct: 17.2 } } }).ok,
+    true,
+  );
+});

@@ -183,3 +183,19 @@ test("the daily-move percentile puts a percentage move in its own context", asyn
   assert.equal(a.biggerDayCount, 0, "nothing in a quiet series beats a 5% day");
   assert.equal(a.dailyMovePercentile, 100);
 });
+
+test("the completed-candle z-score ignores a partial day, the live one does not", async () => {
+  const { analyzeAsset } = await import("../src/analysis.mjs");
+  const day = 86_400_000;
+  // Thirty ordinary days, one genuine volume explosion, then a fresh day that
+  // has only traded a sliver so far.
+  const candles = Array.from({ length: 32 }, (_, i) => ({
+    openTime: i * day, open: 100, high: 100, low: 100, close: 100, volume: 1,
+    quoteVolume: i === 30 ? 5_000_000 : 100_000,
+  }));
+  candles[31].quoteVolume = 3_000; // today, minutes old
+
+  const a = await analyzeAsset("TESTUSDT", { candles });
+  assert.ok(a.volumeZScoreCompleted > 3, `spike should show, got ${a.volumeZScoreCompleted}`);
+  assert.ok(a.volumeZScore < 0, `the partial day reads as drained, got ${a.volumeZScore}`);
+});

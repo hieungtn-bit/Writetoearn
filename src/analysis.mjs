@@ -283,6 +283,16 @@ export async function analyzeAsset(symbol, { fetchImpl = globalThis.fetch, candl
     sma20: sma(closes, 20),
     sma50: sma(closes, 50),
     volumeZScore: volumeZScore(volumes, 30),
+    /**
+     * The same z-score with today's in-progress candle removed.
+     *
+     * A partial day has partial volume, so the live reading is dragged toward
+     * "turnover collapsing" every morning and only recovers by the close. For
+     * spotting a turnover *spike* the live figure is not merely noisy, it is
+     * blind: a scan run at 05:00 UTC finds nothing at all, because every real
+     * spike is still being averaged against a few hours of trading.
+     */
+    volumeZScoreCompleted: volumeZScore(volumes.slice(0, -1), 30),
     /** Mean daily turnover over the trailing 30 completed days. */
     avgQuoteVolume30d: volumes.length > 30 ? mean(volumes.slice(-31, -1)) : NaN,
     quoteVolumeLatest: volumes.at(-1),

@@ -80,6 +80,7 @@ function pushAssetNumbers(push, a) {
   push(a.sma20);
   push(a.sma50);
   push(a.volumeZScore);
+  push(a.volumeZScoreCompleted);
   push(a.avgQuoteVolume30d);
   push(a.quoteVolumeLatest);
   push(a.rangeCompressionPct);
@@ -167,6 +168,26 @@ export function collectStageNumbers(stages) {
   return values;
 }
 
+/**
+ * Figures from a committed research snapshot.
+ *
+ * A backtest result is not a market quote — no brief or candle series can vouch
+ * for "17.2% of signals reached +30%". The provenance is different in kind: a
+ * generator script is committed next to its output, so anyone can rerun it and
+ * get the same file. Treating those numbers as citable is the same bargain the
+ * site's lesson snapshot already makes, and it is the only alternative to
+ * publishing research figures through no gate at all.
+ */
+export function collectStudyNumbers(study) {
+  const values = [];
+  const walk = (node) => {
+    if (typeof node === "number" && Number.isFinite(node)) values.push(Math.abs(node));
+    else if (node && typeof node === "object") for (const v of Object.values(node)) walk(v);
+  };
+  walk(study);
+  return values;
+}
+
 export function collectBriefNumbers(brief) {
   const values = [];
   const push = (n) => {
@@ -230,11 +251,12 @@ function matches(value, allowed) {
  *
  * @returns {{ok: boolean, unmatched: {raw: string, value: number}[], checked: number}}
  */
-export function verifyNumbers(text, brief, { screen, candles, stages } = {}) {
+export function verifyNumbers(text, brief, { screen, candles, stages, study } = {}) {
   const allowed = collectBriefNumbers(brief);
   if (screen) allowed.push(...collectScreenNumbers(screen));
   if (candles) allowed.push(...collectCandleNumbers(candles));
   if (stages) allowed.push(...collectStageNumbers(stages));
+  if (study) allowed.push(...collectStudyNumbers(study));
   const unmatched = [];
   let checked = 0;
 
@@ -325,7 +347,7 @@ export function verifyStructure(text, { maxWords = 220, minWords = 40, requireBi
 
 /** Runs every gate. Publishing should be blocked unless this passes. */
 export function verifyPost(text, brief, opts = {}) {
-  const numbers = verifyNumbers(text, brief, { screen: opts.screen, candles: opts.candles, stages: opts.stages });
+  const numbers = verifyNumbers(text, brief, { screen: opts.screen, candles: opts.candles, stages: opts.stages, study: opts.study });
   const claims = verifyNoForbiddenClaims(text, brief);
   const structure = verifyStructure(text, opts);
 
@@ -335,6 +357,7 @@ export function verifyPost(text, brief, opts = {}) {
   if (opts.screen) searched.push("the screen");
   if (opts.candles) searched.push("the candle series");
   if (opts.stages) searched.push("the stage metrics");
+  if (opts.study) searched.push("the study snapshot");
   const sources = searched.length === 1 ? searched[0] : `${searched.slice(0, -1).join(", ")} or ${searched.at(-1)}`;
   const problems = [
     ...numbers.unmatched.map((u) => `figure "${u.raw}" does not appear in ${sources}`),

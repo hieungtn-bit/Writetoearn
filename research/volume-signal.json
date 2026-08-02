@@ -1,0 +1,77 @@
+{
+  "measuredAt": "2026-08-02T05:13:35.448Z",
+  "method": {
+    "zThreshold": 3.5,
+    "horizonDays": 5,
+    "winThresholdPct": 30,
+    "coiledMaxRangePct": 60,
+    "scanMinVolume": 3000000,
+    "minBaselineTurnover": 1500000
+  },
+  "referenceProfiles": [
+    {
+      "symbol": "BANK",
+      "launchDate": "2026-07-19",
+      "launchGainPct": 103.42342342342343,
+      "priorVolumeZ": 7.082861605878416,
+      "priorVolTrendPct": 2700.6289566767887,
+      "priorRsi14": 93.8799107105208,
+      "priorRangePosPct": 88.22882288228821,
+      "priorBaselineTurnover": 1566805.9567613334
+    },
+    {
+      "symbol": "GIGGLE",
+      "launchDate": "2026-07-31",
+      "launchGainPct": 60.486828942981006,
+      "priorVolumeZ": 3.850015165261902,
+      "priorVolTrendPct": 83.4727477646064,
+      "priorRsi14": 62.37883604886405,
+      "priorRangePosPct": 76.89573459715638,
+      "priorBaselineTurnover": 1967528.9580209998
+    },
+    {
+      "symbol": "ENA",
+      "launchDate": "2026-06-03",
+      "launchGainPct": 18.644067796610166,
+      "priorVolumeZ": 4.734056329121667,
+      "priorVolTrendPct": 63.70212774660684,
+      "priorRsi14": 43.02737717367777,
+      "priorRangePosPct": 21.88034188034187,
+      "priorBaselineTurnover": 14811592.72590847
+    }
+  ],
+  "pairsSampled": 77,
+  "baseline": {
+    "n": 25001,
+    "hitPct": 5.523779048838047,
+    "medianPeakPct": 5.313666251999272,
+    "medianClosePct": -1.1732851985559622,
+    "endedLowerPct": 57.497700091996315
+  },
+  "signal": {
+    "n": 725,
+    "hitPct": 17.24137931034483,
+    "medianPeakPct": 8.194738433625638,
+    "medianClosePct": -3.3718689788053924,
+    "endedLowerPct": 61.6551724137931
+  },
+  "coiled": {
+    "n": 397,
+    "hitPct": 12.34256926952141,
+    "medianPeakPct": 7.445363625138901,
+    "medianClosePct": -2.302770059779413,
+    "endedLowerPct": 60.45340050377834
+  },
+  "extended": {
+    "n": 328,
+    "hitPct": 23.170731707317074,
+    "medianPeakPct": 9.222728460289165,
+    "medianClosePct": -4.314011241219163,
+    "endedLowerPct": 63.109756097560975
+  },
+  "derived": {
+    "liftVsBaseline": 3.1213014057779223,
+    "extendedVsCoiledRatio": 1.8773021403683425,
+    "signalMissPct": 82.75862068965517
+  }
+}
