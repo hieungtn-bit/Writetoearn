@@ -10,6 +10,24 @@
   },
   "articles": [
     {
+      "slug": "weekend-volume-effect",
+      "draft": "23-weekend-volume-effect.txt",
+      "title": "20 of 26 Alts Look Like Capitulation. It Is Sunday, and That Explains Most of It.",
+      "description": "Right now 20 of the 26 altcoin pairs I screen are trading at or below two standard deviations under their own average volume, and there is not one positive volume spike on the entire board.",
+      "published": "2026-08-02T00:30:26.956Z",
+      "assets": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "topics": [
+        "volume analysis",
+        "calendar effects",
+        "z-score"
+      ],
+      "squareId": 351188692642866
+    },
+    {
       "slug": "sol-floor-broke",
       "draft": "22-sol-floor-broke.txt",
       "title": "I Flagged SOL's 72.32 Floor. It Broke — On Less Volume Than It Had While Holding.",

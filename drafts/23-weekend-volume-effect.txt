@@ -1,0 +1,49 @@
+Right now 20 of the 26 altcoin pairs I screen are trading at or below two standard deviations under their own average volume, and there is not one positive volume spike on the entire board.
+
+That reads like conviction draining out of the market. Before you trade it, check the calendar. It is Sunday.
+
+
+THE MEASUREMENT
+
+Daily turnover for six liquid pairs over roughly 200 completed days, with each day expressed against that pair's own average so a large cap cannot dominate the result:
+
+  Sunday       77.6%   (n=168)
+  Monday      114.2%   (n=168)
+  Tuesday     101.8%   (n=168)
+  Wednesday   110.2%   (n=168)
+  Thursday    113.4%   (n=174)
+  Friday      110.6%   (n=174)
+  Saturday     72.3%   (n=174)
+
+Weekend average: 74.9% of normal. Weekday average: 110.1%.
+
+Weekend turnover runs about 31.9% below weekday turnover, across 1194 pair-days. Both weekend days sit below average and every weekday sits above it. This is not a subtle effect and it is not a recent one.
+
+
+WHAT THAT DOES TO A Z-SCORE
+
+A volume z-score compares today against a rolling window that mixes weekdays and weekends together. On a Saturday or Sunday the comparison is structurally unfair: the day is being measured against a baseline that is mostly weekdays, so it prints negative for reasons that have nothing to do with sentiment.
+
+Which means a board-wide sweep of negative readings on a weekend is, in large part, a calendar artifact. Reading it as capitulation is reading the day of the week as a signal.
+
+I am not claiming the alt complex is healthy. I have written all week that participation is thinning, and that still looks true. The narrow point is this: today's reading is not the evidence for it, because today's reading would look roughly like this on a quiet weekend regardless.
+
+
+HOW TO NOT GET CAUGHT BY THIS
+
+• Compare like with like. Measure a Sunday against other Sundays, not against a blended average.
+• Or wait for Monday's completed candle before concluding anything about participation.
+• Treat any market-wide extreme that appears on a weekend as suspect until it survives a weekday.
+
+The same discipline applies to the partial-candle trap I keep flagging: today's candle is minutes old, so every figure above uses completed days only.
+
+
+BIAS: WAIT
+
+Not because the tape is bullish or bearish, but because the single most striking number available today is substantially explained by it being Sunday. A signal that disappears when you control for the calendar was never a signal.
+
+The honest version of this post is short: check what day it is before you call it capitulation.
+
+Educational research, not financial advice. DYOR.
+
+$BTC $ETH $SOL #WriteToEarn #BinanceSquare
