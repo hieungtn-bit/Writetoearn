@@ -10,6 +10,26 @@
   },
   "articles": [
     {
+      "slug": "next-bank-measured",
+      "draft": "37-next-bank-measured.txt",
+      "title": "I Measured How to Find the Next $BANK Across 25,001 Pair-Days. The Answer Runs Backwards.",
+      "description": "Every day someone asks how to find the next $BANK before it runs. I measured it instead of guessing, across 25,001 pair-days, and the answer is the opposite of what almost everyone assumes.",
+      "published": "2026-08-02T05:15:17.230Z",
+      "assets": [
+        "BANK",
+        "ENA",
+        "ORDI"
+      ],
+      "topics": [
+        "volume z-score",
+        "momentum",
+        "base rates",
+        "backtest",
+        "watchlist"
+      ],
+      "squareId": 351258695139426
+    },
+    {
       "slug": "ena-ordinary-day",
       "draft": "25-ena-ordinary-day.txt",
       "title": "ENA Is Up on the Day. One Hour Did It, and the Heaviest Hour Was Red.",

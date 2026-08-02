@@ -1,0 +1,96 @@
+Every day someone asks how to find the next $BANK before it runs. I measured it instead of guessing, across 25,001 pair-days, and the answer is the opposite of what almost everyone assumes.
+
+Here is the whole study, including the part that says my own instinct was wrong.
+
+
+STEP 1: WHAT DID THEY LOOK LIKE THE DAY BEFORE?
+
+I took $BANK, GIGGLE and ENA, found each one's single largest daily gain, and measured the day *before* it. If "quiet accumulation" is the setup, it should show up here.
+
+  COIN      volume z    3d vol trend    RSI    position in 30d range
+  BANK          7.08        +2700.6%   93.9                   88.2%
+  GIGGLE        3.85          +83.5%   62.4                   76.9%
+  ENA           4.73          +63.7%   43.0                   21.9%
+
+Look at the volume column. Not one of them was quiet. All three were already trading at 3.85 to 7.08 standard deviations above their own normal turnover, *before* the day everyone remembers.
+
+And two of the three were already near the top of their range. They had not been accumulating. They had been running.
+
+The setup people look for — a sleepy chart with volume drying up — is not what these three did.
+
+
+STEP 2: SO IS THE VOLUME SIGNAL WORTH ANYTHING?
+
+One precursor was common to all three: a volume z-score at or above 3.5. I tested it on 77 liquid pairs, every day of history I could fetch, measuring the next 5 days.
+
+Chance of a +30% move within 5 days:
+
+  any random day     ██████ 5.5%
+  after the signal   █████████████████ 17.2%
+
+That is a real edge. 3.12x the base rate, from 725 signals.
+
+Now the half nobody screenshots:
+
+  median 5-day return, any day        -1.17%
+  median 5-day return, after signal   -3.37%
+
+  ended lower, any day        57.5%
+  ended lower, after signal   61.7%
+
+The signal triples your chance of catching a big move **and makes your typical outcome worse**. It is a lottery ticket with better-than-lottery odds, not a discovery. 82.8% of these signals never reach +30%.
+
+
+STEP 3: THE PART THAT SURPRISED ME
+
+I split the signals by whether price had already run. "Coiled" means still in the lower 60% of its own 30-day range. "Extended" means already above that.
+
+I expected coiled to win. Everyone does — buy it before it moves.
+
+  coiled, not yet run   ████████████ 12.3%   (n=397)
+  extended, already up  ███████████████████████ 23.2%   (n=328)
+
+Backwards. Pairs that had **already** moved were roughly 1.88x more likely to move again. Filtering for "hasn't run yet" dragged the hit rate from 17.2% down to 12.3% — most of the way back to doing nothing.
+
+This is momentum, not accumulation. And it fits the profiles above: BANK at 88.2% of its range and GIGGLE at 76.9% were the extended kind.
+
+The cost is symmetrical. Extended signals also close lower 63.1% of the time against 60.5% for coiled, with a median of -4.31%. Higher tail, worse middle.
+
+
+STEP 4: WHAT IS FLASHING RIGHT NOW
+
+Live scan, every USDT pair turning over at least $3.0M a day. A candidate also needs a baseline of $1.50M, because the three reference coins ran $1.57M to $14.81M and a near-dormant pair produces a huge z-score from one fill. 3 candidates were dropped for exactly that. Every z-score below is measured on completed candles only. That is not a detail: run the same scan against the live candle and it returns nothing at all, because a day that is a few hours old has a few hours of volume and every genuine spike gets averaged away. The blindness is the default, and it is why most people find these names a day late.
+
+  PAIR         volZ   range pos    RSI      30d chg   baseline turnover
+  MIRA       21.90      9.3%   44.9   -13.45%   $5.55M
+  GIGGLE      6.53     49.9%   65.7   +55.94%   $5.27M
+  ORDI        4.70     52.8%   53.7    +2.24%   $2.78M
+
+Not yet run: MIRA, GIGGLE, ORDI
+Already running: none
+
+Worth saying plainly: every candidate today falls in the lower-probability group. The study puts that bucket at 12.3%, not the headline 17.2%, with a median of -2.30%. Today's watchlist is the weaker half of the signal, and pretending otherwise would be the easiest lie in this post.
+
+Apply the numbers to yourself before you act on any of them: 12.3% and 23.2% are hit rates, which means most of these names go nowhere or lower. If you take every signal at equal size you will be wrong most of the time and need the winners to be large enough to carry it. If you cannot hold that shape emotionally, this edge is not usable by you, and knowing that is worth more than the watchlist.
+
+
+AND ONE I GOT WRONG TODAY
+
+Four hours ago I published that $ENA's move was ordinary and stated a WAIT. I wrote that volume would confirm before price did.
+
+Price then ran +10.9% on the day while ENA's volume z-score sat at -1.5 — below its own average, not above it. The leading indicator I named did not lead. The call was wrong, and it was wrong for a reason worth keeping: I demanded confirmation from a variable that, in this study, mostly arrives with the move rather than before it.
+
+I would rather publish that than quietly move on.
+
+
+BIAS: WAIT
+
+On the watchlist as a group, and for a specific reason. The signal is real and it is thin: 17.2% hit rate, a negative median, and a losing majority. Nothing in that justifies size.
+
+What I will do is watch whether the coiled names above join the extended group, because the study says that transition is where the odds improve — not the waiting.
+
+Method, so you can reproduce every number: volume z-score over a 30-day window on completed daily candles, forward window 5 days, win threshold +30%, 77 pairs, 25,001 observations. Live candles excluded throughout, because a partial day understates turnover and would fabricate signals.
+
+Educational research, not financial advice. DYOR.
+
+$BANK $ENA $ORDI #WriteToEarn #BinanceSquare
