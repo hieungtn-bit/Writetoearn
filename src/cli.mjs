@@ -891,17 +891,21 @@ async function cmdShip([file], flags, argv) {
 }
 
 /**
- * Builds the pushed commit as production.
+ * Waits for the pushed commit to be live.
  *
- * Pushing is not deploying here: the project's production branch is the repo
- * default, so a push to the working branch produces a Preview that never
- * reaches maix8.study. Without this step `wte ship` prints success while the
- * live site stays days behind the feed, which is exactly what happened.
+ * The push alone is now enough: www.maix8.study is bound to this branch, so
+ * Vercel builds and re-aliases on every push without being asked. What this
+ * adds is *confirmation* — publishing to Square and then walking away from a
+ * build that failed is how the site fell days behind the feed before, and a
+ * green line here is the difference between believing it worked and knowing.
+ *
+ * So a missing token is not an error. It costs the confirmation, not the
+ * deploy.
  */
 async function promoteToProduction({ ref, sha }) {
   const config = deployConfigFromEnv();
   if (!config) {
-    console.log("  Site: VERCEL_TOKEN not set — deploy the commit yourself to update maix8.study");
+    console.log("  Site: pushed — Vercel is building it. No VERCEL_TOKEN, so not waiting to confirm.");
     return;
   }
 

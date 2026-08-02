@@ -115,22 +115,33 @@ than feels necessary.
 ### 6. Publish
 
 For an article, one command does everything — publishes to Square, adds the
-post to the website, commits, pushes, and builds production:
+post to the website, commits and pushes. The site updates itself from there:
 
 ```bash
-export VERCEL_TOKEN=...        # once per session; without it the deploy is skipped
 node bin/wte.mjs ship drafts/<file>.txt --title "<title>"
 ```
 
-**The push alone does not update maix8.study.** Vercel picks a deployment's
-target from the project's *production branch*, which mirrors the GitHub default
-branch — and the site code lives on a feature branch, so a push builds a
-Preview. This went unnoticed for days: `ship` reported success while the live
-site served an older build. `ship` now asks for a production build by name and
-waits for it. If the token is missing it says so and skips, rather than
-implying the site updated.
+**How the site stays current, and why it once did not.** Vercel picks a
+deployment's *target* from the project's production branch, which mirrors the
+GitHub default branch and cannot be changed through the public API. The site
+lives on a feature branch, so every push built a Preview while www.maix8.study
+served a build from days earlier — and `ship` reported success the whole time.
 
-To rebuild the current commit without publishing anything:
+The fix is not to keep asking for production builds. The serving domain is now
+bound directly to this branch (`gitBranch` on the domain), so **any push
+deploys the live site**, whatever Vercel labels the target. Nothing to
+configure, no token needed, no dashboard step.
+
+Two details that make it safe: deployment protection is
+`all_except_custom_domains`, so a custom domain stays public even on a
+branch-target deployment; and the project carries no environment variables, so
+a branch build and a production build are byte-identical.
+
+With `VERCEL_TOKEN` exported, `ship` additionally *waits* and confirms the
+build went green instead of assuming it. Worth doing; not required.
+
+To rebuild the current commit by hand — after changing a template, say, where
+there is no post to publish:
 
 ```bash
 node bin/wte.mjs deploy
