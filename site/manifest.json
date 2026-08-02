@@ -10,6 +10,26 @@
   },
   "articles": [
     {
+      "slug": "ena-ordinary-day",
+      "draft": "25-ena-ordinary-day.txt",
+      "title": "ENA Is Up on the Day. One Hour Did It, and the Heaviest Hour Was Red.",
+      "description": "$ENA is up +4.55% today and it looks like something started. Here are the three measurements I run before believing that. On this one all three say the same thing, and it is not what the candle…",
+      "published": "2026-08-02T03:42:49.256Z",
+      "assets": [
+        "ENA",
+        "ETH",
+        "BTC"
+      ],
+      "topics": [
+        "ENA",
+        "Ethena",
+        "funding rates",
+        "partial candles",
+        "base rates"
+      ],
+      "squareId": 351235969925905
+    },
+    {
       "slug": "risk-you-paid-for",
       "draft": "24-risk-you-paid-for.txt",
       "title": "All 26 Altcoins I Screen Carried More Risk Than BTC. Six Beat It.",
