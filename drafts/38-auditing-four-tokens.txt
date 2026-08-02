@@ -1,0 +1,85 @@
+A four-token comparison is circulating — ORDI, MIRA, AIXBT and KAITO — with scores, rankings and a recommendation. I ran every checkable number in it against Binance. Here is what survived.
+
+Credit first: **all four are genuinely listed on Binance spot.** The last scan I audited had two of its three top picks not trading on the exchange at all. The quoted prices are also accurate to better than 1% on three of the four.
+
+Then it falls apart in the one column that decides whether you can get out.
+
+
+THE LIQUIDITY NUMBERS
+
+  TOKEN     claimed   yesterday    30d avg
+  ORDI      $5.000M     $1.085M     $2.781M
+  MIRA     $93.000M     $3.983M     $5.550M
+  AIXBT     $4.500M     $0.030M     $0.401M
+  KAITO    $65.000M     $1.135M     $8.016M
+
+$MIRA is spot on. $ORDI is within reason. The other two are not close.
+
+AIXBT is quoted at $4.500M and averages $0.401M a day here. Its last ten completed days on Binance:
+
+  2026-07-23   $0.200M
+  2026-07-24   $0.228M
+  2026-07-25   $0.256M
+  2026-07-26   $0.355M
+  2026-07-27   $0.485M
+  2026-07-28   $0.329M
+  2026-07-29   $0.364M
+  2026-07-30   $0.222M
+  2026-07-31   $0.309M
+  2026-08-01   $0.291M
+
+Not one day came near the quoted figure. $KAITO, for contrast, averages $8.016M a day on the same venue.
+
+To be fair to whoever wrote it: AIXBT lives largely on other venues, so the quoted figure may be an all-exchange total. That does not rescue it. If you buy here, the book you have to exit through averages $0.401M a day, not $4.500M. Sizing a position on liquidity you cannot actually reach is how a small profit becomes a large slip.
+
+
+THE SCORE THAT RUNS BACKWARDS
+
+The table assigns each token a "BANK/ENA similarity" score, gives AIXBT the highest, and ranks it first.
+
+Yesterday I measured what BANK, GIGGLE and ENA actually had in common the day before their largest gains. Exactly one thing: a volume z-score already far above normal — 7.08, 3.85 and 4.73.
+
+So measure these four the same way, on completed candles:
+
+  TOKEN      volZ   range pos       30d   underwater   3d vol trend
+  ORDI       4.70    51.62%    +1.91%     12.0%       +91.7%
+  MIRA      21.90     9.29%   -13.45%     98.4%     +2052.8%
+  AIXBT     -0.52    21.18%   -13.79%     86.6%       -48.0%
+  KAITO      0.44    73.07%   +87.36%     22.2%       -16.4%
+
+AIXBT reads -0.52. Below its own average. It is the **least** similar of the four to the pattern that score claims to measure, and it was ranked first for being the most similar.
+
+That is not a rounding error. It is a number with no method behind it doing the heaviest lifting in the table — as is the "narrative score of 76–78", where a two-point range implies a precision nothing in the document supports. If you cannot reproduce it, it is not a measurement, and it should not be setting your position size.
+
+
+THE COLUMN THAT CHANGES EVERYTHING
+
+Look at the underwater column — the share of the last 30 days' turnover done at prices *higher* than today's.
+
+MIRA reads 98.4%. Almost everyone who bought this month is down. Its three-day turnover is running +2052.8% against the days before it while price fell 5.5%, and 74.7% of the entire month's volume went through in three days.
+
+Volume exploding into a falling price, with nearly every holder underwater, is the shape of people leaving. Compare BANK the day before it ran: 0% underwater. Opposite structures wearing the same "high volume" label.
+
+$ORDI is the only one of the four my stage classifier gives a clean reading — expansion, price and participation rising together, 12.0% underwater. It is also the token the table ranked last.
+
+
+A CORRECTION ON MY OWN WATCHLIST
+
+Four hours ago I published a watchlist from my own scan, and MIRA was on it as the strongest volume signal. That was true and it was incomplete: I had not run the underwater and concentration figures at the time.
+
+98.4% underwater with 74.7% of turnover in three days is a materially worse structure than "strong volume signal" conveys. I am not withdrawing the scan, because the volume reading stands. But anyone who took MIRA off that list deserves this column too, and it should have been in the original post.
+
+
+BIAS: WAIT
+
+On all four. The cleanest structure is ORDI, and one expansion reading is not an entry. The loudest volume is MIRA, and its volume is pointing the wrong way. AIXBT does not have the signal the table credited it with. KAITO has already run +87.36% in thirty days.
+
+The useful takeaway is not a ranking. It is that a table can get every price right and still point backwards, because prices are the easy part and nobody checks the columns that cost money.
+
+So before acting on any scan, including mine, ask yourself one question: which of these numbers could I reproduce myself?
+
+Everything that survives that question is worth something. Treat the rest as decoration.
+
+Educational research, not financial advice. DYOR.
+
+$ORDI $MIRA $KAITO #WriteToEarn #BinanceSquare

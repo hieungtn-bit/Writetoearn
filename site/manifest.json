@@ -10,6 +10,26 @@
   },
   "articles": [
     {
+      "slug": "auditing-four-tokens",
+      "draft": "38-auditing-four-tokens.txt",
+      "title": "A Ranked Table Put AIXBT First for Looking Like $BANK. Its Volume Reads Below Average.",
+      "description": "A four-token comparison is circulating — ORDI, MIRA, AIXBT and KAITO — with scores, rankings and a recommendation. I ran every checkable number in it against Binance. Here is what survived.",
+      "published": "2026-08-02T05:25:31.683Z",
+      "assets": [
+        "MIRA",
+        "ORDI",
+        "KAITO"
+      ],
+      "topics": [
+        "verification",
+        "due diligence",
+        "liquidity",
+        "scanners",
+        "underwater share"
+      ],
+      "squareId": 351261212171922
+    },
+    {
       "slug": "next-bank-measured",
       "draft": "37-next-bank-measured.txt",
       "title": "I Measured How to Find the Next $BANK Across 25,001 Pair-Days. The Answer Runs Backwards.",
