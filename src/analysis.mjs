@@ -195,6 +195,19 @@ export function correlation(a, b) {
   return num / Math.sqrt(dx * dy);
 }
 
+/**
+ * 30-day return per unit of annualised volatility.
+ *
+ * Not a Sharpe ratio — no risk-free rate, and the horizons differ — so it is
+ * only meaningful *relative* to another asset measured the same way. That is
+ * exactly the comparison worth making: two assets that both rose are not
+ * equally good if one of them tripled the volatility to do it.
+ */
+export function riskAdjusted(returnPct, volPct) {
+  if (!Number.isFinite(returnPct) || !Number.isFinite(volPct) || volPct === 0) return NaN;
+  return returnPct / volPct;
+}
+
 /** Is the recent range tighter or wider than the longer-run range? */
 export function rangeCompression(candles, { recent = 7, base = 30 } = {}) {
   if (candles.length < base) return NaN;
@@ -247,6 +260,12 @@ export async function analyzeAsset(symbol, { fetchImpl = globalThis.fetch, candl
     rangePosition30d: rangePosition(price, low(30), high(30)),
     high30d: high(30),
     low30d: low(30),
+    /** Width of the 30-day range as a share of its floor — the compression measure. */
+    rangeWidth30dPct: low(30) ? ((high(30) - low(30)) / low(30)) * 100 : NaN,
+    returnPerVol30d: riskAdjusted(
+      pctChange(closes.at(-31) ?? closes[0], price),
+      realizedVolatility(closes, { periods: 30 }),
+    ),
     sma20: sma(closes, 20),
     sma50: sma(closes, 50),
     volumeZScore: volumeZScore(volumes, 30),

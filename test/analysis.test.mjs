@@ -12,6 +12,7 @@ import {
   rsi,
   sma,
   stdev,
+  riskAdjusted,
   volumeZScore,
 } from "../src/analysis.mjs";
 
@@ -150,4 +151,17 @@ test("month-end effect separates a planted seasonal pattern from noise", async (
   assert.ok(r.otherDays.meanPct > 0);
   assert.equal(r.monthEnd.negativeShare, 100);
   assert.ok(r.effectSize < -1, "a planted effect should read as large");
+});
+
+test("risk-adjusted return is undefined rather than infinite at zero volatility", () => {
+  assert.ok(Number.isNaN(riskAdjusted(5, 0)), "a zero-vol asset has no meaningful ratio");
+  assert.ok(Number.isNaN(riskAdjusted(NaN, 30)));
+  assert.ok(Number.isNaN(riskAdjusted(5, NaN)));
+});
+
+test("risk-adjusted return ranks the cost of a gain, not just its size", () => {
+  const calm = riskAdjusted(10, 30);
+  const wild = riskAdjusted(12, 90);
+  assert.ok(calm > wild, "a smaller gain at a third of the volatility is the better one");
+  assert.equal(riskAdjusted(-6.96, 59.4).toFixed(3), "-0.117");
 });

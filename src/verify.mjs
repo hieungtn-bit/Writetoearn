@@ -20,6 +20,14 @@ const TOLERANCE = 0.005;
  */
 export const MAX_CASHTAGS = 3;
 
+/**
+ * Ceiling for a long-form article, as opposed to a slot post.
+ *
+ * Generous on purpose. It exists to catch a runaway draft, not to shape one —
+ * the slot word ranges do that job for the formats they belong to.
+ */
+export const ARTICLE_MAX_WORDS = 2500;
+
 const SUFFIXES = { k: 1e3, m: 1e6, b: 1e9 };
 
 /**
@@ -76,6 +84,9 @@ function pushAssetNumbers(push, a) {
   push(a.todayChangePct);
   push(a.dailySigmaPct);
   push(a.sigmaMove);
+  push(a.corr30dToBase);
+  push(a.returnPerVol30d);
+  push(a.rangeWidth30dPct);
 }
 
 /**
@@ -91,6 +102,8 @@ export function collectScreenNumbers(screen) {
     if (typeof n === "number" && Number.isFinite(n)) values.push(Math.abs(n));
   };
   for (const row of screen?.rows ?? []) pushAssetNumbers(push, row);
+  if (screen?.baseRow) pushAssetNumbers(push, screen.baseRow);
+  for (const v of Object.values(screen?.aggregates ?? {})) push(v);
   return values;
 }
 

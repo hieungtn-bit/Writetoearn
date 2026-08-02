@@ -30,7 +30,7 @@ import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "
 import { createDeploy, deployConfigFromEnv, waitForCommitDeploy, waitForDeploy } from "./deploy.mjs";
 import { execFileSync } from "node:child_process";
 import { promptCapturingClient, runTeam } from "./team.mjs";
-import { verifyPost } from "./verify.mjs";
+import { ARTICLE_MAX_WORDS, verifyPost } from "./verify.mjs";
 
 const HELP = `wte — automated publishing for Binance Square
 
@@ -54,6 +54,7 @@ Usage
   wte slots                           The daily schedule + crontab lines
   wte score [--days <n>]              Settle past calls, print the scoreboard
   wte check <draft.txt> [--screen]    Verify a draft against freshly fetched data.
+            [--article] [--max-words <n>]  --article lifts the slot word limit
                                       --screen also traces altcoin figures
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
@@ -601,9 +602,23 @@ async function cmdCheck([file], flags) {
   }
 
   const format = flags.format ?? "positioning";
-  const [, maxWords] = getFormat(format).words;
+  const [, slotMax] = getFormat(format).words;
+
+  // Long-form articles are a different shape from slot posts, and checking one
+  // against a 240-word ceiling produces a failure on every single article. A
+  // gate that always fails on a line you have decided to ignore is a gate you
+  // stop reading, which is how a genuine failure gets published.
+  const maxWords = flags["max-words"]
+    ? Number(flags["max-words"])
+    : flags.article
+      ? ARTICLE_MAX_WORDS
+      : slotMax + 20;
+  if (!Number.isFinite(maxWords) || maxWords < 1) {
+    throw new ValidationError("--max-words needs a positive number.");
+  }
+
   const result = verifyPost(text, brief, {
-    maxWords: maxWords + 20,
+    maxWords,
     minWords: 40,
     screen: screenResult ?? undefined,
   });
