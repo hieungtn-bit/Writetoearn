@@ -1,15 +1,15 @@
 /**
- * Explicit production deploys.
+ * Watching the deploy that a push already started.
  *
- * Vercel decides a deployment's target from the project's *production branch*,
- * which mirrors the GitHub default branch and is only overridable in the
- * dashboard — not through the public API. This repo's work lives on a feature
- * branch, so every push built a Preview and maix8.study kept serving a build
- * from days earlier while `wte ship` reported success. The push was real; the
- * inference that a push means production was not.
+ * www.maix8.study is bound to this branch (`gitBranch` on the domain), so
+ * pushing *is* deploying and nothing here needs to trigger anything. Creating a
+ * second, production-target deployment — which an earlier version of this file
+ * did — would build the same commit twice and produce a deployment the domain
+ * does not even follow.
  *
- * So the deploy stops being a side effect of pushing and becomes something the
- * ship command asks for by name, with the target stated in the request.
+ * What is worth having is confirmation. Publishing to Square and walking away
+ * from a build that failed is how the live site fell days behind the feed, and
+ * a failed build looks exactly like a successful one from the shell.
  */
 
 import { ValidationError } from "./errors.mjs";
@@ -44,16 +44,20 @@ export function apiUrl(pathname, teamId) {
 }
 
 /**
- * Queues a production build of one commit and returns the deployment.
+ * Queues a build of one commit and returns the deployment.
+ *
+ * No `target` is sent, deliberately. The domain follows this *branch*, so a
+ * branch-target build is the one that reaches the live site; asking for
+ * `production` would build something the domain ignores.
  *
  * `sha` is passed explicitly rather than letting Vercel resolve the branch
  * head: between `git push` and this call the branch can move, and deploying
  * "whatever is on the branch now" would silently ship a different commit than
  * the one just published to Square.
  */
-export async function createProductionDeploy(config, { ref, sha }, { fetchImpl = fetch } = {}) {
-  if (!ref) throw new ValidationError("A production deploy needs a git ref.");
-  if (!sha) throw new ValidationError("A production deploy needs a commit sha.");
+export async function createDeploy(config, { ref, sha }, { fetchImpl = fetch } = {}) {
+  if (!ref) throw new ValidationError("A deploy needs a git ref.");
+  if (!sha) throw new ValidationError("A deploy needs a commit sha.");
 
   const res = await fetchImpl(apiUrl("/v13/deployments", config.teamId), {
     method: "POST",
@@ -64,7 +68,6 @@ export async function createProductionDeploy(config, { ref, sha }, { fetchImpl =
     body: JSON.stringify({
       name: config.project,
       project: config.project,
-      target: "production",
       gitSource: { type: "github", repoId: config.repoId, ref, sha },
     }),
   });
@@ -73,6 +76,64 @@ export async function createProductionDeploy(config, { ref, sha }, { fetchImpl =
   if (body.error) throw new ValidationError(`Vercel refused the deploy: ${body.error.message}`);
   if (!body.id) throw new ValidationError("Vercel accepted the request but returned no deployment id.");
   return { id: body.id, url: body.url ?? null, readyState: body.readyState ?? "QUEUED" };
+}
+
+/**
+ * Finds the build Vercel started for a commit, or null if it has not appeared.
+ *
+ * The git webhook takes a few seconds, so "not found" early on means "not
+ * yet", not "never" — the caller polls rather than concluding anything.
+ */
+export async function findDeployForCommit(config, sha, { fetchImpl = fetch, limit = 10 } = {}) {
+  const scope = config.teamId ? `&teamId=${encodeURIComponent(config.teamId)}` : "";
+  const res = await fetchImpl(
+    `${API}/v6/deployments?projectId=${encodeURIComponent(config.project)}&limit=${limit}${scope}`,
+    { headers: { Authorization: `Bearer ${config.token}` } },
+  );
+  const body = await res.json();
+  if (body.error) throw new ValidationError(`Vercel: ${body.error.message}`);
+
+  const match = (body.deployments ?? []).find((d) => d.meta?.githubCommitSha === sha);
+  if (!match) return null;
+  return { id: match.uid, readyState: match.state ?? match.readyState ?? "QUEUED", url: match.url ?? null };
+}
+
+/**
+ * Waits for the push-triggered build of `sha` to finish.
+ *
+ * Two waits in one: for the webhook to produce a deployment at all, then for
+ * that deployment to settle. A build that never appears is reported as
+ * NOT_FOUND rather than as a failure — the likely cause is the git integration,
+ * not the commit, and saying "deploy failed" would send someone to the wrong
+ * place.
+ */
+export async function waitForCommitDeploy(
+  config,
+  sha,
+  { fetchImpl = fetch, intervalMs = 5000, timeoutMs = 300000, sleep = defaultSleep, now = Date.now, onState } = {},
+) {
+  const deadline = now() + timeoutMs;
+  let found = null;
+
+  while (now() < deadline) {
+    found = await findDeployForCommit(config, sha, { fetchImpl });
+    if (found) break;
+    await sleep(intervalMs);
+  }
+  if (!found) return { id: null, readyState: "NOT_FOUND", url: null };
+
+  if (TERMINAL.has(found.readyState)) {
+    onState?.(found);
+    return found;
+  }
+  return waitForDeploy(config, found.id, {
+    fetchImpl,
+    intervalMs,
+    timeoutMs: Math.max(0, deadline - now()),
+    sleep,
+    now,
+    onState,
+  });
 }
 
 /** Current state of a deployment. */

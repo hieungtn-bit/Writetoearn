@@ -3,9 +3,11 @@ import { test } from "node:test";
 
 import {
   apiUrl,
-  createProductionDeploy,
+  createDeploy,
   deployConfigFromEnv,
+  findDeployForCommit,
   readDeploy,
+  waitForCommitDeploy,
   waitForDeploy,
 } from "../src/deploy.mjs";
 
@@ -52,13 +54,13 @@ test("team scope is carried on the query string", () => {
   );
 });
 
-test("the request states production and pins the exact commit", async () => {
+test("no target is requested — the domain follows the branch, not production", async () => {
   const fetchImpl = stubFetch([{ id: "dpl_1", url: "x.vercel.app", readyState: "INITIALIZING" }]);
-  const out = await createProductionDeploy(CONFIG, { ref: "feature", sha: "abc123" }, { fetchImpl });
+  const out = await createDeploy(CONFIG, { ref: "feature", sha: "abc123" }, { fetchImpl });
 
   assert.equal(out.id, "dpl_1");
   const body = JSON.parse(fetchImpl.calls[0].init.body);
-  assert.equal(body.target, "production");
+  assert.equal(body.target, undefined, "a production build is one the live domain ignores");
   assert.equal(body.gitSource.ref, "feature");
   assert.equal(body.gitSource.sha, "abc123");
   assert.equal(body.gitSource.repoId, 42);
@@ -67,15 +69,15 @@ test("the request states production and pins the exact commit", async () => {
 
 test("a ref or sha is required — deploying an unknown commit is worse than failing", async () => {
   const fetchImpl = stubFetch([]);
-  await assert.rejects(() => createProductionDeploy(CONFIG, { sha: "abc" }, { fetchImpl }), /git ref/);
-  await assert.rejects(() => createProductionDeploy(CONFIG, { ref: "main" }, { fetchImpl }), /commit sha/);
+  await assert.rejects(() => createDeploy(CONFIG, { sha: "abc" }, { fetchImpl }), /git ref/);
+  await assert.rejects(() => createDeploy(CONFIG, { ref: "main" }, { fetchImpl }), /commit sha/);
   assert.equal(fetchImpl.calls.length, 0);
 });
 
 test("an API error surfaces its message instead of a missing id", async () => {
   const fetchImpl = stubFetch([{ error: { code: "forbidden", message: "Not authorized" } }]);
   await assert.rejects(
-    () => createProductionDeploy(CONFIG, { ref: "main", sha: "abc" }, { fetchImpl }),
+    () => createDeploy(CONFIG, { ref: "main", sha: "abc" }, { fetchImpl }),
     /Not authorized/,
   );
 });
@@ -83,9 +85,69 @@ test("an API error surfaces its message instead of a missing id", async () => {
 test("a response with neither error nor id is treated as a failure", async () => {
   const fetchImpl = stubFetch([{}]);
   await assert.rejects(
-    () => createProductionDeploy(CONFIG, { ref: "main", sha: "abc" }, { fetchImpl }),
+    () => createDeploy(CONFIG, { ref: "main", sha: "abc" }, { fetchImpl }),
     /no deployment id/,
   );
+});
+
+test("a commit is matched by sha, not by being the newest build", async () => {
+  const fetchImpl = stubFetch([
+    {
+      deployments: [
+        { uid: "dpl_new", state: "BUILDING", meta: { githubCommitSha: "other" } },
+        { uid: "dpl_mine", state: "READY", meta: { githubCommitSha: "abc123" } },
+      ],
+    },
+  ]);
+  const found = await findDeployForCommit(CONFIG, "abc123", { fetchImpl });
+  assert.equal(found.id, "dpl_mine");
+});
+
+test("a commit with no build yet reads as absent, not as an error", async () => {
+  const fetchImpl = stubFetch([{ deployments: [] }]);
+  assert.equal(await findDeployForCommit(CONFIG, "abc123", { fetchImpl }), null);
+});
+
+test("waiting tolerates the webhook being slow to create the build", async () => {
+  const fetchImpl = stubFetch([
+    { deployments: [] },
+    { deployments: [] },
+    { deployments: [{ uid: "dpl_1", state: "READY", meta: { githubCommitSha: "abc123" } }] },
+  ]);
+  const final = await waitForCommitDeploy(CONFIG, "abc123", { fetchImpl, sleep: async () => {} });
+  assert.equal(final.readyState, "READY");
+  assert.equal(final.id, "dpl_1");
+});
+
+test("a build that never appears is NOT_FOUND, which points at the integration", async () => {
+  const fetchImpl = stubFetch(Array.from({ length: 50 }, () => ({ deployments: [] })));
+  let clock = 0;
+  const final = await waitForCommitDeploy(CONFIG, "abc123", {
+    fetchImpl,
+    intervalMs: 1000,
+    timeoutMs: 3000,
+    now: () => clock,
+    sleep: async (ms) => {
+      clock += ms;
+    },
+  });
+  assert.equal(final.readyState, "NOT_FOUND");
+});
+
+test("a build found mid-flight is followed to its terminal state", async () => {
+  const fetchImpl = stubFetch([
+    { deployments: [{ uid: "dpl_1", state: "BUILDING", meta: { githubCommitSha: "abc123" } }] },
+    { readyState: "BUILDING" },
+    { readyState: "ERROR" },
+  ]);
+  const seen = [];
+  const final = await waitForCommitDeploy(CONFIG, "abc123", {
+    fetchImpl,
+    sleep: async () => {},
+    onState: (s) => seen.push(s.readyState),
+  });
+  assert.equal(final.readyState, "ERROR");
+  assert.deepEqual(seen, ["BUILDING", "ERROR"], "the state is announced once per change");
 });
 
 test("polling stops at the first terminal state", async () => {

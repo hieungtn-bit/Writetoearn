@@ -27,7 +27,7 @@ import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
 import { DEFAULT_DAYS, formatStage, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
-import { createProductionDeploy, deployConfigFromEnv, waitForDeploy } from "./deploy.mjs";
+import { createDeploy, deployConfigFromEnv, waitForCommitDeploy, waitForDeploy } from "./deploy.mjs";
 import { execFileSync } from "node:child_process";
 import { promptCapturingClient, runTeam } from "./team.mjs";
 import { verifyPost } from "./verify.mjs";
@@ -59,9 +59,9 @@ Usage
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte site [--out <dir>]              Build the indexable research site
   wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
-           [--cover <img>] [--slug <s>]  commit, push and deploy production
+           [--cover <img>] [--slug <s>]  commit and push. The push deploys.
            [--no-push] [--dry-run]
-  wte deploy [--ref <b>] [--sha <c>]  Rebuild the current commit as production
+  wte deploy [--ref <b>] [--sha <c>]  Rebuild the live site from this commit
   wte team [--format <f>] [--dry-run] Full daily run: analyst picks the angle,
                                       writer drafts, checker + critic gate it
 
@@ -886,54 +886,58 @@ async function cmdShip([file], flags, argv) {
     return 1;
   }
 
-  await promoteToProduction({ ref: branch, sha });
+  await confirmDeployed(sha);
   return 0;
 }
 
 /**
- * Waits for the pushed commit to be live.
+ * Waits for the build the push already started.
  *
- * The push alone is now enough: www.maix8.study is bound to this branch, so
- * Vercel builds and re-aliases on every push without being asked. What this
- * adds is *confirmation* — publishing to Square and then walking away from a
- * build that failed is how the site fell days behind the feed before, and a
- * green line here is the difference between believing it worked and knowing.
+ * The push is the deploy — www.maix8.study follows this branch — so there is
+ * nothing to trigger. What this adds is knowing it went green, because
+ * publishing to Square and walking away from a failed build is how the site
+ * fell days behind the feed, and from the shell the two look identical.
  *
- * So a missing token is not an error. It costs the confirmation, not the
- * deploy.
+ * A missing token costs the confirmation, not the deploy. It is not an error.
  */
-async function promoteToProduction({ ref, sha }) {
+async function confirmDeployed(sha) {
   const config = deployConfigFromEnv();
   if (!config) {
-    console.log("  Site: pushed — Vercel is building it. No VERCEL_TOKEN, so not waiting to confirm.");
+    console.log("  Site: pushed — Vercel builds it automatically. No VERCEL_TOKEN, so not waiting to confirm.");
     return;
   }
 
   try {
-    const created = await createProductionDeploy(config, { ref, sha });
-    console.log(`  Site: production build queued (${created.id})`);
-    const final = await waitForDeploy(config, created.id, {
+    console.log("  Site: waiting for the build Vercel started");
+    const final = await waitForCommitDeploy(config, sha, {
       onState: (s) => console.log(`        ${s.readyState.toLowerCase()}`),
     });
 
     if (final.readyState === "READY") console.log("  Site: live at https://maix8.study/");
-    else if (final.readyState === "TIMEOUT") console.log("  Site: still building — check back in a minute");
-    else console.error(`  Site: deploy ${final.readyState.toLowerCase()} — check the Vercel dashboard`);
+    else if (final.readyState === "TIMEOUT") console.log("  Site: still building — it will finish on its own");
+    else if (final.readyState === "NOT_FOUND") {
+      console.error("  Site: Vercel never started a build for this commit — check the Git integration");
+    } else console.error(`  Site: build ${final.readyState.toLowerCase()} — check the Vercel dashboard`);
   } catch (err) {
-    // The post and the commit are already safe; a failed deploy is recoverable
-    // by re-running, so it should not read like the publish went wrong.
-    console.error(`  Site: deploy failed — ${err.message}`);
-    console.error("        The post is live and the commit is pushed. Re-run `wte deploy` to retry.");
+    // The post and the commit are already safe, and the build runs whether or
+    // not this check succeeds, so a failure here is about visibility only.
+    console.error(`  Site: could not confirm the build — ${err.message}`);
+    console.error("        The post is live and the commit is pushed; the build is running regardless.");
   }
 }
 
-/** Rebuilds the current commit as production, without publishing anything. */
+/**
+ * Rebuilds the current commit without publishing anything.
+ *
+ * For changes that alter the rendered site but carry no post — a template edit,
+ * a refreshed lesson snapshot — where there is no push to ride on.
+ */
 async function cmdDeploy(flags) {
   const config = deployConfigFromEnv();
   if (!config) {
     throw new ValidationError(
       "No VERCEL_TOKEN in the environment. Create one at vercel.com/account/tokens " +
-        "and export it before running this.",
+        "and export it before running this. A plain `git push` also deploys.",
     );
   }
 
@@ -941,8 +945,8 @@ async function cmdDeploy(flags) {
   const ref = flags.ref ? String(flags.ref) : git("rev-parse", "--abbrev-ref", "HEAD");
   const sha = flags.sha ? String(flags.sha) : git("rev-parse", "HEAD");
 
-  console.log(`Deploying ${ref} @ ${sha.slice(0, 7)} to production`);
-  const created = await createProductionDeploy(config, { ref, sha });
+  console.log(`Deploying ${ref} @ ${sha.slice(0, 7)}`);
+  const created = await createDeploy(config, { ref, sha });
   console.log(`  queued ${created.id}`);
   const final = await waitForDeploy(config, created.id, {
     onState: (s) => console.log(`  ${s.readyState.toLowerCase()}`),
