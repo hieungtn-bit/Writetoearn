@@ -283,6 +283,9 @@ export async function analyzeAsset(symbol, { fetchImpl = globalThis.fetch, candl
     sma20: sma(closes, 20),
     sma50: sma(closes, 50),
     volumeZScore: volumeZScore(volumes, 30),
+    /** Mean daily turnover over the trailing 30 completed days. */
+    avgQuoteVolume30d: volumes.length > 30 ? mean(volumes.slice(-31, -1)) : NaN,
+    quoteVolumeLatest: volumes.at(-1),
     rangeCompressionPct: rangeCompression(daily),
     returns: logReturns(closes.slice(-31)),
   };

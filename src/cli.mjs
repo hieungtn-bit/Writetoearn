@@ -25,6 +25,7 @@ import { composePost } from "./compose.mjs";
 import { FORMATS, crontabLines, getFormat } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
+import { formatPulse, pulse } from "./pulse.mjs";
 import { DEFAULT_DAYS, formatStage, normalizeSymbol, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
@@ -62,6 +63,7 @@ Usage
             [--hourly <SYM,...>]        --hourly an intraday candle series,
             [--stage <SYM,...>]         --stage the move-stage metrics
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
+  wte pulse [--min-volume <n>]        Scan every USDT pair for today's real event
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte site [--out <dir>]              Build the indexable research site
   wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
@@ -124,6 +126,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdSlots(flags);
     case "screen":
       return cmdScreen(flags);
+    case "pulse":
+      return cmdPulse(flags);
     case "stage":
       return cmdStage(rest, flags);
     case "site":
@@ -628,9 +632,13 @@ async function cmdCheck([file], flags) {
       ? screen(screenSymbols, { onProgress: (p) => process.stderr.write(`\rscreening ${p}   `) })
       : Promise.resolve(null),
     Promise.all(
-      hourlySymbols.map((sym) =>
+      // Both resolutions: an intraday argument is almost always framed against
+      // the daily series, and fetching one without the other leaves half the
+      // post unverifiable.
+      hourlySymbols.flatMap((sym) => [
         fetchKlines(sym, { interval: String(flags.interval ?? "1h"), limit: 200 }).catch(() => []),
-      ),
+        fetchKlines(sym, { interval: "1d", limit: 120 }).catch(() => []),
+      ]),
     ),
     Promise.all(stageSymbols.map((sym) => stageOf(sym).catch(() => null))),
   ]);
@@ -1040,6 +1048,26 @@ async function cmdSlots(flags) {
   console.log("\nCrontab:\n");
   for (const line of crontabLines(process.cwd(), process.execPath)) console.log(`  ${line}`);
   console.log(`\n  0 9 * * 1 cd ${process.cwd()} && ${process.execPath} bin/wte.mjs score >> wte.log 2>&1`);
+  return 0;
+}
+
+/**
+ * Scans the whole venue for the day's actual event.
+ *
+ * The fixed 26-pair screen is the right tool for research and the wrong one for
+ * relevance: the highest-reach posts on the large Square accounts were about a
+ * pair that screen has never covered. This looks where the move is.
+ */
+async function cmdPulse(flags) {
+  const result = await pulse({
+    minVolume: flags["min-volume"] ? Number(flags["min-volume"]) : undefined,
+    limit: flags.top ? Number(flags.top) : undefined,
+  });
+  if (flags.json) {
+    print(result, flags);
+    return 0;
+  }
+  console.log(formatPulse(result));
   return 0;
 }
 

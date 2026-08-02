@@ -80,6 +80,8 @@ function pushAssetNumbers(push, a) {
   push(a.sma20);
   push(a.sma50);
   push(a.volumeZScore);
+  push(a.avgQuoteVolume30d);
+  push(a.quoteVolumeLatest);
   push(a.rangeCompressionPct);
   push(a.todayChangePct);
   push(a.dailySigmaPct);
