@@ -1,0 +1,82 @@
+"It is consolidating." "A base is forming." "Volume is drying up before the move."
+
+Every scan I am sent says some version of that about something. So I measured the sentence: across 24,838 pair-days on 78 liquid pairs, how often is a chart actually compressed, and what happens next?
+
+The answer is that compression is not a signal. It is the weather.
+
+
+HOW SPECIAL IS A TIGHT RANGE?
+
+I define it the boring way: the last 7 days' high-to-low span as a share of the last 30 days' span. Below 35% and the chart is coiling by any reasonable reading.
+
+**32.4% of all pair-days qualify.** The median day across the whole sample sits at 43.9%.
+
+Roughly one day in three, on a randomly chosen coin, looks like a base. That is the denominator nobody puts in the table. A description that fits a third of the market on a third of the days is not evidence about any particular coin.
+
+
+DOES IT PREDICT ANYTHING?
+
+Chance of a +30% move within 10 days:
+
+  all days          █████████ 10.3%
+  compressed        ██████████ 11.4%
+  not compressed    █████████ 9.8%
+
+A lift of 1.11x. At five days it is 1.07x.
+
+Now the part that decides whether that is real. These are daily observations with a 10-day forward window, so each one shares nine days out of ten with its neighbour. The raw counts are not independent evidence. Dividing by the horizon gives roughly 805 independent compressed observations against 1679 loose ones.
+
+On that basis the gap is 1.62 percentage points with a standard error of 1.34 — **1.22 standard deviations.**
+
+That does not clear any bar I would use. Compression, on its own, is indistinguishable from nothing.
+
+
+WHAT DOES CLEAR THE BAR
+
+Same sample, same window, the volume signal from my study yesterday — turnover 3.5 standard deviations above a pair's own normal:
+
+  all days          █████████ 10.3%
+  volume signal     ████████████████████ 22.4%
+
+2.17x, from 718 signals. That is a different order of thing entirely, and it is the exact opposite reading: not volume drying up, but volume arriving.
+
+It fits what the reference coins actually did. The day before their largest gains, $BANK, GIGGLE and ENA had volume z-scores of 7.08, 3.85 and 4.73. Not one of them was quiet.
+
+
+THE NUMBER I AM NOT GOING TO LET YOU USE
+
+Combine them — compressed **and** volume firing — and the hit rate goes to 42.3%.
+
+That is the most exciting figure in this post and you should trust it least. It rests on **26 observations**. De-overlapped, that is fewer than three independent events.
+
+I am showing it because leaving it out would be its own kind of dishonesty, and because this is what a promising result looks like before it has earned anything: a big number attached to a sample that cannot carry it. Every scan that quotes a rate without a count is doing the same thing and not telling you.
+
+Note also that the combination has the *worst* median close of any bucket here, at -5.26% against -2.52% for a random day. Higher tail, worse middle — the same shape as every other edge in this market.
+
+
+A LIVE EXAMPLE OF THE MISTAKE
+
+A scan reached me today recommending $MORPHO as "range-bound, base forming, volume contracting", scoring it the closest of its picks to the ENA setup.
+
+The description is accurate. MORPHO's 7-day span is 27.6% of its 30-day span — genuinely compressed, in that 32.4% of the market. Price has gone -0.20% in thirty days.
+
+But its volume z-score is -0.95 and three-day participation is running -75.2% against the days before it. ENA's was +63.70% the day before it ran. Those have opposite signs.
+
+$INJ, the same scan's second pick, described as an "early base", is not even compressed: 61.5% of its 30-day span, above the threshold entirely. Its volume z-score is -1.03.
+
+Neither has the thing that mattered. Both have the thing that does not.
+
+
+BIAS: WAIT
+
+On both, and on the whole idea. Compression tells you a move will eventually be *larger* relative to the recent range, because a spring that is coiled has further to travel. It tells you nothing about when, and nothing about direction, and by this measurement almost nothing about probability.
+
+If you want to use a base, use it as a place to size from once something else fires — not as the reason to be there. The thing that fires is participation, and it shows up in turnover before it shows up in a pattern.
+
+So the next time a scan tells you a coin is consolidating, ask the only question that separates the claim from the weather: compared with what?
+
+Method, reproducible: 7-day span over 30-day span, threshold 35%, forward windows 5 and 10 days, win threshold +30%, 78 pairs, 24,838 observations, live candles excluded throughout.
+
+Educational research, not financial advice. DYOR.
+
+$MORPHO $INJ $BANK #WriteToEarn #BinanceSquare

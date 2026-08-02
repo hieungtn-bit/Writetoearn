@@ -10,6 +10,26 @@
   },
   "articles": [
     {
+      "slug": "compression-is-weather",
+      "draft": "39-compression-is-weather.txt",
+      "title": "A Third of All Charts Are 'Building a Base' Right Now. I Measured What That Is Worth.",
+      "description": "\"It is consolidating.\" \"A base is forming.\" \"Volume is drying up before the move.\"",
+      "published": "2026-08-02T05:34:17.069Z",
+      "assets": [
+        "BANK",
+        "MORPHO",
+        "INJ"
+      ],
+      "topics": [
+        "range compression",
+        "base rates",
+        "overlapping windows",
+        "statistical significance",
+        "scanners"
+      ],
+      "squareId": 351263364321042
+    },
+    {
       "slug": "auditing-four-tokens",
       "draft": "38-auditing-four-tokens.txt",
       "title": "A Ranked Table Put AIXBT First for Looking Like $BANK. Its Volume Reads Below Average.",
