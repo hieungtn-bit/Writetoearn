@@ -132,10 +132,23 @@ bound directly to this branch (`gitBranch` on the domain), so **any push
 deploys the live site**, whatever Vercel labels the target. Nothing to
 configure, no token needed, no dashboard step.
 
-Two details that make it safe: deployment protection is
-`all_except_custom_domains`, so a custom domain stays public even on a
-branch-target deployment; and the project carries no environment variables, so
-a branch build and a production build are byte-identical.
+Getting there took one wrong turn worth recording. Protection was set to
+`all_except_custom_domains`, which reads as "a custom domain is always public".
+It is not: the exemption applies to **production** deployments only. Binding the
+domain to a branch put Vercel's SSO login in front of www.maix8.study for about
+three minutes until the binding was removed and production redeployed.
+
+So deployment protection is now **off** for this project. That is a real
+trade-off, stated plainly: every preview URL is world-readable. It is
+acceptable here because the build output is a public research site with no
+secrets and the project carries no environment variables — which also means a
+branch build and a production build are byte-identical. Vercel sends
+`x-robots-tag: noindex` on preview URLs and not on the live domain, so the
+duplicates stay out of search.
+
+If this repo ever gains an environment variable or anything private, that
+calculation changes and the protection has to come back — at which point the
+deploy has to go back through `wte deploy` with a token.
 
 With `VERCEL_TOKEN` exported, `ship` additionally *waits* and confirms the
 build went green instead of assuming it. Worth doing; not required.
