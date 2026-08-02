@@ -259,3 +259,20 @@ test("verifyPost names the screen in its failure message when one was searched",
     `expected the screen to be named, got: ${result.problems.join("; ")}`,
   );
 });
+
+test("a market post without a bias is unscoreable and fails", async () => {
+  const { verifyStructure } = await import("../src/verify.mjs");
+  const text = "$BTC looks interesting here. What do you think? Not financial advice. #tag";
+  const r = verifyStructure(text, { minWords: 5 });
+  assert.ok(r.problems.some((p) => p.includes("no bias")));
+});
+
+test("a profile post may skip the bias, but only when asked explicitly", async () => {
+  const { verifyStructure } = await import("../src/verify.mjs");
+  const text = "Here is what this account does and why. Want the receipts? Not financial advice. #tag";
+  assert.ok(verifyStructure(text, { minWords: 5 }).problems.some((p) => p.includes("no bias")));
+  assert.equal(
+    verifyStructure(text, { minWords: 5, requireBias: false }).problems.some((p) => p.includes("no bias")),
+    false,
+  );
+});

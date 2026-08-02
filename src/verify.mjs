@@ -286,7 +286,7 @@ export function verifyNoForbiddenClaims(text, brief) {
  * Structural requirements from the post spec, checked before anything is sent.
  * @returns {{ok: boolean, problems: string[], words: number}}
  */
-export function verifyStructure(text, { maxWords = 220, minWords = 40 } = {}) {
+export function verifyStructure(text, { maxWords = 220, minWords = 40, requireBias = true } = {}) {
   const problems = [];
   const words = text.trim().split(/\s+/).filter(Boolean).length;
 
@@ -310,7 +310,13 @@ export function verifyStructure(text, { maxWords = 220, minWords = 40 } = {}) {
   // The scoreboard parses the bias out of the published text, so a post
   // without one is unscoreable — it silently drops out of the track record
   // the whole channel is built on.
-  if (!/selective\s+long|selective\s+short|\bWAIT\b/i.test(text)) {
+  //
+  // A profile or announcement post makes no market claim, so there is nothing
+  // for the scoreboard to settle and demanding a bias would only produce a
+  // decorative one. That exemption is opt-in and narrow on purpose: the day it
+  // becomes a convenient way to skip the rule on a real call, the track record
+  // stops meaning anything.
+  if (requireBias && !/selective\s+long|selective\s+short|\bWAIT\b/i.test(text)) {
     problems.push("no bias stated (WAIT / Selective Long / Selective Short)");
   }
 

@@ -62,6 +62,7 @@ Usage
             [--funding <INST,...>]      --funding traces funding history,
             [--hourly <SYM,...>]        --hourly an intraday candle series,
             [--stage <SYM,...>]         --stage the move-stage metrics
+            [--no-call]                 profile/announcement post: no bias needed
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
   wte pulse [--min-volume <n>]        Scan every USDT pair for today's real event
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
@@ -672,6 +673,8 @@ async function cmdCheck([file], flags) {
   const result = verifyPost(text, brief, {
     maxWords,
     minWords: 40,
+    // Only a post that states no market view may skip the bias requirement.
+    requireBias: !flags["no-call"],
     screen: screenResult ?? undefined,
     candles: candles.length ? candles : undefined,
     stages: stageRows.length ? stageRows : undefined,
