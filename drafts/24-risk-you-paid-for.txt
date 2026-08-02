@@ -1,0 +1,73 @@
+21 of the 26 altcoin pairs I screen are down over the past week. That is the easy observation, and it is nearly useless, because it does not tell you whether owning any of them was a mistake.
+
+The question worth answering is different: over the last 30 days, did the extra risk an altcoin charged you actually buy anything, compared with doing nothing clever and holding $BTC?
+
+I measured all 26 against that benchmark. The answer is not subtle.
+
+
+THE THREE NUMBERS
+
+**All 26 of the 26 pairs carried more volatility than BTC.** Not most. All of them. The median pair ran 54.4% annualised realised volatility against BTC's 29.1% — 1.87x the risk.
+
+**Only 6 of 26 beat BTC's 30-day return.** BTC returned +0.65%. The median pair returned -10.30%.
+
+**The median correlation to BTC is 0.65.** So the extra risk was not independent risk. It moved with the thing you already owned.
+
+Put those together and you get the shape of this market: the board charged 1.87x the volatility, delivered a worse return, and did it in the same direction as BTC. That is not diversification. It is leverage that nobody quoted you a rate on.
+
+
+RETURN PER UNIT OF RISK
+
+Divide 30-day return by annualised volatility and you can rank what each pair paid for the risk it took. Not a Sharpe ratio — no risk-free rate, and the horizons differ — so read it only as a ranking, and only against the same benchmark measured the same way.
+
+  PAIR       30d ret    vol30d   corr    r/v
+  BTC       +0.65%    29.1%   1.00    0.022
+
+Best three:
+  UNI      +29.04%    64.8%   0.45    0.448
+  PUMP     +37.46%   111.9%   0.07    0.335
+  AAVE      +4.05%    72.5%   0.73    0.056
+
+Worst three:
+  WLD      -29.00%    73.9%   0.50   -0.392
+  OP       -22.13%    51.3%   0.74   -0.431
+  ATOM     -22.86%    36.2%   0.75   -0.632
+
+Only 5 of 26 pairs beat BTC on this measure. ATOM is the extreme, and not for the reason you would guess: at 36.2% its volatility is *below* the board median of 54.4%. It ranks last because it returned -22.86% without even the excuse of being wild. A quiet chart is not a safe one.
+
+ATOM also carries a 0.75 correlation to BTC — and BTC finished the same 30 days at +0.65%. Sit with that pair of numbers. Correlation measures whether two things move together day to day. It says nothing about where they end up. You can be tightly correlated to an asset that went nowhere and still lose more than a fifth of your money.
+
+
+THE PART THAT WOULD BE EASY TO GET WRONG
+
+Look at the top of that table and an obvious story suggests itself. The two pairs far ahead of everything else, UNI and PUMP, carry correlations to BTC of 0.45 and 0.07, both among the seven loosest links on the board. Decoupled assets won. Go find decoupled assets.
+
+I checked it, and it does not hold. Of the seven least-correlated pairs on the board, 5 lost money over the same 30 days — including TON at -15.57% and JUP at -20.03%.
+
+Low correlation did not buy you returns. It bought you *dispersion* — a wider spread of outcomes in both directions. Those are different things, and the difference is the entire reason a backtest built on the first reading would have lost money.
+
+This is the failure mode I keep coming back to: two variables move together in a small sample, a mechanism gets invented to explain it, and nobody checks the cases where the mechanism should have applied and did not.
+
+
+WHY 30 DAYS AND NOT TODAY
+
+Earlier today I published that the board-wide collapse in volume readings is largely a calendar artifact — it is Sunday, weekend turnover runs structurally below weekday turnover, and a z-score that compares a Sunday against a blended baseline prints negative for reasons that have nothing to do with conviction.
+
+Everything above is deliberately immune to that. A 30-day return and a 30-day volatility span at least four full weekends each. Whatever the calendar does to a single day washes out of a window that size. I would not publish a market-wide conclusion today that rested on today's candle.
+
+For the majors, spot is BTC at $62,990.39 and ETH at $1,856.37. I re-measured the compression I wrote about yesterday rather than assuming it held: BTC's 30-day range is 9.2% wide, and not one rolling 30-day window in the full daily history I fetch is narrower. It has not resolved.
+
+And one correction to the framing, because BTC is not the whole benchmark. $ETH returned +5.58% over the same 30 days on 39.9% volatility — an r/v of 0.140, against BTC's 0.022. The large cap that paid best for its risk this month was not Bitcoin. That is a real result and it cuts against the simplest reading of everything above.
+
+
+BIAS: WAIT
+
+Not a call on direction. The measurement above is about *allocation*, and it says something narrower than a forecast: over the last 30 days the alt board asked 1.87x the volatility of BTC and paid a median -10.30% for it, while moving 0.65 with BTC anyway.
+
+What would change this reading is dispersion that persists — a stretch where the correlation column falls and the r/v column stays positive for the same names. Two pairs doing it for 30 days is not that. It is the sample size at which stories get invented.
+
+Three process notes, because the numbers above are only as good as their construction. Volatility is annualised from 30 daily closes. Correlation uses 30 daily log returns against BTC over the same window. And the endpoint of every 30-day return is the live price, so these figures move while you read them — which is exactly why the argument rests on a ranking rather than on any single decimal. I also cannot see open interest or long/short positioning from this host, so nothing here is informed by positioning data.
+
+Educational research, not financial advice. DYOR.
+
+$BTC $ETH $ATOM #WriteToEarn #BinanceSquare

@@ -10,6 +10,25 @@
   },
   "articles": [
     {
+      "slug": "risk-you-paid-for",
+      "draft": "24-risk-you-paid-for.txt",
+      "title": "All 26 Altcoins I Screen Carried More Risk Than BTC. Six Beat It.",
+      "description": "21 of the 26 altcoin pairs I screen are down over the past week. That is the easy observation, and it is nearly useless, because it does not tell you whether owning any of them was a mistake.",
+      "published": "2026-08-02T01:50:19.263Z",
+      "assets": [
+        "BTC",
+        "ETH",
+        "ATOM"
+      ],
+      "topics": [
+        "risk-adjusted return",
+        "correlation",
+        "portfolio construction",
+        "market breadth"
+      ],
+      "squareId": 351208321817762
+    },
+    {
       "slug": "weekend-volume-effect",
       "draft": "23-weekend-volume-effect.txt",
       "title": "20 of 26 Alts Look Like Capitulation. It Is Sunday, and That Explains Most of It.",
