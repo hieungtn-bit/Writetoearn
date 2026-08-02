@@ -20,11 +20,12 @@ import { STATUS, Store, utcDayKey } from "./store.mjs";
 import { runLoop, runOnce } from "./worker.mjs";
 import { probeDurationSeconds } from "./media.mjs";
 import { collectBrief, formatBrief } from "./market.mjs";
+import { fetchKlines } from "./analysis.mjs";
 import { composePost } from "./compose.mjs";
 import { FORMATS, crontabLines, getFormat } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
-import { DEFAULT_DAYS, formatStage, stageOf } from "./stage.mjs";
+import { DEFAULT_DAYS, formatStage, normalizeSymbol, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
 import { createDeploy, deployConfigFromEnv, waitForCommitDeploy, waitForDeploy } from "./deploy.mjs";
@@ -53,9 +54,13 @@ Usage
                                       verify, publish. For cron.
   wte slots                           The daily schedule + crontab lines
   wte score [--days <n>]              Settle past calls, print the scoreboard
-  wte check <draft.txt> [--screen]    Verify a draft against freshly fetched data.
+  wte check <draft.txt>               Verify a draft against freshly fetched data.
+            [--screen [SYM,...]]        --screen traces altcoin figures; name
+                                      symbols to skip the full 26-pair fetch
             [--article] [--max-words <n>]  --article lifts the slot word limit
-                                      --screen also traces altcoin figures
+            [--funding <INST,...>]      --funding traces funding history,
+            [--hourly <SYM,...>]        --hourly an intraday candle series,
+            [--stage <SYM,...>]         --stage the move-stage metrics
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte site [--out <dir>]              Build the indexable research site
@@ -586,12 +591,51 @@ async function cmdCheck([file], flags) {
   // The screen is a second fetch over 26 more pairs, so it is opt-in: a post
   // about the majors should not pay for it, and a post about the wider board
   // is unverifiable without it.
-  const [brief, screenResult] = await Promise.all([
-    collectBrief({ newsHours: 24 }),
+  // Funding history is fetched only for the instruments a draft actually cites.
+  // The default pair covers the majors; a post about an alt's funding needs the
+  // instrument named, exactly as an alt price figure needs --screen.
+  const fundingInstIds = ["BTC-USDT-SWAP", "ETH-USDT-SWAP"];
+  if (flags.funding) {
+    for (const id of String(flags.funding).split(",").map((s) => s.trim()).filter(Boolean)) {
+      const instId = id.includes("-") ? id.toUpperCase() : `${id.toUpperCase()}-USDT-SWAP`;
+      if (!fundingInstIds.includes(instId)) fundingInstIds.push(instId);
+    }
+  }
+
+  // Intraday figures need an intraday fetch. Daily candles cannot vouch for an
+  // hourly table, and a post arguing from candle shape must have that evidence
+  // checked like any other.
+  const hourlySymbols = flags.hourly
+    ? String(flags.hourly).split(",").map((s) => s.trim()).filter(Boolean).map(normalizeSymbol)
+    : [];
+
+  // Screening all 26 pairs takes over a minute, and on a fast-moving asset the
+  // draft's figures drift past the 0.5% tolerance while the check is still
+  // fetching — the gate failing on its own latency rather than on the writing.
+  // Naming the symbols a post actually cites makes the check near-instant.
+  const screenSymbols =
+    typeof flags.screen === "string" && flags.screen !== "true"
+      ? String(flags.screen).split(",").map((x) => x.trim()).filter(Boolean).map(normalizeSymbol)
+      : ALT_UNIVERSE;
+
+  const stageSymbols = flags.stage
+    ? String(flags.stage).split(",").map((x) => x.trim()).filter(Boolean)
+    : [];
+
+  const [brief, screenResult, candleSets, stages] = await Promise.all([
+    collectBrief({ newsHours: 24, fundingInstIds }),
     flags.screen
-      ? screen(ALT_UNIVERSE, { onProgress: (p) => process.stderr.write(`\rscreening ${p}   `) })
+      ? screen(screenSymbols, { onProgress: (p) => process.stderr.write(`\rscreening ${p}   `) })
       : Promise.resolve(null),
+    Promise.all(
+      hourlySymbols.map((sym) =>
+        fetchKlines(sym, { interval: String(flags.interval ?? "1h"), limit: 200 }).catch(() => []),
+      ),
+    ),
+    Promise.all(stageSymbols.map((sym) => stageOf(sym).catch(() => null))),
   ]);
+  const candles = candleSets.flat();
+  const stageRows = (stages ?? []).filter(Boolean);
   if (flags.screen) process.stderr.write("\r");
 
   if (!brief.spot.length) {
@@ -621,6 +665,8 @@ async function cmdCheck([file], flags) {
     maxWords,
     minWords: 40,
     screen: screenResult ?? undefined,
+    candles: candles.length ? candles : undefined,
+    stages: stageRows.length ? stageRows : undefined,
   });
 
   if (flags.json) {

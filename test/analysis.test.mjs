@@ -165,3 +165,21 @@ test("risk-adjusted return ranks the cost of a gain, not just its size", () => {
   assert.ok(calm > wild, "a smaller gain at a third of the volatility is the better one");
   assert.equal(riskAdjusted(-6.96, 59.4).toFixed(3), "-0.117");
 });
+
+test("the daily-move percentile puts a percentage move in its own context", async () => {
+  const { analyzeAsset } = await import("../src/analysis.mjs");
+  const day = 86_400_000;
+  // 60 quiet days of +-0.5%, then a final close 5% above the previous one.
+  const closes = [100];
+  for (let i = 1; i < 60; i++) closes.push(closes[i - 1] * (i % 2 ? 1.005 : 0.995));
+  closes.push(closes.at(-1) * 1.05);
+
+  const candles = closes.map((c, i) => ({
+    openTime: i * day, open: c, high: c, low: c, close: c, volume: 1, quoteVolume: 1,
+  }));
+  const a = await analyzeAsset("TESTUSDT", { candles });
+
+  assert.equal(a.sampleDays, closes.length - 2, "the live day is excluded from its own baseline");
+  assert.equal(a.biggerDayCount, 0, "nothing in a quiet series beats a 5% day");
+  assert.equal(a.dailyMovePercentile, 100);
+});

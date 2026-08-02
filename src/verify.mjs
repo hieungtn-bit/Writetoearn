@@ -84,6 +84,10 @@ function pushAssetNumbers(push, a) {
   push(a.todayChangePct);
   push(a.dailySigmaPct);
   push(a.sigmaMove);
+  push(a.dailyMovePercentile);
+  push(a.biggerDaySharePct);
+  push(a.biggerDayCount);
+  push(a.sampleDays);
   push(a.corr30dToBase);
   push(a.returnPerVol30d);
   push(a.rangeWidth30dPct);
@@ -104,6 +108,60 @@ export function collectScreenNumbers(screen) {
   for (const row of screen?.rows ?? []) pushAssetNumbers(push, row);
   if (screen?.baseRow) pushAssetNumbers(push, screen.baseRow);
   for (const v of Object.values(screen?.aggregates ?? {})) push(v);
+  return values;
+}
+
+/**
+ * Figures from a raw candle series, for posts that argue from intraday shape.
+ *
+ * The brief and the screen are daily-only, so an hourly table is unverifiable
+ * without this — and an article whose whole thesis is "look which candle the
+ * move lives in" cannot have its central evidence go unchecked.
+ *
+ * Each candle contributes its own prices, its turnover and its own percent
+ * change. Spans *between* candles are deliberately not included: allowing every
+ * pairwise combination would add thousands of values and turn the gate into a
+ * rubber stamp. Cite the endpoints instead — they are more concrete anyway.
+ */
+export function collectCandleNumbers(candles) {
+  const values = [];
+  const push = (n) => {
+    if (typeof n === "number" && Number.isFinite(n)) values.push(Math.abs(n));
+  };
+  for (const c of candles ?? []) {
+    push(c.open);
+    push(c.high);
+    push(c.low);
+    push(c.close);
+    push(c.quoteVolume);
+    if (c.open) push((c.close / c.open - 1) * 100);
+  }
+  return values;
+}
+
+/**
+ * Figures from the stage classifier.
+ *
+ * Its metrics — underwater share, volume trend, distance from the high — are
+ * computed from daily candles but are not fields on an analysed asset, so a
+ * post citing them had no source to trace to. They passed only when they
+ * happened to collide with an unrelated figure, which is not verification.
+ */
+export function collectStageNumbers(stages) {
+  const values = [];
+  const push = (n) => {
+    if (typeof n === "number" && Number.isFinite(n)) values.push(Math.abs(n));
+  };
+  for (const st of stages ?? []) {
+    push(st.underwaterPct);
+    push(st.vsVwapPct);
+    push(st.volumeTrendPct);
+    push(st.recentPricePct);
+    push(st.drawdownPct);
+    push(st.concentrationPct);
+    push(st.high);
+    push(st.rsi14);
+  }
   return values;
 }
 
@@ -129,6 +187,16 @@ export function collectBriefNumbers(brief) {
     push(l.windowDays);
   }
   for (const f of brief.funding ?? []) push(f.fundingRatePct);
+  for (const h of brief.fundingHistory ?? []) {
+    push(h.latestPct);
+    push(h.annualisedPct);
+    push(h.annualised7dPct);
+    push(h.annualisedPrior14dPct);
+    push(h.negativeSharePct);
+    push(h.negativePeriods);
+    push(h.periods);
+    push(h.windowDays);
+  }
 
   // Computed analysis is as citable as raw price — it is arithmetic over real
   // candles, not model output.
@@ -160,9 +228,11 @@ function matches(value, allowed) {
  *
  * @returns {{ok: boolean, unmatched: {raw: string, value: number}[], checked: number}}
  */
-export function verifyNumbers(text, brief, { screen } = {}) {
+export function verifyNumbers(text, brief, { screen, candles, stages } = {}) {
   const allowed = collectBriefNumbers(brief);
   if (screen) allowed.push(...collectScreenNumbers(screen));
+  if (candles) allowed.push(...collectCandleNumbers(candles));
+  if (stages) allowed.push(...collectStageNumbers(stages));
   const unmatched = [];
   let checked = 0;
 
@@ -247,13 +317,17 @@ export function verifyStructure(text, { maxWords = 220, minWords = 40 } = {}) {
 
 /** Runs every gate. Publishing should be blocked unless this passes. */
 export function verifyPost(text, brief, opts = {}) {
-  const numbers = verifyNumbers(text, brief, { screen: opts.screen });
+  const numbers = verifyNumbers(text, brief, { screen: opts.screen, candles: opts.candles, stages: opts.stages });
   const claims = verifyNoForbiddenClaims(text, brief);
   const structure = verifyStructure(text, opts);
 
   // Naming the sources that were actually searched keeps the failure honest:
   // "not in the brief" is misleading when an alt figure was never checkable.
-  const sources = opts.screen ? "the brief or the screen" : "the brief";
+  const searched = ["the brief"];
+  if (opts.screen) searched.push("the screen");
+  if (opts.candles) searched.push("the candle series");
+  if (opts.stages) searched.push("the stage metrics");
+  const sources = searched.length === 1 ? searched[0] : `${searched.slice(0, -1).join(", ")} or ${searched.at(-1)}`;
   const problems = [
     ...numbers.unmatched.map((u) => `figure "${u.raw}" does not appear in ${sources}`),
     ...claims.violations.map((v) => `mentions ${v}, which the brief could not retrieve`),

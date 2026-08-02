@@ -240,9 +240,17 @@ export async function analyzeAsset(symbol, { fetchImpl = globalThis.fetch, candl
   // number that tells the two apart, and it is the honest answer to "is this
   // actually a big move?"
   const vol30 = realizedVolatility(closes, { periods: 30 });
+
+  // How unusual is today's move for this asset? A percentage alone hides the
+  // base rate — a "+4% pump" is an event on one asset and a Tuesday on another.
+  // Measured close-to-close so it is on the same basis as todayChangePct.
   const dailySigmaPct = vol30 / Math.sqrt(365);
   const todayChangePct = pctChange(closes.at(-2) ?? closes[0], price);
   const sigmaMove = dailySigmaPct ? todayChangePct / dailySigmaPct : NaN;
+
+  const priorMoves = closes.slice(0, -1).map((c, i, xs) => (i ? Math.abs((c / xs[i - 1] - 1) * 100) : NaN))
+    .filter(Number.isFinite);
+  const smaller = priorMoves.filter((m) => m < Math.abs(todayChangePct)).length;
 
   return {
     symbol,
@@ -250,6 +258,12 @@ export async function analyzeAsset(symbol, { fetchImpl = globalThis.fetch, candl
     todayChangePct,
     dailySigmaPct,
     sigmaMove,
+    /** Share of prior daily moves smaller than today's, over `sampleDays`. */
+    dailyMovePercentile: priorMoves.length ? (smaller / priorMoves.length) * 100 : NaN,
+    biggerDayCount: priorMoves.length - smaller,
+    /** Share of prior days with a larger absolute move — the base rate. */
+    biggerDaySharePct: priorMoves.length ? ((priorMoves.length - smaller) / priorMoves.length) * 100 : NaN,
+    sampleDays: priorMoves.length,
     change7dPct: pctChange(closes.at(-8) ?? closes[0], price),
     change30dPct: pctChange(closes.at(-31) ?? closes[0], price),
     rsi14: rsi(closes, 14),

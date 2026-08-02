@@ -118,6 +118,56 @@ export async function fetchFunding(instIds = ["BTC-USDT-SWAP", "ETH-USDT-SWAP"],
   return out;
 }
 
+/** Funding periods per day on OKX perpetual swaps. */
+export const FUNDING_PERIODS_PER_DAY = 3;
+
+/**
+ * Settled funding history, summarised.
+ *
+ * The single current rate answers "what is funding right now", which is almost
+ * never the question. What matters for a carry business like Ethena is what
+ * funding has *averaged* and how often it went negative — a strip that is
+ * positive on average but negative a third of the time is a different revenue
+ * profile from a steady one at the same mean.
+ *
+ * Annualising multiplies by periods per day and by 365. That is a rate, not a
+ * forecast: it says what a year at this pace would pay, and funding does not
+ * hold a pace for a year.
+ */
+export async function fetchFundingHistory(instId, { limit = 63, fetchImpl = globalThis.fetch } = {}) {
+  const body = await getJson(
+    `${OKX_BASE}/public/funding-rate-history?instId=${instId}&limit=${limit}`,
+    fetchImpl,
+  );
+  const rows = (body?.data ?? [])
+    .map((d) => ({ time: Number(d.fundingTime), rate: Number(d.realizedRate ?? d.fundingRate) }))
+    .filter((r) => Number.isFinite(r.rate) && Number.isFinite(r.time))
+    .sort((a, b) => b.time - a.time); // newest first
+
+  if (!rows.length) throw new Error(`no funding history for ${instId}`);
+
+  const annualise = (xs) =>
+    xs.length ? (xs.reduce((s, x) => s + x.rate, 0) / xs.length) * FUNDING_PERIODS_PER_DAY * 365 * 100 : NaN;
+
+  const week = rows.slice(0, FUNDING_PERIODS_PER_DAY * 7);
+  const prior = rows.slice(FUNDING_PERIODS_PER_DAY * 7, FUNDING_PERIODS_PER_DAY * 21);
+  const negative = rows.filter((r) => r.rate < 0).length;
+
+  return {
+    instId,
+    venue: FUNDING_VENUE,
+    periods: rows.length,
+    windowDays: rows.length / FUNDING_PERIODS_PER_DAY,
+    latestPct: rows[0].rate * 100,
+    latestTime: new Date(rows[0].time).toISOString(),
+    annualisedPct: annualise(rows),
+    annualised7dPct: annualise(week),
+    annualisedPrior14dPct: annualise(prior),
+    negativePeriods: negative,
+    negativeSharePct: (negative / rows.length) * 100,
+  };
+}
+
 /** CoinGecko's trending list — a decent read on retail attention. */
 export async function fetchTrending(fetchImpl = globalThis.fetch) {
   const body = await getJson(`${COINGECKO_BASE}/search/trending`, fetchImpl);
@@ -181,11 +231,13 @@ export async function collectBrief({
   symbols = DEFAULT_SYMBOLS,
   newsHours = 24,
   fetchImpl = globalThis.fetch,
+  fundingInstIds = ["BTC-USDT-SWAP", "ETH-USDT-SWAP"],
 } = {}) {
   const brief = {
     generatedAt: new Date().toISOString(),
     spot: [],
     funding: [],
+    fundingHistory: [],
     trending: [],
     news: [],
     levels: [],
@@ -205,7 +257,16 @@ export async function collectBrief({
 
   const tasks = [
     ["spot", () => fetchSpot(symbols, fetchImpl)],
-    ["funding", () => fetchFunding(undefined, fetchImpl)],
+    ["funding", () => fetchFunding(fundingInstIds, fetchImpl)],
+    [
+      "fundingHistory",
+      () =>
+        Promise.all(
+          fundingInstIds.map((id) =>
+            fetchFundingHistory(id, { fetchImpl }).catch(() => null),
+          ),
+        ).then((xs) => xs.filter(Boolean)),
+    ],
     ["trending", () => fetchTrending(fetchImpl)],
     ["news", () => fetchNews(newsHours, fetchImpl)],
     [
