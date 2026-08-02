@@ -27,6 +27,7 @@ import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
 import { DEFAULT_DAYS, formatStage, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
+import { createProductionDeploy, deployConfigFromEnv, waitForDeploy } from "./deploy.mjs";
 import { execFileSync } from "node:child_process";
 import { promptCapturingClient, runTeam } from "./team.mjs";
 import { verifyPost } from "./verify.mjs";
@@ -58,8 +59,9 @@ Usage
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte site [--out <dir>]              Build the indexable research site
   wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
-           [--cover <img>] [--slug <s>]  commit and push. Vercel deploys.
+           [--cover <img>] [--slug <s>]  commit, push and deploy production
            [--no-push] [--dry-run]
+  wte deploy [--ref <b>] [--sha <c>]  Rebuild the current commit as production
   wte team [--format <f>] [--dry-run] Full daily run: analyst picks the angle,
                                       writer drafts, checker + critic gate it
 
@@ -122,6 +124,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdSite(flags);
     case "ship":
       return cmdShip(rest, flags, argv);
+    case "deploy":
+      return cmdDeploy(flags);
     case "team":
       return cmdTeam(flags, argv);
     case "check":
@@ -867,19 +871,90 @@ async function cmdShip([file], flags, argv) {
   // Stage only what this command touched, so an unrelated work-in-progress
   // file is never swept into a deploy.
   const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8" });
+  let branch;
+  let sha;
   try {
     git("add", "--", path.relative(root, draftPath), "site/manifest.json");
     git("commit", "-m", `Publish: ${entry.title}\n\nSquare post ${squareId ?? "(id unavailable)"}.`);
-    const branch = git("rev-parse", "--abbrev-ref", "HEAD").trim();
+    branch = git("rev-parse", "--abbrev-ref", "HEAD").trim();
+    sha = git("rev-parse", "HEAD").trim();
     git("push", "-u", "origin", branch);
-    console.log(`  Git:  pushed to ${branch} — Vercel will deploy`);
+    console.log(`  Git:  pushed to ${branch}`);
   } catch (err) {
     console.error(`\nPublished, but git failed: ${err.message.trim()}`);
     console.error("The post is live. Commit and push when convenient; nothing is lost.");
     return 1;
   }
 
+  await promoteToProduction({ ref: branch, sha });
   return 0;
+}
+
+/**
+ * Builds the pushed commit as production.
+ *
+ * Pushing is not deploying here: the project's production branch is the repo
+ * default, so a push to the working branch produces a Preview that never
+ * reaches maix8.study. Without this step `wte ship` prints success while the
+ * live site stays days behind the feed, which is exactly what happened.
+ */
+async function promoteToProduction({ ref, sha }) {
+  const config = deployConfigFromEnv();
+  if (!config) {
+    console.log("  Site: VERCEL_TOKEN not set — deploy the commit yourself to update maix8.study");
+    return;
+  }
+
+  try {
+    const created = await createProductionDeploy(config, { ref, sha });
+    console.log(`  Site: production build queued (${created.id})`);
+    const final = await waitForDeploy(config, created.id, {
+      onState: (s) => console.log(`        ${s.readyState.toLowerCase()}`),
+    });
+
+    if (final.readyState === "READY") console.log("  Site: live at https://maix8.study/");
+    else if (final.readyState === "TIMEOUT") console.log("  Site: still building — check back in a minute");
+    else console.error(`  Site: deploy ${final.readyState.toLowerCase()} — check the Vercel dashboard`);
+  } catch (err) {
+    // The post and the commit are already safe; a failed deploy is recoverable
+    // by re-running, so it should not read like the publish went wrong.
+    console.error(`  Site: deploy failed — ${err.message}`);
+    console.error("        The post is live and the commit is pushed. Re-run `wte deploy` to retry.");
+  }
+}
+
+/** Rebuilds the current commit as production, without publishing anything. */
+async function cmdDeploy(flags) {
+  const config = deployConfigFromEnv();
+  if (!config) {
+    throw new ValidationError(
+      "No VERCEL_TOKEN in the environment. Create one at vercel.com/account/tokens " +
+        "and export it before running this.",
+    );
+  }
+
+  const git = (...args) => execFileSync("git", args, { cwd: process.cwd(), encoding: "utf8" }).trim();
+  const ref = flags.ref ? String(flags.ref) : git("rev-parse", "--abbrev-ref", "HEAD");
+  const sha = flags.sha ? String(flags.sha) : git("rev-parse", "HEAD");
+
+  console.log(`Deploying ${ref} @ ${sha.slice(0, 7)} to production`);
+  const created = await createProductionDeploy(config, { ref, sha });
+  console.log(`  queued ${created.id}`);
+  const final = await waitForDeploy(config, created.id, {
+    onState: (s) => console.log(`  ${s.readyState.toLowerCase()}`),
+  });
+
+  if (flags.json) {
+    print(final, flags);
+    return final.readyState === "READY" ? 0 : 1;
+  }
+
+  if (final.readyState === "READY") {
+    console.log("\nLive at https://maix8.study/");
+    return 0;
+  }
+  console.error(`\nDeploy ${final.readyState.toLowerCase()}.`);
+  return 1;
 }
 
 /** Prints the daily schedule and ready-to-paste crontab lines. */

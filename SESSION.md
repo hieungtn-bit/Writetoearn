@@ -115,10 +115,25 @@ than feels necessary.
 ### 6. Publish
 
 For an article, one command does everything — publishes to Square, adds the
-post to the website, commits and pushes. Vercel deploys on the push:
+post to the website, commits, pushes, and builds production:
 
 ```bash
+export VERCEL_TOKEN=...        # once per session; without it the deploy is skipped
 node bin/wte.mjs ship drafts/<file>.txt --title "<title>"
+```
+
+**The push alone does not update maix8.study.** Vercel picks a deployment's
+target from the project's *production branch*, which mirrors the GitHub default
+branch — and the site code lives on a feature branch, so a push builds a
+Preview. This went unnoticed for days: `ship` reported success while the live
+site served an older build. `ship` now asks for a production build by name and
+waits for it. If the token is missing it says so and skips, rather than
+implying the site updated.
+
+To rebuild the current commit without publishing anything:
+
+```bash
+node bin/wte.mjs deploy
 ```
 
 It derives the slug from the filename, the meta description from the first real
