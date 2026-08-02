@@ -10,6 +10,24 @@
   },
   "articles": [
     {
+      "slug": "sol-floor-broke",
+      "draft": "22-sol-floor-broke.txt",
+      "title": "I Flagged SOL's 72.32 Floor. It Broke — On Less Volume Than It Had While Holding.",
+      "description": "On 31 July I wrote that $SOL had one reference left beneath it: a 30-day floor at 72.32, and that below it there was nothing inside the window.",
+      "published": "2026-08-02T00:17:30.204Z",
+      "assets": [
+        "SOL",
+        "BTC",
+        "ETH"
+      ],
+      "topics": [
+        "accountability",
+        "support levels",
+        "volume analysis"
+      ],
+      "squareId": 351185510990834
+    },
+    {
       "slug": "uni-volume-tripled-classifier-refused",
       "draft": "21-uni-mixed-signal.txt",
       "cover": "21-uni-mixed-signal-cover.png",

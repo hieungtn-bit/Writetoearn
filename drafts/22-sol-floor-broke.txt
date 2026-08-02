@@ -1,0 +1,52 @@
+On 31 July I wrote that $SOL had one reference left beneath it: a 30-day floor at 72.32, and that below it there was nothing inside the window.
+
+It broke. On 2026-08-01 SOL traded down to 70.58.
+
+This is the post where I check my own work, because a level that breaks is more informative than one that holds — and far more informative than pretending I never named it.
+
+
+WHAT THE BREAK LOOKED LIKE
+
+Completed daily candles, Binance spot:
+
+  2026-07-27   low 73.74   close 74.20   turnover $122.2M
+  2026-07-28   low 72.36   close 73.83   turnover $124.7M
+  2026-07-29   low 72.32   close 73.68   turnover $117.5M
+  2026-07-30   low 73.14   close 74.51   turnover $90.5M
+  2026-07-31   low 72.56   close 72.87   turnover $98.5M
+  2026-08-01   low 70.58   close 71.95   turnover $80.4M
+
+Note the last column. The floor gave way on $80.4M, against $124.7M earlier in the same week.
+
+Price broke down on *less* participation than it had while holding.
+
+
+WHY THAT MATTERS, AND WHY IT IS NOT A VICTORY LAP
+
+By the framework I have been publishing all week, a move without participation behind it is the weaker kind. That test does not stop applying because the move went the way my level said it would.
+
+So the honest reading is narrow: the level broke, and the break has not yet been confirmed by the thing that usually confirms breaks. SOL sits at 72.13, 11.6% of its 30-day range, RSI 40.3 — weak, and nowhere near the washed-out reading that marks capitulation. 97.5% of the month's money is underwater.
+
+Naming 72.32 was useful because it gave a falsifiable line. It broke, which is information. It broke quietly, which is different information, and the second part is the one most people skip.
+
+
+MEANWHILE, THE OTHER HALF OF THE MARKET HAS NOT MOVED AT ALL
+
+Yesterday I wrote that $BTC had printed its narrowest 30-day range in this dataset. Fourteen hours later that is still true, and it has tightened: the range is now 9.2% with 0 of 971 rolling windows narrower, and 30-day realized volatility sits at 29.1%, the 9.8th percentile.
+
+Two structures, one market. SOL resolved its range downward on thin volume. BTC has not resolved anything and keeps coiling.
+
+That combination is worth sitting with. The asset that broke did so without conviction, and the asset that has not broken is more compressed than it was.
+
+
+BIAS: WAIT
+
+SOL: a broken level with no volume behind the break is not a short entry, and 11.6% of range with RSI 40.3 is not a bounce entry either. What would change it is a retest of 72.32 from below that fails on expanding volume — that is the version of this break worth trading.
+
+BTC: unchanged from yesterday. Compression forecasts the size of the next move and not its direction, and a range this tight will produce false breaks before it produces a real one.
+
+One process note, since I keep repeating it and keep nearly getting caught by it: today's candle is a few minutes old and every volume figure above deliberately excludes it. A partial day compared against completed ones reads as collapsing participation every single morning.
+
+Educational research, not financial advice. DYOR.
+
+$BTC $ETH #WriteToEarn #BinanceSquare
