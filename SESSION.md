@@ -121,6 +121,15 @@ post to the website, commits and pushes. The site updates itself from there:
 node bin/wte.mjs ship drafts/<file>.txt --title "<title>"
 ```
 
+It derives the slug from the filename, the meta description from the first real
+paragraph, the assets from the cashtags, and generates the cover image from the
+title. Override any of them with `--slug`, `--description`, `--assets`,
+`--topics`, `--cover`. Add `--dry-run` to see what it would do, or `--no-push`
+to commit by hand.
+
+A duplicate slug or a draft already on the site stops the run **before**
+anything is published, while it is still reversible.
+
 **How the site stays current, and why it once did not.** Vercel picks a
 deployment's *target* from the project's production branch, which mirrors the
 GitHub default branch and cannot be changed through the public API. The site
@@ -147,27 +156,21 @@ branch build and a production build are byte-identical. Vercel sends
 duplicates stay out of search.
 
 If this repo ever gains an environment variable or anything private, that
-calculation changes and the protection has to come back — at which point the
-deploy has to go back through `wte deploy` with a token.
+calculation changes. Re-enabling protection also breaks the branch binding —
+the two cannot both be on — so the way back is: unbind the domain, re-enable
+protection, and return to production-target deploys, which then need a token
+every time.
 
-With `VERCEL_TOKEN` exported, `ship` additionally *waits* and confirms the
-build went green instead of assuming it. Worth doing; not required.
+With `VERCEL_TOKEN` exported, `ship` additionally waits for the build Vercel
+started and confirms it went green instead of assuming it. Worth doing; not
+required, and it never starts a second build.
 
-To rebuild the current commit by hand — after changing a template, say, where
-there is no post to publish:
+To rebuild the live site by hand — after changing a template, say, where there
+is no post to publish and so no push to ride on:
 
 ```bash
 node bin/wte.mjs deploy
 ```
-
-It derives the slug from the filename, the meta description from the first real
-paragraph, the assets from the cashtags, and generates the cover image from the
-title. Override any of them with `--slug`, `--description`, `--assets`,
-`--topics`, `--cover`. Add `--dry-run` to see what it would do, or `--no-push`
-to commit by hand.
-
-A duplicate slug or a draft already on the site stops the run **before**
-anything is published, while it is still reversible.
 
 For a short slot post, which does not go on the website:
 
