@@ -104,3 +104,34 @@ test("candles beyond the horizon do not rescue a miss", async () => {
   ];
   assert.equal(scoreAlert(alert, candles, { now: t0 + 30 * hour }).status, "miss");
 });
+
+test("a delisting notice is parsed into tickers, and prose is not", async () => {
+  const { tokensFromTitle } = await import("../src/listings.mjs");
+  assert.deepEqual(
+    tokensFromTitle("Binance Will Delist ACX, HFT, PIVX, PYR, VANRY, VIC on 2026-08-17"),
+    ["ACX", "HFT", "PIVX", "PYR", "VANRY", "VIC"],
+    "the words Binance/Will/Delist/on must not read as tickers",
+  );
+  assert.deepEqual(tokensFromTitle("Binance Adds LINK to its Buy Crypto Service"), [],
+    "a title that announces no removal contributes nothing");
+});
+
+test("alerts on delisted tokens are separated, never silently dropped", async () => {
+  const { partitionByDelisting } = await import("../src/listings.mjs");
+  const notice = { token: "VIC", title: "Binance Will Delist ... VIC on 2026-08-17", announcedAt: "2026-08-03" };
+  const { clean, flagged } = partitionByDelisting(
+    [{ symbol: "VICUSDT", volumeZScore: 25.9 }, { symbol: "BICOUSDT", volumeZScore: 6.5 }],
+    new Map([["VIC", notice]]),
+  );
+  assert.deepEqual(clean.map((c) => c.symbol), ["BICOUSDT"]);
+  assert.deepEqual(flagged.map((f) => f.symbol), ["VICUSDT"]);
+  assert.equal(flagged[0].delisting.title, notice.title, "the reason travels with the alert");
+});
+
+test("a broken announcement feed loses the annotation, not the scan", async () => {
+  const { fetchDelistings } = await import("../src/listings.mjs");
+  const dead = async () => { throw new Error("network down"); };
+  assert.equal((await fetchDelistings({ fetchImpl: dead })).size, 0);
+  const notOk = async () => ({ ok: false, json: async () => ({}) });
+  assert.equal((await fetchDelistings({ fetchImpl: notOk })).size, 0);
+});

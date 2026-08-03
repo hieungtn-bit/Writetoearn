@@ -71,12 +71,14 @@ jobs:
       # An issue is the one channel that needs no extra service and no secret:
       # the GitHub mobile app turns it into a push notification.
       - name: Raise the alert
-        if: steps.scan.outputs.count != '0'
+        # Fires on a suppressed alert too. A delisting pump happening on the
+        # venue is worth knowing about; it just must not read as a buy.
+        if: steps.scan.outputs.count != '0' || steps.scan.outputs.suppressed != '0'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           # The body is written whole by scan-report.mjs, footer included.
           # Adding a second footer here is how the first issue ended up with two.
           gh issue create \
-            --title "Scanner: ${{ steps.scan.outputs.count }} alert(s) — $(date -u '+%Y-%m-%d %H:%M UTC')" \
+            --title "Scanner: ${{ steps.scan.outputs.count }} alert(s), ${{ steps.scan.outputs.suppressed }} suppressed — $(date -u '+%Y-%m-%d %H:%M UTC')" \
             --body-file /tmp/body.md
