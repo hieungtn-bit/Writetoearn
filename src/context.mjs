@@ -23,6 +23,8 @@
 import { fetchAllTickers } from "./pulse.mjs";
 
 const OKX_BASE = "https://www.okx.com/api/v5";
+const GLOBAL_URL = "https://api.coingecko.com/api/v3/global";
+const FNG_URL = "https://api.alternative.me/fng/?limit=30";
 const TIMEOUT_MS = 20_000;
 const EXCLUDED = /(UP|DOWN|BULL|BEAR)USDT$|^(USDC|FDUSD|TUSD|BUSD|DAI|EUR|AEUR|USDP|XUSD)USDT$/;
 
@@ -141,6 +143,58 @@ export async function fundingMood(rows, { fetchImpl = globalThis.fetch, top = 40
 }
 
 /**
+ * Where the whole asset class sits, and how much of it is Bitcoin.
+ *
+ * Dominance is the one number that separates "crypto is up" from "Bitcoin is
+ * up and everything else is bleeding into it", and no per-pair scan can see it.
+ */
+export async function fetchGlobal({ fetchImpl = globalThis.fetch } = {}) {
+  try {
+    const res = await fetchImpl(GLOBAL_URL, { signal: AbortSignal.timeout(TIMEOUT_MS) });
+    if (!res.ok) return null;
+    const d = (await res.json())?.data;
+    if (!d) return null;
+    return {
+      btcDominancePct: d.market_cap_percentage?.btc,
+      ethDominancePct: d.market_cap_percentage?.eth,
+      totalMarketCapUsd: d.total_market_cap?.usd,
+      totalVolumeUsd: d.total_volume?.usd,
+      marketCapChange24hPct: d.market_cap_change_percentage_24h_usd,
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The crowd's mood, as a number with a month of history behind it.
+ *
+ * Funding says what the leveraged crowd is paying. This says what everyone
+ * else feels, which is a different question and often the opposite answer.
+ * Reported with its own 30-day range, because a reading of 28 means nothing
+ * until you know whether the month has run 20-33 or 20-90.
+ */
+export async function fetchSentiment({ fetchImpl = globalThis.fetch } = {}) {
+  try {
+    const res = await fetchImpl(FNG_URL, { signal: AbortSignal.timeout(TIMEOUT_MS) });
+    if (!res.ok) return null;
+    const rows = (await res.json())?.data ?? [];
+    if (!rows.length) return null;
+    const values = rows.map((r) => Number(r.value)).filter(Number.isFinite);
+    return {
+      value: Number(rows[0].value),
+      label: rows[0].value_classification,
+      weekAgo: rows[7] ? Number(rows[7].value) : NaN,
+      monthAgo: rows.at(-1) ? Number(rows.at(-1).value) : NaN,
+      min30d: Math.min(...values),
+      max30d: Math.max(...values),
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
  * The whole picture, degrading gracefully.
  *
  * Any leg can fail and the rest still reports. Context is an annotation on an
@@ -148,11 +202,19 @@ export async function fundingMood(rows, { fetchImpl = globalThis.fetch, top = 40
  * because a funding endpoint timed out is worse than one with no context.
  */
 export async function marketContext({ fetchImpl = globalThis.fetch, minVolume = 1e6 } = {}) {
-  const out = { measuredAt: new Date().toISOString(), breadth: null, positioning: null, funding: null };
+  const out = {
+    measuredAt: new Date().toISOString(),
+    breadth: null, positioning: null, funding: null, global: null, sentiment: null,
+  };
 
   try {
     out.breadth = breadthFrom(await fetchAllTickers(fetchImpl), { minVolume });
   } catch { /* leave null */ }
+
+  [out.global, out.sentiment] = await Promise.all([
+    fetchGlobal({ fetchImpl }),
+    fetchSentiment({ fetchImpl }),
+  ]);
 
   try {
     const oi = await fetchOpenInterest({ fetchImpl });
@@ -214,6 +276,21 @@ export function formatContext(ctx) {
         `(${sign(f.oiWeightedAnnualisedPct)}${f2(f.oiWeightedAnnualisedPct)}% weighted)`,
       `  hottest       ${f.hottestLongs.map((r) => `${r.asset} ${sign(r.annualisedPct)}${f1(r.annualisedPct)}%`).join(", ")}`,
       `  most shorted  ${f.crowdedShorts.map((r) => `${r.asset} ${sign(r.annualisedPct)}${f1(r.annualisedPct)}%`).join(", ")}`,
+    );
+  }
+  if (ctx.global) {
+    const g = ctx.global;
+    lines.push(
+      `  asset class   $${(g.totalMarketCapUsd / 1e12).toFixed(3)}T total, ` +
+        `${sign(g.marketCapChange24hPct)}${f2(g.marketCapChange24hPct)}% in 24h, ` +
+        `BTC dominance ${f1(g.btcDominancePct)}%`,
+    );
+  }
+  if (ctx.sentiment) {
+    const s2v = ctx.sentiment;
+    lines.push(
+      `  mood          ${s2v.value} (${s2v.label}), ${s2v.weekAgo} a week ago, ` +
+        `${s2v.monthAgo} a month ago, 30-day range ${s2v.min30d}-${s2v.max30d}`,
     );
   }
   lines.push("", regimeNote(ctx));

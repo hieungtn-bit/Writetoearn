@@ -159,3 +159,40 @@ test("breadth measures the board, not one pair", async () => {
   assert.ok(b.btcTurnoverSharePct > 90, "one pair holds the turnover");
   assert.equal(b.beatingBtcPct, 0, "nothing is beating BTC");
 });
+
+test("sentiment reports its own range, so a bare number cannot mislead", async () => {
+  const { fetchSentiment } = await import("../src/context.mjs");
+  const rows = [{ value: "28", value_classification: "Fear" }, ...Array.from({ length: 29 },
+    (_, i) => ({ value: String(20 + (i % 14)), value_classification: "Fear" }))];
+  const ok = async () => ({ ok: true, json: async () => ({ data: rows }) });
+
+  const s = await fetchSentiment({ fetchImpl: ok });
+  assert.equal(s.value, 28);
+  assert.equal(s.min30d, 20);
+  assert.ok(s.max30d >= s.value, "a reading is only meaningful against its range");
+});
+
+test("every context leg fails independently", async () => {
+  const { fetchGlobal, fetchSentiment } = await import("../src/context.mjs");
+  const dead = async () => { throw new Error("down"); };
+  assert.equal(await fetchGlobal({ fetchImpl: dead }), null);
+  assert.equal(await fetchSentiment({ fetchImpl: dead }), null);
+
+  const empty = async () => ({ ok: true, json: async () => ({}) });
+  assert.equal(await fetchGlobal({ fetchImpl: empty }), null, "a 200 with no payload is still no data");
+});
+
+test("headlines come back as text, not invented structure", async () => {
+  const { fetchHeadlines, CATALOGS } = await import("../src/listings.mjs");
+  const article = { title: "Binance Futures Will Launch GIGADEVUSDT Perpetual", releaseDate: Date.now() };
+  const ok = async () => ({ ok: true, json: async () => ({ data: { catalogs: [{ articles: [article] }] } }) });
+
+  const h = await fetchHeadlines(CATALOGS.listing, { fetchImpl: ok });
+  assert.equal(h[0].title, article.title);
+  assert.ok(h[0].announcedAt, "each headline carries when it landed");
+
+  const stale = async () => ({ ok: true, json: async () => ({ data: { catalogs: [{ articles: [
+    { title: "old news", releaseDate: Date.now() - 30 * 86_400_000 }] }] } }) });
+  assert.deepEqual(await fetchHeadlines(CATALOGS.listing, { fetchImpl: stale, days: 7 }), [],
+    "a month-old announcement is not context for today");
+});
