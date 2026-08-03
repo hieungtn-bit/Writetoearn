@@ -60,7 +60,8 @@ Usage
                                       symbols to skip the full 26-pair fetch
             [--article] [--max-words <n>]  --article lifts the slot word limit
             [--funding <INST,...>]      --funding traces funding history,
-            [--hourly <SYM,...>]        --hourly an intraday candle series,
+            [--hourly <SYM,...>]        --hourly a candle series, --interval
+            [--interval <i>] [--limit <n>]  and --limit set its span
             [--stage <SYM,...>]         --stage the move-stage metrics
             [--no-call]                 profile/announcement post: no bias needed
             [--study <a.json,b.json>]   cite committed research snapshots
@@ -638,13 +639,21 @@ async function cmdCheck([file], flags) {
       // the daily series, and fetching one without the other leaves half the
       // post unverifiable.
       hourlySymbols.flatMap((sym) => [
-        fetchKlines(sym, { interval: String(flags.interval ?? "1h"), limit: 200 }).catch(() => []),
+        fetchKlines(sym, {
+          interval: String(flags.interval ?? "1h"),
+          // A long-horizon argument needs a long window in evidence. The default
+          // covers an intraday table; --limit stretches it to whatever span the
+          // post actually claims to have measured.
+          limit: Math.min(1000, Math.max(1, Number(flags.limit ?? 200))),
+        }).catch(() => []),
         fetchKlines(sym, { interval: "1d", limit: 120 }).catch(() => []),
       ]),
     ),
     Promise.all(stageSymbols.map((sym) => stageOf(sym).catch(() => null))),
   ]);
-  const candles = candleSets.flat();
+  // Kept as separate series so each window's own high, low and total move stay
+  // attached to the window that produced them.
+  const candles = candleSets.filter((s) => s.length);
   const stageRows = (stages ?? []).filter(Boolean);
   if (flags.screen) process.stderr.write("\r");
 

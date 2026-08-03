@@ -304,3 +304,44 @@ test("a bare year-like number outside a date is still checked", async () => {
   const { extractNumbers } = await import("../src/verify.mjs");
   assert.ok(extractNumbers("Volume hit 2026 units.").some((n) => n.value === 2026));
 });
+
+test("an indicator period is a parameter, not a price", async () => {
+  const { extractNumbers } = await import("../src/verify.mjs");
+  const got = extractNumbers("SMA200 sits at 71,168 and RSI14 reads 43.2.").map((n) => n.value);
+  assert.deepEqual(got, [71168, 43.2], "the labels contribute nothing, the readings do");
+});
+
+test("a candle series vouches for its own window, but not for spans inside it", async () => {
+  const { collectCandleNumbers } = await import("../src/verify.mjs");
+  // A hundred sessions from 100 down to 50, having touched 120 on the way.
+  const series = Array.from({ length: 100 }, (_, i) => ({
+    open: 100 - i * 0.5,
+    high: i === 10 ? 120 : 100 - i * 0.5,
+    low: 100 - i * 0.5 - 1,
+    close: 100 - i * 0.5,
+    quoteVolume: 1_000,
+  }));
+  const got = collectCandleNumbers([series]);
+
+  assert.ok(got.includes(100), "the window length is citable");
+  assert.ok(got.includes(120), "so is the window high");
+  assert.ok(got.some((v) => Math.abs(v - 49.5) < 1e-9), "and the total move across it");
+  assert.ok(got.some((v) => Math.abs(v - 57.9) < 0.1), "and the fall from the window high");
+  assert.ok(
+    !got.some((v) => Math.abs(v - 25) < 1e-9),
+    "a span between two arbitrary candles is still not citable",
+  );
+});
+
+test("candle windows stay attached to the series that produced them", async () => {
+  const { collectCandleNumbers } = await import("../src/verify.mjs");
+  const flat = (a, b) => [
+    { open: a, high: a, low: a, close: a, quoteVolume: 1 },
+    { open: b, high: b, low: b, close: b, quoteVolume: 1 },
+  ];
+  // Two series, one doubling and one halving. Concatenated they would read as
+  // flat; kept apart, each reports its own move.
+  const got = collectCandleNumbers([flat(100, 200), flat(200, 100)]);
+  assert.ok(got.includes(100), "the doubling shows");
+  assert.ok(got.includes(50), "and so does the halving");
+});

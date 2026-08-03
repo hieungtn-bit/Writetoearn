@@ -39,15 +39,27 @@ const SUFFIXES = { k: 1e3, m: 1e6, b: 1e9 };
 /** ISO dates: their parts are calendar labels, never market claims. */
 const ISO_DATE = /\d{4}-\d{2}-\d{2}(?:T[\d:.]+Z?)?/g;
 
+/**
+ * Indicator period labels — the 200 in SMA200 is a parameter, not a price.
+ *
+ * The structural allowance stops at 100, which covers RSI14 and SMA50 but not
+ * SMA200, so a post that names its own moving averages fails on the label
+ * rather than on anything it claims. Naming the parameters is how a reader
+ * reproduces the work; punishing it is backwards.
+ */
+const INDICATOR_LABEL = /\b(?:SMA|EMA|MA|RSI|ATR|VWAP)\s?\d{1,4}\b|\b\d{1,4}-day\b/gi;
+
 export function extractNumbers(text) {
   const out = [];
 
   // A dated table would otherwise fail on the year: 2026 is above the
   // structural threshold and matches nothing in any market feed, so every post
   // that timestamps its evidence gets punished for showing its work.
-  const dateSpans = [];
-  for (const m of String(text).matchAll(ISO_DATE)) dateSpans.push([m.index, m.index + m[0].length]);
-  const insideDate = (i) => dateSpans.some(([a, b]) => i >= a && i < b);
+  const skipSpans = [];
+  for (const re of [ISO_DATE, INDICATOR_LABEL]) {
+    for (const m of String(text).matchAll(re)) skipSpans.push([m.index, m.index + m[0].length]);
+  }
+  const insideDate = (i) => skipSpans.some(([a, b]) => i >= a && i < b);
   // A magnitude suffix has to sit flush against the digits and not begin a
   // word: without both guards, "66,956\n\nBias:" reads as 66,956 billion.
   const re = /(\d[\d,]*(?:\.\d+)?)(?:([KkMmBb])(?![A-Za-z]))?(\s*%)?/g;
@@ -93,6 +105,8 @@ function pushAssetNumbers(push, a) {
   push(a.volumeZScore);
   push(a.volumeZScoreCompleted);
   push(a.avgQuoteVolume30d);
+  push(a.upDownVolumeRatio30d);
+  push(a.upDownVolumeRatio90d);
   push(a.quoteVolumeLatest);
   push(a.rangeCompressionPct);
   push(a.todayChangePct);
@@ -136,19 +150,41 @@ export function collectScreenNumbers(screen) {
  * change. Spans *between* candles are deliberately not included: allowing every
  * pairwise combination would add thousands of values and turn the gate into a
  * rubber stamp. Cite the endpoints instead — they are more concrete anyway.
+ *
+ * The window itself is an endpoint, though, and that is the one exception. A
+ * post arguing a long-horizon trend has to say how far price has come over the
+ * series and how far it sits below the series high; those are four numbers per
+ * series, not thousands, and refusing them forces the writer to either drop the
+ * horizon or state it vaguely. Pass an array of series to keep each window's
+ * own aggregates separate — a flat array is treated as a single series.
  */
 export function collectCandleNumbers(candles) {
   const values = [];
   const push = (n) => {
     if (typeof n === "number" && Number.isFinite(n)) values.push(Math.abs(n));
   };
-  for (const c of candles ?? []) {
-    push(c.open);
-    push(c.high);
-    push(c.low);
-    push(c.close);
-    push(c.quoteVolume);
-    if (c.open) push((c.close / c.open - 1) * 100);
+  const seriesList = Array.isArray(candles?.[0]) ? candles : [candles ?? []];
+
+  for (const series of seriesList) {
+    for (const c of series ?? []) {
+      push(c.open);
+      push(c.high);
+      push(c.low);
+      push(c.close);
+      push(c.quoteVolume);
+      if (c.open) push((c.close / c.open - 1) * 100);
+    }
+    if (!series?.length) continue;
+
+    const last = series.at(-1).close;
+    const high = Math.max(...series.map((c) => c.high));
+    const low = Math.min(...series.map((c) => c.low));
+    push(series.length);
+    push(high);
+    push(low);
+    if (series[0].close) push((last / series[0].close - 1) * 100);
+    if (high) push((last / high - 1) * 100);
+    if (low) push((last / low - 1) * 100);
   }
   return values;
 }

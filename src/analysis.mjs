@@ -208,6 +208,16 @@ export function riskAdjusted(returnPct, volPct) {
   return returnPct / volPct;
 }
 
+/** Turnover on up days over turnover on down days. NaN when either side is empty. */
+export function upDownRatio(candles) {
+  let up = 0, down = 0;
+  for (const c of candles) {
+    if (c.close > c.open) up += c.quoteVolume;
+    else if (c.close < c.open) down += c.quoteVolume;
+  }
+  return down ? up / down : NaN;
+}
+
 /** Is the recent range tighter or wider than the longer-run range? */
 export function rangeCompression(candles, { recent = 7, base = 30 } = {}) {
   if (candles.length < base) return NaN;
@@ -295,6 +305,15 @@ export async function analyzeAsset(symbol, { fetchImpl = globalThis.fetch, candl
     volumeZScoreCompleted: volumeZScore(volumes.slice(0, -1), 30),
     /** Mean daily turnover over the trailing 30 completed days. */
     avgQuoteVolume30d: volumes.length > 30 ? mean(volumes.slice(-31, -1)) : NaN,
+    /**
+     * Turnover on up days divided by turnover on down days.
+     *
+     * Price says where a market went; this says who paid for it. A market
+     * grinding higher on one dollar of buying for every dollar forty of selling
+     * is being distributed into, whatever the chart looks like.
+     */
+    upDownVolumeRatio30d: upDownRatio(daily.slice(-30)),
+    upDownVolumeRatio90d: daily.length >= 90 ? upDownRatio(daily.slice(-90)) : NaN,
     quoteVolumeLatest: volumes.at(-1),
     rangeCompressionPct: rangeCompression(daily),
     returns: logReturns(closes.slice(-31)),

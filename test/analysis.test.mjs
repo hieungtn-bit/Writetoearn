@@ -199,3 +199,16 @@ test("the completed-candle z-score ignores a partial day, the live one does not"
   assert.ok(a.volumeZScoreCompleted > 3, `spike should show, got ${a.volumeZScoreCompleted}`);
   assert.ok(a.volumeZScore < 0, `the partial day reads as drained, got ${a.volumeZScore}`);
 });
+
+test("the up/down flow ratio weighs turnover, not day counts", async () => {
+  const { upDownRatio } = await import("../src/analysis.mjs");
+  // One big up day against three small down days: the ratio must favour buyers.
+  const days = [
+    { open: 100, close: 105, quoteVolume: 900 },
+    { open: 105, close: 104, quoteVolume: 100 },
+    { open: 104, close: 103, quoteVolume: 100 },
+    { open: 103, close: 102, quoteVolume: 100 },
+  ];
+  assert.equal(upDownRatio(days), 3);
+  assert.ok(Number.isNaN(upDownRatio([{ open: 1, close: 2, quoteVolume: 5 }])), "no down side, no ratio");
+});
