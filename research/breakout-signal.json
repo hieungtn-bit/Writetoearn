@@ -1,0 +1,164 @@
+{
+  "measuredAt": "2026-08-03T12:23:59.095Z",
+  "method": {
+    "popThresholdPct": 25,
+    "sigmaPopThreshold": 4,
+    "horizonDays": 5,
+    "minAvgTurnoverUsd": 300000,
+    "maxTurnoverUsd": 20000000,
+    "note": "Universe deliberately reaches below the 5M floor the pulse detector uses."
+  },
+  "pairsSampled": 158,
+  "baseline": {
+    "n": 43088,
+    "popPct": 2.262810991459339,
+    "sigmaPopPct": 3.1006312662458226,
+    "medianBestDaySigma": 0.8874739240135221,
+    "bigPopPct": 0.8703119197920535,
+    "medianBestDayPct": 4.060847891065911,
+    "medianEndPct": -1.5695227943037127,
+    "endedHigherPct": 41.35490159673227
+  },
+  "conditions": {
+    "quietBidAtFloor": {
+      "n": 3308,
+      "popPct": 1.6928657799274487,
+      "sigmaPopPct": 2.448609431680774,
+      "medianBestDaySigma": 0.8012774062815312,
+      "bigPopPct": 1.0278113663845223,
+      "medianBestDayPct": 3.9308176100628867,
+      "medianEndPct": -1.481680044597944,
+      "endedHigherPct": 41.86819830713422,
+      "liftVsBaseline": 0.7481251356462965,
+      "differencePp": -0.6173403538080969,
+      "standardErrorPp": 0.5290646103009028,
+      "sigmas": -1.1668524822648556,
+      "normalised": {
+        "liftVsBaseline": 0.7897131975468652,
+        "differencePp": -0.7062422525826749,
+        "standardErrorPp": 0.6320162380088442,
+        "sigmas": -1.1174432081170547
+      }
+    },
+    "compressed": {
+      "n": 10024,
+      "popPct": 1.2170790103751,
+      "sigmaPopPct": 3.1324820430965685,
+      "medianBestDaySigma": 1.0387118631377612,
+      "bigPopPct": 0.49880287310454907,
+      "medianBestDayPct": 3.505696757230492,
+      "medianEndPct": -0.7263754075638285,
+      "endedHigherPct": 44.183958499600955,
+      "liftVsBaseline": 0.5378615425542801,
+      "differencePp": -1.3627661384272227,
+      "standardErrorPp": 0.31301088219072704,
+      "sigmas": -4.353734058347683,
+      "normalised": {
+        "liftVsBaseline": 1.0102723523424022,
+        "differencePp": 0.04150696446119442,
+        "standardErrorPp": 0.44345477807526906,
+        "sigmas": 0.0935990917525965
+      }
+    },
+    "quietAccumulation": {
+      "n": 8414,
+      "popPct": 2.020442120275731,
+      "sigmaPopPct": 2.483955312574281,
+      "medianBestDaySigma": 0.8376242010744426,
+      "bigPopPct": 0.7368671262182077,
+      "medianBestDayPct": 4.053564965617085,
+      "medianEndPct": -1.5823090929782513,
+      "endedHigherPct": 41.52602804849061,
+      "liftVsBaseline": 0.8928903597788789,
+      "differencePp": -0.3011821515129295,
+      "standardErrorPp": 0.3877358996653195,
+      "sigmas": -0.7767713842667127,
+      "normalised": {
+        "liftVsBaseline": 0.8011127732649747,
+        "differencePp": -0.7663186679298436,
+        "standardErrorPp": 0.4350719541602883,
+        "sigmas": -1.7613607602192578
+      }
+    },
+    "flowDivergence": {
+      "n": 5840,
+      "popPct": 1.8493150684931507,
+      "sigmaPopPct": 2.928082191780822,
+      "medianBestDaySigma": 0.8622093441937346,
+      "bigPopPct": 0.8047945205479452,
+      "medianBestDayPct": 4.010025062656641,
+      "medianEndPct": -1.5872475238960349,
+      "endedHigherPct": 41.01027397260274,
+      "liftVsBaseline": 0.8172644889357218,
+      "differencePp": -0.4783266840841689,
+      "standardErrorPp": 0.4311863068663115,
+      "sigmas": -1.109327166626544,
+      "normalised": {
+        "liftVsBaseline": 0.9443503404150604,
+        "differencePp": -0.19960251612295804,
+        "standardErrorPp": 0.5329380404673121,
+        "sigmas": -0.3745323113882705
+      }
+    },
+    "dormant": {
+      "n": 16880,
+      "popPct": 1.4395734597156398,
+      "sigmaPopPct": 2.381516587677725,
+      "medianBestDaySigma": 0.874166918317864,
+      "bigPopPct": 0.509478672985782,
+      "medianBestDayPct": 3.9485766758494023,
+      "medianEndPct": -0.9679908940071202,
+      "endedHigherPct": 43.55450236966825,
+      "liftVsBaseline": 0.6361881152023332,
+      "differencePp": -1.3534668333246533,
+      "standardErrorPp": 0.3063090999841795,
+      "sigmas": -4.41863083204044,
+      "normalised": {
+        "liftVsBaseline": 0.7680747509719896,
+        "differencePp": -1.1822807261195885,
+        "standardErrorPp": 0.3666471879311661,
+        "sigmas": -3.224573281989956
+      }
+    },
+    "oversold": {
+      "n": 7432,
+      "popPct": 2.6506996770721205,
+      "sigmaPopPct": 3.794402583423036,
+      "medianBestDaySigma": 1.0257828503285715,
+      "bigPopPct": 1.1571582346609257,
+      "medianBestDayPct": 4.761904761904767,
+      "medianEndPct": -0.5060090575941312,
+      "endedHigherPct": 47.53767491926803,
+      "liftVsBaseline": 1.171418950622395,
+      "differencePp": 0.4687387167849319,
+      "standardErrorPp": 0.4511462512861776,
+      "sigmas": 1.0389950386345888,
+      "normalised": {
+        "liftVsBaseline": 1.2237516355878126,
+        "differencePp": 0.8383783518771528,
+        "standardErrorPp": 0.534616846128422,
+        "sigmas": 1.568185435884606
+      }
+    },
+    "quietBidAtFloorDormant": {
+      "n": 2900,
+      "popPct": 1.4827586206896552,
+      "sigmaPopPct": 2.1724137931034484,
+      "medianBestDaySigma": 0.7809481364628417,
+      "bigPopPct": 0.7586206896551724,
+      "medianBestDayPct": 3.8272767481345116,
+      "medianEndPct": -1.2887753914984479,
+      "endedHigherPct": 42.37931034482759,
+      "liftVsBaseline": 0.6552728558797525,
+      "differencePp": -0.8363416082344015,
+      "standardErrorPp": 0.5291893843500017,
+      "sigmas": -1.5804202294452145,
+      "normalised": {
+        "liftVsBaseline": 0.7006359694404295,
+        "differencePp": -0.9951984294505479,
+        "standardErrorPp": 0.6360650986897913,
+        "sigmas": -1.5646172561590364
+      }
+    }
+  }
+}

@@ -49,18 +49,45 @@ export async function fetchAllTickers(fetchImpl = globalThis.fetch) {
  * track record. The floor is on *quote* volume so it means the same thing in
  * dollars across every pair.
  */
-export function rankTickers(tickers, { minVolume = 5e6, limit = 15 } = {}) {
-  return tickers
+export function rankTickers(
+  tickers,
+  { minVolume = 5e6, earlyVolume = 1e6, limit = 15, earlyLimit = 15 } = {},
+) {
+  const eligible = tickers
     .filter((t) => t.symbol.endsWith("USDT") && !EXCLUDED.test(t.symbol))
-    .filter((t) => Number.isFinite(t.quoteVolume24h) && t.quoteVolume24h >= minVolume)
-    .filter((t) => Number.isFinite(t.change24hPct))
+    .filter((t) => Number.isFinite(t.quoteVolume24h) && Number.isFinite(t.change24hPct))
     .map((t) => ({
       ...t,
       /** Intraday range as a share of the low — how violent the session was. */
       range24hPct: t.low24h ? ((t.high24h - t.low24h) / t.low24h) * 100 : NaN,
-    }))
-    .sort((a, b) => Math.abs(b.change24hPct) - Math.abs(a.change24hPct))
-    .slice(0, limit);
+    }));
+
+  const byMove = (a, b) => Math.abs(b.change24hPct) - Math.abs(a.change24hPct);
+
+  const main = eligible
+    .filter((t) => t.quoteVolume24h >= minVolume)
+    .sort(byMove)
+    .slice(0, limit)
+    .map((t) => ({ ...t, tier: "main" }));
+
+  // The floor that keeps dead pairs out of the ranking is also the floor a
+  // breakout is sitting under on the day it starts. BICO closed +36.9% on
+  // 2026-08-02 on $3.29M of turnover — 5.48 sigma on 6.20 volume z, an event by
+  // every test here, invisible because it was $1.7M short of the floor. It
+  // ranked first on the venue the following day, at $16M, one day late.
+  //
+  // So the band below the floor is scanned too, and the protection the floor
+  // used to provide is moved into the event test instead: a thin pair has to
+  // show far more unusual turnover to count. That is the right place for it —
+  // a dead pair's 60% move comes with *no* volume anomaly, which is precisely
+  // what the stricter z-score rejects.
+  const early = eligible
+    .filter((t) => t.quoteVolume24h >= earlyVolume && t.quoteVolume24h < minVolume)
+    .sort(byMove)
+    .slice(0, earlyLimit)
+    .map((t) => ({ ...t, tier: "early" }));
+
+  return [...main, ...early];
 }
 
 /**
@@ -113,17 +140,31 @@ export async function enrich(rows, { fetchImpl = globalThis.fetch, concurrency =
  * pair does not normally see. Requiring both is what separates a story from a
  * pair that is simply volatile every day.
  */
-export function isEvent(row, { minSigma = 2.5, minRangeSigma = 5, minVolumeZ = 2 } = {}) {
-  if (!Number.isFinite(row.volumeZScore) || row.volumeZScore < minVolumeZ) return false;
+export function isEvent(
+  row,
+  { minSigma = 2.5, minRangeSigma = 5, minVolumeZ = 2, minEarlyVolumeZ = 4 } = {},
+) {
+  // A pair below the liquidity floor has to clear a higher turnover bar. Measured
+  // on the venue, the fifteen biggest movers in the $1M–$5M band were led by
+  // falls of 69%, 66% and 54% — all on *negative* volume z. Those are the fills
+  // the floor existed to reject, and the stricter z-score rejects them without
+  // also rejecting the pair that is genuinely waking up.
+  const floor = row.tier === "early" ? minEarlyVolumeZ : minVolumeZ;
+  if (!Number.isFinite(row.volumeZScore) || row.volumeZScore < floor) return false;
 
   const moved = Number.isFinite(row.sigmaMove) && Math.abs(row.sigmaMove) >= minSigma;
   const thrashed = Number.isFinite(row.rangeSigma) && row.rangeSigma >= minRangeSigma;
   return moved || thrashed;
 }
 
-export async function pulse({ minVolume = 5e6, limit = 15, fetchImpl = globalThis.fetch } = {}) {
+export async function pulse({
+  minVolume = 5e6,
+  earlyVolume = 1e6,
+  limit = 15,
+  fetchImpl = globalThis.fetch,
+} = {}) {
   const tickers = await fetchAllTickers(fetchImpl);
-  const ranked = rankTickers(tickers, { minVolume, limit });
+  const ranked = rankTickers(tickers, { minVolume, earlyVolume, limit });
   const rows = await enrich(ranked, { fetchImpl });
   return {
     scannedPairs: tickers.length,
@@ -139,18 +180,20 @@ const money = (v) => (v >= 1e9 ? `$${(v / 1e9).toFixed(2)}B` : `$${(v / 1e6).toF
 
 export function formatPulse({ scannedPairs, rows, events }) {
   const lines = [`Exchange pulse — ${scannedPairs} pairs scanned, ${rows.length} ranked`, ""];
-  lines.push("  PAIR            24h        range     vol24h      volZ    sigma   rngSig");
+  lines.push("  PAIR            24h        range     vol24h      volZ    sigma   rngSig  tier");
   for (const r of rows) {
     lines.push(
       `  ${r.symbol.replace(/USDT$/, "").padEnd(12)} ${`${r.change24hPct >= 0 ? "+" : ""}${f1(r.change24hPct)}%`.padStart(8)} ` +
         `${`${f1(r.range24hPct)}%`.padStart(9)} ${money(r.quoteVolume24h).padStart(9)} ` +
-        `${f1(r.volumeZScore).padStart(8)} ${f2(r.sigmaMove).padStart(8)} ${f1(r.rangeSigma).padStart(8)}`,
+        `${f1(r.volumeZScore).padStart(8)} ${f2(r.sigmaMove).padStart(8)} ${f1(r.rangeSigma).padStart(8)}` +
+        `  ${r.tier === "early" ? "early" : ""}`,
     );
   }
   lines.push("");
+  const label = (e) => e.symbol.replace(/USDT$/, "") + (e.tier === "early" ? " (early)" : "");
   lines.push(
     events.length
-      ? `Events (volZ>=2 with |sigma|>=2.5 or range>=5 sigma): ${events.map((e) => e.symbol.replace(/USDT$/, "")).join(", ")}`
+      ? `Events (volZ>=2, or >=4 below the floor, with |sigma|>=2.5 or range>=5 sigma): ${events.map(label).join(", ")}`
       : "No event today: nothing is moving far enough on unusual enough volume. Do not manufacture one.",
   );
   return lines.join("\n");

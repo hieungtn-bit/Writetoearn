@@ -67,3 +67,32 @@ test("turnover is still required — a wild range on normal volume is noise", ()
 test("an ordinary session on heavy volume is not an event either", () => {
   assert.equal(isEvent({ sigmaMove: 0.5, rangeSigma: 1.2, volumeZScore: 6 }), false);
 });
+
+test("the band below the liquidity floor is scanned, not discarded", async () => {
+  const { rankTickers } = await import("../src/pulse.mjs");
+  const t = (symbol, quoteVolume24h, change24hPct) => ({
+    symbol, quoteVolume24h, change24hPct, high24h: 11, low24h: 10,
+  });
+  const rows = rankTickers([t("BIGUSDT", 9e6, 5), t("THINUSDT", 3.3e6, 36.9), t("DUSTUSDT", 5e4, 80)]);
+
+  assert.deepEqual(rows.map((r) => r.symbol), ["BIGUSDT", "THINUSDT"]);
+  assert.equal(rows[0].tier, "main");
+  assert.equal(rows[1].tier, "early", "a pair under the floor is ranked, and marked");
+  assert.ok(!rows.some((r) => r.symbol === "DUSTUSDT"), "genuinely dead pairs stay out");
+});
+
+test("a thin pair must show far more unusual turnover to count as an event", async () => {
+  const { isEvent } = await import("../src/pulse.mjs");
+  const row = { volumeZScore: 2.5, sigmaMove: 6, rangeSigma: 1 };
+
+  assert.ok(isEvent({ ...row, tier: "main" }), "above the floor, 2.5 sigma of volume is enough");
+  assert.ok(!isEvent({ ...row, tier: "early" }), "below it, the same reading is not");
+  assert.ok(isEvent({ ...row, tier: "early", volumeZScore: 6.2 }), "a real awakening still counts");
+});
+
+test("a dead pair's large move is rejected by the volume test, not by the floor", async () => {
+  const { isEvent } = await import("../src/pulse.mjs");
+  // The shape actually observed on the venue: -69% on negative volume z.
+  const fill = { tier: "early", volumeZScore: -0.9, sigmaMove: -3.58, rangeSigma: 4 };
+  assert.ok(!isEvent(fill), "a huge move with no turnover anomaly is a fill, not an event");
+});
