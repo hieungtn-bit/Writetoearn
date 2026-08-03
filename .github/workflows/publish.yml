@@ -1,0 +1,73 @@
+# The daily publishing job.
+#
+# Deliberately manual-only. The schedule that `wte slots` prints is written out
+# below but left commented, because turning it on means this repository starts
+# posting to a public account without anyone reading the draft first, and that
+# is the owner's decision rather than a default. Uncomment when you want it,
+# and check `wte score` afterwards.
+#
+# Requires two secrets:
+#   BINANCE_SQUARE_OPENAPI_KEY   the Square OpenAPI key
+#   ANTHROPIC_API_KEY            used by the writer/critic in wte team
+name: publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      format:
+        description: Which slot format to write
+        type: choice
+        options: [recap, europe, positioning, wrap]
+        default: positioning
+      dry_run:
+        description: Build and verify, publish nothing
+        type: boolean
+        default: true
+
+  # schedule:
+  #   - cron: "30 0 * * *"    # recap
+  #   - cron: "30 7 * * *"    # europe
+  #   - cron: "15 13 * * *"   # positioning
+  #   - cron: "0 20 * * *"    # wrap
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # The verification gate is the reason this account can publish numbers at
+      # all. If it is broken, nothing should go out.
+      - name: Test
+        run: npm test
+
+      - name: Write and publish
+        env:
+          BINANCE_SQUARE_OPENAPI_KEY: ${{ secrets.BINANCE_SQUARE_OPENAPI_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          WTE_STATE_DIR: data
+        run: |
+          node bin/wte.mjs team \
+            --format "${{ inputs.format || 'positioning' }}" \
+            ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Commit what was published
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git diff --quiet -- data/ site/ && exit 0
+          git config user.name "maix8-publisher"
+          git config user.email "publisher@users.noreply.github.com"
+          git add data/ site/
+          git commit -m "Publish: ${{ inputs.format || 'positioning' }}"
+          git push

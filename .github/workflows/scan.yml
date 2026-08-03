@@ -1,0 +1,100 @@
+# The scanner, running somewhere that outlives a laptop.
+#
+# The edge measured in research/intraday-signal.json is latency: 4.44x lift at
+# 2.75 sigma for an hour whose turnover is 5 sigma above the pair's trailing
+# week. Latency is also exactly what a scheduled workflow spends, so read the
+# caveat in docs/RUNNING.md before treating this as the primary path — GitHub
+# queues scheduled runs and delays of ten to twenty minutes are normal under
+# load. A VPS with cron gives the edge back.
+#
+# State lives in data/alerts.jsonl and is committed, because the cooldown that
+# stops one breakout alerting every hour needs to remember the last alert, and
+# a runner is wiped between runs. Committing it also keeps the repository
+# active, which matters: GitHub disables scheduled workflows after 60 days of
+# inactivity.
+name: scan
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+# Two scans writing the same log would race on the commit.
+concurrency:
+  group: scan
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Scan the venue
+        id: scan
+        env:
+          WTE_STATE_DIR: data
+        run: |
+          node bin/wte.mjs scan --json > /tmp/scan.json
+          node -e '
+            const s = require("/tmp/scan.json");
+            const fs = require("fs");
+            const lines = s.alerts.map((a) =>
+              `- **${a.symbol.replace(/USDT$/, "")}** — volume ${a.volumeZScore.toFixed(1)}σ above its weekly average, ` +
+              `1h ${a.change1hPct >= 0 ? "+" : ""}${a.change1hPct.toFixed(2)}%, at \`${a.price}\``
+            );
+            fs.writeFileSync("/tmp/body.md", lines.join("\n"));
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `count=${s.alerts.length}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `scanned=${s.scanned}\n`);
+            console.log(`${s.scanned} pairs scanned, ${s.alerts.length} new alerts`);
+          '
+
+      - name: Commit the alert log
+        run: |
+          if git diff --quiet -- data/; then
+            echo "nothing new to record"
+            exit 0
+          fi
+          git config user.name "maix8-scanner"
+          git config user.email "scanner@users.noreply.github.com"
+          git add data/
+          git commit -m "Scanner: ${{ steps.scan.outputs.count }} alert(s)"
+          # A push can lose a race with the previous run's commit. Rebase and
+          # retry rather than failing the whole scan over a log file.
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
+
+      # An alert nobody sees is the failure this whole workflow exists to fix.
+      # An issue is the one channel that needs no extra service and no secret:
+      # the GitHub mobile app turns it into a push notification.
+      - name: Raise the alert
+        if: steps.scan.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "Volume events on ${{ steps.scan.outputs.scanned }} pairs scanned."
+            echo
+            cat /tmp/body.md
+            echo
+            echo "---"
+            echo "_Detection, not prediction: the move has already started. Measured lift is 4.44x at 2.75σ over a 12-hour horizon — see \`research/intraday-signal.json\`._"
+          } > /tmp/issue.md
+          gh issue create \
+            --title "Scanner: ${{ steps.scan.outputs.count }} alert(s) — $(date -u '+%Y-%m-%d %H:%M UTC')" \
+            --body-file /tmp/issue.md \
+            --label scanner 2>/dev/null \
+          || gh issue create \
+            --title "Scanner: ${{ steps.scan.outputs.count }} alert(s) — $(date -u '+%Y-%m-%d %H:%M UTC')" \
+            --body-file /tmp/issue.md
