@@ -1,0 +1,19 @@
+This morning $ORDI had one of the cleanest structures I had scanned all day: barely any of the month's money sat above the price.
+
+It now reads 78.7% underwater.
+
+The price moved a few percent. The metric moved by an order of magnitude.
+
+That is not a broken indicator. It is what happens when turnover is stacked in a narrow band just above spot — a small move down does not walk past a little supply, it walks past most of it at once.
+
+The underwater share is not a slow quality score you can check weekly. Near a volume node it is a cliff.
+
+Its volume z-score also decayed to 0.09 from the 3.50 threshold it cleared this morning.
+
+When did you last recheck a metric you decided on days ago?
+
+Bias: WAIT. The structure that made it interesting is the structure that just inverted.
+
+Educational research, not financial advice. DYOR.
+
+#WriteToEarn #BinanceSquare

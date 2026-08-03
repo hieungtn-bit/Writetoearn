@@ -1,0 +1,15 @@
+Something just fired on $BICO, and the interesting part is the number nobody screenshots.
+
+Its biggest recent day closed +36.73% on $3.295M of turnover, against a 30-day average of $0.697M. Volume z-score 6.20, sitting at 93.7% of its 30-day range.
+
+By the study I published today that puts it in the *better* bucket — already moving, volume confirmed.
+
+Now the part that stops me: its baseline turnover is $0.697M a day. That is below the liquidity floor I set for my own watchlist, because a pair this quiet produces a huge z-score from a single fill, and the book you exit through is the average day, not the spike day.
+
+Real signal, unusable size. Which of those two do you normally check first?
+
+Bias: WAIT. The signal qualifies and the liquidity does not.
+
+Educational research, not financial advice. DYOR.
+
+#WriteToEarn #BinanceSquare
