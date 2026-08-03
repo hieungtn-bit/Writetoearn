@@ -16,15 +16,29 @@ import fs from "node:fs";
 import { alertsFrom, scanIntraday, DEFAULT_MIN_Z } from "../src/intraday.mjs";
 import { AlertLog } from "../src/alerts.mjs";
 import { scoreAlerts, HORIZON_HOURS, TARGET_PCT } from "../src/alert-score.mjs";
+import { fetchDelistings, partitionByDelisting } from "../src/listings.mjs";
 
 const out = process.argv[2] ?? "/tmp/scan-body.md";
 const minZ = Number(process.env.SCAN_MIN_Z ?? DEFAULT_MIN_Z);
 
 const result = await scanIntraday();
 const log = new AlertLog();
-const fresh = log.record(alertsFrom(result.rows, { minZ }));
+const raw = log.record(alertsFrom(result.rows, { minZ }));
+
+// A delisting pump is real turnover with a countdown attached. It is separated
+// out rather than dropped, because it is sometimes the story worth writing --
+// it just must never arrive looking like an opportunity.
+const delistings = await fetchDelistings();
+const { clean: fresh, flagged } = partitionByDelisting(raw, delistings);
 
 const lines = [];
+if (flagged.length) {
+  lines.push(`> **${flagged.length} alert(s) suppressed: the exchange has announced a delisting.**`, ">");
+  for (const a of flagged) {
+    lines.push(`> - **${a.symbol.replace(/USDT$/, "")}** — ${a.delisting.title}`);
+  }
+  lines.push("");
+}
 if (fresh.length) {
   lines.push(`**${fresh.length} new alert(s)** out of ${result.scanned} pairs scanned.`, "");
   for (const a of fresh) {
@@ -35,7 +49,7 @@ if (fresh.length) {
     );
   }
 } else {
-  lines.push(`No alert: ${result.scanned} pairs scanned, nothing above ${minZ}σ of its own weekly turnover.`);
+  lines.push(`No actionable alert: ${result.scanned} pairs scanned, nothing above ${minZ}σ of its own weekly turnover${flagged.length ? " that is not being delisted" : ""}.`);
 }
 
 // The scoreboard is the part worth reading over time. A feed of alerts with no
@@ -61,7 +75,7 @@ fs.writeFileSync(out, lines.join("\n"));
 if (process.env.GITHUB_OUTPUT) {
   fs.appendFileSync(
     process.env.GITHUB_OUTPUT,
-    `count=${fresh.length}\nscanned=${result.scanned}\n`,
+    `count=${fresh.length}\nsuppressed=${flagged.length}\nscanned=${result.scanned}\n`,
   );
 }
-console.log(`${result.scanned} pairs scanned, ${fresh.length} new alert(s), ${score.settled} settled`);
+console.log(`${result.scanned} pairs scanned, ${fresh.length} new alert(s), ${flagged.length} suppressed as delisting, ${score.settled} settled`);

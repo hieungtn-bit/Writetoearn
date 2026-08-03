@@ -1,4 +1,18 @@
-# First live catch: VIC, 2026-08-03
+# First live catch: VIC, 2026-08-03 — and why it was worthless
+
+> **Correction, same day.** Everything below about the detection is true and
+> reproducible. The conclusion drawn from it was wrong. Binance announced
+> "Binance Will Delist ACX, HFT, PIVX, PYR, VANRY, VIC on 2026-08-17" on
+> 2026-08-03 — the same day. VIC was not a discovery, it was a delisting pump,
+> and the token stops trading on this venue in two weeks. Three of the eight
+> alerts that day (VIC, HFT, PYR) came from that one announcement, and VANRY was
+> a fourth just below the threshold. `src/listings.mjs` now separates them.
+>
+> Nothing in the market-data API could have revealed this. VIC's exchangeInfo
+> entry is as healthy as BTC's: status TRADING, spot and margin allowed, the
+> same permission sets. This was not a tuning failure. It was a missing input,
+> and it was already written down as P3 in the architecture review a few hours
+> earlier — below live scanning, below scheduling. That ranking was wrong.
 
 The first token the scanner found after it was wired up, and the first honest
 test of whether any of this was worth building.
