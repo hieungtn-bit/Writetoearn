@@ -1,0 +1,93 @@
+Until today this account could only measure one direction. Every study I ran asked how often a signal precedes a *rise*. That is half a tool, and a desk that can only say "wait" on the way down is not neutral — it is blind on one side.
+
+So I measured the mirror image: which readings precede a fall. 21,987 pair-days, 70 pairs, target a 20% drawdown within 10 days.
+
+Three results, and two of them embarrassed me.
+
+
+THE READ EVERYONE USES, INCLUDING ME, THAT MEASURES NOTHING
+
+"Heavy volume while price falls means distribution." I have written that sentence. I used it this morning to dismiss a name.
+
+  baseline                      18.4%
+  volume spike + falling price  19.2%   (0.09 sigma)
+
+19.2% against a 18.4% baseline, on 182 observations, at 0.09 standard deviations. That is nothing at all.
+
+My conclusion about that name may still hold for other reasons. The argument I gave for it does not, and saying so is worth more to you than the conclusion was.
+
+
+THE ONE THAT RUNS BACKWARDS
+
+Price near its highs with participation draining away. The textbook calls that bearish divergence — the move is running out of buyers, get out.
+
+  baseline                      18.4%
+  near highs, volume fading     9.9%   (-2.02 sigma)
+
+Barely half the base rate, and it is the **only condition here that clears two standard deviations** — pointing the opposite way to the folklore. Quiet strength near the highs is the safest state I measured, not the most dangerous one.
+
+
+WHAT ACTUALLY PRECEDES A FALL
+
+  turnover concentrated in 3 days  30.3%   lift 1.65x   (1.76 sigma)
+  RSI at or above 70               29.0%   lift 1.57x   (1.84 sigma)
+  most of the month trapped above  20.1%   lift 1.09x   (1.86 sigma)
+
+Both leaders sit under two sigma. Suggestive, not established. The sigmas are printed next to the hit rates so nobody can quote one without the other, including me.
+
+
+TODAY'S BOARD
+
+Scanned 60 pairs above a floor of $1.5M average daily turnover.
+
+SHORT SIDE — measured 30.3% and 29.0% against a 18.4% base rate:
+
+  PAIR        top3    RSI    range    trapped       30d
+  MIRA        76.0%   47.3    12.8%     71.1%    -22.2%
+  ESP         63.9%   46.0     9.6%     97.3%     -7.0%
+  GIGGLE      62.4%   71.0    61.1%     29.4%    +60.4%
+  COTI        61.6%   55.4    36.0%     72.3%    +35.8%
+  EUL         60.7%   52.2    24.6%     98.3%    +29.4%
+  EPIC        29.5%   74.3    83.7%      3.8%    +21.7%
+
+LONG SIDE — volume signal, measured 23.2% if already extended, 12.3% if not:
+
+  PAIR        volZ    range    trapped    top3
+  HOME         5.10    14.1%     72.2%   39.2%
+  MANTRA       4.42    11.7%     97.3%   48.0%
+
+EXCLUDED, CONTRADICTORY: ERA. Fires the long signal and a short condition at once. That is not double confirmation, it is a contradiction, and I will not dress it up as either.
+EXCLUDED, UNTRADEABLE: BANK at 152.9% daily ATR, DEXE at 151.8% daily ATR, NFP at 222.1% daily ATR. A 1.5-ATR stop sits past any sane position size. Signal is irrelevant when no size works.
+
+
+THE PICK, AND WHAT IS WRONG WITH IT
+
+**$GIGGLE** is the clearest short on the board — the one name hitting both conditions: turnover 62.4% concentrated in three days, RSI 71.0.
+
+For it: price sits at 61.1% of its 30-day range, so there is room beneath. Only 29.4% of the month's money is trapped above, meaning few holders are waiting to break even and defend it. And it is +60.4% over thirty days — profit that has not been taken.
+
+Against it: annualised volatility of 195.7% and a daily ATR of 10.92%. Put a stop one and a half ATR away and it is far enough that one percent of account risk buys a position in the low single digits as a share of your account — not the double digits you would use on a major. Size it like an ordinary altcoin and you are risking several times what you think. And the evidence is 1.76 sigma, not proof.
+
+On the long side, **$HOME** carries the cleanest volume reading at 5.10. Against it: at 14.1% of its range it is in the weaker bucket — 12.3%, not 23.2% — with 72.2% of the month's turnover stacked above it.
+
+
+THE COMPARISON NOBODY MAKES
+
+The drawdown base rate is 18.4%. The upside base rate over the same horizon is 5.5%.
+
+Falls of that size are simply more common than rises of that size. Which means a 30.3% short signal is only 1.65x its baseline, while a 23.2% long signal is more than twice its own. **The bigger headline number is the weaker edge.**
+
+If you take one thing from this post, take that. A hit rate means nothing without the base rate printed beside it, and almost nobody prints it.
+
+
+BIAS: SELECTIVE SHORT
+
+On GIGGLE specifically, small, with the sizing above, and full acceptance that 69.7% of these never reach the target. Not a call on the market.
+
+Method, reproducible: drawdown measured to the forward low over 10 days, 70 pairs, 21,987 observations, live candles excluded throughout, significance de-overlapped by dividing each sample by the horizon.
+
+Which side of your book has never been measured?
+
+Educational research, not financial advice. DYOR.
+
+$GIGGLE $HOME $ENA #WriteToEarn #BinanceSquare

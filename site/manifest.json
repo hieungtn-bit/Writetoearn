@@ -10,6 +10,26 @@
   },
   "articles": [
     {
+      "slug": "long-short-board",
+      "draft": "46-long-short-board.txt",
+      "title": "I Could Only Measure One Direction. So I Measured What Precedes a Fall — and Two Results Embarrassed Me.",
+      "description": "Until today this account could only measure one direction. Every study I ran asked how often a signal precedes a *rise*. That is half a tool, and a desk that can only say \"wait\" on the way down is…",
+      "published": "2026-08-03T07:19:02.192Z",
+      "assets": [
+        "GIGGLE",
+        "HOME",
+        "ENA"
+      ],
+      "topics": [
+        "short signals",
+        "base rates",
+        "long short board",
+        "statistical significance",
+        "risk sizing"
+      ],
+      "squareId": 351643001309154
+    },
+    {
       "slug": "same-day-followthrough",
       "draft": "40-same-day-followthrough.txt",
       "title": "I Published Three Scans Today. Here Is What Happened to Every Name By the Close.",
