@@ -38,24 +38,14 @@ jobs:
         with:
           node-version: "22"
 
+      # No npm install: the scanner deliberately pulls in nothing. The one
+      # dependency in package.json is the Anthropic SDK, used only by the
+      # writer, and it is imported lazily so a scan never touches it.
       - name: Scan the venue
         id: scan
         env:
           WTE_STATE_DIR: data
-        run: |
-          node bin/wte.mjs scan --json > /tmp/scan.json
-          node -e '
-            const s = require("/tmp/scan.json");
-            const fs = require("fs");
-            const lines = s.alerts.map((a) =>
-              `- **${a.symbol.replace(/USDT$/, "")}** — volume ${a.volumeZScore.toFixed(1)}σ above its weekly average, ` +
-              `1h ${a.change1hPct >= 0 ? "+" : ""}${a.change1hPct.toFixed(2)}%, at \`${a.price}\``
-            );
-            fs.writeFileSync("/tmp/body.md", lines.join("\n"));
-            fs.appendFileSync(process.env.GITHUB_OUTPUT, `count=${s.alerts.length}\n`);
-            fs.appendFileSync(process.env.GITHUB_OUTPUT, `scanned=${s.scanned}\n`);
-            console.log(`${s.scanned} pairs scanned, ${s.alerts.length} new alerts`);
-          '
+        run: node scripts/scan-report.mjs /tmp/body.md
 
       - name: Commit the alert log
         run: |

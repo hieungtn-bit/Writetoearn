@@ -21,7 +21,6 @@ import { runLoop, runOnce } from "./worker.mjs";
 import { probeDurationSeconds } from "./media.mjs";
 import { collectBrief, formatBrief } from "./market.mjs";
 import { fetchKlines } from "./analysis.mjs";
-import { composePost } from "./compose.mjs";
 import { FORMATS, crontabLines, getFormat } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
@@ -34,7 +33,6 @@ import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
 import { createDeploy, deployConfigFromEnv, waitForCommitDeploy, waitForDeploy } from "./deploy.mjs";
 import { execFileSync } from "node:child_process";
-import { promptCapturingClient, runTeam } from "./team.mjs";
 import { ARTICLE_MAX_WORDS, verifyPost } from "./verify.mjs";
 
 const HELP = `wte — automated publishing for Binance Square
@@ -426,6 +424,7 @@ async function cmdAuto(flags, argv) {
   }
 
   const format = flags.format ?? "positioning";
+  const { composePost } = await import("./compose.mjs");
   const { text, attempts, verification } = await composePost(brief, {
     format,
     effort: flags.effort ?? "high",
@@ -533,6 +532,7 @@ async function cmdTeam(flags, argv) {
   if (dryRun && !process.env.ANTHROPIC_API_KEY) {
     const captured = [];
     try {
+      const { promptCapturingClient, runTeam } = await import("./team.mjs");
       await runTeam({ brief, screenResult, format, recentPosts, log, client: promptCapturingClient(captured) });
     } catch (err) {
       if (!err.promptPreview) throw err;
@@ -547,6 +547,7 @@ async function cmdTeam(flags, argv) {
     return 0;
   }
 
+  const { runTeam } = await import("./team.mjs");
   const result = await runTeam({ brief, screenResult, format, recentPosts, log });
 
   if (result.skipped) {
