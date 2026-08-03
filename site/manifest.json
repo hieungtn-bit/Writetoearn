@@ -10,6 +10,23 @@
   },
   "articles": [
     {
+      "slug": "btc-three-horizons",
+      "draft": "47-btc-three-horizons.txt",
+      "title": "BTC: Three Horizons, Three Different Answers — And The One I Cannot Read",
+      "description": "$BTC has coiled into the tightest 30-day range of the last 500 sessions — not one of the tightest. The tightest. That is the headline everybody wants, and on its own it is worth almost nothing.",
+      "published": "2026-08-03T08:37:56.418Z",
+      "assets": [
+        "BTC",
+        "ETH"
+      ],
+      "topics": [
+        "BTC",
+        "ETH",
+        "Bitcoin"
+      ],
+      "squareId": 351662393274081
+    },
+    {
       "slug": "long-short-board",
       "draft": "46-long-short-board.txt",
       "title": "I Could Only Measure One Direction. So I Measured What Precedes a Fall — and Two Results Embarrassed Me.",

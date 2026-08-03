@@ -1,0 +1,81 @@
+$BTC has coiled into the tightest 30-day range of the last 500 sessions — not one of the tightest. The tightest. That is the headline everybody wants, and on its own it is worth almost nothing.
+
+It tells you a move is coming. It does not tell you which way — and I can show you that with a study rather than an opinion. So here are three horizons, three separate answers, and an honest admission about which one I cannot read.
+
+
+LONG TERM — DOWN, AND NOT AMBIGUOUSLY
+
+Over the last 500 sessions:
+
+  total change            -25.55%
+  window high             126,200
+  price against that high -50.54%
+  window low              57,800   —   price against it   +8.00%
+
+Roughly half the window high, and barely off its floor. Price sits below both averages I track:
+
+  price   62,422
+  SMA20   64,358
+  SMA50   63,340
+
+$ETH is telling the same story — it trades below its own long-term average as well. This is not a Bitcoin-specific problem, which matters, because it removes the "rotation" explanation.
+
+
+MEDIUM TERM — DOWN, WITH THE RECEIPT
+
+Over the last 120 sessions:
+
+  total change            -9.34%
+  price against the high  -24.66%
+
+Price is the weak evidence. Here is the strong evidence — turnover on up days divided by turnover on down days:
+
+  last 90 days   0.667
+  last 30 days   1.006
+
+For every dollar that changed hands on an up day over those ninety, sellers moved half as much again on a down day. That is not a dip inside an uptrend. That is sustained distribution, and it is measured rather than argued.
+
+
+SHORT TERM — THE PART I CANNOT READ
+
+  30-day range     61,307  to  66,956
+  range width      9.21%
+  30-day volatility 29.9%
+  yesterday's turnover  287M against a 965M average
+
+The tightest range in the window, volatility in its lowest fifth, turnover at a fraction of normal. This is where everyone else tells you what happens next.
+
+I measured it instead. My compression study, committed and reproducible, finds that a compressed range lifts the odds of a large move by 1.11x — and once you correct for the fact that overlapping windows share most of their days, that gap is 1.22 standard deviations. That is statistically indistinguishable from nothing.
+
+Compression says the next move will be large **relative to the recent range**. It says nothing about direction. Anyone selling you a direction from a tight range is selling you their prior with a chart attached.
+
+
+THE TWO FORCES INSIDE THE COIL
+
+Against — and this is the heaviest number on the page: 100.0% of the last thirty days' turnover was done above the current price. Not most of it. All of it. Every participant from this month is holding a loss, and every rally walks into people who just want out at breakeven.
+
+For: the 30-day flow ratio has climbed back to level, against 0.667 over ninety days. Note what that is and is not — it is the end of the selling pressure, not the start of buying pressure. Parity. Funding leans the same way, at +4.59% annualised with only 12.7% of periods negative — longs are paying, not panicking.
+
+And that levelling happened on turnover -1.50 standard deviations below normal, with three-day participation running -57.4%. A thin month of balance does not undo a heavy quarter of selling, and I am not going to pretend it does.
+
+
+WHAT RESOLVES IT
+
+Two prices and one volume, published in advance so you can hold me to them:
+
+• Above 66,956 — the 30-day high. That clears the coil upward and starts eating the trapped supply.
+• Below 61,307 — the 30-day low. Below it the medium-term range opens considerably further down.
+• Either move needs turnover. Yesterday printed 287M. A break on less than the 965M average is a false one until proven otherwise.
+
+
+BIAS — WAIT
+
+Two horizons point down and the third is genuinely unreadable. That is not fence-sitting. It is what the measurements say, and the honest move is to hand you the split instead of averaging it into a conviction I do not have.
+
+One practical note. With volatility in the lowest fifth of this window, the cost of waiting is close to its cheapest. A position opened now pays for movement it is not getting and receives no directional information in return.
+
+If you are already positioned, the question is not the trend — it is whether your stop survives a move sized by a coil this tight. Which is it for you?
+
+Educational research, not financial advice. DYOR.
+
+$BTC $ETH #WriteToEarn #BinanceSquare
