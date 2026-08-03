@@ -10,6 +10,21 @@
   },
   "articles": [
     {
+      "slug": "both-sides-btc",
+      "draft": "48-both-sides-btc.txt",
+      "title": "You Are Already Long or Short BTC. Here Is What the Numbers Say to Each of You.",
+      "description": "$BTC — advice for the two accounts already in the trade, not another forecast.",
+      "published": "2026-08-03T09:00:46.569Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [
+        "BTC",
+        "Bitcoin"
+      ],
+      "squareId": 351668005405618
+    },
+    {
       "slug": "btc-three-horizons",
       "draft": "47-btc-three-horizons.txt",
       "title": "BTC: Three Horizons, Three Different Answers — And The One I Cannot Read",

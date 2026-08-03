@@ -1,0 +1,15 @@
+$BTC — advice for the two accounts already in the trade, not another forecast.
+
+IF YOU ARE LONG. The heavy fact against you: 96.0% of the last thirty days' turnover was done above the current price. Nearly everyone who bought this month is holding a loss, and every rally feeds them an exit.
+
+But I measured that condition rather than dramatising it. Across 21,987 observations, a token with most of its month trapped above price fell 20% within ten days 20.1% of the time, against a 18.4% base rate. That is 1.86 standard deviations — below my own two-sigma bar. A headwind, not an exit signal. Do not panic out of a position on it. Do size for it.
+
+IF YOU ARE SHORT. Funding is +4.59% annualised with only 12.7% of periods negative — longs are paying you to wait, which is the cheapest edge on this board. But do not confuse the tight range for confirmation: compression lifts the odds of a big move 1.11x, at 1.22 sigma. It predicts size, never direction.
+
+BOTH SIDES. The range is 61,307 to 66,956, only 9.21% wide, on turnover -1.50 sigma below normal. A stop inside that band is inside the noise — the coil takes it out before the move even picks a side. Widen the stop and cut the size, or stand aside.
+
+BIAS: WAIT. Neither side has a measured edge here — and if you are in the trade anyway, which is it for you: the stop or the size?
+
+Educational research, not financial advice. DYOR.
+
+$BTC #WriteToEarn #BinanceSquare
