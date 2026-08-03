@@ -69,3 +69,38 @@ test("the log is append-only and survives a reload", () => {
   assert.deepEqual(reopened.all().map((a) => a.symbol), ["AUSDT", "BUSDT"]);
   assert.ok(reopened.all()[0].firedAt, "an alert records when we saw it");
 });
+
+test("an alert inside its window is pending, not a miss", async () => {
+  const { scoreAlert } = await import("../src/alert-score.mjs");
+  const t0 = Date.UTC(2026, 7, 3, 13);
+  const alert = { symbol: "SUSDT", hourOpenTime: t0, price: 100, volumeZScore: 7, firedAt: new Date(t0).toISOString() };
+  const candles = [{ openTime: t0 + hour, high: 102, low: 99, close: 101 }];
+
+  const r = scoreAlert(alert, candles, { now: t0 + 2 * hour });
+  assert.equal(r.status, "pending", "two hours in is not a verdict");
+  assert.ok(Math.abs(r.maxGainPct - 2) < 1e-9);
+});
+
+test("a hit settles the moment it happens, a miss waits for the window to close", async () => {
+  const { scoreAlert } = await import("../src/alert-score.mjs");
+  const t0 = Date.UTC(2026, 7, 3, 13);
+  const alert = { symbol: "XUSDT", hourOpenTime: t0, price: 100, volumeZScore: 6, firedAt: new Date(t0).toISOString() };
+
+  const won = [{ openTime: t0 + hour, high: 115, low: 100, close: 114 }];
+  assert.equal(scoreAlert(alert, won, { now: t0 + 2 * hour }).status, "hit");
+
+  const flat = [{ openTime: t0 + hour, high: 101, low: 99, close: 100 }];
+  assert.equal(scoreAlert(alert, flat, { now: t0 + 13 * hour }).status, "miss", "the window closed");
+});
+
+test("candles beyond the horizon do not rescue a miss", async () => {
+  const { scoreAlert } = await import("../src/alert-score.mjs");
+  const t0 = Date.UTC(2026, 7, 3, 13);
+  const alert = { symbol: "YUSDT", hourOpenTime: t0, price: 100, volumeZScore: 6, firedAt: new Date(t0).toISOString() };
+  // The 20% candle lands on hour 20, well past the twelve-hour window.
+  const candles = [
+    { openTime: t0 + hour, high: 101, low: 99, close: 100 },
+    { openTime: t0 + 20 * hour, high: 120, low: 100, close: 119 },
+  ];
+  assert.equal(scoreAlert(alert, candles, { now: t0 + 30 * hour }).status, "miss");
+});

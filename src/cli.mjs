@@ -28,6 +28,7 @@ import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
 import { formatPulse, pulse } from "./pulse.mjs";
 import { DEFAULT_MIN_Z, alertsFrom, formatIntraday, scanIntraday } from "./intraday.mjs";
 import { AlertLog, DEFAULT_COOLDOWN_HOURS } from "./alerts.mjs";
+import { formatAlertScore, scoreAlerts } from "./alert-score.mjs";
 import { DEFAULT_DAYS, formatStage, normalizeSymbol, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
@@ -72,6 +73,7 @@ Usage
   wte scan [--min-z <n>] [--top <n>]  Hourly turnover scan — the measured edge
   wte watch [--every <min>]           Run the hourly scan on a loop and log alerts
            [--min-z <n>] [--once]
+  wte alerts [--json]                 Score our own alerts against what followed
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte site [--out <dir>]              Build the indexable research site
   wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
@@ -140,6 +142,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdScan(flags);
     case "watch":
       return cmdWatch(flags);
+    case "alerts":
+      return cmdAlerts(flags);
     case "stage":
       return cmdStage(rest, flags);
     case "site":
@@ -846,6 +850,17 @@ async function cmdWatch(flags) {
       controller.signal.addEventListener("abort", () => { clearTimeout(timer); resolve(); }, { once: true });
     });
   }
+  return 0;
+}
+
+/** Scores the alerts we actually raised, which is the only test that is not a backtest. */
+async function cmdAlerts(flags) {
+  const result = await scoreAlerts({ limit: flags.limit ? Number(flags.limit) : undefined });
+  if (flags.json) {
+    print(result, flags);
+    return 0;
+  }
+  console.log(formatAlertScore(result));
   return 0;
 }
 
