@@ -28,6 +28,7 @@ import { formatPulse, pulse } from "./pulse.mjs";
 import { DEFAULT_MIN_Z, alertsFrom, formatIntraday, scanIntraday } from "./intraday.mjs";
 import { AlertLog, DEFAULT_COOLDOWN_HOURS } from "./alerts.mjs";
 import { formatAlertScore, scoreAlerts } from "./alert-score.mjs";
+import { formatContext, marketContext } from "./context.mjs";
 import { DEFAULT_DAYS, formatStage, normalizeSymbol, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
@@ -72,6 +73,7 @@ Usage
   wte watch [--every <min>]           Run the hourly scan on a loop and log alerts
            [--min-z <n>] [--once]
   wte alerts [--json]                 Score our own alerts against what followed
+  wte context [--json]                Breadth, concentration, leverage, funding
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte site [--out <dir>]              Build the indexable research site
   wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
@@ -142,6 +144,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdWatch(flags);
     case "alerts":
       return cmdAlerts(flags);
+    case "context":
+      return cmdContext(flags);
     case "stage":
       return cmdStage(rest, flags);
     case "site":
@@ -851,6 +855,17 @@ async function cmdWatch(flags) {
       controller.signal.addEventListener("abort", () => { clearTimeout(timer); resolve(); }, { once: true });
     });
   }
+  return 0;
+}
+
+/** The board an alert lands on: breadth, concentration, positioning, crowd. */
+async function cmdContext(flags) {
+  const ctx = await marketContext();
+  if (flags.json) {
+    print(ctx, flags);
+    return 0;
+  }
+  console.log(formatContext(ctx));
   return 0;
 }
 

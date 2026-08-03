@@ -135,3 +135,27 @@ test("a broken announcement feed loses the annotation, not the scan", async () =
   const notOk = async () => ({ ok: false, json: async () => ({}) });
   assert.equal((await fetchDelistings({ fetchImpl: notOk })).size, 0);
 });
+
+test("the regime note names a narrow, leaderless board", async () => {
+  const { regimeNote } = await import("../src/context.mjs");
+  const narrow = { breadth: { top10TurnoverSharePct: 69, beatingBtcPct: 31 }, positioning: { majorSharePct: 64 } };
+  assert.match(regimeNote(narrow), /narrow and leaderless/i);
+  assert.match(regimeNote(narrow), /little behind it/i, "and says what it means for a breakout");
+
+  const broad = { breadth: { top10TurnoverSharePct: 30, beatingBtcPct: 60 }, positioning: { majorSharePct: 40 } };
+  assert.match(regimeNote(broad), /broad/i);
+  assert.match(regimeNote({ breadth: null }), /unreadable/i, "missing data says so rather than guessing");
+});
+
+test("breadth measures the board, not one pair", async () => {
+  const { breadthFrom } = await import("../src/context.mjs");
+  const t = (symbol, quoteVolume24h, change24hPct) => ({ symbol, quoteVolume24h, change24hPct });
+  // One giant mover and four flat pairs: turnover is concentrated, nothing leads.
+  const b = breadthFrom([
+    t("BTCUSDT", 90e6, 1), t("AUSDT", 2e6, -1), t("BUSDT", 2e6, -1),
+    t("CUSDT", 2e6, 0.5), t("DUSDT", 2e6, -1), t("DUSTUSDT", 1e3, 90),
+  ]);
+  assert.equal(b.pairs, 5, "the dust pair is below the floor");
+  assert.ok(b.btcTurnoverSharePct > 90, "one pair holds the turnover");
+  assert.equal(b.beatingBtcPct, 0, "nothing is beating BTC");
+});
