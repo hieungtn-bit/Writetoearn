@@ -17,6 +17,7 @@ import { alertsFrom, scanIntraday, DEFAULT_MIN_Z } from "../src/intraday.mjs";
 import { AlertLog } from "../src/alerts.mjs";
 import { scoreAlerts, HORIZON_HOURS, TARGET_PCT } from "../src/alert-score.mjs";
 import { fetchDelistings, partitionByDelisting } from "../src/listings.mjs";
+import { marketContext, regimeNote } from "../src/context.mjs";
 
 const out = process.argv[2] ?? "/tmp/scan-body.md";
 const minZ = Number(process.env.SCAN_MIN_Z ?? DEFAULT_MIN_Z);
@@ -66,6 +67,34 @@ if (score.rows.length) {
   );
   if (score.settled && score.settled < 30) {
     lines.push("", `_${score.settled} settled observations. The backtest used 31,515 — this is not a rate yet._`);
+  }
+}
+
+// The board an alert lands on. On 2026-08-03 the three loudest events on the
+// venue were all tokens being delisted -- not because the scanner was wrong,
+// but because the market had nothing better going on. An alert with no view of
+// the whole board cannot tell those two situations apart, and neither can a
+// reader who only sees the alert.
+const ctx = await marketContext();
+if (ctx.breadth) {
+  const b = ctx.breadth;
+  lines.push("", "---", "", `**Board:** ${regimeNote(ctx)}`, "");
+  lines.push(
+    `- ${b.pairs} pairs, ${b.advancingPct.toFixed(0)}% advancing, ` +
+      `${b.beatingBtcPct.toFixed(0)}% of alts beating BTC`,
+    `- top 10 pairs hold ${b.top10TurnoverSharePct.toFixed(0)}% of all turnover`,
+  );
+  if (ctx.positioning) {
+    lines.push(
+      `- $${(ctx.positioning.totalOpenInterestUsd / 1e9).toFixed(2)}B open interest, ` +
+        `${ctx.positioning.majorSharePct.toFixed(0)}% of it in BTC and ETH`,
+    );
+  }
+  if (ctx.funding) {
+    lines.push(
+      `- ${ctx.funding.positiveSharePct.toFixed(0)}% of majors paying to be long, ` +
+        `${ctx.funding.oiWeightedAnnualisedPct >= 0 ? "+" : ""}${ctx.funding.oiWeightedAnnualisedPct.toFixed(2)}% annualised weighted`,
+    );
   }
 }
 
