@@ -1,0 +1,85 @@
+I published three scans today. This is what happened to every name in them by the close.
+
+Nobody does this. That is the whole reason it is worth doing — a scan is free to publish and expensive to follow up, so almost everyone publishes and moves on.
+
+
+THE ONE THAT HURTS MOST
+
+This morning I measured that pairs which had *already* run were roughly 1.88x more likely to run again — 23.2% against 12.3% for pairs that had not. $KAITO was the clearest example of the higher-probability group on my board.
+
+Here is KAITO's last week of completed candles:
+
+  2026-07-27     +9.07%    $11.37M
+  2026-07-28     -6.63%    $14.53M
+  2026-07-29     +4.29%    $15.63M
+  2026-07-30    -11.49%    $25.60M
+  2026-07-31     -4.15%     $8.70M
+  2026-08-01    +12.90%    $10.47M
+  2026-08-02    -17.05%    $11.21M
+
+2026-08-02 closed -17.05% on $11.21M — above its $8.31M average. Not a thin-liquidity accident. A real day, with real participation, going the other way.
+
+My published bias on KAITO was WAIT, so this is not a losing call I am dressing up. It is something more useful: **a live demonstration of what 23.2% means.**
+
+76.8% of signals in that bucket do not work. If a number like 23.2% makes you feel confident, you have misread it. It is the best bucket I found and it still fails three times out of four.
+
+KAITO is +58.80% over thirty days and 64.0% of the month's turnover now sits above the price. Both things are true at once.
+
+
+THE METRIC THAT MOVED FASTEST
+
+$ORDI is the more interesting lesson, and it is one I did not see coming.
+
+This morning I wrote that ORDI had the cleanest structure of anything I scanned, with only a small share of the month's money above the current price. That was true when I measured it.
+
+It now reads 78.7% underwater.
+
+The price moved a few percent. The metric moved by an order of magnitude. That happens because ORDI's turnover was stacked in a narrow band right above spot — so a small move down does not walk past a little supply, it walks past most of it at once.
+
+If you take one thing from today, take that. The underwater share is not a slow-moving quality score. Near a volume node it is a cliff, and a chart that looks structurally clean can stop being clean on an ordinary day.
+
+Its volume signal is also gone: z-score 0.09, against the 3.5 threshold it cleared this morning.
+
+
+THE ONE THAT SIMPLY DECAYED
+
+MIRA carried the loudest volume reading of the day and I flagged, in the same post, that 85.0%-plus of its holders were underwater and that this was the weaker half of the signal.
+
+Its z-score now reads 0.19. The signal did not resolve into a move. It expired.
+
+That is the most common outcome and the least written about. Signals do not usually get proven wrong in some dramatic way. They just stop being signals while everyone is still watching the chart that made them famous.
+
+92.0% of the month's turnover is now above the price.
+
+
+AND THE ONE WHERE MY OWN FRAMEWORK FAILED
+
+$ENA is the honest black mark on the day.
+
+Yesterday I published a WAIT and wrote that volume would confirm before price did. Price ran anyway while the volume z-score sat below average.
+
+Today ENA's completed-candle z-score reads 2.62 and it is +12.29% over thirty days with only 11.1% of the month's money underwater.
+
+The volume arrived. It arrived *after* the move, which is precisely the thing I told you it would not do. I would rather leave that sentence standing than quietly stop mentioning it.
+
+
+WHAT A DAY LIKE THIS IS ACTUALLY FOR
+
+Four names, four different failure modes: one that moved against the higher-probability bucket, one whose structure inverted on a small move, one whose signal expired, and one where my stated leading indicator lagged.
+
+None of that means the measurements were wrong. A 23.2% hit rate producing a loss on day one is not evidence against 23.2% — it is what 23.2% looks like. The mistake would be to revise the framework after one day, which is how people end up with a new system every week and no record of any of them.
+
+But it does mean something practical: if you cannot sit through the 76.8%, the edge is not usable by you, and no amount of better scanning changes that.
+
+
+BIAS: WAIT
+
+On all of them. Two signals expired today, one bucket produced a heavy loss, and the only name that ran is the one my framework called wrong.
+
+Tomorrow I run the same scan again and publish what it says, including if it contradicts this. That is the entire method.
+
+What is one call you followed that nobody ever came back to?
+
+Educational research, not financial advice. DYOR.
+
+$KAITO $ORDI $ENA #WriteToEarn #BinanceSquare

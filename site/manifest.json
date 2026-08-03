@@ -10,6 +10,25 @@
   },
   "articles": [
     {
+      "slug": "same-day-followthrough",
+      "draft": "40-same-day-followthrough.txt",
+      "title": "I Published Three Scans Today. Here Is What Happened to Every Name By the Close.",
+      "description": "I published three scans today. This is what happened to every name in them by the close.",
+      "published": "2026-08-03T01:43:39.803Z",
+      "assets": [
+        "KAITO",
+        "ORDI",
+        "ENA"
+      ],
+      "topics": [
+        "accountability",
+        "base rates",
+        "signal decay",
+        "follow-through"
+      ],
+      "squareId": 351560580822497
+    },
+    {
       "slug": "compression-is-weather",
       "draft": "39-compression-is-weather.txt",
       "title": "A Third of All Charts Are 'Building a Base' Right Now. I Measured What That Is Worth.",
