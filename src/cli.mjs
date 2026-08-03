@@ -26,6 +26,8 @@ import { FORMATS, crontabLines, getFormat } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
 import { formatPulse, pulse } from "./pulse.mjs";
+import { DEFAULT_MIN_Z, alertsFrom, formatIntraday, scanIntraday } from "./intraday.mjs";
+import { AlertLog, DEFAULT_COOLDOWN_HOURS } from "./alerts.mjs";
 import { DEFAULT_DAYS, formatStage, normalizeSymbol, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
@@ -67,6 +69,9 @@ Usage
             [--study <a.json,b.json>]   cite committed research snapshots
   wte screen [--symbols <a,b>]        Screen the altcoin universe for outliers
   wte pulse [--min-volume <n>]        Scan every USDT pair for today's real event
+  wte scan [--min-z <n>] [--top <n>]  Hourly turnover scan — the measured edge
+  wte watch [--every <min>]           Run the hourly scan on a loop and log alerts
+           [--min-z <n>] [--once]
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte site [--out <dir>]              Build the indexable research site
   wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
@@ -131,6 +136,10 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdScreen(flags);
     case "pulse":
       return cmdPulse(flags);
+    case "scan":
+      return cmdScan(flags);
+    case "watch":
+      return cmdWatch(flags);
     case "stage":
       return cmdStage(rest, flags);
     case "site":
@@ -758,6 +767,88 @@ async function cmdScreen(flags) {
  * arbitrary symbols, because the assets worth asking about are usually the ones
  * that just appeared on a screen rather than the ones in a fixed list.
  */
+/**
+ * One hourly scan. Prints the ranked table and records anything that fires.
+ *
+ * Logging happens even for a manual run: an alert we saw and did not act on is
+ * exactly as informative, later, as one we did.
+ */
+async function cmdScan(flags) {
+  const minZ = flags["min-z"] ? Number(flags["min-z"]) : DEFAULT_MIN_Z;
+  const result = await scanIntraday({
+    minVolume: flags["min-volume"] ? Number(flags["min-volume"]) : undefined,
+    limit: flags.pairs ? Number(flags.pairs) : undefined,
+    onProgress: (done, total) => process.stderr.write(`\rscanning ${done}/${total}   `),
+  });
+  process.stderr.write("\r");
+
+  const fresh = new AlertLog().record(alertsFrom(result.rows, { minZ }), {
+    cooldownHours: flags.cooldown ? Number(flags.cooldown) : undefined,
+  });
+
+  if (flags.json) {
+    print({ ...result, alerts: fresh }, flags);
+    return 0;
+  }
+  console.log(formatIntraday(result, { minZ, top: flags.top ? Number(flags.top) : undefined }));
+  if (fresh.length) console.log(`\nNew since last scan: ${fresh.map((a) => a.symbol).join(", ")}`);
+  return 0;
+}
+
+/**
+ * The scan on a loop.
+ *
+ * The detector was never the problem. BICO cleared every threshold in pulse.mjs
+ * on the day it moved and nothing happened, because `wte pulse` is a command
+ * somebody has to remember to type. A signal nobody is listening for is not a
+ * signal, so this is the half that was missing.
+ */
+async function cmdWatch(flags) {
+  const minZ = flags["min-z"] ? Number(flags["min-z"]) : DEFAULT_MIN_Z;
+  const everyMin = Math.max(1, Number(flags.every ?? 15));
+  const log = new AlertLog();
+  const controller = new AbortController();
+  const stop = () => controller.abort();
+  process.on("SIGINT", stop);
+  process.on("SIGTERM", stop);
+
+  console.log(
+    `Watching every ${everyMin}m at volZ>=${minZ}, cooldown ${flags.cooldown ?? DEFAULT_COOLDOWN_HOURS}h. Ctrl-C to stop.`,
+  );
+
+  while (!controller.signal.aborted) {
+    try {
+      const result = await scanIntraday({
+        minVolume: flags["min-volume"] ? Number(flags["min-volume"]) : undefined,
+        limit: flags.pairs ? Number(flags.pairs) : undefined,
+      });
+      const fresh = log.record(alertsFrom(result.rows, { minZ }), {
+        cooldownHours: flags.cooldown ? Number(flags.cooldown) : undefined,
+      });
+      const stamp = new Date().toISOString().slice(11, 16);
+      if (fresh.length) {
+        for (const a of fresh) {
+          console.log(
+            `${stamp}  ALERT  ${a.symbol.replace(/USDT$/, "").padEnd(10)} volZ ${a.volumeZScore.toFixed(1)}` +
+              `  1h ${a.change1hPct >= 0 ? "+" : ""}${a.change1hPct.toFixed(2)}%  at ${a.price}`,
+          );
+        }
+      } else {
+        console.log(`${stamp}  ${result.rows.length} pairs, nothing above ${minZ} sigma`);
+      }
+    } catch (err) {
+      // A failed scan is a missed hour, not a dead watcher.
+      console.error(`${new Date().toISOString().slice(11, 16)}  scan failed: ${err.message}`);
+    }
+    if (flags.once) break;
+    await new Promise((resolve) => {
+      const timer = setTimeout(resolve, everyMin * 60_000);
+      controller.signal.addEventListener("abort", () => { clearTimeout(timer); resolve(); }, { once: true });
+    });
+  }
+  return 0;
+}
+
 async function cmdStage(args, flags) {
   const symbols = args
     .flatMap((a) => String(a).split(","))

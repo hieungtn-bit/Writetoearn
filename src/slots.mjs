@@ -76,8 +76,18 @@ export function crontabLines(repoPath = "/path/to/Writetoearn", node = "/usr/bin
     ["15 13", "positioning"],
     ["0 20", "wrap"],
   ];
-  return rows.map(
+  const lines = rows.map(
     ([when, format]) =>
       `${when} * * * cd ${repoPath} && ${node} bin/wte.mjs auto --format ${format} >> wte.log 2>&1`,
   );
+
+  // The scanner is the half that was missing. Every threshold in pulse.mjs
+  // fired on BICO the day it moved and nothing happened, because a detector
+  // nobody runs is not a detector. Quarter-hourly: the edge measured in
+  // research/intraday-signal.json is latency, and a scan on the hour would
+  // give most of it straight back.
+  lines.push(
+    `*/15 * * * * cd ${repoPath} && ${node} bin/wte.mjs scan >> scan.log 2>&1`,
+  );
+  return lines;
 }
