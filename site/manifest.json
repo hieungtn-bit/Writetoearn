@@ -10,6 +10,21 @@
   },
   "articles": [
     {
+      "slug": "cross-market",
+      "draft": "50-cross-market.txt",
+      "title": "Every Risk Asset I Can Measure Went Up This Year. Bitcoin Went Down 44%.",
+      "description": "$BTC moves with the S&P 500 about half the time. Over the last year the S&P made a new high and Bitcoin lost nearly half its value. Both of those are true, and holding them together is the whole…",
+      "published": "2026-08-04T14:18:16.331Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [
+        "BTC",
+        "Bitcoin"
+      ],
+      "squareId": 352099927097137
+    },
+    {
       "slug": "btc-cycle-stage",
       "draft": "49-btc-cycle-stage.txt",
       "title": "I Measured the Last Two Bitcoin Bottoms. The Signal Everyone Waits For Was 1-for-2.",
