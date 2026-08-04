@@ -37,7 +37,10 @@ const SUFFIXES = { k: 1e3, m: 1e6, b: 1e9 };
  * @returns {{raw: string, value: number, isPercent: boolean, hasDecimal: boolean}[]}
  */
 /** ISO dates: their parts are calendar labels, never market claims. */
-const ISO_DATE = /\d{4}-\d{2}-\d{2}(?:T[\d:.]+Z?)?/g;
+// A month label -- 2021-10 -- is a calendar reference exactly as a full date is.
+// Without the optional day, "2021-10" split into 2021 and 10 and the gate asked
+// the market data to vouch for the year.
+const ISO_DATE = /\d{4}-\d{2}(?:-\d{2}(?:T[\d:.]+Z?)?)?/g;
 
 /**
  * Indicator period labels — the 200 in SMA200 is a parameter, not a price.
