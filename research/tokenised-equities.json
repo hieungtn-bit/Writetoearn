@@ -1,0 +1,508 @@
+{
+  "measuredAt": "2026-08-04T15:13:15.886Z",
+  "method": {
+    "minTurnoverUsd": 300000,
+    "minGroupSize": 5,
+    "youngThresholdDays": 10,
+    "pairing": "median daily return of each group, paired by date",
+    "caveat": "Every tokenised pair on this venue is new. The oldest has under two months of history and Binance is still adding them, so a category being expanded because it is popular will show fresh listings rising whatever the category does."
+  },
+  "universe": {
+    "tokenised": 24,
+    "crypto": 120,
+    "oldestTokenisedDays": 54,
+    "medianTokenisedDays": 28
+  },
+  "pairedDays": 53,
+  "result": {
+    "meanDailyDifferencePp": 0.02084702208402072,
+    "standardDeviationPp": 1.7593034744397966,
+    "tStatistic": 0.08626630586531144,
+    "daysTokenisedWon": 31,
+    "winSharePct": 58.490566037735846
+  },
+  "excludingNewListings": {
+    "days": 43,
+    "meanDailyDifferencePp": -0.014619761717950146,
+    "tStatistic": -0.051111731795771824
+  },
+  "daily": [
+    {
+      "date": "2026-06-12",
+      "tokenCount": 5,
+      "cryptoCount": 104,
+      "tokenMedianPct": 0.22858810369146276,
+      "cryptoMedianPct": -0.29732158066336223,
+      "youngMedianPct": 0.22858810369146276,
+      "matureMedianPct": null
+    },
+    {
+      "date": "2026-06-13",
+      "tokenCount": 6,
+      "cryptoCount": 104,
+      "tokenMedianPct": 0.31377998354465975,
+      "cryptoMedianPct": 1.590877963962023,
+      "youngMedianPct": 0.31377998354465975,
+      "matureMedianPct": null
+    },
+    {
+      "date": "2026-06-14",
+      "tokenCount": 6,
+      "cryptoCount": 104,
+      "tokenMedianPct": 2.490190118341451,
+      "cryptoMedianPct": 1.5898955102706336,
+      "youngMedianPct": 2.490190118341451,
+      "matureMedianPct": null
+    },
+    {
+      "date": "2026-06-15",
+      "tokenCount": 6,
+      "cryptoCount": 104,
+      "tokenMedianPct": 2.090194408034307,
+      "cryptoMedianPct": 0.4315174826930668,
+      "youngMedianPct": 2.090194408034307,
+      "matureMedianPct": null
+    },
+    {
+      "date": "2026-06-16",
+      "tokenCount": 6,
+      "cryptoCount": 104,
+      "tokenMedianPct": -2.9212411306076658,
+      "cryptoMedianPct": -0.11701560058423044,
+      "youngMedianPct": -2.9212411306076658,
+      "matureMedianPct": null
+    },
+    {
+      "date": "2026-06-17",
+      "tokenCount": 6,
+      "cryptoCount": 104,
+      "tokenMedianPct": -0.45307495959419075,
+      "cryptoMedianPct": -1.1078701102314181,
+      "youngMedianPct": -0.45307495959419075,
+      "matureMedianPct": null
+    },
+    {
+      "date": "2026-06-18",
+      "tokenCount": 6,
+      "cryptoCount": 104,
+      "tokenMedianPct": 1.105557130507695,
+      "cryptoMedianPct": -2.3640259335929894,
+      "youngMedianPct": 1.105557130507695,
+      "matureMedianPct": null
+    },
+    {
+      "date": "2026-06-19",
+      "tokenCount": 6,
+      "cryptoCount": 103,
+      "tokenMedianPct": -0.20538956233960848,
+      "cryptoMedianPct": -0.6547495074416543,
+      "youngMedianPct": -0.20538956233960848,
+      "matureMedianPct": null
+    },
+    {
+      "date": "2026-06-20",
+      "tokenCount": 6,
+      "cryptoCount": 103,
+      "tokenMedianPct": 0.5197047031489377,
+      "cryptoMedianPct": 0.019982016185449147,
+      "youngMedianPct": 0.5197047031489377,
+      "matureMedianPct": null
+    },
+    {
+      "date": "2026-06-21",
+      "tokenCount": 6,
+      "cryptoCount": 103,
+      "tokenMedianPct": -0.9685297024168593,
+      "cryptoMedianPct": -2.1904761904761982,
+      "youngMedianPct": -0.9685297024168593,
+      "matureMedianPct": null
+    },
+    {
+      "date": "2026-06-22",
+      "tokenCount": 6,
+      "cryptoCount": 103,
+      "tokenMedianPct": 0.5044505732335836,
+      "cryptoMedianPct": 0.4479283314669624,
+      "youngMedianPct": -10.677898571347255,
+      "matureMedianPct": 1.3392185383959365
+    },
+    {
+      "date": "2026-06-23",
+      "tokenCount": 6,
+      "cryptoCount": 103,
+      "tokenMedianPct": -4.802040009559871,
+      "cryptoMedianPct": -2.2522522522522626,
+      "youngMedianPct": null,
+      "matureMedianPct": -4.802040009559871
+    },
+    {
+      "date": "2026-06-24",
+      "tokenCount": 7,
+      "cryptoCount": 105,
+      "tokenMedianPct": -1.2318613633991116,
+      "cryptoMedianPct": -2.558167187920213,
+      "youngMedianPct": -7.453712540561175,
+      "matureMedianPct": -0.4938031706083923
+    },
+    {
+      "date": "2026-06-25",
+      "tokenCount": 7,
+      "cryptoCount": 105,
+      "tokenMedianPct": -2.125260307347887,
+      "cryptoMedianPct": -1.8390804597701038,
+      "youngMedianPct": -11.323089615344962,
+      "matureMedianPct": -1.5343033383267257
+    },
+    {
+      "date": "2026-06-26",
+      "tokenCount": 7,
+      "cryptoCount": 105,
+      "tokenMedianPct": -0.9026566827366911,
+      "cryptoMedianPct": 0.7616707616707519,
+      "youngMedianPct": -3.837655541342011,
+      "matureMedianPct": -0.42515204400561113
+    },
+    {
+      "date": "2026-06-27",
+      "tokenCount": 7,
+      "cryptoCount": 105,
+      "tokenMedianPct": 0.3467718453026958,
+      "cryptoMedianPct": -1.6413130504403517,
+      "youngMedianPct": 3.132180432942322,
+      "matureMedianPct": 0.2743071523377161
+    },
+    {
+      "date": "2026-06-28",
+      "tokenCount": 7,
+      "cryptoCount": 105,
+      "tokenMedianPct": 0.847063684727023,
+      "cryptoMedianPct": -0.39967025363971675,
+      "youngMedianPct": -2.954971857410882,
+      "matureMedianPct": 1.038089489635563
+    },
+    {
+      "date": "2026-06-29",
+      "tokenCount": 7,
+      "cryptoCount": 105,
+      "tokenMedianPct": 2.4098007539041344,
+      "cryptoMedianPct": 1.146751070589147,
+      "youngMedianPct": 13.581440309328174,
+      "matureMedianPct": 1.3150156138278746
+    },
+    {
+      "date": "2026-06-30",
+      "tokenCount": 7,
+      "cryptoCount": 104,
+      "tokenMedianPct": 1.7063094335932671,
+      "cryptoMedianPct": -2.702851416342378,
+      "youngMedianPct": -7.946808510638292,
+      "matureMedianPct": 1.9084490749323613
+    },
+    {
+      "date": "2026-07-01",
+      "tokenCount": 11,
+      "cryptoCount": 105,
+      "tokenMedianPct": -1.261198138231323,
+      "cryptoMedianPct": 0.9198423127463773,
+      "youngMedianPct": 6.289201559586366,
+      "matureMedianPct": -4.818400755465513
+    },
+    {
+      "date": "2026-07-02",
+      "tokenCount": 11,
+      "cryptoCount": 105,
+      "tokenMedianPct": -1.2827586206896502,
+      "cryptoMedianPct": 2.0939972080037172,
+      "youngMedianPct": 1.7620113476654042,
+      "matureMedianPct": -2.7676880551310674
+    },
+    {
+      "date": "2026-07-03",
+      "tokenCount": 11,
+      "cryptoCount": 106,
+      "tokenMedianPct": 0.8742607354075727,
+      "cryptoMedianPct": 3.2097534920763615,
+      "youngMedianPct": 0.7405337431884762,
+      "matureMedianPct": 2.098286016455375
+    },
+    {
+      "date": "2026-07-04",
+      "tokenCount": 11,
+      "cryptoCount": 106,
+      "tokenMedianPct": 0.5656108597285048,
+      "cryptoMedianPct": 0.2761640985840974,
+      "youngMedianPct": 0.40478920460975676,
+      "matureMedianPct": 0.6362910197069693
+    },
+    {
+      "date": "2026-07-05",
+      "tokenCount": 11,
+      "cryptoCount": 106,
+      "tokenMedianPct": 0.2185440561099039,
+      "cryptoMedianPct": 0.07860992800372557,
+      "youngMedianPct": 0.20834229173426477,
+      "matureMedianPct": 0.6598649814730351
+    },
+    {
+      "date": "2026-07-06",
+      "tokenCount": 11,
+      "cryptoCount": 106,
+      "tokenMedianPct": -1.6186778276435887,
+      "cryptoMedianPct": -0.33452636036575,
+      "youngMedianPct": 0.17157151047861863,
+      "matureMedianPct": -2.1491391056608466
+    },
+    {
+      "date": "2026-07-07",
+      "tokenCount": 11,
+      "cryptoCount": 106,
+      "tokenMedianPct": -3.276643718966621,
+      "cryptoMedianPct": -2.9605394521847517,
+      "youngMedianPct": 0.7533945631096883,
+      "matureMedianPct": -4.548113483474703
+    },
+    {
+      "date": "2026-07-08",
+      "tokenCount": 14,
+      "cryptoCount": 108,
+      "tokenMedianPct": -1.001212762806103,
+      "cryptoMedianPct": -1.5888869239495895,
+      "youngMedianPct": -0.914126667940085,
+      "matureMedianPct": -1.1935922940006338
+    },
+    {
+      "date": "2026-07-09",
+      "tokenCount": 14,
+      "cryptoCount": 108,
+      "tokenMedianPct": 1.2028795199396702,
+      "cryptoMedianPct": 0.8399900117384007,
+      "youngMedianPct": 0.7766599597585522,
+      "matureMedianPct": 2.139073291758864
+    },
+    {
+      "date": "2026-07-10",
+      "tokenCount": 14,
+      "cryptoCount": 107,
+      "tokenMedianPct": 0.5276479405042389,
+      "cryptoMedianPct": 1.3613861386138515,
+      "youngMedianPct": 0.2727981293842552,
+      "matureMedianPct": 0.6542240655705189
+    },
+    {
+      "date": "2026-07-11",
+      "tokenCount": 14,
+      "cryptoCount": 107,
+      "tokenMedianPct": -0.05485863468355223,
+      "cryptoMedianPct": -1.1854268624252429,
+      "youngMedianPct": 0.4497206703910628,
+      "matureMedianPct": -0.0729264131212437
+    },
+    {
+      "date": "2026-07-12",
+      "tokenCount": 14,
+      "cryptoCount": 107,
+      "tokenMedianPct": -0.47383799849097796,
+      "cryptoMedianPct": -0.5025125628140614,
+      "youngMedianPct": -0.8898528961930996,
+      "matureMedianPct": -0.40297092288242853
+    },
+    {
+      "date": "2026-07-13",
+      "tokenCount": 14,
+      "cryptoCount": 107,
+      "tokenMedianPct": -3.1157249065142167,
+      "cryptoMedianPct": -2.171290711700835,
+      "youngMedianPct": -0.9932381246317457,
+      "matureMedianPct": -3.330181741779603
+    },
+    {
+      "date": "2026-07-14",
+      "tokenCount": 15,
+      "cryptoCount": 107,
+      "tokenMedianPct": 1.9100518604585393,
+      "cryptoMedianPct": 2.7100271002710175,
+      "youngMedianPct": 6.53656439176773,
+      "matureMedianPct": 1.7197183098591529
+    },
+    {
+      "date": "2026-07-15",
+      "tokenCount": 15,
+      "cryptoCount": 107,
+      "tokenMedianPct": -0.446237236858682,
+      "cryptoMedianPct": 0,
+      "youngMedianPct": -4.150341782255773,
+      "matureMedianPct": -0.446237236858682
+    },
+    {
+      "date": "2026-07-16",
+      "tokenCount": 16,
+      "cryptoCount": 107,
+      "tokenMedianPct": -4.342491706220991,
+      "cryptoMedianPct": -2.3349979754352934,
+      "youngMedianPct": -9.266142276774136,
+      "matureMedianPct": -2.514442655554505
+    },
+    {
+      "date": "2026-07-17",
+      "tokenCount": 16,
+      "cryptoCount": 107,
+      "tokenMedianPct": -1.3732673620977187,
+      "cryptoMedianPct": 0.07725985063096186,
+      "youngMedianPct": -3.356041992405634,
+      "matureMedianPct": -1.298959412841949
+    },
+    {
+      "date": "2026-07-18",
+      "tokenCount": 16,
+      "cryptoCount": 108,
+      "tokenMedianPct": 0.031035128008694013,
+      "cryptoMedianPct": -0.2626535780033967,
+      "youngMedianPct": -0.6945129599288558,
+      "matureMedianPct": 0.058911242204273684
+    },
+    {
+      "date": "2026-07-19",
+      "tokenCount": 16,
+      "cryptoCount": 108,
+      "tokenMedianPct": 0.7146599063853287,
+      "cryptoMedianPct": -0.4033706532612702,
+      "youngMedianPct": 1.0152634209655842,
+      "matureMedianPct": 0.5965905448912734
+    },
+    {
+      "date": "2026-07-20",
+      "tokenCount": 16,
+      "cryptoCount": 108,
+      "tokenMedianPct": 0.5684236439886803,
+      "cryptoMedianPct": 1.3944836924128845,
+      "youngMedianPct": -0.6466850837197113,
+      "matureMedianPct": 1.1030231309470895
+    },
+    {
+      "date": "2026-07-21",
+      "tokenCount": 16,
+      "cryptoCount": 108,
+      "tokenMedianPct": 3.069898327101417,
+      "cryptoMedianPct": 0.8942491425282029,
+      "youngMedianPct": 10.094511949944584,
+      "matureMedianPct": 2.0128865325082845
+    },
+    {
+      "date": "2026-07-22",
+      "tokenCount": 16,
+      "cryptoCount": 108,
+      "tokenMedianPct": -2.0693131412423407,
+      "cryptoMedianPct": -0.34121058387862613,
+      "youngMedianPct": -2.725914718352712,
+      "matureMedianPct": -1.964294180096826
+    },
+    {
+      "date": "2026-07-23",
+      "tokenCount": 22,
+      "cryptoCount": 108,
+      "tokenMedianPct": -1.594771903169312,
+      "cryptoMedianPct": -2.2447812456429905,
+      "youngMedianPct": -0.3032751113862642,
+      "matureMedianPct": -1.97793745442712
+    },
+    {
+      "date": "2026-07-24",
+      "tokenCount": 22,
+      "cryptoCount": 108,
+      "tokenMedianPct": -5.1406170240246745,
+      "cryptoMedianPct": -0.8087884863992978,
+      "youngMedianPct": -11.623547056617923,
+      "matureMedianPct": -1.9489933770470258
+    },
+    {
+      "date": "2026-07-25",
+      "tokenCount": 22,
+      "cryptoCount": 108,
+      "tokenMedianPct": 0.772165275951131,
+      "cryptoMedianPct": 0.32017318663959404,
+      "youngMedianPct": 1.2347826086956504,
+      "matureMedianPct": 0.6372964597889386
+    },
+    {
+      "date": "2026-07-26",
+      "tokenCount": 22,
+      "cryptoCount": 108,
+      "tokenMedianPct": 2.042893915084365,
+      "cryptoMedianPct": 1.4254346636733528,
+      "youngMedianPct": 3.6192078254302373,
+      "matureMedianPct": 1.460807857913049
+    },
+    {
+      "date": "2026-07-27",
+      "tokenCount": 22,
+      "cryptoCount": 108,
+      "tokenMedianPct": -2.6307401976426945,
+      "cryptoMedianPct": -5.0842862416532855,
+      "youngMedianPct": -9.305359115234236,
+      "matureMedianPct": -1.6842644920542105
+    },
+    {
+      "date": "2026-07-28",
+      "tokenCount": 22,
+      "cryptoCount": 108,
+      "tokenMedianPct": -0.6651581766274173,
+      "cryptoMedianPct": 0.05192624110202937,
+      "youngMedianPct": -8.869078796816598,
+      "matureMedianPct": 0.10278198377509096
+    },
+    {
+      "date": "2026-07-29",
+      "tokenCount": 22,
+      "cryptoCount": 108,
+      "tokenMedianPct": -4.304077868370965,
+      "cryptoMedianPct": -1.542560154563738,
+      "youngMedianPct": -15.469576719576722,
+      "matureMedianPct": -3.1920532033637814
+    },
+    {
+      "date": "2026-07-30",
+      "tokenCount": 24,
+      "cryptoCount": 108,
+      "tokenMedianPct": 3.7741867016779063,
+      "cryptoMedianPct": 0.7695469944696609,
+      "youngMedianPct": 30.221471731695814,
+      "matureMedianPct": 3.162742526330109
+    },
+    {
+      "date": "2026-07-31",
+      "tokenCount": 24,
+      "cryptoCount": 108,
+      "tokenMedianPct": -1.649912644324264,
+      "cryptoMedianPct": -1.269608182681814,
+      "youngMedianPct": -4.109225906690211,
+      "matureMedianPct": -1.0717383934158553
+    },
+    {
+      "date": "2026-08-01",
+      "tokenCount": 24,
+      "cryptoCount": 108,
+      "tokenMedianPct": 0.01714309236794387,
+      "cryptoMedianPct": -0.45246198683381866,
+      "youngMedianPct": 0.293160659482794,
+      "matureMedianPct": -0.03452936026411835
+    },
+    {
+      "date": "2026-08-02",
+      "tokenCount": 24,
+      "cryptoCount": 108,
+      "tokenMedianPct": 1.7174070394354923,
+      "cryptoMedianPct": 1.7071096917844586,
+      "youngMedianPct": -3.303993110737619,
+      "matureMedianPct": 1.766524042659856
+    },
+    {
+      "date": "2026-08-03",
+      "tokenCount": 24,
+      "cryptoCount": 108,
+      "tokenMedianPct": 3.1100038968991828,
+      "cryptoMedianPct": 0.15689549504962486,
+      "youngMedianPct": 0.4979273112889204,
+      "matureMedianPct": 3.1209723009939183
+    }
+  ]
+}
