@@ -10,6 +10,21 @@
   },
   "articles": [
     {
+      "slug": "case-for-long",
+      "draft": "51-case-for-long.txt",
+      "title": "I Have Been Saying Wait on Bitcoin All Week. Here Is the Strongest Case Against Myself.",
+      "description": "My own bias on $BTC this week has been WAIT. Here is the strongest case against my own position, built from the same measurements — including the number that beats it.",
+      "published": "2026-08-04T14:53:35.080Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [
+        "BTC",
+        "Bitcoin"
+      ],
+      "squareId": 352108605440994
+    },
+    {
       "slug": "cross-market",
       "draft": "50-cross-market.txt",
       "title": "Every Risk Asset I Can Measure Went Up This Year. Bitcoin Went Down 44%.",
