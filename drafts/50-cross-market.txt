@@ -1,0 +1,51 @@
+$BTC moves with the S&P 500 about half the time. Over the last year the S&P made a new high and Bitcoin lost nearly half its value. Both of those are true, and holding them together is the whole point.
+
+THE YEAR, SIDE BY SIDE
+
+  S&P 500        +21.24%   sitting at 100.0% of its own yearly range
+  Nasdaq         +25.00%   at 87.7%
+  Gold           +22.79%   at 41.4%
+  $BTC           -44.55%
+
+Every risk asset I can measure went up. Bitcoin went down by nearly as much as they went up. Against the S&P alone that is a 65.8 percentage-point gap in twelve months.
+
+THE CORRELATION, WHICH SAYS THE OPPOSITE
+
+  vs S&P 500      0.50   over 251 shared sessions
+  vs Nasdaq       0.50
+  vs VIX          -0.43
+  vs Gold         0.19
+
+Half a correlation with equities. A clear negative one with volatility — when the VIX rises, Bitcoin falls, exactly as a risk asset should.
+
+So which is it? Both, and the confusion between them is where most cross-market commentary goes wrong. **Correlation describes days. It says nothing about levels.** Two series can move together on most days and still finish a year on opposite sides of flat, because a small persistent drift swamps a lot of shared noise. That is precisely what happened.
+
+The practical version: on any given day, US equity strength helps Bitcoin. Over a year, it did not save it.
+
+WHAT THAT RULES OUT
+
+It rules out "risk-off is dragging crypto down". Risk is not off. The VIX sits at 14.6% of its yearly range — the options market is charging almost the least it has all year to insure against a fall. Equities are at 100.0% of theirs.
+
+It also rules out the comfortable version, that Bitcoin has decoupled into its own asset class. A 0.50 correlation is not decoupled. It is attached, and underperforming while attached.
+
+That leaves the least flattering explanation, and I hold it loosely: this is crypto-specific. Not a macro storm. Something the asset class is doing to itself while everything around it rises.
+
+WHERE THAT LEAVES VALUATION
+
+  MVRV Z-score      0.37 at the 17.9th percentile of 1461 days
+  fear and greed    25 (Extreme Fear), all month inside 20-33
+  RSI               48.7
+
+Cheap on chain, fearful in sentiment, and falling against a market that is doing fine. Cheapness is not a catalyst. It is a condition, and it can persist for as long as the thing making crypto underperform keeps going.
+
+BIAS: WAIT
+
+Not on the macro. The macro is about as friendly as it gets — high equities, cheap volatility. If Bitcoin cannot rise into that, the problem is not the weather.
+
+What would change it: Bitcoin outperforming the S&P over a month rather than tracking it down. That is the smallest piece of evidence that would mean anything, and it has not happened.
+
+Are you watching crypto's charts, or the ones it is losing to?
+
+Educational research, not financial advice. DYOR.
+
+$BTC #WriteToEarn #BinanceSquare
