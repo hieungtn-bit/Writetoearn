@@ -30,6 +30,7 @@ import { AlertLog, DEFAULT_COOLDOWN_HOURS } from "./alerts.mjs";
 import { formatAlertScore, scoreAlerts } from "./alert-score.mjs";
 import { formatContext, marketContext } from "./context.mjs";
 import { formatFlow, takerFlow } from "./orderflow.mjs";
+import { bandsFor, clusterMap, fetchPositionTiers, formatLiquidation } from "./liquidation.mjs";
 import { DEFAULT_DAYS, formatStage, normalizeSymbol, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
@@ -77,6 +78,8 @@ Usage
   wte context [--json]                Breadth, concentration, leverage, funding
   wte flow <sym> [--minutes <n>]      Who is crossing the spread, and does
                                       price agree with them
+  wte liq <sym> [--hours <n>]         Liquidation bands, and where positions
+                                      opened recently would be stopped out
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte site [--out <dir>]              Build the indexable research site
   wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
@@ -151,6 +154,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdContext(flags);
     case "flow":
       return cmdFlow(rest, flags);
+    case "liq":
+      return cmdLiq(rest, flags);
     case "stage":
       return cmdStage(rest, flags);
     case "site":
@@ -860,6 +865,31 @@ async function cmdWatch(flags) {
       controller.signal.addEventListener("abort", () => { clearTimeout(timer); resolve(); }, { once: true });
     });
   }
+  return 0;
+}
+
+/**
+ * Liquidation levels: the exact arithmetic, and the modelled clusters, kept apart.
+ */
+async function cmdLiq([sym], flags) {
+  if (!sym) throw new ValidationError("Name a symbol, e.g. `wte liq BTC`.");
+  const symbol = normalizeSymbol(sym);
+  const family = `${symbol.replace(/USDT$/, "")}-USDT`;
+  const hours = Math.max(24, Number(flags.hours ?? 96));
+
+  const [tiers, candles] = await Promise.all([
+    fetchPositionTiers(family),
+    fetchKlines(symbol, { interval: "1h", limit: hours + 1 }),
+  ]);
+  const price = candles.at(-1).close;
+  const bands = bandsFor(price, tiers);
+  const clusters = clusterMap(candles.slice(0, -1), tiers, { price });
+
+  if (flags.json) {
+    print({ symbol, price, tiers: tiers.length, bands, clusters }, flags);
+    return 0;
+  }
+  console.log(formatLiquidation({ symbol, price, bands, clusters }));
   return 0;
 }
 
