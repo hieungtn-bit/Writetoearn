@@ -394,3 +394,49 @@ test("a leverage the venue does not offer is not shown", async () => {
   assert.deepEqual(bands.map((b) => b.leverage), [10, 25, 50]);
   assert.ok(bands.every((b) => b.longDistancePct < 0), "every remaining band is a real distance");
 });
+
+const onchainSeries = (field, values) =>
+  values.map((v, i) => ({ d: `2026-0${(i % 9) + 1}-01`, [field]: v }));
+
+test("a metric never comes back without its percentile and extremes", async () => {
+  const { fetchMetric } = await import("../src/onchain.mjs");
+  const rows = onchainSeries("mvrvZscore", [...Array(40).keys()].map((i) => i / 10));
+  const ok = async () => ({ ok: true, json: async () => rows });
+
+  const m = await fetchMetric("mvrvZscore", { fetchImpl: ok });
+  assert.equal(m.value, 3.9, "the latest reading is the last row");
+  assert.ok(Math.abs(m.percentile - 97.5) < 0.1, "and it is placed against the record");
+  assert.equal(m.min, 0);
+  assert.equal(m.max, 3.9);
+  assert.equal(m.observations, 40);
+});
+
+test("too little history is no reading at all", async () => {
+  const { fetchMetric } = await import("../src/onchain.mjs");
+  const thin = async () => ({ ok: true, json: async () => onchainSeries("sopr", [1, 1.1, 0.9]) });
+  assert.equal(await fetchMetric("sopr", { fetchImpl: thin }), null,
+    "a percentile against three days would be worse than none");
+});
+
+test("cheap is separated from as-cheap-as-a-bottom", async () => {
+  const { valuationNote } = await import("../src/onchain.mjs");
+  // The reading that prompted this module: low, but above the record low.
+  const above = { mvrvZscore: { value: 0.37, percentile: 18, min: -0.36 } };
+  assert.match(valuationNote(above), /cheapest fifth/);
+  assert.match(valuationNote(above), /without being what the last bottom looked like/);
+
+  const atLow = { mvrvZscore: { value: -0.36, percentile: 0, min: -0.36 } };
+  assert.match(valuationNote(atLow), /lowest reading in the record/);
+  assert.match(valuationNote(null), /unavailable/);
+});
+
+test("one dead metric does not take the others with it", async () => {
+  const { fetchOnchain } = await import("../src/onchain.mjs");
+  const fetchImpl = async (url) => {
+    if (String(url).includes("sopr")) throw new Error("down");
+    return { ok: true, json: async () => onchainSeries("mvrvZscore", [...Array(40).keys()].map((i) => i / 10)) };
+  };
+  const out = await fetchOnchain({ fetchImpl, keys: ["mvrvZscore", "sopr"] });
+  assert.ok(out.mvrvZscore, "the healthy one still reports");
+  assert.ok(!out.sopr);
+});

@@ -21,6 +21,7 @@
  */
 
 import { fetchAllTickers } from "./pulse.mjs";
+import { fetchOnchain, valuationNote } from "./onchain.mjs";
 
 const OKX_BASE = "https://www.okx.com/api/v5";
 const GLOBAL_URL = "https://api.coingecko.com/api/v3/global";
@@ -204,16 +205,17 @@ export async function fetchSentiment({ fetchImpl = globalThis.fetch } = {}) {
 export async function marketContext({ fetchImpl = globalThis.fetch, minVolume = 1e6 } = {}) {
   const out = {
     measuredAt: new Date().toISOString(),
-    breadth: null, positioning: null, funding: null, global: null, sentiment: null,
+    breadth: null, positioning: null, funding: null, global: null, sentiment: null, onchain: null,
   };
 
   try {
     out.breadth = breadthFrom(await fetchAllTickers(fetchImpl), { minVolume });
   } catch { /* leave null */ }
 
-  [out.global, out.sentiment] = await Promise.all([
+  [out.global, out.sentiment, out.onchain] = await Promise.all([
     fetchGlobal({ fetchImpl }),
     fetchSentiment({ fetchImpl }),
+    fetchOnchain({ fetchImpl }),
   ]);
 
   try {
@@ -293,6 +295,16 @@ export function formatContext(ctx) {
         `${s2v.monthAgo} a month ago, 30-day range ${s2v.min30d}-${s2v.max30d}`,
     );
   }
+  if (ctx.onchain?.mvrvZscore) {
+    const z = ctx.onchain.mvrvZscore;
+    const rp = ctx.onchain.realizedPrice;
+    lines.push(
+      `  valuation     MVRV Z ${f2(z.value)} at the ${f1(z.percentile)}th percentile ` +
+        `of ${z.observations} days (low ${f2(z.min)})` +
+        (rp ? `, cost basis ${Math.round(rp.value).toLocaleString("en-US")}` : ""),
+    );
+  }
   lines.push("", regimeNote(ctx));
+  if (ctx.onchain) lines.push(valuationNote(ctx.onchain));
   return lines.join("\n");
 }

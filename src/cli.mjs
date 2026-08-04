@@ -29,6 +29,7 @@ import { DEFAULT_MIN_Z, alertsFrom, formatIntraday, scanIntraday } from "./intra
 import { AlertLog, DEFAULT_COOLDOWN_HOURS } from "./alerts.mjs";
 import { formatAlertScore, scoreAlerts } from "./alert-score.mjs";
 import { formatContext, marketContext } from "./context.mjs";
+import { fetchOnchain, formatOnchain } from "./onchain.mjs";
 import { formatFlow, takerFlow } from "./orderflow.mjs";
 import { bandsFor, clusterMap, fetchPositionTiers, formatLiquidation } from "./liquidation.mjs";
 import { buildCard, formatCard } from "./card.mjs";
@@ -78,6 +79,8 @@ Usage
            [--min-z <n>] [--once]
   wte alerts [--json]                 Score our own alerts against what followed
   wte context [--json]                Breadth, concentration, leverage, funding
+  wte onchain [--json]                Valuation metrics, each with its own
+                                      percentile and record extremes
   wte flow <sym> [--minutes <n>]      Who is crossing the spread, and does
                                       price agree with them
   wte liq <sym> [--hours <n>]         Liquidation bands, and where positions
@@ -159,6 +162,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdAlerts(flags);
     case "context":
       return cmdContext(flags);
+    case "onchain":
+      return cmdOnchain(flags);
     case "flow":
       return cmdFlow(rest, flags);
     case "liq":
@@ -985,6 +990,21 @@ async function cmdFlow([sym], flags) {
     return 0;
   }
   console.log(formatFlow(flow, changePct));
+  return 0;
+}
+
+/** On-chain valuation, never as a bare number. */
+async function cmdOnchain(flags) {
+  const { analyzeAsset } = await import("./analysis.mjs");
+  const [onchain, a] = await Promise.all([
+    fetchOnchain(),
+    analyzeAsset("BTCUSDT").catch(() => null),
+  ]);
+  if (flags.json) {
+    print(onchain, flags);
+    return 0;
+  }
+  console.log(formatOnchain(onchain, { price: a?.price }));
   return 0;
 }
 
