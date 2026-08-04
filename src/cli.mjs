@@ -29,6 +29,7 @@ import { DEFAULT_MIN_Z, alertsFrom, formatIntraday, scanIntraday } from "./intra
 import { AlertLog, DEFAULT_COOLDOWN_HOURS } from "./alerts.mjs";
 import { formatAlertScore, scoreAlerts } from "./alert-score.mjs";
 import { formatContext, marketContext } from "./context.mjs";
+import { formatFlow, takerFlow } from "./orderflow.mjs";
 import { DEFAULT_DAYS, formatStage, normalizeSymbol, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
@@ -74,6 +75,8 @@ Usage
            [--min-z <n>] [--once]
   wte alerts [--json]                 Score our own alerts against what followed
   wte context [--json]                Breadth, concentration, leverage, funding
+  wte flow <sym> [--minutes <n>]      Who is crossing the spread, and does
+                                      price agree with them
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte site [--out <dir>]              Build the indexable research site
   wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
@@ -146,6 +149,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdAlerts(flags);
     case "context":
       return cmdContext(flags);
+    case "flow":
+      return cmdFlow(rest, flags);
     case "stage":
       return cmdStage(rest, flags);
     case "site":
@@ -855,6 +860,27 @@ async function cmdWatch(flags) {
       controller.signal.addEventListener("abort", () => { clearTimeout(timer); resolve(); }, { once: true });
     });
   }
+  return 0;
+}
+
+/** Taker imbalance, and whether the price it produced agrees with it. */
+async function cmdFlow([sym], flags) {
+  if (!sym) throw new ValidationError("Name a symbol, e.g. `wte flow BTC`.");
+  const symbol = normalizeSymbol(sym);
+  const minutes = Math.max(1, Number(flags.minutes ?? 60));
+  const [flow, candles] = await Promise.all([
+    takerFlow(symbol, { minutes }),
+    fetchKlines(symbol, { interval: "1h", limit: 3 }).catch(() => []),
+  ]);
+  // The move the flow actually produced, over roughly the same window.
+  const live = candles.at(-1);
+  const changePct = live?.open ? (live.close / live.open - 1) * 100 : NaN;
+
+  if (flags.json) {
+    print({ ...flow, changePct }, flags);
+    return 0;
+  }
+  console.log(formatFlow(flow, changePct));
   return 0;
 }
 

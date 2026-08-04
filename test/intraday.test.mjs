@@ -196,3 +196,32 @@ test("headlines come back as text, not invented structure", async () => {
   assert.deepEqual(await fetchHeadlines(CATALOGS.listing, { fetchImpl: stale, days: 7 }), [],
     "a month-old announcement is not context for today");
 });
+
+test("taker side is read from the maker flag, not guessed from price", async () => {
+  const { takerFlow } = await import("../src/orderflow.mjs");
+  // m:true means the buyer was the maker, so the SELLER crossed the spread.
+  const page = [
+    { p: "100", q: "3", m: true, T: 1 },   // 300 sold into the bid
+    { p: "100", q: "1", m: false, T: 2 },  // 100 lifted from the offer
+  ];
+  let served = false;
+  const fetchImpl = async () => ({ ok: true, json: async () => (served ? [] : ((served = true), page)) });
+
+  const f = await takerFlow("TESTUSDT", { fetchImpl, minutes: 60 });
+  assert.equal(f.sellQuote, 300);
+  assert.equal(f.buyQuote, 100);
+  assert.equal(f.buySharePct, 25);
+  assert.equal(f.imbalancePct, -50);
+});
+
+test("flow against price is named absorption, and agreement is not", async () => {
+  const { flowVsPrice } = await import("../src/orderflow.mjs");
+  const sellers = { imbalancePct: -30 };
+  const buyers = { imbalancePct: 30 };
+
+  assert.match(flowVsPrice(sellers, 1.2), /absorption/);
+  assert.match(flowVsPrice(buyers, -1.2), /distribution/);
+  assert.match(flowVsPrice(sellers, -1.2), /agreement/);
+  assert.match(flowVsPrice({ imbalancePct: 2 }, 0.01), /no read/, "a flat hour claims nothing");
+  assert.equal(flowVsPrice(null, 1), null);
+});
