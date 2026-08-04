@@ -86,7 +86,12 @@ export const naiveLiquidationPrice = (entry, leverage, side = "long") =>
  * arithmetic of what happens to *your* position at each leverage.
  */
 export function bandsFor(price, tiers, { leverages = [10, 25, 50, 100] } = {}) {
-  return leverages.map((leverage) => {
+  // Showing a leverage the venue does not offer produces a row that is not
+  // wrong so much as meaningless: ENA caps at 50x with a 1% maintenance rate,
+  // and the 100x row printed a liquidation 0.00% away -- arithmetically correct
+  // for a position that cannot exist.
+  const venueMax = tiers.length ? Math.max(...tiers.map((t) => t.maxLeverage)) : Infinity;
+  return leverages.filter((l) => l <= venueMax).map((leverage) => {
     const mmr = mmrFor(tiers, leverage);
     const long = liquidationPrice(price, leverage, mmr, "long");
     const short = liquidationPrice(price, leverage, mmr, "short");
@@ -178,7 +183,10 @@ export function nearestClusters(clusters, price, { top = 3 } = {}) {
   return { below, above };
 }
 
-const n0 = (v) => Math.round(v).toLocaleString("en-US");
+// Sub-dollar assets round to "0" under a plain Math.round, which turned every
+// price in an ENA liquidation map into zero. Significant figures below 1000.
+const n0 = (v) =>
+  (Math.abs(v) >= 1000 ? Math.round(v).toLocaleString("en-US") : String(Number(Number(v).toPrecision(4))));
 const f2 = (v) => (Number.isFinite(v) ? v.toFixed(2) : "—");
 
 export function formatLiquidation({ symbol, price, bands, clusters }) {

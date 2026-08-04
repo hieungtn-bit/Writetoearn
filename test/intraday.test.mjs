@@ -375,3 +375,22 @@ test("every condition is reported by name, so a 3-of-5 rule can be audited", asy
   ]);
   assert.ok(r.passed.includes("intradaySpike") && r.passed.includes("openInterestRising"));
 });
+
+test("a sub-dollar asset keeps its precision instead of rounding to zero", async () => {
+  const { formatLiquidation, bandsFor } = await import("../src/liquidation.mjs");
+  const tiers = [{ tier: 1, maxLeverage: 50, mmr: 0.01 }];
+  const out = formatLiquidation({
+    symbol: "ENAUSDT", price: 0.0918, bands: bandsFor(0.0918, tiers), clusters: [],
+  });
+  assert.ok(!/\s0 \(/.test(out), "no price may render as a bare 0");
+  assert.match(out, /0\.0\d+/, "prices below a dollar keep their digits");
+});
+
+test("a leverage the venue does not offer is not shown", async () => {
+  const { bandsFor } = await import("../src/liquidation.mjs");
+  // ENA caps at 50x. The 100x row printed a liquidation 0.00% away: correct
+  // arithmetic for a position that cannot be opened.
+  const bands = bandsFor(0.0918, [{ tier: 1, maxLeverage: 50, mmr: 0.01 }]);
+  assert.deepEqual(bands.map((b) => b.leverage), [10, 25, 50]);
+  assert.ok(bands.every((b) => b.longDistancePct < 0), "every remaining band is a real distance");
+});
