@@ -61,6 +61,13 @@ for (const [key, m] of Object.entries(macro)) {
 // and both halves must come from the same committed measurement.
 const onchain = await fetchOnchain();
 
+// The premium over cost basis, computed here rather than in a draft. It is the
+// single number that separates "cheap" from "as cheap as a bottom", and a
+// figure that decisive must come from the committed measurement.
+if (onchain?.realizedPrice) {
+  onchain.premiumOverCostBasisPct = (btcNow.close / onchain.realizedPrice.value - 1) * 100;
+}
+
 console.log(JSON.stringify({
   measuredAt: new Date().toISOString(),
   method: {

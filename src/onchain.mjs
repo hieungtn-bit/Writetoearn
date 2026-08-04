@@ -53,6 +53,12 @@ export const METRICS = {
     label: "Puell multiple",
     note: "miner revenue against its own yearly average",
   },
+  mvrv: {
+    path: "mvrv",
+    field: "mvrv",
+    label: "MVRV ratio",
+    note: "price over cost basis; below 1 the average holder is under water",
+  },
   realizedPrice: {
     path: "realized-price",
     field: "realizedPrice",
@@ -100,6 +106,14 @@ export async function fetchMetric(key, { fetchImpl = globalThis.fetch } = {}) {
       maxDate: highest.date,
       observations: rows.length,
       firstDate: rows[0].date,
+      /**
+       * How much of the record sat under one. Only meaningful for MVRV, where
+       * one is the line between the average holder being in profit and in loss
+       * — and where every real bottom in the record has been on the far side.
+       */
+      belowOneSharePct: key === "mvrv"
+        ? (values.filter((v) => v < 1).length / values.length) * 100
+        : undefined,
     };
   } catch {
     return null;
