@@ -31,6 +31,7 @@ import { formatAlertScore, scoreAlerts } from "./alert-score.mjs";
 import { formatContext, marketContext } from "./context.mjs";
 import { formatFlow, takerFlow } from "./orderflow.mjs";
 import { bandsFor, clusterMap, fetchPositionTiers, formatLiquidation } from "./liquidation.mjs";
+import { buildCard, formatCard } from "./card.mjs";
 import { DEFAULT_DAYS, formatStage, normalizeSymbol, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
@@ -80,6 +81,9 @@ Usage
                                       price agree with them
   wte liq <sym> [--hours <n>]         Liquidation bands, and where positions
                                       opened recently would be stopped out
+  wte card <sym> [--short] [--risk <n>]  One-screen trade plan: stop and
+           [--account <n>] [--stop-atr <n>]  targets from ATR, leverage
+                                      ceiling from real maintenance margin
   wte stage <sym...> [--days <n>]     Which stage of a move an asset is in
   wte site [--out <dir>]              Build the indexable research site
   wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
@@ -156,6 +160,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdFlow(rest, flags);
     case "liq":
       return cmdLiq(rest, flags);
+    case "card":
+      return cmdCard(rest, flags);
     case "stage":
       return cmdStage(rest, flags);
     case "site":
@@ -865,6 +871,37 @@ async function cmdWatch(flags) {
       controller.signal.addEventListener("abort", () => { clearTimeout(timer); resolve(); }, { once: true });
     });
   }
+  return 0;
+}
+
+/** The whole plan on one screen, with every level derived from the asset's own ATR. */
+async function cmdCard([sym], flags) {
+  if (!sym) throw new ValidationError("Name a symbol, e.g. `wte card BTC`.");
+  const symbol = normalizeSymbol(sym);
+  const family = `${symbol.replace(/USDT$/, "")}-USDT`;
+
+  const { analyzeAsset } = await import("./analysis.mjs");
+  const [a, tiers] = await Promise.all([
+    analyzeAsset(symbol),
+    fetchPositionTiers(family).catch(() => []),
+  ]);
+
+  const card = buildCard({
+    symbol,
+    price: a.price,
+    atrPct: a.atrPct,
+    tiers,
+    side: flags.short ? "short" : "long",
+    stopAtr: flags["stop-atr"] ? Number(flags["stop-atr"]) : undefined,
+    riskPct: flags.risk ? Number(flags.risk) : undefined,
+    accountUsd: flags.account ? Number(flags.account) : undefined,
+  });
+
+  if (flags.json) {
+    print(card, flags);
+    return 0;
+  }
+  console.log(formatCard(card));
   return 0;
 }
 

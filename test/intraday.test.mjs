@@ -293,3 +293,42 @@ test("the same print counts for less the older it is", async () => {
   assert.ok(recent > old * 3, `a fresh print must outweigh a four-day-old one: ${recent.toFixed(1)}% vs ${old.toFixed(1)}%`);
   assert.ok(old > 0, "and the old one is faded, not erased");
 });
+
+test("the leverage ceiling puts liquidation exactly on the stop", async () => {
+  const { maxLeverageForStop } = await import("../src/card.mjs");
+  const { liquidationPrice } = await import("../src/liquidation.mjs");
+  const entry = 63390, mmr = 0.004, stopPct = 3.68;
+
+  const max = maxLeverageForStop(stopPct, mmr, "long");
+  const stop = entry * (1 - stopPct / 100);
+  assert.ok(Math.abs(liquidationPrice(entry, max, mmr, "long") - stop) < 1,
+    "at the ceiling the two coincide — that is what makes it the ceiling");
+
+  // One step past it and the exchange closes the trade before the plan does.
+  assert.ok(liquidationPrice(entry, max * 1.2, mmr, "long") > stop);
+  // A wider stop tolerates less leverage, not more.
+  assert.ok(maxLeverageForStop(stopPct * 2, mmr, "long") < max);
+});
+
+test("a card sizes the position to lose exactly the stated risk", async () => {
+  const { buildCard } = await import("../src/card.mjs");
+  const card = buildCard({
+    symbol: "BTCUSDT", price: 100, atrPct: 2, tiers: TIERS,
+    stopAtr: 1.5, riskPct: 1, accountUsd: 1000,
+  });
+  assert.equal(card.stopDistancePct, 3);
+  assert.ok(Math.abs(card.stop - 97) < 1e-9);
+  // $333 losing 3% is $10, which is 1% of $1,000.
+  assert.ok(Math.abs(card.positionUsd * 0.03 - 10) < 1e-9);
+  assert.deepEqual(card.targets.map((t) => Math.round(t.price)), [103, 106, 109]);
+});
+
+test("a short card mirrors, it does not just negate", async () => {
+  const { buildCard } = await import("../src/card.mjs");
+  const card = buildCard({
+    symbol: "ENAUSDT", price: 100, atrPct: 2, tiers: TIERS, side: "short",
+  });
+  assert.ok(card.stop > card.price, "a short's stop sits above entry");
+  for (const t of card.targets) assert.ok(t.price < card.price, "and its targets below");
+  assert.ok(card.liquidationAtMax > card.price);
+});
