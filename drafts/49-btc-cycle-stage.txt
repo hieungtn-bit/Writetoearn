@@ -1,0 +1,57 @@
+Everyone wants to know if $BTC has bottomed. I measured what the last two bottoms actually looked like, and one of the two things people use to call them does not survive the check.
+
+WHERE WE ACTUALLY ARE
+
+  peak                126,200
+  now                 63,462
+  from the peak       -49.71%
+  months since        10
+
+THE TWO COMPLETED CYCLES
+
+Measured on monthly candles, a peak being the highest monthly close to date that then went unbeaten for a full year:
+
+  2017-12 to 2018-12   -77.0%   12 months
+  2021-10 to 2022-11   -74.8%   13 months
+
+Both went past seventy percent. Both took at least a year. We are at 49.7% in month 10 — shallower than either, and earlier than either.
+
+That is a comparison, not a forecast, and I want to be precise about how weak it is: **two observations.** Anyone quoting a cycle bottom to you as a probability is quoting a sample of two.
+
+THE PART THAT SURPRISED ME
+
+The standard way to call a bottom is to wait for capitulation — one enormous volume month where everybody sells at once. So I measured turnover in each trough month against the year before it.
+
+  2018-12   0.74x
+  2022-11   1.83x
+
+They disagree. One bottom arrived on turnover **below** its own average. The other on nearly double. With two cases splitting one-all, "wait for the volume capitulation" has no support in this record at all — and I had been about to write the opposite before I ran it.
+
+WHAT IS TRUE RIGHT NOW
+
+  2026-07 turnover     0.62x its prior year
+  turnover z-score    0.06
+  three-day trend     -48.7%
+  underwater          72.3% of the month's turnover sits above price
+  RSI                 47.1
+  fear and greed      25 (Extreme Fear), all month inside 20-33
+
+Read those together. The month is running well under its own prior year, the three-day trend is falling, and today's turnover is entirely ordinary — a z-score of 0.06 is the definition of an unremarkable day. Nothing here is panicking, and nothing is arriving. Sentiment has been pinned at the fearful end for a month without ever reaching the extreme where people actually give up.
+
+THE STAGE
+
+Not the top — that was 10 months ago. Not capitulation — capitulation is loud, and the month is running at 0.62x its own prior year. This is the long flat middle, where price does very little and people stop watching.
+
+It is also the part of a cycle that is boring for far longer than anyone plans for. Both prior bottoms took at least 12 months from the peak. We are at 10.
+
+BIAS: WAIT
+
+Not because I know where it goes. Because the one signal most people are waiting for turned out to be 1-for-2 in a sample of two, and a system that tells you that is worth more than one that tells you a number.
+
+What would change it: turnover breaking above its prior-year average, or sentiment finally cracking below 20. Neither has happened.
+
+Which are you waiting for — the price, or the volume?
+
+Educational research, not financial advice. DYOR.
+
+$BTC #WriteToEarn #BinanceSquare
