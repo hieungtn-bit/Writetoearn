@@ -10,6 +10,21 @@
   },
   "articles": [
     {
+      "slug": "btc-cycle-stage",
+      "draft": "49-btc-cycle-stage.txt",
+      "title": "I Measured the Last Two Bitcoin Bottoms. The Signal Everyone Waits For Was 1-for-2.",
+      "description": "Everyone wants to know if $BTC has bottomed. I measured what the last two bottoms actually looked like, and one of the two things people use to call them does not survive the check.",
+      "published": "2026-08-04T01:09:44.019Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [
+        "BTC",
+        "Bitcoin"
+      ],
+      "squareId": 351906136184689
+    },
+    {
       "slug": "both-sides-btc",
       "draft": "48-both-sides-btc.txt",
       "title": "You Are Already Long or Short BTC. Here Is What the Numbers Say to Each of You.",
