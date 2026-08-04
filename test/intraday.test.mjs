@@ -332,3 +332,46 @@ test("a short card mirrors, it does not just negate", async () => {
   for (const t of card.targets) assert.ok(t.price < card.price, "and its targets below");
   assert.ok(card.liquidationAtMax > card.price);
 });
+
+const dayCandles = (n, { volume = 1000, low = 90, close = 100 } = {}) =>
+  Array.from({ length: n }, () => ({ open: close, high: close, low, close, quoteVolume: volume }));
+
+test("volume is compared 24h to 24h, not partial day to full day", async () => {
+  const { evaluate } = await import("../src/movers.mjs");
+  const daily = dayCandles(35, { volume: 1000 });
+  // Mid-session the live candle holds only part of the day. Reading it as
+  // "today" reported falling volume for most of every day.
+  daily[daily.length - 1] = { ...daily.at(-1), quoteVolume: 300 };
+
+  const r = evaluate({
+    ticker: { symbol: "XUSDT", price: 100, change24hPct: 5, quoteVolume24h: 1200 },
+    asset: "X", daily, hourly: null, oi: null,
+  });
+  assert.ok(r.conditions.volumeRising, "the rolling 24h beats yesterday even when the candle is partial");
+});
+
+test("the overextension filter uses stated numbers, not a feeling", async () => {
+  const { evaluate, MAX_RUN_PCT } = await import("../src/movers.mjs");
+  const daily = dayCandles(35);
+  const run = (change24hPct, price) => evaluate({
+    ticker: { symbol: "XUSDT", price, change24hPct, quoteVolume24h: 1200 },
+    asset: "X", daily, hourly: null, oi: null,
+  }).conditions.notOverextended;
+
+  assert.ok(run(MAX_RUN_PCT - 1, 95));
+  assert.ok(!run(MAX_RUN_PCT + 1, 95), "a move past the cap is one to write about, not join");
+  assert.ok(!run(5, 100), "and sitting at the top of its own range is extended too");
+});
+
+test("every condition is reported by name, so a 3-of-5 rule can be audited", async () => {
+  const { evaluate } = await import("../src/movers.mjs");
+  const r = evaluate({
+    ticker: { symbol: "XUSDT", price: 100, change24hPct: 5, quoteVolume24h: 1200 },
+    asset: "X", daily: dayCandles(35), hourly: { volumeZScore: 4 }, oi: { changePct: 10 },
+  });
+  assert.equal(r.score, r.passed.length);
+  assert.deepEqual(Object.keys(r.conditions).sort(), [
+    "intradaySpike", "notOverextended", "offRecentLow", "openInterestRising", "volumeRising",
+  ]);
+  assert.ok(r.passed.includes("intradaySpike") && r.passed.includes("openInterestRising"));
+});

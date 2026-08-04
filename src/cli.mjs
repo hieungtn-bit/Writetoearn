@@ -32,6 +32,7 @@ import { formatContext, marketContext } from "./context.mjs";
 import { formatFlow, takerFlow } from "./orderflow.mjs";
 import { bandsFor, clusterMap, fetchPositionTiers, formatLiquidation } from "./liquidation.mjs";
 import { buildCard, formatCard } from "./card.mjs";
+import { formatSweep, sweep } from "./movers.mjs";
 import { DEFAULT_DAYS, formatStage, normalizeSymbol, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
@@ -81,6 +82,8 @@ Usage
                                       price agree with them
   wte liq <sym> [--hours <n>]         Liquidation bands, and where positions
                                       opened recently would be stopped out
+  wte movers [--min-score <n>]        Daily gainer sweep: five filters, each
+             [--min-volume <n>] [--cards]  reported; --cards writes the plans
   wte card <sym> [--short] [--risk <n>]  One-screen trade plan: stop and
            [--account <n>] [--stop-atr <n>]  targets from ATR, leverage
                                       ceiling from real maintenance margin
@@ -162,6 +165,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdLiq(rest, flags);
     case "card":
       return cmdCard(rest, flags);
+    case "movers":
+      return cmdMovers(flags);
     case "stage":
       return cmdStage(rest, flags);
     case "site":
@@ -870,6 +875,38 @@ async function cmdWatch(flags) {
       const timer = setTimeout(resolve, everyMin * 60_000);
       controller.signal.addEventListener("abort", () => { clearTimeout(timer); resolve(); }, { once: true });
     });
+  }
+  return 0;
+}
+
+/** The daily gainer sweep the big accounts run by hand. */
+async function cmdMovers(flags) {
+  const minScore = flags["min-score"] ? Number(flags["min-score"]) : 3;
+  const result = await sweep({
+    minVolume: flags["min-volume"] ? Number(flags["min-volume"]) : undefined,
+    minScore,
+    onProgress: (d, t) => process.stderr.write(`\rsweeping ${d}/${t}   `),
+  });
+  process.stderr.write("\r");
+
+  if (flags.json) {
+    print(result, flags);
+    return 0;
+  }
+  console.log(formatSweep(result, { minScore }));
+
+  // A qualified name is only useful with a plan attached, so --cards closes
+  // the loop the hand-run workflow closes by opening TradingView.
+  if (flags.cards && result.qualified.length) {
+    const { analyzeAsset } = await import("./analysis.mjs");
+    for (const row of result.qualified.slice(0, 3)) {
+      const [a, tiers] = await Promise.all([
+        analyzeAsset(row.symbol),
+        fetchPositionTiers(`${row.asset}-USDT`).catch(() => []),
+      ]);
+      const card = buildCard({ symbol: row.symbol, price: a.price, atrPct: a.atrPct, tiers });
+      console.log("\n" + formatCard(card, { note: `Passed: ${row.passed.join(", ")}` }));
+    }
   }
   return 0;
 }
