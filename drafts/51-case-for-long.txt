@@ -1,0 +1,58 @@
+My own bias on $BTC this week has been WAIT. Here is the strongest case against my own position, built from the same measurements — including the number that beats it.
+
+THE CASE
+
+**One. Three separate valuation measures agree, and they are not the same measure in different clothes.**
+
+  MVRV Z-score   0.37   17.9th percentile
+  NUPL           0.18   17.2th
+  SOPR           1.00   18.8th
+  Puell multiple 0.77   25.9th
+
+Price against cost basis, unrealised profit across supply, whether coins move at a gain, and miner revenue against its own year. Four questions, four answers, all in the cheapest quarter of the record.
+
+**Two. Waiting for confirmation is not the safe choice people think it is.**
+
+I measured what the last two bottoms actually looked like. Turnover in the trough month against the year before it:
+
+  2018-12   0.74x
+  2022-11   1.83x
+
+One bottom arrived on **below-average** volume. If you are holding out for a capitulation candle, one of the last two bottoms never gave you one, and you would have waited through the entire recovery.
+
+**Three. The macro is a tailwind, and that is the part the bears keep skipping.**
+
+The S&P sits at 100.0% of its yearly range. The VIX sits at 13.2% of its own — the options market is charging near its cheapest all year to insure against a fall. Bitcoin correlates 0.50 with the S&P across 251 shared sessions. A high-correlation asset trading at a discount into a calm, rising equity market is a gap that closes in one of two directions, and only one of them requires something new to go wrong.
+
+**Four. Positioning is warming, not crowded.**
+
+Funding sits at 3.44% annualised over the fortnight before this week and has risen since — positive, rising, and nowhere near the levels that mark a crowded top. Only 12.7% of funding periods were negative across 63 readings.
+
+Holders underwater have fallen to 47.0% of the month's turnover. A month ago that number was most of the book. Fewer trapped sellers is fewer people selling every rally into breakeven, and it is the cleanest thing that has actually changed.
+
+THE NUMBER THAT BEATS ALL OF IT
+
+  MVRV today                 1.21
+  MVRV at its record low     0.76   (2022-11-09)
+
+Price sits 22.5% above the aggregate cost basis of every coin that has moved. At the last real bottom it sat **below** it. Only 9.65% of days in the record have. The level where the average holder breaks even is 52,350 — well beneath spot.
+
+So "cheap" is true and "as cheap as a bottom" is not, and anyone selling you the first while implying the second is selling you a fifth of your capital.
+
+HOW I HOLD BOTH
+
+The bull case is real: cheap on four measures, a friendly macro, buyers active today, and a confirmation signal that has failed once in two attempts. The bear case is one number, and it is a big one.
+
+That is not a contradiction, it is a position size. This is a case for a starter, not a conviction trade — and for a stop that survives the distance to 52,350 not being travelled politely.
+
+Size it off the asset's own volatility — ATR is 2.50% a day, so any stop tighter than a couple of those is inside the noise and will be taken out by a Tuesday. Run the plan yourself rather than trusting a level from a post.
+
+The invalidation for the whole thesis is one line: a monthly close under 52,350.
+
+BIAS: I remain WAIT, and I have just argued against myself as hard as the data allows. If the case above moved you more than my caution did, that is a legitimate read of the same numbers — take it in size that survives being wrong.
+
+Which half convinced you?
+
+Educational research, not financial advice. DYOR.
+
+$BTC #WriteToEarn #BinanceSquare
