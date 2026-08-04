@@ -345,3 +345,11 @@ test("candle windows stay attached to the series that produced them", async () =
   assert.ok(got.includes(100), "the doubling shows");
   assert.ok(got.includes(50), "and so does the halving");
 });
+
+test("a month label is a calendar reference, not a market figure", async () => {
+  const { extractNumbers } = await import("../src/verify.mjs");
+  const got = extractNumbers("From 2021-10 to 2022-11 it fell 74.8%.").map((n) => n.value);
+  assert.deepEqual(got, [74.8], "the months contribute nothing, the drawdown does");
+  // The full-date form must keep working.
+  assert.deepEqual(extractNumbers("On 2026-08-03 turnover was 0.62x.").map((n) => n.value), [0.62]);
+});
