@@ -225,3 +225,71 @@ test("flow against price is named absorption, and agreement is not", async () =>
   assert.match(flowVsPrice({ imbalancePct: 2 }, 0.01), /no read/, "a flat hour claims nothing");
   assert.equal(flowVsPrice(null, 1), null);
 });
+
+// OKX's real BTC-USDT shape: tier 1 is the smallest book at the lowest rate.
+const TIERS = [
+  { tier: 1, maxLeverage: 100, mmr: 0.004 },
+  { tier: 2, maxLeverage: 66.66, mmr: 0.005 },
+  { tier: 3, maxLeverage: 50, mmr: 0.0075 },
+  { tier: 9, maxLeverage: 10, mmr: 0.0875 },
+];
+
+test("the margin tier is the smallest one permitting the leverage", async () => {
+  const { mmrFor } = await import("../src/liquidation.mjs");
+  // Reading the last eligible tier instead of the first put a 10x position's
+  // liquidation 1.37% away instead of 9.6% — a different trade, not a rounding.
+  assert.equal(mmrFor(TIERS, 10), 0.004);
+  assert.equal(mmrFor(TIERS, 100), 0.004);
+  assert.equal(mmrFor(TIERS, 60), 0.004, "tier 1 permits 100x, so it permits 60x");
+  assert.equal(mmrFor(TIERS, 200), 0.004, "an impossible leverage falls back rather than throwing");
+});
+
+test("liquidation is solved from maintenance margin, not from 1/leverage", async () => {
+  const { liquidationPrice, naiveLiquidationPrice } = await import("../src/liquidation.mjs");
+  const entry = 62576, mmr = 0.004;
+
+  const long = liquidationPrice(entry, 100, mmr, "long");
+  assert.ok(Math.abs(long - 62199) < 1, `expected ~62199, got ${long}`);
+  assert.equal(Math.round(naiveLiquidationPrice(entry, 100, "long")), 61950);
+  assert.ok(long > naiveLiquidationPrice(entry, 100, "long"),
+    "the real level is reached first — the naive one flatters the position");
+
+  const short = liquidationPrice(entry, 100, mmr, "short");
+  assert.ok(short > entry && short < naiveLiquidationPrice(entry, 100, "short"));
+});
+
+test("a cluster map never places a level price has already passed", async () => {
+  const { clusterMap } = await import("../src/liquidation.mjs");
+  const hour = 3_600_000;
+  const candles = Array.from({ length: 24 }, (_, i) => ({
+    openTime: i * hour, high: 101, low: 99, close: 100, quoteVolume: 1000,
+  }));
+  const clusters = clusterMap(candles, TIERS, { price: 100 });
+
+  assert.ok(clusters.length, "positions opened around 100 must map somewhere");
+  for (const c of clusters) {
+    if (c.side === "long") assert.ok(c.level < 100, "a long's level sits below price");
+    else assert.ok(c.level > 100, "a short's level sits above price");
+  }
+  assert.ok(Math.abs(clusters.reduce((s, c) => s + c.sharePct, 0) - 100) < 1e-6);
+});
+
+test("the same print counts for less the older it is", async () => {
+  const { clusterMap } = await import("../src/liquidation.mjs");
+  const hour = 3_600_000;
+  // Identical books apart from when the big print landed. Testing the decay
+  // directly rather than asserting a threshold: a large enough old event
+  // *should* still register, and picking a cutoff would only encode a guess.
+  const quiet = (n, offset) => Array.from({ length: n }, (_, i) => ({
+    openTime: (i + offset) * hour, high: 100, low: 100, close: 100, quoteVolume: 1000,
+  }));
+  const spike = (t) => ({ openTime: t * hour, high: 200, low: 200, close: 200, quoteVolume: 100_000 });
+
+  const share = (candles) => clusterMap(candles, TIERS, { price: 100, halfLifeHours: 24 })
+    .filter((c) => c.level > 150).reduce((s, c) => s + c.sharePct, 0);
+
+  const old = share([spike(0), ...quiet(96, 1)]);
+  const recent = share([...quiet(96, 0), spike(96)]);
+  assert.ok(recent > old * 3, `a fresh print must outweigh a four-day-old one: ${recent.toFixed(1)}% vs ${old.toFixed(1)}%`);
+  assert.ok(old > 0, "and the old one is faded, not erased");
+});
