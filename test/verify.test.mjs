@@ -353,3 +353,11 @@ test("a month label is a calendar reference, not a market figure", async () => {
   // The full-date form must keep working.
   assert.deepEqual(extractNumbers("On 2026-08-03 turnover was 0.62x.").map((n) => n.value), [0.62]);
 });
+
+test("an index name is a proper noun, not a market figure", async () => {
+  const { extractNumbers } = await import("../src/verify.mjs");
+  const got = extractNumbers("The S&P 500 rose 21.24% while Nasdaq 100 lagged.").map((n) => n.value);
+  assert.deepEqual(got, [21.24], "the index names contribute nothing, the return does");
+  // A bare number next to an index name must still be checked.
+  assert.ok(extractNumbers("S&P 500 closed at 7,674.").some((n) => n.value === 7674));
+});

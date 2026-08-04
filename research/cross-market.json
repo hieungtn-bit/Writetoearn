@@ -1,0 +1,165 @@
+{
+  "measuredAt": "2026-08-04T14:17:36.516Z",
+  "method": {
+    "range": "1y",
+    "correlation": "log daily returns, joined on dates both markets traded",
+    "note": "Equities close at weekends and crypto does not. Joining by index position rather than date would pair Saturday with Friday and report a calendar artefact as a relationship."
+  },
+  "btc": {
+    "price": 63802,
+    "asOf": "2026-08-04",
+    "change1yPct": -44.5465356881833
+  },
+  "series": {
+    "sp500": {
+      "label": "S&P 500",
+      "symbol": "^GSPC",
+      "last": 7674.669921875,
+      "asOf": "2026-08-04",
+      "change1dPct": 0.975855823630023,
+      "change30dPct": 1.8207763507344987,
+      "change1yPct": 21.243961126272648,
+      "yearPositionPct": 100,
+      "correlation": 0.5042540638596944,
+      "sessions": 251,
+      "btcGapPct": 65.79049681445595
+    },
+    "nasdaq": {
+      "label": "Nasdaq",
+      "symbol": "^IXIC",
+      "last": 26317.166015625,
+      "asOf": "2026-08-04",
+      "change1dPct": 1.5561749444166662,
+      "change30dPct": 0.7503719520976171,
+      "change1yPct": 25.00090681949598,
+      "yearPositionPct": 87.66943412559945,
+      "correlation": 0.4998592418546546,
+      "sessions": 251,
+      "btcGapPct": 69.54744250767928
+    },
+    "vix": {
+      "label": "VIX",
+      "symbol": "^VIX",
+      "last": 16.030000686645508,
+      "asOf": "2026-08-04",
+      "change1dPct": 1.0718854580598292,
+      "change30dPct": 2.9544059141773937,
+      "change1yPct": -8.50456468143468,
+      "yearPositionPct": 14.56200551536254,
+      "correlation": -0.43281452914204427,
+      "sessions": 252,
+      "btcGapPct": 36.04197100674862
+    },
+    "yield10y": {
+      "label": "US 10-year",
+      "symbol": "^TNX",
+      "last": 4.638999938964844,
+      "asOf": "2026-08-04",
+      "change1dPct": -1.0029861851540645,
+      "change30dPct": 3.5722224635329702,
+      "change1yPct": 10.452384515144008,
+      "yearPositionPct": 86.6161652650541,
+      "correlation": -0.05757076386529186,
+      "sessions": 251,
+      "btcGapPct": 54.9989202033273
+    },
+    "dollar": {
+      "label": "Dollar index",
+      "symbol": "DX-Y.NYB",
+      "last": 99.86499786376953,
+      "asOf": "2026-08-04",
+      "change1dPct": -0.09503923726814634,
+      "change30dPct": -0.9766986864202298,
+      "change1yPct": 1.0983995726673967,
+      "yearPositionPct": 67.62517728789857,
+      "correlation": -0.1644200734688717,
+      "sessions": 251,
+      "btcGapPct": 45.644935260850694
+    },
+    "gold": {
+      "label": "Gold",
+      "symbol": "GC=F",
+      "last": 4143.39990234375,
+      "asOf": "2026-08-04",
+      "change1dPct": 2.7195862979348506,
+      "change30dPct": -0.28158636464858944,
+      "change1yPct": 22.78923726455413,
+      "yearPositionPct": 41.39650872817955,
+      "correlation": 0.18622012531472595,
+      "sessions": 251,
+      "btcGapPct": 67.33577295273743
+    }
+  },
+  "onchain": {
+    "mvrvZscore": {
+      "key": "mvrvZscore",
+      "label": "MVRV Z-score",
+      "note": "market value against cost basis, in standard deviations",
+      "date": "2026-08-03",
+      "value": 0.3705,
+      "percentile": 17.864476386036962,
+      "min": -0.3599,
+      "minDate": "2022-11-09",
+      "max": 3.3543,
+      "maxDate": "2024-12-16",
+      "observations": 1461,
+      "firstDate": "2022-08-04"
+    },
+    "nupl": {
+      "key": "nupl",
+      "label": "NUPL",
+      "note": "share of supply sitting in unrealised profit",
+      "date": "2026-08-03",
+      "value": 0.1759,
+      "percentile": 17.180013689253936,
+      "min": -0.3168,
+      "minDate": "2022-11-09",
+      "max": 0.6402,
+      "maxDate": "2024-03-11",
+      "observations": 1461,
+      "firstDate": "2022-08-04"
+    },
+    "sopr": {
+      "key": "sopr",
+      "label": "SOPR",
+      "note": "coins moving at a profit above 1, at a loss below",
+      "date": "2026-08-03",
+      "value": 0.9966,
+      "percentile": 18.754277891854894,
+      "min": 0.871,
+      "minDate": "2022-11-18",
+      "max": 1.1992,
+      "maxDate": "2026-03-29",
+      "observations": 1461,
+      "firstDate": "2022-08-04"
+    },
+    "puellMultiple": {
+      "key": "puellMultiple",
+      "label": "Puell multiple",
+      "note": "miner revenue against its own yearly average",
+      "date": "2026-08-03",
+      "value": 0.7659,
+      "percentile": 25.87268993839836,
+      "min": 0.356,
+      "minDate": "2022-12-23",
+      "max": 2.434,
+      "maxDate": "2024-03-06",
+      "observations": 1461,
+      "firstDate": "2022-08-04"
+    },
+    "realizedPrice": {
+      "key": "realizedPrice",
+      "label": "realised price",
+      "note": "the aggregate cost basis of every coin that has moved",
+      "date": "2026-08-03",
+      "value": 52349.9,
+      "percentile": 76.24914442162903,
+      "min": 19708.2,
+      "minDate": "2023-01-11",
+      "max": 55721.19,
+      "maxDate": "2025-11-26",
+      "observations": 1461,
+      "firstDate": "2022-08-04"
+    }
+  }
+}

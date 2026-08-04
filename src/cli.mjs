@@ -30,6 +30,7 @@ import { AlertLog, DEFAULT_COOLDOWN_HOURS } from "./alerts.mjs";
 import { formatAlertScore, scoreAlerts } from "./alert-score.mjs";
 import { formatContext, marketContext } from "./context.mjs";
 import { fetchOnchain, formatOnchain } from "./onchain.mjs";
+import { correlationOnDates, fetchMacro, formatMacro } from "./equities.mjs";
 import { formatFlow, takerFlow } from "./orderflow.mjs";
 import { bandsFor, clusterMap, fetchPositionTiers, formatLiquidation } from "./liquidation.mjs";
 import { buildCard, formatCard } from "./card.mjs";
@@ -81,6 +82,8 @@ Usage
   wte context [--json]                Breadth, concentration, leverage, funding
   wte onchain [--json]                Valuation metrics, each with its own
                                       percentile and record extremes
+  wte macro [--json]                  US indices, rates, dollar, gold — and
+                                      BTC's correlation to each
   wte flow <sym> [--minutes <n>]      Who is crossing the spread, and does
                                       price agree with them
   wte liq <sym> [--hours <n>]         Liquidation bands, and where positions
@@ -164,6 +167,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdContext(flags);
     case "onchain":
       return cmdOnchain(flags);
+    case "macro":
+      return cmdMacro(flags);
     case "flow":
       return cmdFlow(rest, flags);
     case "liq":
@@ -990,6 +995,34 @@ async function cmdFlow([sym], flags) {
     return 0;
   }
   console.log(formatFlow(flow, changePct));
+  return 0;
+}
+
+/** The US market, and how tightly BTC is actually tied to it. */
+async function cmdMacro(flags) {
+  const { fetchKlines } = await import("./analysis.mjs");
+  const [macro, daily] = await Promise.all([
+    fetchMacro(),
+    fetchKlines("BTCUSDT", { interval: "1d", limit: 400 }).catch(() => []),
+  ]);
+  if (!macro) throw new ValidationError("Could not reach the macro series.");
+
+  // Binance stamps a daily candle at 00:00 UTC; the date is what joins it to a
+  // US session close, not the timestamp.
+  const btcRows = daily.map((c) => ({
+    date: new Date(c.openTime).toISOString().slice(0, 10),
+    close: c.close,
+  }));
+  const correlations = {};
+  for (const m of Object.values(macro)) {
+    correlations[m.label] = correlationOnDates(btcRows, m.rows);
+  }
+
+  if (flags.json) {
+    print({ macro, correlations }, flags);
+    return 0;
+  }
+  console.log(formatMacro(macro, { correlations }));
   return 0;
 }
 

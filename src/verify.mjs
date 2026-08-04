@@ -52,6 +52,13 @@ const ISO_DATE = /\d{4}-\d{2}(?:-\d{2}(?:T[\d:.]+Z?)?)?/g;
  */
 const INDICATOR_LABEL = /\b(?:SMA|EMA|MA|RSI|ATR|VWAP)\s?\d{1,4}\b|\b\d{1,4}-day\b/gi;
 
+/**
+ * Index names. The 500 in "S&P 500" is part of a proper noun, and asking the
+ * market data to vouch for it fails a post for naming the thing it compares
+ * against — the same mistake as reading SMA200 as a price.
+ */
+const INDEX_NAME = /\b(?:S&P|Nasdaq|Russell|FTSE|DAX|Nikkei|Dow|CAC)\s?\d{2,5}\b/gi;
+
 export function extractNumbers(text) {
   const out = [];
 
@@ -59,7 +66,7 @@ export function extractNumbers(text) {
   // structural threshold and matches nothing in any market feed, so every post
   // that timestamps its evidence gets punished for showing its work.
   const skipSpans = [];
-  for (const re of [ISO_DATE, INDICATOR_LABEL]) {
+  for (const re of [ISO_DATE, INDICATOR_LABEL, INDEX_NAME]) {
     for (const m of String(text).matchAll(re)) skipSpans.push([m.index, m.index + m[0].length]);
   }
   const insideDate = (i) => skipSpans.some(([a, b]) => i >= a && i < b);
