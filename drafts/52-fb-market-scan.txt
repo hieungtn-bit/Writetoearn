@@ -1,0 +1,37 @@
+🔍 Quét toàn thị trường: 5 đồng lớn, 5 hoàn cảnh hoàn toàn khác nhau
+
+Cùng một thị trường, nhưng nếu chỉ nhìn giá bạn sẽ tưởng chúng giống nhau. Con số quan trọng nhất là cột cuối — **bao nhiêu % khối lượng 30 ngày đang kẹt TRÊN giá hiện tại** (tức bao nhiêu người mua tháng qua đang lỗ).
+
+┌─────────────────────────────────────────────
+│ BTC  64,320   30d  +0.4%   vị trí 51%   kẹt 38%
+│ ETH   1,871   30d  +4.0%   vị trí 59%   kẹt 56%
+│ BNB     601   30d  +2.6%   vị trí 91%   kẹt  0%
+│ SOL   74.18   30d  -9.5%   vị trí 29%   kẹt 78%
+│ XRP   1.069   30d  -6.6%   vị trí 20%   kẹt 95%
+└─────────────────────────────────────────────
+
+📌 **BNB — kẹt 0%.** Không một ai mua trong 30 ngày qua đang lỗ. Không có nguồn xả nào chờ hoà vốn. Nhưng nó đã ở **91% biên độ tháng** — phần dễ đã đi qua rồi. Funding +8.8%, cao nhất nhóm.
+
+📌 **XRP — kẹt 95%.** Gần như toàn bộ người mua tháng qua đang lỗ, và giá nằm ở **20% biên**. Mỗi nhịp hồi đều đâm vào tường người muốn thoát hoà vốn.
+
+📌 **SOL** tệ nhất 30 ngày (-9.5%) và dòng tiền 30d chỉ **0.68** — tiền chảy ra ngày giảm nhiều hơn vào ngày tăng. Phân phối, không phải tích luỹ.
+
+📌 **ETH** là đồng lớn duy nhất có dòng tiền 30 ngày **trên 1** (1.11).
+
+📌 **BTC gần như đứng yên**: 24h +0.3%, 7 ngày +0.5%, 30 ngày +0.4%. Đó không phải nhàm chán — đó là **thông tin**. RSI 52, giữa biên. Không có gì để bám vào.
+
+⚡ **Alt duy nhất qua bộ lọc hôm nay: ZEC**
+
+Tôi sàng toàn sàn qua 5 điều kiện (khối lượng tăng, đã rời đáy, có bùng nổ nội ngày, OI tăng, chưa chạy quá xa). Chỉ **1 đồng đạt 4/5**.
+
+ZEC 516.8 | 7d +10.6% | 30d +14.2% | vị trí 50% biên | thanh khoản 66 triệu/ngày | dòng tiền 30d **1.22**
+
+Kế hoạch nếu vào: stop 471.4 (−8.76% = 1.5×ATR), size **$114 mỗi $1,000** vốn để rủi ro đúng 1%, **đòn bẩy tối đa 10.3x** — cao hơn thì sàn thanh lý trước khi stop kịp chạy.
+
+🧭 **Bối cảnh chung:** Fear & Greed **27**, cả tháng chưa thoát vùng 20–33. Định giá on-chain ở **phân vị 18** — nhóm rẻ nhất. Nhưng đáy chu kỳ thật cần giá xuống dưới **52,337** (giá vốn trung bình toàn mạng), tức còn cách 18%.
+
+Rẻ ≠ đáy. Hai chuyện khác nhau, và khoảng cách đúng bằng một phần năm số vốn của bạn.
+
+💬 Bạn đang cầm đồng nào trong 5 đồng trên? Comment để tôi soi kỹ đồng đó.
+
+⚠️ Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
