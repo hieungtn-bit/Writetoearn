@@ -1,0 +1,77 @@
+For three weeks I have been publishing a number: an hourly turnover alert at z >= 5 is followed by a 10% gain within twelve hours 4.36x more often than a random hour. It is the only measured edge this desk has. Thirteen other hypotheses died to find it.
+
+I re-measured it this week with one change to the method. It is not 4.36x. It is 3.96x.
+
+Here is exactly what was wrong, because the mistake is one almost every backtest you will read still makes.
+
+WHAT I WAS COUNTING
+
+The old method asked: over the next twelve hours, did the highest high reach 10% above the alert price? That is one line of code and it feels like the right question.
+
+It is not, and the reason is the low.
+
+Over twelve volatile hours a pair can reach both targets. Price runs 10% against you, then 10% in your favour. The highest high says yes. Your stop said no, four hours earlier.
+
+Measured across 30,971 hours on the 60 most-traded USDT pairs — $BTC and $ETH sit in that universe alongside the small caps — taking highs and lows separately reports 28.72% of alerts reaching the long target and 17.63% reaching the short one. Those two numbers describe an arbitrage that does not exist.
+
+WHAT I COUNT NOW
+
+The window is walked one hour at a time and the target reached **first** is recorded. If a single hourly candle spans both, it is unattributable at that resolution, so it is counted separately and awarded to neither. 1.26% of alerts land there.
+
+                       long first    short first    both touched
+  random hour             6.11%          4.08%           1.01%
+  alert, z >= 5, n=397      24.18%         13.10%           7.81%
+
+The long edge is 3.96x at 2.42 sigma. Still real. Still the best thing here. But 4.53 percentage points of what I had been calling follow-through were alerts that hit the stop before they hit the target.
+
+The single most important line in the table is the one nobody quotes: **61.46% of alerts reach neither target.** The base case after a violent volume hour is that nothing happens for twelve hours.
+
+THE SIDE I HAD NEVER MEASURED
+
+Our scanner filtered for gainers before running any other test. Half of every day's movement was discarded before the first condition ran.
+
+Asked properly, the short side exists: 13.10% against a 4.08% base rate, 3.21x lift. Our earlier bearish study found nothing, and it was looking at the wrong clock — daily candles over five and ten days. At hourly resolution the asymmetry is there.
+
+It reads 1.53 sigma. That is enough to scan for and not enough to trade, and I am not going to round it up.
+
+THE PART THAT SURPRISED ME
+
+I split the alerts by what the trigger hour itself did, buckets fixed before the run.
+
+                     long first    short first      n
+  up hard   >+2%        33.33%         28.03%        132
+  up mild   0..+2%      19.78%          3.30%         91
+  down mild -2..0%       7.87%          2.25%         89
+  down hard <-2%        31.76%         11.76%        85
+
+Read the top row twice. The bucket with the highest long rate also has the highest short rate. After a violent up hour it is close to a coin flip which side pays first. That is a volatility reading wearing a direction's clothes, and it is the exact setup I would have recommended on instinct.
+
+The quiet up hour is the one-sided one: 19.78% long against 3.30% short.
+
+And the bottom row says do not short a crash. A violent down hour resolves long 31.76% of the time against 11.76% short. It bounces more often than it continues.
+
+Direction, on its own, carries nothing. The correlation between the trigger hour's return and the best gain over the next twelve is 0.06. With where price actually closes, 0.01.
+
+WHY I AM NOT TRADING ANY OF THAT
+
+No bucket difference reaches even 1.36 sigma against the pooled alert group. Twelve-hour windows overlap by eleven hours, so after de-overlapping each bucket holds roughly a dozen effective observations. Four buckets, one of them was always going to look best.
+
+I am publishing the split because it points somewhere, not because it decides anything.
+
+There is one more number worth sitting with. In the strongest bucket, the median alert **closes** the twelve hours at 1.14% and dips -6.16% along the way — in the same group that touches the target 42.42% of the time by the old count.
+
+The target is a wick. Hold to the end of the window and you give back nearly all of it. A hit rate cannot tell you that, and mine could not, until it measured drawdown too.
+
+WHAT THIS COSTS ME TO SAY
+
+This is the second time measurement has taken something off me. The first was a compression pattern I had been writing about for weeks: tested across 43,088 pair-days, it came out at 1.01x lift and 0.09 sigma. Indistinguishable from random.
+
+I would rather publish 3.96x that survives a path-dependent test than 4.36x that only survives not being looked at closely.
+
+If you take one thing: when someone shows you a win rate, ask whether it was computed from highs and lows separately, or by walking the path. The gap between those two answers was 4.53 points here, and it always points the same direction — flattering.
+
+The study is committed and reproducible. Run it against your own universe and tell me where it breaks.
+
+Educational research, not financial advice. DYOR.
+
+$BTC #WriteToEarn #BinanceSquare

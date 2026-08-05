@@ -164,15 +164,42 @@ console.log(JSON.stringify({
     horizonHours: HORIZON,
     targetPct: TARGET,
     alertThresholdZ: ALERT_Z,
+    bucketBoundsPct: { upHard: 2, quiet: 0, downHard: -2 },
     resolution: "The first target reached is decided bar by bar. An hourly candle spanning both targets is counted as sameHour and awarded to neither.",
     note: "touchedUpPct and touchedDownPct are the naive one-sided views and will sum past 100. longFirstPct and shortFirstPct are what a position would actually have collected.",
   },
   pairsSampled: pairs,
+  universe,
   baseline,
   allAlerts: {
     ...summarise(alerts),
     longVsRandomHour: significance(alerts, rows, "longFirst"),
     shortVsRandomHour: significance(alerts, rows, "shortFirst"),
+    /**
+     * Derived here rather than in a draft.
+     *
+     * These are the figures an article leads with, and a number that decisive
+     * has to come from the committed measurement or it is just arithmetic
+     * somebody did once and nobody can re-run.
+     */
+    longLiftVsRandomHour: summarise(alerts).longFirstPct / baseline.longFirstPct,
+    shortLiftVsRandomHour: summarise(alerts).shortFirstPct / baseline.shortFirstPct,
+    /**
+     * How much the old one-sided method overstated the long side: alerts whose
+     * highest high cleared +10% but whose low had already cleared -10% first.
+     */
+    naiveOverstatementPp: summarise(alerts).touchedUpPct - summarise(alerts).longFirstPct,
+    naiveLiftVsRandomHour: summarise(alerts).touchedUpPct / baseline.touchedUpPct,
   },
   buckets,
+  /**
+   * The largest bucket-vs-pooled reading in either direction. An article that
+   * says "none of the splits clears X" must take X from the data, not from a
+   * threshold the writer picked after seeing the answer.
+   */
+  maxBucketSigmaVsAllAlerts: Math.max(
+    ...Object.values(buckets).filter((v) => !v.note).flatMap((v) => [
+      Math.abs(v.longVsAllAlerts.sigmas), Math.abs(v.shortVsAllAlerts.sigmas),
+    ]),
+  ),
 }, null, 2));

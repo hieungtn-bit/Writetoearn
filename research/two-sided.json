@@ -1,15 +1,82 @@
 {
-  "measuredAt": "2026-08-05T07:34:01.576Z",
+  "measuredAt": "2026-08-05T07:47:21.944Z",
   "method": {
     "interval": "1h",
     "lookbackHours": 168,
     "horizonHours": 12,
     "targetPct": 10,
     "alertThresholdZ": 5,
+    "bucketBoundsPct": {
+      "upHard": 2,
+      "quiet": 0,
+      "downHard": -2
+    },
     "resolution": "The first target reached is decided bar by bar. An hourly candle spanning both targets is counted as sameHour and awarded to neither.",
     "note": "touchedUpPct and touchedDownPct are the naive one-sided views and will sum past 100. longFirstPct and shortFirstPct are what a position would actually have collected."
   },
   "pairsSampled": 60,
+  "universe": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "USD1USDT",
+    "SPCXBUSDT",
+    "BNBUSDT",
+    "EULUSDT",
+    "BANKUSDT",
+    "SNDKBUSDT",
+    "ZECUSDT",
+    "XRPUSDT",
+    "RLUSDUSDT",
+    "TRXUSDT",
+    "HOMEUSDT",
+    "XAUTUSDT",
+    "ADAUSDT",
+    "HEIUSDT",
+    "UUSDT",
+    "SOXLBUSDT",
+    "SKHYBUSDT",
+    "BICOUSDT",
+    "MUBUSDT",
+    "PAXGUSDT",
+    "ERAUSDT",
+    "DOGEUSDT",
+    "PUMPUSDT",
+    "UNIUSDT",
+    "MIRAUSDT",
+    "TAOUSDT",
+    "DEXEUSDT",
+    "SYNUSDT",
+    "LDOUSDT",
+    "WLDUSDT",
+    "HFTUSDT",
+    "LINKUSDT",
+    "LTCUSDT",
+    "UTKUSDT",
+    "COTIUSDT",
+    "AVAXUSDT",
+    "ENAUSDT",
+    "ONDOUSDT",
+    "GIGGLEUSDT",
+    "VICUSDT",
+    "NEARUSDT",
+    "CRCLBUSDT",
+    "XLMUSDT",
+    "EPICUSDT",
+    "TONUSDT",
+    "PEPEUSDT",
+    "AAVEUSDT",
+    "AXTIBUSDT",
+    "SNXXBUSDT",
+    "SUIUSDT",
+    "STOUSDT",
+    "TUTUSDT",
+    "QQQBUSDT",
+    "KORUBUSDT",
+    "ETHFIUSDT",
+    "GRAMUSDT",
+    "AMDBUSDT"
+  ],
   "baseline": {
     "n": 30971,
     "touchedUpPct": 6.5932646669464985,
@@ -40,7 +107,11 @@
       "differencePp": 9.01377066235766,
       "standardErrorPp": 5.878574011640509,
       "sigmas": 1.5333260488868496
-    }
+    },
+    "longLiftVsRandomHour": 3.956264695198138,
+    "shortLiftVsRandomHour": 3.2068418275405466,
+    "naiveOverstatementPp": 4.534005037783373,
+    "naiveLiftVsRandomHour": 4.355257477111637
   },
   "buckets": {
     "upHard": {
@@ -167,5 +238,6 @@
         "sigmas": 0.6340990659908485
       }
     }
-  }
+  },
+  "maxBucketSigmaVsAllAlerts": 1.3561247383601212
 }
