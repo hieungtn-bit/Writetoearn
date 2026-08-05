@@ -31,6 +31,20 @@ export const ARTICLE_MAX_WORDS = 2500;
 const SUFFIXES = { k: 1e3, m: 1e6, b: 1e9 };
 
 /**
+ * Magnitude words, for posts not written in English.
+ *
+ * "$2.2M" was multiplied by a million and "$2.2 triệu" was not, so the gate read
+ * the same figure as 2.2 and refused it. That is not the post being wrong, it is
+ * the gate only speaking one language — and the failure mode is worse than a
+ * rejection, because the cheap way around it is to drop the unit and write a
+ * bare number nobody can sanity-check.
+ *
+ * Written unaccented-insensitive is not attempted: "ty" without the diacritic
+ * is a different word, and guessing is how a billion becomes a thousand.
+ */
+const WORD_SUFFIXES = { nghìn: 1e3, ngàn: 1e3, triệu: 1e6, tỷ: 1e9, tỉ: 1e9 };
+
+/**
  * Pulls every numeric literal out of the text, keeping enough context to tell
  * a percentage from a bare count.
  *
@@ -72,16 +86,17 @@ export function extractNumbers(text) {
   const insideDate = (i) => skipSpans.some(([a, b]) => i >= a && i < b);
   // A magnitude suffix has to sit flush against the digits and not begin a
   // word: without both guards, "66,956\n\nBias:" reads as 66,956 billion.
-  const re = /(\d[\d,]*(?:\.\d+)?)(?:([KkMmBb])(?![A-Za-z]))?(\s*%)?/g;
+  const re = /(\d[\d,]*(?:\.\d+)?)(?:\s*(nghìn|ngàn|triệu|tỷ|tỉ)|([KkMmBb])(?![A-Za-z]))?(\s*%)?/giu;
 
   for (const m of text.matchAll(re)) {
     if (insideDate(m.index)) continue;
-    const [, digits, suffix, percent] = m;
+    const [, digits, wordSuffix, suffix, percent] = m;
     const bare = digits.replace(/,/g, "");
     let value = Number(bare);
     if (!Number.isFinite(value)) continue;
 
     if (suffix) value *= SUFFIXES[suffix.toLowerCase()];
+    if (wordSuffix) value *= WORD_SUFFIXES[wordSuffix.toLowerCase()];
 
     out.push({
       raw: m[0].trim(),
@@ -362,6 +377,70 @@ export function verifyNoForbiddenClaims(text, brief) {
 }
 
 /**
+ * The vocabulary a post may state its bias in, in one place.
+ *
+ * These used to be written out twice — once here to admit a post and once in
+ * the scoreboard to read it back — and the two copies had already drifted. The
+ * gate accepted a lower-case "wait"; the scoreboard only matched upper case. A
+ * post could clear the gate and then be unscoreable, dropping silently out of
+ * the track record the whole channel rests on. Sharing them makes that class of
+ * bug impossible rather than unlikely.
+ *
+ * Vietnamese is here because the channel is not staying English-only, and a
+ * gate that only speaks English is not a lighter gate — it is no gate at all
+ * for every post written in the other language.
+ *
+ * Boundaries use Unicode lookarounds rather than \b. In JavaScript \b is
+ * defined on ASCII word characters, so \bCHỜ\b asks for a boundary after a
+ * character the engine does not consider a word character, and matches in
+ * places nobody intended.
+ */
+/**
+ * A bias must be *declared*, not merely mentioned.
+ *
+ * The marker alone is not enough. "I am waiting for a retest" is prose, and in
+ * Vietnamese the problem is worse: "chờ" is an ordinary verb, so a bare match on
+ * it reads a bias into any sentence containing the word "wait". Requiring the
+ * label the desk already uses fixes both languages with one rule.
+ *
+ * The gap after the label is deliberate rather than strict punctuation: across
+ * forty published posts the convention is "Bias: WAIT", but two say "BIAS —
+ * WAIT" and "BIAS: I remain WAIT". A rule that only admits a colon would have
+ * silently dropped those from the track record.
+ */
+const BIAS_LABEL = String.raw`(?:bias|quan\s+điểm|khuyến\s+nghị)\s*[:\uFF1A\u2014-]?[^\n]{0,30}?`;
+
+/**
+ * The vocabulary a post may state its bias in, in one place.
+ *
+ * These used to be written out twice — once here to admit a post and once in
+ * the scoreboard to read it back — and the two copies had already drifted. The
+ * gate accepted a lower-case "wait"; the scoreboard only matched upper case. A
+ * post could clear the gate and then be unscoreable, dropping silently out of
+ * the track record the whole channel rests on. Sharing them makes that class of
+ * bug impossible rather than unlikely.
+ *
+ * Vietnamese is here because the channel is not staying English-only, and a
+ * gate that only speaks English is not a lighter gate — it is no gate at all
+ * for every post written in the other language.
+ *
+ * Boundaries use Unicode lookarounds rather than \b. In JavaScript \b is
+ * defined on ASCII word characters, so \bCHỜ\b asks for a boundary after a
+ * character the engine does not consider a word character.
+ *
+ * Long and short need no label: "selective long" and "long chọn lọc" are
+ * phrases nobody writes by accident.
+ */
+export const BIAS_PATTERNS = {
+  LONG: /(?<!\p{L})(?:selective\s+long|long\s+chọn\s+lọc|mua\s+chọn\s+lọc)(?!\p{L})/iu,
+  SHORT: /(?<!\p{L})(?:selective\s+short|short\s+chọn\s+lọc|bán\s+chọn\s+lọc)(?!\p{L})/iu,
+  WAIT: new RegExp(`${BIAS_LABEL}(?:wait|chờ|đứng\\s+ngoài)(?!\\p{L})`, "iu"),
+};
+
+/** Wording that tells a reader this is not advice, in either language. */
+const DISCLAIMER = /not financial advice|nfa\b|dyor|không\s+phải\s+lời\s+khuyên|tự\s+chịu\s+trách\s+nhiệm/iu;
+
+/**
  * Structural requirements from the post spec, checked before anything is sent.
  * @returns {{ok: boolean, problems: string[], words: number}}
  */
@@ -383,7 +462,7 @@ export function verifyStructure(text, { maxWords = 220, minWords = 40, requireBi
       `${cashtags.size} distinct cashtags (${[...cashtags].join(", ")}) exceeds the limit of ${MAX_CASHTAGS}`,
     );
   }
-  if (!/not financial advice|nfa\b|dyor/i.test(text)) problems.push("no disclaimer");
+  if (!DISCLAIMER.test(text)) problems.push("no disclaimer");
   if (!/\?/.test(text)) problems.push("no call-to-action question");
 
   // The scoreboard parses the bias out of the published text, so a post
@@ -395,8 +474,8 @@ export function verifyStructure(text, { maxWords = 220, minWords = 40, requireBi
   // decorative one. That exemption is opt-in and narrow on purpose: the day it
   // becomes a convenient way to skip the rule on a real call, the track record
   // stops meaning anything.
-  if (requireBias && !/selective\s+long|selective\s+short|\bWAIT\b/i.test(text)) {
-    problems.push("no bias stated (WAIT / Selective Long / Selective Short)");
+  if (requireBias && !Object.values(BIAS_PATTERNS).some((re) => re.test(text))) {
+    problems.push("no bias stated (WAIT / Selective Long / Selective Short, or CHỜ / Long chọn lọc / Short chọn lọc)");
   }
 
   return { ok: problems.length === 0, problems, words };

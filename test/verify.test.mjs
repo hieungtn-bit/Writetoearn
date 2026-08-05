@@ -361,3 +361,63 @@ test("an index name is a proper noun, not a market figure", async () => {
   // A bare number next to an index name must still be checked.
   assert.ok(extractNumbers("S&P 500 closed at 7,674.").some((n) => n.value === 7674));
 });
+
+test("the bias vocabulary is shared, so the gate and the scoreboard cannot drift", async () => {
+  const { BIAS_PATTERNS } = await import("../src/verify.mjs");
+  const { extractClaim, BIAS } = await import("../src/scoreboard.mjs");
+  const brief = { levels: [], spot: [] };
+  // Every wording the gate admits must also be readable by the scoreboard,
+  // or a post clears publication and drops silently out of the track record.
+  const cases = [
+    ["Bias: WAIT.", BIAS.WAIT],
+    ["bias: wait for a close above.", BIAS.WAIT],
+    ["Quan điểm: CHỜ.", BIAS.WAIT],
+    ["Quan điểm: đứng ngoài.", BIAS.WAIT],
+    ["Bias: Selective Long.", BIAS.LONG],
+    ["Quan điểm: Long chọn lọc.", BIAS.LONG],
+    ["Quan điểm: mua chọn lọc.", BIAS.LONG],
+    ["Bias: Selective Short.", BIAS.SHORT],
+    ["Quan điểm: Short chọn lọc.", BIAS.SHORT],
+    ["Quan điểm: bán chọn lọc.", BIAS.SHORT],
+  ];
+  for (const [text, expected] of cases) {
+    assert.ok(
+      Object.values(BIAS_PATTERNS).some((re) => re.test(`$BTC ${text}`)),
+      `gate should admit: ${text}`,
+    );
+    assert.equal(extractClaim(`$BTC ${text}`, brief).bias, expected, `scoreboard should read: ${text}`);
+  }
+});
+
+test("a bias word inside a longer word is not a bias", async () => {
+  // "waiting" is prose, not a call. The old \b-based pattern was also wrong in
+  // the other direction on Vietnamese, where \b is defined on ASCII only.
+  const brief = { levels: [], spot: [] };
+  assert.equal((await import("../src/scoreboard.mjs")).extractClaim(`$BTC I am waiting for a retest.`, brief).bias, null);
+  assert.equal((await import("../src/scoreboard.mjs")).extractClaim(`$BTC Chờ đợi là một chiến lược.`, brief).bias, null);
+});
+
+test("the disclaimer is accepted in either language", () => {
+  const base = "$BTC ".repeat(12) + "Bias: WAIT. What do you think? #tag ";
+  assert.ok(verifyStructure(`${base} Not financial advice.`).problems.every((p) => p !== "no disclaimer"));
+  assert.ok(
+    verifyStructure(`${base} Nghiên cứu giáo dục, không phải lời khuyên đầu tư.`)
+      .problems.every((p) => p !== "no disclaimer"),
+  );
+  assert.ok(verifyStructure(`${base} No warning here.`).problems.includes("no disclaimer"));
+});
+
+test("magnitude words are read in either language", () => {
+  const v = (s) => extractNumbers(s).map((x) => x.value);
+  assert.deepEqual(v("$2.2M"), v("$2.2 triệu"));
+  assert.deepEqual(v("111K"), v("111 nghìn"));
+  assert.deepEqual(v("111K"), v("111 ngàn"));
+  assert.deepEqual(v("1.5B"), v("1.5 tỷ"));
+  assert.deepEqual(v("1.5B"), v("1.5 tỉ"));
+});
+
+test("a magnitude word does not swallow an ordinary noun", () => {
+  // "12 tiếng" is twelve hours, not twelve of anything scaled.
+  assert.deepEqual(extractNumbers("12 tiếng").map((x) => x.value), [12]);
+  assert.deepEqual(extractNumbers("30 phút").map((x) => x.value), [30]);
+});

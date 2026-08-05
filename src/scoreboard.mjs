@@ -11,6 +11,7 @@
  */
 
 import { fetchKlines } from "./analysis.mjs";
+import { BIAS_PATTERNS } from "./verify.mjs";
 
 export const BIAS = {
   WAIT: "WAIT",
@@ -40,10 +41,12 @@ export function extractClaim(text, brief) {
   const symbol = base ? `${base}USDT` : null;
   const levels = (brief.levels ?? []).find((l) => l.symbol === symbol);
 
+  // Same patterns the gate admits the post with, so a post can never pass one
+  // and be invisible to the other.
   let bias = null;
-  if (/selective\s+long/i.test(text)) bias = BIAS.LONG;
-  else if (/selective\s+short/i.test(text)) bias = BIAS.SHORT;
-  else if (/\bWAIT\b/.test(text)) bias = BIAS.WAIT;
+  if (BIAS_PATTERNS.LONG.test(text)) bias = BIAS.LONG;
+  else if (BIAS_PATTERNS.SHORT.test(text)) bias = BIAS.SHORT;
+  else if (BIAS_PATTERNS.WAIT.test(text)) bias = BIAS.WAIT;
 
   return {
     asset: symbol,
