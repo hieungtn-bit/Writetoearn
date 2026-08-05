@@ -1,0 +1,383 @@
+{
+  "measuredAt": "2026-08-05T11:52:44.281Z",
+  "symbol": "BTCUSDT",
+  "method": {
+    "days": 730,
+    "eveningHoursUtc": [
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "note": "Evening block named before the run. Twenty-four hours tested against one baseline will produce a significant-looking cell by chance, so the largest single-hour reading is reported alongside.",
+    "timezone": "Vietnam is UTC+7, so 12:00-17:00 UTC is 19:00-24:00 local. The US cash open at 13:30 UTC sits inside the block."
+  },
+  "hours": 17518,
+  "firstCandle": "2024-08-05T12:00:00.000Z",
+  "lastCandle": "2026-08-05T10:00:00.000Z",
+  "overall": {
+    "n": 17518,
+    "meanReturnPct": 0.0026522114072563665,
+    "medianReturnPct": 0.0021872811322376506,
+    "positiveSharePct": 50.32537960954448,
+    "medianRangePct": 0.515414189542156,
+    "medianTurnoverUsd": 53580603.257306546
+  },
+  "evening": {
+    "n": 3649,
+    "meanReturnPct": -0.0029050396902018574,
+    "medianReturnPct": -0.011597101876026361,
+    "positiveSharePct": 48.89010687859688,
+    "medianRangePct": 0.7097545554130288,
+    "medianTurnoverUsd": 86502726.7641623,
+    "directionVsRest": {
+      "differencePp": -0.007019390347196826,
+      "standardError": 0.011170433861724343,
+      "sigmas": -0.6283901264792293
+    },
+    "sizeVsRest": {
+      "differencePp": 0.2619206739880472,
+      "standardError": 0.011112723034341998,
+      "sigmas": 23.569441367217152
+    },
+    "turnoverVsRest": {
+      "differencePp": 47978717.84655371,
+      "standardError": 1933195.5505298222,
+      "sigmas": 24.818346924812857
+    }
+  },
+  "rest": {
+    "n": 13869,
+    "meanReturnPct": 0.004114350656994969,
+    "medianReturnPct": 0.003953662715971973,
+    "positiveSharePct": 50.70300670560243,
+    "medianRangePct": 0.47958367878715064,
+    "medianTurnoverUsd": 48603148.7330919
+  },
+  "bestSingleHourSigma": 2.787500633493999,
+  "eveningBlock": {
+    "sessions": 730,
+    "medianRangePct": 1.7395794965983606,
+    "p25RangePct": 1.1308342144231531,
+    "p75RangePct": 2.614184782622852,
+    "p90RangePct": 3.7600606571782498,
+    "medianReturnPct": -0.031489028853720624,
+    "positiveSharePct": 47.94520547945205,
+    "note": "Range across the whole block, high to low, not the sum of hourly ranges."
+  },
+  "byHour": {
+    "0": {
+      "n": 730,
+      "meanReturnPct": -0.00226064742431085,
+      "medianReturnPct": -0.019863200386482927,
+      "positiveSharePct": 48.35616438356165,
+      "medianRangePct": 0.5430507295580708,
+      "medianTurnoverUsd": 52692519.05022515,
+      "vsRest": {
+        "differencePp": -0.005126486836513843,
+        "standardError": 0.01871810345997094,
+        "sigmas": -0.2738785394298596
+      }
+    },
+    "1": {
+      "n": 730,
+      "meanReturnPct": 0.014537354208227452,
+      "medianReturnPct": 0.007679403040927735,
+      "positiveSharePct": 51.64383561643836,
+      "medianRangePct": 0.5658161120461442,
+      "medianTurnoverUsd": 51331797.7505322,
+      "vsRest": {
+        "differencePp": 0.01240194970141831,
+        "standardError": 0.02080106646135246,
+        "sigmas": 0.5962170124527332
+      }
+    },
+    "2": {
+      "n": 730,
+      "meanReturnPct": 0.005108161392100926,
+      "medianReturnPct": -0.012899648192543633,
+      "positiveSharePct": 48.08219178082192,
+      "medianRangePct": 0.5105414398451855,
+      "medianTurnoverUsd": 47622724.8462044,
+      "vsRest": {
+        "differencePp": 0.002562743140011133,
+        "standardError": 0.017269736432725218,
+        "sigmas": 0.1483950348631189
+      }
+    },
+    "3": {
+      "n": 730,
+      "meanReturnPct": 0.01646125011298927,
+      "medianReturnPct": -0.0029513022070604134,
+      "positiveSharePct": 49.726027397260275,
+      "medianRangePct": 0.4438578957254635,
+      "medianTurnoverUsd": 45913909.550288945,
+      "vsRest": {
+        "differencePp": 0.014409503219384607,
+        "standardError": 0.015830743287526143,
+        "sigmas": 0.9102227834582218
+      }
+    },
+    "4": {
+      "n": 730,
+      "meanReturnPct": 0.003659587442876215,
+      "medianReturnPct": 0.002949994715417681,
+      "positiveSharePct": 50.41095890410959,
+      "medianRangePct": 0.4131871776024041,
+      "medianTurnoverUsd": 41957114.3654593,
+      "vsRest": {
+        "differencePp": 0.0010511802115790061,
+        "standardError": 0.013822055764355733,
+        "sigmas": 0.07605093117116384
+      }
+    },
+    "5": {
+      "n": 730,
+      "meanReturnPct": 0.0009528501022948595,
+      "medianReturnPct": -0.0013654596949463915,
+      "positiveSharePct": 49.45205479452055,
+      "medianRangePct": 0.40648830217127785,
+      "medianTurnoverUsd": 44393034.63178135,
+      "vsRest": {
+        "differencePp": -0.0017732553812434839,
+        "standardError": 0.013818449558681828,
+        "sigmas": -0.12832520563997618
+      }
+    },
+    "6": {
+      "n": 730,
+      "meanReturnPct": -0.018373577241395916,
+      "medianReturnPct": 0.0031954597188743605,
+      "positiveSharePct": 50.68493150684932,
+      "medianRangePct": 0.41411969317240693,
+      "medianTurnoverUsd": 47164198.3931347,
+      "vsRest": {
+        "differencePp": -0.021940062279431172,
+        "standardError": 0.016539923813957916,
+        "sigmas": -1.3264911329830988
+      }
+    },
+    "7": {
+      "n": 730,
+      "meanReturnPct": 0.00645935220842813,
+      "medianReturnPct": -0.0010699704041494673,
+      "positiveSharePct": 49.726027397260275,
+      "medianRangePct": 0.43212479107642765,
+      "medianTurnoverUsd": 55670503.14608725,
+      "vsRest": {
+        "differencePp": 0.00397268838187558,
+        "standardError": 0.014540880570943071,
+        "sigmas": 0.27320823952121387
+      }
+    },
+    "8": {
+      "n": 730,
+      "meanReturnPct": 0.005854525292178843,
+      "medianReturnPct": 0.00735217283308609,
+      "positiveSharePct": 51.369863013698634,
+      "medianRangePct": 0.45310702134555836,
+      "medianTurnoverUsd": 52150548.183681056,
+      "vsRest": {
+        "differencePp": 0.003341561510368839,
+        "standardError": 0.014726008743772563,
+        "sigmas": 0.22691562720835282
+      }
+    },
+    "9": {
+      "n": 730,
+      "meanReturnPct": 0.014134394056147404,
+      "medianReturnPct": 0.010001643637436164,
+      "positiveSharePct": 51.78082191780822,
+      "medianRangePct": 0.44512411899621784,
+      "medianTurnoverUsd": 50421822.64737715,
+      "vsRest": {
+        "differencePp": 0.0119814674555202,
+        "standardError": 0.014338712125311348,
+        "sigmas": 0.8356027620060779
+      }
+    },
+    "10": {
+      "n": 730,
+      "meanReturnPct": -0.009283367611452844,
+      "medianReturnPct": -0.0037519793735119045,
+      "positiveSharePct": 49.31506849315068,
+      "medianRangePct": 0.4159932033662467,
+      "medianTurnoverUsd": 45890509.05365965,
+      "vsRest": {
+        "differencePp": -0.012454579059432204,
+        "standardError": 0.013307469482827093,
+        "sigmas": -0.9359088950385707
+      }
+    },
+    "11": {
+      "n": 729,
+      "meanReturnPct": 0.012737805236321204,
+      "medianReturnPct": 0.021786724832351112,
+      "positiveSharePct": 54.32098765432099,
+      "medianRangePct": 0.41415819224702155,
+      "medianTurnoverUsd": 48946728.4408636,
+      "vsRest": {
+        "differencePp": 0.010523523300825415,
+        "standardError": 0.013849292843170598,
+        "sigmas": 0.7598599740790956
+      }
+    },
+    "12": {
+      "n": 729,
+      "meanReturnPct": -0.007218531825137883,
+      "medianReturnPct": -0.0157791652528938,
+      "positiveSharePct": 48.42249657064472,
+      "medianRangePct": 0.48941631758384635,
+      "medianTurnoverUsd": 57008867.632915,
+      "vsRest": {
+        "differencePp": -0.010299343614573967,
+        "standardError": 0.015178161970832337,
+        "sigmas": -0.6785632960279429
+      }
+    },
+    "13": {
+      "n": 730,
+      "meanReturnPct": -0.03330353492914702,
+      "medianReturnPct": -0.03446898316880054,
+      "positiveSharePct": 45.61643835616439,
+      "medianRangePct": 0.7408807677187041,
+      "medianTurnoverUsd": 90846839.37051171,
+      "vsRest": {
+        "differencePp": -0.03751922589475307,
+        "standardError": 0.02447194672229836,
+        "sigmas": -1.5331524835564585
+      }
+    },
+    "14": {
+      "n": 730,
+      "meanReturnPct": 0.014404026227122236,
+      "medianReturnPct": 0.03013709101906681,
+      "positiveSharePct": 52.19178082191781,
+      "medianRangePct": 0.9379190722447928,
+      "medianTurnoverUsd": 121454529.6004596,
+      "vsRest": {
+        "differencePp": 0.012262824160972711,
+        "standardError": 0.028892058293166344,
+        "sigmas": 0.4244358098873544
+      }
+    },
+    "15": {
+      "n": 730,
+      "meanReturnPct": 0.020443860020499974,
+      "medianReturnPct": 0.006191805393185312,
+      "positiveSharePct": 50.821917808219176,
+      "medianRangePct": 0.7963950740954672,
+      "medianTurnoverUsd": 97465320.88956675,
+      "vsRest": {
+        "differencePp": 0.018565290708053434,
+        "standardError": 0.026989137538229943,
+        "sigmas": 0.6878801029397777
+      }
+    },
+    "16": {
+      "n": 730,
+      "meanReturnPct": -0.00885692683768215,
+      "medianReturnPct": -0.02172637989429904,
+      "positiveSharePct": 47.397260273972606,
+      "medianRangePct": 0.6974960515060347,
+      "medianTurnoverUsd": 80563118.80273905,
+      "vsRest": {
+        "differencePp": -0.012009595173625973,
+        "standardError": 0.020845825097397776,
+        "sigmas": -0.5761151270104993
+      }
+    },
+    "17": {
+      "n": 730,
+      "meanReturnPct": 0.016540339450198904,
+      "medianReturnPct": 0.04492999315749424,
+      "positiveSharePct": 54.38356164383562,
+      "medianRangePct": 0.6730385756464143,
+      "medianTurnoverUsd": 68367696.22159564,
+      "vsRest": {
+        "differencePp": 0.014492031633087144,
+        "standardError": 0.02303274484153051,
+        "sigmas": 0.6291925574999839
+      }
+    },
+    "18": {
+      "n": 730,
+      "meanReturnPct": -0.020994429451341258,
+      "medianReturnPct": 0.014271688608702426,
+      "positiveSharePct": 51.23287671232877,
+      "medianRangePct": 0.5973170450319403,
+      "medianTurnoverUsd": 58442385.809731,
+      "vsRest": {
+        "differencePp": -0.02467487816064528,
+        "standardError": 0.01999093181137194,
+        "sigmas": -1.234303552904365
+      }
+    },
+    "19": {
+      "n": 730,
+      "meanReturnPct": 0.0030746605421965926,
+      "medianReturnPct": 0.009646030419174778,
+      "positiveSharePct": 50.95890410958904,
+      "medianRangePct": 0.5564966118998083,
+      "medianTurnoverUsd": 55732872.5066776,
+      "vsRest": {
+        "differencePp": 0.0004408186767859731,
+        "standardError": 0.01919842369797808,
+        "sigmas": 0.022961191174898324
+      }
+    },
+    "20": {
+      "n": 730,
+      "meanReturnPct": 0.00654604108691788,
+      "medianReturnPct": 0.002274843622207534,
+      "positiveSharePct": 50.41095890410959,
+      "medianRangePct": 0.539518894688674,
+      "medianTurnoverUsd": 46220270.219216555,
+      "vsRest": {
+        "differencePp": 0.004063146791059714,
+        "standardError": 0.018020835190722104,
+        "sigmas": 0.22546939406846117
+      }
+    },
+    "21": {
+      "n": 730,
+      "meanReturnPct": 0.03164712459003075,
+      "medianReturnPct": 0.015924368658304378,
+      "positiveSharePct": 52.32876712328767,
+      "medianRangePct": 0.49864607324120186,
+      "medianTurnoverUsd": 39546009.13257945,
+      "vsRest": {
+        "differencePp": 0.03025571176649042,
+        "standardError": 0.01788955704439077,
+        "sigmas": 1.691249911410022
+      }
+    },
+    "22": {
+      "n": 730,
+      "meanReturnPct": 0.0291063314067131,
+      "medianReturnPct": 0.012151670020521532,
+      "positiveSharePct": 51.369863013698634,
+      "medianRangePct": 0.515517856200022,
+      "medianTurnoverUsd": 41143329.469379246,
+      "vsRest": {
+        "differencePp": 0.027604436153829064,
+        "standardError": 0.018641718665761035,
+        "sigmas": 1.4807881531078848
+      }
+    },
+    "23": {
+      "n": 730,
+      "meanReturnPct": -0.0377232799647365,
+      "medianReturnPct": -0.01619880720131195,
+      "positiveSharePct": 47.80821917808219,
+      "medianRangePct": 0.462095302218649,
+      "medianTurnoverUsd": 40817276.4667487,
+      "vsRest": {
+        "differencePp": -0.04213115665085605,
+        "standardError": 0.015114312852387285,
+        "sigmas": -2.787500633493999
+      }
+    }
+  }
+}
