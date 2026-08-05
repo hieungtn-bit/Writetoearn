@@ -35,6 +35,7 @@ import { formatFlow, takerFlow } from "./orderflow.mjs";
 import { bandsFor, clusterMap, fetchPositionTiers, formatLiquidation } from "./liquidation.mjs";
 import { buildCard, formatCard } from "./card.mjs";
 import { formatSweep, sweep } from "./movers.mjs";
+import { formatScan, markdownReport, scan as pbbeScan } from "./pbbe.mjs";
 import { DEFAULT_DAYS, formatStage, normalizeSymbol, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
@@ -90,6 +91,9 @@ Usage
                                       opened recently would be stopped out
   wte movers [--min-score <n>]        Daily gainer sweep: five filters, each
              [--min-volume <n>] [--cards]  reported; --cards writes the plans
+  wte pbbe [--z-window 7|30]          Base breakout scan: tight ranges with
+           [--max-from-base <f>]      volume arriving. Every component of the
+           [--min-volume-z <n>] [--md]  score printed beside it
   wte card <sym> [--short] [--risk <n>]  One-screen trade plan: stop and
            [--account <n>] [--stop-atr <n>]  targets from ATR, leverage
                                       ceiling from real maintenance margin
@@ -177,6 +181,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdCard(rest, flags);
     case "movers":
       return cmdMovers(flags);
+    case "pbbe":
+      return cmdPbbe(flags);
     case "stage":
       return cmdStage(rest, flags);
     case "site":
@@ -890,6 +896,25 @@ async function cmdWatch(flags) {
 }
 
 /** The daily gainer sweep the big accounts run by hand. */
+async function cmdPbbe(flags) {
+  const result = await pbbeScan({
+    zWindow: flags["z-window"] === "7" ? 7 : 30,
+    maxFromBase: flags["max-from-base"] ? Number(flags["max-from-base"]) : undefined,
+    minVolumeZ: flags["min-volume-z"] ? Number(flags["min-volume-z"]) : undefined,
+    minTurnover: flags["min-volume"] ? Number(flags["min-volume"]) : undefined,
+    maxCandidates: flags["max-candidates"] ? Number(flags["max-candidates"]) : undefined,
+    onProgress: (d, t) => process.stderr.write(`\rscanning ${d}/${t}   `),
+  });
+  process.stderr.write("\r");
+
+  if (flags.json) {
+    print(result, flags);
+    return 0;
+  }
+  console.log(flags.md ? markdownReport(result) : formatScan(result));
+  return 0;
+}
+
 async function cmdMovers(flags) {
   const minScore = flags["min-score"] ? Number(flags["min-score"]) : 3;
   const result = await sweep({
