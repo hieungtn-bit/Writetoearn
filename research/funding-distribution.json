@@ -1,0 +1,172 @@
+{
+  "measuredAt": "2026-08-05T12:43:26.469Z",
+  "venue": "OKX BTC-USDT-SWAP",
+  "method": {
+    "settlements": 279,
+    "horizonsInSettlements": [
+      3,
+      9,
+      21
+    ],
+    "note": "Funding settles every 8 hours. Horizons are whole settlement counts (3 = one day, 9 = three days, 21 = seven days) and forward windows are read from the first completed hourly close at or after each stamp.",
+    "caveat": "OKX, because Binance's futures endpoint is geo-blocked from this machine. The audited model quotes Binance funding and the two venues do not print the same rate — OKX read 0.005102% at the same moment Binance read 0.003581%."
+  },
+  "span": {
+    "from": "2026-05-04T16:00:00.000Z",
+    "to": "2026-08-05T08:00:00.000Z",
+    "days": 93
+  },
+  "distribution": {
+    "n": 279,
+    "min": -0.0078104841253699995,
+    "p05": -0.00480020790019,
+    "p25": 0.00020836725788,
+    "median": 0.0031154302060700002,
+    "p75": 0.00617667680351,
+    "p95": 0.01,
+    "p99": 0.01,
+    "max": 0.01,
+    "negativeSharePct": 22.22222222222222
+  },
+  "auditedReading": {
+    "ratePct": 0.003581,
+    "percentile": 54.121863799283155,
+    "annualisedPct": 3.9211949999999995
+  },
+  "claimedThresholds": {
+    "healthyLow": {
+      "level": -0.005,
+      "percentileOfLevel": 4.301075268817205,
+      "settlementsAbove": 267,
+      "shareAbovePct": 95.6989247311828,
+      "forward": {
+        "h3": {
+          "differencePp": 0.10168447131484593,
+          "meanA": -0.22542806466178356,
+          "meanB": -0.3271125359766295,
+          "sigmas": 0.14686203550377194,
+          "n": [
+            264,
+            12
+          ]
+        },
+        "h9": {
+          "differencePp": 0.5928027260574044,
+          "meanA": -0.7236992056065551,
+          "meanB": -1.3165019316639595,
+          "sigmas": 0.639594273107873,
+          "n": [
+            258,
+            12
+          ]
+        },
+        "h21": {
+          "differencePp": -0.49991458081371176,
+          "meanA": -1.804047444031861,
+          "meanB": -1.3041328632181493,
+          "sigmas": -0.456953198793857,
+          "n": [
+            246,
+            12
+          ]
+        }
+      }
+    },
+    "healthyHigh": {
+      "level": 0.01,
+      "percentileOfLevel": 93.54838709677419,
+      "settlementsAbove": 18,
+      "shareAbovePct": 6.451612903225806,
+      "forward": {
+        "h3": {
+          "differencePp": -0.8571921948935041,
+          "meanA": -1.0311374847280959,
+          "meanB": -0.17394528983459176,
+          "sigmas": -1.4186520283024822,
+          "n": [
+            18,
+            258
+          ]
+        },
+        "h9": {
+          "differencePp": -2.056339478205413,
+          "meanA": -2.6692961730897142,
+          "meanB": -0.6129566948843012,
+          "sigmas": -1.7205943249069862,
+          "n": [
+            18,
+            252
+          ]
+        },
+        "h21": {
+          "differencePp": -2.4311028215772197,
+          "meanA": -4.042286599879799,
+          "meanB": -1.6111837783025793,
+          "sigmas": -1.6301164846916938,
+          "n": [
+            18,
+            240
+          ]
+        }
+      }
+    },
+    "crowdingWatch": {
+      "level": 0.015,
+      "percentileOfLevel": 100,
+      "settlementsAbove": 0,
+      "shareAbovePct": 0,
+      "forward": {
+        "h3": {
+          "sigmas": null,
+          "n": [
+            0,
+            276
+          ]
+        },
+        "h9": {
+          "sigmas": null,
+          "n": [
+            0,
+            270
+          ]
+        },
+        "h21": {
+          "sigmas": null,
+          "n": [
+            0,
+            258
+          ]
+        }
+      }
+    },
+    "extreme": {
+      "level": 0.04,
+      "percentileOfLevel": 100,
+      "settlementsAbove": 0,
+      "shareAbovePct": 0,
+      "forward": {
+        "h3": {
+          "sigmas": null,
+          "n": [
+            0,
+            276
+          ]
+        },
+        "h9": {
+          "sigmas": null,
+          "n": [
+            0,
+            270
+          ]
+        },
+        "h21": {
+          "sigmas": null,
+          "n": [
+            0,
+            258
+          ]
+        }
+      }
+    }
+  }
+}
