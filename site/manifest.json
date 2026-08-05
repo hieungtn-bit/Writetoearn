@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "bico-vi",
+      "draft": "55-bico-vi.txt",
+      "title": "Hệ Thống Của Tôi Gọi Đúng BICO. Nó Tăng 25%. Tôi Vẫn Chấm Là Trượt.",
+      "description": "Hệ thống của tôi báo $BICO hai hôm trước ở giá $0.01962. Bây giờ nó $0.02465, tăng 25.6%.",
+      "published": "2026-08-05T08:14:52.880Z",
+      "assets": [
+        "BICO"
+      ],
+      "topics": [],
+      "squareId": 352364514908146
+    },
+    {
       "slug": "bico-miss",
       "draft": "54-bico-miss.txt",
       "title": "Our Scanner Called BICO. It Is Up 25%. We Score It a Miss.",
