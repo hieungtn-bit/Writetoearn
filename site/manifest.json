@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "bico-miss",
+      "draft": "54-bico-miss.txt",
+      "title": "Our Scanner Called BICO. It Is Up 25%. We Score It a Miss.",
+      "description": "Our scanner flagged $BICO two days ago at $0.01962. It is $0.02465 now, up 25.6%.",
+      "published": "2026-08-05T08:07:58.929Z",
+      "assets": [
+        "BICO"
+      ],
+      "topics": [],
+      "squareId": 352362819223745
+    },
+    {
       "slug": "two-sided",
       "draft": "53-two-sided.txt",
       "title": "I Measured My Own Edge Wrong. Here Is the Bar-by-Bar Test That Caught It.",
