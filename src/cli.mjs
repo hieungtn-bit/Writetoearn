@@ -36,6 +36,7 @@ import { bandsFor, clusterMap, fetchPositionTiers, formatLiquidation } from "./l
 import { buildCard, formatCard } from "./card.mjs";
 import { formatSweep, sweep } from "./movers.mjs";
 import { formatScan, markdownReport, scan as pbbeScan } from "./pbbe.mjs";
+import { formatSides, scanSides } from "./sides.mjs";
 import { DEFAULT_DAYS, formatStage, normalizeSymbol, stageOf } from "./stage.mjs";
 import { buildSite, renderCoverSvg } from "./site.mjs";
 import { addArticle, assetsFromText, descriptionFromText, slugFromDraft } from "./publish-flow.mjs";
@@ -91,6 +92,8 @@ Usage
                                       opened recently would be stopped out
   wte movers [--min-score <n>]        Daily gainer sweep: five filters, each
              [--min-volume <n>] [--cards]  reported; --cards writes the plans
+  wte sides [--min-score <n>]         Both ends of the board, symmetric rules.
+            [--per-side <n>]           Long side is measured; short side is not
   wte pbbe [--z-window 7|30]          Base breakout scan: tight ranges with
            [--max-from-base <f>]      volume arriving. Every component of the
            [--min-volume-z <n>] [--md]  score printed beside it
@@ -183,6 +186,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdMovers(flags);
     case "pbbe":
       return cmdPbbe(flags);
+    case "sides":
+      return cmdSides(flags);
     case "stage":
       return cmdStage(rest, flags);
     case "site":
@@ -896,6 +901,19 @@ async function cmdWatch(flags) {
 }
 
 /** The daily gainer sweep the big accounts run by hand. */
+async function cmdSides(flags) {
+  const result = await scanSides({
+    minScore: flags["min-score"] ? Number(flags["min-score"]) : undefined,
+    perSide: flags["per-side"] ? Number(flags["per-side"]) : undefined,
+    minVolume: flags["min-volume"] ? Number(flags["min-volume"]) : undefined,
+    onProgress: (d, t) => process.stderr.write(`\rscanning ${d}/${t}   `),
+  });
+  process.stderr.write("\r");
+  if (flags.json) { print(result, flags); return 0; }
+  console.log(formatSides(result));
+  return 0;
+}
+
 async function cmdPbbe(flags) {
   const result = await pbbeScan({
     zWindow: flags["z-window"] === "7" ? 7 : 30,
