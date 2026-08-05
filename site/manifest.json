@@ -10,6 +10,19 @@
   },
   "articles": [
     {
+      "slug": "two-sided",
+      "draft": "53-two-sided.txt",
+      "title": "I Measured My Own Edge Wrong. Here Is the Bar-by-Bar Test That Caught It.",
+      "description": "Two days ago I measured the only edge this desk has: an hourly turnover alert at z >= 5, followed by a 10% gain within twelve hours 4.44x more often than a random hour. Twelve other conditions had…",
+      "published": "2026-08-05T08:02:12.734Z",
+      "assets": [
+        "BTC",
+        "ETH"
+      ],
+      "topics": [],
+      "squareId": 352361401178082
+    },
+    {
       "slug": "case-for-long",
       "draft": "51-case-for-long.txt",
       "title": "I Have Been Saying Wait on Bitcoin All Week. Here Is the Strongest Case Against Myself.",
