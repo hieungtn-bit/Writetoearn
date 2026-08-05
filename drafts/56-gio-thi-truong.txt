@@ -1,0 +1,21 @@
+Tối nay $BTC lên hay xuống? Tôi không biết. Và tôi đo được rằng tôi không biết.
+
+17,518 giờ nến, hai năm, xếp theo giờ Việt Nam.
+
+Phiên tối (19–24h) tăng giá 48.89% số giờ. Cả khối tối đóng cửa cao hơn 47.95% số phiên. Đồng xu. Lệch chuẩn -0.63 — tức không có gì.
+
+Chỗ này suýt lừa được tôi. Thử 24 giờ với cùng một mốc thì kiểu gì cũng có một giờ trông "có ý nghĩa". Ô cao nhất bảng đạt 2.79 sigma — đúng mức nhiễu tạo ra khi thử 24 lần. Nếu không chốt khối giờ TRƯỚC khi chạy, tôi đã đăng một "khung giờ vàng" rất thuyết phục và hoàn toàn sai.
+
+Nhưng có một thứ thật, và nó lớn: biên độ.
+
+Phiên tối 0.71% mỗi giờ, ngày chỉ 0.48%. Lệch 23.57 sigma. 21h là giờ dữ nhất ngày với 0.94%, hơn gấp đôi giờ trưa.
+
+Dùng được ngay: nửa số phiên tối có biên độ 1.13–2.61%. Dừng lỗ hẹp hơn 1.74% sẽ bị quét bởi một đêm hoàn toàn bình thường, không cần tin gì cả.
+
+Quan điểm: CHỜ. Giờ trong ngày không nói gì về hướng, nói rất nhiều về kích thước. Đó là chuyện cỡ lệnh, không phải chuyện đặt cửa nào.
+
+Bạn có đang để lệnh đòn bẩy chạy qua 21h không?
+
+Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+
+#WriteToEarn #BinanceSquare
