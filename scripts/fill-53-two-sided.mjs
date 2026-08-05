@@ -5,6 +5,8 @@ import { readFileSync, writeFileSync } from "node:fs";
 const T = JSON.parse(readFileSync("/home/user/Writetoearn/research/two-sided.json", "utf8"));
 const D = JSON.parse(readFileSync("/home/user/Writetoearn/research/intraday-direction.json", "utf8"));
 const B = JSON.parse(readFileSync("/home/user/Writetoearn/research/breakout-signal.json", "utf8"));
+const I = JSON.parse(readFileSync("/home/user/Writetoearn/research/intraday-signal.json", "utf8"));
+const S = JSON.parse(readFileSync("/home/user/Writetoearn/research/short-signal.json", "utf8"));
 
 const a = T.allAlerts, b = T.baseline, k = T.buckets;
 
@@ -34,6 +36,19 @@ const claims = {
     T.universe.includes("BTCUSDT") && T.universe.includes("ETHUSDT"),
   "compression remains indistinguishable from random":
     Math.abs(B.conditions.compressed.normalised.sigmas) < 0.5,
+  // The prose claims below are the ones the gate cannot check, so they are
+  // checked here. Every one of them was wrong in the first draft.
+  "the method change costs more than the run-to-run drift":
+    Math.abs(I.thresholds.z5.liftVsBaseline - a.naiveLiftVsRandomHour)
+      < Math.abs(a.naiveLiftVsRandomHour - a.longLiftVsRandomHour),
+  "the reported figure came from the naive method": I.thresholds.z5.liftVsBaseline > 4,
+  "twelve conditions were tested across the two hypothesis studies":
+    Object.keys(B.conditions).length + Object.keys(S.conditions).length === 12,
+  // Signed, not absolute. `fading` reads -2.02, which clears two sigma in the
+  // direction opposite to the one it predicted — a significant anti-signal is
+  // not a bearish condition that worked.
+  "no bearish condition cleared two sigma in the direction it predicted":
+    Math.max(...Object.values(S.conditions).map((c) => c.sigmas)) < 2,
 };
 const bad = Object.entries(claims).filter(([, ok]) => !ok);
 if (bad.length) { console.error("ABORT:"); for (const [c] of bad) console.error("  x " + c); process.exit(1); }
@@ -41,11 +56,11 @@ if (bad.length) { console.error("ABORT:"); for (const [c] of bad) console.error(
 const f2 = (v) => Number(v).toFixed(2);
 const n0 = (v) => Math.round(v).toLocaleString("en-US");
 
-const text = `For three weeks I have been publishing a number: an hourly turnover alert at z >= ${T.method.alertThresholdZ} is followed by a ${T.method.targetPct}% gain within twelve hours ${f2(a.naiveLiftVsRandomHour)}x more often than a random hour. It is the only measured edge this desk has. Thirteen other hypotheses died to find it.
+const text = `Two days ago I measured the only edge this desk has: an hourly turnover alert at z >= ${T.method.alertThresholdZ}, followed by a ${T.method.targetPct}% gain within twelve hours ${f2(I.thresholds.z5.liftVsBaseline)}x more often than a random hour. Twelve other conditions had been tested across two studies to find it, and it was the only one that survived.
 
-I re-measured it this week with one change to the method. It is not ${f2(a.naiveLiftVsRandomHour)}x. It is ${f2(a.longLiftVsRandomHour)}x.
+Today I re-measured it with one change to the method. It is ${f2(a.longLiftVsRandomHour)}x.
 
-Here is exactly what was wrong, because the mistake is one almost every backtest you will read still makes.
+I am writing this before that number ever reached a post, which is the only reason this is a correction and not a retraction. Here is exactly what was wrong, because the mistake is one almost every backtest you will read still makes.
 
 WHAT I WAS COUNTING
 
@@ -61,11 +76,13 @@ WHAT I COUNT NOW
 
 The window is walked one hour at a time and the target reached **first** is recorded. If a single hourly candle spans both, it is unattributable at that resolution, so it is counted separately and awarded to neither. ${f2(a.sameHourPct)}% of alerts land there.
 
-                       long first    short first    both touched
-  random hour             ${f2(b.longFirstPct)}%          ${f2(b.shortFirstPct)}%           ${f2(b.touchedBothPct)}%
-  alert, z >= ${T.method.alertThresholdZ}, n=${a.n}      ${f2(a.longFirstPct)}%         ${f2(a.shortFirstPct)}%           ${f2(a.touchedBothPct)}%
+                       long first   short first   both touched
+  ${"random hour".padEnd(19)}${(f2(b.longFirstPct) + "%").padStart(8)}     ${(f2(b.shortFirstPct) + "%").padStart(8)}      ${(f2(b.touchedBothPct) + "%").padStart(8)}
+  ${`alert z>=${T.method.alertThresholdZ}, n=${a.n}`.padEnd(19)}${(f2(a.longFirstPct) + "%").padStart(8)}     ${(f2(a.shortFirstPct) + "%").padStart(8)}      ${(f2(a.touchedBothPct) + "%").padStart(8)}
 
 The long edge is ${f2(a.longLiftVsRandomHour)}x at ${f2(a.longVsRandomHour.sigmas)} sigma. Still real. Still the best thing here. But ${f2(a.naiveOverstatementPp)} percentage points of what I had been calling follow-through were alerts that hit the stop before they hit the target.
+
+It matters that this is the method and not the sample. Run the old naive count on today's data and it prints ${f2(a.naiveLiftVsRandomHour)}x against the ${f2(I.thresholds.z5.liftVsBaseline)}x I reported two days ago — the two runs disagree by a rounding error. Walking the same data bar by bar moves it to ${f2(a.longLiftVsRandomHour)}x. The drift between runs is noise. The gap between methods is the mistake.
 
 The single most important line in the table is the one nobody quotes: **${f2(a.neitherPct)}% of alerts reach neither target.** The base case after a violent volume hour is that nothing happens for twelve hours.
 
@@ -73,7 +90,7 @@ THE SIDE I HAD NEVER MEASURED
 
 Our scanner filtered for gainers before running any other test. Half of every day's movement was discarded before the first condition ran.
 
-Asked properly, the short side exists: ${f2(a.shortFirstPct)}% against a ${f2(b.shortFirstPct)}% base rate, ${f2(a.shortLiftVsRandomHour)}x lift. Our earlier bearish study found nothing, and it was looking at the wrong clock — daily candles over five and ten days. At hourly resolution the asymmetry is there.
+Asked properly, the short side exists: ${f2(a.shortFirstPct)}% against a ${f2(b.shortFirstPct)}% base rate, ${f2(a.shortLiftVsRandomHour)}x lift. Our earlier bearish study found nothing above two sigma in the direction it predicted, and it was looking at the wrong clock — daily candles over five and ten days. At hourly resolution the asymmetry is there.
 
 It reads ${f2(a.shortVsRandomHour.sigmas)} sigma. That is enough to scan for and not enough to trade, and I am not going to round it up.
 
@@ -81,11 +98,11 @@ THE PART THAT SURPRISED ME
 
 I split the alerts by what the trigger hour itself did, buckets fixed before the run.
 
-                     long first    short first      n
-  up hard   >+${T.method.bucketBoundsPct.upHard}%        ${f2(k.upHard.longFirstPct)}%         ${f2(k.upHard.shortFirstPct)}%        ${k.upHard.n}
-  up mild   ${T.method.bucketBoundsPct.quiet}..+${T.method.bucketBoundsPct.upHard}%      ${f2(k.upMild.longFirstPct)}%          ${f2(k.upMild.shortFirstPct)}%         ${k.upMild.n}
-  down mild ${T.method.bucketBoundsPct.downHard}..${T.method.bucketBoundsPct.quiet}%       ${f2(k.downMild.longFirstPct)}%          ${f2(k.downMild.shortFirstPct)}%         ${k.downMild.n}
-  down hard <${T.method.bucketBoundsPct.downHard}%        ${f2(k.downHard.longFirstPct)}%         ${f2(k.downHard.shortFirstPct)}%        ${k.downHard.n}
+                       long first   short first        n
+  ${`up hard   >+${T.method.bucketBoundsPct.upHard}%`.padEnd(19)}${(f2(k.upHard.longFirstPct) + "%").padStart(8)}     ${(f2(k.upHard.shortFirstPct) + "%").padStart(8)}    ${String(k.upHard.n).padStart(5)}
+  ${`up mild   ${T.method.bucketBoundsPct.quiet}..+${T.method.bucketBoundsPct.upHard}%`.padEnd(19)}${(f2(k.upMild.longFirstPct) + "%").padStart(8)}     ${(f2(k.upMild.shortFirstPct) + "%").padStart(8)}    ${String(k.upMild.n).padStart(5)}
+  ${`down mild ${T.method.bucketBoundsPct.downHard}..${T.method.bucketBoundsPct.quiet}%`.padEnd(19)}${(f2(k.downMild.longFirstPct) + "%").padStart(8)}     ${(f2(k.downMild.shortFirstPct) + "%").padStart(8)}    ${String(k.downMild.n).padStart(5)}
+  ${`down hard <${T.method.bucketBoundsPct.downHard}%`.padEnd(19)}${(f2(k.downHard.longFirstPct) + "%").padStart(8)}     ${(f2(k.downHard.shortFirstPct) + "%").padStart(8)}    ${String(k.downHard.n).padStart(5)}
 
 Read the top row twice. The bucket with the highest long rate also has the highest short rate. After a violent up hour it is close to a coin flip which side pays first. That is a volatility reading wearing a direction's clothes, and it is the exact setup I would have recommended on instinct.
 
@@ -107,7 +124,7 @@ The target is a wick. Hold to the end of the window and you give back nearly all
 
 WHAT THIS COSTS ME TO SAY
 
-This is the second time measurement has taken something off me. The first was a compression pattern I had been writing about for weeks: tested across ${n0(B.baseline.n)} pair-days, it came out at ${f2(B.conditions.compressed.normalised.liftVsBaseline)}x lift and ${f2(B.conditions.compressed.normalised.sigmas)} sigma. Indistinguishable from random.
+This is the second time measurement has taken something off me. The first was a compression pattern I had written about repeatedly: tested across ${n0(B.baseline.n)} pair-days, it came out at ${f2(B.conditions.compressed.normalised.liftVsBaseline)}x lift and ${f2(B.conditions.compressed.normalised.sigmas)} sigma. Indistinguishable from random.
 
 I would rather publish ${f2(a.longLiftVsRandomHour)}x that survives a path-dependent test than ${f2(a.naiveLiftVsRandomHour)}x that only survives not being looked at closely.
 
