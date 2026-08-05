@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "gio-thi-truong",
+      "draft": "56-gio-thi-truong.txt",
+      "title": "BTC Ngủ Ban Ngày. Nó Thức Lúc 9 Giờ Tối.",
+      "description": "Tối nay $BTC lên hay xuống? Tôi không biết. Và tôi đo được rằng tôi không biết.",
+      "published": "2026-08-05T12:21:59.434Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 352425244134321
+    },
+    {
       "slug": "bico-vi",
       "draft": "55-bico-vi.txt",
       "title": "Hệ Thống Của Tôi Gọi Đúng BICO. Nó Tăng 25%. Tôi Vẫn Chấm Là Trượt.",
