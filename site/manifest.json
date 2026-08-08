@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "funding-nguong",
+      "draft": "57-funding-nguong.txt",
+      "title": "Hai Ngưỡng Funding Ai Cũng Chép. Tôi Đo Thử — Chúng Chưa Từng Xảy Ra.",
+      "description": "Bộ ngưỡng funding này được chép khắp nơi: \"lành mạnh\" -0.005% đến 0.01% mỗi 8 tiếng, trên 0.015% là long đông, trên 0.04% là cực đoan.",
+      "published": "2026-08-08T03:23:41.927Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 353354636859058
+    },
+    {
       "slug": "gio-thi-truong",
       "draft": "56-gio-thi-truong.txt",
       "title": "BTC Ngủ Ban Ngày. Nó Thức Lúc 9 Giờ Tối.",
