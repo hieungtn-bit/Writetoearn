@@ -48,7 +48,7 @@ Does 63.1K hold? Drop your level 👇
 
 Not financial advice. DYOR.
 
-$BTC #WriteToEarn #BinanceSquare`;
+$BTC #Volatility #WriteToEarn`;
 
 const BAD_POST = GOOD_POST.replace("63,250.", "88,000.");
 

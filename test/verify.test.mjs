@@ -95,21 +95,21 @@ test("unavailable-field checks only apply to fields actually missing", () => {
 test("structure requires tags, a disclaimer and a question", () => {
   const good =
     "🚨 BTC at 63,250. ".repeat(8) +
-    "Bias: WAIT. Does support hold? Not financial advice. $BTC #WriteToEarn #BinanceSquare";
+    "Bias: WAIT. Does support hold? Not financial advice. $BTC #Volatility #WriteToEarn";
   assert.equal(verifyStructure(good).ok, true);
 
   const noTags = "word ".repeat(60) + "Does it hold? Not financial advice.";
   assert.ok(verifyStructure(noTags).problems.some((p) => p.includes("hashtag")));
 
-  const noDisclaimer = "word ".repeat(60) + "Does it hold? $BTC #WriteToEarn";
+  const noDisclaimer = "word ".repeat(60) + "Does it hold? $BTC #Volatility #WriteToEarn";
   assert.ok(verifyStructure(noDisclaimer).problems.some((p) => p.includes("disclaimer")));
 
-  const noQuestion = "word ".repeat(60) + "Not financial advice. $BTC #WriteToEarn";
+  const noQuestion = "word ".repeat(60) + "Not financial advice. $BTC #Volatility #WriteToEarn";
   assert.ok(verifyStructure(noQuestion).problems.some((p) => p.includes("call-to-action")));
 });
 
 test("over-long posts are rejected", () => {
-  const tooLong = "word ".repeat(250) + "? Not financial advice. $BTC #WriteToEarn";
+  const tooLong = "word ".repeat(250) + "? Not financial advice. $BTC #Volatility #WriteToEarn";
   assert.ok(verifyStructure(tooLong).problems.some((p) => p.includes("exceeds")));
 });
 
@@ -117,7 +117,7 @@ test("verifyPost combines every gate and names each failure", () => {
   const bad =
     "🚨 BTC ripped to 88,000 today. Open interest is exploding. " +
     "word ".repeat(50) +
-    "Are you long? $BTC #WriteToEarn #BinanceSquare";
+    "Are you long? $BTC #Volatility #WriteToEarn";
 
   const result = verifyPost(bad, brief);
   assert.equal(result.ok, false);
@@ -141,14 +141,14 @@ Does 63.1K hold, or do we tag a 5-handle? Drop your level 👇
 
 Not financial advice. DYOR.
 
-$BTC #WriteToEarn #BinanceSquare`;
+$BTC #Volatility #WriteToEarn`;
 
   const result = verifyPost(published, brief);
   assert.equal(result.ok, true, JSON.stringify(result.problems));
 });
 
 test("a fourth cashtag is blocked at draft time, as the API rejects it", () => {
-  const body = "word ".repeat(50) + "Bias: WAIT. Does it hold? Not financial advice. #WriteToEarn ";
+  const body = "word ".repeat(50) + "Bias: WAIT. Does it hold? Not financial advice. #Volatility #WriteToEarn ";
 
   assert.equal(verifyStructure(`${body} $BTC $ETH $SOL`).ok, true, "three is allowed");
 
@@ -161,7 +161,7 @@ test("a fourth cashtag is blocked at draft time, as the API rejects it", () => {
 });
 
 test("repeating the same cashtag does not count against the limit", () => {
-  const body = "word ".repeat(50) + "Bias: WAIT. Does it hold? Not financial advice. #WriteToEarn ";
+  const body = "word ".repeat(50) + "Bias: WAIT. Does it hold? Not financial advice. #Volatility #WriteToEarn ";
   assert.equal(verifyStructure(`${body} $BTC $BTC $BTC $ETH $SOL`).ok, true);
 });
 
@@ -187,7 +187,7 @@ test("a disclosure in one sentence does not licence a claim in the next", () => 
 });
 
 test("a post with no stated bias is rejected, since the scoreboard parses it", () => {
-  const body = "word ".repeat(50) + "Does it hold? Not financial advice. $BTC #WriteToEarn ";
+  const body = "word ".repeat(50) + "Does it hold? Not financial advice. $BTC #Volatility #WriteToEarn ";
 
   const noBias = verifyStructure(body);
   assert.equal(noBias.ok, false);
@@ -251,7 +251,7 @@ test("verifyPost names the screen in its failure message when one was searched",
   const post =
     "🚨 ATOM is washed out.\n\nATOM RSI 19.2, but PUMP ripped 31.5% this week.\n\n" +
     "Bias: WAIT. No participation behind either extreme.\n\nWhich resolves first? 👇\n\n" +
-    "Not financial advice. DYOR.\n\n$ATOM #WriteToEarn #BinanceSquare";
+    "Not financial advice. DYOR.\n\n$ATOM #Volatility #WriteToEarn";
   const result = verifyPost(post, brief, { screen: altScreen, minWords: 10 });
   assert.equal(result.ok, false);
   assert.ok(
@@ -420,4 +420,22 @@ test("a magnitude word does not swallow an ordinary noun", () => {
   // "12 tiếng" is twelve hours, not twelve of anything scaled.
   assert.deepEqual(extractNumbers("12 tiếng").map((x) => x.value), [12]);
   assert.deepEqual(extractNumbers("30 phút").map((x) => x.value), [30]);
+});
+
+test("a post tagged only with creator-programme surfaces is rejected", () => {
+  // Fifty-one posts went out carrying exactly these two and nothing else, so
+  // every one landed on the platform's most crowded pages and on no topic page.
+  const base = "word ".repeat(60) + "Bias: WAIT. Does it hold? Not financial advice. $BTC ";
+  const metaOnly = verifyStructure(`${base} #WriteToEarn #BinanceSquare`);
+  assert.ok(metaOnly.problems.some((p) => p.includes("every hashtag is a meta tag")));
+
+  // One tag naming the subject is enough; the programme tag may ride along.
+  const withTopic = verifyStructure(`${base} #FundingRate #WriteToEarn`);
+  assert.ok(withTopic.problems.every((p) => !p.includes("meta tag")));
+});
+
+test("having no hashtags at all is still its own failure", () => {
+  const none = verifyStructure("word ".repeat(60) + "Bias: WAIT. Does it? Not financial advice. $BTC");
+  assert.ok(none.problems.includes("no hashtags"));
+  assert.ok(none.problems.every((p) => !p.includes("meta tag")));
 });

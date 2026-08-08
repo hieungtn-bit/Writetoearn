@@ -33,7 +33,11 @@ Required structure, in order:
 5. Bias: exactly one of WAIT, Selective Long, or Selective Short, plus a one-sentence reason.
 6. A call-to-action question that invites a reply.
 7. A short not-financial-advice line.
-8. Cashtags and hashtags, including #WriteToEarn and #BinanceSquare.
+8. Cashtags, and hashtags. At least one hashtag must name the SUBJECT of the post
+   (#FundingRate, #OpenInterest, #Liquidation, #TradingHours, #Volatility, ...).
+   #WriteToEarn may be added after it. Do not use #WriteToEarn or #BinanceSquare
+   alone: both are creator-programme surfaces with hundreds of thousands of
+   competing posts, and neither is a page a trader browses for analysis.
 
 Language: English. Binance Square auto-translates per reader locale, so English reaches the global audience and costs nothing locally.
 

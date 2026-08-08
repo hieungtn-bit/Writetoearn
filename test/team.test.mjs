@@ -27,7 +27,7 @@ Where do you see it settling? 👇
 
 Not financial advice. DYOR.
 
-$BTC $ETH $SOL #WriteToEarn #BinanceSquare`;
+$BTC $ETH $SOL #Volatility #WriteToEarn`;
 
 const BAD_NUMBER = GOOD.replace("62,700, down 3.1%", "88,000, down 3.1%");
 

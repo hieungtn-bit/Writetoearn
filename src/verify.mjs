@@ -437,6 +437,22 @@ export const BIAS_PATTERNS = {
   WAIT: new RegExp(`${BIAS_LABEL}(?:wait|chờ|đứng\\s+ngoài)(?!\\p{L})`, "iu"),
 };
 
+/**
+ * Hashtags that describe the act of posting rather than the subject of the post.
+ *
+ * Both are enormous — #BinanceSquare carries 732,603 discussing, #WriteToEarn
+ * 81,414 — and both gather people talking about the creator programme, not
+ * people looking for market analysis. Every one of the first fifty-one posts
+ * from this desk carried these two and nothing else, so every post landed on the
+ * two most crowded surfaces on the platform and none landed on a topic page a
+ * trader browses. #FundingRate, a subject covered twice in one week, holds 948.
+ *
+ * They are not banned — the creator programme wants one of them. They just no
+ * longer count toward the requirement that a post name its own subject.
+ * See research/hashtag-reach.md.
+ */
+const META_HASHTAGS = new Set(["writetoearn", "binancesquare", "binance", "crypto"]);
+
 /** Wording that tells a reader this is not advice, in either language. */
 const DISCLAIMER = /not financial advice|nfa\b|dyor|không\s+phải\s+lời\s+khuyên|tự\s+chịu\s+trách\s+nhiệm/iu;
 
@@ -450,7 +466,14 @@ export function verifyStructure(text, { maxWords = 220, minWords = 40, requireBi
 
   if (words > maxWords) problems.push(`${words} words exceeds the ${maxWords}-word limit`);
   if (words < minWords) problems.push(`${words} words is too short to be a real post`);
-  if (!/#\w+/.test(text)) problems.push("no hashtags");
+  const hashtags = [...text.matchAll(/#(\w+)/g)].map((m) => m[1]);
+  if (!hashtags.length) problems.push("no hashtags");
+  else if (!hashtags.some((h) => !META_HASHTAGS.has(h.toLowerCase()))) {
+    problems.push(
+      `every hashtag is a meta tag (${hashtags.join(", ")}) — add one naming the subject, `
+        + "or the post only reaches the crowded creator surfaces",
+    );
+  }
   if (!/\$[A-Z]{2,}/.test(text)) problems.push("no cashtags");
 
   // The API rejects a post carrying too many distinct coin pairs with

@@ -153,7 +153,7 @@ Funding rates are from OKX perpetual swaps, NOT Binance Futures. Label them as O
 
 Use EXACTLY THREE distinct cashtags. Each renders a tappable price widget — the highest-intent click surface on the post — but a fourth gets the whole post rejected by the API.
 
-Required structure, in order: hook with an emoji or a striking real figure; price and change; 2-4 bullets grounded in the data; key levels; a bias of WAIT, Selective Long or Selective Short with a one-sentence reason; a question that invites a reply; a short not-financial-advice line; cashtags and hashtags including #WriteToEarn and #BinanceSquare.
+Required structure, in order: hook with an emoji or a striking real figure; price and change; 2-4 bullets grounded in the data; key levels; a bias of WAIT, Selective Long or Selective Short with a one-sentence reason; a question that invites a reply; a short not-financial-advice line; cashtags, and hashtags of which at least one must name the subject of the post (#FundingRate, #OpenInterest, #Liquidation, #TradingHours, #Volatility and so on) rather than the creator programme — #WriteToEarn may follow it, but a post tagged only #WriteToEarn and #BinanceSquare lands on the two most crowded surfaces on the platform and on no topic page at all.
 
 Language: English. Square auto-translates per reader locale.
 
