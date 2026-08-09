@@ -1,0 +1,60 @@
+<!doctype html><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#0b0e11}
+  svg{display:block}
+  text{font-family:"DejaVu Sans",system-ui,sans-serif;fill:#e8eaed}
+  .kicker{font-size:19px;letter-spacing:3.5px;fill:#f0b90b;font-weight:700}
+  .title{font-size:44px;font-weight:800;letter-spacing:-0.5px}
+  .sub{font-size:19px;fill:#9aa3ad}
+  .val{font-size:30px;font-weight:800}
+  .lab{font-size:19px;font-weight:700}
+  .labsub{font-size:15px;fill:#8b949e}
+  .gap{font-size:18px;font-weight:700;fill:#9085e9}
+  .stat{font-size:22px;font-weight:700}
+  .statlab{font-size:15px;fill:#8b949e}
+  .mark{font-size:17px;font-weight:700;fill:#f0b90b;letter-spacing:1px}
+</style>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0b0e11"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#c98500"/>
+
+  <text x="64" y="56" class="kicker">BẢNG ĐIỂM THẬT</text>
+  <text x="1136" y="56" text-anchor="end" class="mark">MAIX8</text>
+
+  <text x="64" y="118" class="title">Backtest hứa 28.72%.</text>
+  <text x="64" y="166" class="title">Tiền thật trả 23.46%.</text>
+  <text x="64" y="202" class="sub">Cảnh báo volume theo giờ · chạm +10% trong 12 tiếng · 170 lệnh đã chốt</text>
+
+  
+  <path d="M90 470 V422.4901197894805 a4 4 0 0 1 4 -4 h182 a4 4 0 0 1 4 4 V470 Z"
+        fill="#3987e5" opacity="0.75"/>
+  <text x="185" y="400.4901197894805" text-anchor="middle" class="val" fill="#3987e5">6.59%</text>
+  <text x="185" y="500" text-anchor="middle" class="lab">Giờ ngẫu nhiên</text>
+  <text x="185" y="524" text-anchor="middle" class="labsub">mốc so sánh</text>
+  <path d="M370 470 V249.6612090680101 a4 4 0 0 1 4 -4 h182 a4 4 0 0 1 4 4 V470 Z"
+        fill="#3987e5" opacity="0.75"/>
+  <text x="465" y="227.6612090680101" text-anchor="middle" class="val" fill="#3987e5">28.72%</text>
+  <text x="465" y="500" text-anchor="middle" class="lab">Backtest hứa</text>
+  <text x="465" y="524" text-anchor="middle" class="labsub">trên quá khứ</text>
+  <path d="M650 470 V290.7438271604939 a4 4 0 0 1 4 -4 h182 a4 4 0 0 1 4 4 V470 Z"
+        fill="#c98500" opacity="1"/>
+  <text x="745" y="268.7438271604939" text-anchor="middle" class="val" fill="#c98500">23.46%</text>
+  <text x="745" y="500" text-anchor="middle" class="lab">Chạy thật</text>
+  <text x="745" y="524" text-anchor="middle" class="labsub">162 lệnh sạch</text>
+  <line x1="76" x2="840" y1="470" y2="470" stroke="#39414b" stroke-width="1.5"/>
+
+  <line x1="605" x2="605" y1="245.6612090680101" y2="286.7438271604939" stroke="#9085e9" stroke-width="2"/>
+  <line x1="597" x2="613" y1="245.6612090680101" y2="245.6612090680101" stroke="#9085e9" stroke-width="2"/>
+  <line x1="597" x2="613" y1="286.7438271604939" y2="286.7438271604939" stroke="#9085e9" stroke-width="2"/>
+  <text x="605" y="223.6612090680101" text-anchor="middle" class="gap">−5.26 điểm</text>
+
+  <line x1="64" x2="1136" y1="556" y2="556" stroke="#252a31" stroke-width="1"/>
+  <text x="64" y="590" class="stat" fill="#c98500">3.56x</text>
+  <text x="64" y="612" class="statlab">Chạy thật so với giờ ngẫu nhiên</text>
+
+  <text x="470" y="590" class="stat">8</text>
+  <text x="470" y="612" class="statlab">Lệnh còn mở · không được tính là thắng</text>
+
+  <text x="880" y="590" class="stat">8</text>
+  <text x="880" y="612" class="statlab">Lệnh do tin gỡ niêm yết · đã loại bỏ</text>
+</svg>

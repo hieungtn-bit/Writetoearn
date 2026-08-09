@@ -84,6 +84,24 @@ for (const a of alerts) {
   });
 }
 
+/**
+ * What the backtest promised, so the live record can be judged against it.
+ *
+ * Read from the committed study rather than typed in, and read from the *naive*
+ * touch measure — not longFirst — because that is what `hit` computes here: the
+ * highest high inside the window. Comparing a touch-based live record to a
+ * path-aware backtest would flatter the live number by construction.
+ */
+let promised = null;
+try {
+  const T = JSON.parse(readFileSync("research/two-sided.json", "utf8"));
+  promised = {
+    backtestTouchPct: T.allAlerts.touchedUpPct,
+    baselineTouchPct: T.baseline.touchedUpPct,
+    note: "Naive touch measure on both sides of the comparison. two-sided.json also reports the path-aware longFirst, which is the tradeable figure and is lower.",
+  };
+} catch { /* the study is optional; the record stands without it */ }
+
 const settled = rows.filter((r) => r.settled);
 const clean = settled.filter((r) => !r.delisting);
 const share = (xs, f) => (xs.length ? (xs.filter(f).length / xs.length) * 100 : NaN);
@@ -101,5 +119,15 @@ console.log(JSON.stringify({
   pending: rows.length - settled.length,
   overall: { hitRatePct: share(settled, (r) => r.hit), n: settled.length },
   excludingDelistings: { hitRatePct: share(clean, (r) => r.hit), n: clean.length },
+  delistingDriven: {
+    count: rows.filter((r) => r.delisting).length,
+    sharePct: (rows.filter((r) => r.delisting).length / rows.length) * 100,
+  },
+  versusBacktest: promised && {
+    ...promised,
+    livePct: share(clean, (r) => r.hit),
+    liveLiftVsBaseline: share(clean, (r) => r.hit) / promised.baselineTouchPct,
+    shortfallPp: share(clean, (r) => r.hit) - promised.backtestTouchPct,
+  },
   rows: rows.sort((a, b) => (b.changeSinceAlertPct || -1e9) - (a.changeSinceAlertPct || -1e9)),
 }, null, 2));

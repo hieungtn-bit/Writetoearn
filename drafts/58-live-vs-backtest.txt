@@ -1,0 +1,25 @@
+Backtest hứa cảnh báo volume theo giờ của tôi chạm +10% trong 12 tiếng 28.72% số lần.
+
+Máy đã chạy thật. 170 cảnh báo đóng cửa sổ. Điểm số:
+
+**23.46%** trên 162 lệnh sạch.
+
+Thấp hơn backtest 5.26 điểm. Đúng như mọi backtest: chạy thật luôn kém hơn chạy trên giấy.
+
+Nhưng vẫn gấp **3.56 lần** một giờ ngẫu nhiên (6.59%). Edge có thật, chỉ nhỏ hơn tờ quảng cáo.
+
+Ba điều đi kèm con số đó.
+
+**Một.** 8 cảnh báo còn mở và **không được tính**. Vị thế chưa hết khung giờ không phải chiến thắng.
+
+**Hai.** Tôi bỏ 8 cảnh báo sinh từ tin gỡ niêm yết — chỉ 4.49% tổng số nhưng bơm mạnh nhất bảng. Bỏ chúng làm điểm **giảm** từ 25.88% xuống 23.46%. Vẫn bỏ: thanh lý cưỡng bức là cách dễ nhất chế ra volume, và nói ít nhất về nhu cầu.
+
+**Ba, quan trọng nhất:** hơn ba phần tư số cảnh báo **không chạm mục tiêu**. Đó là hình dạng thật của một edge nhỏ. Ai bán cho bạn tỷ lệ thắng bảy trên mười đang bán thứ khác.
+
+Quan điểm: CHỜ. Tôi thích 23.46% đo trên tiền thật hơn 28.72% đo trên quá khứ.
+
+Bạn đã đối chiếu backtest của mình với kết quả chạy thật chưa?
+
+Nghiên cứu giáo dục, không phải lời khuyên đầu tư.
+
+$BTC #TradingSignals #Backtesting #WriteToEarn
