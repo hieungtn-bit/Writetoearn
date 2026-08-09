@@ -10,6 +10,19 @@
   },
   "articles": [
     {
+      "slug": "icp-avax",
+      "draft": "60-icp-avax.txt",
+      "title": "Nền ICP Sạch Hơn AVAX Thật. Nhưng Đó Là Khác Biệt Nhỏ Nhất Giữa Hai Đồng.",
+      "description": "Có người gửi tôi bản so sánh $ICP với $AVAX, kết luận ICP có nền sạch hơn. Tôi đo lại bằng cùng một thước cho cả hai.",
+      "published": "2026-08-09T06:49:52.581Z",
+      "assets": [
+        "ICP",
+        "AVAX"
+      ],
+      "topics": [],
+      "squareId": 353759201445905
+    },
+    {
       "slug": "live-vs-backtest",
       "draft": "58-live-vs-backtest.txt",
       "title": "Backtest Hứa 28.72%. Chạy Bằng Tiền Thật Trả 23.46%.",
