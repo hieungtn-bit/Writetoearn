@@ -440,3 +440,30 @@ test("one dead metric does not take the others with it", async () => {
   assert.ok(out.mvrvZscore, "the healthy one still reports");
   assert.ok(!out.sopr);
 });
+
+test("a delisting-driven volume spike is reported, not silently dropped", async () => {
+  const { alertsFrom, suppressedByDelisting } = await import("../src/intraday.mjs");
+  const rows = [
+    { symbol: "IOTXUSDT", volumeZScore: 172.2, change1hPct: 41.2 },
+    { symbol: "ICPUSDT", volumeZScore: 6.1, change1hPct: 2.0 },
+  ];
+  const delistings = new Map([["IOTX", { title: "Binance Margin And Loan Will Delist TST & IOTX" }]]);
+
+  // A forced unwind is the easiest way to manufacture a spike and the one kind
+  // that says nothing about demand — so it must not reach the alert list.
+  const alerts = alertsFrom(rows, { minZ: 5, delistings });
+  assert.deepEqual(alerts.map((a) => a.symbol), ["ICPUSDT"]);
+
+  // But it is still shown, because a scanner that deletes rows teaches nobody.
+  const suppressed = suppressedByDelisting(rows, { minZ: 5, delistings });
+  assert.equal(suppressed.length, 1);
+  assert.equal(suppressed[0].symbol, "IOTXUSDT");
+  assert.match(suppressed[0].delisting.title, /Delist/);
+});
+
+test("with no delisting map the alert list is unchanged", async () => {
+  const { alertsFrom } = await import("../src/intraday.mjs");
+  const rows = [{ symbol: "IOTXUSDT", volumeZScore: 172.2 }];
+  assert.equal(alertsFrom(rows, { minZ: 5 }).length, 1);
+  assert.equal(alertsFrom(rows, { minZ: 5, delistings: new Map() }).length, 1);
+});

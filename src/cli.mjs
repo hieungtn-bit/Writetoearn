@@ -833,7 +833,12 @@ async function cmdScan(flags) {
   });
   process.stderr.write("\r");
 
-  const fresh = new AlertLog().record(alertsFrom(result.rows, { minZ }), {
+  // The one scanner that never filtered removals, until IOTX printed z 172 on a
+  // margin-delisting notice and led the board.
+  const { fetchDelistings } = await import("./listings.mjs");
+  const delistings = await fetchDelistings().catch(() => new Map());
+
+  const fresh = new AlertLog().record(alertsFrom(result.rows, { minZ, delistings }), {
     cooldownHours: flags.cooldown ? Number(flags.cooldown) : undefined,
   });
 
@@ -841,7 +846,7 @@ async function cmdScan(flags) {
     print({ ...result, alerts: fresh }, flags);
     return 0;
   }
-  console.log(formatIntraday(result, { minZ, top: flags.top ? Number(flags.top) : undefined }));
+  console.log(formatIntraday(result, { minZ, delistings, top: flags.top ? Number(flags.top) : undefined }));
   if (fresh.length) console.log(`\nNew since last scan: ${fresh.map((a) => a.symbol).join(", ")}`);
   return 0;
 }

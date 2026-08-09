@@ -132,15 +132,39 @@ export async function scanIntraday({
 }
 
 /** The rows that clear the threshold. Kept separate so a scan can be inspected without one. */
-export function alertsFrom(rows, { minZ = DEFAULT_MIN_Z } = {}) {
-  return rows.filter((r) => Number.isFinite(r.volumeZScore) && r.volumeZScore >= minZ);
+export function alertsFrom(rows, { minZ = DEFAULT_MIN_Z, delistings } = {}) {
+  const hit = rows.filter((r) => Number.isFinite(r.volumeZScore) && r.volumeZScore >= minZ);
+  if (!delistings?.size) return hit;
+  return hit.filter((r) => !delistings.has(r.symbol.replace(/USDT$/, "")));
+}
+
+/**
+ * The alerts a removal notice explains, kept separate rather than dropped.
+ *
+ * `movers`, `sides` and `pbbe` have filtered delistings since VIC, but this
+ * scanner — the one carrying the only measured edge — never did, and the gap
+ * only showed when IOTX printed a z of 172 on 253 times its normal hourly
+ * turnover and topped the board. A forced unwind is the most reliable way to
+ * manufacture a volume spike, and it is the one kind of spike that says nothing
+ * about demand.
+ *
+ * Reported instead of hidden: the move is real and worth seeing, it just is not
+ * a signal, and a scanner that silently deletes rows teaches nobody that.
+ */
+export function suppressedByDelisting(rows, { minZ = DEFAULT_MIN_Z, delistings } = {}) {
+  if (!delistings?.size) return [];
+  return rows
+    .filter((r) => Number.isFinite(r.volumeZScore) && r.volumeZScore >= minZ)
+    .filter((r) => delistings.has(r.symbol.replace(/USDT$/, "")))
+    .map((r) => ({ ...r, delisting: delistings.get(r.symbol.replace(/USDT$/, "")) }));
 }
 
 const f1 = (v) => (Number.isFinite(v) ? v.toFixed(1) : "—");
 const f2 = (v) => (Number.isFinite(v) ? v.toFixed(2) : "—");
 const money = (v) => (v >= 1e6 ? `$${(v / 1e6).toFixed(1)}M` : `$${(v / 1e3).toFixed(0)}K`);
 
-export function formatIntraday({ scanned, rows }, { minZ = DEFAULT_MIN_Z, top = 15 } = {}) {
+export function formatIntraday({ scanned, rows }, opts = {}) {
+  const { minZ = DEFAULT_MIN_Z, top = 15 } = opts;
   const lines = [`Intraday scan — ${scanned} pairs, last completed hour vs trailing ${LOOKBACK_HOURS}h`, ""];
   lines.push("  PAIR            volZ       1h      range     turnover   vs avg");
   for (const r of rows.slice(0, top)) {
@@ -151,8 +175,16 @@ export function formatIntraday({ scanned, rows }, { minZ = DEFAULT_MIN_Z, top = 
         `${(r.averageQuoteVolume ? `${f1(r.quoteVolume / r.averageQuoteVolume)}x` : "—").padStart(8)}`,
     );
   }
-  const alerts = alertsFrom(rows, { minZ });
+  const alerts = alertsFrom(rows, { minZ, delistings: opts.delistings });
+  const suppressed = suppressedByDelisting(rows, { minZ, delistings: opts.delistings });
   lines.push("");
+  if (suppressed.length) {
+    lines.push(
+      `  Skipped, delisting announced: ${suppressed.map((s) => s.symbol.replace(/USDT$/, "")).join(", ")}`,
+      "  A forced unwind is the easiest way to manufacture a volume spike and the one that says nothing about demand.",
+      "",
+    );
+  }
   lines.push(
     alerts.length
       ? `Alerts (volZ>=${minZ}): ${alerts.map((a) => a.symbol.replace(/USDT$/, "")).join(", ")}`
