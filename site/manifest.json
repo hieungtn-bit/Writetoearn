@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "live-vs-backtest",
+      "draft": "58-live-vs-backtest.txt",
+      "title": "Backtest Hứa 28.72%. Chạy Bằng Tiền Thật Trả 23.46%.",
+      "description": "Backtest hứa cảnh báo volume theo giờ của tôi chạm +10% trong 12 tiếng 28.72% số lần.",
+      "published": "2026-08-09T06:30:39.755Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 353754479425906
+    },
+    {
       "slug": "funding-nguong",
       "draft": "57-funding-nguong.txt",
       "title": "Hai Ngưỡng Funding Ai Cũng Chép. Tôi Đo Thử — Chúng Chưa Từng Xảy Ra.",
