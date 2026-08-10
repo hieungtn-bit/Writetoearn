@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "bnb-tuan",
+      "draft": "61-bnb-tuan.txt",
+      "title": "BNB: 0% Hàng Kẹt Trên Đầu — Và Cái Stop Mà Hầu Hết Kế Hoạch Tuần Đặt Sai",
+      "description": "Trước hết một điều phải nói ngay: $BNB là token của chính sàn mà tôi đăng bài này lên. Tôi không làm mềm bất cứ con số nào vì lý do đó, và mọi con số chống lại lệnh mua đều nằm cùng bảng với những…",
+      "published": "2026-08-10T01:23:53.590Z",
+      "assets": [
+        "BNB"
+      ],
+      "topics": [],
+      "squareId": 354032982310738
+    },
+    {
       "slug": "icp-avax",
       "draft": "60-icp-avax.txt",
       "title": "Nền ICP Sạch Hơn AVAX Thật. Nhưng Đó Là Khác Biệt Nhỏ Nhất Giữa Hai Đồng.",
