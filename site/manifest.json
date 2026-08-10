@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "quet-v2",
+      "draft": "65-quet-v2.txt",
+      "title": "Hai con số bản quét bảo không lấy được",
+      "description": "Bản quét 2x hôm qua quay lại, đã sửa. Nó bỏ dòng mô tả khối lượng bị ngược, nó mang theo số hàng kẹt ở chỗ nó có, nó bảo phải dời stop nếu chờ break, và nó kết bằng đúng câu tôi đóng bài hôm qua:…",
+      "published": "2026-08-10T09:49:48.109Z",
+      "assets": [
+        "SUI",
+        "XLM",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 354157315465522
+    },
+    {
       "slug": "bot-arb",
       "draft": "64-bot-arb.txt",
       "title": "Khe hở có mở ra thật, không lần nào đủ trả phí",

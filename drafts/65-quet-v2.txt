@@ -1,0 +1,102 @@
+Bản quét 2x hôm qua quay lại, đã sửa. Nó bỏ dòng mô tả khối lượng bị ngược, nó mang theo số hàng kẹt ở chỗ nó có, nó bảo phải dời stop nếu chờ break, và nó kết bằng đúng câu tôi đóng bài hôm qua: *xác suất bao nhiêu, đo trên bao nhiêu mẫu?*
+
+Chấm lại nó bằng những lỗi nó đã sửa thì là ăn gian. Nên tôi làm việc khác: **lấp hai con số nó nói không có, rồi kiểm chính cái nó sửa.**
+
+HAI CON SỐ NÓ BẢO KHÔNG LẤY ĐƯỢC
+
+Với $SUI nó ghi "chưa có số chính xác miễn phí → confidence giảm". Với $XLM để trống.
+
+Cả hai tính được từ nến công khai, một lần fetch. Đây là phần khối lượng 30 ngày qua đã giao dịch **cao hơn giá hiện tại** — tức số người đang kẹt, chờ hoà vốn để thoát:
+
+```
+$ICP         3.56%
+ENA          21.9%
+$SUI         60.7%             chưa từng có số
+$XLM         92.5%             chưa từng có số
+```
+
+XLM: **92.5%**. Gần như toàn bộ khối lượng một tháng nằm trên đầu giá hiện tại.
+
+Bản quét viết về XLM: *"cấu trúc đẹp trên giấy, nhưng hay fail nếu không có volume break."* Đúng hướng lo — nhưng đây mới là lý do. Không phải wedge đẹp hay xấu. Là mỗi lần giá nhích lên, nó đi vào một bức tường người chờ thoát.
+
+Hai số nữa của XLM đi cùng chiều: xu hướng khối lượng -58.0%, RSI 37.0, vị trí trong biên 30 ngày 13.1%.
+
+Còn hai số nó **có** đưa thì không bịa. ENA nó ghi khoảng 22%, tôi đo 21.9% — khớp.
+
+ICP nó ghi khoảng 7%. Tôi đo lại bây giờ: **3.56%**. Con số đã tụt, và tụt vì giá đi lên xuyên qua chỗ hàng kẹt chứ không phải vì ai đo sai. Đó là lời nhắc rằng loại số này hỏng theo giờ, không theo ngày — viết bài lúc chiều rồi đăng lúc tối là đủ để một câu đúng thành câu sai.
+
+CÁI NÓ SỬA: HẠ MỤC TIÊU TỪ 2X XUỐNG 1.5X
+
+Đây là thay đổi đáng kiểm nhất. Cùng một mức stop, mục tiêu ngắn lại — tỷ lệ trúng phải tăng, phần thưởng phải giảm. Ra dương hay âm là chuyện của **tích hai số**, không phải của số nào.
+
+Với ICP, dùng đúng mức cắt lỗ mà bản quét tự đặt:
+
+```
+         trúng 90d          R:R     kỳ vọng
+2x            3.2%        20.05     -0.317R
+1.5x          9.3%        10.03      0.039R
+```
+
+**Họ sửa đúng.** Cùng đồng, cùng stop, chỉ đổi mục tiêu, và kèo lật từ lỗ rõ sang dương.
+
+Nhưng phải nói ngay hai điều, nếu không thì tôi đang bán cho bạn một thứ không có.
+
+**Một.** 0.039R không phải lợi thế. Nó là *sự vắng mặt của một khoản lỗ rõ ràng*. Hai thứ đó khác nhau.
+
+**Hai.** Con số đó dựa trên 910 cửa sổ chồng lấn, tức khoảng **10.1 lần độc lập**. Mười lần thì chưa nói được gì cả. Tôi đưa nó ra vì nó là số tốt nhất tôi có, không phải vì nó đủ.
+
+VÀ "HẠ MỤC TIÊU" KHÔNG PHẢI QUY TẮC
+
+Tôi thử cùng phép so sánh cho cả bốn, trên cùng một thước — stop đặt tại đáy 30 ngày của chính mỗi đồng, vì bản quét chỉ đặt mức cắt lỗ cho hai trong bốn:
+
+```
+              1.5x           2xnhỏ hơn tốt?
+$ICP        0.048R      -0.320R          có
+ENA        -0.223R      -0.094R       không
+$SUI       -0.010R       0.001R       không
+$XLM       -0.259R       0.215R       không
+```
+
+**Một trên bốn.** Với ba đồng còn lại, hạ mục tiêu làm kèo *tệ hơn*.
+
+Lý do thì tôi có một nghi ngờ: khi stop quá chặt so với biên độ ngày của chính đồng đó, bạn gần như chắc chắn bị quét dù mục tiêu ở đâu — nên mục tiêu nhỏ chỉ đổi lấy phần thưởng bé hơn cho cùng một cái chết. Stop cấu trúc của XLM bằng **0.75 lần** một biên độ ngày. Chưa tới một ngày.
+
+Nhưng tôi **không** biến nghi ngờ đó thành quy tắc, vì tôi chỉ có bốn cái tên. Bốn điểm thì vẽ được bất kỳ đường nào. Đó đúng là lỗi tôi đang đi chỉ ra ở người khác, nên tôi không mắc nó ở đây.
+
+Điều nói được chắc chắn: **"hạ mục tiêu cho an toàn" không phải câu đúng phổ quát.** Nó đúng hay sai tuỳ đồng, và cách biết là đo chứ không phải đoán.
+
+MỘT CHỖ NÓ NÓI SAI
+
+Bản quét ghi ICP: *"BTC beta cao."*
+
+Beta không phải tương quan. Tương quan nói hai thứ đi cùng nhau **chặt tới đâu**; beta nói khi BTC nhúc nhích một phần trăm, đồng này đi **bao xa**. Một đồng có thể tương quan lỏng mà beta rất cao, và cái ảnh hưởng tới vị thế của bạn là cái thứ hai.
+
+Beta 30 ngày, đo bằng hồi quy:
+
+```
+              beta            rBTC giải thích
+$ICP          0.80         0.55       30.8%
+ENA           1.61         0.57       32.5%
+$SUI          1.23         0.81       65.0%
+$XLM          0.87         0.65       41.7%
+```
+
+ICP beta **0.80** — dưới 1, và **thấp nhất nhóm**. ICP đi *ít hơn* BTC, không phải nhiều hơn. Đồng beta cao thật là ENA ở 1.61.
+
+Và con số không ai gắn nhãn: **SUI có r 0.81, BTC giải thích 65.0% biến động ngày của nó.** Cao nhất nhóm rất xa. Mua SUI ở đây gần như là mua BTC với thêm một lớp rủi ro riêng — không phải một kèo độc lập như "L1 + catalyst tổ chức" gợi ra.
+
+CHỖ TÔI MÙ
+
+Funding và open interest Binance: endpoint futures bị chặn địa lý từ máy này. Dữ liệu thanh lý thật: các nguồn đều từ chối nếu không có API trả phí. Không có dữ liệu miễn phí tại thời điểm này.
+
+Và giới hạn lớn nhất của toàn bộ bảng trên: khung 90 ngày trên một nghìn nến chỉ cho khoảng 10.1 lần độc lập mỗi đồng. Mọi con số kỳ vọng ở đây nên đọc như **hướng**, không phải như phép đo chính xác.
+
+Quan điểm: **CHỜ**. ICP vẫn là tên sạch nhất nhóm — hàng kẹt 3.56%, khối lượng đang nở 25.3%, giai đoạn mở rộng — và mục tiêu 1.5x với stop của họ là hình học đầu tiên trong hai ngày qua không lỗ rõ. Nhưng 0.039R trên 10.1 lần độc lập là chưa đủ để gọi là cơ hội. XLM thì 92.5% hàng kẹt trả lời hộ luôn.
+
+Điều đáng khen bản quét này: nó tự sửa khi có số mới. Rất ít bảng phân tích làm được điều đó, và đó là thứ phân biệt một phương pháp với một dự đoán.
+
+Bạn có sẵn sàng bỏ luận điểm của mình khi số liệu đổi không?
+
+Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+
+#Altcoins #RiskManagement #MarketAnalysis
