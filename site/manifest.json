@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "icp-4h",
+      "draft": "66-icp-4h.txt",
+      "title": "Liên tục bị từ chối — số lần giá chạm vùng đó: 0",
+      "description": "Có người gửi tôi bản phân tích 4H của $ICP — vùng hỗ trợ, vùng kháng cự, kịch bản tăng giảm. Loại bài ai cũng đọc mỗi ngày.",
+      "published": "2026-08-10T09:56:54.102Z",
+      "assets": [
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 354159060270418
+    },
+    {
       "slug": "quet-v2",
       "draft": "65-quet-v2.txt",
       "title": "Hai con số bản quét bảo không lấy được",
