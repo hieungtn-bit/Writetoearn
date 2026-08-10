@@ -1,0 +1,128 @@
+Có người gửi tôi bản quét "altcoin tiềm năng 2x–3x", chấm điểm bốn đồng tới một chữ số thập phân. Tôi đo lại cả bốn bằng cùng một thước.
+
+Điểm số đó hàm ý một lời hứa: **số cao hơn là kèo tốt hơn.** Lời hứa đó kiểm được.
+
+MÔ TẢ KHỐI LƯỢNG: SAI CẢ BA
+
+Bản quét mô tả khối lượng cho ba đồng. Tôi đo xu hướng khối lượng thật:
+
+```
+       bản quét nói      đo được
+$ICP           yếu        24.5%    đang nở
+$ENA     cải thiện       -52.0%    đang co
+$ONDO      ổn định       -68.1%   đang sụp
+```
+
+Ba trên ba, ngược chiều. Đồng duy nhất bị gọi là "yếu" lại là đồng duy nhất khối lượng đang nở. Hai đồng được khen "cải thiện" và "ổn định" thì một cái mất hơn một nửa, một cái mất hơn hai phần ba.
+
+Đây không phải chuyện làm tròn. Đây là mô tả ngược hẳn thứ đang xảy ra.
+
+CON SỐ BẢN QUÉT KHÔNG BAO GIỜ ĐƯA
+
+"2x là mục tiêu xác suất, không phải đảm bảo." Câu đó đúng và vô nghĩa, vì nó không kèm con số. Xác suất bao nhiêu?
+
+Đo được. Tôi đi ngược lịch sử từng đồng, **từng nến một**, hỏi: từ một ngày bất kỳ, trong 90 ngày sau, giá có gấp đôi không?
+
+Bài kiểm dễ nhất trước — không stop, không quan tâm đường đi, chỉ cần có lúc nào đó chạm gấp đôi:
+
+```
+$ICP         12.3%
+$ENA         23.2%
+$ONDO         0.8%
+ARB          12.5%
+```
+
+Rồi áp chính mức invalidation mà bản quét tự đặt ra. Bây giờ đường đi mới quan trọng — chạm mức nào trước thì tính mức đó:
+
+```
+           gấp đôi    dính stop
+$ICP          3.0%        96.0%
+$ENA         11.0%        88.5%
+$ONDO         0.8%        81.4%
+ARB           7.6%        87.7%
+```
+
+ICP: gấp đôi 3.0%, dính stop trước 96.0%.
+
+CÁI BẪY CỦA MỘT TỶ LỆ ĐẸP
+
+Đến đây nhiều người sẽ nói: kệ, tỷ lệ được–mất quá đẹp thì thắng ít lần vẫn lời.
+
+Với ICP, mua ở 2.22 cắt ở 2.12 nhắm 4.35, tỷ lệ đúng là **20.91 ăn 1**. Nghe như quà tặng.
+
+Nhân nó với 3.0% đi.
+
+```
+               R:R    trúng 90d    kỳ vọng
+$ICP         20.91         3.0%     -0.34R
+$ENA          7.01        11.0%     -0.11R
+$ONDO        14.11         0.8%     -0.71R
+ARB           7.91         7.6%     -0.28R
+```
+
+Cả bốn đều âm.
+
+Tỷ lệ được–mất không phải kỳ vọng. Bản quét đưa bạn cột đầu và giấu hai cột sau — mà hai cột sau mới là cột quyết định tài khoản.
+
+ĐIỂM SỐ CÓ XẾP ĐÚNG THỨ TỰ KHÔNG
+
+Bản quét xếp: **ICP > ENA > ONDO > ARB**.
+
+Xếp lại theo kỳ vọng đo được: **ENA > ARB > ICP > ONDO**.
+
+Hệ số tương quan hạng: **0.00**.
+
+Đồng được chấm cao nhất về thứ ba. Đồng bị chấm thấp nhất về thứ hai.
+
+Và tôi phải nói ngay chỗ này, vì không nói thì tôi mắc đúng cái lỗi tôi đang chỉ ra: **bốn mẫu thì quá ít để kết luận điểm số vô dụng.** Con số 0.00 nói rằng thứ tự đó *chưa được chứng minh*, không nói rằng nó sai. Muốn kết luận thật thì cần hàng trăm lần quét được theo dõi tới lúc kết quả xong — đúng thứ mà bảng điểm live của tôi đang làm, và đúng thứ mà không bản quét nào công bố.
+
+THỨ KHÔNG AI ĐO TRONG BẢNG ĐÓ
+
+Cả bốn setup đều nói về nền, về narrative, về kháng cự. Không cái nào nhắc tới **hàng kẹt trên đầu** — phần khối lượng một tháng qua giao dịch ở giá cao hơn giá hiện tại, tức số người đang lỗ và chờ hoà vốn để thoát.
+
+```
+$ICP          7.4%
+$ENA         21.9%
+$ONDO        82.3%
+ARB          75.7%
+```
+
+ONDO và ARB đang có khoảng ba phần tư khối lượng tháng nằm trên đầu. Mỗi nhịp hồi là một đợt người cũ thoát hàng. ICP thì gần như trống.
+
+Đó là khác biệt lớn nhất giữa bốn cái tên này, và nó không xuất hiện ở bất kỳ dòng nào trong bảng gốc.
+
+CÒN LỜI KHUYÊN "ĐỢI CONFIRMATION"
+
+Bản quét kết bằng: *ưu tiên đợi break kháng cự rồi mới vào.*
+
+Nhưng mức cắt lỗ thì giữ nguyên. Vào cao hơn mà stop đứng yên thì chân rủi ro dài ra:
+
+```
+          vào ngay  sau khi chờ
+$ICP         4.60%        9.03%
+$ENA        14.17%       26.19%
+$ONDO        7.62%       25.29%
+ARB         12.61%       33.33%
+```
+
+ONDO: rủi ro tăng hơn ba lần. Tỷ lệ được–mất của nó rơi từ 14.11 xuống 2.68.
+
+Chờ không sai. Chờ mà không dời stop theo mới sai.
+
+CHỖ TÔI MÙ
+
+**Funding và open interest Binance**: endpoint futures bị chặn địa lý từ máy này. **Dữ liệu thanh lý thật**: CoinGlass, Glassnode, CryptoQuant đều từ chối nếu không có API trả phí. Không có dữ liệu miễn phí tại thời điểm này.
+
+Và một giới hạn của chính bài này: ONDO chỉ có 487 nến lịch sử, tức khoảng 4.4 lần độc lập ở khung 90 ngày sau khi trừ chồng lấn. Con số 0.8% của nó mỏng hơn ba đồng kia nhiều. Tôi vẫn để nó trong bảng, kèm câu này.
+
+Quan điểm: **CHỜ** cả bốn. Không phải vì chúng xấu — ICP đúng là có cấu trúc sạch nhất nhóm, khối lượng đang nở thật, hàng kẹt gần như không có. Mà vì mục tiêu 2x với mức stop đó, trên lịch sử của chính chúng, không trả đủ cho rủi ro. Nếu muốn giữ ý tưởng, phải đổi hình học — không phải đổi niềm tin.
+
+Một điều nữa nên nhớ: BTC giải thích 31.8% biến động ngày của ICP, 33.0% của ENA. Kèo alt nào cũng là kèo BTC mặc bộ đồ khác.
+
+Lần tới thấy một bảng "tiềm năng 2x", hãy hỏi đúng một câu: **xác suất bao nhiêu, đo trên bao nhiêu mẫu?** Nếu bảng đó không trả lời được, nó là danh sách mong ước chứ không phải kết quả quét.
+
+Bạn có bao giờ hỏi con số đó chưa?
+
+Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+
+#Altcoins #RiskManagement #MarketAnalysis

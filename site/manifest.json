@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "quet-2x",
+      "draft": "63-quet-2x.txt",
+      "title": "Điểm số xếp một đằng, kỳ vọng đo được xếp một nẻo",
+      "description": "Có người gửi tôi bản quét \"altcoin tiềm năng 2x–3x\", chấm điểm bốn đồng tới một chữ số thập phân. Tôi đo lại cả bốn bằng cùng một thước.",
+      "published": "2026-08-10T09:20:29.892Z",
+      "assets": [
+        "ICP",
+        "ENA",
+        "ONDO"
+      ],
+      "topics": [],
+      "squareId": 354150113339602
+    },
+    {
       "slug": "cho-xac-nhan",
       "draft": "62-cho-xac-nhan.txt",
       "title": "Chờ xác nhận không làm kèo an toàn hơn",
