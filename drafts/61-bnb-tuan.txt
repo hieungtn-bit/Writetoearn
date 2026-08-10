@@ -1,0 +1,98 @@
+Trước hết một điều phải nói ngay: $BNB là token của chính sàn mà tôi đăng bài này lên. Tôi không làm mềm bất cứ con số nào vì lý do đó, và mọi con số chống lại lệnh mua đều nằm cùng bảng với những con số ủng hộ nó.
+
+CON SỐ HIẾM
+
+BNB ở 604.80. Trong 30 ngày qua, **0.0% khối lượng giao dịch nằm trên giá hiện tại**.
+
+Không phải làm tròn. Không một ai mua BNB trong tháng vừa rồi đang lỗ.
+
+Tôi đo chỉ số này trên mọi đồng mỗi ngày. ICP đo được 27.3%, AVAX 65.7%. Số không là thứ tôi hầu như không gặp. Nó có nghĩa: không có tường người chờ hoà vốn để bán, không có nguồn xả nào treo trên đầu.
+
+CẤU TRÚC GIÁ
+
+Giá nằm trên cả hai đường trung bình — SMA20 583.44, SMA50 575.49 — và SMA20 nằm trên SMA50. Đó là cấu trúc tăng, không phải hồi phục trong xu hướng giảm.
+
+Nền 25 ngày rộng 9.73%, giá cách đỉnh nền 1.18%. Chặt và sát.
+
+RSI 64.9. ATR 2.11% mỗi ngày — biến động thấp.
+
+BA CON SỐ CHỐNG LẠI
+
+**Một.** Vị trí trong biên 30 ngày: 87.2%. Bạn đang mua gần đỉnh tháng, không phải gần đáy.
+
+**Hai.** Xu hướng khối lượng -25.3%. Khối lượng ba ngày gần nhất thấp hơn giai đoạn trước một phần tư. Giá lên nhưng người tham gia đang rời đi — đó là thứ tôi không thích thấy ở vùng đỉnh biên.
+
+**Ba.** Dòng tiền 30 ngày là 1.37 (tiền vào ngày tăng nhiều hơn), nhưng 90 ngày vẫn 0.78 — dưới 1. Cú đảo chiều mới chỉ một tháng tuổi.
+
+ĐIỀU KHÔNG AI NÓI VỀ BNB
+
+Khối lượng 24 giờ chia cho vốn hoá: **0.64%**.
+
+Tuần này tôi đo ICP 3.78% và AVAX 3.66%. BNB quay vòng chưa tới một phần năm tỷ lệ đó.
+
+BNB được **giữ**, không được **giao dịch**. Điều đó cắt cả hai chiều: ít hàng đè lên mỗi nhịp tăng, nhưng cũng ít độ sâu để thoát ra khi cần.
+
+Vốn hoá 80.5 tỷ đô, hạng 4. Cách đỉnh lịch sử 55.9% (2025-10-13). Một năm qua -24.4%. 33.4% nguồn cung tối đa chưa bao giờ lưu hành.
+
+ĐÒN BẨY
+
+Funding 4.15% một năm, hạ từ 7.54% của hai tuần trước. Đang nguội, không nóng lên. 20.6% số kỳ là âm.
+
+Cụm thanh lý gần nhất (mô hình ước lượng, không phải feed thật):
+
+  trên   606.46   +0.27%   shorts
+  trên   610.82   +1.00%   shorts
+  dưới   600.33   -0.74%   longs
+  dưới   584.03   -3.43%   longs
+
+Cả bốn đều nằm trong biên độ một tuần bình thường. Kỳ vọng bị quét hai chiều trước khi có hướng thật.
+
+SAI LẦM MÀ HẦU HẾT KẾ HOẠCH TUẦN MẮC PHẢI
+
+Đây là phần quan trọng nhất bài này.
+
+Tôi đo 104 tuần hoàn tất của BNB. Biên độ một tuần, đỉnh tới đáy:
+
+  p25        6.73%
+  trung vị   10.01%
+  p75        14.60%
+  p90        20.31%
+
+Còn stop tiêu chuẩn tính theo ATR ngày là 3.17%.
+
+**Một tuần trung vị đi xa gấp 3.16 lần cái stop đó.**
+
+Đặt stop theo ATR ngày rồi giữ lệnh cả tuần không phải quản trị rủi ro. Đó là đảm bảo bị quét bởi một tuần hoàn toàn bình thường, không cần tin tức gì.
+
+KẾ HOẠCH TUẦN NÀY
+
+Stop đặt ở nửa biên độ tuần trung vị, không phải theo ATR ngày:
+
+  vào        604.80
+  cắt lỗ     574.54   −5.00%
+  TP1        635.06   +5.00%
+  TP2        665.31
+  TP3        695.57
+
+  vốn        $200 cho mỗi $1,000 để rủi ro đúng 1%
+  đòn bẩy    tối đa 17.79x — cao hơn thì sàn thanh lý trước khi stop kịp chạy
+
+So sánh: kế hoạch trong ngày dùng stop 3.17% và cho phép $316 mỗi $1,000. Stop rộng hơn thì vị thế phải nhỏ hơn. Đó không phải nhược điểm, đó là cùng một rủi ro trải trên một khoảng cách trung thực.
+
+Vô hiệu hoá luận điểm: đóng cửa tuần dưới SMA50 ở 575.49.
+
+VÀ ĐÂY LÀ PHẦN LÀM TÔI KHÔNG PHẤN KHÍCH
+
+Trong 104 tuần đó, BNB đóng cửa tăng 51.0% số tuần. Lợi suất tuần trung vị 0.07%.
+
+Đồng xu. Cấu trúc đẹp không đổi được điều đó.
+
+Thêm nữa, tôi đã đo trên 17,518 giờ nến rằng giờ trong ngày không nói gì về hướng nhưng nói rất nhiều về kích thước — biên độ khối tối lệch 23.57 sigma so với phần còn lại. Nếu bạn giữ lệnh đòn bẩy qua 21h giờ Việt Nam mà không nhìn, đó là lựa chọn chứ không phải tai nạn.
+
+Quan điểm: CHỜ. Cấu trúc BNB là thứ sạch nhất tôi đo được trong nhóm lớn tuần này — không hàng kẹt, trên cả hai MA, nền chặt, funding nguội. Nhưng khối lượng đang rút khỏi vùng đỉnh biên, dòng tiền 90 ngày chưa đảo, và một tuần vẫn là đồng xu. Tôi chờ khối lượng xác nhận trước khi gọi đây là hơn một cấu trúc đẹp.
+
+Bạn đặt stop theo ATR ngày hay theo biên độ khung thời gian bạn thực sự giữ lệnh?
+
+Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+
+#BNB #TradingPlan #RiskManagement #WriteToEarn
