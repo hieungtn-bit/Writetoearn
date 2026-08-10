@@ -1,0 +1,414 @@
+{
+  "measuredAt": "2026-08-10T08:47:13.919Z",
+  "symbol": "ICPUSDT",
+  "price": 2.221,
+  "method": {
+    "candles": 1000,
+    "weeksSampled": 104,
+    "firstTouch": "Walked bar by bar. A bar touching both levels is charged to the stop.",
+    "overlap": "Windows overlap; effectiveN = n / horizon is the de-overlapped count.",
+    "note": "Binance futures is geo-blocked from this machine; nothing here uses funding or open interest."
+  },
+  "claim": {
+    "entryLow": 2.3,
+    "entryHigh": 2.35,
+    "stopLow": 2.1,
+    "stopHigh": 2.13,
+    "targets": [
+      2.5,
+      2.8,
+      3.3
+    ]
+  },
+  "rangePosition": [
+    {
+      "days": 30,
+      "low": 1.994,
+      "high": 2.29,
+      "positionPct": 76.68918918918921
+    },
+    {
+      "days": 60,
+      "low": 1.994,
+      "high": 2.624,
+      "positionPct": 36.03174603174604
+    },
+    {
+      "days": 90,
+      "low": 1.994,
+      "high": 3.326,
+      "positionPct": 17.042042042042045
+    }
+  ],
+  "volume": {
+    "zScoreCompleted": 1.1521897116828617,
+    "last3dVsPrior10dPct": 69.70425515854583,
+    "mean30dUsd": 2773464.256688666
+  },
+  "correlations": [
+    {
+      "days": 30,
+      "r": 0.56287152180745,
+      "n": 30
+    },
+    {
+      "days": 60,
+      "r": 0.5542857000240664,
+      "n": 60
+    },
+    {
+      "days": 90,
+      "r": 0.32682027461059493,
+      "n": 90
+    }
+  ],
+  "resistance": {
+    "high30d": 2.29,
+    "baseHigh": 2.257,
+    "baseWidthPct": 12.347881610576925,
+    "claimedLow": 2.3,
+    "claimedAboveHigh30dPct": 0.4366812227074135
+  },
+  "weeklyRange": {
+    "weeks": 104,
+    "p25Pct": 13.919925512104278,
+    "medianPct": 19.597993732022335,
+    "p75Pct": 28.834532374100725,
+    "p90Pct": 42.35
+  },
+  "atrPct": 3.6286696884713634,
+  "stopVsMovement": {
+    "spotRiskPct": 4.772624943719039,
+    "triggerRiskPct": 9.03225806451613,
+    "spotStopInDailyAtr": 1.3152547223799766,
+    "triggerStopOverMedianWeek": 0.4608766687050105
+  },
+  "geometry": {
+    "spot": {
+      "entry": 2.221,
+      "stop": 2.115,
+      "riskPct": 4.772624943719039,
+      "targets": [
+        {
+          "price": 2.5,
+          "rewardPct": 12.561909049977494,
+          "rr": 2.632075471698118
+        },
+        {
+          "price": 2.8,
+          "rewardPct": 26.06933813597476,
+          "rr": 5.4622641509433985
+        },
+        {
+          "price": 3.3,
+          "rewardPct": 48.58171994597027,
+          "rr": 10.179245283018878
+        }
+      ],
+      "breakevenWinRatePct": 27.532467532467496
+    },
+    "trigger": {
+      "entry": 2.325,
+      "stop": 2.115,
+      "riskPct": 9.03225806451613,
+      "targets": [
+        {
+          "price": 2.5,
+          "rewardPct": 7.526881720430101,
+          "rr": 0.8333333333333325
+        },
+        {
+          "price": 2.8,
+          "rewardPct": 20.430107526881702,
+          "rr": 2.2619047619047596
+        },
+        {
+          "price": 3.3,
+          "rewardPct": 41.93548387096773,
+          "rr": 4.642857142857141
+        }
+      ],
+      "breakevenWinRatePct": 54.54545454545457
+    }
+  },
+  "baseRates": {
+    "ladder": [
+      {
+        "target": 2.5,
+        "rewardPct": 7.526881720430101,
+        "byHorizon": [
+          {
+            "horizonDays": 14,
+            "n": 986,
+            "up": 465,
+            "down": 470,
+            "neither": 51,
+            "upPct": 47.16024340770791,
+            "downPct": 47.66734279918864,
+            "neitherPct": 5.172413793103448,
+            "effectiveN": 70.42857142857143
+          },
+          {
+            "horizonDays": 30,
+            "n": 970,
+            "up": 477,
+            "down": 492,
+            "neither": 1,
+            "upPct": 49.17525773195876,
+            "downPct": 50.72164948453608,
+            "neitherPct": 0.10309278350515465,
+            "effectiveN": 32.333333333333336
+          },
+          {
+            "horizonDays": 60,
+            "n": 940,
+            "up": 462,
+            "down": 478,
+            "neither": 0,
+            "upPct": 49.148936170212764,
+            "downPct": 50.851063829787236,
+            "neitherPct": 0,
+            "effectiveN": 15.666666666666666
+          }
+        ]
+      },
+      {
+        "target": 2.8,
+        "rewardPct": 20.430107526881702,
+        "byHorizon": [
+          {
+            "horizonDays": 14,
+            "n": 986,
+            "up": 211,
+            "down": 578,
+            "neither": 197,
+            "upPct": 21.399594320486813,
+            "downPct": 58.620689655172406,
+            "neitherPct": 19.97971602434077,
+            "effectiveN": 70.42857142857143
+          },
+          {
+            "horizonDays": 30,
+            "n": 970,
+            "up": 267,
+            "down": 675,
+            "neither": 28,
+            "upPct": 27.52577319587629,
+            "downPct": 69.58762886597938,
+            "neitherPct": 2.88659793814433,
+            "effectiveN": 32.333333333333336
+          },
+          {
+            "horizonDays": 60,
+            "n": 940,
+            "up": 279,
+            "down": 661,
+            "neither": 0,
+            "upPct": 29.680851063829788,
+            "downPct": 70.31914893617022,
+            "neitherPct": 0,
+            "effectiveN": 15.666666666666666
+          }
+        ]
+      },
+      {
+        "target": 3.3,
+        "rewardPct": 41.93548387096773,
+        "byHorizon": [
+          {
+            "horizonDays": 14,
+            "n": 986,
+            "up": 76,
+            "down": 597,
+            "neither": 313,
+            "upPct": 7.707910750507099,
+            "downPct": 60.547667342799194,
+            "neitherPct": 31.74442190669371,
+            "effectiveN": 70.42857142857143
+          },
+          {
+            "horizonDays": 30,
+            "n": 970,
+            "up": 116,
+            "down": 746,
+            "neither": 108,
+            "upPct": 11.958762886597938,
+            "downPct": 76.90721649484537,
+            "neitherPct": 11.134020618556702,
+            "effectiveN": 32.333333333333336
+          },
+          {
+            "horizonDays": 60,
+            "n": 940,
+            "up": 141,
+            "down": 747,
+            "neither": 52,
+            "upPct": 15,
+            "downPct": 79.46808510638299,
+            "neitherPct": 5.531914893617021,
+            "effectiveN": 15.666666666666666
+          }
+        ]
+      }
+    ],
+    "spotLadder": [
+      {
+        "target": 2.5,
+        "rewardPct": 12.561909049977494,
+        "byHorizon": [
+          {
+            "horizonDays": 14,
+            "n": 986,
+            "up": 225,
+            "down": 737,
+            "neither": 24,
+            "upPct": 22.81947261663286,
+            "downPct": 74.74645030425964,
+            "neitherPct": 2.434077079107505,
+            "effectiveN": 70.42857142857143
+          },
+          {
+            "horizonDays": 30,
+            "n": 970,
+            "up": 232,
+            "down": 736,
+            "neither": 2,
+            "upPct": 23.917525773195877,
+            "downPct": 75.87628865979381,
+            "neitherPct": 0.2061855670103093,
+            "effectiveN": 32.333333333333336
+          },
+          {
+            "horizonDays": 60,
+            "n": 940,
+            "up": 230,
+            "down": 710,
+            "neither": 0,
+            "upPct": 24.46808510638298,
+            "downPct": 75.53191489361703,
+            "neitherPct": 0,
+            "effectiveN": 15.666666666666666
+          }
+        ]
+      },
+      {
+        "target": 2.8,
+        "rewardPct": 26.06933813597476,
+        "byHorizon": [
+          {
+            "horizonDays": 14,
+            "n": 986,
+            "up": 103,
+            "down": 791,
+            "neither": 92,
+            "upPct": 10.446247464503044,
+            "downPct": 80.22312373225152,
+            "neitherPct": 9.330628803245435,
+            "effectiveN": 70.42857142857143
+          },
+          {
+            "horizonDays": 30,
+            "n": 970,
+            "up": 126,
+            "down": 830,
+            "neither": 14,
+            "upPct": 12.989690721649486,
+            "downPct": 85.56701030927834,
+            "neitherPct": 1.443298969072165,
+            "effectiveN": 32.333333333333336
+          },
+          {
+            "horizonDays": 60,
+            "n": 940,
+            "up": 137,
+            "down": 803,
+            "neither": 0,
+            "upPct": 14.574468085106382,
+            "downPct": 85.42553191489361,
+            "neitherPct": 0,
+            "effectiveN": 15.666666666666666
+          }
+        ]
+      },
+      {
+        "target": 3.3,
+        "rewardPct": 48.58171994597027,
+        "byHorizon": [
+          {
+            "horizonDays": 14,
+            "n": 986,
+            "up": 50,
+            "down": 802,
+            "neither": 134,
+            "upPct": 5.070993914807302,
+            "downPct": 81.33874239350912,
+            "neitherPct": 13.590263691683571,
+            "effectiveN": 70.42857142857143
+          },
+          {
+            "horizonDays": 30,
+            "n": 970,
+            "up": 66,
+            "down": 859,
+            "neither": 45,
+            "upPct": 6.804123711340206,
+            "downPct": 88.55670103092783,
+            "neitherPct": 4.639175257731959,
+            "effectiveN": 32.333333333333336
+          },
+          {
+            "horizonDays": 60,
+            "n": 940,
+            "up": 78,
+            "down": 840,
+            "neither": 22,
+            "upPct": 8.297872340425531,
+            "downPct": 89.36170212765957,
+            "neitherPct": 2.3404255319148937,
+            "effectiveN": 15.666666666666666
+          }
+        ]
+      }
+    ],
+    "triggered": [
+      {
+        "horizonDays": 14,
+        "n": 28,
+        "up": 14,
+        "down": 14,
+        "neither": 0,
+        "upPct": 50,
+        "downPct": 50,
+        "neitherPct": 0,
+        "effectiveN": 2
+      },
+      {
+        "horizonDays": 30,
+        "n": 28,
+        "up": 14,
+        "down": 14,
+        "neither": 0,
+        "upPct": 50,
+        "downPct": 50,
+        "neitherPct": 0,
+        "effectiveN": 0.9333333333333333
+      },
+      {
+        "horizonDays": 60,
+        "n": 28,
+        "up": 14,
+        "down": 14,
+        "neither": 0,
+        "upPct": 50,
+        "downPct": 50,
+        "neitherPct": 0,
+        "effectiveN": 0.4666666666666667
+      }
+    ]
+  },
+  "expectancyR30d": {
+    "trigger": -0.09742268041237157,
+    "spot": -0.1292355572845738,
+    "note": "Positive means the geometry paid over ICP's own history. Unresolved episodes counted as zero."
+  }
+}
