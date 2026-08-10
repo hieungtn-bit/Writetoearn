@@ -65,6 +65,39 @@ export const METRICS = {
     label: "realised price",
     note: "the aggregate cost basis of every coin that has moved",
   },
+  /**
+   * Split by holding age, added after a request for the cohort view.
+   *
+   * The aggregate SOPR mixes two populations that behave nothing alike: recent
+   * buyers who capitulate on any drawdown, and holders sitting on years of gain
+   * who only move on a decision. A single number averages them into a reading
+   * that describes neither, and the two cost bases are usually thousands of
+   * dollars apart.
+   */
+  sthSopr: {
+    path: "sth-sopr",
+    field: "sthSopr",
+    label: "SOPR short-term",
+    note: "recent buyers; below 1 they are realising losses",
+  },
+  lthSopr: {
+    path: "lth-sopr",
+    field: "lthSopr",
+    label: "SOPR long-term",
+    note: "coins held over 155 days; below 1 old hands are selling at a loss",
+  },
+  sthRealizedPrice: {
+    path: "sth-realized-price",
+    field: "sthRealizedPrice",
+    label: "STH cost basis",
+    note: "what recent buyers paid on average; the line they defend",
+  },
+  lthRealizedPrice: {
+    path: "lth-realized-price",
+    field: "lthRealizedPrice",
+    label: "LTH cost basis",
+    note: "what long-term holders paid; the floor under a real capitulation",
+  },
 };
 
 const percentileOf = (values, v) =>
