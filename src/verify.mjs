@@ -355,7 +355,19 @@ const FORBIDDEN = [
  * me" is the most honest sentence in the post, and blocking it would punish
  * exactly the behaviour the channel is built on.
  */
-const DISCLOSURE = /\b(not available|unavailable|cannot|can't|could not|couldn't|do not have|don't have|no data|not visible|not accessible|geo-blocked|no source|without)\b/i;
+const DISCLOSURE = new RegExp(
+  [
+    String.raw`\b(not available|unavailable|cannot|can't|could not|couldn't|do not have|don't have`,
+    String.raw`|no data|not visible|not accessible|geo-blocked|no source|without)\b`,
+    // Vietnamese carries the same admissions, and \b cannot delimit them: in
+    // JavaScript it is defined on ASCII word characters, so a boundary asked
+    // for next to "ế" or "ộ" is a boundary the engine will not find. Unicode
+    // lookarounds do the job the same way the bias patterns below do.
+    String.raw`|(?<!\p{L})(?:không\s+(?:có|xem|lấy|kiểm|truy\s+cập|tiếp\s+cận)`,
+    String.raw`|chưa\s+có|chặn\s+địa\s+lý|bị\s+chặn|thiếu\s+dữ\s+liệu)(?!\p{L})`,
+  ].join(""),
+  "iu",
+);
 
 /**
  * Flags claims about data we never had, while allowing honest admissions that

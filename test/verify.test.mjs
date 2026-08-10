@@ -87,6 +87,21 @@ test("writing about unavailable fields is blocked", () => {
   assert.equal(verifyNoForbiddenClaims("Funding on OKX is positive.", brief).ok, true);
 });
 
+test("a Vietnamese admission of absence reads as disclosure, not as a claim", () => {
+  // The channel publishes in Vietnamese, and a gate that only recognises
+  // English disclosure would block the honest sentence while leaving the
+  // fabricated one untouched — the exact inversion of what it is for.
+  assert.equal(
+    verifyNoForbiddenClaims("Open interest thì không có dữ liệu miễn phí.", brief).ok,
+    true,
+  );
+  assert.equal(
+    verifyNoForbiddenClaims("Open interest Binance bị chặn địa lý từ máy này.", brief).ok,
+    true,
+  );
+  assert.equal(verifyNoForbiddenClaims("Open interest đang tăng mạnh.", brief).ok, false);
+});
+
 test("unavailable-field checks only apply to fields actually missing", () => {
   const withOi = { ...brief, unavailable: [] };
   assert.equal(verifyNoForbiddenClaims("Open interest is climbing.", withOi).ok, true);
