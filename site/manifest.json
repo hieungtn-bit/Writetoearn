@@ -10,6 +10,19 @@
   },
   "articles": [
     {
+      "slug": "cho-xac-nhan",
+      "draft": "62-cho-xac-nhan.txt",
+      "title": "Chờ xác nhận không làm kèo an toàn hơn",
+      "description": "Một người gửi tôi bản kế hoạch $ICP do AI viết, hỏi có vào được không. Tôi đo lại toàn bộ. Hai câu mô tả thị trường sai ngược chiều — nhưng đó không phải thứ giết kèo này.",
+      "published": "2026-08-10T09:12:48.351Z",
+      "assets": [
+        "ICP",
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 354148223360081
+    },
+    {
       "slug": "bnb-tuan",
       "draft": "61-bnb-tuan.txt",
       "title": "BNB: 0% Hàng Kẹt Trên Đầu — Và Cái Stop Mà Hầu Hết Kế Hoạch Tuần Đặt Sai",
