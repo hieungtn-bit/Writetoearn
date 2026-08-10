@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "bot-arb",
+      "draft": "64-bot-arb.txt",
+      "title": "Khe hở có mở ra thật, không lần nào đủ trả phí",
+      "description": "Có người gửi tôi bản phân tích kỹ thuật về câu chuyện viral \"sinh viên 19 tuổi dùng bot arbitrage biến $68 thành $750,000\". Bản phân tích kết luận: không khả thi.",
+      "published": "2026-08-10T09:41:27.336Z",
+      "assets": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "topics": [],
+      "squareId": 354155264228305
+    },
+    {
       "slug": "quet-2x",
       "draft": "63-quet-2x.txt",
       "title": "Điểm số xếp một đằng, kỳ vọng đo được xếp một nẻo",
