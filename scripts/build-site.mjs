@@ -41,6 +41,16 @@ const signals = fs.existsSync(signalsPath)
   ? JSON.parse(fs.readFileSync(signalsPath, "utf8"))
   : null;
 
+// Every archived scan, so the board's date picker has something to pick from.
+// Read from disk rather than fetched: the build stays offline.
+const archiveDir = path.join(root, "site", "signals-archive");
+const archive = {};
+if (fs.existsSync(archiveDir)) {
+  for (const file of fs.readdirSync(archiveDir).filter((f) => f.endsWith(".json"))) {
+    archive[file.replace(/\.json$/, "")] = JSON.parse(fs.readFileSync(path.join(archiveDir, file), "utf8"));
+  }
+}
+
 const dataPath = path.join(root, "site", "lesson-data.json");
 if (!fs.existsSync(dataPath)) {
   console.error(`Missing ${dataPath}. Run: node scripts/refresh-lessons.mjs`);
@@ -57,7 +67,7 @@ const lessons = LESSONS.map((lesson) => {
   return { ...lesson, example, measuredAt: lessonData.measuredAt };
 });
 
-const files = buildSite(manifest, drafts, lessons, signals);
+const files = buildSite(manifest, drafts, lessons, signals, archive);
 
 fs.rmSync(out, { recursive: true, force: true });
 for (const f of files) {

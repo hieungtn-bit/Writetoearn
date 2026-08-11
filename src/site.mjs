@@ -228,31 +228,59 @@ header.site nav a{font-size:.95rem;text-decoration:none;font-weight:600}
 .box p{margin:0}
 .lvl{display:inline-block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#0b0e11;background:var(--accent);border-radius:4px;padding:.15rem .45rem;font-weight:800;margin-bottom:.6rem}
 .q{color:var(--fg);font-size:1.05rem;font-style:italic;border-left:3px solid var(--line);padding-left:.9rem;margin:0 0 1.4rem}
-.wrap.wide{max-width:64rem}
-.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 1.4rem;padding:.9rem;border:1px solid var(--line);border-radius:12px;background:var(--card)}
-.filters fieldset{border:0;margin:0;padding:0;display:flex;gap:.35rem;align-items:center;flex-wrap:wrap}
-.filters legend{float:left;width:100%;color:var(--muted);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem}
-.filters button{font:inherit;font-size:.85rem;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.25rem .75rem;cursor:pointer}
+.wrap.board{max-width:60rem}
+.board h1{margin-bottom:.3rem}
+details.box summary{cursor:pointer;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+details.box[open] summary{margin-bottom:.7rem}
+.filters{display:flex;flex-direction:column;gap:.85rem;margin:0 0 1.2rem;padding:.9rem;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.filters fieldset{border:0;margin:0;padding:0;display:flex;gap:.35rem;flex-wrap:wrap}
+.filters legend{width:100%;color:var(--muted);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+.filters button[data-f],.pager button,.reset{font:inherit;font-size:.85rem;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.4rem .8rem;cursor:pointer;min-height:2.25rem}
 .filters button[aria-pressed=true]{color:#0b0e11;background:var(--accent);border-color:var(--accent);font-weight:700}
-.sig{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:1rem 1.1rem;margin-bottom:.8rem}
-.sig[hidden]{display:none}
-.sig-head{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
-.sig-head .asset{font-weight:800;font-size:1.15rem}
-.sig-head .price{color:var(--muted);font-size:.9rem}
-.sig-head .spacer{margin-left:auto}
-.bias{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;border-radius:4px;padding:.15rem .5rem;color:#0b0e11}
+.frow{display:flex;gap:.7rem;flex-wrap:wrap;align-items:flex-end}
+.fld{display:flex;flex-direction:column;gap:.3rem;flex:1 1 12rem;min-width:0}
+.fld span{color:var(--muted);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+.fld select,.fld input{font:inherit;font-size:.95rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.5rem .6rem;min-height:2.6rem;width:100%}
+.reset{flex:0 0 auto}
+.count{color:var(--muted);font-size:.85rem;margin:0 0 .7rem}
+.sig{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:.9rem 1rem;margin-bottom:.75rem}
+.sig-head{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.sig-head .asset{font-weight:800;font-size:1.2rem;letter-spacing:-.01em}
+.sig-head .price{color:var(--muted);font-size:.9rem;font-variant-numeric:tabular-nums}
+.sig-head .hz{margin-left:auto;color:var(--muted);font-size:.8rem;border:1px solid var(--line);border-radius:999px;padding:.1rem .55rem}
+.bias{font-size:.7rem;letter-spacing:.08em;font-weight:800;border-radius:4px;padding:.2rem .5rem;color:#0b0e11}
 .bias.LONG{background:#3987e5}
 .bias.SHORT{background:#c98500}
 .bias.WAIT{background:#5a636d;color:#eaecef}
-.flag{font-size:.72rem;border:1px solid var(--line);border-radius:999px;padding:.1rem .5rem;color:var(--muted)}
+.flags{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.5rem}
+.flag{font-size:.7rem;border:1px solid var(--line);border-radius:999px;padding:.12rem .5rem;color:var(--muted)}
 .flag.turn{border-color:var(--accent);color:var(--accent)}
 .flag.thin{border-color:#f6465d;color:#f6465d}
-.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr));gap:.5rem .9rem;margin:.9rem 0 0}
-.plan div{font-size:.85rem}
-.plan dt{color:var(--muted);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
-.plan dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
-.sig .why{color:var(--muted);font-size:.85rem;margin:.7rem 0 0}
-.empty{color:var(--muted);padding:2rem 0;text-align:center}
+/* Named .levels/.level, not .lvl — .lvl is already the lesson difficulty badge,
+   and a signal card redefining it would restyle every lesson page. */
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin:.85rem 0 .6rem}
+.level{border:1px solid var(--line);border-radius:8px;padding:.45rem .5rem;min-width:0}
+.level span{display:block;color:var(--muted);font-size:.65rem;letter-spacing:.06em;text-transform:uppercase}
+.level b{display:block;font-size:1rem;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.level i{display:block;font-style:normal;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.level.out{border-left:3px solid #c98500}
+.level.tgt{border-left:3px solid #3987e5}
+.nums{display:grid;grid-template-columns:repeat(2,1fr);gap:.45rem .8rem}
+.nums div{min-width:0}
+.nums span{display:block;color:var(--muted);font-size:.65rem;letter-spacing:.06em;text-transform:uppercase}
+.nums b{font-size:.95rem;font-variant-numeric:tabular-nums}
+.why{color:var(--muted);font-size:.85rem;margin:.8rem 0 0;line-height:1.5}
+.why .k{color:var(--fg);font-weight:700;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;margin-right:.35rem}
+.pager{display:flex;gap:.35rem;flex-wrap:wrap;margin:1rem 0}
+.pager button[aria-current=page]{color:#0b0e11;background:var(--accent);border-color:var(--accent);font-weight:700}
+.empty{color:var(--muted);padding:1.5rem 0;text-align:center}
+@media(min-width:34rem){.nums{grid-template-columns:repeat(4,1fr)}}
+/* On a wide screen the stacked fieldsets push the first signal below the fold
+   for no reason — half the panel is empty to the right of each chip row. */
+@media(min-width:48rem){
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.6rem;align-items:start}
+.filters .frow{grid-column:1/-1}
+}
 @media(max-width:480px){h1{font-size:1.6rem}body{font-size:16px}.readings{font-size:.88rem}}`;
 
 function head({ title, description, canonical, image, jsonLd, site }) {
@@ -478,82 +506,81 @@ ${foot(site)}`;
 
 
 /**
+ * Everything the board page needs, and nothing it does not.
+ *
+ * A full snapshot carries the whole geometry grid for every pair — 78KB, most
+ * of it cells no reader will ever see. Inlining that would make a phone
+ * download an audit trail to read a table. This is the shape the page renders
+ * from and the shape each archived day is served as: 25KB, same numbers.
+ */
+export function slimSnapshot(snapshot) {
+  return {
+    scannedAt: snapshot.scannedAt ?? null,
+    tally: snapshot.tally ?? {},
+    recentWindowDays: snapshot.method?.recentWindowDays ?? null,
+    signals: (snapshot.signals ?? []).map((s) => ({
+      asset: s.asset ?? String(s.symbol ?? "").replace(/USDT$/, ""),
+      price: s.price ?? null,
+      bias: s.bias,
+      tradeable: s.tradeable !== false,
+      reason: s.reason ?? "",
+      turning: Boolean(s.regime?.turning),
+      thin: Boolean(s.confidence?.thin),
+      plan: s.plan
+        ? {
+          horizonDays: s.plan.horizonDays,
+          entry: s.plan.entry,
+          stop: s.plan.stop,
+          target: s.plan.target,
+          stopPct: s.plan.stopPct,
+          targetPct: s.plan.targetPct,
+          rr: s.plan.rr,
+          hitPct: s.plan.hitPct,
+          expectancyR: s.plan.expectancyR,
+          effectiveN: s.plan.effectiveN,
+          positionUsdPer1000: s.plan.positionUsdPer1000,
+        }
+        : null,
+      context: {
+        stage: s.context?.stage ?? null,
+        underwaterPct: s.context?.underwaterPct ?? null,
+        volumeTrendPct: s.context?.volumeTrendPct ?? null,
+        rangePosition30d: s.context?.rangePosition30d ?? null,
+        change7dPct: s.context?.change7dPct ?? null,
+      },
+    })),
+  };
+}
+
+/**
  * The daily signal board.
  *
- * Rendered from site/signals.json, which scripts/scan-daily.mjs writes. The
- * build stays offline: a deploy must not fail because an exchange is
- * unreachable from the build region, so the market is touched by the scan and
- * never by the build.
+ * Rebuilt for a phone. The first version laid each call out as a seven-column
+ * grid, which is a table wearing a costume: on a 390px screen it reflowed into
+ * a ragged stack where the stop price and its distance landed on different
+ * rows. This version is a card that is designed narrow and merely gets roomier,
+ * with the numbers grouped the way a decision uses them — where you get in,
+ * where you are wrong, what it pays, and how much of that to believe.
  *
- * Filtering is done in the page rather than by generating a page per
- * combination. Every row is already in the HTML, so the board works without
- * JavaScript — the filters are an enhancement, not the content — and a reader
- * on a phone gets the whole board in one request.
+ * Rendering happens twice, deliberately. The latest day is written into the
+ * HTML so the board works with JavaScript off and so a search engine sees the
+ * calls. The same data is inlined as JSON, and the moment anyone touches a
+ * filter the script re-renders from that — which is also what lets a different
+ * day be fetched and shown without a page load.
  *
- * The design decision that matters: a row leads with what would make you
- * *distrust* it. Sample size and the regime flag sit next to the bias, not
- * buried under the plan, because a strong expectancy over five independent
- * episodes is a story rather than a finding and the board should say so before
- * anyone reads the entry price.
+ * The filters are the ones a reader actually asks for: which day, which
+ * direction, which horizon, how likely, how liquid, and free text over the
+ * asset and the reason. Pagination keeps a thirty-row scan to a screenful.
  */
-export function renderSignalsPage(site, snapshot) {
+export function renderSignalsPage(site, snapshot, { days = [] } = {}) {
   const canonical = `${site.baseUrl}/signals/`;
-  const t = snapshot.tally ?? {};
-  const when = String(snapshot.scannedAt ?? "").replace("T", " ").slice(0, 16);
+  const slim = slimSnapshot(snapshot);
+  const t = slim.tally ?? {};
+  const when = String(slim.scannedAt ?? "").replace("T", " ").slice(0, 16);
+  const today = String(slim.scannedAt ?? "").slice(0, 10);
+  const allDays = [...new Set([today, ...days])].filter(Boolean).sort().reverse();
 
-  const n2 = (v) => (typeof v === "number" && Number.isFinite(v) ? v.toFixed(2) : "—");
-  const n1 = (v) => (typeof v === "number" && Number.isFinite(v) ? v.toFixed(1) : "—");
-  const money = (v) => {
-    if (typeof v !== "number" || !Number.isFinite(v)) return "—";
-    const a = Math.abs(v);
-    if (a >= 1000) return v.toFixed(0);
-    if (a >= 1) return v.toFixed(3);
-    if (a >= 0.01) return v.toFixed(4);
-    return v.toFixed(6);
-  };
-
-  const rows = (snapshot.signals ?? []).map((s) => {
-    const p = s.plan;
-    const flags = [
-      s.regime?.turning ? '<span class="flag turn">regime turn</span>' : "",
-      s.confidence?.thin ? '<span class="flag thin">thin sample</span>' : "",
-      s.tradeable === false ? '<span class="flag thin">too thin to size</span>' : "",
-    ].join("");
-
-    const plan = p
-      ? `<dl class="plan">
-      <div><dt>Horizon</dt><dd>${p.horizonDays}d</dd></div>
-      <div><dt>Entry</dt><dd>${money(p.entry)}</dd></div>
-      <div><dt>Stop</dt><dd>${money(p.stop)} <span class="price">· ${n2(p.stopPct)}%</span></dd></div>
-      <div><dt>Target</dt><dd>${money(p.target)} <span class="price">· ${n2(p.targetPct)}%</span></dd></div>
-      <div><dt>Hit rate</dt><dd>${n1(p.hitPct)}%</dd></div>
-      <div><dt>Expectancy</dt><dd>${n2(p.expectancyR)}R</dd></div>
-      <div><dt>Independent n</dt><dd>${Math.round(p.effectiveN ?? 0)}</dd></div>
-      <div><dt>Size / $1k</dt><dd>$${n1(p.positionUsdPer1000)}</dd></div>
-    </dl>`
-      : "";
-
-    const ctx = s.context ?? {};
-    return `<article class="sig" data-bias="${s.bias}" data-horizon="${p ? p.horizonDays : ""}" data-tradeable="${s.tradeable !== false}">
-    <div class="sig-head">
-      <span class="asset">${escapeHtml(s.asset ?? s.symbol ?? "")}</span>
-      <span class="price">${money(s.price)}</span>
-      <span class="spacer"></span>
-      <span class="bias ${s.bias}">${s.bias}</span>
-    </div>
-    <div>${flags}</div>
-    ${plan}
-    <p class="why">${escapeHtml(s.reason ?? "")}${
-      ctx.stage ? ` · stage ${escapeHtml(String(ctx.stage))}` : ""
-    }${
-      typeof ctx.underwaterPct === "number" ? ` · ${n1(ctx.underwaterPct)}% overhead` : ""
-    }${
-      typeof ctx.volumeTrendPct === "number" ? ` · volume ${n1(ctx.volumeTrendPct)}%` : ""
-    }</p>
-  </article>`;
-  }).join("\n");
-
-  const horizons = [...new Set((snapshot.signals ?? []).map((s) => s.plan?.horizonDays).filter(Boolean))]
+  const horizons = [...new Set(slim.signals.map((s) => s.plan?.horizonDays).filter(Boolean))]
     .sort((a, b) => a - b);
 
   const jsonLd = {
@@ -562,90 +589,338 @@ export function renderSignalsPage(site, snapshot) {
     name: `${site.name} — daily signal board`,
     description: "Two-sided geometry scan across the majors and a liquid altcoin universe, scored bar by bar.",
     url: canonical,
-    dateModified: snapshot.scannedAt,
+    dateModified: slim.scannedAt,
+    temporalCoverage: allDays.length > 1 ? `${allDays.at(-1)}/${allDays[0]}` : allDays[0],
     creator: { "@type": "Organization", name: site.name },
   };
 
   return `${head({
-    title: `Daily signal board — ${site.name}`,
-    description: "Long, short or stand aside on every pair scanned, with the expectancy and the sample size behind each call.",
+    title: `Bảng tín hiệu hằng ngày — ${site.name}`,
+    description: "Long, short hay đứng ngoài trên mọi cặp được quét, kèm xác suất, kỳ vọng và cỡ mẫu thật đằng sau mỗi lệnh.",
     canonical,
     jsonLd,
     site,
-  }).replace('<div class="wrap">', '<div class="wrap wide">')}
-<h1>Daily signal board</h1>
-<p class="lede">Every pair scored in <strong>both</strong> directions over the last 180 days. Stand aside is a conclusion here, not a default — it appears only when long and short both lose.</p>
-<p class="meta">Scanned ${escapeHtml(when)} UTC · ${t.total ?? 0} pairs · ${t.LONG ?? 0} long · ${t.SHORT ?? 0} short · ${t.WAIT ?? 0} wait · ${t.turning ?? 0} regime turn${t.turning === 1 ? "" : "s"}</p>
+  }).replace('<div class="wrap">', '<div class="wrap board">')}
+<h1>Bảng tín hiệu</h1>
+<p class="lede">Mọi cặp được chấm ở <strong>cả hai chiều</strong> trên ${slim.recentWindowDays ?? 180} ngày gần nhất. Đứng ngoài là một kết luận, không phải mặc định — nó chỉ xuất hiện khi cả long lẫn short đều lỗ.</p>
+<p class="meta" id="stamp">Quét ${escapeHtml(when)} UTC · ${t.total ?? 0} cặp · ${t.LONG ?? 0} long · ${t.SHORT ?? 0} short · ${t.WAIT ?? 0} chờ · ${t.turning ?? 0} đổi chế độ</p>
 
-<div class="box warn">
-  <h4>Read this before the table</h4>
-  <p>Expectancy is measured on overlapping windows, so the honest sample is the <strong>independent n</strong> column — often five or fewer on a 30-day horizon. A strong number over five episodes is a story, not a finding. Rows marked <em>regime turn</em> are ones where the recent window disagrees in sign with the full history: the market has changed inside the sample, and the long-run average describes a market that no longer exists.</p>
-</div>
+<details class="box warn" open>
+  <summary>Đọc cột <strong>n</strong> trước khi đọc kỳ vọng</summary>
+  <p>Các cửa sổ đo chồng lấn nhau, nên mẫu trung thực là <strong>số lần độc lập</strong> — thường là năm hoặc ít hơn ở khung 30 ngày. Một con số mạnh trên năm lần là một câu chuyện, chưa phải một phát hiện. Dòng gắn nhãn <em>đổi chế độ</em> là nơi cửa sổ gần nghịch dấu với toàn lịch sử: thị trường đã thay đổi ngay bên trong mẫu.</p>
+</details>
 
-<form class="filters" id="filters">
-  <fieldset><legend>Direction</legend>
-    <button type="button" data-filter="bias" data-value="all" aria-pressed="true">All</button>
-    <button type="button" data-filter="bias" data-value="LONG" aria-pressed="false">Long</button>
-    <button type="button" data-filter="bias" data-value="SHORT" aria-pressed="false">Short</button>
-    <button type="button" data-filter="bias" data-value="WAIT" aria-pressed="false">Wait</button>
+<form class="filters" id="filters" hidden>
+  <div class="frow">
+    <label class="fld"><span>Ngày</span>
+      <select id="f-day">${allDays.map((d) => `<option value="${d}">${d}</option>`).join("")}</select>
+    </label>
+    <label class="fld"><span>Tìm coin hoặc lý do</span>
+      <input type="search" id="f-q" placeholder="SOL, short pays…" autocomplete="off">
+    </label>
+  </div>
+
+  <fieldset><legend>Tín hiệu</legend>
+    <button type="button" data-f="bias" data-v="all" aria-pressed="true">Tất cả</button>
+    <button type="button" data-f="bias" data-v="LONG" aria-pressed="false">Long</button>
+    <button type="button" data-f="bias" data-v="SHORT" aria-pressed="false">Short</button>
+    <button type="button" data-f="bias" data-v="WAIT" aria-pressed="false">Chờ</button>
   </fieldset>
-  <fieldset><legend>Horizon</legend>
-    <button type="button" data-filter="horizon" data-value="all" aria-pressed="true">All</button>
-    ${horizons.map((h) => `<button type="button" data-filter="horizon" data-value="${h}" aria-pressed="false">${h}d</button>`).join("")}
+
+  <fieldset><legend>Khung</legend>
+    <button type="button" data-f="horizon" data-v="all" aria-pressed="true">Tất cả</button>
+    ${horizons.map((h) => `<button type="button" data-f="horizon" data-v="${h}" aria-pressed="false">${h} ngày</button>`).join("")}
   </fieldset>
-  <fieldset><legend>Liquidity</legend>
-    <button type="button" data-filter="tradeable" data-value="all" aria-pressed="true">All</button>
-    <button type="button" data-filter="tradeable" data-value="true" aria-pressed="false">Sizeable only</button>
+
+  <fieldset><legend>Xác suất trúng</legend>
+    <button type="button" data-f="hit" data-v="all" aria-pressed="true">Tất cả</button>
+    <button type="button" data-f="hit" data-v="20" aria-pressed="false">≥ 20%</button>
+    <button type="button" data-f="hit" data-v="30" aria-pressed="false">≥ 30%</button>
+    <button type="button" data-f="hit" data-v="40" aria-pressed="false">≥ 40%</button>
   </fieldset>
+
+  <fieldset><legend>Độ tin cậy</legend>
+    <button type="button" data-f="quality" data-v="all" aria-pressed="true">Tất cả</button>
+    <button type="button" data-f="quality" data-v="liquid" aria-pressed="false">Đủ thanh khoản</button>
+    <button type="button" data-f="quality" data-v="solid" aria-pressed="false">Mẫu không mỏng</button>
+  </fieldset>
+
+  <div class="frow">
+    <label class="fld"><span>Sắp xếp</span>
+      <select id="f-sort">
+        <option value="expectancy">Kỳ vọng cao nhất</option>
+        <option value="hit">Xác suất trúng cao nhất</option>
+        <option value="sample">Mẫu lớn nhất</option>
+        <option value="asset">Tên coin</option>
+      </select>
+    </label>
+    <button type="button" class="reset" id="f-reset">Xoá lọc</button>
+  </div>
 </form>
 
+<p class="count" id="count"></p>
 <div id="board">
-${rows || '<p class="empty">No scan on record yet. Run <code>node scripts/scan-daily.mjs</code>.</p>'}
+${slim.signals.length
+    ? slim.signals.map(signalCard).join("\n")
+    : '<p class="empty">Chưa có bản quét nào. — No scan on record yet.</p>'}
 </div>
-<p class="empty" id="none" hidden>Nothing matches those filters.</p>
+<nav class="pager" id="pager" hidden></nav>
+<p class="empty" id="none" hidden>Không có dòng nào khớp bộ lọc.</p>
 
-<h2>How a call is made</h2>
+<h2>Một lệnh được chấm thế nào</h2>
 <ul>
-  <li>Every geometry is walked bar by bar. A bar reaching both the stop and the target is charged to the <strong>stop</strong>, because a daily candle does not reveal the order inside it.</li>
-  <li>Positions still open at the horizon close <strong>at the market</strong>. Counting them as flat once turned a −7.4% median outcome into a +0.115R headline.</li>
-  <li>Stops price cannot reach are discarded rather than scored. A stop below zero is never hit, which used to make every such cell look profitable.</li>
-  <li>The call is the <strong>median</strong> cell across the grid, not the best one. One bright cell in a field of losses is a search artefact.</li>
-  <li>Funding, open interest and liquidation data are unavailable from this host and are used nowhere.</li>
+  <li>Mọi hình học đều đi <strong>từng nến</strong>. Nến chạm cả stop lẫn đích thì tính về phía <strong>stop</strong> — nến ngày không cho biết thứ tự bên trong nó.</li>
+  <li>Lệnh còn mở ở cuối khung thì <strong>đóng theo giá thị trường</strong>. Tính là hoà từng biến một kết quả trung vị −7.4% thành tiêu đề +0.115R.</li>
+  <li>Stop mà giá không thể chạm tới bị loại chứ không được chấm. Stop dưới số không thì không bao giờ dính, nên mọi ô như thế từng trông có lãi.</li>
+  <li>Lệnh lấy <strong>ô trung vị</strong> của lưới, không phải ô tốt nhất. Một ô sáng giữa một vùng lỗ là sản phẩm của việc tìm kiếm.</li>
+  <li>Funding, open interest và dữ liệu thanh lý bị chặn từ máy này nên không dùng ở bất cứ đâu.</li>
 </ul>
 
+<script id="board-data" type="application/json">${JSON.stringify(slim).replace(/</g, "\\u003c")}</script>
 <script>
 (function () {
-  var state = { bias: "all", horizon: "all", tradeable: "all" };
-  var form = document.getElementById("filters");
-  var none = document.getElementById("none");
-  if (!form) return;
+  var data = JSON.parse(document.getElementById("board-data").textContent);
+  var cache = {};
+  var today = String(data.scannedAt || "").slice(0, 10);
+  if (today) cache[today] = data;
 
-  function apply() {
-    var shown = 0;
-    document.querySelectorAll(".sig").forEach(function (el) {
-      var ok =
-        (state.bias === "all" || el.dataset.bias === state.bias) &&
-        (state.horizon === "all" || el.dataset.horizon === state.horizon) &&
-        (state.tradeable === "all" || el.dataset.tradeable === state.tradeable);
-      el.hidden = !ok;
-      if (ok) shown++;
+  var PER_PAGE = 10;
+  var state = { bias: "all", horizon: "all", hit: "all", quality: "all", q: "", sort: "expectancy", page: 1 };
+
+  var board = document.getElementById("board");
+  var pager = document.getElementById("pager");
+  var none = document.getElementById("none");
+  var countEl = document.getElementById("count");
+  var stamp = document.getElementById("stamp");
+  var form = document.getElementById("filters");
+
+  function n(v, d) { return typeof v === "number" && isFinite(v) ? v.toFixed(d) : "—"; }
+  function money(v) {
+    if (typeof v !== "number" || !isFinite(v)) return "—";
+    var a = Math.abs(v);
+    if (a >= 1000) return v.toFixed(0);
+    if (a >= 1) return v.toFixed(3);
+    if (a >= 0.01) return v.toFixed(4);
+    return v.toFixed(6);
+  }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
     });
-    if (none) none.hidden = shown !== 0;
+  }
+
+  function card(s) {
+    var p = s.plan;
+    var flags = "";
+    if (s.turning) flags += '<span class="flag turn">đổi chế độ</span>';
+    if (s.thin) flags += '<span class="flag thin">mẫu mỏng</span>';
+    if (!s.tradeable) flags += '<span class="flag thin">thanh khoản mỏng</span>';
+
+    var plan = p ? (
+      '<div class="levels">'
+      + '<div class="level in"><span>Vào</span><b>' + money(p.entry) + '</b></div>'
+      + '<div class="level out"><span>Cắt lỗ</span><b>' + money(p.stop) + '</b><i>' + n(p.stopPct, 2) + '%</i></div>'
+      + '<div class="level tgt"><span>Mục tiêu</span><b>' + money(p.target) + '</b><i>' + n(p.targetPct, 2) + '%</i></div>'
+      + "</div>"
+      + '<div class="nums">'
+      + '<div><span>Xác suất trúng</span><b>' + n(p.hitPct, 1) + "%</b></div>"
+      + '<div><span>Kỳ vọng</span><b>' + n(p.expectancyR, 2) + "R</b></div>"
+      + '<div><span>Mẫu độc lập</span><b>' + Math.round(p.effectiveN) + "</b></div>"
+      + '<div><span>Vốn / $1k</span><b>$' + n(p.positionUsdPer1000, 0) + "</b></div>"
+      + "</div>"
+    ) : "";
+
+    var ctx = [];
+    if (s.context.stage) ctx.push("giai đoạn " + esc(s.context.stage));
+    if (typeof s.context.underwaterPct === "number") ctx.push("hàng kẹt " + n(s.context.underwaterPct, 1) + "%");
+    if (typeof s.context.volumeTrendPct === "number") ctx.push("khối lượng " + n(s.context.volumeTrendPct, 1) + "%");
+
+    return '<article class="sig">'
+      + '<div class="sig-head">'
+      + '<span class="asset">' + esc(s.asset) + "</span>"
+      + '<span class="price">' + money(s.price) + "</span>"
+      + '<span class="bias ' + s.bias + '">' + s.bias + "</span>"
+      + (p ? '<span class="hz">' + p.horizonDays + " ngày</span>" : "")
+      + "</div>"
+      + (flags ? '<div class="flags">' + flags + "</div>" : "")
+      + plan
+      + '<p class="why"><span class="k">Lý do</span> ' + esc(s.reason) + (ctx.length ? " · " + ctx.join(" · ") : "") + "</p>"
+      + "</article>";
+  }
+
+  function matches(s) {
+    if (state.bias !== "all" && s.bias !== state.bias) return false;
+    if (state.horizon !== "all" && String(s.plan && s.plan.horizonDays) !== state.horizon) return false;
+    if (state.hit !== "all" && !(s.plan && s.plan.hitPct >= Number(state.hit))) return false;
+    if (state.quality === "liquid" && !s.tradeable) return false;
+    if (state.quality === "solid" && s.thin) return false;
+    if (state.q) {
+      var hay = (s.asset + " " + s.reason + " " + (s.context.stage || "")).toLowerCase();
+      if (hay.indexOf(state.q.toLowerCase()) === -1) return false;
+    }
+    return true;
+  }
+
+  function sorted(rows) {
+    var by = {
+      expectancy: function (a, b) { return (b.plan ? b.plan.expectancyR : -1e9) - (a.plan ? a.plan.expectancyR : -1e9); },
+      hit: function (a, b) { return (b.plan ? b.plan.hitPct : -1) - (a.plan ? a.plan.hitPct : -1); },
+      sample: function (a, b) { return (b.plan ? b.plan.effectiveN : -1) - (a.plan ? a.plan.effectiveN : -1); },
+      asset: function (a, b) { return a.asset.localeCompare(b.asset); }
+    };
+    return rows.slice().sort(by[state.sort] || by.expectancy);
+  }
+
+  function render() {
+    var rows = sorted(data.signals.filter(matches));
+    var pages = Math.max(1, Math.ceil(rows.length / PER_PAGE));
+    if (state.page > pages) state.page = pages;
+    var slice = rows.slice((state.page - 1) * PER_PAGE, state.page * PER_PAGE);
+
+    board.innerHTML = slice.map(card).join("");
+    none.hidden = rows.length !== 0;
+    // Two different nothings: a scan with no matching rows, and no scan at all.
+    none.textContent = data.signals.length
+      ? "Không có dòng nào khớp bộ lọc."
+      : "Chưa có bản quét nào.";
+    countEl.textContent = rows.length
+      ? rows.length + " cặp khớp · trang " + state.page + "/" + pages
+      : "";
+
+    if (pages > 1) {
+      var html = "";
+      for (var i = 1; i <= pages; i++) {
+        html += '<button type="button" data-page="' + i + '"' + (i === state.page ? ' aria-current="page"' : "") + ">" + i + "</button>";
+      }
+      pager.innerHTML = html;
+      pager.hidden = false;
+    } else {
+      // Emptied, not just hidden: a stale page 3 button left in the DOM is
+      // still reachable by keyboard and by anything reading the page.
+      pager.innerHTML = "";
+      pager.hidden = true;
+    }
   }
 
   form.addEventListener("click", function (e) {
-    var b = e.target.closest("button[data-filter]");
+    var b = e.target.closest("button[data-f]");
     if (!b) return;
-    state[b.dataset.filter] = b.dataset.value;
-    form.querySelectorAll('button[data-filter="' + b.dataset.filter + '"]').forEach(function (o) {
+    state[b.dataset.f] = b.dataset.v;
+    state.page = 1;
+    form.querySelectorAll('button[data-f="' + b.dataset.f + '"]').forEach(function (o) {
       o.setAttribute("aria-pressed", String(o === b));
     });
-    apply();
+    render();
   });
+
+  document.getElementById("f-q").addEventListener("input", function (e) {
+    state.q = e.target.value.trim();
+    state.page = 1;
+    render();
+  });
+
+  document.getElementById("f-sort").addEventListener("change", function (e) {
+    state.sort = e.target.value;
+    render();
+  });
+
+  document.getElementById("f-reset").addEventListener("click", function () {
+    state = { bias: "all", horizon: "all", hit: "all", quality: "all", q: "", sort: "expectancy", page: 1 };
+    document.getElementById("f-q").value = "";
+    document.getElementById("f-sort").value = "expectancy";
+    form.querySelectorAll("button[data-f]").forEach(function (o) {
+      o.setAttribute("aria-pressed", String(o.dataset.v === "all"));
+    });
+    render();
+  });
+
+  pager.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-page]");
+    if (!b) return;
+    state.page = Number(b.dataset.page);
+    render();
+    board.scrollIntoView({ block: "start" });
+  });
+
+  var dayPicker = document.getElementById("f-day");
+  dayPicker.addEventListener("change", function (e) {
+    var day = e.target.value;
+    if (cache[day]) { data = cache[day]; state.page = 1; stampFor(data); render(); return; }
+    countEl.textContent = "Đang tải " + day + "…";
+    fetch("/signals/data/" + day + ".json")
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (j) { cache[day] = j; data = j; state.page = 1; stampFor(j); render(); })
+      .catch(function () { countEl.textContent = "Không tải được bản quét ngày " + day + "."; });
+  });
+
+  function stampFor(j) {
+    var t = j.tally || {};
+    stamp.textContent = "Quét " + String(j.scannedAt).replace("T", " ").slice(0, 16)
+      + " UTC · " + (t.total || 0) + " cặp · " + (t.LONG || 0) + " long · " + (t.SHORT || 0)
+      + " short · " + (t.WAIT || 0) + " chờ · " + (t.turning || 0) + " đổi chế độ";
+  }
+
+  // The controls are inert without this script, so they stay hidden until it
+  // runs rather than offering a reader buttons that do nothing.
+  form.hidden = false;
+  render();
 })();
 </script>
 ${foot(site)}`;
 }
+
+/** One call, server-rendered so the board works with JavaScript off. */
+function signalCard(s) {
+  const n = (v, d) => (typeof v === "number" && Number.isFinite(v) ? v.toFixed(d) : "—");
+  const money = (v) => {
+    if (typeof v !== "number" || !Number.isFinite(v)) return "—";
+    const a = Math.abs(v);
+    if (a >= 1000) return v.toFixed(0);
+    if (a >= 1) return v.toFixed(3);
+    if (a >= 0.01) return v.toFixed(4);
+    return v.toFixed(6);
+  };
+  const p = s.plan;
+
+  const flags = [
+    s.turning ? '<span class="flag turn">đổi chế độ</span>' : "",
+    s.thin ? '<span class="flag thin">mẫu mỏng</span>' : "",
+    !s.tradeable ? '<span class="flag thin">thanh khoản mỏng</span>' : "",
+  ].join("");
+
+  const plan = p
+    ? `<div class="levels">
+    <div class="level in"><span>Vào</span><b>${money(p.entry)}</b></div>
+    <div class="level out"><span>Cắt lỗ</span><b>${money(p.stop)}</b><i>${n(p.stopPct, 2)}%</i></div>
+    <div class="level tgt"><span>Mục tiêu</span><b>${money(p.target)}</b><i>${n(p.targetPct, 2)}%</i></div>
+  </div>
+  <div class="nums">
+    <div><span>Xác suất trúng</span><b>${n(p.hitPct, 1)}%</b></div>
+    <div><span>Kỳ vọng</span><b>${n(p.expectancyR, 2)}R</b></div>
+    <div><span>Mẫu độc lập</span><b>${Math.round(p.effectiveN)}</b></div>
+    <div><span>Vốn / $1k</span><b>$${n(p.positionUsdPer1000, 0)}</b></div>
+  </div>`
+    : "";
+
+  const ctx = [
+    s.context?.stage ? `giai đoạn ${escapeHtml(String(s.context.stage))}` : "",
+    typeof s.context?.underwaterPct === "number" ? `hàng kẹt ${n(s.context.underwaterPct, 1)}%` : "",
+    typeof s.context?.volumeTrendPct === "number" ? `khối lượng ${n(s.context.volumeTrendPct, 1)}%` : "",
+  ].filter(Boolean).join(" · ");
+
+  return `<article class="sig">
+  <div class="sig-head">
+    <span class="asset">${escapeHtml(s.asset)}</span>
+    <span class="price">${money(s.price)}</span>
+    <span class="bias ${s.bias}">${s.bias}</span>
+    ${p ? `<span class="hz">${p.horizonDays} ngày</span>` : ""}
+  </div>
+  ${flags ? `<div class="flags">${flags}</div>` : ""}
+  ${plan}
+  <p class="why"><span class="k">Lý do</span> ${escapeHtml(s.reason)}${ctx ? ` · ${ctx}` : ""}</p>
+</article>`;
+}
+
 
 export function renderSitemap(site, articles, lessons = [], signals = null) {
   const urls = [
@@ -674,7 +949,7 @@ export function renderRobots(site) {
  * Builds every file for the site.
  * @returns {{path: string, content: string}[]} Text files only; assets are copied separately.
  */
-export function buildSite(manifest, drafts, lessons = [], signals = null) {
+export function buildSite(manifest, drafts, lessons = [], signals = null, archive = {}) {
   const { site } = manifest;
   const articles = [...manifest.articles].sort((a, b) => b.published.localeCompare(a.published));
 
@@ -693,7 +968,13 @@ export function buildSite(manifest, drafts, lessons = [], signals = null) {
    * the gap. A missing board is a missing page, not a failed deploy.
    */
   if (signals) {
-    files.push({ path: "signals/index.html", content: renderSignalsPage(site, signals) });
+    const days = Object.keys(archive).sort().reverse();
+    files.push({ path: "signals/index.html", content: renderSignalsPage(site, signals, { days }) });
+    // One slim file per archived day, so the date picker can fetch a past board
+    // without shipping every scan to every reader.
+    for (const [day, snap] of Object.entries(archive)) {
+      files.push({ path: `signals/data/${day}.json`, content: `${JSON.stringify(slimSnapshot(snap))}\n` });
+    }
   }
 
   if (lessons.length) {

@@ -103,12 +103,30 @@ const snapshot = {
   signals: ranked,
 };
 
+/**
+ * Two writes, on purpose.
+ *
+ * `site/signals.json` is the latest board and stays where the build already
+ * looks for it. The dated copy under `site/signals-archive/` is what makes the
+ * date filter possible at all — a scan that overwrites its predecessor cannot
+ * be filtered by day, and the record of what the board said on a given morning
+ * is the only way anyone can check it later.
+ *
+ * Re-running on the same day replaces that day's file rather than appending, so
+ * a scan repeated after a data outage corrects the record instead of doubling
+ * it.
+ */
+const day = snapshot.scannedAt.slice(0, 10);
+const archiveDir = path.join(root, "site", "signals-archive");
+fs.mkdirSync(archiveDir, { recursive: true });
+fs.writeFileSync(path.join(archiveDir, `${day}.json`), `${JSON.stringify(snapshot, null, 2)}\n`);
+
 const out = path.join(root, "site", "signals.json");
 fs.writeFileSync(out, `${JSON.stringify(snapshot, null, 2)}\n`);
 
 const t = snapshot.tally;
 console.log(
-  `${out}\n${t.total} scanned · ${t.LONG} long · ${t.SHORT} short · ${t.WAIT} wait`
+  `${out} · archived ${day}\n${t.total} scanned · ${t.LONG} long · ${t.SHORT} short · ${t.WAIT} wait`
   + ` · ${t.turning} regime turn(s) · ${t.untradeable} too thin`
   + (failed.length ? ` · ${failed.length} failed` : ""),
 );
