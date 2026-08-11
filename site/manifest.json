@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "ena-icp",
+      "draft": "67-ena-icp.txt",
+      "title": "ENA và ICP: 90 hình học mỗi đồng, ENA không một cái nào dương",
+      "description": "Bản quét thị trường sáng nay xếp $ENA hạng nhất, $ICP hạng ba. Tôi đo cả hai bằng cùng một thước. Thứ tự đảo ngược — và một trong hai đảo rất mạnh.",
+      "published": "2026-08-11T00:56:32.723Z",
+      "assets": [
+        "ENA",
+        "ICP",
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 354380156446673
+    },
+    {
       "slug": "icp-4h",
       "draft": "66-icp-4h.txt",
       "title": "Liên tục bị từ chối — số lần giá chạm vùng đó: 0",

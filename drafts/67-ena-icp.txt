@@ -1,0 +1,123 @@
+Bản quét thị trường sáng nay xếp $ENA hạng nhất, $ICP hạng ba. Tôi đo cả hai bằng cùng một thước. Thứ tự đảo ngược — và một trong hai đảo rất mạnh.
+
+Nhưng trước hết, một con số phải nói ngay.
+
+BTC ĐANG ĐỨNG ĐÚNG TRÊN CÁI NGƯỠNG BẢN QUÉT TỰ ĐẶT
+
+Bản quét viết $BTC quanh 64,800–65,200, và đặt luật: *"nếu BTC mất 63,500–64,000 thì hầu hết setup mất hiệu lực."*
+
+BTC lúc tôi đo: **64,006**.
+
+Không nằm trong vùng họ nói. Và nó đang cách mép trên của chính cái ngưỡng vô hiệu hoá đó **0.01%** — tức đứng ngay trên vạch.
+
+Cái luật đó không phải chuyện tương lai. Nó đang được kích hoạt lúc bạn đọc.
+
+Phần cấu trúc thì họ đúng: SMA50 63,387 dưới SMA200 69,916, death cross còn nguyên, giá dưới SMA200. RSI 48.6, vị trí biên 30 ngày 42.5%.
+
+ICP: NGƯỢC HẲN MÔ TẢ
+
+Bản quét ghi ICP *"Stage 0–1, volume còn yếu, đang có dấu hiệu sống lại nhẹ."*
+
+Đo được:
+
+```
+z-score khối lượng            4.32
+xu hướng khối lượng          66.1%
+vị trí biên 30 ngày          97.6%
+hàng kẹt trên giá            0.00%
+giai đoạn              2 expansion
+```
+
+Không phải "sống lại nhẹ". Đây là **4.32 sigma khối lượng**, ở 97.6% biên tháng, với **không một ai** đang kẹt trên giá.
+
+Giá 2.3650 đã vượt đỉnh nền 25 ngày (2.3550) 0.42%. Bảy ngày qua 8.3%.
+
+Nhưng đọc lại dòng đó cho kỹ, vì nó cắt hai chiều.
+
+**Hàng kẹt 0.00% nghĩa là không có bức tường nào chặn đường lên.** Nó cũng nghĩa là **không một ai đang lỗ để phải gồng.** Tất cả đều đang lãi, và người đang lãi bán bất cứ lúc nào họ muốn. Không có nguồn cung treo trên đầu cũng có nghĩa không có nguồn giữ tay dưới chân.
+
+Thêm nữa: funding OKX 9.48% một năm, gấp đôi mức 4.62% của hai tuần trước. **Đang nóng lên, không nguội đi.** Đó là chi phí của việc vào muộn.
+
+ENA: CŨNG NGƯỢC, NHƯNG NGƯỢC CHIỀU KIA
+
+Bản quét ghi ENA *"volume có dấu hiệu ổn định hơn gần đây"*, xếp hạng nhất.
+
+```
+xu hướng khối lượng         -55.0%
+z-score khối lượng           -0.49
+hàng kẹt trên giá            35.6%
+dòng tiền 30 ngày             0.89
+giai đoạn                    mixed
+```
+
+Khối lượng mất hơn một nửa. Hơn một phần ba khối lượng tháng nằm kẹt trên giá. Dòng tiền 30 ngày dưới 1 — tiền vào ngày giảm nhiều hơn ngày tăng.
+
+Một điều bản quét nói **đúng** về ENA: beta cao. Tôi đo beta 1.52 với BTC, so với ICP chỉ 0.64. Nhưng beta cao lúc BTC đang đứng trên ngưỡng vô hiệu hoá không phải ưu điểm — đó là đòn bẩy vào đúng thứ rủi ro nhất trên bàn.
+
+Và tấm bản đồ dài hạn: ENA cách đỉnh lịch sử -94.2%, một năm qua -88.8%, 34.5% nguồn cung tối đa chưa từng lưu hành.
+
+CÂU HỎI KHÔNG AI HỎI: HÌNH HỌC NÀO THÌ ĂN?
+
+Chấm một kế hoạch cụ thể chỉ trả lời được "kế hoạch này ăn không". Câu hữu ích hơn: **trên chính lịch sử đồng này, có hình học nào ăn không?**
+
+Nên tôi quét lưới. 6 khoảng cách stop (tính bằng biên độ ngày của chính nó) × 5 tỷ lệ được–mất × 3 khung thời gian = **90 ô cho mỗi đồng**, mỗi ô đi từng nến.
+
+Phải nói ngay chỗ nguy hiểm: **thử 90 ô rồi khoe ô tốt nhất là trò bịp.** Ô tốt nhất luôn tồn tại kể cả khi tất cả chỉ là nhiễu. Nên tôi báo ba con số cùng lúc: số ô đã thử, số ô dương, và ô trung vị.
+
+```
+                              $ENA        $ICP
+số ô thử                        90          90
+số ô dương                       0           8
+ô trung vị                 -0.098R     -0.094R
+ô tốt nhất                  0.000R      0.157R
+```
+
+**ENA: không một ô nào trong 90 ô có kỳ vọng dương.** Ô tốt nhất đúng bằng 0.000R — hoà vốn chằn chặn, và đó là cái tốt nhất sau khi thử hết. Không phải "chưa tìm ra điểm vào đẹp". Là trên lịch sử của chính nó, không có điểm vào nào cả.
+
+ICP có 8 ô dương trên 90. Ít. Nhưng chúng **không rải rác** — cả 8 ô đều nằm cùng một góc:
+
+```
+                              stop       khung
+0.026R  R:R 5.0            2.5 ATR     90 ngày
+0.107R  R:R 5.0            3.0 ATR     90 ngày
+0.019R  R:R 1.5            4.0 ATR     60 ngày
+0.025R  R:R 1.5            4.0 ATR     90 ngày
+```
+
+Mọi ô dương đều dùng stop **rộng** và khung **dài**. Không ô nào có stop dưới 2.5 lần biên độ ngày. Đó đúng là hình dạng mọi phép đo tuần này chỉ về: stop chặt thì chết vì tiếng ồn, không vì sai hướng.
+
+Cụm lại một chỗ là bằng chứng **yếu** cho việc có cấu trúc thật — không phải bằng chứng đủ. 8 trên 90 ô, mỗi ô khoảng 10 lần độc lập. Tôi báo nó ra vì hình dạng có nghĩa, không vì con số đã đủ.
+
+Ô tốt nhất của ICP, quy ra giá từ đây:
+
+```
+vào                         2.3650
+cắt lỗ                      2.0070     −15.14%
+mục tiêu                    3.4389     +45.41%
+tỷ lệ trúng                  27.4%   cần 25.0%
+kỳ vọng                     0.157R     90 ngày
+```
+
+Cái stop đó rộng 15.14%. Nghe đáng sợ, và đúng là đáng sợ — nhưng biên độ một tuần trung vị của ICP là 19.60%. Muốn giữ lệnh ba tháng thì stop phải rộng hơn một tuần bình thường, nếu không bạn chỉ đang trả tiền cho một tuần bình thường.
+
+Với vốn, điều đó có nghĩa: vị thế phải **nhỏ hơn nhiều**. Cùng một mức rủi ro trải trên một khoảng cách trung thực.
+
+CHỖ TÔI MÙ
+
+Funding và open interest Binance bị chặn địa lý từ máy này — mọi số funding ở trên là OKX và tôi ghi rõ. Dữ liệu thanh lý thật thì các nguồn đều từ chối nếu không có API trả phí. Không có dữ liệu miễn phí tại thời điểm này.
+
+Open interest toàn thị trường thì tôi **không có** — Binance chặn. Số OKX lấy được: ICP $4.70 triệu, ENA $4.54 triệu. Cả hai đều mỏng, và đó là một sàn chứ không phải cả thị trường.
+
+Quan điểm: **CHỜ** với ENA, **CHỜ** với ICP — hai lý do khác hẳn nhau.
+
+ENA thì không có gì để chờ: khối lượng rút, hàng kẹt cao, và 90 trên 90 hình học đều âm. Bản quét xếp nó hạng nhất; số liệu xếp nó cuối.
+
+ICP thì ngược lại — nó là thứ sạch nhất tôi đo được trong nhiều tuần: không hàng kẹt, khối lượng nở 66.1%, vượt đỉnh nền, giai đoạn mở rộng. Tôi vẫn chờ, vì ba lý do: giá đã ở 97.6% biên tháng nên đây là mua đuổi chứ không phải vào sớm; funding đang gấp đôi lên; và BTC đang đứng trên vạch mà chính bản quét nói là vô hiệu hoá tất cả.
+
+Cấu trúc đẹp và điểm vào đẹp là hai chuyện khác nhau. Cái này đang đẹp cấu trúc.
+
+Bạn mua khi biểu đồ đẹp, hay khi hình học trả đủ tiền?
+
+Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+
+#Altcoins #RiskManagement #MarketAnalysis
