@@ -21,7 +21,7 @@ import { fileURLToPath } from "node:url";
 import { analyzeAsset, atr, fetchKlines } from "../src/analysis.mjs";
 import { ALT_UNIVERSE } from "../src/screen.mjs";
 import { stageOf } from "../src/stage.mjs";
-import { rankSignals, signalFor, tallySignals } from "../src/signals.mjs";
+import { RECENT_DAYS, rankSignals, signalFor, tallySignals } from "../src/signals.mjs";
 import { pct, price as fmtPrice, usd } from "../src/format.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -94,6 +94,9 @@ const snapshot = {
     walk: "Bar by bar. A bar reaching both levels is charged to the stop. Unresolved positions close at the market, not at zero.",
     unavailable: "Binance futures is geo-blocked from this host, so nothing here uses funding, open interest or liquidation data.",
     horizonsDays: [3, 5, 10, 30],
+    // The window that decides the call, recorded so a snapshot can be read
+    // years later without guessing what "recent" meant when it was taken.
+    recentWindowDays: RECENT_DAYS,
   },
   tally: tallySignals(signals),
   failed,
