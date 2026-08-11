@@ -20,6 +20,10 @@ export const ALT_UNIVERSE = [
   // the pair its own headline call was made on cannot be checked against that
   // call, which is the one check that matters most.
   "ICPUSDT",
+  // Young: under a year of candles, so it reports fewer agreement windows than
+  // the rest. Included because it is liquid enough to size and readers ask for
+  // it; the board says plainly how little history is behind it.
+  "GIGGLEUSDT",
 ];
 
 /**

@@ -256,6 +256,7 @@ details.box[open] summary{margin-bottom:.7rem}
 .flag{font-size:.7rem;border:1px solid var(--line);border-radius:999px;padding:.12rem .5rem;color:var(--muted)}
 .flag.turn{border-color:var(--accent);color:var(--accent)}
 .flag.thin{border-color:#f6465d;color:#f6465d}
+.flag.ok{border-color:#3987e5;color:#3987e5}
 /* Named .levels/.level, not .lvl — .lvl is already the lesson difficulty badge,
    and a signal card redefining it would restyle every lesson page. */
 .levels{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin:.85rem 0 .6rem}
@@ -526,6 +527,8 @@ export function slimSnapshot(snapshot) {
       reason: s.reason ?? "",
       turning: Boolean(s.regime?.turning),
       thin: Boolean(s.confidence?.thin),
+      agreeing: s.agreement?.agreeing ?? null,
+      windows: s.agreement?.windows ?? null,
       plan: s.plan
         ? {
           horizonDays: s.plan.horizonDays,
@@ -712,6 +715,11 @@ ${slim.signals.length
   function card(s) {
     var p = s.plan;
     var flags = "";
+    if (s.windows) {
+      var weak = s.agreeing * 2 <= s.windows;
+      flags += '<span class="flag ' + (weak ? "thin" : "ok") + '">'
+        + s.agreeing + "/" + s.windows + " lookbacks agree</span>";
+    }
     if (s.turning) flags += '<span class="flag turn">regime turn</span>';
     if (s.thin) flags += '<span class="flag thin">thin sample</span>';
     if (!s.tradeable) flags += '<span class="flag thin">thin liquidity</span>';
@@ -883,6 +891,9 @@ function signalCard(s) {
   const p = s.plan;
 
   const flags = [
+    s.windows
+      ? `<span class="flag ${s.agreeing * 2 <= s.windows ? "thin" : "ok"}">${s.agreeing}/${s.windows} lookbacks agree</span>`
+      : "",
     s.turning ? '<span class="flag turn">regime turn</span>' : "",
     s.thin ? '<span class="flag thin">thin sample</span>' : "",
     !s.tradeable ? '<span class="flag thin">thin liquidity</span>' : "",

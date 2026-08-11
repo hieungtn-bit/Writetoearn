@@ -1,0 +1,335 @@
+{
+  "measuredAt": "2026-08-11T16:16:34.622Z",
+  "horizonDays": 30,
+  "windows": [
+    180,
+    270,
+    365,
+    540,
+    730,
+    1000
+  ],
+  "rows": [
+    {
+      "asset": "BNB",
+      "candles": 1000,
+      "price": 609.42,
+      "atrPct": 2.1913107411331305,
+      "stage": "1 quiet",
+      "underwaterPct": 0,
+      "volumeTrendPct": 5.72496229443764,
+      "rangePosition30d": 90.63815457147658,
+      "rsi14": 66.11102771416836,
+      "change7dPct": 2.737786169459525,
+      "change30dPct": 6.187381296718996,
+      "turnoverUsd": 52978828.99152734,
+      "ath": 1375.11,
+      "athDate": "2025-10-13",
+      "drawdownFromAthPct": 55.68209088727447,
+      "weeklyRangeMedianPct": 10.140514411522004,
+      "stopPct": 4.382621482266261,
+      "stopVsMedianWeek": 0.4321892661861981,
+      "beta": 0.5601367609255347,
+      "r": 0.6817389145195927,
+      "rSquaredPct": 46.47679475703525,
+      "byWindow": {
+        "180": {
+          "longPositive": "48/64",
+          "longMedianR": 0.018,
+          "shortPositive": "1/64",
+          "shortMedianR": -0.091
+        },
+        "270": {
+          "longPositive": "6/64",
+          "longMedianR": -0.066,
+          "shortPositive": "48/64",
+          "shortMedianR": 0.033
+        },
+        "365": {
+          "longPositive": "35/64",
+          "longMedianR": 0.003,
+          "shortPositive": "26/64",
+          "shortMedianR": -0.007
+        },
+        "540": {
+          "longPositive": "60/64",
+          "longMedianR": 0.038,
+          "shortPositive": "3/64",
+          "shortMedianR": -0.047
+        },
+        "730": {
+          "longPositive": "60/64",
+          "longMedianR": 0.031,
+          "shortPositive": "0/64",
+          "shortMedianR": -0.057
+        }
+      },
+      "windowsTested": 5,
+      "longSignStable": false,
+      "shortSignStable": false,
+      "longMedianSpread": {
+        "min": -0.066,
+        "max": 0.038
+      },
+      "deciding": {
+        "windowDays": 180,
+        "longHitPct": 16.666666666666664,
+        "longExpectancyR": 0.23499441123837528,
+        "shortExpectancyR": -0.5599939410870228,
+        "effectiveN": 5
+      }
+    },
+    {
+      "asset": "INJ",
+      "candles": 1000,
+      "price": 4.495,
+      "atrPct": 5.5888961912513695,
+      "stage": "1 quiet",
+      "underwaterPct": 91.10663541869735,
+      "volumeTrendPct": -39.23843009026686,
+      "rangePosition30d": 17.56420878210437,
+      "rsi14": 41.5941151068789,
+      "change7dPct": -8.002455996725338,
+      "change30dPct": -7.757028524522883,
+      "turnoverUsd": 4077648.582851001,
+      "ath": 53,
+      "athDate": "2024-03-14",
+      "drawdownFromAthPct": 91.51886792452831,
+      "weeklyRangeMedianPct": 25.01654659003621,
+      "stopPct": 11.177792382502739,
+      "stopVsMedianWeek": 0.44681596407694096,
+      "beta": 1.3559447091257677,
+      "r": 0.5613011454312928,
+      "rSquaredPct": 31.505897586248132,
+      "byWindow": {
+        "180": {
+          "longPositive": "64/64",
+          "longMedianR": 0.247,
+          "shortPositive": "0/64",
+          "shortMedianR": -0.266
+        },
+        "270": {
+          "longPositive": "57/64",
+          "longMedianR": 0.063,
+          "shortPositive": "0/64",
+          "shortMedianR": -0.062
+        },
+        "365": {
+          "longPositive": "21/64",
+          "longMedianR": -0.02,
+          "shortPositive": "40/64",
+          "shortMedianR": 0.012
+        },
+        "540": {
+          "longPositive": "42/64",
+          "longMedianR": 0.017,
+          "shortPositive": "22/64",
+          "shortMedianR": -0.013
+        },
+        "730": {
+          "longPositive": "37/64",
+          "longMedianR": 0.011,
+          "shortPositive": "14/64",
+          "shortMedianR": -0.021
+        }
+      },
+      "windowsTested": 5,
+      "longSignStable": false,
+      "shortSignStable": false,
+      "longMedianSpread": {
+        "min": -0.02,
+        "max": 0.247
+      },
+      "deciding": {
+        "windowDays": 180,
+        "longHitPct": 40,
+        "longExpectancyR": 0.8869562273869415,
+        "shortExpectancyR": -0.6724667654832575,
+        "effectiveN": 5
+      }
+    },
+    {
+      "asset": "ENA",
+      "candles": 862,
+      "price": 0.0897,
+      "atrPct": 5.919099852154013,
+      "stage": "1 quiet",
+      "underwaterPct": 34.51803774171193,
+      "volumeTrendPct": -32.19383694232826,
+      "rangePosition30d": 59.905660377358515,
+      "rsi14": 54.80704644964719,
+      "change7dPct": -2.9220779220779156,
+      "change30dPct": 12.26533166458073,
+      "turnoverUsd": 10617712.5660492,
+      "ath": 1.523,
+      "athDate": "2024-04-11",
+      "drawdownFromAthPct": 94.11030860144452,
+      "weeklyRangeMedianPct": 29.721696838692257,
+      "stopPct": 11.838199704308026,
+      "stopVsMedianWeek": 0.398301610051309,
+      "beta": 1.4946054908048056,
+      "r": 0.5443191461651714,
+      "rSquaredPct": 29.62833328819812,
+      "byWindow": {
+        "180": {
+          "longPositive": "39/64",
+          "longMedianR": 0.008,
+          "shortPositive": "7/64",
+          "shortMedianR": -0.023
+        },
+        "270": {
+          "longPositive": "0/64",
+          "longMedianR": -0.105,
+          "shortPositive": "64/64",
+          "shortMedianR": 0.105
+        },
+        "365": {
+          "longPositive": "0/64",
+          "longMedianR": -0.158,
+          "shortPositive": "64/64",
+          "shortMedianR": 0.165
+        },
+        "540": {
+          "longPositive": "1/64",
+          "longMedianR": -0.057,
+          "shortPositive": "62/64",
+          "shortMedianR": 0.05
+        },
+        "730": {
+          "longPositive": "6/64",
+          "longMedianR": -0.023,
+          "shortPositive": "49/64",
+          "shortMedianR": 0.011
+        }
+      },
+      "windowsTested": 5,
+      "longSignStable": false,
+      "shortSignStable": false,
+      "longMedianSpread": {
+        "min": -0.158,
+        "max": 0.008
+      },
+      "deciding": {
+        "windowDays": 180,
+        "longHitPct": 14.000000000000002,
+        "longExpectancyR": -0.17240222246824866,
+        "shortExpectancyR": -0.3134656424403813,
+        "effectiveN": 5
+      }
+    },
+    {
+      "asset": "ICP",
+      "candles": 1000,
+      "price": 2.248,
+      "atrPct": 4.212839986944223,
+      "stage": "mixed",
+      "underwaterPct": 17.390269271653587,
+      "volumeTrendPct": 145.46961890390622,
+      "rangePosition30d": 63.027295285359884,
+      "rsi14": 57.99793941777398,
+      "change7dPct": 7.508369201339073,
+      "change30dPct": 1.1701170117011812,
+      "turnoverUsd": 2941181.785240666,
+      "ath": 20.985,
+      "athDate": "2024-03-27",
+      "drawdownFromAthPct": 89.28758637121753,
+      "weeklyRangeMedianPct": 19.117101920838483,
+      "stopPct": 8.425679973888446,
+      "stopVsMedianWeek": 0.4407404432313082,
+      "beta": 0.6490195916133066,
+      "r": 0.42276282385067854,
+      "rSquaredPct": 17.872840523019985,
+      "byWindow": {
+        "180": {
+          "longPositive": "54/64",
+          "longMedianR": 0.054,
+          "shortPositive": "2/64",
+          "shortMedianR": -0.079
+        },
+        "270": {
+          "longPositive": "13/64",
+          "longMedianR": -0.055,
+          "shortPositive": "49/64",
+          "shortMedianR": 0.046
+        },
+        "365": {
+          "longPositive": "1/64",
+          "longMedianR": -0.106,
+          "shortPositive": "64/64",
+          "shortMedianR": 0.087
+        },
+        "540": {
+          "longPositive": "0/64",
+          "longMedianR": -0.078,
+          "shortPositive": "53/64",
+          "shortMedianR": 0.051
+        },
+        "730": {
+          "longPositive": "1/64",
+          "longMedianR": -0.068,
+          "shortPositive": "57/64",
+          "shortMedianR": 0.042
+        }
+      },
+      "windowsTested": 5,
+      "longSignStable": false,
+      "shortSignStable": false,
+      "longMedianSpread": {
+        "min": -0.106,
+        "max": 0.054
+      },
+      "deciding": {
+        "windowDays": 180,
+        "longHitPct": 25.333333333333336,
+        "longExpectancyR": 0.21518346194791751,
+        "shortExpectancyR": -0.48394101003572054,
+        "effectiveN": 5
+      }
+    },
+    {
+      "asset": "GIGGLE",
+      "candles": 291,
+      "price": 37.37,
+      "atrPct": 12.392061464343431,
+      "stage": "mixed",
+      "underwaterPct": 59.624389116035026,
+      "volumeTrendPct": -26.773565349554545,
+      "rangePosition30d": 40.93397745571657,
+      "rsi14": 58.24040144460244,
+      "change7dPct": 12.49247441300421,
+      "change30dPct": 39.02529761904761,
+      "turnoverUsd": 6934904.051577667,
+      "ath": 313.1,
+      "athDate": "2025-10-25",
+      "drawdownFromAthPct": 88.06451612903226,
+      "weeklyRangeMedianPct": 28.324628364805143,
+      "stopPct": 24.784122928686863,
+      "stopVsMedianWeek": 0.8750025811276823,
+      "beta": -0.9571513563368117,
+      "r": -0.13191195587172388,
+      "rSquaredPct": 1.740076410190363,
+      "byWindow": {
+        "180": {
+          "longPositive": "54/64",
+          "longMedianR": 0.052,
+          "shortPositive": "3/64",
+          "shortMedianR": -0.057
+        }
+      },
+      "windowsTested": 1,
+      "longSignStable": false,
+      "shortSignStable": false,
+      "longMedianSpread": {
+        "min": 0.052,
+        "max": 0.052
+      },
+      "deciding": {
+        "windowDays": 180,
+        "longHitPct": 25.333333333333336,
+        "longExpectancyR": 0.4021588639501728,
+        "shortExpectancyR": -0.17382834612290624,
+        "effectiveN": 5
+      }
+    }
+  ]
+}

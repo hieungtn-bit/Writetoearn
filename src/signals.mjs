@@ -42,6 +42,15 @@ export const HORIZONS = [3, 5, 10, 30];
 /** Days in the window that decides the call. */
 export const RECENT_DAYS = 180;
 
+/**
+ * Lookbacks the call is re-tested against, to see whether it survives them.
+ *
+ * Starts at the deciding window and widens. An asset without enough history
+ * simply reports fewer windows rather than being dropped — a young token can
+ * still be scored, it just cannot claim stability it has not lived through.
+ */
+export const AGREEMENT_WINDOWS = [180, 270, 365, 540, 730];
+
 export const BIAS = { LONG: "LONG", SHORT: "SHORT", WAIT: "WAIT" };
 
 const median = (xs) => {
@@ -183,6 +192,38 @@ export function signalFor({ symbol, candles, atrPct, price, turnoverUsd, recentD
   };
   regime.turning = regime.longFlipped || regime.shortFlipped;
 
+  /**
+   * How many independent lookbacks agree with the call.
+   *
+   * `regime.turning` answers this as a yes or no, and that turns out to hide
+   * most of the information. Measured across five windows, two calls on the
+   * same board can both be flagged "turning" while one has four of five
+   * lookbacks behind it and the other has one — the first is a call with a
+   * dissenting window, the second is a call the evidence mostly contradicts.
+   *
+   * The windows are nested rather than disjoint, so they are not independent
+   * samples and this is not a significance test. It is a stability check: a
+   * direction that only pays inside one lookback is a property of that
+   * lookback.
+   */
+  const agreement = side
+    ? (() => {
+      const tested = [];
+      for (const days of AGREEMENT_WINDOWS) {
+        if (candles.length < days + Math.max(...HORIZONS)) continue;
+        const g = summarise(grid(candles.slice(-days), atrPct, { direction: side }));
+        if (g) tested.push({ days, medianExpectancyR: g.medianExpectancyR });
+      }
+      const agree = tested.filter((t) => t.medianExpectancyR > 0).length;
+      return {
+        windows: tested.length,
+        agreeing: agree,
+        sharePct: tested.length ? (agree / tested.length) * 100 : null,
+        detail: tested,
+      };
+    })()
+    : null;
+
   const chosen = side ? now[side] : null;
   const best = chosen?.best ?? null;
 
@@ -200,6 +241,7 @@ export function signalFor({ symbol, candles, atrPct, price, turnoverUsd, recentD
     recent: now,
     history,
     regime,
+    agreement,
     plan: best && {
       direction: best.direction,
       horizonDays: best.horizonDays,
