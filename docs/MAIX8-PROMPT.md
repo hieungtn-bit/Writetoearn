@@ -398,6 +398,45 @@ simulations? Does the formatter round inside the gate's tolerance?
 
 Run it before a publishing session, not after a mystery.
 
+## 6c. The daily signal board
+
+```bash
+npm run scan       # scan the universe, write site/signals.json, print the board
+npm run site       # rebuild the static site, which now includes /signals/
+```
+
+`scripts/scan-daily.mjs` is the only step that touches the market; the build
+stays offline, so `site/signals.json` is committed the same way
+`site/lesson-data.json` is. It publishes nothing — it reports, a human decides.
+
+Cron, if it should run itself (report only, never auto-publish):
+
+```
+0 1 * * * cd /home/user/Writetoearn && /opt/node22/bin/node scripts/scan-daily.mjs >> scan-daily.log 2>&1
+```
+
+### The engine — `src/signals.mjs`
+
+Rebuilt after a trader pointed out it could only say one thing. Three faults
+produced that, and each is a rule now:
+
+1. **Both directions, always.** The old grid bought and held to a target above
+   entry, so on a falling asset expectancy was negative by construction and WAIT
+   was the only option left. Long was positive in 2 of 96 cells on ICP while
+   short was positive in 89. A short's stop sits *above* entry — check the high
+   for the stop and the low for the target, or the backtest reports a fortune.
+2. **The recent window decides.** Run on 180 days instead of 1000, every sign
+   flips: ICP long 0% → 88% of cells positive, ICP short 94% → 0%. The long
+   window is kept only to detect the disagreement, and a sign flip is reported
+   as a **regime turn** rather than averaged away.
+3. **WAIT is a conclusion, not a default.** Reachable only when both directions
+   lose.
+
+Also enforced: stops price cannot reach are discarded (a stop below zero is
+never hit, which made every such cell look profitable), unresolved positions
+close at the market rather than counting as flat, and the call is the **median**
+cell across the grid, never the best one.
+
 ## 7. Publishing
 
 ```

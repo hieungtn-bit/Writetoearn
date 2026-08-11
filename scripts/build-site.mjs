@@ -33,6 +33,14 @@ for (const article of manifest.articles) {
 // Worked examples come from site/lesson-data.json, captured by
 // scripts/refresh-lessons.mjs. The build stays offline on purpose: a deploy
 // must not fail because an exchange is unreachable from the build region.
+// The signal board, when a scan has been committed. Optional: a clean checkout
+// that has never run scripts/scan-daily.mjs still builds, and the build never
+// reaches for the market to fill the gap.
+const signalsPath = path.join(root, "site", "signals.json");
+const signals = fs.existsSync(signalsPath)
+  ? JSON.parse(fs.readFileSync(signalsPath, "utf8"))
+  : null;
+
 const dataPath = path.join(root, "site", "lesson-data.json");
 if (!fs.existsSync(dataPath)) {
   console.error(`Missing ${dataPath}. Run: node scripts/refresh-lessons.mjs`);
@@ -49,7 +57,7 @@ const lessons = LESSONS.map((lesson) => {
   return { ...lesson, example, measuredAt: lessonData.measuredAt };
 });
 
-const files = buildSite(manifest, drafts, lessons);
+const files = buildSite(manifest, drafts, lessons, signals);
 
 fs.rmSync(out, { recursive: true, force: true });
 for (const f of files) {

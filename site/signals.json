@@ -1,0 +1,4073 @@
+{
+  "scannedAt": "2026-08-11T08:31:53.131Z",
+  "method": {
+    "engine": "src/signals.mjs",
+    "note": "Both directions scored on equal terms; the recent window decides and the long window is kept only to detect a regime turn. WAIT is only reachable when both directions lose.",
+    "walk": "Bar by bar. A bar reaching both levels is charged to the stop. Unresolved positions close at the market, not at zero.",
+    "unavailable": "Binance futures is geo-blocked from this host, so nothing here uses funding, open interest or liquidation data.",
+    "horizonsDays": [
+      3,
+      5,
+      10,
+      30
+    ]
+  },
+  "tally": {
+    "total": 30,
+    "LONG": 8,
+    "SHORT": 19,
+    "WAIT": 3,
+    "turning": 13,
+    "untradeable": 16
+  },
+  "failed": [],
+  "signals": [
+    {
+      "symbol": "UNIUSDT",
+      "price": 3.942,
+      "atrPct": 5.590488157101655,
+      "turnoverUsd": 2647409.25262,
+      "tradeable": true,
+      "bias": "LONG",
+      "side": "long",
+      "reason": "long pays in 63 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 63,
+          "positiveSharePct": 98.4375,
+          "medianExpectancyR": 0.08760108217896012,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 8.385732235652483,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 25.15719670695745,
+            "n": 150,
+            "hitPct": 38.666666666666664,
+            "stoppedPct": 53.333333333333336,
+            "unresolvedPct": 8,
+            "expectancyR": 0.7013521791384889,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 2,
+          "positiveSharePct": 3.125,
+          "medianExpectancyR": -0.059339848451071306,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 5.590488157101655,
+            "rr": 1.5000000000000002,
+            "horizonDays": 3,
+            "targetPct": 8.385732235652483,
+            "n": 177,
+            "hitPct": 18.07909604519774,
+            "stoppedPct": 37.28813559322034,
+            "unresolvedPct": 44.632768361581924,
+            "expectancyR": 0.006042336925145919,
+            "effectiveN": 59
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 46,
+          "positiveSharePct": 71.875,
+          "medianExpectancyR": 0.011495790387095728,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 11.18097631420331,
+            "rr": 3.0000000000000004,
+            "horizonDays": 30,
+            "targetPct": 33.54292894260993,
+            "n": 970,
+            "hitPct": 22.474226804123713,
+            "stoppedPct": 62.88659793814433,
+            "unresolvedPct": 14.63917525773196,
+            "expectancyR": 0.1598148567305085,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 41,
+          "positiveSharePct": 64.0625,
+          "medianExpectancyR": 0.006410009955233428,
+          "best": {
+            "direction": "short",
+            "stopAtr": 2,
+            "stopPct": 11.18097631420331,
+            "rr": 3.0000000000000004,
+            "horizonDays": 30,
+            "targetPct": 33.54292894260993,
+            "n": 970,
+            "hitPct": 18.04123711340206,
+            "stoppedPct": 64.02061855670102,
+            "unresolvedPct": 17.938144329896907,
+            "expectancyR": 0.11992357185340341,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": true,
+        "recentLongR": 0.08760108217896012,
+        "historyLongR": 0.011495790387095728,
+        "recentShortR": -0.059339848451071306,
+        "historyShortR": 0.006410009955233428,
+        "turning": true
+      },
+      "plan": {
+        "direction": "long",
+        "horizonDays": 30,
+        "stopAtr": 1.5,
+        "stopPct": 8.385732235652483,
+        "targetPct": 25.15719670695745,
+        "rr": 3,
+        "hitPct": 38.666666666666664,
+        "stoppedPct": 53.333333333333336,
+        "unresolvedPct": 8,
+        "expectancyR": 0.7013521791384889,
+        "effectiveN": 5,
+        "entry": 3.942,
+        "stop": 3.611434435270579,
+        "target": 4.933696694188263,
+        "positionUsdPer1000": 119.25017063488329,
+        "maxLeverage": 11.92501706348833
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": true
+      },
+      "asset": "UNI",
+      "context": {
+        "rsi14": 53.4426945898722,
+        "rangePosition30d": 45.493562231759675,
+        "change7dPct": 2.2833419823559957,
+        "change30dPct": 9.713331477873648,
+        "volumeZScoreCompleted": -1.0992234462081527,
+        "underwaterPct": 45.981626458190114,
+        "volumeTrendPct": -60.56791995220203,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "NEARUSDT",
+      "price": 1.602,
+      "atrPct": 5.014921863700583,
+      "turnoverUsd": 4894243.8139,
+      "tradeable": true,
+      "bias": "LONG",
+      "side": "long",
+      "reason": "long pays in 64 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.15600410466296738,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 15.04476559110175,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 45.13429677330525,
+            "n": 150,
+            "hitPct": 24,
+            "stoppedPct": 32,
+            "unresolvedPct": 44,
+            "expectancyR": 0.6810341079874488,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.13866623261559752,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 5.014921863700583,
+            "rr": 1,
+            "horizonDays": 3,
+            "targetPct": 5.014921863700583,
+            "n": 177,
+            "hitPct": 36.72316384180791,
+            "stoppedPct": 45.19774011299435,
+            "unresolvedPct": 18.07909604519774,
+            "expectancyR": -0.06268163072227714,
+            "effectiveN": 59
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 48,
+          "positiveSharePct": 75,
+          "medianExpectancyR": 0.014073982955531816,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 15.04476559110175,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 45.13429677330525,
+            "n": 970,
+            "hitPct": 18.556701030927837,
+            "stoppedPct": 60.41237113402062,
+            "unresolvedPct": 21.030927835051546,
+            "expectancyR": 0.09323566939064337,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 24,
+          "positiveSharePct": 37.5,
+          "medianExpectancyR": -0.010707025466963999,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1.5,
+            "stopPct": 7.522382795550875,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 22.567148386652626,
+            "n": 970,
+            "hitPct": 24.84536082474227,
+            "stoppedPct": 72.68041237113401,
+            "unresolvedPct": 2.4742268041237114,
+            "expectancyR": 0.04497942276731601,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": 0.15600410466296738,
+        "historyLongR": 0.014073982955531816,
+        "recentShortR": -0.13866623261559752,
+        "historyShortR": -0.010707025466963999,
+        "turning": false
+      },
+      "plan": {
+        "direction": "long",
+        "horizonDays": 30,
+        "stopAtr": 3,
+        "stopPct": 15.04476559110175,
+        "targetPct": 45.13429677330525,
+        "rr": 3,
+        "hitPct": 24,
+        "stoppedPct": 32,
+        "unresolvedPct": 44,
+        "expectancyR": 0.6810341079874488,
+        "effectiveN": 5,
+        "entry": 1.602,
+        "stop": 1.36098285523055,
+        "target": 2.3250514343083504,
+        "positionUsdPer1000": 66.46830048262444,
+        "maxLeverage": 6.646830048262443
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": true
+      },
+      "asset": "NEAR",
+      "context": {
+        "rsi14": 35.538262902905856,
+        "rangePosition30d": 5.772811918063339,
+        "change7dPct": -7.452339688041594,
+        "change30dPct": -15.193223928004231,
+        "volumeZScoreCompleted": 0.04189578499709962,
+        "underwaterPct": 100,
+        "volumeTrendPct": -41.76221570858671,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "ETHUSDT",
+      "price": 1876.98,
+      "atrPct": 2.818878541156833,
+      "turnoverUsd": 97402581.463776,
+      "tradeable": true,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 38 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 35,
+          "positiveSharePct": 54.6875,
+          "medianExpectancyR": 0.004522570513440504,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 4.228317811735249,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 12.684953435205749,
+            "n": 150,
+            "hitPct": 25.333333333333336,
+            "stoppedPct": 67.33333333333333,
+            "unresolvedPct": 7.333333333333333,
+            "expectancyR": 0.173297461237124,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 38,
+          "positiveSharePct": 59.375,
+          "medianExpectancyR": 0.02328594898683087,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 2.818878541156833,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 8.456635623470499,
+            "n": 150,
+            "hitPct": 34.66666666666667,
+            "stoppedPct": 65.33333333333333,
+            "unresolvedPct": 0,
+            "expectancyR": 0.38666666666666666,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 53,
+          "positiveSharePct": 82.8125,
+          "medianExpectancyR": 0.021803749580759344,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 4.228317811735249,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 8.456635623470499,
+            "n": 970,
+            "hitPct": 36.70103092783505,
+            "stoppedPct": 63.298969072164944,
+            "unresolvedPct": 0,
+            "expectancyR": 0.10103092783505155,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 28,
+          "positiveSharePct": 43.75,
+          "medianExpectancyR": -0.002748805861075121,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 8.456635623470499,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 25.369906870411498,
+            "n": 970,
+            "hitPct": 16.288659793814432,
+            "stoppedPct": 61.134020618556704,
+            "unresolvedPct": 22.577319587628867,
+            "expectancyR": 0.09480144080626746,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": true,
+        "recentLongR": 0.004522570513440504,
+        "historyLongR": 0.021803749580759344,
+        "recentShortR": 0.02328594898683087,
+        "historyShortR": -0.002748805861075121,
+        "turning": true
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 1,
+        "stopPct": 2.818878541156833,
+        "targetPct": 8.456635623470499,
+        "rr": 3,
+        "hitPct": 34.66666666666667,
+        "stoppedPct": 65.33333333333333,
+        "unresolvedPct": 0,
+        "expectancyR": 0.38666666666666666,
+        "effectiveN": 5,
+        "entry": 1876.98,
+        "stop": 1929.8897864418057,
+        "target": 1718.2506406745833,
+        "positionUsdPer1000": 354.75100661471294,
+        "maxLeverage": 35.475100661471295
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": false
+      },
+      "asset": "ETH",
+      "context": {
+        "rsi14": 50.29750712123408,
+        "rangePosition30d": 54.87361495844875,
+        "change7dPct": 0.38668271159245987,
+        "change30dPct": 3.884215187071068,
+        "volumeZScoreCompleted": 0.022029929437673287,
+        "underwaterPct": 67.22827545996137,
+        "volumeTrendPct": -46.11444053940697,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "price": 0.07019,
+      "atrPct": 2.9660313830105713,
+      "turnoverUsd": 6047087.84024,
+      "tradeable": true,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 60 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 7,
+          "positiveSharePct": 10.9375,
+          "medianExpectancyR": -0.08314909774944693,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1,
+            "stopPct": 2.9660313830105713,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 8.898094149031714,
+            "n": 150,
+            "hitPct": 30,
+            "stoppedPct": 70,
+            "unresolvedPct": 0,
+            "expectancyR": 0.2,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 60,
+          "positiveSharePct": 93.75,
+          "medianExpectancyR": 0.05714534563391374,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 8.898094149031714,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 26.69428244709514,
+            "n": 150,
+            "hitPct": 12,
+            "stoppedPct": 44.666666666666664,
+            "unresolvedPct": 43.333333333333336,
+            "expectancyR": 0.38610653757580793,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 11,
+          "positiveSharePct": 17.1875,
+          "medianExpectancyR": -0.047446359212533644,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 5.932062766021143,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 17.796188298063427,
+            "n": 970,
+            "hitPct": 26.701030927835053,
+            "stoppedPct": 70.51546391752578,
+            "unresolvedPct": 2.7835051546391756,
+            "expectancyR": 0.11662218789219832,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 59,
+          "positiveSharePct": 92.1875,
+          "medianExpectancyR": 0.059583870065526984,
+          "best": {
+            "direction": "short",
+            "stopAtr": 2,
+            "stopPct": 5.932062766021143,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 17.796188298063427,
+            "n": 970,
+            "hitPct": 28.969072164948457,
+            "stoppedPct": 67.93814432989691,
+            "unresolvedPct": 3.0927835051546393,
+            "expectancyR": 0.2288081399578925,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.08314909774944693,
+        "historyLongR": -0.047446359212533644,
+        "recentShortR": 0.05714534563391374,
+        "historyShortR": 0.059583870065526984,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 3,
+        "stopPct": 8.898094149031714,
+        "targetPct": 26.69428244709514,
+        "rr": 3,
+        "hitPct": 12,
+        "stoppedPct": 44.666666666666664,
+        "unresolvedPct": 43.333333333333336,
+        "expectancyR": 0.38610653757580793,
+        "effectiveN": 5,
+        "entry": 0.07019,
+        "stop": 0.07643557228320536,
+        "target": 0.05145328315038392,
+        "positionUsdPer1000": 112.38361645216122,
+        "maxLeverage": 11.238361645216122
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": true
+      },
+      "asset": "DOGE",
+      "context": {
+        "rsi14": 45.39744922929096,
+        "rangePosition30d": 32.77202072538864,
+        "change7dPct": 0.17125731411446982,
+        "change30dPct": -3.4790979097909847,
+        "volumeZScoreCompleted": -0.9423713363830983,
+        "underwaterPct": 67.55558147087523,
+        "volumeTrendPct": -53.565813159243405,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "SOLUSDT",
+      "price": 75.78,
+      "atrPct": 3.0008568025601816,
+      "turnoverUsd": 23669189.11453,
+      "tradeable": true,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 45 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 5,
+          "positiveSharePct": 7.8125,
+          "medianExpectancyR": -0.05801572461837105,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 6.001713605120363,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 12.003427210240726,
+            "n": 150,
+            "hitPct": 34.66666666666667,
+            "stoppedPct": 62,
+            "unresolvedPct": 3.3333333333333335,
+            "expectancyR": 0.087931194651418,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 45,
+          "positiveSharePct": 70.3125,
+          "medianExpectancyR": 0.026611481423246767,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 3.0008568025601816,
+            "rr": 2.9999999999999996,
+            "horizonDays": 30,
+            "targetPct": 9.002570407680544,
+            "n": 150,
+            "hitPct": 32.666666666666664,
+            "stoppedPct": 66,
+            "unresolvedPct": 1.3333333333333335,
+            "expectancyR": 0.32560697997591476,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 22,
+          "positiveSharePct": 34.375,
+          "medianExpectancyR": -0.010004018683658356,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 6.001713605120363,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 12.003427210240726,
+            "n": 970,
+            "hitPct": 36.597938144329895,
+            "stoppedPct": 62.88659793814433,
+            "unresolvedPct": 0.5154639175257731,
+            "expectancyR": 0.10535018473991001,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 30,
+          "positiveSharePct": 46.875,
+          "medianExpectancyR": -0.003050076556360754,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 3.0008568025601816,
+            "rr": 2.9999999999999996,
+            "horizonDays": 30,
+            "targetPct": 9.002570407680544,
+            "n": 970,
+            "hitPct": 26.701030927835053,
+            "stoppedPct": 73.09278350515463,
+            "unresolvedPct": 0.2061855670103093,
+            "expectancyR": 0.07097015154266714,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": true,
+        "recentLongR": -0.05801572461837105,
+        "historyLongR": -0.010004018683658356,
+        "recentShortR": 0.026611481423246767,
+        "historyShortR": -0.003050076556360754,
+        "turning": true
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 1,
+        "stopPct": 3.0008568025601816,
+        "targetPct": 9.002570407680544,
+        "rr": 2.9999999999999996,
+        "hitPct": 32.666666666666664,
+        "stoppedPct": 66,
+        "unresolvedPct": 1.3333333333333335,
+        "expectancyR": 0.32560697997591476,
+        "effectiveN": 5,
+        "entry": 75.78,
+        "stop": 78.05404928498011,
+        "target": 68.95785214505969,
+        "positionUsdPer1000": 333.23816023038813,
+        "maxLeverage": 33.323816023038816
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": false
+      },
+      "asset": "SOL",
+      "context": {
+        "rsi14": 53.15910863693921,
+        "rangePosition30d": 61.4657210401891,
+        "change7dPct": 2.7525423728813574,
+        "change30dPct": -1.4820592823712957,
+        "volumeZScoreCompleted": -0.10871156889922579,
+        "underwaterPct": 40.9863185483751,
+        "volumeTrendPct": -35.51238150258268,
+        "stage": "1 quiet"
+      }
+    },
+    {
+      "symbol": "SUIUSDT",
+      "price": 0.6885,
+      "atrPct": 3.4903639227704906,
+      "turnoverUsd": 2472026.27962,
+      "tradeable": true,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 51 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 15,
+          "positiveSharePct": 23.4375,
+          "medianExpectancyR": -0.054269347113068425,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 10.47109176831147,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 31.413275304934412,
+            "n": 150,
+            "hitPct": 18.666666666666668,
+            "stoppedPct": 50,
+            "unresolvedPct": 31.333333333333336,
+            "expectancyR": 0.14223834350995415,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 51,
+          "positiveSharePct": 79.6875,
+          "medianExpectancyR": 0.053934701411608874,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 3.4903639227704906,
+            "rr": 2.9999999999999996,
+            "horizonDays": 10,
+            "targetPct": 10.47109176831147,
+            "n": 170,
+            "hitPct": 25.882352941176475,
+            "stoppedPct": 62.94117647058823,
+            "unresolvedPct": 11.176470588235295,
+            "expectancyR": 0.24099997648108928,
+            "effectiveN": 17
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.12064688706780441,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 10.47109176831147,
+            "rr": 3,
+            "horizonDays": 3,
+            "targetPct": 31.413275304934412,
+            "n": 997,
+            "hitPct": 1.7051153460381143,
+            "stoppedPct": 24.473420260782348,
+            "unresolvedPct": 73.82146439317954,
+            "expectancyR": -0.025350340352278646,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 60,
+          "positiveSharePct": 93.75,
+          "medianExpectancyR": 0.08534069534156791,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 3.4903639227704906,
+            "rr": 2.9999999999999996,
+            "horizonDays": 10,
+            "targetPct": 10.47109176831147,
+            "n": 990,
+            "hitPct": 27.979797979797983,
+            "stoppedPct": 69.4949494949495,
+            "unresolvedPct": 2.525252525252525,
+            "expectancyR": 0.16551870979140718,
+            "effectiveN": 99
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.054269347113068425,
+        "historyLongR": -0.12064688706780441,
+        "recentShortR": 0.053934701411608874,
+        "historyShortR": 0.08534069534156791,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 10,
+        "stopAtr": 1,
+        "stopPct": 3.4903639227704906,
+        "targetPct": 10.47109176831147,
+        "rr": 2.9999999999999996,
+        "hitPct": 25.882352941176475,
+        "stoppedPct": 62.94117647058823,
+        "unresolvedPct": 11.176470588235295,
+        "expectancyR": 0.24099997648108928,
+        "effectiveN": 17,
+        "entry": 0.6885,
+        "stop": 0.7125311556082748,
+        "target": 0.6164065331751756,
+        "positionUsdPer1000": 286.50307593319553,
+        "maxLeverage": 28.65030759331955
+      },
+      "confidence": {
+        "effectiveN": 17,
+        "thin": false,
+        "agreesWithHistory": true
+      },
+      "asset": "SUI",
+      "context": {
+        "rsi14": 44.602186543837014,
+        "rangePosition30d": 21.869639794168084,
+        "change7dPct": -0.6636848939547032,
+        "change30dPct": -6.453804347826085,
+        "volumeZScoreCompleted": -0.13696544486967133,
+        "underwaterPct": 75.24617275775913,
+        "volumeTrendPct": -35.66460865105549,
+        "stage": "1 quiet"
+      }
+    },
+    {
+      "symbol": "XRPUSDT",
+      "price": 1.0033,
+      "atrPct": 2.9592929020976837,
+      "turnoverUsd": 19951159.95233,
+      "tradeable": true,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 52 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 10,
+          "positiveSharePct": 15.625,
+          "medianExpectancyR": -0.08785594959326565,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 4.438939353146526,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 8.877878706293052,
+            "n": 150,
+            "hitPct": 42,
+            "stoppedPct": 57.333333333333336,
+            "unresolvedPct": 0.6666666666666667,
+            "expectancyR": 0.26284334807930176,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 52,
+          "positiveSharePct": 81.25,
+          "medianExpectancyR": 0.05597798493234199,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 2.9592929020976837,
+            "rr": 3,
+            "horizonDays": 10,
+            "targetPct": 8.877878706293052,
+            "n": 170,
+            "hitPct": 20,
+            "stoppedPct": 61.76470588235294,
+            "unresolvedPct": 18.235294117647058,
+            "expectancyR": 0.19412683957911994,
+            "effectiveN": 17
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 1,
+          "positiveSharePct": 1.5625,
+          "medianExpectancyR": -0.07343766579194125,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 8.877878706293052,
+            "rr": 3,
+            "horizonDays": 3,
+            "targetPct": 26.633636118879153,
+            "n": 997,
+            "hitPct": 2.507522567703109,
+            "stoppedPct": 15.045135406218657,
+            "unresolvedPct": 82.44734202607823,
+            "expectancyR": 0.007990073447278844,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 60,
+          "positiveSharePct": 93.75,
+          "medianExpectancyR": 0.05785759797776524,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 2.9592929020976837,
+            "rr": 3,
+            "horizonDays": 10,
+            "targetPct": 8.877878706293052,
+            "n": 990,
+            "hitPct": 26.060606060606062,
+            "stoppedPct": 67.17171717171718,
+            "unresolvedPct": 6.767676767676768,
+            "expectancyR": 0.17840969382990818,
+            "effectiveN": 99
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.08785594959326565,
+        "historyLongR": -0.07343766579194125,
+        "recentShortR": 0.05597798493234199,
+        "historyShortR": 0.05785759797776524,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 10,
+        "stopAtr": 1,
+        "stopPct": 2.9592929020976837,
+        "targetPct": 8.877878706293052,
+        "rr": 3,
+        "hitPct": 20,
+        "stoppedPct": 61.76470588235294,
+        "unresolvedPct": 18.235294117647058,
+        "expectancyR": 0.19412683957911994,
+        "effectiveN": 17,
+        "entry": 1.0033,
+        "stop": 1.0329905856867463,
+        "target": 0.9142282429397619,
+        "positionUsdPer1000": 337.91856131954825,
+        "maxLeverage": 33.79185613195482
+      },
+      "confidence": {
+        "effectiveN": 17,
+        "thin": false,
+        "agreesWithHistory": true
+      },
+      "asset": "XRP",
+      "context": {
+        "rsi14": 33.80487557429562,
+        "rangePosition30d": 0.7384615384615933,
+        "change7dPct": -6.57416891703138,
+        "change30dPct": -7.598084361760915,
+        "volumeZScoreCompleted": 0.37754261212617535,
+        "underwaterPct": 100,
+        "volumeTrendPct": -33.98999583611905,
+        "stage": "1 quiet"
+      }
+    },
+    {
+      "symbol": "WLDUSDT",
+      "price": 0.3308,
+      "atrPct": 7.265070193673939,
+      "turnoverUsd": 4173322.25292,
+      "tradeable": true,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 50 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 26,
+          "positiveSharePct": 40.625,
+          "medianExpectancyR": -0.019426253637944698,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 21.795210581021816,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 65.38563174306545,
+            "n": 150,
+            "hitPct": 22.666666666666664,
+            "stoppedPct": 50,
+            "unresolvedPct": 27.333333333333332,
+            "expectancyR": 0.14125513101236478,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 50,
+          "positiveSharePct": 78.125,
+          "medianExpectancyR": 0.046236333348720356,
+          "best": {
+            "direction": "short",
+            "stopAtr": 2,
+            "stopPct": 14.530140387347878,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 43.59042116204363,
+            "n": 150,
+            "hitPct": 2,
+            "stoppedPct": 54,
+            "unresolvedPct": 44,
+            "expectancyR": 0.190658203566481,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 3,
+          "positiveSharePct": 4.6875,
+          "medianExpectancyR": -0.06454162719059198,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 21.795210581021816,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 65.38563174306545,
+            "n": 970,
+            "hitPct": 20.103092783505154,
+            "stoppedPct": 57.42268041237113,
+            "unresolvedPct": 22.474226804123713,
+            "expectancyR": 0.07039632125481873,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.08155511402704842,
+          "best": {
+            "direction": "short",
+            "stopAtr": 2,
+            "stopPct": 14.530140387347878,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 43.59042116204363,
+            "n": 970,
+            "hitPct": 13.711340206185568,
+            "stoppedPct": 59.175257731958766,
+            "unresolvedPct": 27.11340206185567,
+            "expectancyR": 0.23494460076122003,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.019426253637944698,
+        "historyLongR": -0.06454162719059198,
+        "recentShortR": 0.046236333348720356,
+        "historyShortR": 0.08155511402704842,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 2,
+        "stopPct": 14.530140387347878,
+        "targetPct": 43.59042116204363,
+        "rr": 3,
+        "hitPct": 2,
+        "stoppedPct": 54,
+        "unresolvedPct": 44,
+        "expectancyR": 0.190658203566481,
+        "effectiveN": 5,
+        "entry": 0.3308,
+        "stop": 0.37886570440134676,
+        "target": 0.18660288679595965,
+        "positionUsdPer1000": 68.82245961441296,
+        "maxLeverage": 6.882245961441296
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": true
+      },
+      "asset": "WLD",
+      "context": {
+        "rsi14": 46.68829526472515,
+        "rangePosition30d": 26.742532005689878,
+        "change7dPct": 3.5043804755944894,
+        "change30dPct": -20.9557945041816,
+        "volumeZScoreCompleted": 1.5957066929603492,
+        "underwaterPct": 68.19289876850704,
+        "volumeTrendPct": -6.5673653452391605,
+        "stage": "1 quiet"
+      }
+    },
+    {
+      "symbol": "ENAUSDT",
+      "price": 0.09,
+      "atrPct": 5.899369519313501,
+      "turnoverUsd": 4637004.114517,
+      "tradeable": true,
+      "bias": "LONG",
+      "side": "long",
+      "reason": "long pays in 37 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 37,
+          "positiveSharePct": 57.8125,
+          "medianExpectancyR": 0.00493793927780984,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 8.84905427897025,
+            "rr": 1.5,
+            "horizonDays": 30,
+            "targetPct": 13.273581418455375,
+            "n": 150,
+            "hitPct": 47.333333333333336,
+            "stoppedPct": 52.666666666666664,
+            "unresolvedPct": 0,
+            "expectancyR": 0.18333333333333332,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 10,
+          "positiveSharePct": 15.625,
+          "medianExpectancyR": -0.024804046662553595,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 5.899369519313501,
+            "rr": 2.9999999999999996,
+            "horizonDays": 5,
+            "targetPct": 17.6981085579405,
+            "n": 175,
+            "hitPct": 5.142857142857142,
+            "stoppedPct": 58.285714285714285,
+            "unresolvedPct": 36.57142857142857,
+            "expectancyR": 0.039543738218225793,
+            "effectiveN": 35
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.05105719856805045,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 17.6981085579405,
+            "rr": 2,
+            "horizonDays": 3,
+            "targetPct": 35.396217115881,
+            "n": 859,
+            "hitPct": 2.4447031431897557,
+            "stoppedPct": 10.128055878928988,
+            "unresolvedPct": 87.42724097788125,
+            "expectancyR": -0.017233986590688977,
+            "effectiveN": 286.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 61,
+          "positiveSharePct": 95.3125,
+          "medianExpectancyR": 0.04816374106436486,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 5.899369519313501,
+            "rr": 2.9999999999999996,
+            "horizonDays": 30,
+            "targetPct": 17.6981085579405,
+            "n": 832,
+            "hitPct": 28.60576923076923,
+            "stoppedPct": 71.39423076923077,
+            "unresolvedPct": 0,
+            "expectancyR": 0.1442307692307691,
+            "effectiveN": 27.733333333333334
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": true,
+        "shortFlipped": true,
+        "recentLongR": 0.00493793927780984,
+        "historyLongR": -0.05105719856805045,
+        "recentShortR": -0.024804046662553595,
+        "historyShortR": 0.04816374106436486,
+        "turning": true
+      },
+      "plan": {
+        "direction": "long",
+        "horizonDays": 30,
+        "stopAtr": 1.5,
+        "stopPct": 8.84905427897025,
+        "targetPct": 13.273581418455375,
+        "rr": 1.5,
+        "hitPct": 47.333333333333336,
+        "stoppedPct": 52.666666666666664,
+        "unresolvedPct": 0,
+        "expectancyR": 0.18333333333333332,
+        "effectiveN": 5,
+        "entry": 0.09,
+        "stop": 0.08203585114892678,
+        "target": 0.10194622327660983,
+        "positionUsdPer1000": 113.00642627726862,
+        "maxLeverage": 11.300642627726862
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": false
+      },
+      "asset": "ENA",
+      "context": {
+        "rsi14": 55.20701088309574,
+        "rangePosition30d": 61.32075471698113,
+        "change7dPct": -2.597402597402597,
+        "change30dPct": 12.640801001251562,
+        "volumeZScoreCompleted": -0.5247822988357291,
+        "underwaterPct": 21.683187526547716,
+        "volumeTrendPct": -41.41352998387666,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "ADAUSDT",
+      "price": 0.1888,
+      "atrPct": 5.122095676396568,
+      "turnoverUsd": 5277444.37323,
+      "tradeable": true,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 52 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 13,
+          "positiveSharePct": 20.3125,
+          "medianExpectancyR": -0.029579514377215295,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1,
+            "stopPct": 5.122095676396568,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 10.244191352793136,
+            "n": 150,
+            "hitPct": 36,
+            "stoppedPct": 62,
+            "unresolvedPct": 2,
+            "expectancyR": 0.10338275748257562,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 52,
+          "positiveSharePct": 81.25,
+          "medianExpectancyR": 0.032911926362299386,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 15.366287029189703,
+            "rr": 2.9999999999999996,
+            "horizonDays": 30,
+            "targetPct": 46.098861087569105,
+            "n": 150,
+            "hitPct": 1.3333333333333335,
+            "stoppedPct": 38,
+            "unresolvedPct": 60.66666666666667,
+            "expectancyR": 0.17676264745460504,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 2,
+          "positiveSharePct": 3.125,
+          "medianExpectancyR": -0.07254312286493514,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 15.366287029189703,
+            "rr": 2.9999999999999996,
+            "horizonDays": 3,
+            "targetPct": 46.098861087569105,
+            "n": 997,
+            "hitPct": 0.6018054162487462,
+            "stoppedPct": 5.817452357071214,
+            "unresolvedPct": 93.58074222668003,
+            "expectancyR": 0.0011320288088187173,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.06906450615590991,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1.5,
+            "stopPct": 7.6831435145948515,
+            "rr": 2.9999999999999996,
+            "horizonDays": 30,
+            "targetPct": 23.049430543784553,
+            "n": 970,
+            "hitPct": 27.010309278350515,
+            "stoppedPct": 66.18556701030927,
+            "unresolvedPct": 6.804123711340206,
+            "expectancyR": 0.21811850017894374,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.029579514377215295,
+        "historyLongR": -0.07254312286493514,
+        "recentShortR": 0.032911926362299386,
+        "historyShortR": 0.06906450615590991,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 3,
+        "stopPct": 15.366287029189703,
+        "targetPct": 46.098861087569105,
+        "rr": 2.9999999999999996,
+        "hitPct": 1.3333333333333335,
+        "stoppedPct": 38,
+        "unresolvedPct": 60.66666666666667,
+        "expectancyR": 0.17676264745460504,
+        "effectiveN": 5,
+        "entry": 0.1888,
+        "stop": 0.21781154991111015,
+        "target": 0.10176535026666952,
+        "positionUsdPer1000": 65.07752966610647,
+        "maxLeverage": 6.5077529666106475
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": true
+      },
+      "asset": "ADA",
+      "context": {
+        "rsi14": 56.88513262331653,
+        "rangePosition30d": 60.787671232876704,
+        "change7dPct": -2.1761658031088134,
+        "change30dPct": 16.47131400370142,
+        "volumeZScoreCompleted": -0.5627090141582093,
+        "underwaterPct": 37.11205193578194,
+        "volumeTrendPct": -50.11498244498581,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "PUMPUSDT",
+      "price": 0.002787,
+      "atrPct": 7.449108237478669,
+      "turnoverUsd": 8203441.975629,
+      "tradeable": true,
+      "bias": "LONG",
+      "side": "long",
+      "reason": "long pays in 50 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 50,
+          "positiveSharePct": 78.125,
+          "medianExpectancyR": 0.0458172008589758,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 11.173662356218003,
+            "rr": 1,
+            "horizonDays": 5,
+            "targetPct": 11.173662356218003,
+            "n": 175,
+            "hitPct": 38.857142857142854,
+            "stoppedPct": 22.285714285714285,
+            "unresolvedPct": 38.857142857142854,
+            "expectancyR": 0.12364255298253381,
+            "effectiveN": 35
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 6,
+          "positiveSharePct": 9.375,
+          "medianExpectancyR": -0.07891191901955084,
+          "best": {
+            "direction": "short",
+            "stopAtr": 2,
+            "stopPct": 14.898216474957337,
+            "rr": 1,
+            "horizonDays": 30,
+            "targetPct": 14.898216474957337,
+            "n": 150,
+            "hitPct": 53.333333333333336,
+            "stoppedPct": 44,
+            "unresolvedPct": 2.666666666666667,
+            "expectancyR": 0.08997476230996883,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 18,
+          "positiveSharePct": 28.125,
+          "medianExpectancyR": -0.014800393820004035,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1,
+            "stopPct": 7.449108237478669,
+            "rr": 3,
+            "horizonDays": 10,
+            "targetPct": 22.347324712436006,
+            "n": 325,
+            "hitPct": 20.307692307692307,
+            "stoppedPct": 67.07692307692308,
+            "unresolvedPct": 12.615384615384615,
+            "expectancyR": 0.0435828090052818,
+            "effectiveN": 32.5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 44,
+          "positiveSharePct": 68.75,
+          "medianExpectancyR": 0.011799465536035943,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 22.347324712436006,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 67.04197413730802,
+            "n": 305,
+            "hitPct": 5.901639344262295,
+            "stoppedPct": 43.606557377049185,
+            "unresolvedPct": 50.49180327868853,
+            "expectancyR": 0.10710181531564043,
+            "effectiveN": 10.166666666666666
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": true,
+        "shortFlipped": true,
+        "recentLongR": 0.0458172008589758,
+        "historyLongR": -0.014800393820004035,
+        "recentShortR": -0.07891191901955084,
+        "historyShortR": 0.011799465536035943,
+        "turning": true
+      },
+      "plan": {
+        "direction": "long",
+        "horizonDays": 5,
+        "stopAtr": 1.5,
+        "stopPct": 11.173662356218003,
+        "targetPct": 11.173662356218003,
+        "rr": 1,
+        "hitPct": 38.857142857142854,
+        "stoppedPct": 22.285714285714285,
+        "unresolvedPct": 38.857142857142854,
+        "expectancyR": 0.12364255298253381,
+        "effectiveN": 35,
+        "entry": 0.002787,
+        "stop": 0.002475590030132204,
+        "target": 0.0030984099698677953,
+        "positionUsdPer1000": 89.49617127490097,
+        "maxLeverage": 8.949617127490098
+      },
+      "confidence": {
+        "effectiveN": 35,
+        "thin": false,
+        "agreesWithHistory": false
+      },
+      "asset": "PUMP",
+      "context": {
+        "rsi14": 74.73839530698012,
+        "rangePosition30d": 89.90536277602523,
+        "change7dPct": 15.070189925681248,
+        "change30dPct": 90.75975359342915,
+        "volumeZScoreCompleted": 2.0419607034411116,
+        "underwaterPct": 2.3978848915331126,
+        "volumeTrendPct": 44.89632795369677,
+        "stage": "2 expansion"
+      }
+    },
+    {
+      "symbol": "BTCUSDT",
+      "price": 64061.63,
+      "atrPct": 2.06735212476639,
+      "turnoverUsd": 228315994.9807902,
+      "tradeable": true,
+      "bias": "WAIT",
+      "side": null,
+      "reason": "both directions lose over the recent window",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 18,
+          "positiveSharePct": 28.125,
+          "medianExpectancyR": -0.027852167266480085,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 4.13470424953278,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 8.26940849906556,
+            "n": 150,
+            "hitPct": 34,
+            "stoppedPct": 57.99999999999999,
+            "unresolvedPct": 8,
+            "expectancyR": 0.11599238516132154,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 26,
+          "positiveSharePct": 40.625,
+          "medianExpectancyR": -0.010187660848363724,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 2.06735212476639,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 6.20205637429917,
+            "n": 150,
+            "hitPct": 31.333333333333336,
+            "stoppedPct": 68.66666666666667,
+            "unresolvedPct": 0,
+            "expectancyR": 0.25333333333333335,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 59,
+          "positiveSharePct": 92.1875,
+          "medianExpectancyR": 0.03905623417875727,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1,
+            "stopPct": 2.06735212476639,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 6.20205637429917,
+            "n": 970,
+            "hitPct": 28.659793814432987,
+            "stoppedPct": 71.34020618556701,
+            "unresolvedPct": 0,
+            "expectancyR": 0.1463917525773196,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 16,
+          "positiveSharePct": 25,
+          "medianExpectancyR": -0.024252215350464228,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 2.06735212476639,
+            "rr": 3,
+            "horizonDays": 10,
+            "targetPct": 6.20205637429917,
+            "n": 990,
+            "hitPct": 24.242424242424242,
+            "stoppedPct": 71.01010101010101,
+            "unresolvedPct": 4.747474747474747,
+            "expectancyR": 0.06552080516358703,
+            "effectiveN": 99
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": true,
+        "shortFlipped": false,
+        "recentLongR": -0.027852167266480085,
+        "historyLongR": 0.03905623417875727,
+        "recentShortR": -0.010187660848363724,
+        "historyShortR": -0.024252215350464228,
+        "turning": true
+      },
+      "plan": null,
+      "confidence": null,
+      "asset": "BTC",
+      "context": {
+        "rsi14": 48.968623732218525,
+        "rangePosition30d": 43.58958368250576,
+        "change7dPct": -0.07008643109223188,
+        "change30dPct": 0.4415647538413255,
+        "volumeZScoreCompleted": -0.05619161954870795,
+        "underwaterPct": 66.63305742382897,
+        "volumeTrendPct": -43.637560354492,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "BNBUSDT",
+      "price": 604.97,
+      "atrPct": 2.0936103426685775,
+      "turnoverUsd": 23076451.13841,
+      "tradeable": true,
+      "bias": "WAIT",
+      "side": null,
+      "reason": "both directions lose over the recent window",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 31,
+          "positiveSharePct": 48.4375,
+          "medianExpectancyR": -0.0006158696615390623,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 6.280831028005732,
+            "rr": 1.5,
+            "horizonDays": 30,
+            "targetPct": 9.421246542008598,
+            "n": 150,
+            "hitPct": 40,
+            "stoppedPct": 40.666666666666664,
+            "unresolvedPct": 19.333333333333332,
+            "expectancyR": 0.29131204515733494,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 3,
+          "positiveSharePct": 4.6875,
+          "medianExpectancyR": -0.08479249685538585,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 2.0936103426685775,
+            "rr": 1,
+            "horizonDays": 10,
+            "targetPct": 2.0936103426685775,
+            "n": 170,
+            "hitPct": 51.76470588235295,
+            "stoppedPct": 48.23529411764706,
+            "unresolvedPct": 0,
+            "expectancyR": 0.03529411764705882,
+            "effectiveN": 17
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 59,
+          "positiveSharePct": 92.1875,
+          "medianExpectancyR": 0.05642731343416167,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 6.280831028005732,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 18.842493084017196,
+            "n": 970,
+            "hitPct": 23.195876288659793,
+            "stoppedPct": 56.391752577319586,
+            "unresolvedPct": 20.412371134020617,
+            "expectancyR": 0.33636196210967595,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.06758620448258201,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 6.280831028005732,
+            "rr": 2,
+            "horizonDays": 3,
+            "targetPct": 12.561662056011464,
+            "n": 997,
+            "hitPct": 4.212637913741224,
+            "stoppedPct": 16.0481444332999,
+            "unresolvedPct": 79.73921765295887,
+            "expectancyR": -0.028478192855252726,
+            "effectiveN": 332.3333333333333
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": true,
+        "shortFlipped": false,
+        "recentLongR": -0.0006158696615390623,
+        "historyLongR": 0.05642731343416167,
+        "recentShortR": -0.08479249685538585,
+        "historyShortR": -0.06758620448258201,
+        "turning": true
+      },
+      "plan": null,
+      "confidence": null,
+      "asset": "BNB",
+      "context": {
+        "rsi14": 63.978697791330006,
+        "rangePosition30d": 87.5376706257756,
+        "change7dPct": 1.9875922991334969,
+        "change30dPct": 5.411998396961207,
+        "volumeZScoreCompleted": 0.047243068011345146,
+        "underwaterPct": 0,
+        "volumeTrendPct": -20.301108418644926,
+        "stage": "1 quiet"
+      }
+    },
+    {
+      "symbol": "LINKUSDT",
+      "price": 8.479,
+      "atrPct": 3.300987353311495,
+      "turnoverUsd": 7985294.05231,
+      "tradeable": true,
+      "bias": "WAIT",
+      "side": null,
+      "reason": "both directions lose over the recent window",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 32,
+          "positiveSharePct": 50,
+          "medianExpectancyR": -0.0002732467118306338,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 6.60197470662299,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 13.20394941324598,
+            "n": 150,
+            "hitPct": 40.666666666666664,
+            "stoppedPct": 52.666666666666664,
+            "unresolvedPct": 6.666666666666667,
+            "expectancyR": 0.3321153859887465,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 9,
+          "positiveSharePct": 14.0625,
+          "medianExpectancyR": -0.045830282700475275,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 3.300987353311495,
+            "rr": 1,
+            "horizonDays": 10,
+            "targetPct": 3.300987353311495,
+            "n": 170,
+            "hitPct": 51.17647058823529,
+            "stoppedPct": 48.8235294117647,
+            "unresolvedPct": 0,
+            "expectancyR": 0.023529411764705882,
+            "effectiveN": 17
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 7,
+          "positiveSharePct": 10.9375,
+          "medianExpectancyR": -0.039900136753140344,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1,
+            "stopPct": 3.300987353311495,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 9.902962059934485,
+            "n": 970,
+            "hitPct": 26.701030927835053,
+            "stoppedPct": 73.29896907216494,
+            "unresolvedPct": 0,
+            "expectancyR": 0.06804123711340206,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 55,
+          "positiveSharePct": 85.9375,
+          "medianExpectancyR": 0.020315669240135344,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 3.300987353311495,
+            "rr": 3,
+            "horizonDays": 5,
+            "targetPct": 9.902962059934485,
+            "n": 995,
+            "hitPct": 20.7035175879397,
+            "stoppedPct": 64.62311557788945,
+            "unresolvedPct": 14.673366834170853,
+            "expectancyR": 0.09748838326943493,
+            "effectiveN": 199
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": true,
+        "recentLongR": -0.0002732467118306338,
+        "historyLongR": -0.039900136753140344,
+        "recentShortR": -0.045830282700475275,
+        "historyShortR": 0.020315669240135344,
+        "turning": true
+      },
+      "plan": null,
+      "confidence": null,
+      "asset": "LINK",
+      "context": {
+        "rsi14": 56.04388020284823,
+        "rangePosition30d": 61.01694915254229,
+        "change7dPct": 4.049576635169961,
+        "change30dPct": 6.02726022258346,
+        "volumeZScoreCompleted": 0.01953472250944222,
+        "underwaterPct": 27.85180944262311,
+        "volumeTrendPct": -13.488129307240944,
+        "stage": "1 quiet"
+      }
+    },
+    {
+      "symbol": "INJUSDT",
+      "price": 4.487,
+      "atrPct": 5.562247083884374,
+      "turnoverUsd": 1165001.59635,
+      "tradeable": false,
+      "bias": "LONG",
+      "side": "long",
+      "reason": "long pays in 64 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.24192178429267622,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 11.124494167768749,
+            "rr": 3.0000000000000004,
+            "horizonDays": 30,
+            "targetPct": 33.37348250330625,
+            "n": 150,
+            "hitPct": 40,
+            "stoppedPct": 37.333333333333336,
+            "unresolvedPct": 22.666666666666664,
+            "expectancyR": 0.8872450788084111,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.26991470566881726,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 16.686741251653125,
+            "rr": 1.5,
+            "horizonDays": 3,
+            "targetPct": 25.030111877479687,
+            "n": 177,
+            "hitPct": 1.1299435028248588,
+            "stoppedPct": 13.559322033898304,
+            "unresolvedPct": 85.31073446327684,
+            "expectancyR": -0.10466816768148215,
+            "effectiveN": 59
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 33,
+          "positiveSharePct": 51.5625,
+          "medianExpectancyR": 0.0003652314186134733,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 11.124494167768749,
+            "rr": 1,
+            "horizonDays": 30,
+            "targetPct": 11.124494167768749,
+            "n": 970,
+            "hitPct": 54.123711340206185,
+            "stoppedPct": 45.4639175257732,
+            "unresolvedPct": 0.4123711340206186,
+            "expectancyR": 0.08500983776333941,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 6,
+          "positiveSharePct": 9.375,
+          "medianExpectancyR": -0.01630547277355092,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1.5,
+            "stopPct": 8.343370625826562,
+            "rr": 3,
+            "horizonDays": 3,
+            "targetPct": 25.030111877479687,
+            "n": 997,
+            "hitPct": 2.908726178535607,
+            "stoppedPct": 35.8074222668004,
+            "unresolvedPct": 61.28385155466399,
+            "expectancyR": 0.01573384461639584,
+            "effectiveN": 332.3333333333333
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": 0.24192178429267622,
+        "historyLongR": 0.0003652314186134733,
+        "recentShortR": -0.26991470566881726,
+        "historyShortR": -0.01630547277355092,
+        "turning": false
+      },
+      "plan": {
+        "direction": "long",
+        "horizonDays": 30,
+        "stopAtr": 2,
+        "stopPct": 11.124494167768749,
+        "targetPct": 33.37348250330625,
+        "rr": 3.0000000000000004,
+        "hitPct": 40,
+        "stoppedPct": 37.333333333333336,
+        "unresolvedPct": 22.666666666666664,
+        "expectancyR": 0.8872450788084111,
+        "effectiveN": 5,
+        "entry": 4.487,
+        "stop": 3.9878439466922164,
+        "target": 5.984468159923352,
+        "positionUsdPer1000": 89.89172765241972,
+        "maxLeverage": 8.989172765241973
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": true
+      },
+      "asset": "INJ",
+      "context": {
+        "rsi14": 41.32229113480688,
+        "rangePosition30d": 16.901408450704206,
+        "change7dPct": -8.166189111747851,
+        "change30dPct": -7.921198440385801,
+        "volumeZScoreCompleted": -0.6522308911578549,
+        "underwaterPct": 92.1140945429062,
+        "volumeTrendPct": -49.7463552302564,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "JUPUSDT",
+      "price": 0.1801,
+      "atrPct": 4.884021501041139,
+      "turnoverUsd": 413763.98991,
+      "tradeable": false,
+      "bias": "LONG",
+      "side": "long",
+      "reason": "long pays in 64 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.1084200011674981,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 9.768043002082278,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 29.304129006246832,
+            "n": 150,
+            "hitPct": 36.666666666666664,
+            "stoppedPct": 56.00000000000001,
+            "unresolvedPct": 7.333333333333333,
+            "expectancyR": 0.6223781778284603,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.1324323038457807,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 14.652064503123416,
+            "rr": 1,
+            "horizonDays": 3,
+            "targetPct": 14.652064503123416,
+            "n": 177,
+            "hitPct": 5.084745762711865,
+            "stoppedPct": 13.559322033898304,
+            "unresolvedPct": 81.35593220338984,
+            "expectancyR": -0.046010454478761155,
+            "effectiveN": 59
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 23,
+          "positiveSharePct": 35.9375,
+          "medianExpectancyR": -0.007873829884586368,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 9.768043002082278,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 19.536086004164556,
+            "n": 894,
+            "hitPct": 36.80089485458613,
+            "stoppedPct": 62.41610738255034,
+            "unresolvedPct": 0.7829977628635347,
+            "expectancyR": 0.11592916692698778,
+            "effectiveN": 29.8
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 22,
+          "positiveSharePct": 34.375,
+          "medianExpectancyR": -0.012863534675615212,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 4.884021501041139,
+            "rr": 3,
+            "horizonDays": 3,
+            "targetPct": 14.652064503123416,
+            "n": 921,
+            "hitPct": 10.532030401737243,
+            "stoppedPct": 56.134636264929426,
+            "unresolvedPct": 33.33333333333333,
+            "expectancyR": 0.04892509234710773,
+            "effectiveN": 307
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": true,
+        "shortFlipped": false,
+        "recentLongR": 0.1084200011674981,
+        "historyLongR": -0.007873829884586368,
+        "recentShortR": -0.1324323038457807,
+        "historyShortR": -0.012863534675615212,
+        "turning": true
+      },
+      "plan": {
+        "direction": "long",
+        "horizonDays": 30,
+        "stopAtr": 2,
+        "stopPct": 9.768043002082278,
+        "targetPct": 29.304129006246832,
+        "rr": 3,
+        "hitPct": 36.666666666666664,
+        "stoppedPct": 56.00000000000001,
+        "unresolvedPct": 7.333333333333333,
+        "expectancyR": 0.6223781778284603,
+        "effectiveN": 5,
+        "entry": 0.1801,
+        "stop": 0.16250775455324984,
+        "target": 0.23287673634025058,
+        "positionUsdPer1000": 102.3746516868146,
+        "maxLeverage": 10.23746516868146
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": false
+      },
+      "asset": "JUP",
+      "context": {
+        "rsi14": 38.41070534753132,
+        "rangePosition30d": 3.448275862068996,
+        "change7dPct": -4.506892895015896,
+        "change30dPct": -10.575968222442892,
+        "volumeZScoreCompleted": -1.1223779381147152,
+        "underwaterPct": 100,
+        "volumeTrendPct": -52.856904387691884,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "DOTUSDT",
+      "price": 0.808,
+      "atrPct": 3.7339534240752625,
+      "turnoverUsd": 873120.56289,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 64 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.20773131535730138,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 11.201860272225787,
+            "rr": 3,
+            "horizonDays": 3,
+            "targetPct": 33.60558081667736,
+            "n": 177,
+            "hitPct": 1.1299435028248588,
+            "stoppedPct": 5.649717514124294,
+            "unresolvedPct": 93.22033898305084,
+            "expectancyR": -0.07327715941390704,
+            "effectiveN": 59
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.17088912684254526,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 11.201860272225787,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 33.60558081667736,
+            "n": 150,
+            "hitPct": 6,
+            "stoppedPct": 30,
+            "unresolvedPct": 64,
+            "expectancyR": 0.6004972563846974,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.11636533510980776,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 11.201860272225787,
+            "rr": 3,
+            "horizonDays": 3,
+            "targetPct": 33.60558081667736,
+            "n": 997,
+            "hitPct": 0.7021063189568706,
+            "stoppedPct": 13.741223671013039,
+            "unresolvedPct": 85.55667001003009,
+            "expectancyR": -0.042982184264972335,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.102902839338428,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 11.201860272225787,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 33.60558081667736,
+            "n": 970,
+            "hitPct": 14.432989690721648,
+            "stoppedPct": 51.958762886597945,
+            "unresolvedPct": 33.608247422680414,
+            "expectancyR": 0.2759950168024131,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.20773131535730138,
+        "historyLongR": -0.11636533510980776,
+        "recentShortR": 0.17088912684254526,
+        "historyShortR": 0.102902839338428,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 3,
+        "stopPct": 11.201860272225787,
+        "targetPct": 33.60558081667736,
+        "rr": 3,
+        "hitPct": 6,
+        "stoppedPct": 30,
+        "unresolvedPct": 64,
+        "expectancyR": 0.6004972563846974,
+        "effectiveN": 5,
+        "entry": 0.808,
+        "stop": 0.8985110309995844,
+        "target": 0.536466907001247,
+        "positionUsdPer1000": 89.27088677221127,
+        "maxLeverage": 8.927088677221128
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": true
+      },
+      "asset": "DOT",
+      "context": {
+        "rsi14": 46.85636724412661,
+        "rangePosition30d": 49.618320610687064,
+        "change7dPct": -5.717619603267203,
+        "change30dPct": -4.265402843601886,
+        "volumeZScoreCompleted": -0.07154839393280292,
+        "underwaterPct": 66.30643224009738,
+        "volumeTrendPct": -44.56839640696037,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "TIAUSDT",
+      "price": 0.3183,
+      "atrPct": 5.1936583881002205,
+      "turnoverUsd": 554937.248304,
+      "tradeable": false,
+      "bias": "LONG",
+      "side": "long",
+      "reason": "long pays in 63 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 63,
+          "positiveSharePct": 98.4375,
+          "medianExpectancyR": 0.07651054493108579,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 7.79048758215033,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 15.58097516430066,
+            "n": 150,
+            "hitPct": 50.66666666666667,
+            "stoppedPct": 49.333333333333336,
+            "unresolvedPct": 0,
+            "expectancyR": 0.52,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.09364988579766394,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 5.1936583881002205,
+            "rr": 1,
+            "horizonDays": 5,
+            "targetPct": 5.1936583881002205,
+            "n": 175,
+            "hitPct": 44.57142857142857,
+            "stoppedPct": 48,
+            "unresolvedPct": 7.428571428571429,
+            "expectancyR": -0.012608292521288839,
+            "effectiveN": 35
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.13436761703469413,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 15.58097516430066,
+            "rr": 3,
+            "horizonDays": 3,
+            "targetPct": 46.74292549290198,
+            "n": 997,
+            "hitPct": 0.5015045135406219,
+            "stoppedPct": 12.938816449348046,
+            "unresolvedPct": 86.55967903711134,
+            "expectancyR": -0.04337927809863183,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.10456567910757664,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1.5,
+            "stopPct": 7.79048758215033,
+            "rr": 3,
+            "horizonDays": 10,
+            "targetPct": 23.37146274645099,
+            "n": 990,
+            "hitPct": 19.090909090909093,
+            "stoppedPct": 58.18181818181818,
+            "unresolvedPct": 22.727272727272727,
+            "expectancyR": 0.22770241122215293,
+            "effectiveN": 99
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": true,
+        "shortFlipped": true,
+        "recentLongR": 0.07651054493108579,
+        "historyLongR": -0.13436761703469413,
+        "recentShortR": -0.09364988579766394,
+        "historyShortR": 0.10456567910757664,
+        "turning": true
+      },
+      "plan": {
+        "direction": "long",
+        "horizonDays": 30,
+        "stopAtr": 1.5,
+        "stopPct": 7.79048758215033,
+        "targetPct": 15.58097516430066,
+        "rr": 2,
+        "hitPct": 50.66666666666667,
+        "stoppedPct": 49.333333333333336,
+        "unresolvedPct": 0,
+        "expectancyR": 0.52,
+        "effectiveN": 5,
+        "entry": 0.3183,
+        "stop": 0.29350287802601555,
+        "target": 0.36789424394796905,
+        "positionUsdPer1000": 128.36167049302708,
+        "maxLeverage": 12.83616704930271
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": false
+      },
+      "asset": "TIA",
+      "context": {
+        "rsi14": 37.47678072918261,
+        "rangePosition30d": 7.374890254609323,
+        "change7dPct": -5.604982206405686,
+        "change30dPct": -20.145509282488703,
+        "volumeZScoreCompleted": -0.3625522946047642,
+        "underwaterPct": 100,
+        "volumeTrendPct": -45.89314833862512,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "SEIUSDT",
+      "price": 0.04083,
+      "atrPct": 3.6661492368196913,
+      "turnoverUsd": 423673.509465,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 62 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 2,
+          "positiveSharePct": 3.125,
+          "medianExpectancyR": -0.11186931449640569,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 5.499223855229537,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 16.49767156568861,
+            "n": 150,
+            "hitPct": 27.333333333333332,
+            "stoppedPct": 72,
+            "unresolvedPct": 0.6666666666666667,
+            "expectancyR": 0.10932863214103113,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 62,
+          "positiveSharePct": 96.875,
+          "medianExpectancyR": 0.10227411466596531,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 10.998447710459073,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 32.99534313137722,
+            "n": 150,
+            "hitPct": 5.333333333333334,
+            "stoppedPct": 46,
+            "unresolvedPct": 48.66666666666667,
+            "expectancyR": 0.37091953696114816,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.12940725954698878,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 10.998447710459073,
+            "rr": 3,
+            "horizonDays": 3,
+            "targetPct": 32.99534313137722,
+            "n": 997,
+            "hitPct": 2.4072216649949847,
+            "stoppedPct": 22.46740220661986,
+            "unresolvedPct": 75.12537612838516,
+            "expectancyR": -0.021163401069010625,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 60,
+          "positiveSharePct": 93.75,
+          "medianExpectancyR": 0.10754051254657118,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 10.998447710459073,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 32.99534313137722,
+            "n": 970,
+            "hitPct": 21.75257731958763,
+            "stoppedPct": 60.30927835051546,
+            "unresolvedPct": 17.938144329896907,
+            "expectancyR": 0.30212291637438143,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.11186931449640569,
+        "historyLongR": -0.12940725954698878,
+        "recentShortR": 0.10227411466596531,
+        "historyShortR": 0.10754051254657118,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 3,
+        "stopPct": 10.998447710459073,
+        "targetPct": 32.99534313137722,
+        "rr": 3,
+        "hitPct": 5.333333333333334,
+        "stoppedPct": 46,
+        "unresolvedPct": 48.66666666666667,
+        "expectancyR": 0.37091953696114816,
+        "effectiveN": 5,
+        "entry": 0.04083,
+        "stop": 0.04532066620018044,
+        "target": 0.02735800139945868,
+        "positionUsdPer1000": 90.92192155889789,
+        "maxLeverage": 9.092192155889789
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": true
+      },
+      "asset": "SEI",
+      "context": {
+        "rsi14": 33.30242089000929,
+        "rangePosition30d": 3.6707452725249947,
+        "change7dPct": -1.8037518037518054,
+        "change30dPct": -15.605622157916496,
+        "volumeZScoreCompleted": 0.32061079275722865,
+        "underwaterPct": 100,
+        "volumeTrendPct": -16.622565091941112,
+        "stage": "1 quiet"
+      }
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "price": 88.67,
+      "atrPct": 4.666966538704812,
+      "turnoverUsd": 1786506.56938,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 60 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 4,
+          "positiveSharePct": 6.25,
+          "medianExpectancyR": -0.03441681788527369,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1,
+            "stopPct": 4.666966538704812,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 9.333933077409624,
+            "n": 150,
+            "hitPct": 37.333333333333336,
+            "stoppedPct": 62.66666666666667,
+            "unresolvedPct": 0,
+            "expectancyR": 0.12,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 60,
+          "positiveSharePct": 93.75,
+          "medianExpectancyR": 0.03725539742506738,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 14.000899616114435,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 28.00179923222887,
+            "n": 150,
+            "hitPct": 18.666666666666668,
+            "stoppedPct": 38,
+            "unresolvedPct": 43.333333333333336,
+            "expectancyR": 0.3347022391592145,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 20,
+          "positiveSharePct": 31.25,
+          "medianExpectancyR": -0.014914170467391212,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 9.333933077409624,
+            "rr": 3,
+            "horizonDays": 10,
+            "targetPct": 28.00179923222887,
+            "n": 990,
+            "hitPct": 10.303030303030303,
+            "stoppedPct": 52.42424242424243,
+            "unresolvedPct": 37.27272727272727,
+            "expectancyR": 0.03302579511885607,
+            "effectiveN": 99
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 29,
+          "positiveSharePct": 45.3125,
+          "medianExpectancyR": -0.0025843609208149763,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 4.666966538704812,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 9.333933077409624,
+            "n": 970,
+            "hitPct": 35.36082474226804,
+            "stoppedPct": 64.63917525773196,
+            "unresolvedPct": 0,
+            "expectancyR": 0.060824742268041236,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": true,
+        "recentLongR": -0.03441681788527369,
+        "historyLongR": -0.014914170467391212,
+        "recentShortR": 0.03725539742506738,
+        "historyShortR": -0.0025843609208149763,
+        "turning": true
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 3,
+        "stopPct": 14.000899616114435,
+        "targetPct": 28.00179923222887,
+        "rr": 2,
+        "hitPct": 18.666666666666668,
+        "stoppedPct": 38,
+        "unresolvedPct": 43.333333333333336,
+        "expectancyR": 0.3347022391592145,
+        "effectiveN": 5,
+        "entry": 88.67,
+        "stop": 101.08459768960867,
+        "target": 63.840804620782656,
+        "positionUsdPer1000": 71.42398184535534,
+        "maxLeverage": 7.142398184535534
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": false
+      },
+      "asset": "AAVE",
+      "context": {
+        "rsi14": 44.16360128126545,
+        "rangePosition30d": 9.641693811074939,
+        "change7dPct": -2.000442086648986,
+        "change30dPct": -8.502734495924049,
+        "volumeZScoreCompleted": -1.2990808783658745,
+        "underwaterPct": 100,
+        "volumeTrendPct": -68.15873862826946,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "price": 1.402,
+      "atrPct": 3.593820867691439,
+      "turnoverUsd": 293317.17795,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 58 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 18,
+          "positiveSharePct": 28.125,
+          "medianExpectancyR": -0.0464684702689078,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1,
+            "stopPct": 3.593820867691439,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 10.781462603074317,
+            "n": 150,
+            "hitPct": 32,
+            "stoppedPct": 68,
+            "unresolvedPct": 0,
+            "expectancyR": 0.28,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 58,
+          "positiveSharePct": 90.625,
+          "medianExpectancyR": 0.08032110802829562,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 3.593820867691439,
+            "rr": 3,
+            "horizonDays": 10,
+            "targetPct": 10.781462603074317,
+            "n": 170,
+            "hitPct": 24.11764705882353,
+            "stoppedPct": 57.647058823529406,
+            "unresolvedPct": 18.235294117647058,
+            "expectancyR": 0.3240250089101289,
+            "effectiveN": 17
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.10580221729814213,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 10.781462603074317,
+            "rr": 3,
+            "horizonDays": 3,
+            "targetPct": 32.34438780922295,
+            "n": 997,
+            "hitPct": 0.3009027081243731,
+            "stoppedPct": 12.938816449348046,
+            "unresolvedPct": 86.76028084252758,
+            "expectancyR": -0.041730491302024275,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 63,
+          "positiveSharePct": 98.4375,
+          "medianExpectancyR": 0.1031957438406161,
+          "best": {
+            "direction": "short",
+            "stopAtr": 2,
+            "stopPct": 7.187641735382878,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 21.562925206148634,
+            "n": 970,
+            "hitPct": 29.27835051546392,
+            "stoppedPct": 61.34020618556701,
+            "unresolvedPct": 9.381443298969073,
+            "expectancyR": 0.3881643555956592,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.0464684702689078,
+        "historyLongR": -0.10580221729814213,
+        "recentShortR": 0.08032110802829562,
+        "historyShortR": 0.1031957438406161,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 10,
+        "stopAtr": 1,
+        "stopPct": 3.593820867691439,
+        "targetPct": 10.781462603074317,
+        "rr": 3,
+        "hitPct": 24.11764705882353,
+        "stoppedPct": 57.647058823529406,
+        "unresolvedPct": 18.235294117647058,
+        "expectancyR": 0.3240250089101289,
+        "effectiveN": 17,
+        "entry": 1.402,
+        "stop": 1.4523853685650339,
+        "target": 1.2508438943048978,
+        "positionUsdPer1000": 278.2553824510373,
+        "maxLeverage": 27.825538245103726
+      },
+      "confidence": {
+        "effectiveN": 17,
+        "thin": false,
+        "agreesWithHistory": true
+      },
+      "asset": "ATOM",
+      "context": {
+        "rsi14": 50.18553382371472,
+        "rangePosition30d": 49.738219895287926,
+        "change7dPct": 1.8895348837209323,
+        "change30dPct": -10.58673469387756,
+        "volumeZScoreCompleted": -0.2459096835951852,
+        "underwaterPct": 38.26237353785014,
+        "volumeTrendPct": -50.159334112313935,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "ARBUSDT",
+      "price": 0.0798,
+      "atrPct": 4.490831658644247,
+      "turnoverUsd": 1117962.16677,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 56 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 6,
+          "positiveSharePct": 9.375,
+          "medianExpectancyR": -0.061998890351533394,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 6.73624748796637,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 20.20874246389911,
+            "n": 150,
+            "hitPct": 26,
+            "stoppedPct": 73.33333333333333,
+            "unresolvedPct": 0.6666666666666667,
+            "expectancyR": 0.04990977356299229,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 56,
+          "positiveSharePct": 87.5,
+          "medianExpectancyR": 0.08131542866011157,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1.5,
+            "stopPct": 6.73624748796637,
+            "rr": 3,
+            "horizonDays": 10,
+            "targetPct": 20.20874246389911,
+            "n": 170,
+            "hitPct": 12.941176470588237,
+            "stoppedPct": 48.8235294117647,
+            "unresolvedPct": 38.23529411764706,
+            "expectancyR": 0.29530553896401424,
+            "effectiveN": 17
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.09732144954800408,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 13.47249497593274,
+            "rr": 2,
+            "horizonDays": 3,
+            "targetPct": 26.94498995186548,
+            "n": 997,
+            "hitPct": 1.9057171514543632,
+            "stoppedPct": 13.139418254764292,
+            "unresolvedPct": 84.95486459378134,
+            "expectancyR": -0.03515885939918475,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.09235418067521733,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 13.47249497593274,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 40.41748492779822,
+            "n": 970,
+            "hitPct": 15.360824742268042,
+            "stoppedPct": 53.1958762886598,
+            "unresolvedPct": 31.443298969072163,
+            "expectancyR": 0.3177507260996594,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.061998890351533394,
+        "historyLongR": -0.09732144954800408,
+        "recentShortR": 0.08131542866011157,
+        "historyShortR": 0.09235418067521733,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 10,
+        "stopAtr": 1.5,
+        "stopPct": 6.73624748796637,
+        "targetPct": 20.20874246389911,
+        "rr": 3,
+        "hitPct": 12.941176470588237,
+        "stoppedPct": 48.8235294117647,
+        "unresolvedPct": 38.23529411764706,
+        "expectancyR": 0.29530553896401424,
+        "effectiveN": 17,
+        "entry": 0.0798,
+        "stop": 0.08517552549539716,
+        "target": 0.0636734235138085,
+        "positionUsdPer1000": 148.4506027705187,
+        "maxLeverage": 14.84506027705187
+      },
+      "confidence": {
+        "effectiveN": 17,
+        "thin": false,
+        "agreesWithHistory": true
+      },
+      "asset": "ARB",
+      "context": {
+        "rsi14": 45.71225411886719,
+        "rangePosition30d": 20.792079207920775,
+        "change7dPct": -2.56410256410257,
+        "change30dPct": -14.377682403433486,
+        "volumeZScoreCompleted": -0.3276280020122219,
+        "underwaterPct": 72.27813343501886,
+        "volumeTrendPct": -36.62653221254355,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "TONUSDT",
+      "price": 1.6,
+      "atrPct": 7.115318479485647,
+      "turnoverUsd": 466332.35712,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 63 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 11,
+          "positiveSharePct": 17.1875,
+          "medianExpectancyR": -0.0674345620240663,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 21.34595543845694,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 64.03786631537082,
+            "n": 150,
+            "hitPct": 19.333333333333332,
+            "stoppedPct": 33.33333333333333,
+            "unresolvedPct": 47.333333333333336,
+            "expectancyR": 0.24004797018225532,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 63,
+          "positiveSharePct": 98.4375,
+          "medianExpectancyR": 0.07321976913412495,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 7.115318479485647,
+            "rr": 2,
+            "horizonDays": 10,
+            "targetPct": 14.230636958971294,
+            "n": 170,
+            "hitPct": 19.411764705882355,
+            "stoppedPct": 41.17647058823529,
+            "unresolvedPct": 39.411764705882355,
+            "expectancyR": 0.29070882195340664,
+            "effectiveN": 17
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.1036048261702864,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 21.34595543845694,
+            "rr": 3,
+            "horizonDays": 3,
+            "targetPct": 64.03786631537082,
+            "n": 689,
+            "hitPct": 0.29027576197387517,
+            "stoppedPct": 2.1770682148040637,
+            "unresolvedPct": 97.53265602322206,
+            "expectancyR": -0.021062939644973272,
+            "effectiveN": 229.66666666666666
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.10318398796791059,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1.5,
+            "stopPct": 10.67297771922847,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 32.01893315768541,
+            "n": 662,
+            "hitPct": 18.580060422960727,
+            "stoppedPct": 47.129909365558916,
+            "unresolvedPct": 34.29003021148036,
+            "expectancyR": 0.4172538392069897,
+            "effectiveN": 22.066666666666666
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.0674345620240663,
+        "historyLongR": -0.1036048261702864,
+        "recentShortR": 0.07321976913412495,
+        "historyShortR": 0.10318398796791059,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 10,
+        "stopAtr": 1,
+        "stopPct": 7.115318479485647,
+        "targetPct": 14.230636958971294,
+        "rr": 2,
+        "hitPct": 19.411764705882355,
+        "stoppedPct": 41.17647058823529,
+        "unresolvedPct": 39.411764705882355,
+        "expectancyR": 0.29070882195340664,
+        "effectiveN": 17,
+        "entry": 1.6,
+        "stop": 1.7138450956717706,
+        "target": 1.3723098086564596,
+        "positionUsdPer1000": 140.54184684538367,
+        "maxLeverage": 14.054184684538367
+      },
+      "confidence": {
+        "effectiveN": 17,
+        "thin": false,
+        "agreesWithHistory": true
+      },
+      "asset": "TON",
+      "context": {
+        "rsi14": 44.50023143474538,
+        "rangePosition30d": 18.712753277711567,
+        "change7dPct": 1.5228426395939099,
+        "change30dPct": -15.567282321899734,
+        "volumeZScoreCompleted": -0.7239249955462944,
+        "underwaterPct": 86.25590373790229,
+        "volumeTrendPct": -81.40335813631053,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "OPUSDT",
+      "price": 0.0903,
+      "atrPct": 4.728381392529765,
+      "turnoverUsd": 426628.146031,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 62 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 4,
+          "positiveSharePct": 6.25,
+          "medianExpectancyR": -0.10449160783076536,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 9.45676278505953,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 28.370288355178587,
+            "n": 150,
+            "hitPct": 21.333333333333336,
+            "stoppedPct": 67.33333333333333,
+            "unresolvedPct": 11.333333333333332,
+            "expectancyR": 0.05123544945895162,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 62,
+          "positiveSharePct": 96.875,
+          "medianExpectancyR": 0.11130018393885456,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 4.728381392529765,
+            "rr": 1.5,
+            "horizonDays": 10,
+            "targetPct": 7.092572088794647,
+            "n": 170,
+            "hitPct": 50.588235294117645,
+            "stoppedPct": 48.23529411764706,
+            "unresolvedPct": 1.1764705882352942,
+            "expectancyR": 0.2776132174327734,
+            "effectiveN": 17
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.12491212797435307,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 14.185144177589294,
+            "rr": 1,
+            "horizonDays": 3,
+            "targetPct": 14.185144177589294,
+            "n": 997,
+            "hitPct": 11.634904714142428,
+            "stoppedPct": 12.13640922768305,
+            "unresolvedPct": 76.22868605817452,
+            "expectancyR": -0.03577720800874958,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.09307972394654193,
+          "best": {
+            "direction": "short",
+            "stopAtr": 2,
+            "stopPct": 9.45676278505953,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 28.370288355178587,
+            "n": 970,
+            "hitPct": 27.835051546391753,
+            "stoppedPct": 64.43298969072166,
+            "unresolvedPct": 7.731958762886598,
+            "expectancyR": 0.28067600534100345,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.10449160783076536,
+        "historyLongR": -0.12491212797435307,
+        "recentShortR": 0.11130018393885456,
+        "historyShortR": 0.09307972394654193,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 10,
+        "stopAtr": 1,
+        "stopPct": 4.728381392529765,
+        "targetPct": 7.092572088794647,
+        "rr": 1.5,
+        "hitPct": 50.588235294117645,
+        "stoppedPct": 48.23529411764706,
+        "unresolvedPct": 1.1764705882352942,
+        "expectancyR": 0.2776132174327734,
+        "effectiveN": 17,
+        "entry": 0.0903,
+        "stop": 0.09456972839745438,
+        "target": 0.08389540740381844,
+        "positionUsdPer1000": 211.4888620405857,
+        "maxLeverage": 21.14888620405857
+      },
+      "confidence": {
+        "effectiveN": 17,
+        "thin": false,
+        "agreesWithHistory": true
+      },
+      "asset": "OP",
+      "context": {
+        "rsi14": 48.025640863632546,
+        "rangePosition30d": 37.280701754385994,
+        "change7dPct": 1.5748031496062975,
+        "change30dPct": -9.790209790209781,
+        "volumeZScoreCompleted": 0.09959410379650814,
+        "underwaterPct": 59.31871893599715,
+        "volumeTrendPct": -40.89123013193054,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "price": 6.481,
+      "atrPct": 4.132219012819274,
+      "turnoverUsd": 1773871.61751,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 53 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 1,
+          "positiveSharePct": 1.5625,
+          "medianExpectancyR": -0.11057270037642995,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 8.264438025638547,
+            "rr": 1,
+            "horizonDays": 30,
+            "targetPct": 8.264438025638547,
+            "n": 150,
+            "hitPct": 48,
+            "stoppedPct": 46.666666666666664,
+            "unresolvedPct": 5.333333333333334,
+            "expectancyR": 0.007858264584591296,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 53,
+          "positiveSharePct": 82.8125,
+          "medianExpectancyR": 0.03782639069420528,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 12.396657038457821,
+            "rr": 3.0000000000000004,
+            "horizonDays": 30,
+            "targetPct": 37.18997111537347,
+            "n": 150,
+            "hitPct": 8,
+            "stoppedPct": 30.666666666666664,
+            "unresolvedPct": 61.33333333333333,
+            "expectancyR": 0.23329402406237723,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.06157804838368415,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 12.396657038457821,
+            "rr": 1,
+            "horizonDays": 3,
+            "targetPct": 12.396657038457821,
+            "n": 997,
+            "hitPct": 14.44332998996991,
+            "stoppedPct": 13.139418254764292,
+            "unresolvedPct": 72.4172517552658,
+            "expectancyR": -0.014718015962940154,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 63,
+          "positiveSharePct": 98.4375,
+          "medianExpectancyR": 0.058730417550818245,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1.5,
+            "stopPct": 6.198328519228911,
+            "rr": 3.0000000000000004,
+            "horizonDays": 30,
+            "targetPct": 18.594985557686734,
+            "n": 970,
+            "hitPct": 27.938144329896907,
+            "stoppedPct": 68.8659793814433,
+            "unresolvedPct": 3.1958762886597936,
+            "expectancyR": 0.17212654565826987,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.11057270037642995,
+        "historyLongR": -0.06157804838368415,
+        "recentShortR": 0.03782639069420528,
+        "historyShortR": 0.058730417550818245,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 3,
+        "stopPct": 12.396657038457821,
+        "targetPct": 37.18997111537347,
+        "rr": 3.0000000000000004,
+        "hitPct": 8,
+        "stoppedPct": 30.666666666666664,
+        "unresolvedPct": 61.33333333333333,
+        "expectancyR": 0.23329402406237723,
+        "effectiveN": 5,
+        "entry": 6.481,
+        "stop": 7.284427342662451,
+        "target": 4.070717972012646,
+        "positionUsdPer1000": 80.66690857847615,
+        "maxLeverage": 8.066690857847615
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": true
+      },
+      "asset": "AVAX",
+      "context": {
+        "rsi14": 48.45909277424672,
+        "rangePosition30d": 46.568109820485724,
+        "change7dPct": -3.095095693779902,
+        "change30dPct": 1.154986733260494,
+        "volumeZScoreCompleted": -0.8670129825783142,
+        "underwaterPct": 70.99264109807376,
+        "volumeTrendPct": -54.173009944928666,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "HBARUSDT",
+      "price": 0.06734,
+      "atrPct": 3.044143137530822,
+      "turnoverUsd": 895378.47168,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 48 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 1,
+          "positiveSharePct": 1.5625,
+          "medianExpectancyR": -0.16328629194478977,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 6.088286275061644,
+            "rr": 1,
+            "horizonDays": 30,
+            "targetPct": 6.088286275061644,
+            "n": 150,
+            "hitPct": 51.33333333333333,
+            "stoppedPct": 48,
+            "unresolvedPct": 0.6666666666666667,
+            "expectancyR": 0.037847651349793704,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 48,
+          "positiveSharePct": 75,
+          "medianExpectancyR": 0.05497283557496717,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 9.132429412592465,
+            "rr": 1,
+            "horizonDays": 30,
+            "targetPct": 9.132429412592465,
+            "n": 150,
+            "hitPct": 51.33333333333333,
+            "stoppedPct": 30.666666666666664,
+            "unresolvedPct": 18,
+            "expectancyR": 0.21643953021271656,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.12231109712099718,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 9.132429412592465,
+            "rr": 3,
+            "horizonDays": 3,
+            "targetPct": 27.397288237777396,
+            "n": 997,
+            "hitPct": 3.711133400200602,
+            "stoppedPct": 21.76529588766299,
+            "unresolvedPct": 74.5235707121364,
+            "expectancyR": -0.014852230777444032,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 60,
+          "positiveSharePct": 93.75,
+          "medianExpectancyR": 0.06169297858584505,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 9.132429412592465,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 27.397288237777396,
+            "n": 970,
+            "hitPct": 20.20618556701031,
+            "stoppedPct": 59.896907216494846,
+            "unresolvedPct": 19.896907216494846,
+            "expectancyR": 0.22438531228089764,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.16328629194478977,
+        "historyLongR": -0.12231109712099718,
+        "recentShortR": 0.05497283557496717,
+        "historyShortR": 0.06169297858584505,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 3,
+        "stopPct": 9.132429412592465,
+        "targetPct": 9.132429412592465,
+        "rr": 1,
+        "hitPct": 51.33333333333333,
+        "stoppedPct": 30.666666666666664,
+        "unresolvedPct": 18,
+        "expectancyR": 0.21643953021271656,
+        "effectiveN": 5,
+        "entry": 0.06734,
+        "stop": 0.07348977796643977,
+        "target": 0.061190222033560226,
+        "positionUsdPer1000": 109.49988823577728,
+        "maxLeverage": 10.949988823577726
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": true
+      },
+      "asset": "HBAR",
+      "context": {
+        "rsi14": 41.086791668517606,
+        "rangePosition30d": 21.834061135371194,
+        "change7dPct": -2.996254681647938,
+        "change30dPct": -0.41407867494824385,
+        "volumeZScoreCompleted": -1.0065502671313804,
+        "underwaterPct": 71.76725869251858,
+        "volumeTrendPct": -63.52517788593421,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "APTUSDT",
+      "price": 0.586,
+      "atrPct": 4.2786621641926645,
+      "turnoverUsd": 493302.63389,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 59 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 6,
+          "positiveSharePct": 9.375,
+          "medianExpectancyR": -0.10430726762300327,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 6.417993246288997,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 19.25397973886699,
+            "n": 150,
+            "hitPct": 28.000000000000004,
+            "stoppedPct": 68.66666666666667,
+            "unresolvedPct": 3.3333333333333335,
+            "expectancyR": 0.14893561715181722,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 59,
+          "positiveSharePct": 92.1875,
+          "medianExpectancyR": 0.0737026710734251,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 4.2786621641926645,
+            "rr": 2,
+            "horizonDays": 30,
+            "targetPct": 8.557324328385329,
+            "n": 150,
+            "hitPct": 39.33333333333333,
+            "stoppedPct": 60.66666666666667,
+            "unresolvedPct": 0,
+            "expectancyR": 0.18,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.12045354292373442,
+          "best": {
+            "direction": "long",
+            "stopAtr": 3,
+            "stopPct": 12.835986492577995,
+            "rr": 1.5,
+            "horizonDays": 3,
+            "targetPct": 19.25397973886699,
+            "n": 997,
+            "hitPct": 4.613841524573721,
+            "stoppedPct": 13.139418254764292,
+            "unresolvedPct": 82.24674022066199,
+            "expectancyR": -0.028753919995519833,
+            "effectiveN": 332.3333333333333
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 64,
+          "positiveSharePct": 100,
+          "medianExpectancyR": 0.0732197062229138,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1.5,
+            "stopPct": 6.417993246288997,
+            "rr": 3,
+            "horizonDays": 10,
+            "targetPct": 19.25397973886699,
+            "n": 990,
+            "hitPct": 17.97979797979798,
+            "stoppedPct": 60.80808080808081,
+            "unresolvedPct": 21.21212121212121,
+            "expectancyR": 0.1281871920084622,
+            "effectiveN": 99
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.10430726762300327,
+        "historyLongR": -0.12045354292373442,
+        "recentShortR": 0.0737026710734251,
+        "historyShortR": 0.0732197062229138,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 1,
+        "stopPct": 4.2786621641926645,
+        "targetPct": 8.557324328385329,
+        "rr": 2,
+        "hitPct": 39.33333333333333,
+        "stoppedPct": 60.66666666666667,
+        "unresolvedPct": 0,
+        "expectancyR": 0.18,
+        "effectiveN": 5,
+        "entry": 0.586,
+        "stop": 0.611072960282169,
+        "target": 0.535854079435662,
+        "positionUsdPer1000": 233.7179149989489,
+        "maxLeverage": 23.371791499894893
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": true
+      },
+      "asset": "APT",
+      "context": {
+        "rsi14": 47.066076845704295,
+        "rangePosition30d": 43.61702127659568,
+        "change7dPct": 1.3840830449827002,
+        "change30dPct": -4.091653027823244,
+        "volumeZScoreCompleted": -1.0523804816947249,
+        "underwaterPct": 72.71742961205112,
+        "volumeTrendPct": -43.62621796459522,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "PENGUUSDT",
+      "price": 0.006395,
+      "atrPct": 5.404024265114256,
+      "turnoverUsd": 1090152.076746,
+      "tradeable": false,
+      "bias": "LONG",
+      "side": "long",
+      "reason": "long pays in 45 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 45,
+          "positiveSharePct": 70.3125,
+          "medianExpectancyR": 0.022586811376745217,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 10.808048530228511,
+            "rr": 1,
+            "horizonDays": 30,
+            "targetPct": 10.808048530228511,
+            "n": 150,
+            "hitPct": 56.666666666666664,
+            "stoppedPct": 40.666666666666664,
+            "unresolvedPct": 2.666666666666667,
+            "expectancyR": 0.15742555681014858,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 3,
+          "positiveSharePct": 4.6875,
+          "medianExpectancyR": -0.05324231043937454,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 5.404024265114256,
+            "rr": 1.5,
+            "horizonDays": 30,
+            "targetPct": 8.106036397671383,
+            "n": 150,
+            "hitPct": 40.666666666666664,
+            "stoppedPct": 59.333333333333336,
+            "unresolvedPct": 0,
+            "expectancyR": 0.016666666666666666,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 2,
+          "positiveSharePct": 3.125,
+          "medianExpectancyR": -0.06714850624742581,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 10.808048530228511,
+            "rr": 1,
+            "horizonDays": 30,
+            "targetPct": 10.808048530228511,
+            "n": 573,
+            "hitPct": 50.78534031413613,
+            "stoppedPct": 48.51657940663176,
+            "unresolvedPct": 0.6980802792321117,
+            "expectancyR": 0.022013671067229124,
+            "effectiveN": 19.1
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 55,
+          "positiveSharePct": 85.9375,
+          "medianExpectancyR": 0.027780544984393325,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 16.212072795342767,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 48.636218386028304,
+            "n": 573,
+            "hitPct": 14.136125654450263,
+            "stoppedPct": 53.57766143106457,
+            "unresolvedPct": 32.28621291448517,
+            "expectancyR": 0.2832131819512012,
+            "effectiveN": 19.1
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": true,
+        "shortFlipped": true,
+        "recentLongR": 0.022586811376745217,
+        "historyLongR": -0.06714850624742581,
+        "recentShortR": -0.05324231043937454,
+        "historyShortR": 0.027780544984393325,
+        "turning": true
+      },
+      "plan": {
+        "direction": "long",
+        "horizonDays": 30,
+        "stopAtr": 2,
+        "stopPct": 10.808048530228511,
+        "targetPct": 10.808048530228511,
+        "rr": 1,
+        "hitPct": 56.666666666666664,
+        "stoppedPct": 40.666666666666664,
+        "unresolvedPct": 2.666666666666667,
+        "expectancyR": 0.15742555681014858,
+        "effectiveN": 5,
+        "entry": 0.006395,
+        "stop": 0.005703825296491887,
+        "target": 0.0070861747035081135,
+        "positionUsdPer1000": 92.5236408037166,
+        "maxLeverage": 9.252364080371661
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": false
+      },
+      "asset": "PENGU",
+      "context": {
+        "rsi14": 54.64990149075649,
+        "rangePosition30d": 58.65612648221342,
+        "change7dPct": 5.877483443708599,
+        "change30dPct": 6.654436290860575,
+        "volumeZScoreCompleted": 0.9640382696852189,
+        "underwaterPct": 9.695523047675628,
+        "volumeTrendPct": -3.3716706258663227,
+        "stage": "1 quiet"
+      }
+    },
+    {
+      "symbol": "LTCUSDT",
+      "price": 45.15,
+      "atrPct": 2.5296110093283244,
+      "turnoverUsd": 1391683.62813,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 50 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 7,
+          "positiveSharePct": 10.9375,
+          "medianExpectancyR": -0.07353990438884303,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 5.059222018656649,
+            "rr": 1.5,
+            "horizonDays": 30,
+            "targetPct": 7.588833027984974,
+            "n": 150,
+            "hitPct": 46,
+            "stoppedPct": 48,
+            "unresolvedPct": 6,
+            "expectancyR": 0.23564491249261968,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 50,
+          "positiveSharePct": 78.125,
+          "medianExpectancyR": 0.03336038126617361,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 2.5296110093283244,
+            "rr": 1.5,
+            "horizonDays": 30,
+            "targetPct": 3.794416513992487,
+            "n": 150,
+            "hitPct": 46,
+            "stoppedPct": 54,
+            "unresolvedPct": 0,
+            "expectancyR": 0.15,
+            "effectiveN": 5
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 8,
+          "positiveSharePct": 12.5,
+          "medianExpectancyR": -0.04255041726122626,
+          "best": {
+            "direction": "long",
+            "stopAtr": 2,
+            "stopPct": 5.059222018656649,
+            "rr": 1.5,
+            "horizonDays": 30,
+            "targetPct": 7.588833027984974,
+            "n": 970,
+            "hitPct": 41.95876288659794,
+            "stoppedPct": 57.113402061855666,
+            "unresolvedPct": 0.9278350515463918,
+            "expectancyR": 0.06221313079782778,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 15,
+          "positiveSharePct": 23.4375,
+          "medianExpectancyR": -0.014432729555196998,
+          "best": {
+            "direction": "short",
+            "stopAtr": 2,
+            "stopPct": 5.059222018656649,
+            "rr": 2,
+            "horizonDays": 3,
+            "targetPct": 10.118444037313298,
+            "n": 997,
+            "hitPct": 12.036108324974924,
+            "stoppedPct": 31.89568706118355,
+            "unresolvedPct": 56.06820461384152,
+            "expectancyR": 0.02042725805111278,
+            "effectiveN": 332.3333333333333
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": true,
+        "recentLongR": -0.07353990438884303,
+        "historyLongR": -0.04255041726122626,
+        "recentShortR": 0.03336038126617361,
+        "historyShortR": -0.014432729555196998,
+        "turning": true
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 30,
+        "stopAtr": 1,
+        "stopPct": 2.5296110093283244,
+        "targetPct": 3.794416513992487,
+        "rr": 1.5,
+        "hitPct": 46,
+        "stoppedPct": 54,
+        "unresolvedPct": 0,
+        "expectancyR": 0.15,
+        "effectiveN": 5,
+        "entry": 45.15,
+        "stop": 46.29211937071173,
+        "target": 43.436820943932396,
+        "positionUsdPer1000": 395.3176975876324,
+        "maxLeverage": 39.53176975876323
+      },
+      "confidence": {
+        "effectiveN": 5,
+        "thin": true,
+        "agreesWithHistory": false
+      },
+      "asset": "LTC",
+      "context": {
+        "rsi14": 48.05353093388076,
+        "rangePosition30d": 41.60447761194025,
+        "change7dPct": 0.6688963210702278,
+        "change30dPct": 2.590320381731426,
+        "volumeZScoreCompleted": -0.5880166952730618,
+        "underwaterPct": 70.78156626644653,
+        "volumeTrendPct": -54.50189900539561,
+        "stage": "mixed"
+      }
+    },
+    {
+      "symbol": "FILUSDT",
+      "price": 0.702,
+      "atrPct": 4.84591486788325,
+      "turnoverUsd": 1257389.200145,
+      "tradeable": false,
+      "bias": "SHORT",
+      "side": "short",
+      "reason": "short pays in 33 of 64 geometries",
+      "recent": {
+        "long": {
+          "cells": 64,
+          "positive": 9,
+          "positiveSharePct": 14.0625,
+          "medianExpectancyR": -0.040374546509530776,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 7.268872301824875,
+            "rr": 1.5,
+            "horizonDays": 30,
+            "targetPct": 10.903308452737313,
+            "n": 150,
+            "hitPct": 44.666666666666664,
+            "stoppedPct": 54.666666666666664,
+            "unresolvedPct": 0.6666666666666667,
+            "expectancyR": 0.12346893388339249,
+            "effectiveN": 5
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 33,
+          "positiveSharePct": 51.5625,
+          "medianExpectancyR": 0.003209614156939313,
+          "best": {
+            "direction": "short",
+            "stopAtr": 1,
+            "stopPct": 4.84591486788325,
+            "rr": 1,
+            "horizonDays": 3,
+            "targetPct": 4.84591486788325,
+            "n": 177,
+            "hitPct": 43.50282485875706,
+            "stoppedPct": 38.983050847457626,
+            "unresolvedPct": 17.51412429378531,
+            "expectancyR": 0.039415493581445235,
+            "effectiveN": 59
+          }
+        }
+      },
+      "history": {
+        "long": {
+          "cells": 64,
+          "positive": 0,
+          "positiveSharePct": 0,
+          "medianExpectancyR": -0.06779825033990353,
+          "best": {
+            "direction": "long",
+            "stopAtr": 1.5,
+            "stopPct": 7.268872301824875,
+            "rr": 1.5,
+            "horizonDays": 30,
+            "targetPct": 10.903308452737313,
+            "n": 970,
+            "hitPct": 39.381443298969074,
+            "stoppedPct": 60.51546391752577,
+            "unresolvedPct": 0.10309278350515465,
+            "expectancyR": -0.014412020533496005,
+            "effectiveN": 32.333333333333336
+          }
+        },
+        "short": {
+          "cells": 64,
+          "positive": 55,
+          "positiveSharePct": 85.9375,
+          "medianExpectancyR": 0.02832657807006418,
+          "best": {
+            "direction": "short",
+            "stopAtr": 3,
+            "stopPct": 14.53774460364975,
+            "rr": 3,
+            "horizonDays": 30,
+            "targetPct": 43.613233810949254,
+            "n": 970,
+            "hitPct": 8.65979381443299,
+            "stoppedPct": 49.58762886597938,
+            "unresolvedPct": 41.75257731958763,
+            "expectancyR": 0.11048911879211394,
+            "effectiveN": 32.333333333333336
+          }
+        }
+      },
+      "regime": {
+        "longFlipped": false,
+        "shortFlipped": false,
+        "recentLongR": -0.040374546509530776,
+        "historyLongR": -0.06779825033990353,
+        "recentShortR": 0.003209614156939313,
+        "historyShortR": 0.02832657807006418,
+        "turning": false
+      },
+      "plan": {
+        "direction": "short",
+        "horizonDays": 3,
+        "stopAtr": 1,
+        "stopPct": 4.84591486788325,
+        "targetPct": 4.84591486788325,
+        "rr": 1,
+        "hitPct": 43.50282485875706,
+        "stoppedPct": 38.983050847457626,
+        "unresolvedPct": 17.51412429378531,
+        "expectancyR": 0.039415493581445235,
+        "effectiveN": 59,
+        "entry": 0.702,
+        "stop": 0.7360183223725405,
+        "target": 0.6679816776274595,
+        "positionUsdPer1000": 206.3593825445826,
+        "maxLeverage": 20.63593825445826
+      },
+      "confidence": {
+        "effectiveN": 59,
+        "thin": false,
+        "agreesWithHistory": true
+      },
+      "asset": "FIL",
+      "context": {
+        "rsi14": 44.487860860774816,
+        "rangePosition30d": 31.462140992167043,
+        "change7dPct": -2.364394993045899,
+        "change30dPct": -9.067357512953375,
+        "volumeZScoreCompleted": -0.7957101114362934,
+        "underwaterPct": 85.03875879656151,
+        "volumeTrendPct": -56.714204523867394,
+        "stage": "mixed"
+      }
+    }
+  ]
+}

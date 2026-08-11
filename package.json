@@ -13,7 +13,9 @@
     "test": "node --test \"test/*.test.mjs\"",
     "start": "node ./bin/wte.mjs",
     "doctor": "node ./bin/wte.mjs doctor",
-    "check": "npm test && npm run doctor"
+    "check": "npm test && npm run doctor",
+    "scan": "node ./scripts/scan-daily.mjs --print",
+    "site": "node ./scripts/build-site.mjs"
   },
   "files": [
     "bin/",

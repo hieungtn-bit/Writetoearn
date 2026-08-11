@@ -228,6 +228,31 @@ header.site nav a{font-size:.95rem;text-decoration:none;font-weight:600}
 .box p{margin:0}
 .lvl{display:inline-block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#0b0e11;background:var(--accent);border-radius:4px;padding:.15rem .45rem;font-weight:800;margin-bottom:.6rem}
 .q{color:var(--fg);font-size:1.05rem;font-style:italic;border-left:3px solid var(--line);padding-left:.9rem;margin:0 0 1.4rem}
+.wrap.wide{max-width:64rem}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 1.4rem;padding:.9rem;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.filters fieldset{border:0;margin:0;padding:0;display:flex;gap:.35rem;align-items:center;flex-wrap:wrap}
+.filters legend{float:left;width:100%;color:var(--muted);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem}
+.filters button{font:inherit;font-size:.85rem;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.25rem .75rem;cursor:pointer}
+.filters button[aria-pressed=true]{color:#0b0e11;background:var(--accent);border-color:var(--accent);font-weight:700}
+.sig{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:1rem 1.1rem;margin-bottom:.8rem}
+.sig[hidden]{display:none}
+.sig-head{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.sig-head .asset{font-weight:800;font-size:1.15rem}
+.sig-head .price{color:var(--muted);font-size:.9rem}
+.sig-head .spacer{margin-left:auto}
+.bias{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;border-radius:4px;padding:.15rem .5rem;color:#0b0e11}
+.bias.LONG{background:#3987e5}
+.bias.SHORT{background:#c98500}
+.bias.WAIT{background:#5a636d;color:#eaecef}
+.flag{font-size:.72rem;border:1px solid var(--line);border-radius:999px;padding:.1rem .5rem;color:var(--muted)}
+.flag.turn{border-color:var(--accent);color:var(--accent)}
+.flag.thin{border-color:#f6465d;color:#f6465d}
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr));gap:.5rem .9rem;margin:.9rem 0 0}
+.plan div{font-size:.85rem}
+.plan dt{color:var(--muted);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.plan dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.sig .why{color:var(--muted);font-size:.85rem;margin:.7rem 0 0}
+.empty{color:var(--muted);padding:2rem 0;text-align:center}
 @media(max-width:480px){h1{font-size:1.6rem}body{font-size:16px}.readings{font-size:.88rem}}`;
 
 function head({ title, description, canonical, image, jsonLd, site }) {
@@ -257,7 +282,7 @@ ${image ? `<meta name="twitter:image" content="${image}">` : ""}
 <div class="wrap">
 <header class="site">
   <a class="brand" href="/">${escapeHtml(site.name)}</a>
-  <nav><a href="/learn/">Learn</a><a href="/">Research</a></nav>
+  <nav><a href="/signals/">Signals</a><a href="/learn/">Learn</a><a href="/">Research</a></nav>
 </header>`;
 }
 
@@ -451,9 +476,181 @@ ${cards}
 ${foot(site)}`;
 }
 
-export function renderSitemap(site, articles, lessons = []) {
+
+/**
+ * The daily signal board.
+ *
+ * Rendered from site/signals.json, which scripts/scan-daily.mjs writes. The
+ * build stays offline: a deploy must not fail because an exchange is
+ * unreachable from the build region, so the market is touched by the scan and
+ * never by the build.
+ *
+ * Filtering is done in the page rather than by generating a page per
+ * combination. Every row is already in the HTML, so the board works without
+ * JavaScript — the filters are an enhancement, not the content — and a reader
+ * on a phone gets the whole board in one request.
+ *
+ * The design decision that matters: a row leads with what would make you
+ * *distrust* it. Sample size and the regime flag sit next to the bias, not
+ * buried under the plan, because a strong expectancy over five independent
+ * episodes is a story rather than a finding and the board should say so before
+ * anyone reads the entry price.
+ */
+export function renderSignalsPage(site, snapshot) {
+  const canonical = `${site.baseUrl}/signals/`;
+  const t = snapshot.tally ?? {};
+  const when = String(snapshot.scannedAt ?? "").replace("T", " ").slice(0, 16);
+
+  const n2 = (v) => (typeof v === "number" && Number.isFinite(v) ? v.toFixed(2) : "—");
+  const n1 = (v) => (typeof v === "number" && Number.isFinite(v) ? v.toFixed(1) : "—");
+  const money = (v) => {
+    if (typeof v !== "number" || !Number.isFinite(v)) return "—";
+    const a = Math.abs(v);
+    if (a >= 1000) return v.toFixed(0);
+    if (a >= 1) return v.toFixed(3);
+    if (a >= 0.01) return v.toFixed(4);
+    return v.toFixed(6);
+  };
+
+  const rows = (snapshot.signals ?? []).map((s) => {
+    const p = s.plan;
+    const flags = [
+      s.regime?.turning ? '<span class="flag turn">regime turn</span>' : "",
+      s.confidence?.thin ? '<span class="flag thin">thin sample</span>' : "",
+      s.tradeable === false ? '<span class="flag thin">too thin to size</span>' : "",
+    ].join("");
+
+    const plan = p
+      ? `<dl class="plan">
+      <div><dt>Horizon</dt><dd>${p.horizonDays}d</dd></div>
+      <div><dt>Entry</dt><dd>${money(p.entry)}</dd></div>
+      <div><dt>Stop</dt><dd>${money(p.stop)} <span class="price">· ${n2(p.stopPct)}%</span></dd></div>
+      <div><dt>Target</dt><dd>${money(p.target)} <span class="price">· ${n2(p.targetPct)}%</span></dd></div>
+      <div><dt>Hit rate</dt><dd>${n1(p.hitPct)}%</dd></div>
+      <div><dt>Expectancy</dt><dd>${n2(p.expectancyR)}R</dd></div>
+      <div><dt>Independent n</dt><dd>${Math.round(p.effectiveN ?? 0)}</dd></div>
+      <div><dt>Size / $1k</dt><dd>$${n1(p.positionUsdPer1000)}</dd></div>
+    </dl>`
+      : "";
+
+    const ctx = s.context ?? {};
+    return `<article class="sig" data-bias="${s.bias}" data-horizon="${p ? p.horizonDays : ""}" data-tradeable="${s.tradeable !== false}">
+    <div class="sig-head">
+      <span class="asset">${escapeHtml(s.asset ?? s.symbol ?? "")}</span>
+      <span class="price">${money(s.price)}</span>
+      <span class="spacer"></span>
+      <span class="bias ${s.bias}">${s.bias}</span>
+    </div>
+    <div>${flags}</div>
+    ${plan}
+    <p class="why">${escapeHtml(s.reason ?? "")}${
+      ctx.stage ? ` · stage ${escapeHtml(String(ctx.stage))}` : ""
+    }${
+      typeof ctx.underwaterPct === "number" ? ` · ${n1(ctx.underwaterPct)}% overhead` : ""
+    }${
+      typeof ctx.volumeTrendPct === "number" ? ` · volume ${n1(ctx.volumeTrendPct)}%` : ""
+    }</p>
+  </article>`;
+  }).join("\n");
+
+  const horizons = [...new Set((snapshot.signals ?? []).map((s) => s.plan?.horizonDays).filter(Boolean))]
+    .sort((a, b) => a - b);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: `${site.name} — daily signal board`,
+    description: "Two-sided geometry scan across the majors and a liquid altcoin universe, scored bar by bar.",
+    url: canonical,
+    dateModified: snapshot.scannedAt,
+    creator: { "@type": "Organization", name: site.name },
+  };
+
+  return `${head({
+    title: `Daily signal board — ${site.name}`,
+    description: "Long, short or stand aside on every pair scanned, with the expectancy and the sample size behind each call.",
+    canonical,
+    jsonLd,
+    site,
+  }).replace('<div class="wrap">', '<div class="wrap wide">')}
+<h1>Daily signal board</h1>
+<p class="lede">Every pair scored in <strong>both</strong> directions over the last 180 days. Stand aside is a conclusion here, not a default — it appears only when long and short both lose.</p>
+<p class="meta">Scanned ${escapeHtml(when)} UTC · ${t.total ?? 0} pairs · ${t.LONG ?? 0} long · ${t.SHORT ?? 0} short · ${t.WAIT ?? 0} wait · ${t.turning ?? 0} regime turn${t.turning === 1 ? "" : "s"}</p>
+
+<div class="box warn">
+  <h4>Read this before the table</h4>
+  <p>Expectancy is measured on overlapping windows, so the honest sample is the <strong>independent n</strong> column — often five or fewer on a 30-day horizon. A strong number over five episodes is a story, not a finding. Rows marked <em>regime turn</em> are ones where the recent window disagrees in sign with the full history: the market has changed inside the sample, and the long-run average describes a market that no longer exists.</p>
+</div>
+
+<form class="filters" id="filters">
+  <fieldset><legend>Direction</legend>
+    <button type="button" data-filter="bias" data-value="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="bias" data-value="LONG" aria-pressed="false">Long</button>
+    <button type="button" data-filter="bias" data-value="SHORT" aria-pressed="false">Short</button>
+    <button type="button" data-filter="bias" data-value="WAIT" aria-pressed="false">Wait</button>
+  </fieldset>
+  <fieldset><legend>Horizon</legend>
+    <button type="button" data-filter="horizon" data-value="all" aria-pressed="true">All</button>
+    ${horizons.map((h) => `<button type="button" data-filter="horizon" data-value="${h}" aria-pressed="false">${h}d</button>`).join("")}
+  </fieldset>
+  <fieldset><legend>Liquidity</legend>
+    <button type="button" data-filter="tradeable" data-value="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="tradeable" data-value="true" aria-pressed="false">Sizeable only</button>
+  </fieldset>
+</form>
+
+<div id="board">
+${rows || '<p class="empty">No scan on record yet. Run <code>node scripts/scan-daily.mjs</code>.</p>'}
+</div>
+<p class="empty" id="none" hidden>Nothing matches those filters.</p>
+
+<h2>How a call is made</h2>
+<ul>
+  <li>Every geometry is walked bar by bar. A bar reaching both the stop and the target is charged to the <strong>stop</strong>, because a daily candle does not reveal the order inside it.</li>
+  <li>Positions still open at the horizon close <strong>at the market</strong>. Counting them as flat once turned a −7.4% median outcome into a +0.115R headline.</li>
+  <li>Stops price cannot reach are discarded rather than scored. A stop below zero is never hit, which used to make every such cell look profitable.</li>
+  <li>The call is the <strong>median</strong> cell across the grid, not the best one. One bright cell in a field of losses is a search artefact.</li>
+  <li>Funding, open interest and liquidation data are unavailable from this host and are used nowhere.</li>
+</ul>
+
+<script>
+(function () {
+  var state = { bias: "all", horizon: "all", tradeable: "all" };
+  var form = document.getElementById("filters");
+  var none = document.getElementById("none");
+  if (!form) return;
+
+  function apply() {
+    var shown = 0;
+    document.querySelectorAll(".sig").forEach(function (el) {
+      var ok =
+        (state.bias === "all" || el.dataset.bias === state.bias) &&
+        (state.horizon === "all" || el.dataset.horizon === state.horizon) &&
+        (state.tradeable === "all" || el.dataset.tradeable === state.tradeable);
+      el.hidden = !ok;
+      if (ok) shown++;
+    });
+    if (none) none.hidden = shown !== 0;
+  }
+
+  form.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-filter]");
+    if (!b) return;
+    state[b.dataset.filter] = b.dataset.value;
+    form.querySelectorAll('button[data-filter="' + b.dataset.filter + '"]').forEach(function (o) {
+      o.setAttribute("aria-pressed", String(o === b));
+    });
+    apply();
+  });
+})();
+</script>
+${foot(site)}`;
+}
+
+export function renderSitemap(site, articles, lessons = [], signals = null) {
   const urls = [
     { loc: `${site.baseUrl}/`, lastmod: articles[0]?.published, priority: "1.0" },
+    ...(signals ? [{ loc: `${site.baseUrl}/signals/`, lastmod: signals.scannedAt, priority: "0.9" }] : []),
     { loc: `${site.baseUrl}/learn/`, priority: "0.9" },
     ...lessons.map((l) => ({ loc: lessonUrl(site, l), priority: "0.8" })),
     ...articles.map((a) => ({ loc: articleUrl(site, a), lastmod: a.published, priority: "0.8" })),
@@ -477,16 +674,27 @@ export function renderRobots(site) {
  * Builds every file for the site.
  * @returns {{path: string, content: string}[]} Text files only; assets are copied separately.
  */
-export function buildSite(manifest, drafts, lessons = []) {
+export function buildSite(manifest, drafts, lessons = [], signals = null) {
   const { site } = manifest;
   const articles = [...manifest.articles].sort((a, b) => b.published.localeCompare(a.published));
 
   const files = [
     { path: "style.css", content: CSS },
     { path: "index.html", content: renderIndexPage(site, articles) },
-    { path: "sitemap.xml", content: renderSitemap(site, articles, lessons) },
+    { path: "sitemap.xml", content: renderSitemap(site, articles, lessons, signals) },
     { path: "robots.txt", content: renderRobots(site) },
   ];
+
+  /**
+   * The signal board, when a scan has been captured.
+   *
+   * Optional on purpose: the build must succeed on a clean checkout that has
+   * never run a scan, and it must never reach for the market itself to fill
+   * the gap. A missing board is a missing page, not a failed deploy.
+   */
+  if (signals) {
+    files.push({ path: "signals/index.html", content: renderSignalsPage(site, signals) });
+  }
 
   if (lessons.length) {
     files.push({ path: "learn/index.html", content: renderLearnIndex(site, lessons) });
