@@ -152,3 +152,63 @@ test("the scoreboard shows losses alongside wins", () => {
 test("an empty scoreboard says so instead of inventing a record", () => {
   assert.match(formatScoreboard([]), /needs 7 days of published calls/);
 });
+
+test("a WAIT with no levels is judged, not waved through", async () => {
+  // The old rule read "right when neither level gave way". With no levels,
+  // supportHeld and resistanceBroken are both null, and
+  // `null !== false && null !== true` is true — so every levelless WAIT scored
+  // correct automatically and the scoreboard could only ever report 100%.
+  const publishedAt = new Date("2026-01-02T00:00:00Z").getTime();
+  const hour = 3_600_000;
+
+  // 60 quiet hours before publication, then a violent 24 hours after it.
+  const candles = [];
+  for (let i = -60; i < 24; i++) {
+    const flat = i < 0;
+    const close = flat ? 100 : 100 + (i + 1) * 0.8;
+    candles.push({
+      openTime: publishedAt + i * hour,
+      open: close, high: close * 1.001, low: close * 0.999, close,
+    });
+  }
+  const fetchImpl = async () => ({
+    ok: true,
+    json: async () => candles.map((c) => [c.openTime, c.open, c.high, c.low, c.close, 0, 0, 0, 0, 0, 0]),
+  });
+
+  const claim = {
+    asset: "TESTUSDT", bias: "WAIT", priceAtPost: 100,
+    publishedAt: new Date(publishedAt).toISOString(), support: null, resistance: null,
+  };
+  const score = await scoreClaim(claim, { hours: 24, fetchImpl });
+
+  assert.ok(score, "the call should be scoreable");
+  assert.ok(score.movePct > 15, `expected a large move, got ${score.movePct}`);
+  assert.equal(score.biasCorrect, false, "standing aside through a large move is a miss");
+});
+
+test("a WAIT through an ordinary move is still correct", async () => {
+  const publishedAt = new Date("2026-01-02T00:00:00Z").getTime();
+  const hour = 3_600_000;
+  const candles = [];
+  for (let i = -60; i < 24; i++) {
+    // Steady 1% oscillation both before and after: nothing unusual happened.
+    const close = 100 + Math.sin(i / 3) * 1;
+    candles.push({
+      openTime: publishedAt + i * hour,
+      open: close, high: close * 1.001, low: close * 0.999, close,
+    });
+  }
+  const fetchImpl = async () => ({
+    ok: true,
+    json: async () => candles.map((c) => [c.openTime, c.open, c.high, c.low, c.close, 0, 0, 0, 0, 0, 0]),
+  });
+
+  const score = await scoreClaim(
+    { asset: "TESTUSDT", bias: "WAIT", priceAtPost: 100,
+      publishedAt: new Date(publishedAt).toISOString(), support: null, resistance: null },
+    { hours: 24, fetchImpl },
+  );
+  assert.ok(score);
+  assert.equal(score.biasCorrect, true, "an unremarkable move vindicates standing aside");
+});

@@ -72,8 +72,17 @@ export async function scoreClaim(claim, { hours = 24, fetchImpl = globalThis.fet
   const deadline = publishedAt + hours * 3_600_000;
   if (Date.now() < deadline) return null; // too early to judge; leave it open
 
-  // Hourly candles give enough resolution to see an intraday wick through a level.
-  const candles = await fetchKlines(claim.asset, { interval: "1h", limit: 200, fetchImpl });
+  /**
+   * Hourly candles give enough resolution to see an intraday wick through a
+   * level, and the window has to reach back past the call, not just around it.
+   *
+   * 200 bars covered eight days, which was fine while the only consumer was a
+   * claim settled a day after publication. The yardstick a WAIT is judged
+   * against needs candles from *before* the call, so on anything older than a
+   * week there were none and the call went unscoreable — silently, as a null.
+   * A thousand bars covers six weeks and costs the same single request.
+   */
+  const candles = await fetchKlines(claim.asset, { interval: "1h", limit: 1000, fetchImpl });
   const window = candles.filter((c) => c.openTime > publishedAt && c.openTime <= deadline);
   if (!window.length) return null;
 
@@ -85,12 +94,54 @@ export async function scoreClaim(claim, { hours = 24, fetchImpl = globalThis.fet
   const supportHeld = claim.support == null ? null : low >= claim.support;
   const resistanceBroken = claim.resistance == null ? null : high > claim.resistance;
 
+  /**
+   * What an ordinary move looks like on this pair over this horizon.
+   *
+   * Computed only from candles that closed *before* publication, so the
+   * yardstick could have been known at the time. Median rather than mean:
+   * one spike in the lookback should not raise the bar a WAIT has to clear.
+   */
+  const typicalMovePct = (() => {
+    const before = candles.filter((c) => c.openTime <= publishedAt);
+    const step = Math.max(1, Math.round(hours));
+    const moves = [];
+    for (let i = step; i < before.length; i++) {
+      moves.push(Math.abs((before[i].close / before[i - step].close - 1) * 100));
+    }
+    if (moves.length < 10) return null;
+    const sorted = moves.sort((a, b) => a - b);
+    const m = sorted.length >> 1;
+    return sorted.length % 2 ? sorted[m] : (sorted[m - 1] + sorted[m]) / 2;
+  })();
+
   let biasCorrect = null;
   if (claim.bias === BIAS.LONG) biasCorrect = movePct > 0;
   else if (claim.bias === BIAS.SHORT) biasCorrect = movePct < 0;
   else if (claim.bias === BIAS.WAIT) {
-    // WAIT is a claim that the range holds, so it is right when neither side gave way.
-    biasCorrect = supportHeld !== false && resistanceBroken !== true;
+    /**
+     * WAIT has to be falsifiable, and for a long time it was not.
+     *
+     * The old rule read "right when neither level gave way", which sounds
+     * reasonable until the claim carries no levels — then `supportHeld` and
+     * `resistanceBroken` are both null, `null !== false && null !== true` is
+     * true, and every levelless WAIT scored correct automatically. The
+     * scoreboard reported 100% because it could not report anything else, and
+     * a WAIT published before a 17.7% move counted as a win.
+     *
+     * So: when the post named levels, judge it on those — it made that claim.
+     * Otherwise judge it against how far this pair ordinarily travels in the
+     * same time. Standing aside is right when the move was unremarkable and
+     * wrong when it was not, in *either* direction, because a WAIT gives up
+     * both sides. Where neither test can run the call is unscoreable, which is
+     * a null and drops out of the tally rather than padding it.
+     */
+    if (supportHeld !== null || resistanceBroken !== null) {
+      biasCorrect = supportHeld !== false && resistanceBroken !== true;
+    } else if (typicalMovePct != null) {
+      biasCorrect = Math.abs(movePct) <= typicalMovePct;
+    } else {
+      biasCorrect = null;
+    }
   }
 
   return {
@@ -99,6 +150,7 @@ export async function scoreClaim(claim, { hours = 24, fetchImpl = globalThis.fet
     high,
     close,
     movePct,
+    typicalMovePct,
     supportHeld,
     resistanceBroken,
     biasCorrect,

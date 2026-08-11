@@ -1304,6 +1304,45 @@ async function cmdShip([file], flags, argv) {
   fs.writeFileSync(manifestPath, `${JSON.stringify(next, null, 2)}\n`);
   console.log(`  Site: /${slug}/ added to the manifest`);
 
+  /**
+   * Log what the article committed to, exactly as the slot-post path does.
+   *
+   * This was missing, and the cost was invisible until someone asked for a
+   * scoreboard: every article published through `ship` cleared the gate,
+   * reached Square, reached the site — and never entered the track record. The
+   * channel's whole differentiator is scoring its own calls in public, and it
+   * was quietly scoring none of them.
+   *
+   * A brief is fetched here rather than reused because ship does not take one:
+   * the claim needs the price at publication to be scoreable at all, and a
+   * claim without it is a row the scoreboard has to skip. If the fetch fails
+   * the post still stands — losing the record is bad, refusing to record the
+   * publication that already happened is worse.
+   */
+  try {
+    const brief = await collectBrief({ newsHours: 24 });
+    const claim = extractClaim(text, brief);
+    const publishedAt = new Date().toISOString();
+    store.recordClaim({
+      ...claim,
+      postId: squareId ?? `unlinked-${Date.now()}`,
+      shareLink: outcome.result?.shareLink ?? null,
+      format: "article",
+      publishedAt,
+    });
+    store.recordHistory({
+      format: "article",
+      asset: claim.asset,
+      bias: claim.bias,
+      angle: entry.title,
+      hook: text.split("\n")[0].slice(0, 120),
+      publishedAt,
+    });
+    console.log(`  Call: ${claim.asset ?? "no asset"} / ${claim.bias ?? "no bias"} logged for scoring`);
+  } catch (err) {
+    console.error(`  Call: NOT logged (${err.message.trim()}) — score this one by hand.`);
+  }
+
   if (flags["no-push"]) {
     console.log("\n--no-push set: commit and push yourself to deploy.");
     return 0;
