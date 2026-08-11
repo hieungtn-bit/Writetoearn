@@ -1,0 +1,171 @@
+{
+  "measuredAt": "2026-08-11T01:13:33.495Z",
+  "method": {
+    "question": "Not whether the new rules are right — they are — but whether they were run with measured numbers or with adjectives.",
+    "firstTouch": "Walked bar by bar. A bar touching both levels is charged to the stop.",
+    "grid": "6 stop distances in daily ranges x 5 reward ratios x 3 horizons.",
+    "unavailable": "Binance futures is geo-blocked from this host; nothing here uses funding, open interest or liquidation data."
+  },
+  "rules": {
+    "volumeTrendMustBePositive": 0,
+    "rangePositionCapsEarlyAt": 85,
+    "overheadHeavyPenaltyAbove": 35,
+    "overheadUsuallyDisqualifiesAbove": 50,
+    "multiCellMinPositiveSharePct": 10
+  },
+  "btc": {
+    "price": 64079.88,
+    "claimedBand": [
+      64000,
+      65200
+    ],
+    "insideClaimedBand": true,
+    "riskBand": [
+      63500,
+      64000
+    ],
+    "insideRiskBand": false,
+    "sma50": 63388.11259999998,
+    "sma200": 69916.59630000002,
+    "rangePosition30d": 43.94525235910647
+  },
+  "rows": [
+    {
+      "asset": "SUI",
+      "claimed": {
+        "asset": "SUI",
+        "symbol": "SUIUSDT",
+        "geckoId": "sui",
+        "rank": 1,
+        "score": 6.8,
+        "overhead": "trung bình",
+        "volume": "ổn",
+        "rangePos": "trung bình",
+        "beta": "trung"
+      },
+      "measured": {
+        "price": 0.6877,
+        "underwaterPct": 78.95406091787503,
+        "volumeTrendPct": -41.06413028003573,
+        "stage": "mixed",
+        "rangePosition30d": 21.183533447684358,
+        "atrPct": 3.4601485128050813,
+        "rsi14": 44.28551029722727,
+        "marketCapUsd": 2792830039,
+        "fromAthPct": -87.14579439252337,
+        "beta": 1.1922968721565004,
+        "btcVarianceExplainedPct": 64.01088741331044,
+        "positiveSharePct": 6.666666666666667,
+        "positiveCells": 6,
+        "cellsTried": 90,
+        "medianExpectancyR": -0.09125693893735126,
+        "bestExpectancyR": 0.09340659340659352
+      },
+      "gates": {
+        "volumeTrendPositive": false,
+        "notExtended": true,
+        "overheadUnderHeavyPenalty": false,
+        "overheadUnderDisqualifier": false,
+        "multiCellGeometry": false
+      },
+      "gatesFailed": [
+        "volumeTrendPositive",
+        "overheadUnderHeavyPenalty",
+        "overheadUnderDisqualifier",
+        "multiCellGeometry"
+      ],
+      "survivesOwnRules": false,
+      "disqualifiedByOwnRules": true
+    },
+    {
+      "asset": "ENA",
+      "claimed": {
+        "asset": "ENA",
+        "symbol": "ENAUSDT",
+        "geckoId": "ethena",
+        "rank": 2,
+        "score": 6.4,
+        "overhead": "cao (~35%)",
+        "volume": "yếu",
+        "rangePos": "trung-cao",
+        "beta": "cao (1.5+)"
+      },
+      "measured": {
+        "price": 0.089,
+        "underwaterPct": 32.874539396960365,
+        "volumeTrendPct": -54.48290358604591,
+        "stage": "mixed",
+        "rangePosition30d": 56.60377358490566,
+        "atrPct": 5.756986833334678,
+        "rsi14": 53.850090759067754,
+        "marketCapUsd": 869103426,
+        "fromAthPct": -94.14473684210526,
+        "beta": 1.5173175583022167,
+        "btcVarianceExplainedPct": 30.510591077620532,
+        "positiveSharePct": 0,
+        "positiveCells": 0,
+        "cellsTried": 90,
+        "medianExpectancyR": -0.09780277286059463,
+        "bestExpectancyR": 0
+      },
+      "gates": {
+        "volumeTrendPositive": false,
+        "notExtended": true,
+        "overheadUnderHeavyPenalty": true,
+        "overheadUnderDisqualifier": true,
+        "multiCellGeometry": false
+      },
+      "gatesFailed": [
+        "volumeTrendPositive",
+        "multiCellGeometry"
+      ],
+      "survivesOwnRules": false,
+      "disqualifiedByOwnRules": true
+    },
+    {
+      "asset": "ICP",
+      "claimed": {
+        "asset": "ICP",
+        "symbol": "ICPUSDT",
+        "geckoId": "internet-computer",
+        "rank": 3,
+        "score": 6.2,
+        "overhead": "thấp",
+        "volume": "mạnh",
+        "rangePos": "rất cao",
+        "beta": "thấp hơn"
+      },
+      "measured": {
+        "price": 2.345,
+        "underwaterPct": 0,
+        "volumeTrendPct": 70.18680921628055,
+        "stage": "2 expansion",
+        "rangePosition30d": 92.3684210526316,
+        "atrPct": 3.816219922909188,
+        "rsi14": 65.74151347112169,
+        "marketCapUsd": 1306645777,
+        "fromAthPct": -99.6653107828445,
+        "beta": 0.6415082243355239,
+        "btcVarianceExplainedPct": 17.149079768961563,
+        "positiveSharePct": 8.88888888888889,
+        "positiveCells": 8,
+        "cellsTried": 90,
+        "medianExpectancyR": -0.09622398877718025,
+        "bestExpectancyR": 0.16153846153846163
+      },
+      "gates": {
+        "volumeTrendPositive": true,
+        "notExtended": false,
+        "overheadUnderHeavyPenalty": true,
+        "overheadUnderDisqualifier": true,
+        "multiCellGeometry": false
+      },
+      "gatesFailed": [
+        "notExtended",
+        "multiCellGeometry"
+      ],
+      "survivesOwnRules": false,
+      "disqualifiedByOwnRules": true
+    }
+  ]
+}
