@@ -23,6 +23,7 @@ import { collectBrief, formatBrief } from "./market.mjs";
 import { fetchKlines } from "./analysis.mjs";
 import { FORMATS, crontabLines, getFormat } from "./slots.mjs";
 import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
+import { formatDoctor, runDoctor } from "./doctor.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
 import { formatPulse, pulse } from "./pulse.mjs";
 import { DEFAULT_MIN_Z, alertsFrom, formatIntraday, scanIntraday } from "./intraday.mjs";
@@ -200,6 +201,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdTeam(flags, argv);
     case "check":
       return cmdCheck(rest, flags);
+    case "doctor":
+      return cmdDoctor(flags);
     default:
       throw new ValidationError(`Unknown command "${command}". Run \`wte help\`.`);
   }
@@ -516,6 +519,22 @@ async function cmdAuto(flags, argv) {
 }
 
 /** Settles matured calls and prints the scoreboard. */
+/**
+ * Asks the wiring questions no unit test covers.
+ *
+ * Exits non-zero on a failed check so it can gate a publishing session in a
+ * shell without anyone having to read the output.
+ */
+async function cmdDoctor(flags) {
+  const report = await runDoctor();
+  if (flags.json) {
+    print(report, flags);
+    return report.worst === "fail" ? 1 : 0;
+  }
+  console.log(formatDoctor(report));
+  return report.worst === "fail" ? 1 : 0;
+}
+
 async function cmdScore(flags) {
   const store = new Store();
   const hours = flags.hours ? Number(flags.hours) : 24;

@@ -13,9 +13,10 @@
  *
  * Two rules make the recovery honest.
  *
- *   1. **The publication time comes from git, not from now.** Each `ship` run
- *      commits immediately after publishing, so the commit's author date is the
- *      publication time to within seconds.
+ *   1. **The publication time comes from the record, not from now.** The
+ *      manifest stores the moment each article went out; where it predates that
+ *      field, the `ship` commit that followed publication stands in. Never
+ *      "now" — a call dated today is a call with today's price.
  *
  *   2. **The price comes from the candle that was open at that moment**, fetched
  *      from history — never from today's tape. Scoring a call against an entry
@@ -58,6 +59,17 @@ const timeForTitle = new Map();
 for (const c of [...publishCommits].reverse()) timeForTitle.set(c.title, c.publishedAt);
 
 /**
+ * The manifest's own timestamp, preferred over the commit's.
+ *
+ * `ship` writes `published` into the manifest at the moment it publishes, which
+ * is a better record than the commit that follows it — and it reaches back
+ * further, covering the articles that went out before claim logging existed at
+ * all. The git trail stays as the fallback for any entry that predates the
+ * field.
+ */
+const timeFor = (article) => article.published ?? timeForTitle.get(article.title) ?? null;
+
+/**
  * The price at publication, from the hourly candle covering that instant.
  *
  * Binance returns candles by open time, so the bar containing the publication
@@ -77,12 +89,15 @@ const priceAt = async (symbol, iso) => {
 };
 
 const store = new Store();
-const existing = new Set(store.listClaims().map((c) => `${c.asset}|${c.publishedAt}`));
+// Keyed on postId, the stable identity of a published post. An earlier version
+// keyed on asset plus timestamp; when the recovery switched to the manifest's
+// publication time, every row looked new and the record doubled.
+const existing = new Set(store.listClaims().map((c) => String(c.postId)));
 
 const rows = [];
 for (const a of articles) {
-  const publishedAt = timeForTitle.get(a.title);
-  if (!publishedAt) continue;
+  const publishedAt = timeFor(a);
+  if (!publishedAt) { rows.push({ title: a.title, skip: "no publication time on record" }); continue; }
 
   const draftPath = path.join(root, "drafts", a.draft);
   if (!fs.existsSync(draftPath)) { rows.push({ title: a.title, skip: "draft missing" }); continue; }
@@ -99,7 +114,7 @@ for (const a of articles) {
   catch (e) { rows.push({ title: a.title, publishedAt, skip: `price fetch failed: ${e.message}` }); continue; }
   if (!priced) { rows.push({ title: a.title, publishedAt, skip: "no candle covering that time" }); continue; }
 
-  const key = `${claim.asset}|${publishedAt}`;
+  const key = String(a.squareId ?? `backfill-${a.slug}`);
   if (existing.has(key)) { rows.push({ title: a.title, publishedAt, skip: "already recorded" }); continue; }
 
   const record = {

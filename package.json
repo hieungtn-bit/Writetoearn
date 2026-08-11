@@ -11,7 +11,9 @@
   },
   "scripts": {
     "test": "node --test \"test/*.test.mjs\"",
-    "start": "node ./bin/wte.mjs"
+    "start": "node ./bin/wte.mjs",
+    "doctor": "node ./bin/wte.mjs doctor",
+    "check": "npm test && npm run doctor"
   },
   "files": [
     "bin/",

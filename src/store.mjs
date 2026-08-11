@@ -60,9 +60,21 @@ export class Store {
    * Records what a published post actually claimed, so it can be scored later.
    * The scoreboard is only possible if this starts collecting from day one.
    */
+  /**
+   * Records what a post committed to, once per post.
+   *
+   * Idempotent on `postId` because a published post has exactly one identity
+   * and a track record with the same call in it twice is a track record that
+   * double-counts. A re-record replaces the earlier row rather than appending —
+   * a recovery run with a better publication timestamp should correct the
+   * entry, not duplicate it.
+   */
   recordClaim(claim) {
     const state = this.load();
-    state.claims.push({ ...claim, recordedAt: new Date().toISOString(), score: null });
+    const row = { ...claim, recordedAt: new Date().toISOString(), score: null };
+    const at = state.claims.findIndex((c) => String(c.postId) === String(claim.postId));
+    if (at >= 0) state.claims[at] = { ...state.claims[at], ...row };
+    else state.claims.push(row);
     this.save();
     return claim;
   }
@@ -70,7 +82,11 @@ export class Store {
   listClaims({ scored } = {}) {
     const claims = this.load().claims ?? [];
     if (scored === undefined) return claims;
-    return claims.filter((c) => (scored ? c.score !== null : c.score === null));
+    // Loose equality on purpose: a claim written by an older build, or by hand,
+    // may carry no `score` key at all. Strict `=== null` treated that as
+    // already-scored and the call fell out of the settlement queue silently —
+    // the same class of quiet omission that left the whole board empty.
+    return claims.filter((c) => (scored ? c.score != null : c.score == null));
   }
 
   /**

@@ -348,9 +348,11 @@ Flags: `--article` · `--screen=SYM,...` · `--study file.json,...` ·
 
 - Bare integers ≤ 100 go unchecked.
 - Values under 1 are compared by absolute difference.
-- **Small values printed to one decimal can breach the 0.5% tolerance and
-  produce false rejections.** Use two decimals below 10 — rounding 3.56 to 3.6 is
-  a 1.1% error and the gate is right to reject it.
+- Small values printed to one decimal used to breach the tolerance and produce
+  **false** rejections. Fixed: a figure now also matches when it is within half a
+  unit of its own printed precision, which is exactly the band of true values
+  that round to what was written. Use `pct()` from `src/format.mjs` and the
+  rounding is right by construction.
 
 ### The claims block — a second, independent gate
 
@@ -373,6 +375,28 @@ runs, a comparison that stopped being true. **Fix the sentence to match the data
 never the data to match the sentence.**
 
 ---
+
+## 6b. `wte doctor` — the wiring check
+
+Every serious fault in this codebase has been **silent**. `ship` published and
+recorded no claim, so the track record stayed empty. The scoreboard scored every
+levelless WAIT correct, so it reported 100% and looked like success. The
+settlement window reached back eight days, so older calls vanished from the
+tally. None was caught by a unit test, because each is a property of how the
+pieces are wired rather than of any one function.
+
+```bash
+npm run check      # tests, then the wiring self-check
+wte doctor         # the self-check alone; exits non-zero on a failure
+```
+
+It asks: can the scoreboard mark a call **wrong** (a check that can only pass is
+worth nothing)? Does every bias the gate admits also parse in the scoreboard?
+Does every published article that stated a call carry a claim? Is anything past
+its deadline unjudged? Does the palette still separate under three CVD
+simulations? Does the formatter round inside the gate's tolerance?
+
+Run it before a publishing session, not after a mystery.
 
 ## 7. Publishing
 
@@ -417,6 +441,17 @@ Do not re-derive these. Do challenge them with better data.
 | Funding "healthy band" | spans percentile 4.3–93.6. `+0.015%` and `+0.04%` **never occur** — the venue caps at 0.0100 |
 | Retail CEX–CEX arbitrage | 320 same-tick observations, Binance vs OKX, 8 pairs. Gaps open on ~29% of ticks; **0 clear the 0.20% round-trip fee.** Best round trip observed still loses 0.18%. Latency from an ordinary host: 160 / 193 ms |
 | Support levels on 4H | +13.6pp over baseline — **3.17σ naive, 0.92σ de-overlapped.** Suggestive, unproven. The only positive result so far |
+
+### The live track record
+
+32 published calls, settled 24 hours after publication, priced from the hourly
+candle open at the moment each went out. **15 of 26 judged calls correct, 58%.**
+Almost all are WAIT; the one directional call (GIGGLE Selective Short) resolved
+−20.60% and scored correct.
+
+The first run of this board reported **100%**, because WAIT was unfalsifiable.
+Treat any track record that has never printed a miss as broken until proven
+otherwise — including your own.
 
 ---
 

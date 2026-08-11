@@ -323,11 +323,44 @@ export function collectBriefNumbers(brief) {
   return values;
 }
 
-function matches(value, allowed) {
+/**
+ * How many decimal places a figure was written to.
+ *
+ * The precision of the statement, not of the underlying value — "3.56" asserts
+ * something to within half of a hundredth, "3.6" only to within half a tenth.
+ */
+function printedDecimals(raw) {
+  const m = /\.(\d+)/.exec(String(raw ?? ""));
+  return m ? m[1].length : 0;
+}
+
+/**
+ * Does a written figure trace to one of the values the data vouches for?
+ *
+ * Two allowances, and the wider of the two wins.
+ *
+ * The relative one is the original: 0.5% of scale, which keeps "63.2K" matched
+ * to 63,250 and stops a large figure needing absurd precision.
+ *
+ * The second exists because the first was generating *false rejections* on
+ * small numbers, twice in one day. A true value of 3.56 printed as "3.6" is a
+ * 1.1% relative error and the gate refused it — correctly by its own rule, and
+ * wrongly by any reasonable reading, since 3.6 is what 3.56 rounds to. Rounding
+ * is not fabrication. So a figure also matches when it is within half a unit of
+ * its own printed precision, which is exactly the range of true values that
+ * round to what was written.
+ *
+ * This never weakens the gate: an invented number is not within half a printed
+ * unit of anything real, and the relative allowance is unchanged where it was
+ * already the looser of the two.
+ */
+function matches(value, allowed, raw) {
   const target = Math.abs(value);
+  const halfStep = 0.5 * 10 ** -printedDecimals(raw);
   return allowed.some((a) => {
     const scale = Math.max(Math.abs(a), target, 1);
-    return Math.abs(a - target) / scale <= TOLERANCE;
+    const diff = Math.abs(a - target);
+    return diff / scale <= TOLERANCE || diff <= halfStep;
   });
 }
 
@@ -355,7 +388,7 @@ export function verifyNumbers(text, brief, { screen, candles, stages, study } = 
     if (structural) continue;
 
     checked++;
-    if (!matches(n.value, allowed)) unmatched.push({ raw: n.raw, value: n.value });
+    if (!matches(n.value, allowed, n.raw)) unmatched.push({ raw: n.raw, value: n.value });
   }
 
   return { ok: unmatched.length === 0, unmatched, checked };

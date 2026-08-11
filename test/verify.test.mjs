@@ -466,3 +466,22 @@ test("a Vietnamese ratio is not a billion", () => {
   const cap = extractNumbers("Vốn hoá 1.31 tỷ đô.");
   assert.equal(cap[0].value, 1.31e9);
 });
+
+test("rounding to the precision you printed is not fabrication", () => {
+  // 3.56 written as "3.6" is a 1.1% relative error, twice the tolerance, and
+  // the gate used to reject it. Rounding is not inventing: 3.6 is exactly what
+  // 3.56 rounds to, and refusing it teaches writers to drop decimals.
+  const withSmall = {
+    ...brief,
+    spot: [...brief.spot, { symbol: "TSTUSDT", price: 3.56, quoteVolume24h: 1 }],
+  };
+  assert.equal(verifyNumbers("Reading 3.6 on the day.", withSmall).ok, true);
+  assert.equal(verifyNumbers("Reading 3.56 on the day.", withSmall).ok, true);
+
+  // A figure outside the rounding band is still caught.
+  assert.equal(verifyNumbers("Reading 4.2 on the day.", withSmall).ok, false);
+});
+
+test("the rounding allowance does not admit an invented large number", () => {
+  assert.equal(verifyNumbers("BTC tapped 71,400 today.", brief).ok, false);
+});
