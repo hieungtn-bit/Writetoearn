@@ -454,3 +454,15 @@ test("having no hashtags at all is still its own failure", () => {
   assert.ok(none.problems.includes("no hashtags"));
   assert.ok(none.problems.every((p) => !p.includes("meta tag")));
 });
+
+test("a Vietnamese ratio is not a billion", () => {
+  // "tỷ lệ" is ratio, not a magnitude. Read as one, "5 tỷ lệ được–mất" becomes
+  // five billion and the gate demands the market vouch for a figure nobody
+  // wrote — a false rejection, which teaches writers to drop units.
+  const ratio = extractNumbers("Thử 5 tỷ lệ được–mất và 3 tỷ giá khác nhau.");
+  assert.deepEqual(ratio.map((n) => n.value), [5, 3]);
+
+  // The genuine magnitude still parses.
+  const cap = extractNumbers("Vốn hoá 1.31 tỷ đô.");
+  assert.equal(cap[0].value, 1.31e9);
+});

@@ -45,6 +45,19 @@ const SUFFIXES = { k: 1e3, m: 1e6, b: 1e9 };
 const WORD_SUFFIXES = { nghìn: 1e3, ngàn: 1e3, triệu: 1e6, tỷ: 1e9, tỉ: 1e9 };
 
 /**
+ * Compounds where "tỷ"/"tỉ" is not a magnitude at all.
+ *
+ * "tỷ lệ" is ratio, "tỷ giá" is exchange rate, "tỷ trọng" is proportion — none
+ * of them mean a billion, and all of them routinely follow a number. "5 tỷ lệ
+ * được–mất" is five ratios; read as a magnitude it becomes five billion, and
+ * the gate then demands the market vouch for a figure the writer never wrote.
+ *
+ * Only the head word is excluded, so "5 tỷ đô" and "1.2 tỷ vốn hoá" still parse
+ * as magnitudes the way they should.
+ */
+const NOT_A_MAGNITUDE = String.raw`(?!\s+(?:lệ|giá|trọng))`;
+
+/**
  * Pulls every numeric literal out of the text, keeping enough context to tell
  * a percentage from a bare count.
  *
@@ -86,7 +99,12 @@ export function extractNumbers(text) {
   const insideDate = (i) => skipSpans.some(([a, b]) => i >= a && i < b);
   // A magnitude suffix has to sit flush against the digits and not begin a
   // word: without both guards, "66,956\n\nBias:" reads as 66,956 billion.
-  const re = /(\d[\d,]*(?:\.\d+)?)(?:\s*(nghìn|ngàn|triệu|tỷ|tỉ)|([KkMmBb])(?![A-Za-z]))?(\s*%)?/giu;
+  const re = new RegExp(
+    String.raw`(\d[\d,]*(?:\.\d+)?)`
+    + String.raw`(?:\s*(nghìn|ngàn|triệu|(?:tỷ|tỉ)${NOT_A_MAGNITUDE})|([KkMmBb])(?![A-Za-z]))?`
+    + String.raw`(\s*%)?`,
+    "giu",
+  );
 
   for (const m of text.matchAll(re)) {
     if (insideDate(m.index)) continue;
