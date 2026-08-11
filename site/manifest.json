@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "lookbacks",
+      "draft": "70-lookbacks.txt",
+      "title": "All Five Say LONG. Only Two Survive the Question.",
+      "description": "Five names, measured properly. The headline is not about any of them — it is about the window I was measuring in.",
+      "published": "2026-08-11T16:24:27.161Z",
+      "assets": [
+        "ICP",
+        "ENA",
+        "GIGGLE"
+      ],
+      "topics": [],
+      "squareId": 354608197949233
+    },
+    {
       "slug": "toi-sai",
       "draft": "69-toi-sai.txt",
       "title": "A Trader Said My System Was Broken. He Was Right.",

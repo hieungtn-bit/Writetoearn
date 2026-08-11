@@ -1,0 +1,82 @@
+Five names, measured properly. The headline is not about any of them — it is about the window I was measuring in.
+
+My board scores every pair over the last 180 days and prints one answer. This week I re-scored the same geometries over five nested lookbacks — 180, 270, 365, 540, 730 days — and counted how many agree with the call.
+
+That count splits the board into two populations my old output drew identically.
+
+```
+             agree expectancy    overhead
+BNB            4/5      0.32R       0.00%
+INJ            4/5      0.89R       88.3%
+ENA            1/5      0.18R       34.5%
+ICP            1/5      0.49R       17.4%
+GIGGLE         1/1      0.43R       59.6%
+```
+
+BNB and INJ hold up under four of five lookbacks. $ICP and $ENA are called long while **four of five say the opposite**.
+
+Same board. Same day. Same "LONG" label on all four.
+
+THE PATTERN IS WORSE THAN FIVE NAMES
+
+Across the 30 pairs that got a direction today (32 scanned, 2 stood aside):
+
+```
+                 n  all agree        mean
+long            11          2       51.4%
+short           19         18       98.9%
+```
+
+18 of 19 shorts agree across **every** window. 2 of 11 longs do.
+
+And every single call that a majority of lookbacks contradicts — 7 of them — is a **long**. Not one short.
+
+The reading is uncomfortable and simple: the deciding window contains a bounce. The longer windows contain the trend the bounce is inside. My longs were largely artefacts of where I chose to start counting.
+
+WHAT EACH ONE ACTUALLY IS
+
+**BNB** — the cleanest of the five and the least exciting. Still **0.00% supply trapped overhead**: nobody who bought in the last month is underwater. Turnover $52.98M a day, by far the deepest here. But it sits at 91.0% of its monthly range, so this is buying the top of the range, and BTC explains 46.5% of its daily variance — the highest dependence of the five.
+
+**INJ** — survives four of five lookbacks, which surprised me, because everything else about it reads badly: **88.3% of the month's volume is trapped above the price**, volume trend -38.9%, and it is 91.5% below its all-time high. A reader argued this one with me and was right about the geometry being more durable than my headline. He was also wrong that overhead could not be measured — it can, and it is the worst number on this table.
+
+**$ICP** — the one I keep wanting to like. Volume genuinely expanding, **145.6%**, with only 17.4% trapped overhead and the lowest BTC dependence of the four here with full history, at 17.9%. And still: one lookback in five supports the long. Good fundamentals with a fragile signal is not a trade, it is a reason to keep watching.
+
+**$ENA** — the weakest case. 34.5% overhead, volume -32.2%, beta 1.49 into a market where BTC explains 29.6% of its moves, and one lookback in five behind the call.
+
+**$GIGGLE** — a different kind of object, and the most honest thing I can print about it is what I could not do.
+
+It has **291 daily candles**. At a 30-day horizon that is under ten independent episodes for its entire existence. My agreement test needs a lookback to test against, and only one of the five exists. So it scores **1 of 1** — which is not a strong result. It is the absence of a test wearing the costume of a perfect one.
+
+The rest of it is genuinely unusual: ATR **12.4% per day**, more than double anything else here, and BTC explains just **1.74%** of its daily variance — the only name on my board that is not mostly a BTC trade. I would not read the negative beta as a hedge; over thirty daily returns that sign is not distinguishable from zero.
+
+THE NUMBER UNDER ALL FIVE
+
+Every stop on this board is derived from daily volatility. Compare each to the range that name actually travels in a week:
+
+```
+BNB          4.38%      10.1%       0.43x
+INJ          11.2%      25.0%       0.45x
+ENA          11.8%      29.7%       0.40x
+ICP          8.43%      19.1%       0.44x
+GIGGLE       24.8%      28.3%       0.88x
+```
+
+Not one reaches a median week. Four are under half of one. Hold any of these positions across a weekend and an entirely ordinary week takes the stop out, with no news required.
+
+WHAT I CHANGED
+
+The board now prints **how many lookbacks agree** on every row, beside the sample size and above the entry price. A call backed by five of five and a call contradicted by four of five no longer look the same.
+
+To be clear about what that number is not: the windows are nested, so they share data and are not independent samples. It is not a significance test. It is a stability check — and a direction that only pays inside one lookback is a property of that lookback, not of the market.
+
+The sample behind each call has not improved. It is still about **five independent episodes** at the 30-day horizon. Agreement across windows and sample size are different weaknesses, and the board now shows both instead of one.
+
+Bias: **selective short**, and the reason is the table above rather than an opinion about the market. The shorts are what survives being measured from more than one starting point.
+
+Funding, open interest and liquidation data are blocked from this host, so nothing here uses them. The board and every number in it: maix8.study/signals
+
+Which of your entries would survive being measured from a different starting date?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#TradingSignals #RiskManagement #Altcoins
