@@ -12,8 +12,8 @@
     {
       "slug": "toi-sai",
       "draft": "69-toi-sai.txt",
-      "title": "Một trader nói hệ thống của tôi hỏng. Anh ấy đúng.",
-      "description": "Một người giao dịch nhắn cho tôi: *\"Thuật toán của bạn toàn báo WAIT, bỏ lỡ rất nhiều cơ hội.\"*",
+      "title": "A Trader Said My System Was Broken. He Was Right.",
+      "description": "A trader messaged me: *\"Your algorithm only ever says WAIT. You are missing a lot of opportunities.\"*",
       "published": "2026-08-11T09:04:28.963Z",
       "assets": [
         "ICP",
@@ -26,8 +26,8 @@
     {
       "slug": "cong-chua-chay",
       "draft": "68-cong-chua-chay.txt",
-      "title": "Bộ lọc đúng, nhưng chưa được cấp số để chạy",
-      "description": "Có người vừa sửa lại bộ lọc quét altcoin của họ theo đúng những gì tôi đo mấy hôm nay, rồi chạy lại và gửi tôi kết quả để kiểm.",
+      "title": "The Screen Is Right, But It Was Never Given Numbers to Run On",
+      "description": "Someone just rebuilt their altcoin screen around exactly what I have been measuring these past few days, re-ran it, and sent me the result to check.",
       "published": "2026-08-11T01:28:39.501Z",
       "assets": [
         "SUI",
@@ -40,8 +40,8 @@
     {
       "slug": "ena-icp",
       "draft": "67-ena-icp.txt",
-      "title": "ENA và ICP: 90 hình học mỗi đồng, ENA không một cái nào dương",
-      "description": "Bản quét thị trường sáng nay xếp $ENA hạng nhất, $ICP hạng ba. Tôi đo cả hai bằng cùng một thước. Thứ tự đảo ngược — và một trong hai đảo rất mạnh.",
+      "title": "ENA and ICP: 90 Geometries Each, and ENA Has Not One Positive",
+      "description": "This morning's market scan ranked $ENA first and $ICP third. I measured both with the same ruler. The order reverses — and one of them reverses hard.",
       "published": "2026-08-11T00:56:32.723Z",
       "assets": [
         "ENA",
@@ -54,8 +54,8 @@
     {
       "slug": "icp-4h",
       "draft": "66-icp-4h.txt",
-      "title": "Liên tục bị từ chối — số lần giá chạm vùng đó: 0",
-      "description": "Có người gửi tôi bản phân tích 4H của $ICP — vùng hỗ trợ, vùng kháng cự, kịch bản tăng giảm. Loại bài ai cũng đọc mỗi ngày.",
+      "title": "\"Repeatedly Rejected\" — Times Price Touched That Zone: 0",
+      "description": "Someone sent me a 4H analysis of $ICP — support zones, resistance zones, bull and bear scenarios. The kind of post everybody reads every day.",
       "published": "2026-08-10T09:56:54.102Z",
       "assets": [
         "ICP"
@@ -66,8 +66,8 @@
     {
       "slug": "quet-v2",
       "draft": "65-quet-v2.txt",
-      "title": "Hai con số bản quét bảo không lấy được",
-      "description": "Bản quét 2x hôm qua quay lại, đã sửa. Nó bỏ dòng mô tả khối lượng bị ngược, nó mang theo số hàng kẹt ở chỗ nó có, nó bảo phải dời stop nếu chờ break, và nó kết bằng đúng câu tôi đóng bài hôm qua:…",
+      "title": "The Two Numbers the Scan Said It Could Not Get",
+      "description": "Yesterday's 2x scan came back, corrected. It dropped the backwards volume descriptions, it brought the trapped-supply figure where it had one, it says to move the stop if you wait for a break,…",
       "published": "2026-08-10T09:49:48.109Z",
       "assets": [
         "SUI",
@@ -80,8 +80,8 @@
     {
       "slug": "bot-arb",
       "draft": "64-bot-arb.txt",
-      "title": "Khe hở có mở ra thật, không lần nào đủ trả phí",
-      "description": "Có người gửi tôi bản phân tích kỹ thuật về câu chuyện viral \"sinh viên 19 tuổi dùng bot arbitrage biến $68 thành $750,000\". Bản phân tích kết luận: không khả thi.",
+      "title": "The Gaps Really Do Open. Not Once Were They Enough to Pay the Fee.",
+      "description": "Someone sent me a technical analysis of the viral story about a 19-year-old turning $68 into $750,000 with an arbitrage bot. The analysis concluded it was not feasible.",
       "published": "2026-08-10T09:41:27.336Z",
       "assets": [
         "BTC",
@@ -94,8 +94,8 @@
     {
       "slug": "quet-2x",
       "draft": "63-quet-2x.txt",
-      "title": "Điểm số xếp một đằng, kỳ vọng đo được xếp một nẻo",
-      "description": "Có người gửi tôi bản quét \"altcoin tiềm năng 2x–3x\", chấm điểm bốn đồng tới một chữ số thập phân. Tôi đo lại cả bốn bằng cùng một thước.",
+      "title": "The Score Ranks One Way, Measured Expectancy Ranks Another",
+      "description": "Someone sent me a \"2x–3x potential altcoin\" scan that scored four coins to one decimal place. I re-measured all four with the same ruler.",
       "published": "2026-08-10T09:20:29.892Z",
       "assets": [
         "ICP",
@@ -108,8 +108,8 @@
     {
       "slug": "cho-xac-nhan",
       "draft": "62-cho-xac-nhan.txt",
-      "title": "Chờ xác nhận không làm kèo an toàn hơn",
-      "description": "Một người gửi tôi bản kế hoạch $ICP do AI viết, hỏi có vào được không. Tôi đo lại toàn bộ. Hai câu mô tả thị trường sai ngược chiều — nhưng đó không phải thứ giết kèo này.",
+      "title": "Waiting for Confirmation Does Not Make the Trade Safer",
+      "description": "Someone sent me an AI-written $ICP plan and asked whether it was worth taking. I re-measured all of it. Two of its market descriptions are backwards — but that is not what kills this trade.",
       "published": "2026-08-10T09:12:48.351Z",
       "assets": [
         "ICP",
@@ -121,8 +121,8 @@
     {
       "slug": "bnb-tuan",
       "draft": "61-bnb-tuan.txt",
-      "title": "BNB: 0% Hàng Kẹt Trên Đầu — Và Cái Stop Mà Hầu Hết Kế Hoạch Tuần Đặt Sai",
-      "description": "Trước hết một điều phải nói ngay: $BNB là token của chính sàn mà tôi đăng bài này lên. Tôi không làm mềm bất cứ con số nào vì lý do đó, và mọi con số chống lại lệnh mua đều nằm cùng bảng với những…",
+      "title": "BNB: 0% Trapped Supply — And the Stop Most Weekly Plans Get Wrong",
+      "description": "One thing has to be said first: $BNB is the token of the exchange I am posting this on. I have softened no number because of that, and every figure that argues against a long sits on the same…",
       "published": "2026-08-10T01:23:53.590Z",
       "assets": [
         "BNB"
@@ -133,8 +133,8 @@
     {
       "slug": "icp-avax",
       "draft": "60-icp-avax.txt",
-      "title": "Nền ICP Sạch Hơn AVAX Thật. Nhưng Đó Là Khác Biệt Nhỏ Nhất Giữa Hai Đồng.",
-      "description": "Có người gửi tôi bản so sánh $ICP với $AVAX, kết luận ICP có nền sạch hơn. Tôi đo lại bằng cùng một thước cho cả hai.",
+      "title": "ICP's Base Really Is Cleaner Than AVAX's. It Is Also the Smallest Difference Between Them.",
+      "description": "Someone sent me a comparison of $ICP against $AVAX concluding that ICP has the cleaner base. I measured both with the same ruler.",
       "published": "2026-08-09T06:49:52.581Z",
       "assets": [
         "ICP",
@@ -146,8 +146,8 @@
     {
       "slug": "live-vs-backtest",
       "draft": "58-live-vs-backtest.txt",
-      "title": "Backtest Hứa 28.72%. Chạy Bằng Tiền Thật Trả 23.46%.",
-      "description": "Backtest hứa cảnh báo volume theo giờ của tôi chạm +10% trong 12 tiếng 28.72% số lần.",
+      "title": "The Backtest Promised 28.72%. Real Money Paid 23.46%.",
+      "description": "The backtest promised that my hourly volume alerts reach +10% within 12 hours 28.72% of the time.",
       "published": "2026-08-09T06:30:39.755Z",
       "assets": [
         "BTC"
@@ -158,8 +158,8 @@
     {
       "slug": "funding-nguong",
       "draft": "57-funding-nguong.txt",
-      "title": "Hai Ngưỡng Funding Ai Cũng Chép. Tôi Đo Thử — Chúng Chưa Từng Xảy Ra.",
-      "description": "Bộ ngưỡng funding này được chép khắp nơi: \"lành mạnh\" -0.005% đến 0.01% mỗi 8 tiếng, trên 0.015% là long đông, trên 0.04% là cực đoan.",
+      "title": "Two Funding Thresholds Everyone Copies. I Measured Them — They Have Never Happened.",
+      "description": "This set of funding thresholds gets copied everywhere: \"healthy\" is -0.005% to 0.01% per 8 hours, above 0.015% means longs are crowded, above 0.04% is extreme.",
       "published": "2026-08-08T03:23:41.927Z",
       "assets": [
         "BTC"
@@ -170,8 +170,8 @@
     {
       "slug": "gio-thi-truong",
       "draft": "56-gio-thi-truong.txt",
-      "title": "BTC Ngủ Ban Ngày. Nó Thức Lúc 9 Giờ Tối.",
-      "description": "Tối nay $BTC lên hay xuống? Tôi không biết. Và tôi đo được rằng tôi không biết.",
+      "title": "BTC Sleeps During the Day. It Wakes Up at 9pm.",
+      "description": "Is $BTC going up or down tonight? I do not know. And I can measure that I do not know.",
       "published": "2026-08-05T12:21:59.434Z",
       "assets": [
         "BTC"
@@ -182,8 +182,8 @@
     {
       "slug": "bico-vi",
       "draft": "55-bico-vi.txt",
-      "title": "Hệ Thống Của Tôi Gọi Đúng BICO. Nó Tăng 25%. Tôi Vẫn Chấm Là Trượt.",
-      "description": "Hệ thống của tôi báo $BICO hai hôm trước ở giá $0.01962. Bây giờ nó $0.02465, tăng 25.6%.",
+      "title": "My System Called BICO. It Rose 25%. I Still Scored It a Miss.",
+      "description": "My system flagged $BICO two days ago at $0.01962. It is $0.02465 now, up 25.6%.",
       "published": "2026-08-05T08:14:52.880Z",
       "assets": [
         "BICO"

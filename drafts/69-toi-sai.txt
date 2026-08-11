@@ -1,16 +1,16 @@
-Một người giao dịch nhắn cho tôi: *"Thuật toán của bạn toàn báo WAIT, bỏ lỡ rất nhiều cơ hội."*
+A trader messaged me: *"Your algorithm only ever says WAIT. You are missing a lot of opportunities."*
 
-Tôi không cãi. Tôi đi đo.
+I did not argue. I went and measured.
 
-Anh ấy đúng, và lý do tệ hơn "quá thận trọng".
+He is right, and the reason is worse than "too cautious".
 
-BA LỖI, KHÔNG PHẢI MỘT
+THREE FAULTS, NOT ONE
 
-**Lỗi một: lưới của tôi chỉ có một chiều.**
+**Fault one: my grid only had one direction.**
 
-Mọi hình học tôi chấm suốt mấy tuần đều là *mua rồi giữ tới mục tiêu phía trên*. Trên một tài sản đang rơi, kỳ vọng long âm là chuyện hiển nhiên — và khi long đã âm thì **WAIT là lựa chọn duy nhất còn lại trên menu**.
+Every geometry I scored for weeks was *buy, then hold to a target above*. On a falling asset, a negative long expectancy is a foregone conclusion — and once long is negative, **WAIT is the only option left on the menu**.
 
-Thêm chiều short vào đúng cái lưới đó, cùng dữ liệu, cùng cách đi từng nến:
+Add the short direction to that same grid, same data, same bar-by-bar walk:
 
 ```
                 LONG        SHORT
@@ -18,35 +18,35 @@ $ICP            2/96        89/96
 $BTC           87/96        21/96
 ```
 
-WAIT chưa bao giờ là một nhận định thị trường. **Nó là một nhánh bị thiếu.**
+WAIT was never a market view. **It was a missing branch.**
 
-Và để bạn thấy lưới có phân biệt thật chứ không phải cứ short là thắng: BTC ngược hẳn — long 87/96, short 21/96. Đọc ra một chế độ mạch lạc mà tôi có đủ dữ liệu để nói từ lâu và đã không nói, vì code không hỏi.
+And so you can see the grid genuinely discriminates rather than simply preferring shorts: BTC is the mirror — long 87/96, short 21/96. That reads out a coherent regime I have had the data to describe for a long time and did not, because the code never asked.
 
-**Lỗi hai: tôi lấy trung bình một nghìn ngày.**
+**Fault two: I was averaging a thousand days.**
 
-Chạy đúng lưới đó trên 180 ngày gần nhất thay vì toàn lịch sử thì **mọi dấu đều lật**. ICP long từ 0% số ô dương lên 88%; ICP short từ 94% xuống 0%.
+Run that same grid over the last 180 days instead of the full history and **every sign flips**. ICP long goes from 0% of cells positive to 88%; ICP short from 94% down to 0%.
 
-Lưới nghìn ngày của tôi không đo lợi thế. Nó đo **một chế độ đã qua** rồi áp lên thị trường đã đổi.
+My thousand-day grid was not measuring an edge. It was measuring **a regime that had ended**, and applying it to a market that had changed.
 
-**Lỗi ba: WAIT là mặc định, không phải kết luận.**
+**Fault three: WAIT was a default, not a conclusion.**
 
-Nếu long âm mà short dương thì đáp án là short. Tôi đã để nó rơi vào WAIT.
+If long is negative and short is positive, the answer is short. I let it fall through to WAIT.
 
-CON SỐ TÔI NỢ NGƯỜI ĐÓ
+THE NUMBER I OWE THAT PERSON
 
-Mua-và-giữ, đúng trong tuần tôi bảo đứng ngoài, trung bình trên nhóm tôi theo dõi: **+20.0%** sau 7 ngày, **+44.4%** sau 14 ngày.
+Buy and hold, across exactly the week I said to stand aside, averaged over the group I track: **+20.0%** after 7 days, **+44.4%** after 14 days.
 
-$BICO — chính cái tên hệ thống của tôi bắt được rồi tôi tự chấm là trượt — **+227.0% trong 14 ngày**.
+$BICO — the very name my system caught and I then scored as a miss — **+227.0% in 14 days**.
 
-Không có cách nào diễn giải bảng đó thành "tôi đúng". Đứng ngoài đã tốn tiền thật.
+There is no way to read that table as "I was right". Standing aside cost real money.
 
-Một chỗ duy nhất tôi giữ lại: để lấy con số BICO đó bạn phải ngồi qua mức sụt **-59.1%**. Đó không phải lý do để nói WAIT. Đó là lý do để nói *vào cỡ nào* — và tôi đã không nói câu đó.
+The one thing I hold on to: to collect that BICO number you had to sit through a **-59.1%** drawdown. That is not a reason to say WAIT. It is a reason to say *how large a position* — and I never said that.
 
-TÔI ĐÃ VIẾT LẠI VÀ ĐƯA LÊN WEB
+I REWROTE IT AND PUT IT ON THE WEB
 
-Máy quét mới chấm **cả hai chiều bình đẳng**, để **cửa sổ gần quyết định**, và chỉ trả WAIT khi **cả hai chiều đều âm**.
+The new scanner scores **both directions on equal terms**, lets **the recent window decide**, and returns WAIT only when **both directions lose**.
 
-Quét 30 cặp hôm nay:
+Today's scan of 30 pairs:
 
 ```
 LONG               9
@@ -54,42 +54,42 @@ SHORT             19
 WAIT               2
 ```
 
-13 cặp đang có **đổi chế độ** — cửa sổ gần nghịch dấu với lịch sử dài, tức thị trường đã thay đổi ngay bên trong mẫu.
+13 pairs show a **regime turn** — the recent window disagreeing in sign with the long history, meaning the market changed inside the sample.
 
-Ba kèo đủ thanh khoản để vào cỡ, xếp theo kỳ vọng:
+The three calls liquid enough to size, ranked by expectancy:
 
 ```
-UNI    LONG    30d  vào 3.945  cắt 3.614  đích 4.937  E 0.70R  n≈5
-NEAR   LONG    30d  vào 1.601  cắt 1.360  đích 2.324  E 0.68R  n≈5
-ETH    SHORT   30d  vào 1879  cắt 1932  đích 1720  E 0.39R  n≈5
+UNI    LONG    30d  entry 3.945  stop 3.614  target 4.937  E 0.70R  n≈5
+NEAR   LONG    30d  entry 1.601  stop 1.360  target 2.324  E 0.68R  n≈5
+ETH    SHORT   30d  entry 1879   stop 1932   target 1720   E 0.39R  n≈5
 ```
 
-Đây là lần đầu kênh này ra khuyến nghị **short**. Nó đến từ dữ liệu, không từ quan điểm.
+This is the first time this channel has published a **short**. It comes from the data, not from an opinion.
 
-ĐỌC CÁI NÀY TRƯỚC KHI DÙNG BẢNG
+READ THIS BEFORE YOU USE THE BOARD
 
-Cột quan trọng nhất không phải kỳ vọng. Là **n**.
+The most important column is not expectancy. It is **n**.
 
-Cửa sổ đo chồng lấn nhau, nên mẫu trung thực là số lần độc lập — trung vị trên bảng hôm nay là **5**. 20 trên 28 kèo bị đánh dấu *mẫu mỏng*.
+The measurement windows overlap, so the honest sample is the number of independent episodes — the median on today's board is **5**. 20 of 28 calls are marked *thin sample*.
 
-Một con số 0.70R trên năm lần độc lập là **một câu chuyện**, chưa phải một phát hiện. Bảng ghi rõ điều đó ngay cạnh mỗi dòng, phía trên giá vào — cố ý, vì thứ nên khiến bạn nghi ngờ phải đến trước thứ khiến bạn muốn vào lệnh.
+A 0.70R over five independent episodes is **a story**, not yet a finding. The board says so right beside every row, above the entry price — deliberately, because the thing that should make you doubt has to arrive before the thing that makes you want to trade.
 
-Và bảng vẫn từ chối: 2 cặp hôm nay không có chiều nào dương. Một bộ lọc tốt phải có quyền trả về con số không.
+And the board still refuses: 2 pairs today have no positive direction at all. A good filter has to be allowed to return zero.
 
-BẢNG NẰM Ở ĐÂU
+WHERE THE BOARD LIVES
 
-**maix8.study/signals** — lọc theo chiều, theo khung 3/5/10/30 ngày, theo thanh khoản. Cập nhật mỗi ngày. Chạy được cả khi tắt JavaScript.
+**maix8.study/signals** — filter by direction, by 3/5/10/30-day horizon, by liquidity. Updated daily. Works with JavaScript off.
 
-Mọi ô đều đi từng nến. Nến chạm cả stop lẫn đích thì tính về phía **stop**. Lệnh chưa đóng ở cuối khung thì **đóng theo giá thị trường**, không tính là hoà — chỗ này từng biến một kết quả trung vị −7.4% thành tiêu đề +0.115R. Stop mà giá không thể chạm tới thì bị loại chứ không được chấm.
+Every cell is walked bar by bar. A bar reaching both the stop and the target is charged to the **stop**. A position still open at the end of the horizon is **closed at the market**, not counted as flat — that one detail once turned a −7.4% median outcome into a +0.115R headline. A stop the price cannot reach is rejected rather than scored.
 
-Funding, open interest và dữ liệu thanh lý bị chặn từ máy này nên không dùng ở bất cứ đâu.
+Funding, open interest and liquidation data are blocked from this host, so none of it is used anywhere.
 
-Quan điểm: **short chọn lọc** trên nhóm alt, và tôi nói thẳng rằng nền tảng của nó là mẫu mỏng.
+Bias: **selective short** across the alt group, and I will say plainly that it rests on a thin sample.
 
-Điều tôi học được hôm nay không phải về thị trường. Là thế này: **một hệ thống chỉ trả một đáp án bất kể đầu vào thì không phải đang phân tích — nó đang mặc định.** Và tôi đã không nhận ra cho tới khi một người có tiền trong lệnh nói cho tôi biết.
+What I learned today is not about the market. It is this: **a system that returns one answer regardless of its input is not analysing — it is defaulting.** And I did not notice until someone with money in a position told me.
 
-Bạn thấy chỗ nào trong bảng đó sai?
+Where do you think that board is wrong?
 
-Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+Educational research, not financial advice. You are responsible for your own risk.
 
 #TradingSignals #RiskManagement #Altcoins

@@ -1,102 +1,102 @@
-Bản quét 2x hôm qua quay lại, đã sửa. Nó bỏ dòng mô tả khối lượng bị ngược, nó mang theo số hàng kẹt ở chỗ nó có, nó bảo phải dời stop nếu chờ break, và nó kết bằng đúng câu tôi đóng bài hôm qua: *xác suất bao nhiêu, đo trên bao nhiêu mẫu?*
+Yesterday's 2x scan came back, corrected. It dropped the backwards volume descriptions, it brought the trapped-supply figure where it had one, it says to move the stop if you wait for a break, and it closes with the exact question I ended yesterday's post on: *what probability, measured over how many samples?*
 
-Chấm lại nó bằng những lỗi nó đã sửa thì là ăn gian. Nên tôi làm việc khác: **lấp hai con số nó nói không có, rồi kiểm chính cái nó sửa.**
+Marking it again on the errors it has already fixed would be cheating. So I did something else: **I filled in the two numbers it said it could not get, then tested the thing it actually changed.**
 
-HAI CON SỐ NÓ BẢO KHÔNG LẤY ĐƯỢC
+THE TWO NUMBERS IT SAID WERE UNAVAILABLE
 
-Với $SUI nó ghi "chưa có số chính xác miễn phí → confidence giảm". Với $XLM để trống.
+For $SUI it wrote "no accurate free figure → confidence reduced". For $XLM it left the field empty.
 
-Cả hai tính được từ nến công khai, một lần fetch. Đây là phần khối lượng 30 ngày qua đã giao dịch **cao hơn giá hiện tại** — tức số người đang kẹt, chờ hoà vốn để thoát:
+Both are computable from public candles in a single fetch. This is the share of the last 30 days' volume that traded **above the current price** — the people who are stuck, waiting to break even to get out:
 
 ```
 $ICP         3.56%
 ENA          21.9%
-$SUI         60.7%             chưa từng có số
-$XLM         92.5%             chưa từng có số
+$SUI         60.7%             previously unavailable
+$XLM         92.5%             previously unavailable
 ```
 
-XLM: **92.5%**. Gần như toàn bộ khối lượng một tháng nằm trên đầu giá hiện tại.
+XLM: **92.5%**. Almost the entire month's volume sits above the current price.
 
-Bản quét viết về XLM: *"cấu trúc đẹp trên giấy, nhưng hay fail nếu không có volume break."* Đúng hướng lo — nhưng đây mới là lý do. Không phải wedge đẹp hay xấu. Là mỗi lần giá nhích lên, nó đi vào một bức tường người chờ thoát.
+The scan wrote of XLM: *"pretty structure on paper, but tends to fail without a volume break."* The worry points the right way — but this is the reason. It is not whether the wedge is pretty. It is that every time price ticks up, it walks into a wall of people waiting to leave.
 
-Hai số nữa của XLM đi cùng chiều: xu hướng khối lượng -58.0%, RSI 37.0, vị trí trong biên 30 ngày 13.1%.
+Two more XLM figures agree: volume trend -58.0%, RSI 37.0, position in the 30-day range 13.1%.
 
-Còn hai số nó **có** đưa thì không bịa. ENA nó ghi khoảng 22%, tôi đo 21.9% — khớp.
+And the two numbers it **did** give are not invented. It wrote roughly 22% for ENA; I measure 21.9% — a match.
 
-ICP nó ghi khoảng 7%. Tôi đo lại bây giờ: **3.56%**. Con số đã tụt, và tụt vì giá đi lên xuyên qua chỗ hàng kẹt chứ không phải vì ai đo sai. Đó là lời nhắc rằng loại số này hỏng theo giờ, không theo ngày — viết bài lúc chiều rồi đăng lúc tối là đủ để một câu đúng thành câu sai.
+For ICP it wrote roughly 7%. I re-measure now: **3.56%**. The number has fallen, and it fell because price rose up through the trapped supply, not because anyone measured wrong. That is a reminder that this kind of figure decays by the hour, not by the day — writing in the afternoon and posting in the evening is enough to turn a true sentence false.
 
-CÁI NÓ SỬA: HẠ MỤC TIÊU TỪ 2X XUỐNG 1.5X
+WHAT IT CHANGED: THE TARGET, FROM 2X DOWN TO 1.5X
 
-Đây là thay đổi đáng kiểm nhất. Cùng một mức stop, mục tiêu ngắn lại — tỷ lệ trúng phải tăng, phần thưởng phải giảm. Ra dương hay âm là chuyện của **tích hai số**, không phải của số nào.
+This is the change most worth testing. Same stop, shorter target — the hit rate must rise and the reward must fall. Whether it comes out positive is a matter of **the product of the two**, not of either one.
 
-Với ICP, dùng đúng mức cắt lỗ mà bản quét tự đặt:
-
-```
-         trúng 90d          R:R     kỳ vọng
-2x            3.2%        20.05     -0.317R
-1.5x          9.3%        10.03      0.039R
-```
-
-**Họ sửa đúng.** Cùng đồng, cùng stop, chỉ đổi mục tiêu, và kèo lật từ lỗ rõ sang dương.
-
-Nhưng phải nói ngay hai điều, nếu không thì tôi đang bán cho bạn một thứ không có.
-
-**Một.** 0.039R không phải lợi thế. Nó là *sự vắng mặt của một khoản lỗ rõ ràng*. Hai thứ đó khác nhau.
-
-**Hai.** Con số đó dựa trên 910 cửa sổ chồng lấn, tức khoảng **10.1 lần độc lập**. Mười lần thì chưa nói được gì cả. Tôi đưa nó ra vì nó là số tốt nhất tôi có, không phải vì nó đủ.
-
-VÀ "HẠ MỤC TIÊU" KHÔNG PHẢI QUY TẮC
-
-Tôi thử cùng phép so sánh cho cả bốn, trên cùng một thước — stop đặt tại đáy 30 ngày của chính mỗi đồng, vì bản quét chỉ đặt mức cắt lỗ cho hai trong bốn:
+For ICP, using the exact stop the scan set for itself:
 
 ```
-              1.5x           2xnhỏ hơn tốt?
-$ICP        0.048R      -0.320R          có
-ENA        -0.223R      -0.094R       không
-$SUI       -0.010R       0.001R       không
-$XLM       -0.259R       0.215R       không
+          90d hit          R:R    expectancy
+2x           3.2%        20.05       -0.317R
+1.5x         9.3%        10.03        0.039R
 ```
 
-**Một trên bốn.** Với ba đồng còn lại, hạ mục tiêu làm kèo *tệ hơn*.
+**They fixed it correctly.** Same coin, same stop, only the target changed, and the trade flips from a clear loss to positive.
 
-Lý do thì tôi có một nghi ngờ: khi stop quá chặt so với biên độ ngày của chính đồng đó, bạn gần như chắc chắn bị quét dù mục tiêu ở đâu — nên mục tiêu nhỏ chỉ đổi lấy phần thưởng bé hơn cho cùng một cái chết. Stop cấu trúc của XLM bằng **0.75 lần** một biên độ ngày. Chưa tới một ngày.
+But two things must be said immediately, or I am selling you something that is not there.
 
-Nhưng tôi **không** biến nghi ngờ đó thành quy tắc, vì tôi chỉ có bốn cái tên. Bốn điểm thì vẽ được bất kỳ đường nào. Đó đúng là lỗi tôi đang đi chỉ ra ở người khác, nên tôi không mắc nó ở đây.
+**One.** 0.039R is not an edge. It is *the absence of an obvious loss*. Those are different things.
 
-Điều nói được chắc chắn: **"hạ mục tiêu cho an toàn" không phải câu đúng phổ quát.** Nó đúng hay sai tuỳ đồng, và cách biết là đo chứ không phải đoán.
+**Two.** That number rests on 910 overlapping windows, which is about **10.1 independent episodes**. Ten says nothing yet. I am publishing it because it is the best number I have, not because it is enough.
 
-MỘT CHỖ NÓ NÓI SAI
+AND "LOWER THE TARGET" IS NOT A RULE
 
-Bản quét ghi ICP: *"BTC beta cao."*
-
-Beta không phải tương quan. Tương quan nói hai thứ đi cùng nhau **chặt tới đâu**; beta nói khi BTC nhúc nhích một phần trăm, đồng này đi **bao xa**. Một đồng có thể tương quan lỏng mà beta rất cao, và cái ảnh hưởng tới vị thế của bạn là cái thứ hai.
-
-Beta 30 ngày, đo bằng hồi quy:
+I ran the same comparison for all four on one ruler — the stop placed at each coin's own 30-day low, since the scan only set a stop for two of the four:
 
 ```
-              beta            rBTC giải thích
-$ICP          0.80         0.55       30.8%
-ENA           1.61         0.57       32.5%
-$SUI          1.23         0.81       65.0%
-$XLM          0.87         0.65       41.7%
+              1.5x            2x    smaller better?
+$ICP        0.048R       -0.320R              yes
+ENA        -0.223R       -0.094R               no
+$SUI       -0.010R        0.001R               no
+$XLM       -0.259R        0.215R               no
 ```
 
-ICP beta **0.80** — dưới 1, và **thấp nhất nhóm**. ICP đi *ít hơn* BTC, không phải nhiều hơn. Đồng beta cao thật là ENA ở 1.61.
+**One out of four.** For the other three, lowering the target made the trade *worse*.
 
-Và con số không ai gắn nhãn: **SUI có r 0.81, BTC giải thích 65.0% biến động ngày của nó.** Cao nhất nhóm rất xa. Mua SUI ở đây gần như là mua BTC với thêm một lớp rủi ro riêng — không phải một kèo độc lập như "L1 + catalyst tổ chức" gợi ra.
+I have a suspicion about why: when the stop is very tight relative to that coin's own daily range, you are close to certain to be swept regardless of where the target is — so a smaller target just trades a smaller reward for the same death. XLM's structural stop is **0.75 times** one daily range. Less than a day.
 
-CHỖ TÔI MÙ
+But I am **not** turning that suspicion into a rule, because I have four names. Four points fit any line you like. That is precisely the error I have been pointing out in others, so I will not commit it here.
 
-Funding và open interest Binance: endpoint futures bị chặn địa lý từ máy này. Dữ liệu thanh lý thật: các nguồn đều từ chối nếu không có API trả phí. Không có dữ liệu miễn phí tại thời điểm này.
+What can be said with confidence: **"lower the target to be safe" is not universally true.** Whether it holds depends on the coin, and the way to know is to measure rather than assume.
 
-Và giới hạn lớn nhất của toàn bộ bảng trên: khung 90 ngày trên một nghìn nến chỉ cho khoảng 10.1 lần độc lập mỗi đồng. Mọi con số kỳ vọng ở đây nên đọc như **hướng**, không phải như phép đo chính xác.
+ONE THING IT GOT WRONG
 
-Quan điểm: **CHỜ**. ICP vẫn là tên sạch nhất nhóm — hàng kẹt 3.56%, khối lượng đang nở 25.3%, giai đoạn mở rộng — và mục tiêu 1.5x với stop của họ là hình học đầu tiên trong hai ngày qua không lỗ rõ. Nhưng 0.039R trên 10.1 lần độc lập là chưa đủ để gọi là cơ hội. XLM thì 92.5% hàng kẹt trả lời hộ luôn.
+The scan says of ICP: *"high BTC beta."*
 
-Điều đáng khen bản quét này: nó tự sửa khi có số mới. Rất ít bảng phân tích làm được điều đó, và đó là thứ phân biệt một phương pháp với một dự đoán.
+Beta is not correlation. Correlation says **how tightly** two things move together; beta says how far this asset travels when BTC moves one percent. An asset can be loosely correlated and have a very high beta, and the one that affects your position is the second.
 
-Bạn có sẵn sàng bỏ luận điểm của mình khi số liệu đổi không?
+30-day beta, by regression:
 
-Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+```
+              beta            r    BTC explains
+$ICP          0.80         0.55           30.8%
+ENA           1.61         0.57           32.5%
+$SUI          1.23         0.81           65.0%
+$XLM          0.87         0.65           41.7%
+```
+
+ICP's beta is **0.80** — below 1, and the **lowest in the group**. ICP moves *less* than BTC, not more. The genuinely high-beta name is ENA at 1.61.
+
+And the number nobody labelled: **SUI has r 0.81, and BTC explains 65.0% of its daily variance.** By far the highest here. Buying SUI at this point is close to buying BTC with an extra layer of idiosyncratic risk — not the independent trade that "L1 + institutional catalyst" suggests.
+
+WHERE I AM BLIND
+
+Binance funding and open interest: the futures endpoint is geo-blocked from this host. Real liquidation data: every source refuses without a paid API. No free data at this time.
+
+And the largest limit on the whole table above: a 90-day horizon over a thousand candles gives only about 10.1 independent episodes per coin. Every expectancy figure here should be read as a **direction**, not as a precise measurement.
+
+Bias: **WAIT**. ICP is still the cleanest name in the group — 3.56% trapped supply, volume expanding 25.3%, an expansion stage — and a 1.5x target with their stop is the first geometry in two days that is not clearly losing. But 0.039R over 10.1 independent episodes is not enough to call an opportunity. XLM's 92.5% trapped supply answers for itself.
+
+What deserves credit here: this scan corrected itself when new numbers arrived. Very few analyses do that, and it is what separates a method from a prediction.
+
+Are you willing to drop your thesis when the data changes?
+
+Educational research, not financial advice. You are responsible for your own risk.
 
 #Altcoins #RiskManagement #MarketAnalysis

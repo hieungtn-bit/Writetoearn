@@ -1,129 +1,129 @@
-Có người vừa sửa lại bộ lọc quét altcoin của họ theo đúng những gì tôi đo mấy hôm nay, rồi chạy lại và gửi tôi kết quả để kiểm.
+Someone just rebuilt their altcoin screen around exactly what I have been measuring these past few days, re-ran it, and sent me the result to check.
 
-Luật mới của họ, tôi chép nguyên:
+Their new rules, copied verbatim:
 
 ```
-xu hướng khối lượng   phải dương
-vị trí biên 30 ngày   trên 85% thì hết Early
-hàng kẹt trên giá     trên 35% phạt nặng, trên 50% thường loại
-hình học              ưu tiên kỳ vọng dương trên NHIỀU tổ hợp
+volume trend          must be positive
+30-day range position above 85% disqualifies Early
+supply trapped above  above 35% penalised, above 50% usually excluded
+geometry              prefer positive expectancy across MANY combinations
 ```
 
-**Bốn luật đó đúng hết.** Tôi sẽ không rào trước đón sau chỗ này: đây chính xác là những thứ cần có, và rất ít bảng quét nào chịu viết chúng ra thành ngưỡng cứng.
+**All four rules are right.** I am not going to hedge here: these are exactly the things that need to be in a screen, and very few scans are willing to write them down as hard thresholds.
 
-Rồi tôi áp chúng bằng số thật. Không tên nào qua được — và tên trượt nặng nhất đang đứng số một.
+Then I applied them with real numbers. Nothing passes — and the name that fails worst is sitting at number one.
 
-BẢNG CHẤM
+THE SCORECARD
 
 ```
                          $SUI (#1)
-khối lượng                  -41.0%        trượt
-hàng kẹt                     78.9%        trượt
-biên 30 ngày                 21.2%          đạt
-ô hình học dương              6/90        trượt
+volume                      -41.0%         fail
+trapped supply               78.9%         fail
+30-day range                 21.2%         pass
+positive geometry cells       6/90         fail
 ```
 
-Hàng kẹt của SUI: **78.9%**.
+SUI's trapped supply: **78.9%**.
 
-Luật của chính họ nói trên 50% thì loại. Bảng của họ ghi trường này là **"trung bình"**.
+Their own rule says above 50% is excluded. Their table records this field as **"moderate"**.
 
-Khối lượng SUI -41.0%. Bảng ghi **"ổn"**.
+SUI's volume is -41.0%. The table says **"fine"**.
 
-Trượt bốn trên năm cổng, đứng hạng nhất cả ba bảng.
+Failing four gates out of five, ranked first on all three boards.
 
-VÀ ĐÂY LÀ CHẨN ĐOÁN, KHÔNG PHẢI LỜI CHÊ
+AND THIS IS A DIAGNOSIS, NOT A COMPLAINT
 
-Nhìn kỹ chỗ nào đúng chỗ nào sai thì lộ ra một quy luật rất sạch:
-
-```
-                          bảng ghi      đo được
-$ENA hàng kẹt             cao ~35%        32.9%
-$ENA beta                 cao 1.5+         1.52
-$ICP hàng kẹt                 thấp        0.00%
-$ICP khối lượng               mạnh        71.7%
-$ICP biên                  rất cao        93.2%
-$SUI hàng kẹt           trung bình        78.9%
-$SUI khối lượng                 ổn       -41.0%
-```
-
-**Mọi trường của ENA và ICP đều đúng. Mọi trường của SUI đều sai.**
-
-Lý do không phải vì họ cẩu thả với SUI. Lý do là ENA và ICP **có số** — tôi đã đo và đăng chúng mấy hôm trước, họ lấy về dùng. SUI thì chưa ai đo, nên nó vào bảng bằng **tính từ**.
-
-Và đây là câu tôi muốn bạn mang về:
-
-**Một cái cổng viết "trên 50% thì loại" không làm gì cả khi đầu vào của trường đó là chữ "trung bình".**
-
-Bộ lọc không hỏng. Nó chưa được cấp số để chạy.
-
-Đó là kiểu hỏng sống sót qua mọi vòng cải tiến quy tắc, vì nhìn vào bảng thì thấy có cột, có ngưỡng, có điểm. Chỉ khi thay chữ bằng số thì mới biết cái cổng ấy có bao giờ đóng lại không.
-
-CÁI LUẬT LÀM RỖNG CẢ DANH SÁCH
-
-Luật thứ tư của họ là luật tôi thích nhất: *ưu tiên setup có kỳ vọng dương trên nhiều tổ hợp stop và tỷ lệ được–mất, thay vì khoe một ô tốt nhất.*
-
-Tôi quét 90 tổ hợp cho mỗi đồng — 6 khoảng cách stop tính bằng biên độ ngày của chính nó, 5 tỷ lệ được–mất, 3 khung thời gian, mỗi ô đi từng nến.
+Look closely at what is right and what is wrong and a very clean pattern appears:
 
 ```
-                           ô dương   ô trung vị
-$SUI                          6/90      -0.091R
-$ENA                          0/90      -0.101R
-$ICP                          8/90      -0.096R
+                        table said     measured
+$ENA trapped supply       high ~35%       32.9%
+$ENA beta                 high 1.5+        1.52
+$ICP trapped supply             low       0.00%
+$ICP volume                  strong       71.7%
+$ICP range                very high       93.2%
+$SUI trapped supply        moderate       78.9%
+$SUI volume                    fine      -41.0%
 ```
 
-ENA: **không một ô nào trong 90**. Ô trung vị của cả ba đều âm.
+**Every ENA field is right. Every ICP field is right. Every SUI field is wrong.**
 
-Luật đó, chạy trung thực, xoá sạch danh sách. Và tôi nghĩ đó là **kết quả đúng** cho thị trường lúc này — chứ không phải lỗi của luật. Một bộ lọc tốt phải có quyền trả về con số không.
+Not because they were careless with SUI. Because ENA and ICP **have numbers** — I measured and published them days ago, and they picked them up. Nobody has measured SUI, so it entered the table as **adjectives**.
 
-CÒN MỘT CHỖ NGƯỢC NỮA
+And here is the sentence I want you to take away:
 
-Họ phạt "high-beta" vì BTC đang yếu — hợp lý. Nhưng phạt sai người.
+**A gate that reads "above 50% is excluded" does nothing when the input to that field is the word "moderate".**
 
-```
-                              betaBTC giải thích
-$SUI                          1.19        64.0%
-$ENA                          1.52        30.5%
-$ICP                          0.64        17.0%
-```
+The screen is not broken. It has not been given numbers to run on.
 
-ENA có beta cao hơn, nhưng **SUI mới là đồng bám BTC chặt nhất** — BTC giải thích 64.0% biến động ngày của nó, gấp đôi ENA và gần bốn lần ICP.
+That is the kind of fault that survives every round of rule improvement, because looking at the table you see columns, thresholds and scores. Only when you replace words with numbers do you find out whether that gate has ever closed.
 
-Beta nói *đi bao xa*, tương quan bình phương nói *bao nhiêu phần là chuyện của BTC*. Trong môi trường "BTC yếu thì phạt", cái thứ hai mới là cái phải phạt. SUI đáng bị phạt nhất và đang đứng đầu bảng.
+THE RULE THAT EMPTIES THE WHOLE LIST
 
-NHỮNG GÌ HỌ LÀM ĐÚNG
+Their fourth rule is my favourite: *prefer setups with positive expectancy across many stop and reward-ratio combinations, rather than showing off one best cell.*
 
-Phải nói cho đủ, vì phần này mới là phần đáng học theo.
-
-**ICP bị đẩy khỏi Early.** Đúng. Biên 30 ngày 93.2%, giai đoạn 2 expansion — hết cửa gọi là sớm.
-
-**Và họ đoán đúng cả hệ quả:** *"structure đẹp nhưng đã chạy → expectancy giảm."* Tôi có số cho câu đó. Lấy mọi ngày quá khứ của ICP có khối lượng nóng **và** giá cao trong biên — đúng trạng thái bây giờ — rồi đi tới 30 ngày:
+I scanned 90 combinations per asset — 6 stop distances in units of the asset's own daily range, 5 reward ratios, 3 horizons, each cell walked bar by bar.
 
 ```
-kết thúc cao hơn             6.25%
-nền, cùng số nến             38.5%
-chênh lệch              -32.3 điểm
+                       positive cells    median cell
+$SUI                             6/90        -0.091R
+$ENA                             0/90        -0.101R
+$ICP                             8/90        -0.096R
 ```
 
-Lợi suất trung vị -20.4%.
+ENA: **not one of 90**. The median cell is negative for all three.
 
-Nhưng trừ chồng lấn thì chỉ còn 0.5 lần độc lập, tức **-0.48 sigma** — không chứng minh được gì. Tôi đưa ra vì mọi khung trên năm ngày đều chỉ cùng hướng, không vì con số đã đủ.
+That rule, run honestly, wipes out the list. And I think that is the **correct result** for this market right now, rather than a failure of the rule. A good screen has to be allowed to return zero.
 
-BTC 64,060 lần này nằm đúng trong vùng họ nói. Ghi nhận.
+ONE MORE THING BACKWARDS
 
-MỘT CỔNG NỮA NÊN THÊM
+They penalise "high beta" because BTC is weak — reasonable. But they penalise the wrong name.
 
-Rẻ nhất trong tất cả:
+```
+                              beta    BTC explains
+$SUI                          1.19           64.0%
+$ENA                          1.52           30.5%
+$ICP                          0.64           17.0%
+```
 
-**Không tên nào được chấm điểm nếu có bất kỳ trường nào là tính từ.** Khối lượng, hàng kẹt, vị trí biên, beta — bốn trường đó phải là số hoặc để trống. Trống thì tên đó không vào bảng, chứ không phải bị đoán.
+ENA has the higher beta, but **SUI is the one welded to BTC** — BTC explains 64.0% of its daily variance, double ENA and nearly four times ICP.
 
-Bốn con số ấy lấy từ nến công khai trong một lần gọi. Cái giá của việc đoán chúng là bảng hôm nay: một tên trượt bốn trên năm cổng ngồi ở vị trí số một.
+Beta says *how far it travels*; squared correlation says *how much of it is BTC's doing*. In a "penalise when BTC is weak" regime, the second is the one to penalise. SUI most deserves the penalty and is sitting at the top of the board.
 
-Quan điểm: **CHỜ** cả ba. SUI thì hàng kẹt 78.9% với khối lượng đang rút — đó là tên tệ nhất nhóm chứ không phải cân bằng nhất. ENA không có hình học nào dương. ICP sạch nhất nhưng đã chạy hết biên, và trạng thái đó trong lịch sử của chính nó không phải chỗ để mua.
+WHAT THEY GOT RIGHT
 
-Chỗ tôi mù: funding và open interest Binance bị chặn địa lý từ máy này, dữ liệu thanh lý thật thì không có nguồn miễn phí. **Không có dữ liệu miễn phí tại thời điểm này.**
+This has to be said in full, because this part is the part worth copying.
 
-Bộ lọc của bạn có bao giờ trả về con số không chưa? Nếu chưa lần nào, có thể nó chưa từng đóng.
+**ICP was pushed out of Early.** Correct. 30-day range position 93.2%, stage 2 expansion — no case for calling that early.
 
-Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+**And they predicted the consequence correctly too:** *"nice structure but it has already run → expectancy falls."* I have a number for that. Take every past ICP day with hot volume **and** a high position in the range — the exact state it is in now — and walk forward 30 days:
+
+```
+finished higher            6.25%
+baseline, same bar count   38.5%
+difference           -32.3 points
+```
+
+Median return -20.4%.
+
+But once the overlap is removed only 0.5 independent episodes remain, which is **-0.48 sigma** — nothing proven. I am including it because every horizon beyond five days points the same way, not because the number is sufficient.
+
+BTC at 64,060 does fall inside the range they gave this time. Credit where it is due.
+
+ONE MORE GATE WORTH ADDING
+
+The cheapest of them all:
+
+**No name gets scored if any field is an adjective.** Volume, trapped supply, range position, beta — those four must be a number or blank. If blank, the name does not enter the table rather than being guessed at.
+
+Those four numbers come from public candles in a single call. The price of guessing them is today's board: a name failing four gates out of five sitting in first place.
+
+Bias: **WAIT** on all three. SUI has 78.9% trapped supply with volume draining — that is the worst name in the group, not the most balanced. ENA has no positive geometry at all. ICP is the cleanest but has run to the top of its range, and in its own history that state is not a place to buy.
+
+Where I am blind: Binance funding and open interest are geo-blocked from this host, and for real liquidation data there is no free source. **No free data at this time.**
+
+Has your screen ever returned zero? If it never has, it may never have closed.
+
+Educational research, not financial advice. You are responsible for your own risk.
 
 #Altcoins #RiskManagement #MarketAnalysis

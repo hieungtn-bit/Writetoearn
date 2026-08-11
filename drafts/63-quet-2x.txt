@@ -1,29 +1,29 @@
-Có người gửi tôi bản quét "altcoin tiềm năng 2x–3x", chấm điểm bốn đồng tới một chữ số thập phân. Tôi đo lại cả bốn bằng cùng một thước.
+Someone sent me a "2x–3x potential altcoin" scan that scored four coins to one decimal place. I re-measured all four with the same ruler.
 
-Điểm số đó hàm ý một lời hứa: **số cao hơn là kèo tốt hơn.** Lời hứa đó kiểm được.
+That score implies a promise: **a higher number is a better trade.** That promise is testable.
 
-MÔ TẢ KHỐI LƯỢNG: SAI CẢ BA
+THE VOLUME DESCRIPTIONS: WRONG THREE FOR THREE
 
-Bản quét mô tả khối lượng cho ba đồng. Tôi đo xu hướng khối lượng thật:
+The scan described volume for three of the coins. Here is the measured volume trend:
 
 ```
-       bản quét nói      đo được
-$ICP           yếu        24.5%    đang nở
-$ENA     cải thiện       -52.0%    đang co
-$ONDO      ổn định       -68.1%   đang sụp
+       scan said        measured
+$ICP        weak           24.5%    expanding
+$ENA    improving         -52.0%    contracting
+$ONDO      stable         -68.1%    collapsing
 ```
 
-Ba trên ba, ngược chiều. Đồng duy nhất bị gọi là "yếu" lại là đồng duy nhất khối lượng đang nở. Hai đồng được khen "cải thiện" và "ổn định" thì một cái mất hơn một nửa, một cái mất hơn hai phần ba.
+Three for three, backwards. The only coin called "weak" is the only one whose volume is expanding. The two praised as "improving" and "stable" lost more than half and more than two thirds respectively.
 
-Đây không phải chuyện làm tròn. Đây là mô tả ngược hẳn thứ đang xảy ra.
+This is not a rounding issue. These descriptions are the reverse of what is happening.
 
-CON SỐ BẢN QUÉT KHÔNG BAO GIỜ ĐƯA
+THE NUMBER THE SCAN NEVER GIVES
 
-"2x là mục tiêu xác suất, không phải đảm bảo." Câu đó đúng và vô nghĩa, vì nó không kèm con số. Xác suất bao nhiêu?
+"2x is a probabilistic target, not a guarantee." That sentence is true and useless, because it comes with no number. What probability?
 
-Đo được. Tôi đi ngược lịch sử từng đồng, **từng nến một**, hỏi: từ một ngày bất kỳ, trong 90 ngày sau, giá có gấp đôi không?
+It is measurable. I walked each coin's history **bar by bar** and asked: from any given day, does price double within the next 90 days?
 
-Bài kiểm dễ nhất trước — không stop, không quan tâm đường đi, chỉ cần có lúc nào đó chạm gấp đôi:
+The easiest test first — no stop, path ignored, just does it touch double at some point:
 
 ```
 $ICP         12.3%
@@ -32,53 +32,53 @@ $ONDO         0.8%
 ARB          12.5%
 ```
 
-Rồi áp chính mức invalidation mà bản quét tự đặt ra. Bây giờ đường đi mới quan trọng — chạm mức nào trước thì tính mức đó:
+Now apply the invalidation level the scan set for itself. Path matters now — whichever level is reached first is the one that counts:
 
 ```
-           gấp đôi    dính stop
-$ICP          3.0%        96.0%
-$ENA         11.0%        88.5%
-$ONDO         0.8%        81.4%
-ARB           7.6%        87.7%
+            doubles    stopped out
+$ICP           3.0%          96.0%
+$ENA          11.0%          88.5%
+$ONDO          0.8%          81.4%
+ARB            7.6%          87.7%
 ```
 
-ICP: gấp đôi 3.0%, dính stop trước 96.0%.
+ICP: doubles 3.0% of the time, hits the stop first 96.0%.
 
-CÁI BẪY CỦA MỘT TỶ LỆ ĐẸP
+THE TRAP INSIDE A BEAUTIFUL RATIO
 
-Đến đây nhiều người sẽ nói: kệ, tỷ lệ được–mất quá đẹp thì thắng ít lần vẫn lời.
+At this point many people say: fine, if the reward-to-risk is that good, winning rarely is still profitable.
 
-Với ICP, mua ở 2.22 cắt ở 2.12 nhắm 4.35, tỷ lệ đúng là **20.91 ăn 1**. Nghe như quà tặng.
+For ICP, buying at 2.22 with a stop at 2.12 targeting 4.35 is exactly **20.91 to 1**. It sounds like a gift.
 
-Nhân nó với 3.0% đi.
+Multiply it by 3.0%.
 
 ```
-               R:R    trúng 90d    kỳ vọng
-$ICP         20.91         3.0%     -0.34R
-$ENA          7.01        11.0%     -0.11R
-$ONDO        14.11         0.8%     -0.71R
-ARB           7.91         7.6%     -0.28R
+                R:R    90d hit    expectancy
+$ICP          20.91       3.0%        -0.34R
+$ENA           7.01      11.0%        -0.11R
+$ONDO         14.11       0.8%        -0.71R
+ARB            7.91       7.6%        -0.28R
 ```
 
-Cả bốn đều âm.
+All four are negative.
 
-Tỷ lệ được–mất không phải kỳ vọng. Bản quét đưa bạn cột đầu và giấu hai cột sau — mà hai cột sau mới là cột quyết định tài khoản.
+Reward-to-risk is not expectancy. The scan hands you the first column and hides the next two — and the next two are the ones that decide the account.
 
-ĐIỂM SỐ CÓ XẾP ĐÚNG THỨ TỰ KHÔNG
+DOES THE SCORE RANK THEM CORRECTLY?
 
-Bản quét xếp: **ICP > ENA > ONDO > ARB**.
+The scan ranks: **ICP > ENA > ONDO > ARB**.
 
-Xếp lại theo kỳ vọng đo được: **ENA > ARB > ICP > ONDO**.
+Ranked by measured expectancy: **ENA > ARB > ICP > ONDO**.
 
-Hệ số tương quan hạng: **0.00**.
+Rank correlation: **0.00**.
 
-Đồng được chấm cao nhất về thứ ba. Đồng bị chấm thấp nhất về thứ hai.
+The top-scored coin comes third. The bottom-scored coin comes second.
 
-Và tôi phải nói ngay chỗ này, vì không nói thì tôi mắc đúng cái lỗi tôi đang chỉ ra: **bốn mẫu thì quá ít để kết luận điểm số vô dụng.** Con số 0.00 nói rằng thứ tự đó *chưa được chứng minh*, không nói rằng nó sai. Muốn kết luận thật thì cần hàng trăm lần quét được theo dõi tới lúc kết quả xong — đúng thứ mà bảng điểm live của tôi đang làm, và đúng thứ mà không bản quét nào công bố.
+And I have to say this here, because not saying it would be making the exact error I am pointing at: **four samples is far too few to conclude the score is useless.** That 0.00 says the ranking is *unproven*, not that it is wrong. A real conclusion would need hundreds of scans tracked through to resolution — which is what my live scoreboard is doing, and which is what no scan ever publishes.
 
-THỨ KHÔNG AI ĐO TRONG BẢNG ĐÓ
+WHAT NOBODY IN THAT TABLE MEASURED
 
-Cả bốn setup đều nói về nền, về narrative, về kháng cự. Không cái nào nhắc tới **hàng kẹt trên đầu** — phần khối lượng một tháng qua giao dịch ở giá cao hơn giá hiện tại, tức số người đang lỗ và chờ hoà vốn để thoát.
+All four setups talk about bases, narratives and resistance. None mentions **supply trapped overhead** — the share of the last month's volume that traded above the current price, which is the number of people underwater and waiting to break even to get out.
 
 ```
 $ICP          7.4%
@@ -87,42 +87,42 @@ $ONDO        82.3%
 ARB          75.7%
 ```
 
-ONDO và ARB đang có khoảng ba phần tư khối lượng tháng nằm trên đầu. Mỗi nhịp hồi là một đợt người cũ thoát hàng. ICP thì gần như trống.
+ONDO and ARB carry roughly three quarters of a month's volume above them. Every bounce is another wave of old holders leaving. ICP is almost clear.
 
-Đó là khác biệt lớn nhất giữa bốn cái tên này, và nó không xuất hiện ở bất kỳ dòng nào trong bảng gốc.
+That is the largest difference between these four names, and it does not appear on any line of the original table.
 
-CÒN LỜI KHUYÊN "ĐỢI CONFIRMATION"
+AS FOR "WAIT FOR CONFIRMATION"
 
-Bản quét kết bằng: *ưu tiên đợi break kháng cự rồi mới vào.*
+The scan closes with: *prefer to wait for a resistance break before entering.*
 
-Nhưng mức cắt lỗ thì giữ nguyên. Vào cao hơn mà stop đứng yên thì chân rủi ro dài ra:
+But the stop stays where it was. Entering higher with a fixed stop lengthens the risk leg:
 
 ```
-          vào ngay  sau khi chờ
-$ICP         4.60%        9.03%
-$ENA        14.17%       26.19%
-$ONDO        7.62%       25.29%
-ARB         12.61%       33.33%
+          enter now  after waiting
+$ICP          4.60%          9.03%
+$ENA         14.17%         26.19%
+$ONDO         7.62%         25.29%
+ARB          12.61%         33.33%
 ```
 
-ONDO: rủi ro tăng hơn ba lần. Tỷ lệ được–mất của nó rơi từ 14.11 xuống 2.68.
+ONDO: risk more than triples. Its reward-to-risk falls from 14.11 to 2.68.
 
-Chờ không sai. Chờ mà không dời stop theo mới sai.
+Waiting is not the mistake. Waiting without moving the stop is.
 
-CHỖ TÔI MÙ
+WHERE I AM BLIND
 
-**Funding và open interest Binance**: endpoint futures bị chặn địa lý từ máy này. **Dữ liệu thanh lý thật**: CoinGlass, Glassnode, CryptoQuant đều từ chối nếu không có API trả phí. Không có dữ liệu miễn phí tại thời điểm này.
+**Binance funding and open interest**: the futures endpoint is geo-blocked from this host. **Real liquidation data**: CoinGlass, Glassnode and CryptoQuant all refuse without a paid API. No free data at this time.
 
-Và một giới hạn của chính bài này: ONDO chỉ có 487 nến lịch sử, tức khoảng 4.4 lần độc lập ở khung 90 ngày sau khi trừ chồng lấn. Con số 0.8% của nó mỏng hơn ba đồng kia nhiều. Tôi vẫn để nó trong bảng, kèm câu này.
+And one limit of this post itself: ONDO has only 487 candles of history, which is about 4.4 independent episodes at a 90-day horizon once the overlap is removed. Its 0.8% is much thinner than the other three. I am leaving it in the table, with this sentence attached.
 
-Quan điểm: **CHỜ** cả bốn. Không phải vì chúng xấu — ICP đúng là có cấu trúc sạch nhất nhóm, khối lượng đang nở thật, hàng kẹt gần như không có. Mà vì mục tiêu 2x với mức stop đó, trên lịch sử của chính chúng, không trả đủ cho rủi ro. Nếu muốn giữ ý tưởng, phải đổi hình học — không phải đổi niềm tin.
+Bias: **WAIT** on all four. Not because they are bad — ICP genuinely has the cleanest structure of the group, volume really is expanding, and there is almost no trapped supply. But a 2x target with that stop, measured on their own history, does not pay for the risk. If you want to keep the idea, change the geometry — not the conviction.
 
-Một điều nữa nên nhớ: BTC giải thích 31.8% biến động ngày của ICP, 33.0% của ENA. Kèo alt nào cũng là kèo BTC mặc bộ đồ khác.
+One more thing worth remembering: BTC explains 31.8% of ICP's daily variance and 33.0% of ENA's. Every altcoin trade is a BTC trade wearing a different outfit.
 
-Lần tới thấy một bảng "tiềm năng 2x", hãy hỏi đúng một câu: **xác suất bao nhiêu, đo trên bao nhiêu mẫu?** Nếu bảng đó không trả lời được, nó là danh sách mong ước chứ không phải kết quả quét.
+Next time you see a "2x potential" table, ask exactly one question: **what probability, measured over how many samples?** If the table cannot answer, it is a wish list, not a scan result.
 
-Bạn có bao giờ hỏi con số đó chưa?
+Have you ever asked for that number?
 
-Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+Educational research, not financial advice. You are responsible for your own risk.
 
 #Altcoins #RiskManagement #MarketAnalysis

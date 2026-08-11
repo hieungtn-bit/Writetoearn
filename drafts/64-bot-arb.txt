@@ -1,104 +1,104 @@
-Có người gửi tôi bản phân tích kỹ thuật về câu chuyện viral "sinh viên 19 tuổi dùng bot arbitrage biến $68 thành $750,000". Bản phân tích kết luận: không khả thi.
+Someone sent me a technical analysis of the viral story about a 19-year-old turning $68 into $750,000 with an arbitrage bot. The analysis concluded it was not feasible.
 
-Kết luận đúng. Nhưng nó lập luận bằng chữ — độ trễ cao, phí ăn hết, HFT nhanh hơn. Toàn câu đúng và toàn câu không kiểm được.
+The conclusion is right. But it argues in words — latency is too high, fees eat it, HFT is faster. All true sentences, and all uncheckable.
 
-Tôi đo thật. Trên đúng loại máy đang bàn tới.
+I measured it. On exactly the kind of machine being discussed.
 
-CÁCH ĐO
+HOW IT WAS MEASURED
 
-Hai sàn: Binance spot và OKX spot. Tám cặp. 40 lần lấy giá, mỗi lần cách nhau 3 giây, **hai sàn lấy trong cùng một nhịp** — nếu lấy lệch nhau vài giây thì cái gọi là "chênh lệch" chỉ là thời gian trôi, không phải cơ hội.
+Two venues: Binance spot and OKX spot. Eight pairs. 40 samples, 3 seconds apart, **both venues polled in the same beat** — sample them a few seconds apart and the "spread" you find is just time passing, not an opportunity.
 
-Tổng cộng 320 quan sát.
+320 observations in total.
 
-Và quan trọng nhất: tôi đo **giá khớp được**, không đo điểm giữa. Bạn mua ở giá bán, bán ở giá mua. Điểm giữa là mức giá không ai giao dịch — đó chính là chỗ mọi bảng "cơ hội arbitrage" trông đẹp một cách giả tạo.
+And most importantly: I measured **executable prices**, not the midpoint. You buy at the ask and sell at the bid. The midpoint is a price nobody trades at — and it is exactly where every "arbitrage opportunity" table gets its artificial beauty.
 
-ĐỘ TRỄ THẬT TỪ MÁY NÀY
+REAL LATENCY FROM THIS MACHINE
 
 ```
 Binance                       160 ms      p90 172 ms
 OKX                           193 ms      p90 232 ms
 ```
 
-Bản phân tích nói bot retail chạy ở 50–300ms. **Đúng.** Con số của tôi nằm gọn trong đó. Một điểm ghi cho họ.
+The analysis says retail bots run at 50–300ms. **Correct.** My numbers sit inside that. A point to them.
 
-CHÊNH LỆCH GIÁ THẬT
-
-```
-                            trung vị        lớn nhất
-khớp được                    0.0000%         0.0203%
-phí khứ hồi                    0.20%
-```
-
-Đọc lại hai dòng đó.
-
-Khe hở lớn nhất xuất hiện trong 320 quan sát là **0.0203%**. Phí đi hai chân là **0.20%**.
-
-Phí lớn hơn cơ hội tốt nhất **9.8 lần**.
-
-CON SỐ TRẢ LỜI TẤT CẢ
+REAL PRICE SPREADS
 
 ```
-có khe hở dương                23.4%       trước phí
-thực sự có lãi                  0.0%         sau phí
+                              median         maximum
+executable                   0.0000%         0.0203%
+round-trip fees                0.20%
 ```
 
-Khe hở **có** mở ra — 23.4% số lần, hai sàn lệch nhau thật. Đó là phần khiến người ta tin.
+Read those two lines again.
 
-Số lần lệch đủ để trả phí: **không một lần nào.** Không phải ít. Là zero trên 320.
+The largest gap that appeared across 320 observations is **0.0203%**. The fee for both legs is **0.20%**.
 
-Lệnh khứ hồi tốt nhất tôi quan sát được vẫn lỗ **0.180%**.
+The fee is **9.8 times** larger than the best opportunity.
 
-VÀ ĐÂY LÀ CHỖ CÂU CHUYỆN SỤP
-
-$68 thành $750,000 là **11,029 lần**.
-
-Giả sử điều không thể: mọi lệnh đều thắng, không lệnh nào lỗ, lãi cộng dồn toàn bộ, không rút một đồng.
+THE NUMBER THAT ANSWERS EVERYTHING
 
 ```
-số lệnh thắng liên tục    cần spreadso với mức lớn nhất
-100                           9.955%            490x
-1,000                         1.135%             56x
-10,000                        0.293%             14x
-100,000                       0.209%             10x
+positive gap exists            23.4%       before fees
+actually profitable             0.0%        after fees
 ```
 
-Chạy càng nhiều lệnh, mỗi lệnh càng cần ít. Nhưng nó không bao giờ xuống dưới **0.20%**, vì đó là phí — bạn trả trước khi có bất kỳ đồng lãi nào.
+Gaps **do** open — 23.4% of the time the two venues genuinely disagree. That is the part that makes people believe.
 
-Nghĩa là: **không có số lệnh nào làm câu chuyện này chạy được.** Không phải khó. Là không tồn tại. Mỗi vòng đều làm tài khoản nhỏ đi, mà một dãy số nhân với số nhỏ hơn 1 thì không bao giờ nở ra 11,029 lần.
+Times the gap was wide enough to pay the fee: **not once.** Not rare. Zero out of 320.
 
-Đó là lý do tôi thích đo hơn là tranh luận. Tranh luận về độ trễ thì còn cãi được. Phép nhân thì không.
+The best round trip I observed still loses **0.180%**.
 
-HAI CHỖ BẢN PHÂN TÍCH KIA CHƯA CHÍNH XÁC
+AND HERE IS WHERE THE STORY COLLAPSES
 
-Họ đúng ở kết luận. Nhưng hai chi tiết lệch, và cả hai đều lệch theo hướng **quá tử tế với câu chuyện**.
+$68 to $750,000 is **11,029 times**.
 
-**Một.** Họ mô tả spread arbitrage nằm trong dải 0.05–0.30%. Tôi đo được trung vị **0.0000%** — tức phần lớn thời gian không có khe hở khớp được nào cả, chứ không phải có mà nhỏ. Khe hở lớn nhất trong toàn bộ 320 quan sát chỉ vừa chạm tới **đáy** dải họ đưa ra, và vẫn còn cách đỉnh dải đó rất xa. Thị trường chặt hơn nhiều so với cả người đang phản biện nó tưởng.
+Assume the impossible: every trade wins, none loses, all profit compounds, nothing is withdrawn.
 
-**Hai.** Họ lo vốn $68 không đủ vượt lệnh tối thiểu. Tôi kiểm: mức tối thiểu trên Binance cho các cặp này là $5. Vốn đó vượt sàn thoải mái. Rào cản thật không nằm ở kích thước lệnh — nó nằm ở phí, và cái đó thì bao nhiêu vốn cũng không thoát.
+```
+consecutive winning trades    spread needed    vs the maximum
+100                                 9.955%              490x
+1,000                               1.135%               56x
+10,000                              0.293%               14x
+100,000                             0.209%               10x
+```
 
-Còn "quét 50+ thị trường là vấn đề băng thông"? Tôi lấy cả tám cặp bằng **một** request mỗi sàn. Quét không đắt. Quét không tìm thấy gì mới là vấn đề.
+The more trades you run, the less each one needs. But it never drops below **0.20%**, because that is the fee — you pay it before there is any profit at all.
 
-CHỖ TÔI KHÔNG KIỂM ĐƯỢC
+Which means: **no number of trades makes this story work.** Not hard. Non-existent. Every round makes the account smaller, and a series multiplied by a number below 1 never grows 11,029 times.
 
-Tôi lấy giá qua REST mỗi 3 giây. Bot thật dùng WebSocket và thấy nhiều nhịp hơn — nên **tôi không đo được khe hở tồn tại bao lâu**, và không loại trừ có những khe hở chớp nhoáng lọt giữa hai lần lấy của tôi.
+That is why I would rather measure than argue. You can argue about latency. You cannot argue with multiplication.
 
-Nhưng bot đó vẫn trả đúng 0.20% phí và vẫn nhìn đúng hai sổ lệnh này. Thấy nhiều nhịp hơn không làm phí nhỏ đi.
+TWO PLACES THE OTHER ANALYSIS WAS OFF
 
-Arbitrage CEX–DEX, thị trường dự đoán, chi phí gas: **không có dữ liệu miễn phí tại thời điểm này**, tôi không nói gì về chúng.
+They are right in the conclusion. But two details are wrong, and both are wrong in the direction of being **too generous to the story**.
 
-ĐIỀU THẬT SỰ ĐÁNG NHỚ
+**One.** They describe arbitrage spreads as sitting in a 0.05–0.30% band. I measured a median of **0.0000%** — meaning that most of the time there is no executable gap at all, rather than a small one. The largest gap in all 320 observations barely reaches the **bottom** of their band and falls far short of its top. The market is far tighter than even the person debunking it assumed.
 
-Arbitrage có thật. Nó là nghề của những người đặt máy chủ trong chính trung tâm dữ liệu của sàn, ăn phí bậc thấp nhất, và sống bằng vài phần nghìn phần trăm nhân với khối lượng khổng lồ.
+**Two.** They worried that $68 of capital would not clear minimum order sizes. I checked: the Binance minimum on these pairs is $5. That capital clears it comfortably. The real barrier is not order size — it is the fee, and no amount of capital escapes that.
 
-Cái không có thật là phiên bản có thể chạy từ phòng ngủ với $68.
+As for "scanning 50+ markets is a bandwidth problem"? I pulled all eight pairs with **one** request per venue. Scanning is not expensive. Scanning and finding nothing is the problem.
 
-Và cách kiểm một câu chuyện kiểu này không phải là cãi về công nghệ. Là hỏi: **spread bao nhiêu, phí bao nhiêu, đo trên bao nhiêu mẫu?** Ba câu hỏi đó mất mười phút để trả lời bằng dữ liệu công khai, và không câu chuyện viral nào sống sót qua chúng.
+WHAT I COULD NOT CHECK
 
-Bài này không đưa ra quan điểm mua bán nào. Nó chỉ là một phép trừ.
+I sampled prices over REST every 3 seconds. A real bot uses WebSocket and sees more ticks — so **I cannot measure how long a gap survives**, and I cannot rule out brief gaps slipping between my samples.
 
-Bạn đã bao giờ trừ phí ra khỏi một cơ hội trước khi tin nó chưa?
+But that bot still pays the same 0.20% and still looks at these same two order books. Seeing more ticks does not make the fee smaller.
 
-Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+CEX–DEX arbitrage, prediction markets and gas costs: **no free data at this time**, so I say nothing about them.
+
+WHAT IS ACTUALLY WORTH REMEMBERING
+
+Arbitrage is real. It is the profession of people who put servers inside the exchange's own data centre, pay the lowest fee tier, and live on a few thousandths of a percent multiplied by enormous volume.
+
+What is not real is the version you can run from a bedroom with $68.
+
+And the way to test a story like this is not to argue about technology. It is to ask: **what spread, what fees, measured over how many samples?** Those three questions take ten minutes to answer with public data, and no viral story survives them.
+
+This post takes no position on any market. It is just a subtraction.
+
+Have you ever subtracted the fees from an opportunity before believing it?
+
+Educational research, not financial advice. You are responsible for your own risk.
 
 $BTC $ETH $SOL
 

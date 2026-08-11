@@ -1,25 +1,25 @@
-Backtest hứa cảnh báo volume theo giờ của tôi chạm +10% trong 12 tiếng 28.72% số lần.
+The backtest promised that my hourly volume alerts reach +10% within 12 hours 28.72% of the time.
 
-Máy đã chạy thật. 170 cảnh báo đóng cửa sổ. Điểm số:
+The machine has now run live. 170 alerts with a closed window. The score:
 
-**23.46%** trên 162 lệnh sạch.
+**23.46%** across 162 clean trades.
 
-Thấp hơn backtest 5.26 điểm. Đúng như mọi backtest: chạy thật luôn kém hơn chạy trên giấy.
+That is 5.26 points below the backtest. Exactly as every backtest goes: live is worse than paper.
 
-Nhưng vẫn gấp **3.56 lần** một giờ ngẫu nhiên (6.59%). Edge có thật, chỉ nhỏ hơn tờ quảng cáo.
+But it is still **3.56 times** a random hour (6.59%). The edge is real. It is just smaller than the brochure.
 
-Ba điều đi kèm con số đó.
+Three things come with that number.
 
-**Một.** 8 cảnh báo còn mở và **không được tính**. Vị thế chưa hết khung giờ không phải chiến thắng.
+**One.** 8 alerts are still open and **are not counted**. A position that has not run out its window is not a win.
 
-**Hai.** Tôi bỏ 8 cảnh báo sinh từ tin gỡ niêm yết — chỉ 4.49% tổng số nhưng bơm mạnh nhất bảng. Bỏ chúng làm điểm **giảm** từ 25.88% xuống 23.46%. Vẫn bỏ: thanh lý cưỡng bức là cách dễ nhất chế ra volume, và nói ít nhất về nhu cầu.
+**Two.** I removed 8 alerts born from delisting news — only 4.49% of the total, but the hardest pumps on the board. Removing them **lowered** the score from 25.88% to 23.46%. I removed them anyway: forced liquidation is the easiest way to manufacture volume, and it says the least about demand.
 
-**Ba, quan trọng nhất:** hơn ba phần tư số cảnh báo **không chạm mục tiêu**. Đó là hình dạng thật của một edge nhỏ. Ai bán cho bạn tỷ lệ thắng bảy trên mười đang bán thứ khác.
+**Three, and this is the one that matters:** more than three quarters of the alerts **never reach the target**. That is the true shape of a small edge. Anyone selling you a seven-in-ten win rate is selling you something else.
 
-Quan điểm: CHỜ. Tôi thích 23.46% đo trên tiền thật hơn 28.72% đo trên quá khứ.
+Bias: WAIT. I would rather have 23.46% measured on real money than 28.72% measured on the past.
 
-Bạn đã đối chiếu backtest của mình với kết quả chạy thật chưa?
+Have you checked your own backtest against how it actually ran?
 
-Nghiên cứu giáo dục, không phải lời khuyên đầu tư.
+Educational research, not financial advice.
 
 $BTC #TradingSignals #Backtesting #WriteToEarn
