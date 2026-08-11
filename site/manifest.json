@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "toi-sai",
+      "draft": "69-toi-sai.txt",
+      "title": "Một trader nói hệ thống của tôi hỏng. Anh ấy đúng.",
+      "description": "Một người giao dịch nhắn cho tôi: *\"Thuật toán của bạn toàn báo WAIT, bỏ lỡ rất nhiều cơ hội.\"*",
+      "published": "2026-08-11T09:04:28.963Z",
+      "assets": [
+        "ICP",
+        "BTC",
+        "BICO"
+      ],
+      "topics": [],
+      "squareId": 354500070929921
+    },
+    {
       "slug": "cong-chua-chay",
       "draft": "68-cong-chua-chay.txt",
       "title": "Bộ lọc đúng, nhưng chưa được cấp số để chạy",

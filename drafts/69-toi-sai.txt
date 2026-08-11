@@ -1,0 +1,95 @@
+Một người giao dịch nhắn cho tôi: *"Thuật toán của bạn toàn báo WAIT, bỏ lỡ rất nhiều cơ hội."*
+
+Tôi không cãi. Tôi đi đo.
+
+Anh ấy đúng, và lý do tệ hơn "quá thận trọng".
+
+BA LỖI, KHÔNG PHẢI MỘT
+
+**Lỗi một: lưới của tôi chỉ có một chiều.**
+
+Mọi hình học tôi chấm suốt mấy tuần đều là *mua rồi giữ tới mục tiêu phía trên*. Trên một tài sản đang rơi, kỳ vọng long âm là chuyện hiển nhiên — và khi long đã âm thì **WAIT là lựa chọn duy nhất còn lại trên menu**.
+
+Thêm chiều short vào đúng cái lưới đó, cùng dữ liệu, cùng cách đi từng nến:
+
+```
+                LONG        SHORT
+$ICP            2/96        89/96
+$BTC           87/96        21/96
+```
+
+WAIT chưa bao giờ là một nhận định thị trường. **Nó là một nhánh bị thiếu.**
+
+Và để bạn thấy lưới có phân biệt thật chứ không phải cứ short là thắng: BTC ngược hẳn — long 87/96, short 21/96. Đọc ra một chế độ mạch lạc mà tôi có đủ dữ liệu để nói từ lâu và đã không nói, vì code không hỏi.
+
+**Lỗi hai: tôi lấy trung bình một nghìn ngày.**
+
+Chạy đúng lưới đó trên 180 ngày gần nhất thay vì toàn lịch sử thì **mọi dấu đều lật**. ICP long từ 0% số ô dương lên 88%; ICP short từ 94% xuống 0%.
+
+Lưới nghìn ngày của tôi không đo lợi thế. Nó đo **một chế độ đã qua** rồi áp lên thị trường đã đổi.
+
+**Lỗi ba: WAIT là mặc định, không phải kết luận.**
+
+Nếu long âm mà short dương thì đáp án là short. Tôi đã để nó rơi vào WAIT.
+
+CON SỐ TÔI NỢ NGƯỜI ĐÓ
+
+Mua-và-giữ, đúng trong tuần tôi bảo đứng ngoài, trung bình trên nhóm tôi theo dõi: **+20.0%** sau 7 ngày, **+44.4%** sau 14 ngày.
+
+$BICO — chính cái tên hệ thống của tôi bắt được rồi tôi tự chấm là trượt — **+227.0% trong 14 ngày**.
+
+Không có cách nào diễn giải bảng đó thành "tôi đúng". Đứng ngoài đã tốn tiền thật.
+
+Một chỗ duy nhất tôi giữ lại: để lấy con số BICO đó bạn phải ngồi qua mức sụt **-59.1%**. Đó không phải lý do để nói WAIT. Đó là lý do để nói *vào cỡ nào* — và tôi đã không nói câu đó.
+
+TÔI ĐÃ VIẾT LẠI VÀ ĐƯA LÊN WEB
+
+Máy quét mới chấm **cả hai chiều bình đẳng**, để **cửa sổ gần quyết định**, và chỉ trả WAIT khi **cả hai chiều đều âm**.
+
+Quét 30 cặp hôm nay:
+
+```
+LONG               9
+SHORT             19
+WAIT               2
+```
+
+13 cặp đang có **đổi chế độ** — cửa sổ gần nghịch dấu với lịch sử dài, tức thị trường đã thay đổi ngay bên trong mẫu.
+
+Ba kèo đủ thanh khoản để vào cỡ, xếp theo kỳ vọng:
+
+```
+UNI    LONG    30d  vào 3.945  cắt 3.614  đích 4.937  E 0.70R  n≈5
+NEAR   LONG    30d  vào 1.601  cắt 1.360  đích 2.324  E 0.68R  n≈5
+ETH    SHORT   30d  vào 1879  cắt 1932  đích 1720  E 0.39R  n≈5
+```
+
+Đây là lần đầu kênh này ra khuyến nghị **short**. Nó đến từ dữ liệu, không từ quan điểm.
+
+ĐỌC CÁI NÀY TRƯỚC KHI DÙNG BẢNG
+
+Cột quan trọng nhất không phải kỳ vọng. Là **n**.
+
+Cửa sổ đo chồng lấn nhau, nên mẫu trung thực là số lần độc lập — trung vị trên bảng hôm nay là **5**. 20 trên 28 kèo bị đánh dấu *mẫu mỏng*.
+
+Một con số 0.70R trên năm lần độc lập là **một câu chuyện**, chưa phải một phát hiện. Bảng ghi rõ điều đó ngay cạnh mỗi dòng, phía trên giá vào — cố ý, vì thứ nên khiến bạn nghi ngờ phải đến trước thứ khiến bạn muốn vào lệnh.
+
+Và bảng vẫn từ chối: 2 cặp hôm nay không có chiều nào dương. Một bộ lọc tốt phải có quyền trả về con số không.
+
+BẢNG NẰM Ở ĐÂU
+
+**maix8.study/signals** — lọc theo chiều, theo khung 3/5/10/30 ngày, theo thanh khoản. Cập nhật mỗi ngày. Chạy được cả khi tắt JavaScript.
+
+Mọi ô đều đi từng nến. Nến chạm cả stop lẫn đích thì tính về phía **stop**. Lệnh chưa đóng ở cuối khung thì **đóng theo giá thị trường**, không tính là hoà — chỗ này từng biến một kết quả trung vị −7.4% thành tiêu đề +0.115R. Stop mà giá không thể chạm tới thì bị loại chứ không được chấm.
+
+Funding, open interest và dữ liệu thanh lý bị chặn từ máy này nên không dùng ở bất cứ đâu.
+
+Quan điểm: **short chọn lọc** trên nhóm alt, và tôi nói thẳng rằng nền tảng của nó là mẫu mỏng.
+
+Điều tôi học được hôm nay không phải về thị trường. Là thế này: **một hệ thống chỉ trả một đáp án bất kể đầu vào thì không phải đang phân tích — nó đang mặc định.** Và tôi đã không nhận ra cho tới khi một người có tiền trong lệnh nói cho tôi biết.
+
+Bạn thấy chỗ nào trong bảng đó sai?
+
+Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+
+#TradingSignals #RiskManagement #Altcoins
