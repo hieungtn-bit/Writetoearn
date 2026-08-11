@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "cong-chua-chay",
+      "draft": "68-cong-chua-chay.txt",
+      "title": "Bộ lọc đúng, nhưng chưa được cấp số để chạy",
+      "description": "Có người vừa sửa lại bộ lọc quét altcoin của họ theo đúng những gì tôi đo mấy hôm nay, rồi chạy lại và gửi tôi kết quả để kiểm.",
+      "published": "2026-08-11T01:28:39.501Z",
+      "assets": [
+        "SUI",
+        "ENA",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 354388049368946
+    },
+    {
       "slug": "ena-icp",
       "draft": "67-ena-icp.txt",
       "title": "ENA và ICP: 90 hình học mỗi đồng, ENA không một cái nào dương",
