@@ -152,7 +152,8 @@ function pushAssetNumbers(push, a) {
   push(a.avgQuoteVolume30d);
   push(a.upDownVolumeRatio30d);
   push(a.upDownVolumeRatio90d);
-  push(a.quoteVolumeLatest);
+  push(a.quoteVolumePartialDay);
+  push(a.quoteVolumeLastCompleteDay);
   push(a.rangeCompressionPct);
   push(a.todayChangePct);
   push(a.dailySigmaPct);

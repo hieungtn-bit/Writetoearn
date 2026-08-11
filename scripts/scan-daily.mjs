@@ -62,7 +62,9 @@ for (const [i, symbol] of symbols.entries()) {
       candles,
       atrPct,
       price: analysis.price,
-      turnoverUsd: analysis.quoteVolumeLatest ?? null,
+      // Mean turnover over completed days, not the bar still forming — a scan
+      // run at midday would otherwise judge every pair on half a session.
+      turnoverUsd: Number.isFinite(analysis.avgQuoteVolume30d) ? analysis.avgQuoteVolume30d : null,
     });
 
     signals.push({
