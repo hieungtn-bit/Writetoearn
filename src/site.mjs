@@ -595,66 +595,66 @@ export function renderSignalsPage(site, snapshot, { days = [] } = {}) {
   };
 
   return `${head({
-    title: `Bảng tín hiệu hằng ngày — ${site.name}`,
-    description: "Long, short hay đứng ngoài trên mọi cặp được quét, kèm xác suất, kỳ vọng và cỡ mẫu thật đằng sau mỗi lệnh.",
+    title: `Daily signal board — ${site.name}`,
+    description: "Long, short or stand aside on every pair scanned, with the hit rate, the expectancy and the honest sample size behind each call.",
     canonical,
     jsonLd,
     site,
   }).replace('<div class="wrap">', '<div class="wrap board">')}
-<h1>Bảng tín hiệu</h1>
-<p class="lede">Mọi cặp được chấm ở <strong>cả hai chiều</strong> trên ${slim.recentWindowDays ?? 180} ngày gần nhất. Đứng ngoài là một kết luận, không phải mặc định — nó chỉ xuất hiện khi cả long lẫn short đều lỗ.</p>
-<p class="meta" id="stamp">Quét ${escapeHtml(when)} UTC · ${t.total ?? 0} cặp · ${t.LONG ?? 0} long · ${t.SHORT ?? 0} short · ${t.WAIT ?? 0} chờ · ${t.turning ?? 0} đổi chế độ</p>
+<h1>Signal board</h1>
+<p class="lede">Every pair is scored in <strong>both directions</strong> over the last ${slim.recentWindowDays ?? 180} days. Standing aside is a conclusion, not a default — it appears only when long and short both lose.</p>
+<p class="meta" id="stamp">Scanned ${escapeHtml(when)} UTC · ${t.total ?? 0} pairs · ${t.LONG ?? 0} long · ${t.SHORT ?? 0} short · ${t.WAIT ?? 0} wait · ${t.turning ?? 0} regime turns</p>
 
 <details class="box warn" open>
-  <summary>Đọc cột <strong>n</strong> trước khi đọc kỳ vọng</summary>
-  <p>Các cửa sổ đo chồng lấn nhau, nên mẫu trung thực là <strong>số lần độc lập</strong> — thường là năm hoặc ít hơn ở khung 30 ngày. Một con số mạnh trên năm lần là một câu chuyện, chưa phải một phát hiện. Dòng gắn nhãn <em>đổi chế độ</em> là nơi cửa sổ gần nghịch dấu với toàn lịch sử: thị trường đã thay đổi ngay bên trong mẫu.</p>
+  <summary>Read the <strong>n</strong> column before the expectancy</summary>
+  <p>The measurement windows overlap, so the honest sample is the number of <strong>independent episodes</strong> — usually five or fewer at the 30-day horizon. A strong number over five episodes is a story, not yet a finding. A row tagged <em>regime turn</em> is one where the recent window disagrees in sign with the full history: the market changed inside the sample.</p>
 </details>
 
 <form class="filters" id="filters" hidden>
   <div class="frow">
-    <label class="fld"><span>Ngày</span>
+    <label class="fld"><span>Day</span>
       <select id="f-day">${allDays.map((d) => `<option value="${d}">${d}</option>`).join("")}</select>
     </label>
-    <label class="fld"><span>Tìm coin hoặc lý do</span>
+    <label class="fld"><span>Search coin or reason</span>
       <input type="search" id="f-q" placeholder="SOL, short pays…" autocomplete="off">
     </label>
   </div>
 
-  <fieldset><legend>Tín hiệu</legend>
-    <button type="button" data-f="bias" data-v="all" aria-pressed="true">Tất cả</button>
+  <fieldset><legend>Signal</legend>
+    <button type="button" data-f="bias" data-v="all" aria-pressed="true">All</button>
     <button type="button" data-f="bias" data-v="LONG" aria-pressed="false">Long</button>
     <button type="button" data-f="bias" data-v="SHORT" aria-pressed="false">Short</button>
-    <button type="button" data-f="bias" data-v="WAIT" aria-pressed="false">Chờ</button>
+    <button type="button" data-f="bias" data-v="WAIT" aria-pressed="false">Wait</button>
   </fieldset>
 
-  <fieldset><legend>Khung</legend>
-    <button type="button" data-f="horizon" data-v="all" aria-pressed="true">Tất cả</button>
-    ${horizons.map((h) => `<button type="button" data-f="horizon" data-v="${h}" aria-pressed="false">${h} ngày</button>`).join("")}
+  <fieldset><legend>Horizon</legend>
+    <button type="button" data-f="horizon" data-v="all" aria-pressed="true">All</button>
+    ${horizons.map((h) => `<button type="button" data-f="horizon" data-v="${h}" aria-pressed="false">${h} days</button>`).join("")}
   </fieldset>
 
-  <fieldset><legend>Xác suất trúng</legend>
-    <button type="button" data-f="hit" data-v="all" aria-pressed="true">Tất cả</button>
+  <fieldset><legend>Hit rate</legend>
+    <button type="button" data-f="hit" data-v="all" aria-pressed="true">All</button>
     <button type="button" data-f="hit" data-v="20" aria-pressed="false">≥ 20%</button>
     <button type="button" data-f="hit" data-v="30" aria-pressed="false">≥ 30%</button>
     <button type="button" data-f="hit" data-v="40" aria-pressed="false">≥ 40%</button>
   </fieldset>
 
-  <fieldset><legend>Độ tin cậy</legend>
-    <button type="button" data-f="quality" data-v="all" aria-pressed="true">Tất cả</button>
-    <button type="button" data-f="quality" data-v="liquid" aria-pressed="false">Đủ thanh khoản</button>
-    <button type="button" data-f="quality" data-v="solid" aria-pressed="false">Mẫu không mỏng</button>
+  <fieldset><legend>Confidence</legend>
+    <button type="button" data-f="quality" data-v="all" aria-pressed="true">All</button>
+    <button type="button" data-f="quality" data-v="liquid" aria-pressed="false">Liquid enough</button>
+    <button type="button" data-f="quality" data-v="solid" aria-pressed="false">Sample not thin</button>
   </fieldset>
 
   <div class="frow">
-    <label class="fld"><span>Sắp xếp</span>
+    <label class="fld"><span>Sort</span>
       <select id="f-sort">
-        <option value="expectancy">Kỳ vọng cao nhất</option>
-        <option value="hit">Xác suất trúng cao nhất</option>
-        <option value="sample">Mẫu lớn nhất</option>
-        <option value="asset">Tên coin</option>
+        <option value="expectancy">Highest expectancy</option>
+        <option value="hit">Highest hit rate</option>
+        <option value="sample">Largest sample</option>
+        <option value="asset">Coin name</option>
       </select>
     </label>
-    <button type="button" class="reset" id="f-reset">Xoá lọc</button>
+    <button type="button" class="reset" id="f-reset">Clear filters</button>
   </div>
 </form>
 
@@ -662,18 +662,18 @@ export function renderSignalsPage(site, snapshot, { days = [] } = {}) {
 <div id="board">
 ${slim.signals.length
     ? slim.signals.map(signalCard).join("\n")
-    : '<p class="empty">Chưa có bản quét nào. — No scan on record yet.</p>'}
+    : '<p class="empty">No scan on record yet.</p>'}
 </div>
 <nav class="pager" id="pager" hidden></nav>
-<p class="empty" id="none" hidden>Không có dòng nào khớp bộ lọc.</p>
+<p class="empty" id="none" hidden>Nothing matches those filters.</p>
 
-<h2>Một lệnh được chấm thế nào</h2>
+<h2>How a call is scored</h2>
 <ul>
-  <li>Mọi hình học đều đi <strong>từng nến</strong>. Nến chạm cả stop lẫn đích thì tính về phía <strong>stop</strong> — nến ngày không cho biết thứ tự bên trong nó.</li>
-  <li>Lệnh còn mở ở cuối khung thì <strong>đóng theo giá thị trường</strong>. Tính là hoà từng biến một kết quả trung vị −7.4% thành tiêu đề +0.115R.</li>
-  <li>Stop mà giá không thể chạm tới bị loại chứ không được chấm. Stop dưới số không thì không bao giờ dính, nên mọi ô như thế từng trông có lãi.</li>
-  <li>Lệnh lấy <strong>ô trung vị</strong> của lưới, không phải ô tốt nhất. Một ô sáng giữa một vùng lỗ là sản phẩm của việc tìm kiếm.</li>
-  <li>Funding, open interest và dữ liệu thanh lý bị chặn từ máy này nên không dùng ở bất cứ đâu.</li>
+  <li>Every geometry is walked <strong>bar by bar</strong>. A bar that reaches both the stop and the target is charged to the <strong>stop</strong> — a daily bar does not reveal the order of events inside it.</li>
+  <li>A position still open at the end of the horizon is <strong>closed at the market</strong>. Counting those as flat once turned a −7.4% median outcome into a +0.115R headline.</li>
+  <li>A stop the price cannot reach is rejected rather than scored. A stop below zero can never be hit, so every cell like that used to look profitable.</li>
+  <li>The call takes the <strong>median cell</strong> of the grid, not the best one. A single bright cell in a field of losses is a product of searching.</li>
+  <li>Funding, open interest and liquidation data are blocked from this host, so nothing here uses them.</li>
 </ul>
 
 <script id="board-data" type="application/json">${JSON.stringify(slim).replace(/</g, "\\u003c")}</script>
@@ -712,39 +712,39 @@ ${slim.signals.length
   function card(s) {
     var p = s.plan;
     var flags = "";
-    if (s.turning) flags += '<span class="flag turn">đổi chế độ</span>';
-    if (s.thin) flags += '<span class="flag thin">mẫu mỏng</span>';
-    if (!s.tradeable) flags += '<span class="flag thin">thanh khoản mỏng</span>';
+    if (s.turning) flags += '<span class="flag turn">regime turn</span>';
+    if (s.thin) flags += '<span class="flag thin">thin sample</span>';
+    if (!s.tradeable) flags += '<span class="flag thin">thin liquidity</span>';
 
     var plan = p ? (
       '<div class="levels">'
-      + '<div class="level in"><span>Vào</span><b>' + money(p.entry) + '</b></div>'
-      + '<div class="level out"><span>Cắt lỗ</span><b>' + money(p.stop) + '</b><i>' + n(p.stopPct, 2) + '%</i></div>'
-      + '<div class="level tgt"><span>Mục tiêu</span><b>' + money(p.target) + '</b><i>' + n(p.targetPct, 2) + '%</i></div>'
+      + '<div class="level in"><span>Entry</span><b>' + money(p.entry) + '</b></div>'
+      + '<div class="level out"><span>Stop</span><b>' + money(p.stop) + '</b><i>' + n(p.stopPct, 2) + '%</i></div>'
+      + '<div class="level tgt"><span>Target</span><b>' + money(p.target) + '</b><i>' + n(p.targetPct, 2) + '%</i></div>'
       + "</div>"
       + '<div class="nums">'
-      + '<div><span>Xác suất trúng</span><b>' + n(p.hitPct, 1) + "%</b></div>"
-      + '<div><span>Kỳ vọng</span><b>' + n(p.expectancyR, 2) + "R</b></div>"
-      + '<div><span>Mẫu độc lập</span><b>' + Math.round(p.effectiveN) + "</b></div>"
-      + '<div><span>Vốn / $1k</span><b>$' + n(p.positionUsdPer1000, 0) + "</b></div>"
+      + '<div><span>Hit rate</span><b>' + n(p.hitPct, 1) + "%</b></div>"
+      + '<div><span>Expectancy</span><b>' + n(p.expectancyR, 2) + "R</b></div>"
+      + '<div><span>Independent n</span><b>' + Math.round(p.effectiveN) + "</b></div>"
+      + '<div><span>Size / $1k</span><b>$' + n(p.positionUsdPer1000, 0) + "</b></div>"
       + "</div>"
     ) : "";
 
     var ctx = [];
-    if (s.context.stage) ctx.push("giai đoạn " + esc(s.context.stage));
-    if (typeof s.context.underwaterPct === "number") ctx.push("hàng kẹt " + n(s.context.underwaterPct, 1) + "%");
-    if (typeof s.context.volumeTrendPct === "number") ctx.push("khối lượng " + n(s.context.volumeTrendPct, 1) + "%");
+    if (s.context.stage) ctx.push("stage " + esc(s.context.stage));
+    if (typeof s.context.underwaterPct === "number") ctx.push("underwater " + n(s.context.underwaterPct, 1) + "%");
+    if (typeof s.context.volumeTrendPct === "number") ctx.push("volume " + n(s.context.volumeTrendPct, 1) + "%");
 
     return '<article class="sig">'
       + '<div class="sig-head">'
       + '<span class="asset">' + esc(s.asset) + "</span>"
       + '<span class="price">' + money(s.price) + "</span>"
       + '<span class="bias ' + s.bias + '">' + s.bias + "</span>"
-      + (p ? '<span class="hz">' + p.horizonDays + " ngày</span>" : "")
+      + (p ? '<span class="hz">' + p.horizonDays + " days</span>" : "")
       + "</div>"
       + (flags ? '<div class="flags">' + flags + "</div>" : "")
       + plan
-      + '<p class="why"><span class="k">Lý do</span> ' + esc(s.reason) + (ctx.length ? " · " + ctx.join(" · ") : "") + "</p>"
+      + '<p class="why"><span class="k">Why</span> ' + esc(s.reason) + (ctx.length ? " · " + ctx.join(" · ") : "") + "</p>"
       + "</article>";
   }
 
@@ -781,10 +781,10 @@ ${slim.signals.length
     none.hidden = rows.length !== 0;
     // Two different nothings: a scan with no matching rows, and no scan at all.
     none.textContent = data.signals.length
-      ? "Không có dòng nào khớp bộ lọc."
-      : "Chưa có bản quét nào.";
+      ? "Nothing matches those filters."
+      : "No scan on record yet.";
     countEl.textContent = rows.length
-      ? rows.length + " cặp khớp · trang " + state.page + "/" + pages
+      ? rows.length + (rows.length === 1 ? " pair" : " pairs") + " · page " + state.page + " of " + pages
       : "";
 
     if (pages > 1) {
@@ -846,18 +846,18 @@ ${slim.signals.length
   dayPicker.addEventListener("change", function (e) {
     var day = e.target.value;
     if (cache[day]) { data = cache[day]; state.page = 1; stampFor(data); render(); return; }
-    countEl.textContent = "Đang tải " + day + "…";
+    countEl.textContent = "Loading " + day + "…";
     fetch("/signals/data/" + day + ".json")
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (j) { cache[day] = j; data = j; state.page = 1; stampFor(j); render(); })
-      .catch(function () { countEl.textContent = "Không tải được bản quét ngày " + day + "."; });
+      .catch(function () { countEl.textContent = "Could not load the scan for " + day + "."; });
   });
 
   function stampFor(j) {
     var t = j.tally || {};
-    stamp.textContent = "Quét " + String(j.scannedAt).replace("T", " ").slice(0, 16)
-      + " UTC · " + (t.total || 0) + " cặp · " + (t.LONG || 0) + " long · " + (t.SHORT || 0)
-      + " short · " + (t.WAIT || 0) + " chờ · " + (t.turning || 0) + " đổi chế độ";
+    stamp.textContent = "Scanned " + String(j.scannedAt).replace("T", " ").slice(0, 16)
+      + " UTC · " + (t.total || 0) + " pairs · " + (t.LONG || 0) + " long · " + (t.SHORT || 0)
+      + " short · " + (t.WAIT || 0) + " wait · " + (t.turning || 0) + " regime turns";
   }
 
   // The controls are inert without this script, so they stay hidden until it
@@ -883,29 +883,29 @@ function signalCard(s) {
   const p = s.plan;
 
   const flags = [
-    s.turning ? '<span class="flag turn">đổi chế độ</span>' : "",
-    s.thin ? '<span class="flag thin">mẫu mỏng</span>' : "",
-    !s.tradeable ? '<span class="flag thin">thanh khoản mỏng</span>' : "",
+    s.turning ? '<span class="flag turn">regime turn</span>' : "",
+    s.thin ? '<span class="flag thin">thin sample</span>' : "",
+    !s.tradeable ? '<span class="flag thin">thin liquidity</span>' : "",
   ].join("");
 
   const plan = p
     ? `<div class="levels">
-    <div class="level in"><span>Vào</span><b>${money(p.entry)}</b></div>
-    <div class="level out"><span>Cắt lỗ</span><b>${money(p.stop)}</b><i>${n(p.stopPct, 2)}%</i></div>
-    <div class="level tgt"><span>Mục tiêu</span><b>${money(p.target)}</b><i>${n(p.targetPct, 2)}%</i></div>
+    <div class="level in"><span>Entry</span><b>${money(p.entry)}</b></div>
+    <div class="level out"><span>Stop</span><b>${money(p.stop)}</b><i>${n(p.stopPct, 2)}%</i></div>
+    <div class="level tgt"><span>Target</span><b>${money(p.target)}</b><i>${n(p.targetPct, 2)}%</i></div>
   </div>
   <div class="nums">
-    <div><span>Xác suất trúng</span><b>${n(p.hitPct, 1)}%</b></div>
-    <div><span>Kỳ vọng</span><b>${n(p.expectancyR, 2)}R</b></div>
-    <div><span>Mẫu độc lập</span><b>${Math.round(p.effectiveN)}</b></div>
-    <div><span>Vốn / $1k</span><b>$${n(p.positionUsdPer1000, 0)}</b></div>
+    <div><span>Hit rate</span><b>${n(p.hitPct, 1)}%</b></div>
+    <div><span>Expectancy</span><b>${n(p.expectancyR, 2)}R</b></div>
+    <div><span>Independent n</span><b>${Math.round(p.effectiveN)}</b></div>
+    <div><span>Size / $1k</span><b>$${n(p.positionUsdPer1000, 0)}</b></div>
   </div>`
     : "";
 
   const ctx = [
-    s.context?.stage ? `giai đoạn ${escapeHtml(String(s.context.stage))}` : "",
-    typeof s.context?.underwaterPct === "number" ? `hàng kẹt ${n(s.context.underwaterPct, 1)}%` : "",
-    typeof s.context?.volumeTrendPct === "number" ? `khối lượng ${n(s.context.volumeTrendPct, 1)}%` : "",
+    s.context?.stage ? `stage ${escapeHtml(String(s.context.stage))}` : "",
+    typeof s.context?.underwaterPct === "number" ? `underwater ${n(s.context.underwaterPct, 1)}%` : "",
+    typeof s.context?.volumeTrendPct === "number" ? `volume ${n(s.context.volumeTrendPct, 1)}%` : "",
   ].filter(Boolean).join(" · ");
 
   return `<article class="sig">
@@ -913,11 +913,11 @@ function signalCard(s) {
     <span class="asset">${escapeHtml(s.asset)}</span>
     <span class="price">${money(s.price)}</span>
     <span class="bias ${s.bias}">${s.bias}</span>
-    ${p ? `<span class="hz">${p.horizonDays} ngày</span>` : ""}
+    ${p ? `<span class="hz">${p.horizonDays} days</span>` : ""}
   </div>
   ${flags ? `<div class="flags">${flags}</div>` : ""}
   ${plan}
-  <p class="why"><span class="k">Lý do</span> ${escapeHtml(s.reason)}${ctx ? ` · ${ctx}` : ""}</p>
+  <p class="why"><span class="k">Why</span> ${escapeHtml(s.reason)}${ctx ? ` · ${ctx}` : ""}</p>
 </article>`;
 }
 

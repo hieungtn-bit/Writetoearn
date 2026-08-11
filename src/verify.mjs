@@ -8,6 +8,8 @@
  * instead of going out under the account owner's name.
  */
 
+import { verifyEnglish } from "./lang.mjs";
+
 /** Numbers that carry no market claim and appear constantly in prose. */
 const STRUCTURAL_MAX = 100;
 
@@ -573,6 +575,11 @@ export function verifyPost(text, brief, opts = {}) {
   const claims = verifyNoForbiddenClaims(text, brief);
   const structure = verifyStructure(text, opts);
 
+  // The channel publishes in English on both surfaces. This gate is here
+  // rather than in a checklist because the last time it was only a convention,
+  // fourteen posts went out in another language before anyone noticed.
+  const english = verifyEnglish(text);
+
   // Naming the sources that were actually searched keeps the failure honest:
   // "not in the brief" is misleading when an alt figure was never checkable.
   const searched = ["the brief"];
@@ -585,6 +592,7 @@ export function verifyPost(text, brief, opts = {}) {
     ...numbers.unmatched.map((u) => `figure "${u.raw}" does not appear in ${sources}`),
     ...claims.violations.map((v) => `mentions ${v}, which the brief could not retrieve`),
     ...structure.problems,
+    ...english.problems,
   ];
 
   return { ok: problems.length === 0, problems, numbersChecked: numbers.checked, words: structure.words };

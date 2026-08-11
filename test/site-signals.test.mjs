@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { renderSignalsPage, slimSnapshot } from "../src/site.mjs";
+import { nonEnglishLines } from "../src/lang.mjs";
 
 const site = {
   name: "MAIX8 Research",
@@ -100,10 +101,10 @@ test("a row leads with what should make a reader distrust it", () => {
   // Sample size and the regime flag sit beside the bias, above the entry price.
   const board = boardOf(renderSignalsPage(site, snapshot));
   const icpRow = board.slice(board.indexOf(">ICP<"), board.indexOf(">SUI<"));
-  assert.ok(icpRow.includes("đổi chế độ"));
-  assert.ok(icpRow.includes("mẫu mỏng"));
+  assert.ok(icpRow.includes("regime turn"));
+  assert.ok(icpRow.includes("thin sample"));
   assert.ok(
-    icpRow.indexOf("mẫu mỏng") < icpRow.indexOf("Vào"),
+    icpRow.indexOf("thin sample") < icpRow.indexOf("Entry"),
     "the warning must appear before the entry price",
   );
 });
@@ -113,6 +114,12 @@ test("a WAIT row states its reason instead of showing an empty plan", () => {
   const btcRow = board.slice(board.indexOf(">BTC<"));
   assert.ok(btcRow.includes("both directions lose"));
   assert.ok(!btcRow.includes('<div class="levels">'), "no price levels on a stand-aside call");
+});
+
+test("the board is published in English", () => {
+  const html = renderSignalsPage(site, snapshot, { days: ["2026-08-10"] });
+  const hits = nonEnglishLines(html);
+  assert.deepEqual(hits, [], `non-English on the board: ${JSON.stringify(hits.slice(0, 3))}`);
 });
 
 test("signal cards do not restyle the lesson difficulty badge", () => {
