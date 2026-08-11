@@ -1,5 +1,5 @@
 {
-  "measuredAt": "2026-08-11T01:13:33.495Z",
+  "measuredAt": "2026-08-11T01:24:08.475Z",
   "method": {
     "question": "Not whether the new rules are right — they are — but whether they were run with measured numbers or with adjectives.",
     "firstTouch": "Walked bar by bar. A bar touching both levels is charged to the stop.",
@@ -14,7 +14,7 @@
     "multiCellMinPositiveSharePct": 10
   },
   "btc": {
-    "price": 64079.88,
+    "price": 64060,
     "claimedBand": [
       64000,
       65200
@@ -25,9 +25,9 @@
       64000
     ],
     "insideRiskBand": false,
-    "sma50": 63388.11259999998,
-    "sma200": 69916.59630000002,
-    "rangePosition30d": 43.94525235910647
+    "sma50": 63387.71499999998,
+    "sma200": 69916.49690000001,
+    "rangePosition30d": 43.55781711029436
   },
   "rows": [
     {
@@ -45,21 +45,21 @@
       },
       "measured": {
         "price": 0.6877,
-        "underwaterPct": 78.95406091787503,
-        "volumeTrendPct": -41.06413028003573,
+        "underwaterPct": 78.9494670567483,
+        "volumeTrendPct": -41.00833233257443,
         "stage": "mixed",
         "rangePosition30d": 21.183533447684358,
-        "atrPct": 3.4601485128050813,
+        "atrPct": 3.461187171688731,
         "rsi14": 44.28551029722727,
-        "marketCapUsd": 2792830039,
+        "marketCapUsd": 2797267780,
         "fromAthPct": -87.14579439252337,
-        "beta": 1.1922968721565004,
-        "btcVarianceExplainedPct": 64.01088741331044,
+        "beta": 1.192114171906738,
+        "btcVarianceExplainedPct": 63.98239075121624,
         "positiveSharePct": 6.666666666666667,
         "positiveCells": 6,
         "cellsTried": 90,
         "medianExpectancyR": -0.09125693893735126,
-        "bestExpectancyR": 0.09340659340659352
+        "bestExpectancyR": 0.09340659340659341
       },
       "gates": {
         "volumeTrendPositive": false,
@@ -91,22 +91,22 @@
         "beta": "cao (1.5+)"
       },
       "measured": {
-        "price": 0.089,
-        "underwaterPct": 32.874539396960365,
-        "volumeTrendPct": -54.48290358604591,
+        "price": 0.0887,
+        "underwaterPct": 32.87155020170774,
+        "volumeTrendPct": -54.396922389584766,
         "stage": "mixed",
-        "rangePosition30d": 56.60377358490566,
-        "atrPct": 5.756986833334678,
-        "rsi14": 53.850090759067754,
-        "marketCapUsd": 869103426,
-        "fromAthPct": -94.14473684210526,
-        "beta": 1.5173175583022167,
-        "btcVarianceExplainedPct": 30.510591077620532,
+        "rangePosition30d": 55.18867924528303,
+        "atrPct": 5.776458040211796,
+        "rsi14": 53.4254119033726,
+        "marketCapUsd": 870836830,
+        "fromAthPct": -94.16447368421052,
+        "beta": 1.5164740152435519,
+        "btcVarianceExplainedPct": 30.498739139915582,
         "positiveSharePct": 0,
         "positiveCells": 0,
         "cellsTried": 90,
-        "medianExpectancyR": -0.09780277286059463,
-        "bestExpectancyR": 0
+        "medianExpectancyR": -0.10125752325915979,
+        "bestExpectancyR": -0.005181347150259086
       },
       "gates": {
         "volumeTrendPositive": false,
@@ -136,22 +136,22 @@
         "beta": "thấp hơn"
       },
       "measured": {
-        "price": 2.345,
+        "price": 2.348,
         "underwaterPct": 0,
-        "volumeTrendPct": 70.18680921628055,
+        "volumeTrendPct": 71.70481646861037,
         "stage": "2 expansion",
-        "rangePosition30d": 92.3684210526316,
-        "atrPct": 3.816219922909188,
-        "rsi14": 65.74151347112169,
-        "marketCapUsd": 1306645777,
-        "fromAthPct": -99.6653107828445,
-        "beta": 0.6415082243355239,
-        "btcVarianceExplainedPct": 17.149079768961563,
+        "rangePosition30d": 93.15789473684204,
+        "atrPct": 3.811344003075829,
+        "rsi14": 65.90949342789129,
+        "marketCapUsd": 1305364588,
+        "fromAthPct": -99.66488260900593,
+        "beta": 0.6407297905300626,
+        "btcVarianceExplainedPct": 17.03763617253899,
         "positiveSharePct": 8.88888888888889,
         "positiveCells": 8,
         "cellsTried": 90,
-        "medianExpectancyR": -0.09622398877718025,
-        "bestExpectancyR": 0.16153846153846163
+        "medianExpectancyR": -0.09628979268154525,
+        "bestExpectancyR": 0.15714285714285725
       },
       "gates": {
         "volumeTrendPositive": true,
