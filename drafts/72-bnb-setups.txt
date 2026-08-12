@@ -1,0 +1,92 @@
+Someone sent me three $BNB setups this morning, ranked by confidence: a pullback long first, a breakout long second, a short third.
+
+I scored all three bar by bar. **The order reverses.** The one labelled safest is the only one that loses money at its own first target.
+
+FIRST, THE THING THEY GOT RIGHT THAT I ALMOST CALLED WRONG
+
+Their point of control is $598–605. Mine is $570.97. My first instinct was that one of us had miscounted.
+
+Neither had. A point of control belongs to the window it was measured over:
+
+```
+lookback        POC    VA low    VA high
+7d           600.62    594.70     612.05
+14d          592.68    581.79     603.83
+30d          570.97    563.67     592.56
+60d          570.85    563.81     591.57
+90d          570.85    563.81     591.57
+```
+
+On a **one-week** profile the POC is $600.62 — squarely inside their range. On a month or more it is $570.97 and stops moving.
+
+Both are real. They describe different questions: where has price been accepted *this week*, versus where has the month's money actually changed hands. Neither is the answer on its own, and a profile quoted without its lookback cannot be checked by anyone.
+
+Their 4H structure read is also right — price 615.81 is above the 4H SMA20, SMA50 and SMA200 (605.17 / 598.71 / 580.64).
+
+NOW THE LADDERS
+
+Every entry–stop–target implies a win rate you must beat. History says what it actually was. Same grid, walked bar by bar, a bar touching both levels charged to the stop.
+
+**Setup 1 — pullback long, their top pick.** Entry 601, stop 589, targets 613.5 then 632.5.
+
+```
+target          R:R     needs        got
+TP1            1.04     49.0%      45.4%
+TP2            2.63     27.6%      27.8%
+```
+
+TP1 pays **1.04 to 1**. Not the 1:2.5–3.2 the setup advertises — that number describes TP2 and beyond. TP1 needs 49.0% and delivers 45.4%, so its expectancy is **-0.07R**. Negative.
+
+And the instruction is to take 40–50% off there. Half the position exits at the worst reward in the ladder.
+
+By TP2 it reaches 0.01R — break-even, not an edge.
+
+**Setup 2 — breakout long, ranked second.** Entry 616.5, stop 598.
+
+```
+target          R:R     needs        got
+TP1            0.92     52.1%      51.0%
+TP2            1.81     35.6%      37.6%
+TP3            2.89     25.7%      29.6%
+```
+
+TP1 here is worse still: **0.92 to 1**, paying less than the risk. But hold to TP3 and it reaches **0.19R** — the only clearly positive cell across all three ladders.
+
+So the second-ranked setup carries the edge, and it is entirely in the far targets.
+
+**Setup 3 — reject short.** Entry 610, stop 619. Every cell negative, best -0.05R. Nothing to salvage.
+
+THE PATTERN UNDER ALL THREE
+
+```
+setup          stop    in ATR  of a week
+pullback      2.00%      0.97      0.19x
+breakout      3.00%      1.45      0.29x
+short         1.48%      0.71      0.14x
+```
+
+BNB's ATR is 2.07% a day and its median week travels 10.3%.
+
+Setup 1's stop is **0.97 of a single day**. Setup 3's is 0.71. Those are not tight stops, they are stops inside the noise — you are paying to be stopped out by an ordinary Tuesday.
+
+And note what waiting for confirmation does: the breakout entry is 15.5 higher while the stop moves only 9.00, so the risk leg widens from 2.00% to 3.00%. Waiting is not free. It is rarely priced.
+
+WHAT I WOULD ACTUALLY DO
+
+Not setup 1. Its first target is where the plan asks you to sell half, and that target does not pay.
+
+If you take any of this it is setup 2, held to the far targets, sized for a 3.00% stop — and knowing that TP1 is a giveaway rather than a win.
+
+Bias: **stand aside on BNB**. Zero trapped supply is the best structural number on my board, but price is near the top of its 30-day range at 96.9%, and the only positive ladder here rests on 11.2 independent episodes. That is a story, not a finding.
+
+The honest summary of all three: the arithmetic in them was never checked against history. It takes one calculation per target — **the distance to your stop against the distance to that target** — and it would have caught two of these three before anyone risked money on them.
+
+Funding, open interest and liquidation data are blocked from this host, so none of it is used here.
+
+Board and every figure: maix8.study/signals
+
+What does your first take-profit actually pay, measured against your stop?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#BNB #RiskManagement #TechnicalAnalysis

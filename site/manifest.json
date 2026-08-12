@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "bnb-setups",
+      "draft": "72-bnb-setups.txt",
+      "title": "Three BNB Setups, Ranked by Confidence. Measurement Reverses the Order.",
+      "description": "Someone sent me three $BNB setups this morning, ranked by confidence: a pullback long first, a breakout long second, a short third.",
+      "published": "2026-08-12T00:19:18.999Z",
+      "assets": [
+        "BNB"
+      ],
+      "topics": [],
+      "squareId": 354724900723457
+    },
+    {
       "slug": "bnb-btc",
       "draft": "71-bnb-btc.txt",
       "title": "Nobody Is Trapped Above BNB. That Still Is Not a Reason to Buy It.",
