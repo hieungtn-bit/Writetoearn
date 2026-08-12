@@ -1,0 +1,226 @@
+{
+  "measuredAt": "2026-08-12T00:16:55.600Z",
+  "symbol": "BNBUSDT",
+  "price": 615.81,
+  "atrPct": 2.068579691446426,
+  "medianWeekPct": 10.330945516466986,
+  "claims": {
+    "their POC is right on a one-week profile": true,
+    "and wrong on a one-month profile": true,
+    "the profile stops moving past a month": true,
+    "setup 1's first target pays less than its risk": true,
+    "setup 2's first target pays less than its risk": true,
+    "setup 1's stop is inside a single day of noise": true,
+    "setup 3's stop is well inside a day": true,
+    "waiting for the breakout widens the risk leg": true,
+    "no stop reaches a median week": true
+  },
+  "theirPoc": [
+    598,
+    605
+  ],
+  "profiles": {
+    "7d": {
+      "poc": 600.623175,
+      "valueAreaLow": 594.7047,
+      "valueAreaHigh": 612.05475,
+      "overheadPct": 0.8412419967334975,
+      "matchesTheirPoc": true
+    },
+    "14d": {
+      "poc": 592.68035,
+      "valueAreaLow": 581.7949,
+      "valueAreaHigh": 603.8281000000001,
+      "overheadPct": 0.4027729832888414,
+      "matchesTheirPoc": false
+    },
+    "30d": {
+      "poc": 570.96965,
+      "valueAreaLow": 563.6682000000001,
+      "valueAreaHigh": 592.5633,
+      "overheadPct": 0.20853929515284955,
+      "matchesTheirPoc": false
+    },
+    "60d": {
+      "poc": 570.8504,
+      "valueAreaLow": 563.8084,
+      "valueAreaHigh": 591.5740000000001,
+      "overheadPct": 0.15610639380883254,
+      "matchesTheirPoc": false
+    },
+    "90d": {
+      "poc": 570.8504,
+      "valueAreaLow": 563.8084,
+      "valueAreaHigh": 591.5740000000001,
+      "overheadPct": 0.15610639380883254,
+      "matchesTheirPoc": false
+    }
+  },
+  "structure4h": {
+    "sma20": 605.1699999999998,
+    "sma50": 598.7135999999999,
+    "sma200": 580.6356500000003,
+    "price": 615.81
+  },
+  "rangePosition30d": 96.91020276794323,
+  "setups": {
+    "1 · pullback long": {
+      "direction": "long",
+      "entry": 601,
+      "stop": 589,
+      "targets": {
+        "TP1": 613.5,
+        "TP2": 632.5
+      },
+      "stopPct": 1.9966722129783694,
+      "stopInAtr": 0.9652382362809642,
+      "stopInMedianWeek": 0.1932710040717743,
+      "firstTargetRr": 1.04,
+      "cells": {
+        "TP1 · 10d": {
+          "rr": 1.04,
+          "breakEvenHitPct": 49,
+          "hitPct": 44.8,
+          "stoppedPct": 55.2,
+          "expectancyR": -0.086,
+          "effectiveN": 35.5
+        },
+        "TP1 · 30d": {
+          "rr": 1.04,
+          "breakEvenHitPct": 49,
+          "hitPct": 45.4,
+          "stoppedPct": 54.6,
+          "expectancyR": -0.074,
+          "effectiveN": 11.2
+        },
+        "TP2 · 10d": {
+          "rr": 2.63,
+          "breakEvenHitPct": 27.6,
+          "hitPct": 25.9,
+          "stoppedPct": 71.8,
+          "expectancyR": -0.013,
+          "effectiveN": 35.5
+        },
+        "TP2 · 30d": {
+          "rr": 2.63,
+          "breakEvenHitPct": 27.6,
+          "hitPct": 27.8,
+          "stoppedPct": 72.2,
+          "expectancyR": 0.006,
+          "effectiveN": 11.2
+        }
+      }
+    },
+    "2 · breakout long": {
+      "direction": "long",
+      "entry": 616.5,
+      "stop": 598,
+      "targets": {
+        "TP1": 633.5,
+        "TP2": 650,
+        "TP3": 670
+      },
+      "stopPct": 3.0008110300081103,
+      "stopInAtr": 1.4506625209637605,
+      "stopInMedianWeek": 0.2904681885336608,
+      "firstTargetRr": 0.92,
+      "cells": {
+        "TP1 · 10d": {
+          "rr": 0.92,
+          "breakEvenHitPct": 52.1,
+          "hitPct": 50.7,
+          "stoppedPct": 47.3,
+          "expectancyR": -0.006,
+          "effectiveN": 35.5
+        },
+        "TP1 · 30d": {
+          "rr": 0.92,
+          "breakEvenHitPct": 52.1,
+          "hitPct": 51,
+          "stoppedPct": 49,
+          "expectancyR": -0.02,
+          "effectiveN": 11.2
+        },
+        "TP2 · 10d": {
+          "rr": 1.81,
+          "breakEvenHitPct": 35.6,
+          "hitPct": 31.8,
+          "stoppedPct": 58.9,
+          "expectancyR": 0.029,
+          "effectiveN": 35.5
+        },
+        "TP2 · 30d": {
+          "rr": 1.81,
+          "breakEvenHitPct": 35.6,
+          "hitPct": 37.6,
+          "stoppedPct": 62.4,
+          "expectancyR": 0.057,
+          "effectiveN": 11.2
+        },
+        "TP3 · 10d": {
+          "rr": 2.89,
+          "breakEvenHitPct": 25.7,
+          "hitPct": 15.2,
+          "stoppedPct": 61.4,
+          "expectancyR": 0.032,
+          "effectiveN": 35.5
+        },
+        "TP3 · 30d": {
+          "rr": 2.89,
+          "breakEvenHitPct": 25.7,
+          "hitPct": 29.6,
+          "stoppedPct": 69,
+          "expectancyR": 0.188,
+          "effectiveN": 11.2
+        }
+      }
+    },
+    "3 · reject short": {
+      "direction": "short",
+      "entry": 610,
+      "stop": 619,
+      "targets": {
+        "TP1": 600,
+        "TP2": 586.5
+      },
+      "stopPct": 1.4754098360655739,
+      "stopInAtr": 0.7132477623010568,
+      "stopInMedianWeek": 0.14281459850057748,
+      "firstTargetRr": 1.11,
+      "cells": {
+        "TP1 · 10d": {
+          "rr": 1.11,
+          "breakEvenHitPct": 47.4,
+          "hitPct": 40.6,
+          "stoppedPct": 59.4,
+          "expectancyR": -0.144,
+          "effectiveN": 35.5
+        },
+        "TP1 · 30d": {
+          "rr": 1.11,
+          "breakEvenHitPct": 47.4,
+          "hitPct": 40.3,
+          "stoppedPct": 59.7,
+          "expectancyR": -0.149,
+          "effectiveN": 11.2
+        },
+        "TP2 · 10d": {
+          "rr": 2.61,
+          "breakEvenHitPct": 27.7,
+          "hitPct": 25.4,
+          "stoppedPct": 74.1,
+          "expectancyR": -0.081,
+          "effectiveN": 35.5
+        },
+        "TP2 · 30d": {
+          "rr": 2.61,
+          "breakEvenHitPct": 27.7,
+          "hitPct": 26.3,
+          "stoppedPct": 73.7,
+          "expectancyR": -0.051,
+          "effectiveN": 11.2
+        }
+      }
+    }
+  }
+}
