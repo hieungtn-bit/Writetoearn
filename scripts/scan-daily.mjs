@@ -22,6 +22,7 @@ import { analyzeAsset, atr, fetchKlines } from "../src/analysis.mjs";
 import { ALT_UNIVERSE } from "../src/screen.mjs";
 import { stageOf } from "../src/stage.mjs";
 import { RECENT_DAYS, rankSignals, signalFor, tallySignals } from "../src/signals.mjs";
+import { volumeProfile } from "../src/profile.mjs";
 import { pct, price as fmtPrice, usd } from "../src/format.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -57,6 +58,19 @@ for (const [i, symbol] of symbols.entries()) {
     // Context the engine does not use but a reader needs to judge the call.
     const stage = await stageOf(symbol.replace(/USDT$/, "")).catch(() => null);
 
+    /**
+     * Overhead supply, from a real volume profile rather than whole daily bars.
+     *
+     * The daily proxy in `stageOf` charges each bar entirely to one side of the
+     * current price. Measured against this, it is off by up to eleven points,
+     * and worst where price sits mid-distribution — BTC read 88.9% by bars and
+     * 78.8% by profile on the day this was written. The profile is published;
+     * the proxy is kept beside it so the gap stays visible.
+     */
+    const hourly = await retry(() => fetchKlines(symbol, { interval: "1h", limit: 30 * 24 }))
+      .catch(() => null);
+    const profile = hourly ? volumeProfile(hourly, analysis.price) : null;
+
     const signal = signalFor({
       symbol,
       candles,
@@ -76,7 +90,14 @@ for (const [i, symbol] of symbols.entries()) {
         change7dPct: analysis.change7dPct,
         change30dPct: analysis.change30dPct,
         volumeZScoreCompleted: analysis.volumeZScoreCompleted,
-        underwaterPct: stage?.underwaterPct ?? null,
+        // The profile figure is the published one; the daily-bar proxy is
+        // retained so the difference between the two methods stays auditable.
+        underwaterPct: profile?.overheadPct ?? stage?.underwaterPct ?? null,
+        underwaterByDailyBarsPct: stage?.underwaterPct ?? null,
+        underwaterMethod: profile ? "hourly volume profile" : "daily bars",
+        pocPrice: profile?.pocPrice ?? null,
+        valueAreaLow: profile?.valueAreaLow ?? null,
+        valueAreaHigh: profile?.valueAreaHigh ?? null,
         volumeTrendPct: stage?.volumeTrendPct ?? null,
         stage: stage?.stage ?? null,
       },
@@ -95,6 +116,7 @@ const snapshot = {
     note: "Both directions scored on equal terms; the recent window decides and the long window is kept only to detect a regime turn. WAIT is only reachable when both directions lose.",
     walk: "Bar by bar. A bar reaching both levels is charged to the stop. Unresolved positions close at the market, not at zero.",
     unavailable: "Binance futures is geo-blocked from this host, so nothing here uses funding, open interest or liquidation data.",
+    overhead: "Share of 30-day turnover above the current price, from an hourly volume profile with each bar spread across the bins its range covers. The older whole-daily-bar proxy is kept alongside as underwaterByDailyBarsPct.",
     horizonsDays: [3, 5, 10, 30],
     // The window that decides the call, recorded so a snapshot can be read
     // years later without guessing what "recent" meant when it was taken.

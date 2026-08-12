@@ -1,0 +1,107 @@
+Someone sent me a $BNB read this morning putting overhead supply at 35–45% — "medium, not too heavy."
+
+I measured it: **0.10%**.
+
+That is the second time this week. An $ICP read put overhead at 43–47% against a measured 13%. Both times the estimate was "medium" and both times the real number was near the floor.
+
+I am not going to be smug about this, because checking it properly showed my own version of the number was coarser than theirs deserved. More on that at the end — it changed today.
+
+BNB: THE RAREST NUMBER ON MY BOARD, AND WHY IT IS NOT ENOUGH
+
+Overhead supply is the share of the last 30 days of turnover that traded **above** the current price — the people underwater, waiting to break even and get out.
+
+BNB's is **0.10%**. Not "low". Effectively nobody who bought BNB in the past month is holding a loss. I scan 32 pairs daily and this is the only one that reads like that.
+
+Both of my methods agree on it, which is the test that matters — the profile says 0.10% and the older daily-bar method says 0.04%.
+
+So why is it not a buy?
+
+```
+price now       616.81
+value area      563.67       592.56
+POC             570.97
+range pos        98.5%
+volume 30d      -12.6%
+```
+
+Price sits at **98.5% of the 30-day range** and **above the entire value area**. The busiest price of the last month is 570.97 — you would be buying 8.03% above where the volume actually traded.
+
+And volume is **-12.6%**, not neutral and not rising. Price at the top of the range on falling participation is the one combination I have learned to distrust.
+
+The read also put BNB's BTC beta at 0.70–0.90. Measured: **0.54**, with BTC explaining **37.6%** of its daily variance. BNB is *less* tethered to BTC than assumed, not more.
+
+Where I agree with the read entirely: this is not an early-compression setup, and chasing here is not the trade. We reach the same conclusion from different numbers.
+
+My board calls BNB long at **3 of 5 lookbacks** — a majority, but not the four of five it showed yesterday. The 270 and 365-day windows both disagree, and on the 365 neither direction wins:
+
+```
+            long    short
+180d       34/64     1/64
+270d        2/64    39/64
+365d       24/64    28/64
+540d       59/64     4/64
+730d       58/64     0/64
+```
+
+BTC: THE ONE I WILL NOT CALL
+
+BTC is **WAIT** on the board today, and that is a result rather than a gap.
+
+Both directions were scored on the same grid over the recent window. Long came back **-0.02R**. Short came back **-0.01R**. Both negative. There is no side to take.
+
+The lookbacks show why it is genuinely undecided rather than quietly bearish:
+
+```
+            long    short
+180d       18/64    25/64
+270d        5/64    62/64
+365d        1/64    63/64
+540d       14/64    52/64
+730d       40/64    14/64
+```
+
+The one-year view is emphatically short — 63 of 64 geometries. The two-year view flips long. The recent window pays neither. Three honest answers that contradict each other, which is exactly what a market with no edge in it looks like.
+
+Structurally: price 63572 sits **below its point of control** at 63993, inside a value area of 63416–65391, at 27.8% of the 30-day range with volume **-36.2%** and RSI 46.2. 49.6% below the October high. Turnover $905.69M a day.
+
+This matters beyond BTC. It is what most alt calls are actually resting on, and when the anchor has no readable edge, a thin-sample altcoin signal built on top of it inherits that.
+
+THE NUMBER THAT CHANGED TODAY
+
+Checking the reader's 35–45% forced me to check my own method, and it was worse than I would have claimed.
+
+The old one took **daily** bars and charged each entire bar to one side of the current price by its typical price. A day that traded straight through the current price contributed all of its volume or none of it.
+
+The board now builds a real volume profile: **hourly** bars, each spread across the price bins its high-low range covers, weighted by overlap.
+
+Across 32 pairs the two disagree by more than five points on **9**, and the worst cases are the two assets that matter most:
+
+```
+               profile   daily bars
+BTC              79.4%        92.3%
+ETH              57.1%        68.8%
+WLD              63.4%        53.2%
+OP               57.2%        49.6%
+```
+
+The old number was least reliable exactly where price sits in the thick of the distribution — which is where you most want to know it. Where price sits clear of the range, both methods agree closely, which is why this went unnoticed for so long.
+
+Both figures are in the published data, so you can check the change rather than take my word for it.
+
+WHAT I AM ACTUALLY DOING
+
+Bias: **selective short** across the alt group, unchanged, and **stand aside on BTC** because the grid says stand aside.
+
+BNB I am watching, not buying: the cleanest overhead reading I have ever measured, spoiled by the price being at the top of its range on falling volume. If it pulls back toward the value area with volume, that is a different post.
+
+The usual caveats, which have not improved: the sample behind a 30-day call is about **five independent episodes**, and every stop the board derives from daily volatility still lands under a median week — BNB's is 6.16% against a median week of 10.3%. Hold it for a month with that stop and an ordinary week takes you out.
+
+Funding, open interest and liquidation data are blocked from this host, so none of it is used anywhere here.
+
+Board and every figure: maix8.study/signals
+
+What is your overhead number on the last thing you bought — measured, or eyeballed?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Bitcoin #BNB #RiskManagement
