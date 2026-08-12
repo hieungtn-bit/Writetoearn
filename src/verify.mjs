@@ -500,7 +500,31 @@ const BIAS_LABEL = String.raw`(?:bias|quan\s+điểm|khuyến\s+nghị)\s*[:\uFF
 export const BIAS_PATTERNS = {
   LONG: /(?<!\p{L})(?:selective\s+long|long\s+chọn\s+lọc|mua\s+chọn\s+lọc)(?!\p{L})/iu,
   SHORT: /(?<!\p{L})(?:selective\s+short|short\s+chọn\s+lọc|bán\s+chọn\s+lọc)(?!\p{L})/iu,
-  WAIT: new RegExp(`${BIAS_LABEL}(?:wait|chờ|đứng\\s+ngoài)(?!\\p{L})`, "iu"),
+  // "stand aside" earns its place next to "wait": it is the phrase this desk
+  // actually reaches for, and while it was missing, a sentence reading
+  // "selective short on the alts and stand aside on BTC" looked like a single
+  // unambiguous short — which is how a BTC stand-aside entered the record as a
+  // BNB short.
+  WAIT: new RegExp(`${BIAS_LABEL}(?:wait|stand\\s+aside|chờ|đứng\\s+ngoài)(?!\\p{L})`, "iu"),
+};
+
+/**
+ * The same vocabulary without the "Bias:" prefix.
+ *
+ * `BIAS_PATTERNS.WAIT` requires the label within thirty characters, which is
+ * right for admitting a post — it stops the ordinary word "wait" in prose from
+ * being read as a call. But it also means a *second* bias further along the
+ * same sentence goes unseen, and that is exactly the sentence that needs
+ * catching: "Bias: selective short across the alts, and stand aside on BTC"
+ * looked like one unambiguous short.
+ *
+ * Used only to detect that a sentence commits to more than one thing. Never
+ * used to admit a post or to read its primary bias.
+ */
+export const BIAS_PHRASES = {
+  LONG: BIAS_PATTERNS.LONG,
+  SHORT: BIAS_PATTERNS.SHORT,
+  WAIT: /(?<!\p{L})(?:stand\s+aside|đứng\s+ngoài)(?!\p{L})/iu,
 };
 
 /**

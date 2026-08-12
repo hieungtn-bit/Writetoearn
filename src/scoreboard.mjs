@@ -11,7 +11,7 @@
  */
 
 import { fetchKlines } from "./analysis.mjs";
-import { BIAS_PATTERNS } from "./verify.mjs";
+import { BIAS_PATTERNS, BIAS_PHRASES } from "./verify.mjs";
 
 export const BIAS = {
   WAIT: "WAIT",
@@ -19,11 +19,39 @@ export const BIAS = {
   SHORT: "Selective Short",
 };
 
+/** Majors that appear as bare tickers in prose, without a cashtag. */
+const BARE_TICKERS = ["BTC", "ETH", "BNB", "SOL", "XRP"];
+
+/**
+ * The sentence a bias is stated in, which is the only place its subject can be.
+ *
+ * Splitting on sentence punctuation is crude, but the alternative — assuming
+ * the bias belongs to whichever asset the post mentions most — is what put a
+ * short on BNB into the record from a post that said to stand aside on it.
+ */
+function biasSentence(text) {
+  for (const sentence of text.split(/(?<=[.!?])\s+|\n+/)) {
+    if (Object.values(BIAS_PATTERNS).some((re) => re.test(sentence))) return sentence;
+  }
+  return null;
+}
+
 /**
  * Reads back what a post committed to. Levels come from the brief rather than
  * from parsing prose, so a formatting quirk cannot corrupt the record.
  *
- * @returns {{asset: string|null, bias: string|null, support: number|null, resistance: number|null}}
+ * The subject is resolved from the sentence stating the bias, not from the
+ * post's most-mentioned asset. Those two are usually the same, and when they
+ * are not, guessing produces a record of a call nobody made — a post arguing
+ * that BNB should be left alone was logged as a BNB short because BNB was the
+ * word it used most.
+ *
+ * When the bias sentence is genuinely about more than one thing, the claim is
+ * returned `ambiguous` with no asset. An unscoreable claim is a gap in the
+ * record; a confidently wrong one is a lie in it.
+ *
+ * @returns {{asset: string|null, bias: string|null, support: number|null,
+ *   resistance: number|null, ambiguous: boolean, ambiguityReason: string|null}}
  */
 export function extractClaim(text, brief) {
   const cashtags = [...text.matchAll(/\$([A-Z]{2,10})\b/g)].map((m) => m[1]);
@@ -37,23 +65,49 @@ export function extractClaim(text, brief) {
     return cashtags.indexOf(a[0]) - cashtags.indexOf(b[0]);
   });
 
-  const base = ranked[0]?.[0] ?? null;
-  const symbol = base ? `${base}USDT` : null;
-  const levels = (brief.levels ?? []).find((l) => l.symbol === symbol);
+  const dominant = ranked[0]?.[0] ?? null;
 
   // Same patterns the gate admits the post with, so a post can never pass one
   // and be invisible to the other.
+  const sentence = biasSentence(text) ?? "";
   let bias = null;
   if (BIAS_PATTERNS.LONG.test(text)) bias = BIAS.LONG;
   else if (BIAS_PATTERNS.SHORT.test(text)) bias = BIAS.SHORT;
   else if (BIAS_PATTERNS.WAIT.test(text)) bias = BIAS.WAIT;
 
+  /** Assets actually named where the bias is stated. */
+  const known = new Set([...cashtags, ...BARE_TICKERS]);
+  const named = [...new Set(
+    [...sentence.matchAll(/\$?([A-Z]{2,10})\b/g)].map((m) => m[1]).filter((t) => known.has(t)),
+  )];
+
+  // Bare phrases, so a second commitment later in the sentence is not missed.
+  const biasesInSentence = Object.values(BIAS_PHRASES).filter((re) => re.test(sentence)).length;
+
+  let asset = null, ambiguous = false, ambiguityReason = null;
+  if (biasesInSentence > 1) {
+    ambiguous = true;
+    ambiguityReason = `the bias sentence states ${biasesInSentence} biases; say which asset each belongs to, or set the claim by hand`;
+  } else if (named.length === 1) {
+    asset = `${named[0]}USDT`;
+  } else if (named.length > 1) {
+    ambiguous = true;
+    ambiguityReason = `the bias sentence names ${named.join(", ")}; only one asset can be scored`;
+  } else if (dominant) {
+    // The bias sentence names nothing, so it is about the post's subject.
+    asset = `${dominant}USDT`;
+  }
+
+  const levels = (brief.levels ?? []).find((l) => l.symbol === asset);
+
   return {
-    asset: symbol,
+    asset,
     bias,
+    ambiguous,
+    ambiguityReason,
     support: levels?.support ?? null,
     resistance: levels?.resistance ?? null,
-    priceAtPost: levels?.spot ?? (brief.spot ?? []).find((s) => s.symbol === symbol)?.price ?? null,
+    priceAtPost: levels?.spot ?? (brief.spot ?? []).find((s) => s.symbol === asset)?.price ?? null,
   };
 }
 

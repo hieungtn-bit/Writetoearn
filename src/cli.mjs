@@ -105,7 +105,9 @@ Usage
   wte site [--out <dir>]              Build the indexable research site
   wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
            [--cover <img>] [--slug <s>]  commit and push. The push deploys.
-           [--no-push] [--dry-run]
+           [--no-push] [--dry-run]       --claim-asset/--claim-bias set the
+           [--claim-asset <SYM>]         logged call when a post states more
+           [--claim-bias <b>]            than one bias.
   wte deploy [--ref <b>] [--sha <c>]  Rebuild the live site from this commit
   wte team [--format <f>] [--dry-run] Full daily run: analyst picks the angle,
                                       writer drafts, checker + critic gate it
@@ -1342,6 +1344,25 @@ async function cmdShip([file], flags, argv) {
     const brief = await collectBrief({ newsHours: 24 });
     const claim = extractClaim(text, brief);
     const publishedAt = new Date().toISOString();
+
+    /**
+     * An ambiguous bias is recorded with no asset, on purpose.
+     *
+     * The alternative is what happened once: a post arguing that BNB should be
+     * left alone was logged as a BNB short, because BNB was the word it used
+     * most. A gap in the record is visible and fixable; a confident wrong entry
+     * is neither. `--claim-asset` sets it when the human knows the answer.
+     */
+    if (flags["claim-asset"]) {
+      claim.asset = String(flags["claim-asset"]).toUpperCase();
+      claim.ambiguous = false;
+    }
+    if (flags["claim-bias"]) claim.bias = String(flags["claim-bias"]);
+    if (claim.ambiguous) {
+      console.error(`  Call: AMBIGUOUS — ${claim.ambiguityReason}`);
+      console.error("        Recorded without an asset, so the scoreboard will skip it.");
+      console.error("        Re-run with --claim-asset <SYMBOL> --claim-bias <bias> to set it.");
+    }
     store.recordClaim({
       ...claim,
       postId: squareId ?? `unlinked-${Date.now()}`,
