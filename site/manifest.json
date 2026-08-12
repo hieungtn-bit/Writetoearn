@@ -10,6 +10,19 @@
   },
   "articles": [
     {
+      "slug": "bnb-btc",
+      "draft": "71-bnb-btc.txt",
+      "title": "Nobody Is Trapped Above BNB. That Still Is Not a Reason to Buy It.",
+      "description": "Someone sent me a $BNB read this morning putting overhead supply at 35–45% — \"medium, not too heavy.\"",
+      "published": "2026-08-12T00:08:34.541Z",
+      "assets": [
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 354722260935441
+    },
+    {
       "slug": "lookbacks",
       "draft": "70-lookbacks.txt",
       "title": "All Five Say LONG. Only Two Survive the Question.",
