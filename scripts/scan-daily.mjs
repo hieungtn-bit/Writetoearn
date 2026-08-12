@@ -23,6 +23,8 @@ import { ALT_UNIVERSE } from "../src/screen.mjs";
 import { stageOf } from "../src/stage.mjs";
 import { RECENT_DAYS, rankSignals, signalFor, tallySignals } from "../src/signals.mjs";
 import { volumeProfile } from "../src/profile.mjs";
+import { slimSnapshot } from "../src/site.mjs";
+import { DEFAULT_LIMIT, liveUniverse } from "../src/universe.mjs";
 import { pct, price as fmtPrice, usd } from "../src/format.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -32,11 +34,15 @@ const flag = (name) => {
   return hit ? (hit.includes("=") ? hit.split("=").slice(1).join("=") : true) : null;
 };
 
-const MAJORS = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT"];
-const symbols = flag("symbols")
-  ? String(flag("symbols")).split(",").map((s) => s.trim().toUpperCase()).filter(Boolean)
-  : [...MAJORS, ...ALT_UNIVERSE];
-
+/**
+ * What to scan.
+ *
+ * Derived from the market rather than hardcoded, because the hardcoded version
+ * is why the board missed the movers: 32 names against 489 trading pairs, and
+ * one of the day's ten biggest gainers inside our list. `--limit` bounds the
+ * run time; the hand-written ALT_UNIVERSE survives only as the offline
+ * fallback for when the exchange cannot be reached.
+ */
 const retry = async (fn, n = 5) => {
   let last;
   for (let i = 0; i < n; i++) {
@@ -44,6 +50,26 @@ const retry = async (fn, n = 5) => {
   }
   throw last;
 };
+
+const MAJORS = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT"];
+const limit = Number(flag("limit") ?? DEFAULT_LIMIT);
+
+let symbols;
+let universeNote = `top ${limit} USDT pairs by turnover, refreshed this run`;
+if (flag("symbols")) {
+  symbols = String(flag("symbols")).split(",").map((s) => s.trim().toUpperCase()).filter(Boolean);
+  universeNote = "explicit --symbols list";
+} else {
+  try {
+    const live = await retry(() => liveUniverse({ limit }));
+    symbols = live.symbols;
+    universeNote += ` (${live.considered} pairs considered)`;
+  } catch (err) {
+    symbols = [...MAJORS, ...ALT_UNIVERSE];
+    universeNote = `fallback to the static list — could not reach the exchange (${err.message})`;
+    process.stderr.write(`\n${universeNote}\n`);
+  }
+}
 
 const signals = [];
 const failed = [];
@@ -121,6 +147,7 @@ const snapshot = {
     // The window that decides the call, recorded so a snapshot can be read
     // years later without guessing what "recent" meant when it was taken.
     recentWindowDays: RECENT_DAYS,
+    universe: universeNote,
   },
   tally: tallySignals(signals),
   failed,
@@ -142,8 +169,31 @@ const snapshot = {
  */
 const day = snapshot.scannedAt.slice(0, 10);
 const archiveDir = path.join(root, "site", "signals-archive");
-fs.mkdirSync(archiveDir, { recursive: true });
-fs.writeFileSync(path.join(archiveDir, `${day}.json`), `${JSON.stringify(snapshot, null, 2)}\n`);
+fs.mkdirSync(path.join(archiveDir, "scans"), { recursive: true });
+
+/**
+ * The archive stores the slim shape, which is what the site serves anyway.
+ * A full record of 100 pairs is 462KB, most of it geometry grids no reader
+ * opens; slim is a fraction of that and keeps the repository honest about
+ * what it is actually publishing.
+ */
+const archived = slimSnapshot(snapshot);
+
+/**
+ * Two archive writes, because they answer different questions.
+ *
+ * `<day>.json` is what the date picker fetches, and re-running on the same day
+ * replaces it — a scan repeated after an outage should correct the record, not
+ * double it.
+ *
+ * `scans/<minute>.json` is immutable. Three posts published on 12 August cited
+ * a board that a later scan the same day overwrote, so the figures in them
+ * could no longer be checked against anything served. A snapshot a post points
+ * at has to survive the next scan.
+ */
+const stamp = snapshot.scannedAt.slice(0, 16).replace(/[:T]/g, "-");
+fs.writeFileSync(path.join(archiveDir, "scans", `${stamp}.json`), `${JSON.stringify(archived)}\n`);
+fs.writeFileSync(path.join(archiveDir, `${day}.json`), `${JSON.stringify(archived, null, 2)}\n`);
 
 const out = path.join(root, "site", "signals.json");
 fs.writeFileSync(out, `${JSON.stringify(snapshot, null, 2)}\n`);

@@ -525,10 +525,13 @@ export function slimSnapshot(snapshot) {
       bias: s.bias,
       tradeable: s.tradeable !== false,
       reason: s.reason ?? "",
-      turning: Boolean(s.regime?.turning),
-      thin: Boolean(s.confidence?.thin),
-      agreeing: s.agreement?.agreeing ?? null,
-      windows: s.agreement?.windows ?? null,
+      // Read from either shape: a full scan record, or a slim one being passed
+      // through again. The archive stores slim snapshots, so this runs twice on
+      // the same data and must not lose fields the second time.
+      turning: Boolean(s.regime?.turning ?? s.turning),
+      thin: Boolean(s.confidence?.thin ?? s.thin),
+      agreeing: s.agreement?.agreeing ?? s.agreeing ?? null,
+      windows: s.agreement?.windows ?? s.windows ?? null,
       plan: s.plan
         ? {
           horizonDays: s.plan.horizonDays,
