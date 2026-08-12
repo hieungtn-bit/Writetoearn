@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "watchlist-check",
+      "draft": "73-watchlist.txt",
+      "title": "Touched, Not Broken: Checking a Watchlist Note One Number at a Time",
+      "description": "A watchlist note went round this morning covering seven coins. I checked every number in it. Four things were right and three were wrong, and one of the wrong ones was the headline.",
+      "published": "2026-08-12T00:55:50.833Z",
+      "assets": [
+        "BNB",
+        "GIGGLE",
+        "ENA"
+      ],
+      "topics": [],
+      "squareId": 354733878462994
+    },
+    {
       "slug": "bnb-setups",
       "draft": "72-bnb-setups.txt",
       "title": "Three BNB Setups, Ranked by Confidence. Measurement Reverses the Order.",
