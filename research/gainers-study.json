@@ -1,0 +1,75 @@
+{
+  "measuredAt": "2026-08-13T04:06:37.665Z",
+  "pairsLoaded": 100,
+  "daysUsed": 999,
+  "topN": 10,
+  "minTurnoverUsd": 2000000,
+  "table": [
+    {
+      "holdDays": 1,
+      "gainersMedianPct": -0.4338302534765137,
+      "baselineMedianPct": -0.19685039370078705,
+      "differencePct": -0.23697985977572666,
+      "gainersUpPct": 44.949899799599194,
+      "baselineUpPct": 47.18122114571819,
+      "gainerTrades": 9980,
+      "effectiveN": 998
+    },
+    {
+      "holdDays": 3,
+      "gainersMedianPct": -0.6799726484183921,
+      "baselineMedianPct": -0.4159733777038266,
+      "differencePct": -0.2639992707145655,
+      "gainersUpPct": 45.7429718875502,
+      "baselineUpPct": 46.85725474838457,
+      "gainerTrades": 9960,
+      "effectiveN": 332
+    },
+    {
+      "holdDays": 7,
+      "gainersMedianPct": -1.134474506672123,
+      "baselineMedianPct": -1.0104937398872083,
+      "differencePct": -0.12398076678491465,
+      "gainersUpPct": 44.868951612903224,
+      "baselineUpPct": 45.158466118017856,
+      "gainerTrades": 9920,
+      "effectiveN": 141.71428571428572
+    },
+    {
+      "holdDays": 14,
+      "gainersMedianPct": -2.2496144206670508,
+      "baselineMedianPct": -2.248032971150238,
+      "differencePct": -0.0015814495168129383,
+      "gainersUpPct": 43.71573604060914,
+      "baselineUpPct": 43.07954269034298,
+      "gainerTrades": 9850,
+      "effectiveN": 70.35714285714286
+    }
+  ],
+  "biggestGainer": [
+    {
+      "holdDays": 1,
+      "medianPct": -1.1197731817135348,
+      "upPct": 42.58517034068136,
+      "n": 998
+    },
+    {
+      "holdDays": 3,
+      "medianPct": -1.72596628515011,
+      "upPct": 43.674698795180724,
+      "n": 996
+    },
+    {
+      "holdDays": 7,
+      "medianPct": -3.154158578405025,
+      "upPct": 41.431451612903224,
+      "n": 992
+    },
+    {
+      "holdDays": 14,
+      "medianPct": -4.25714285714287,
+      "upPct": 40.71065989847716,
+      "n": 985
+    }
+  ]
+}
