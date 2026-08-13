@@ -10,6 +10,19 @@
   },
   "articles": [
     {
+      "slug": "gainers-study",
+      "draft": "74-gainers.txt",
+      "title": "Buying the Top Ten Gainers Is Ordinary. Buying Number One Is Not.",
+      "description": "Yesterday someone sent me the \"Top Gainers\" tab and asked why my scanner misses those names. I gave two reasons and one confident line: a gainers list is a list of moves that have already happened.",
+      "published": "2026-08-13T04:11:33.711Z",
+      "assets": [
+        "HOLO",
+        "PROM"
+      ],
+      "topics": [],
+      "squareId": 355135871663266
+    },
+    {
       "slug": "watchlist-check",
       "draft": "73-watchlist.txt",
       "title": "Touched, Not Broken: Checking a Watchlist Note One Number at a Time",
