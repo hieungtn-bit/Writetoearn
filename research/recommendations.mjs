@@ -24,18 +24,27 @@
 
 import { writeFileSync } from "node:fs";
 import { analyzeAsset, atr, fetchKlines } from "../src/analysis.mjs";
-import { ALT_UNIVERSE } from "../src/screen.mjs";
+import { liveUniverse } from "../src/universe.mjs";
 import { signalFor, walk } from "../src/signals.mjs";
 import { stageOf } from "../src/stage.mjs";
 
-const MAJORS = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT"];
-const SYMBOLS = [...MAJORS, ...ALT_UNIVERSE];
 const ACCOUNT_RISK_PCT = 1;
+const PAIRS = Number(process.env.PAIRS ?? 100);
 
 const median = (xs) => {
   const s = [...xs].sort((a, b) => a - b);
   return s.length % 2 ? s[s.length >> 1] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2;
 };
+
+// Same universe the board scans, so a recommendation cannot come from a name
+// the published board never looked at.
+const { symbols: SYMBOLS } = await (async () => {
+  for (let i = 0; i < 6; i++) {
+    try { return await liveUniverse({ limit: PAIRS }); }
+    catch { await new Promise((r) => setTimeout(r, 1200 * (i + 1))); }
+  }
+  throw new Error("could not reach the exchange to build a universe");
+})();
 
 const rows = [];
 for (const [i, symbol] of SYMBOLS.entries()) {
