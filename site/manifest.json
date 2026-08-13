@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "bnb-ceiling",
+      "draft": "75-bnb-ceiling.txt",
+      "title": "BNB Tried 620.55 and Closed 610.44. The Ceiling Won Again.",
+      "description": "Two days ago a reader told me $BNB had broken $615. I said it had touched it, not broken it, because no daily candle had closed above the band.",
+      "published": "2026-08-13T04:11:49.408Z",
+      "assets": [
+        "BNB"
+      ],
+      "topics": [],
+      "squareId": 355135935926850
+    },
+    {
       "slug": "gainers-study",
       "draft": "74-gainers.txt",
       "title": "Buying the Top Ten Gainers Is Ordinary. Buying Number One Is Not.",
