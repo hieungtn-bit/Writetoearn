@@ -10,6 +10,19 @@
   },
   "articles": [
     {
+      "slug": "btc-bnb-overhead",
+      "draft": "81-btc-bnb.txt",
+      "title": "I Deleted My Favourite Argument. BTC and BNB Both Reversed It on Their Own Data.",
+      "description": "Yesterday I gave $BTC a stand-aside call, and one of my reasons was that the great majority of the last month's turnover had traded above the current price — a wall of trapped sellers overhead.",
+      "published": "2026-08-14T20:50:55.559Z",
+      "assets": [
+        "BTC",
+        "BNB"
+      ],
+      "topics": [],
+      "squareId": 355735369776481
+    },
+    {
       "slug": "overhead-test",
       "draft": "80-overhead.txt",
       "title": "I Have Quoted Trapped Supply in Nearly Every Post. Measured Across 60,000 Days, It Predicts Nothing.",
