@@ -1,0 +1,72 @@
+<!doctype html><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#0b0e11}
+  svg{display:block}
+  text{font-family:"DejaVu Sans",system-ui,sans-serif;fill:#e8eaed}
+  .kicker{font-size:19px;letter-spacing:3.5px;fill:#f0b90b;font-weight:700}
+  .title{font-size:40px;font-weight:800;letter-spacing:-0.5px}
+  .sub{font-size:17px;fill:#9aa3ad}
+  .stop{font-size:19px;font-weight:800}
+  .val{font-size:16px;font-weight:700}
+  .note{font-size:14px;fill:#8b949e}
+  .axis{font-size:15px;fill:#8b949e}
+  .stat{font-size:22px;font-weight:700}
+  .statlab{font-size:15px;fill:#8b949e}
+  .mark{font-size:17px;font-weight:700;fill:#f0b90b;letter-spacing:1px}
+</style>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0b0e11"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#c98500"/>
+
+  <text x="64" y="56" class="kicker">I SAID IT SIX TIMES. I MEASURED IT ONCE.</text>
+  <text x="1136" y="56" text-anchor="end" class="mark">MAIX8</text>
+
+  <text x="64" y="118" class="title">A tighter stop is worse.</text>
+  <text x="64" y="164" class="title">A wider stop is not better.</text>
+  <text x="64" y="200" class="sub">Expectancy in R by stop width · longs held 30 days · 61 pairs · 540 days</text>
+
+  <line x1="64" x2="1136" y1="262" y2="262" stroke="#252a31" stroke-width="1"/>
+  <text x="64" y="248" class="axis">stop, in daily ATR</text>
+  <text x="64" y="284" class="axis">every bar</text>
+  <text x="64" y="306" class="axis">a loss</text>
+
+  
+  <text x="319" y="248" text-anchor="middle" class="stop">0.5</text>
+  <rect x="276" y="262" width="86" height="193.63886700602387" rx="4" fill="#c98500"/>
+  <text x="319" y="481.6388670060239" text-anchor="middle" class="val" fill="#c98500">-0.135</text>
+  
+  <text x="443" y="248" text-anchor="middle" class="stop">0.75</text>
+  <rect x="400" y="262" width="86" height="101.02897409009941" rx="4" fill="#c98500"/>
+  <text x="443" y="389.0289740900994" text-anchor="middle" class="val" fill="#c98500">-0.071</text>
+  
+  <text x="567" y="248" text-anchor="middle" class="stop">1</text>
+  <rect x="524" y="262" width="86" height="99.53300592934312" rx="4" fill="#c98500"/>
+  <text x="567" y="387.5330059293431" text-anchor="middle" class="val" fill="#c98500">-0.070</text>
+  
+  <text x="691" y="248" text-anchor="middle" class="stop">1.5</text>
+  <rect x="648" y="262" width="86" height="62.313431470497235" rx="4" fill="#3987e5"/>
+  <text x="691" y="350.3134314704972" text-anchor="middle" class="val" fill="#3987e5">-0.044</text>
+  <text x="691" y="372.3134314704972" text-anchor="middle" class="note">shallowest</text>
+  <text x="815" y="248" text-anchor="middle" class="stop">2</text>
+  <rect x="772" y="262" width="86" height="126.5081081786199" rx="4" fill="#c98500"/>
+  <text x="815" y="414.5081081786199" text-anchor="middle" class="val" fill="#c98500">-0.088</text>
+  
+  <text x="939" y="248" text-anchor="middle" class="stop">3</text>
+  <rect x="896" y="262" width="86" height="214" rx="4" fill="#c98500"/>
+  <text x="939" y="502" text-anchor="middle" class="val" fill="#c98500">-0.150</text>
+  
+  <text x="1063" y="248" text-anchor="middle" class="stop">4</text>
+  <rect x="1020" y="262" width="86" height="188.58467802833005" rx="4" fill="#c98500"/>
+  <text x="1063" y="476.58467802833" text-anchor="middle" class="val" fill="#c98500">-0.132</text>
+  
+
+  <line x1="64" x2="1136" y1="546" y2="546" stroke="#252a31" stroke-width="1"/>
+  <text x="64" y="582" class="stat">71%</text>
+  <text x="64" y="604" class="statlab">Stopped out at half an ATR</text>
+
+  <text x="560" y="582" class="stat">1.5 ATR</text>
+  <text x="560" y="604" class="statlab">Best width in 3 of 4 panels tested</text>
+
+  <text x="1136" y="582" text-anchor="end" class="stat">14 / 14</text>
+  <text x="1136" y="604" text-anchor="end" class="statlab">Long cells losing, at every width</text>
+</svg>
