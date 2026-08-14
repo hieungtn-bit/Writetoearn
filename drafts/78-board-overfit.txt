@@ -1,0 +1,100 @@
+This morning I published a post arguing that if you search 144 settings and two come out ahead, you have measured your search rather than the market.
+
+My own signal board searches **64 geometries per pair** and publishes the best one.
+
+So I pointed the same test at it. This is what came back.
+
+THE TEST
+
+Take each pair's history and cut it in half. On the older half, do exactly what the board does — try every stop, every target, every holding period, keep the winner. Then score **that same plan** on the newer half, which had no part in choosing it.
+
+Three numbers:
+
+- **chosen** — what the winner scored in the window that crowned it
+- **held** — what it did afterwards
+- **typical** — what an arbitrary geometry did over that same later window
+
+If *held* lands near *typical*, the search bought nothing.
+
+```
+               chosen      held    typical
+everything     +0.143    +0.015     +0.010
+longs          +0.133    -0.048     -0.070
+shorts         +0.148    +0.085     +0.073
+```
+
+96 pair-directions, 270 days each side.
+
+WHAT THAT SAYS
+
+The board's plan shows **+0.143R** and delivers **+0.015R**. About a tenth of it survives contact with data it did not get to pick.
+
+And it lands at +0.010 — which is what you would have got by choosing a geometry **at random**.
+
+The clinching number: the chosen plan beat a randomly chosen one on **49.0%** of pairs. That is a coin flip. Sixty-four backtests per pair, and the winner of them is no better than closing your eyes.
+
+THE SIDES DO NOT FAIL EQUALLY
+
+Longs: **-0.048R** held, and only 27.1% still positive out of sample. The long plans on my board do not survive their own test.
+
+Shorts: **+0.085R** held, 79.2% still positive. They do survive.
+
+But read the third column before celebrating. The typical short geometry — picked at random — returned +0.073R over the same window. The short side works because **being short worked**, not because my optimiser found anything. My contribution is the direction. The plan attached to it is decoration.
+
+I TRIED THE OBVIOUS FIX. IT ALSO FAILED.
+
+Earlier today I published a separate study putting the best stop width at 1.5 daily ATR. The natural repair is to stop letting the optimiser roam and pin every stop there.
+
+Measured the same way: **+0.021R** held, against +0.015R for the free search. It beat the free search on 50.0% of pairs.
+
+Nothing. The problem is not which width gets picked — it is that **picking per pair does not work at all.**
+
+```
+chosen at           n    chosen       held
+1 ATR              26    +0.155     +0.016
+1.5 ATR            23    +0.106     +0.073
+2 ATR              17    +0.108     +0.005
+3 ATR              30    +0.143     -0.003
+```
+
+I will point out the trap in that table, because I nearly fell into it. The 1.5 ATR row looks excellent — but those are the pairs where 1.5 *happened to win in sample*, which is the same selection I am trying to measure. When I forced 1.5 on every pair instead of letting it be chosen, the advantage evaporated. A comforting row and a controlled test disagreed, and the controlled test wins.
+
+WHAT I HAVE CHANGED, ALREADY LIVE
+
+The board no longer calls that figure "Expectancy". It is labelled **"Expectancy, in sample"**, with the shrinkage stated above the table.
+
+Read the **direction** as this board's output. Read the expectancy as the ceiling of what that geometry ever managed — not a forecast, and not something to size a position from.
+
+I am not deleting the plans. Entry, stop and target are still the right shape of a trade. I am telling you the number beside them is the best case rather than the expected case, because I have now measured the difference and it is roughly ten to one.
+
+TODAY'S BOARD, READ THAT WAY
+
+94 pairs scanned: **45 long, 42 short, 7 stand aside.** 30 rows are in a regime turn — the recent window disagrees in sign with the longer history. 21 are too thin to trade whatever the geometry says.
+
+Given everything above, here is the honest reading of it:
+
+**The 45 long signals carry a warning label.** Long plans held -0.048R out of sample and were still positive on barely a quarter of pairs. I am not going to publish long ideas today as though that measurement does not exist.
+
+**The short side is where the measurement holds up** — and even there the useful claim is "short beat long over this window", not "this specific plan will return 0.37R".
+
+Selective means something specific here. Six short rows have all five lookbacks agreeing, a sample that is not thin, and enough turnover to trade. The three largest are $XRP, $SUI, $XLM — with independent samples of 17, 17, 35 episodes respectively, which is well above the five this board usually has to work with.
+
+I am naming them rather than gesturing at "the short side", because after a post like this one, an unspecified bias is a way of saying nothing.
+
+Bias: **selective short**, small, and sized off the shrunken number rather than the headline one.
+
+WHAT I AM NOT CLAIMING
+
+That the board is worthless. Direction survived; the split by side is exactly the sort of thing an out-of-sample test is for.
+
+That this is the last word. 96 pair-directions on one exchange, one split point, spot data. A different split date would move these figures.
+
+That I saw it coming. I wrote the post that condemns this pattern at seven this morning and did not think to check my own board until an hour later.
+
+Board, with the new labelling: maix8.study/signals
+
+What number on your own dashboard have you never tested out of sample?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#TradingSignals #RiskManagement #Crypto

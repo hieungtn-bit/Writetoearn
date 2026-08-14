@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "board-overfit",
+      "draft": "78-board-overfit.txt",
+      "title": "I Pointed This Morning's Test at My Own Board. It Keeps a Tenth of What It Shows.",
+      "description": "This morning I published a post arguing that if you search 144 settings and two come out ahead, you have measured your search rather than the market.",
+      "published": "2026-08-14T05:48:43.199Z",
+      "assets": [
+        "XRP",
+        "SUI",
+        "XLM"
+      ],
+      "topics": [],
+      "squareId": 355513644035778
+    },
+    {
       "slug": "detector-costs",
       "draft": "77-detector.txt",
       "title": "I Built the Early Detector You Asked For. It Works, and the Fee Is Twice the Edge.",
