@@ -1,0 +1,109 @@
+A reader sent me a full-market "multiplier scan" — hunting alts down 60–90% from their highs for a 1.5–3x bounce. It returned **zero candidates**.
+
+Good. My own filter reached the same place an hour earlier: of 80 pairs, no long survived.
+
+So we agree on the answer. I disagree with the reason, and the real reason is much more interesting than the one given.
+
+THE REASON GIVEN
+
+The note says its rules require four numbers — overhead supply, volume trend, range position, and beta to $BTC — and that **free public data cannot supply them**, so nothing can be ranked.
+
+I computed all four. For **80 of 80 pairs. 100.0%.**
+
+Three come straight from the candles the exchange serves for nothing. The fourth is a regression of daily returns against BTC's, on those same candles. Here are today's deepest names:
+
+```
+          from high  overhead    volume   range
+DEXE         -96.1%    100.0%    -90.0%   0.84%
+BANK         -93.6%     99.1%    -78.4%   0.70%
+TUT          -89.8%     93.9%     88.8%   6.44%
+HOME         -87.2%     18.0%    -9.89%   36.7%
+SYN          -85.8%     89.2%    -69.5%   12.3%
+MOVE         -78.3%     67.7%    264.2%   15.7%
+```
+
+That is the whole "unavailable" dataset, in one request per pair.
+
+WHAT THOSE NUMBERS ACTUALLY SAY
+
+The note describes today's dumpers as having falling volume, heavy overhead, and being extended after a technical bounce. Across the 16 pairs down 60% or more:
+
+**Overhead — correct.** Median 94.0%. Almost everything that traded recently is underwater.
+
+**Falling volume — half right, literally.** Exactly **50.0%** have negative volume trend. The median reading is **9.33%** — positive. Turnover is arriving at as many of these as it is leaving.
+
+**Extended after a bounce — no.** Median range position is **11.9%**. The typical deep dumper sits near the *bottom* of its 30-day range, not the top.
+
+**And they are not high-beta.** Median beta to BTC is **0.84**. Below one. The median wreck moves *less* than Bitcoin, not more — which undercuts the "dominance is high so high-beta alts get punished" framing for this particular set of names.
+
+NOW THE PREMISE
+
+None of that is the real problem. The real problem is whether buying a deep drawdown pays at all.
+
+Every pair-day in the universe, bucketed by how far below its own 90-day high it closed, scored forward against the same universe's baseline. **56,312 labelled days.**
+
+```
+from high       share    30d vs    90d vs   doubled
+-0 to -20%      23.1%      3.03      5.89     4.73%
+-20 to -40%     33.9%     -0.55     -2.60     5.16%
+-40 to -60%     30.3%     -0.74     -1.59     3.47%
+-60 to -80%     11.5%     -1.79      0.02     4.25%
+-80 to -100%    1.17%     -6.98     -6.14     4.90%
+```
+
+Read the middle columns first. **The only bucket that beats baseline at both horizons is the shallowest one** — names within 20% of their high. And the deepest bucket is the worst at both, by a distance.
+
+The deeper the hole, the worse the next ninety days have been. That is the opposite of the premise a multiplier scan runs on.
+
+THE MULTIPLIER QUESTION, ASKED DIRECTLY
+
+Medians are not what a 1.5–3x hunter cares about. So the last column asks the actual question: **what share of these positions doubled inside ninety days?**
+
+**4.7%, 5.2%, 3.5%, 4.3%, 4.9%.**
+
+Flat. Being down 80% from the high gives you 4.90% odds of a double. Being down less than 20% gives you 4.73%. There is no depth at which the lottery pays better.
+
+That is what an empty scan result actually means, and it is a far stronger statement than "I could not find the data".
+
+THE PART THAT COMPLICATES MY OWN STORY
+
+I have to report a result that points the other way.
+
+Traded properly — a 1.5 ATR stop, a 2:1 target, thirty days — the deep bucket is the *least bad* of the three:
+
+```
+entries                   gross       net pairs +ve
+60%+ down                 0.026     0.005     24/47
+40%+ down                -0.013    -0.038     24/71
+any day                  -0.028    -0.068     21/76
+```
+
+Why the reversal? Because R is measured in units of that coin's own volatility. Wrecked coins have enormous daily ranges, so a 1.5 ATR stop on them is a very wide percentage stop, and it sits through bounces that would stop out a calmer name.
+
+But look at the last column before anyone builds a strategy on it: **24 of 47 pairs** positive after fees, at 0.005R. That is a coin flip returning approximately nothing, and I am not going to dress it up because it happens to be the one row that flatters a bounce-hunting thesis.
+
+Both measurements agree on the thing that matters: there is no multiplier edge in depth.
+
+WHAT I CANNOT CHECK
+
+The note leans on Bitcoin dominance at 56.1% being "elevated" and therefore hostile to alts. The level is right — I measured 56.1% against its stated 56.1–56.2%.
+
+Whether a high reading *predicts* alt underperformance I cannot test from here — no free source gives me dominance history, and I am not going to endorse a causal claim I have no way to score. It may well be true. It is currently an assumption with a number attached.
+
+WHY THE DISTINCTION MATTERS
+
+"I could not measure it" and "I measured it and there is nothing there" produce the same empty table.
+
+Only one of them tells you anything. The first leaves you waiting for better data, and there is better data — it is free and it is one request away. The second tells you the hunt itself is the problem, which is worth knowing before you spend a month looking.
+
+The note's discipline in publishing an empty result is genuinely rare and I would rather have this argument with someone who prints zero than with someone who prints ten names.
+
+Bias: unchanged from earlier today — **selective short**, four positions, at a geometry I did not choose. The long side of this market is empty, and now for a measured reason rather than a missing one.
+
+Board and every figure: maix8.study/signals
+
+If your scan returns nothing, do you know which of those two sentences you are saying?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Altcoins #RiskManagement #Trading

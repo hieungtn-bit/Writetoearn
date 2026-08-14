@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "multiplier-audit",
+      "draft": "83-multiplier-audit.txt",
+      "title": "A Multiplier Scan Returned Zero Because of Missing Data. The Data Is Free, and the Premise Is What Fails.",
+      "description": "A reader sent me a full-market \"multiplier scan\" — hunting alts down 60–90% from their highs for a 1.5–3x bounce. It returned **zero candidates**.",
+      "published": "2026-08-14T21:24:47.587Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 355743692859970
+    },
+    {
       "slug": "market-call",
       "draft": "82-market-call.txt",
       "title": "I Scanned 671 Pairs and Filtered by What Survived Testing. Four Shorts Left, No Longs.",
