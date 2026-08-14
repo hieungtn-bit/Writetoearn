@@ -1,0 +1,300 @@
+{
+  "measuredAt": "2026-08-14T21:03:11.704Z",
+  "boardScannedAt": "2026-08-14T20:36:36.332Z",
+  "rules": {
+    "stopAtr": 1.5,
+    "rewardRatio": 2,
+    "horizonDays": 30,
+    "feePct": 0.2,
+    "minEffectiveN": 12,
+    "accountBase": 1000,
+    "riskPct": 1,
+    "riskPerTradeUsd": 10
+  },
+  "breadth": {
+    "pairs": 671,
+    "up": 240,
+    "down": 419,
+    "upSharePct": 35.767511177347245,
+    "medianChangePct": -0.723,
+    "upOver5": 51,
+    "downOver5": 111,
+    "downOver10": 62
+  },
+  "tally": {
+    "total": 100,
+    "LONG": 46,
+    "SHORT": 46,
+    "WAIT": 8,
+    "turning": 36,
+    "untradeable": 25
+  },
+  "qualifying": 6,
+  "scored": 6,
+  "shorts": {
+    "count": 6,
+    "medianFullNetR": 0.045227760131203706,
+    "medianRecentNetR": 0.11436435806934803,
+    "positiveFull": 5,
+    "bothWindowsAgree": 4
+  },
+  "longs": null,
+  "recommended": [
+    {
+      "symbol": "ARBUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.0744,
+      "atrPct": 5.054875423104069,
+      "stopPct": 7.582313134656104,
+      "stop": 0.08004124097218412,
+      "target": 0.0631175180556317,
+      "turnoverUsd": 3475997.916684,
+      "effectiveNBoard": 17,
+      "positionUsdPer1000": 131.8858746982302,
+      "fixed": {
+        "fullExpectancyR": 0.09484536082474226,
+        "fullNetR": 0.06846818588509622,
+        "fullHitPct": 36.49484536082474,
+        "fullEffectiveN": 32.333333333333336,
+        "recentExpectancyR": 0.2625,
+        "recentNetR": 0.23612282506035398,
+        "recentEffectiveN": 8,
+        "agreesAcrossWindows": true
+      },
+      "feeR": 0.02637717493964604
+    },
+    {
+      "symbol": "BONKUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.00000236,
+      "atrPct": 8.252567504877284,
+      "stopPct": 12.378851257315926,
+      "stop": 0.0000026521408896726555,
+      "target": 0.000001775718220654688,
+      "turnoverUsd": 3113590.4897642178,
+      "effectiveNBoard": 17,
+      "positionUsdPer1000": 80.7829401301674,
+      "fixed": {
+        "fullExpectancyR": 0.07989371277395213,
+        "fullNetR": 0.06373712474791865,
+        "fullHitPct": 34.00423728813559,
+        "fullEffectiveN": 31.466666666666665,
+        "recentExpectancyR": 0.08600122001184941,
+        "recentNetR": 0.06984463198581593,
+        "recentEffectiveN": 8,
+        "agreesAcrossWindows": true
+      },
+      "feeR": 0.016156588026033484
+    },
+    {
+      "symbol": "SUIUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.6782,
+      "atrPct": 3.541382526427988,
+      "stopPct": 5.312073789641982,
+      "stop": 0.714226484441352,
+      "target": 0.6061470311172962,
+      "turnoverUsd": 13005905.72120967,
+      "effectiveNBoard": 17,
+      "positionUsdPer1000": 188.25039703889297,
+      "fixed": {
+        "fullExpectancyR": 0.08556701030927835,
+        "fullNetR": 0.04791693090149975,
+        "fullHitPct": 36.18556701030928,
+        "fullEffectiveN": 32.333333333333336,
+        "recentExpectancyR": 0.15,
+        "recentNetR": 0.1123499205922214,
+        "recentEffectiveN": 8,
+        "agreesAcrossWindows": true
+      },
+      "feeR": 0.0376500794077786
+    },
+    {
+      "symbol": "XRPUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.9992,
+      "atrPct": 2.890933463537113,
+      "stopPct": 4.33640019530567,
+      "stop": 1.0425293107514944,
+      "target": 0.9125413784970116,
+      "turnoverUsd": 55844840.608089,
+      "effectiveNBoard": 17,
+      "positionUsdPer1000": 230.6060222676267,
+      "fixed": {
+        "fullExpectancyR": 0.088659793814433,
+        "fullNetR": 0.04253858936090765,
+        "fullHitPct": 36.28865979381443,
+        "fullEffectiveN": 32.333333333333336,
+        "recentExpectancyR": 0.1625,
+        "recentNetR": 0.11637879554647466,
+        "recentEffectiveN": 8,
+        "agreesAcrossWindows": true
+      },
+      "feeR": 0.04612120445352534
+    }
+  ],
+  "rejected": [
+    {
+      "symbol": "XLMUSDT",
+      "bias": "SHORT",
+      "fullNetR": 0.0380955501651312,
+      "agrees": false
+    },
+    {
+      "symbol": "FILUSDT",
+      "bias": "SHORT",
+      "fullNetR": -0.04689001671221388,
+      "agrees": false
+    }
+  ],
+  "all": [
+    {
+      "symbol": "ARBUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.0744,
+      "atrPct": 5.054875423104069,
+      "stopPct": 7.582313134656104,
+      "stop": 0.08004124097218412,
+      "target": 0.0631175180556317,
+      "turnoverUsd": 3475997.916684,
+      "effectiveNBoard": 17,
+      "positionUsdPer1000": 131.8858746982302,
+      "fixed": {
+        "fullExpectancyR": 0.09484536082474226,
+        "fullNetR": 0.06846818588509622,
+        "fullHitPct": 36.49484536082474,
+        "fullEffectiveN": 32.333333333333336,
+        "recentExpectancyR": 0.2625,
+        "recentNetR": 0.23612282506035398,
+        "recentEffectiveN": 8,
+        "agreesAcrossWindows": true
+      },
+      "feeR": 0.02637717493964604
+    },
+    {
+      "symbol": "BONKUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.00000236,
+      "atrPct": 8.252567504877284,
+      "stopPct": 12.378851257315926,
+      "stop": 0.0000026521408896726555,
+      "target": 0.000001775718220654688,
+      "turnoverUsd": 3113590.4897642178,
+      "effectiveNBoard": 17,
+      "positionUsdPer1000": 80.7829401301674,
+      "fixed": {
+        "fullExpectancyR": 0.07989371277395213,
+        "fullNetR": 0.06373712474791865,
+        "fullHitPct": 34.00423728813559,
+        "fullEffectiveN": 31.466666666666665,
+        "recentExpectancyR": 0.08600122001184941,
+        "recentNetR": 0.06984463198581593,
+        "recentEffectiveN": 8,
+        "agreesAcrossWindows": true
+      },
+      "feeR": 0.016156588026033484
+    },
+    {
+      "symbol": "SUIUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.6782,
+      "atrPct": 3.541382526427988,
+      "stopPct": 5.312073789641982,
+      "stop": 0.714226484441352,
+      "target": 0.6061470311172962,
+      "turnoverUsd": 13005905.72120967,
+      "effectiveNBoard": 17,
+      "positionUsdPer1000": 188.25039703889297,
+      "fixed": {
+        "fullExpectancyR": 0.08556701030927835,
+        "fullNetR": 0.04791693090149975,
+        "fullHitPct": 36.18556701030928,
+        "fullEffectiveN": 32.333333333333336,
+        "recentExpectancyR": 0.15,
+        "recentNetR": 0.1123499205922214,
+        "recentEffectiveN": 8,
+        "agreesAcrossWindows": true
+      },
+      "feeR": 0.0376500794077786
+    },
+    {
+      "symbol": "XRPUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.9992,
+      "atrPct": 2.890933463537113,
+      "stopPct": 4.33640019530567,
+      "stop": 1.0425293107514944,
+      "target": 0.9125413784970116,
+      "turnoverUsd": 55844840.608089,
+      "effectiveNBoard": 17,
+      "positionUsdPer1000": 230.6060222676267,
+      "fixed": {
+        "fullExpectancyR": 0.088659793814433,
+        "fullNetR": 0.04253858936090765,
+        "fullHitPct": 36.28865979381443,
+        "fullEffectiveN": 32.333333333333336,
+        "recentExpectancyR": 0.1625,
+        "recentNetR": 0.11637879554647466,
+        "recentEffectiveN": 8,
+        "agreesAcrossWindows": true
+      },
+      "feeR": 0.04612120445352534
+    },
+    {
+      "symbol": "XLMUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.1587,
+      "atrPct": 3.730832156740661,
+      "stopPct": 5.596248235110991,
+      "stop": 0.16758124594912116,
+      "target": 0.14093750810175773,
+      "turnoverUsd": 8214954.760010002,
+      "effectiveNBoard": 59,
+      "positionUsdPer1000": 178.6911441358117,
+      "fixed": {
+        "fullExpectancyR": 0.07383377899229354,
+        "fullNetR": 0.0380955501651312,
+        "fullHitPct": 34.5360824742268,
+        "fullEffectiveN": 32.333333333333336,
+        "recentExpectancyR": -0.0875,
+        "recentNetR": -0.12323822882716234,
+        "recentEffectiveN": 8,
+        "agreesAcrossWindows": false
+      },
+      "feeR": 0.03573822882716234
+    },
+    {
+      "symbol": "FILUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.6719,
+      "atrPct": 5.090093756571038,
+      "stopPct": 7.635140634856557,
+      "stop": 0.7232005099256013,
+      "target": 0.5692989801487977,
+      "turnoverUsd": 4873884.378971434,
+      "effectiveNBoard": 59,
+      "positionUsdPer1000": 130.97335698503306,
+      "fixed": {
+        "fullExpectancyR": -0.020695345315207257,
+        "fullNetR": -0.04689001671221388,
+        "fullHitPct": 31.443298969072163,
+        "fullEffectiveN": 32.333333333333336,
+        "recentExpectancyR": 0.18443534302630546,
+        "recentNetR": 0.15824067162929883,
+        "recentEffectiveN": 8,
+        "agreesAcrossWindows": false
+      },
+      "feeR": 0.026194671397006618
+    }
+  ]
+}
