@@ -120,7 +120,7 @@ export function extractClaim(text, brief) {
  * @returns {Promise<object|null>} null when there is not enough history yet
  */
 export async function scoreClaim(claim, { hours = 24, fetchImpl = globalThis.fetch } = {}) {
-  if (!claim.asset || !claim.priceAtPost) return null;
+  if (!claim.asset) return null;
 
   const publishedAt = new Date(claim.publishedAt).getTime();
   const deadline = publishedAt + hours * 3_600_000;
@@ -137,13 +137,35 @@ export async function scoreClaim(claim, { hours = 24, fetchImpl = globalThis.fet
    * A thousand bars covers six weeks and costs the same single request.
    */
   const candles = await fetchKlines(claim.asset, { interval: "1h", limit: 1000, fetchImpl });
+
+  /**
+   * The entry price, recovered from the candles when it was never recorded.
+   *
+   * A claim is logged with the spot price from the brief fetched at publication.
+   * When the asset sits outside that brief — anything past the majors — the
+   * field was written as null, and every such call was then unscoreable
+   * forever: the scorer returned null, the doctor reported it as stuck, and
+   * running `wte score` could not clear it because the missing number was the
+   * reason it could not be scored. Three calls had been sitting in that state.
+   *
+   * The candles needed to settle the claim already span the publication, so the
+   * price is recoverable at no extra cost. The last hourly close *completed*
+   * before publication is used rather than the candle straddling it, because
+   * that bar's close lies up to an hour after the call and would judge the post
+   * against a price it could not have been written at.
+   */
+  const priceAtPost = claim.priceAtPost
+    ?? candles.filter((c) => c.openTime + 3_600_000 <= publishedAt).at(-1)?.close
+    ?? null;
+  if (!priceAtPost) return null;
+
   const window = candles.filter((c) => c.openTime > publishedAt && c.openTime <= deadline);
   if (!window.length) return null;
 
   const low = Math.min(...window.map((c) => c.low));
   const high = Math.max(...window.map((c) => c.high));
   const close = window.at(-1).close;
-  const movePct = ((close - claim.priceAtPost) / claim.priceAtPost) * 100;
+  const movePct = ((close - priceAtPost) / priceAtPost) * 100;
 
   const supportHeld = claim.support == null ? null : low >= claim.support;
   const resistanceBroken = claim.resistance == null ? null : high > claim.resistance;
@@ -203,6 +225,9 @@ export async function scoreClaim(claim, { hours = 24, fetchImpl = globalThis.fet
     low,
     high,
     close,
+    priceAtPost,
+    /** True when the entry price was reconstructed rather than recorded. */
+    priceRecovered: claim.priceAtPost == null,
     movePct,
     typicalMovePct,
     supportHeld,

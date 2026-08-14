@@ -74,6 +74,40 @@ test("a long call that went up is scored correct", async () => {
   assert.equal(score.resistanceBroken, false);
 });
 
+test("a claim logged without an entry price is still scoreable", async () => {
+  const start = new Date(publishedAt).getTime();
+  // Two bars that completed before publication, then the judging window. The
+  // last completed close is 63250; the bar straddling publication closes at
+  // 70000 and must NOT be used, since it settles after the call was written.
+  const before = [
+    { openTime: start - 3 * 3_600_000, open: 63250, high: 63250, low: 63250, close: 63250, volume: 1, quoteVolume: 1 },
+    { openTime: start - 2 * 3_600_000, open: 63250, high: 63250, low: 63250, close: 63250, volume: 1, quoteVolume: 1 },
+    { openTime: start - 3_600_000 / 2, open: 63250, high: 70000, low: 63250, close: 70000, volume: 1, quoteVolume: 1 },
+  ];
+  const fetchImpl = stubFetch([...before, ...candles({ start, low: 63200, high: 64000, close: 64000 })]);
+  const score = await scoreClaim(
+    { ...base, priceAtPost: null, bias: BIAS.LONG },
+    { fetchImpl },
+  );
+
+  assert.ok(score, "a missing entry price must not make the call unscoreable forever");
+  assert.equal(score.priceRecovered, true);
+  assert.equal(score.priceAtPost, 63250, "recovered from the last close completed before publication");
+  assert.equal(score.biasCorrect, true);
+});
+
+test("a recorded entry price is never overwritten by the recovered one", async () => {
+  const start = new Date(publishedAt).getTime();
+  const before = [
+    { openTime: start - 2 * 3_600_000, open: 1, high: 1, low: 1, close: 1, volume: 1, quoteVolume: 1 },
+  ];
+  const fetchImpl = stubFetch([...before, ...candles({ start, low: 63200, high: 64000, close: 64000 })]);
+  const score = await scoreClaim({ ...base, bias: BIAS.LONG }, { fetchImpl });
+
+  assert.equal(score.priceAtPost, base.priceAtPost);
+  assert.equal(score.priceRecovered, false);
+});
+
 test("a long call that went down is scored wrong", async () => {
   const start = new Date(publishedAt).getTime();
   const fetchImpl = stubFetch(candles({ start, low: 62000, high: 63300, close: 62500 }));
