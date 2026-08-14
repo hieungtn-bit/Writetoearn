@@ -10,6 +10,19 @@
   },
   "articles": [
     {
+      "slug": "detector-costs",
+      "draft": "77-detector.txt",
+      "title": "I Built the Early Detector You Asked For. It Works, and the Fee Is Twice the Edge.",
+      "description": "Two days ago a reader sent me the gainers tab — $HOLO and $PROM at the top of it — and asked why my board never has those names on it. I published what buying that list actually returns.",
+      "published": "2026-08-14T05:42:15.060Z",
+      "assets": [
+        "HOLO",
+        "PROM"
+      ],
+      "topics": [],
+      "squareId": 355512054109986
+    },
+    {
       "slug": "stop-law",
       "draft": "76-stop-law.txt",
       "title": "I Repeated the Same Stop-Loss Rule Six Times. Measured Across 61 Pairs, Half of It Is Wrong.",
