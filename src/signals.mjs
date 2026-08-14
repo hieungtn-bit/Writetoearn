@@ -281,9 +281,38 @@ export function signalFor({ symbol, candles, atrPct, price, turnoverUsd, recentD
   };
 }
 
+/**
+ * How many independent episodes a row needs before its figure is taken at
+ * face value. At n = k the expectancy is halved; at n = 12, the threshold
+ * this file already uses for "not thin", three quarters of it survives.
+ */
+export const SAMPLE_SHRINK_K = 4;
+
+/**
+ * Expectancy discounted by how little the sample supports it.
+ *
+ * Ranking on the raw figure put six tokenised equities at the top of the
+ * board, every one showing above 1.6R on fewer than two independent episodes.
+ * That is not bad luck to be filtered around afterwards. `plan` is the maximum
+ * of 64 geometries, and a maximum over noisy estimates is largest exactly
+ * where the sample is smallest — so ranking on it systematically surfaces the
+ * rows carrying the least evidence, which is the opposite of what a board is
+ * for.
+ *
+ * The shrink is deliberately crude, because this decides a display order
+ * rather than a forecast. Nothing here alters the published expectancy; it
+ * alters only which row a reader sees first.
+ */
+export function trustedExpectancyR(signal, k = SAMPLE_SHRINK_K) {
+  const e = signal.plan?.expectancyR;
+  if (!Number.isFinite(e)) return null;
+  const n = signal.plan?.effectiveN ?? 0;
+  return e * (n / (n + k));
+}
+
 /** Ranks a set of signals: actionable and liquid first, then by conviction. */
 export function rankSignals(signals) {
-  const strength = (s) => (s.bias === BIAS.WAIT ? -Infinity : s.plan?.expectancyR ?? -Infinity);
+  const strength = (s) => (s.bias === BIAS.WAIT ? -Infinity : trustedExpectancyR(s) ?? -Infinity);
   return [...signals].sort((a, b) => {
     if (a.tradeable !== b.tradeable) return a.tradeable ? -1 : 1;
     return strength(b) - strength(a);

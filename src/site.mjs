@@ -10,6 +10,11 @@
  * site cannot drift from what went out. Metadata lives in site/manifest.json.
  */
 
+// The board's client-side sort has to shrink small samples the same way the
+// stored ranking does. Importing the constant is the only way the two cannot
+// drift apart, since the browser code is built here as a string.
+import { SAMPLE_SHRINK_K } from "./signals.mjs";
+
 const ESCAPES = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
 
 export function escapeHtml(s) {
@@ -660,7 +665,8 @@ export function renderSignalsPage(site, snapshot, { days = [] } = {}) {
   <div class="frow">
     <label class="fld"><span>Sort</span>
       <select id="f-sort">
-        <option value="expectancy">Highest expectancy</option>
+        <option value="trusted">Expectancy, weighted by sample</option>
+        <option value="expectancy">Highest expectancy, raw</option>
         <option value="hit">Highest hit rate</option>
         <option value="sample">Largest sample</option>
         <option value="asset">Coin name</option>
@@ -697,7 +703,7 @@ ${slim.signals.length
   if (today) cache[today] = data;
 
   var PER_PAGE = 10;
-  var state = { bias: "all", horizon: "all", hit: "all", quality: "all", q: "", sort: "expectancy", page: 1 };
+  var state = { bias: "all", horizon: "all", hit: "all", quality: "all", q: "", sort: "trusted", page: 1 };
 
   var board = document.getElementById("board");
   var pager = document.getElementById("pager");
@@ -778,14 +784,36 @@ ${slim.signals.length
     return true;
   }
 
+  /**
+   * Expectancy discounted by how little the sample supports it.
+   *
+   * Sorting on the raw figure put six tokenised equities at the top of the
+   * board, every one of them showing above 1.6R on fewer than two independent
+   * episodes. That is not a coincidence to be filtered around: a maximum over
+   * 64 geometries is largest exactly where the sample is smallest, so the raw
+   * sort systematically surfaces the rows with the least evidence behind them.
+   *
+   * The shrink factor is n/(n+k): a row with the 12 episodes the board treats
+   * as "not thin" keeps three quarters of its figure, a row with 1 keeps a
+   * fifth, and a row with 0 keeps nothing. It is deliberately crude — it is a
+   * display order, not a forecast — and the printed expectancy is untouched.
+   */
+  var SHRINK_K = ${SAMPLE_SHRINK_K};
+  function trusted(s) {
+    if (!s.plan) return -1e9;
+    var n = s.plan.effectiveN || 0;
+    return s.plan.expectancyR * (n / (n + SHRINK_K));
+  }
+
   function sorted(rows) {
     var by = {
+      trusted: function (a, b) { return trusted(b) - trusted(a); },
       expectancy: function (a, b) { return (b.plan ? b.plan.expectancyR : -1e9) - (a.plan ? a.plan.expectancyR : -1e9); },
       hit: function (a, b) { return (b.plan ? b.plan.hitPct : -1) - (a.plan ? a.plan.hitPct : -1); },
       sample: function (a, b) { return (b.plan ? b.plan.effectiveN : -1) - (a.plan ? a.plan.effectiveN : -1); },
       asset: function (a, b) { return a.asset.localeCompare(b.asset); }
     };
-    return rows.slice().sort(by[state.sort] || by.expectancy);
+    return rows.slice().sort(by[state.sort] || by.trusted);
   }
 
   function render() {
@@ -842,9 +870,9 @@ ${slim.signals.length
   });
 
   document.getElementById("f-reset").addEventListener("click", function () {
-    state = { bias: "all", horizon: "all", hit: "all", quality: "all", q: "", sort: "expectancy", page: 1 };
+    state = { bias: "all", horizon: "all", hit: "all", quality: "all", q: "", sort: "trusted", page: 1 };
     document.getElementById("f-q").value = "";
-    document.getElementById("f-sort").value = "expectancy";
+    document.getElementById("f-sort").value = "trusted";
     form.querySelectorAll("button[data-f]").forEach(function (o) {
       o.setAttribute("aria-pressed", String(o.dataset.v === "all"));
     });
