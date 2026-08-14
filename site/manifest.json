@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "market-call",
+      "draft": "82-market-call.txt",
+      "title": "I Scanned 671 Pairs and Filtered by What Survived Testing. Four Shorts Left, No Longs.",
+      "description": "I scanned the exchange, then ran everything through the filters that survived this week's testing. Here is what the market looks like and what I would actually take.",
+      "published": "2026-08-14T21:04:09.473Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 355738621561474
+    },
+    {
       "slug": "btc-bnb-overhead",
       "draft": "81-btc-bnb.txt",
       "title": "I Deleted My Favourite Argument. BTC and BNB Both Reversed It on Their Own Data.",
