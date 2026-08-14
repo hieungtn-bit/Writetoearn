@@ -616,6 +616,12 @@ export function renderSignalsPage(site, snapshot, { days = [] } = {}) {
   <p>The measurement windows overlap, so the honest sample is the number of <strong>independent episodes</strong> — usually five or fewer at the 30-day horizon. A strong number over five episodes is a story, not yet a finding. A row tagged <em>regime turn</em> is one where the recent window disagrees in sign with the full history: the market changed inside the sample.</p>
 </details>
 
+<details class="box warn" open>
+  <summary>The expectancy is an upper bound, not a forecast</summary>
+  <p>Each plan is the best of <strong>64 geometries</strong>, scored on the same window that chose it. Tested properly — choose on 270 days, score on the next 270, with no overlap — the median chosen plan kept <strong>0.015R</strong> of an apparent <strong>0.143R</strong>, and beat a <em>randomly</em> picked geometry from the same window only <strong>49%</strong> of the time. Forcing every stop to 1.5 ATR did not repair it either.</p>
+  <p>So read the <strong>direction</strong> as the output of this board and the expectancy as the ceiling of what that geometry ever did. The measurement: <a href="/board-overfit/">what the board's own numbers survive</a>.</p>
+</details>
+
 <form class="filters" id="filters" hidden>
   <div class="frow">
     <label class="fld"><span>Day</span>
@@ -735,7 +741,7 @@ ${slim.signals.length
       + "</div>"
       + '<div class="nums">'
       + '<div><span>Hit rate</span><b>' + n(p.hitPct, 1) + "%</b></div>"
-      + '<div><span>Expectancy</span><b>' + n(p.expectancyR, 2) + "R</b></div>"
+      + '<div><span>Expectancy, in sample</span><b>' + n(p.expectancyR, 2) + "R</b></div>"
       + '<div><span>Independent n</span><b>' + Math.round(p.effectiveN) + "</b></div>"
       + '<div><span>Size / $1k</span><b>$' + n(p.positionUsdPer1000, 0) + "</b></div>"
       + "</div>"
@@ -910,7 +916,7 @@ function signalCard(s) {
   </div>
   <div class="nums">
     <div><span>Hit rate</span><b>${n(p.hitPct, 1)}%</b></div>
-    <div><span>Expectancy</span><b>${n(p.expectancyR, 2)}R</b></div>
+    <div><span>Expectancy, in sample</span><b>${n(p.expectancyR, 2)}R</b></div>
     <div><span>Independent n</span><b>${Math.round(p.effectiveN)}</b></div>
     <div><span>Size / $1k</span><b>$${n(p.positionUsdPer1000, 0)}</b></div>
   </div>`
