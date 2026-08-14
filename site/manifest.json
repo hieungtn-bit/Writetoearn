@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "stop-law",
+      "draft": "76-stop-law.txt",
+      "title": "I Repeated the Same Stop-Loss Rule Six Times. Measured Across 61 Pairs, Half of It Is Wrong.",
+      "description": "I have written this sentence about six times:",
+      "published": "2026-08-14T05:37:25.872Z",
+      "assets": [
+        "ICP",
+        "XLM",
+        "BNB"
+      ],
+      "topics": [],
+      "squareId": 355510869512193
+    },
+    {
       "slug": "bnb-ceiling",
       "draft": "75-bnb-ceiling.txt",
       "title": "BNB Tried 620.55 and Closed 610.44. The Ceiling Won Again.",
