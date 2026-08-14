@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "btc-audit",
+      "draft": "79-btc-audit.txt",
+      "title": "A Reader's BTC Note Reached My Own Conclusion. Its Triggers Are Sold at 1:2 and Compute to 1:1.",
+      "description": "A reader sent me a full multi-timeframe $BTC note last night: technicals, on-chain, ETF flows, sentiment, and two conditional triggers. Its recommendation is **WAIT**.",
+      "published": "2026-08-14T17:15:21.152Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 355682390353745
+    },
+    {
       "slug": "board-overfit",
       "draft": "78-board-overfit.txt",
       "title": "I Pointed This Morning's Test at My Own Board. It Keeps a Tenth of What It Shows.",

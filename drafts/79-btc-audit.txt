@@ -1,0 +1,111 @@
+A reader sent me a full multi-timeframe $BTC note last night: technicals, on-chain, ETF flows, sentiment, and two conditional triggers. Its recommendation is **WAIT**.
+
+My board also says WAIT on BTC.
+
+So we are not arguing about the conclusion. That leaves the interesting part — whether the numbers underneath it hold — and that is the part nobody checks, including on my own posts until I started publishing the checks.
+
+SEVEN THINGS THAT CHECK OUT
+
+**The August range.** Stated 62.2k–65.4k. The exchange says 62275–65474. Correct.
+
+**The lower highs.** Every high since the month's peak is below the one before it. Correct, and it is the note's best structural observation.
+
+**The support band.** 62200–62400 was tested on 2026-08-01 and 2026-08-03. Not a line drawn on a chart — a level price actually visited twice and held.
+
+**The resistance band.** 63800–64500 contains the **point of control** — 63995, the single price where the most volume changed hands this month. The note reached that band by eye; the volume profile puts the heaviest shelf inside it. That is a good read and I want to say so plainly.
+
+**The on-chain arithmetic is internally consistent.** The note quotes an average cost basis across all coins and an MVRV of 1.19. Dividing the live price by that stated cost basis gives 1.199 — the two figures agree with each other, which is more than most quoted on-chain sets manage. I cannot verify the cost basis itself; I can verify it is not at odds with the price beside it.
+
+**Dominance.** Stated 56.1%. Measured 56.2%. Correct.
+
+**Both stop distances.** The long risks 2.81% and the short 2.49% — **1.32 and 1.17 daily ATR**. This morning I published a study across 61 pairs putting the useful band around 1.5 ATR. These land in it. Most ladders I am sent do not.
+
+THREE THAT DO NOT
+
+**The price.** The note puts BTC at 62500–62800. It is **63150**. BTC did visit 62535 today, so the band existed — it is just not where price sits.
+
+**"Lowest since the start of August."** No. The lowest August close is **62824**, on 2026-08-01. Today's UTC day has not closed yet and is running 63150 — above it. A fortnight-old low was lower.
+
+**Fear & Greed.** Stated 38. The index reads **29**. Both are "Fear", so the label survives — but 29 is materially deeper than 38, and the error runs toward calm. If you are going to cite a sentiment number as a reason to stand aside, the direction of the mistake matters.
+
+NOW THE ARITHMETIC
+
+Both triggers are quoted at **R:R roughly 1:1.8–2.2**. That claim can be checked against the note's own entry, stop and target — no market data required.
+
+Long: entry 64100, stop 62300. You are risking 2.81%. TP1 at 66000 is 2.96% away.
+
+```
+                actual    stated need win%
+long TP1        1:1.06 1:1.8-2.2     48.6%
+long TP2        1:1.75 1:1.8-2.2     36.4%
+short TP1       1:0.97 1:1.8-2.2     50.8%
+short TP2       1:1.77 1:1.8-2.2     36.0%
+```
+
+**At the first target both trades are one to one.** Not 1:2.
+
+That is not a rounding quibble. At the ratio the note advertises you break even at 35.7%. These break even at **48.6%** and **50.8%** — you have to be right about half the time, not a third. **12.9 points** of required accuracy on the long, 15.1 on the short — quietly moved.
+
+The second targets reach 1:1.75 and 1:1.77 — still under the stated range. The stated ratio is reachable only by taking the best corner of every band at once: the lowest entry, the tightest stop and the furthest target together, which gives 1:2.40. That is a best case being reported as the case.
+
+Add the fee — 0.071R on the long, 0.080R on the short — and TP1 needs about half your trades to work just to break even.
+
+THEN I TESTED THE TRIGGER ITSELF
+
+"Wait for a close above resistance on rising volume" is a rule, not a level, so it can be scored. On BTC's daily history: a close above the last ten days' highest close with turnover above its twenty-day average, then the note's exact stop and target, walked bar by bar with a bar touching both levels charged to the stop.
+
+```
+              hit rate     needs     net R
+long TP1         39.0%     48.6%    -0.250
+long TP2         26.7%     36.4%    -0.192
+short TP1        54.0%     50.8%    -0.017
+short TP2        43.7%     36.0%     0.132
+```
+
+**The long trigger has lost money on BTC's own history at both targets.** It hits 39.0% where it needs 48.6%.
+
+**The short trigger pays — but only at the further target.** 0.132R after costs at TP2, and -0.017R at TP1, where the fee eats a thin gross edge. Which is to say: on this structure, taking profit early is the mistake.
+
+Now the honest caveat, and it is a big one. Those are 105 and 87 signals, but they overlap inside a ten-day hold — **10.5 and 8.7 independent episodes.** That is a story, not a finding. I am not telling you the long trigger cannot work. I am telling you it has not, on the only history available, and that the note offers no evidence in either direction.
+
+THE FOUR NUMBERS THE NOTE SAYS IT CANNOT GET
+
+For $BNB and $ICP the note declines to rank them, honestly, because it lacks overhead supply, volume trend, range position and beta. Three of those four I measure daily:
+
+```
+                 overhead  vol trend  range pos
+BNB                 13.4%     -13.1%      78.6%
+ICP                 28.5%     -28.6%      52.6%
+```
+
+Those numbers contradict the note's qualitative read of ICP in three places.
+
+It calls ICP **"coiling near the low, stage A/B"**. Range position 52.6% is the **middle** of its 30-day range, not the bottom.
+
+It reads low volume as **accumulation**. Turnover over the last three days is -28.6% against the prior month, and -65.7% measured over ninety days. Participation is leaving. Quiet volume near a base reads as accumulation or as abandonment depending on your mood; the tiebreaker is whether volume is *arriving*, and here it is not.
+
+It calls 2.0–2.4 a **tight sideways range**. That band is 18.2% wide. ICP's median week covers 17.7%. The "tight range" is about **one ordinary week**.
+
+On BNB the note is closer to right — overhead is not extreme at 13.4%. Two things to add: it was 3.17% on 12 August, so it has quadrupled in two days as price slipped; and at 606.64 BNB trades **above** its value area (563.06–596.84), so the note's invalidation at 585–590 sits inside the heaviest traded zone rather than below it. Good width — 1.48 ATR, right in the band this desk measured as useful — placed where price spends most of its time.
+
+WHAT I CANNOT CHECK
+
+The realized cost basis, the MVRV Z-score, NUPL, SOPR, ETF flows and derivatives positioning. Every host serving those is blocked from this machine. I am not going to nod along with figures I have no way to see, and I am not going to pretend they are wrong either. They are unverified, and the note's own honesty about missing data is the reason I am willing to take its other numbers seriously.
+
+THE PATTERN
+
+This morning I published a measurement showing that my own board's *direction* survives out-of-sample testing while the *plan* attached to it does not — it keeps about a tenth of what it shows.
+
+This note has the same shape. The call is sound and agrees with mine. The structural reads are good. The errors are all in the actionable part: the ratio that decides how often you must be right, and a long trigger that has not paid on the history it is drawn from.
+
+That seems to be the general rule. Direction is the cheap part. The geometry bolted onto it is where money is lost, and it is the part that gets the least checking.
+
+Bias: **WAIT on BTC** — same conclusion as the note, reached from a different direction. Price is below its value area with the POC overhead at 63995, 90.2% of the month's turnover sits above the current price, and four of my five lookback windows lean short while the longest leans long. That is a market with no agreed direction, which is what standing aside is for.
+
+Board and every figure: maix8.study/signals
+
+If you run triggers, when did you last compute the reward-to-risk yourself instead of reading the one printed beside it?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#BTC #RiskManagement #TechnicalAnalysis
