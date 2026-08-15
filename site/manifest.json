@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "lucky-you-got-scammed",
+      "draft": "84-meme.txt",
+      "title": "\"Lucky You Got Scammed. If You'd Actually Bought the Coin, We Couldn't Get It Back.\"",
+      "description": "A friend of mine wanted to get into crypto.",
+      "published": "2026-08-15T05:05:02.193Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 355856802249298
+    },
+    {
       "slug": "multiplier-audit",
       "draft": "83-multiplier-audit.txt",
       "title": "A Multiplier Scan Returned Zero Because of Missing Data. The Data Is Free, and the Premise Is What Fails.",
