@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T00:26:45.934Z",
+  "generatedAt": "2026-08-16T16:11:56.741Z",
   "note": "Every figure published on this site traces to one of these snapshots.",
   "snapshots": [
     {
@@ -49,6 +49,10 @@
     {
       "file": "compression-signal.json",
       "url": "/data/compression-signal.json"
+    },
+    {
+      "file": "content-audit.json",
+      "url": "/data/content-audit.json"
     },
     {
       "file": "coverage-gap.json",
