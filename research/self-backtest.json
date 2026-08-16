@@ -1,0 +1,173 @@
+{
+  "measuredAt": "2026-08-16T00:09:59.255Z",
+  "pairs": 54,
+  "rebalances": 11,
+  "stepDays": 30,
+  "lookbackDays": 330,
+  "rules": {
+    "stopAtr": 1.5,
+    "rewardRatio": 2,
+    "horizonDays": 30,
+    "feePct": 0.2,
+    "minEffectiveN": 12
+  },
+  "funnel": {
+    "considered": 403,
+    "passedSample": 40,
+    "passedAgreement": 23,
+    "passedGeometry": 15
+  },
+  "results": {
+    "algorithm": {
+      "trades": 15,
+      "hitPct": 20,
+      "stoppedPct": 53.333333333333336,
+      "meanGrossR": -0.023003713006638875,
+      "meanNetR": -0.042823182175064006,
+      "medianNetR": -1.0074686748752861,
+      "totalNetR": -0.6423477326259601,
+      "winSharePct": 40,
+      "tStat": -0.1338708871037089
+    },
+    "boardOnly": {
+      "trades": 395,
+      "hitPct": 22.025316455696203,
+      "stoppedPct": 54.936708860759495,
+      "meanGrossR": 0.026194593550940153,
+      "meanNetR": 0.005368031847404961,
+      "medianNetR": -1.010307076572626,
+      "totalNetR": 2.1203725797249597,
+      "winSharePct": 40.25316455696203,
+      "tStat": 0.08439268387820495
+    },
+    "alwaysShort": {
+      "trades": 403,
+      "hitPct": 28.287841191067,
+      "stoppedPct": 43.67245657568238,
+      "meanGrossR": 0.34247894632965137,
+      "meanNetR": 0.3217060165295724,
+      "medianNetR": 0.2426967552217843,
+      "totalNetR": 129.6475246614177,
+      "winSharePct": 52.853598014888334,
+      "tStat": 4.94194304183039
+    },
+    "alwaysLong": {
+      "trades": 403,
+      "hitPct": 16.129032258064516,
+      "stoppedPct": 66.99751861042184,
+      "meanGrossR": -0.32976107345597955,
+      "meanNetR": -0.3505340032560585,
+      "medianNetR": -1.013622260635304,
+      "totalNetR": -141.26520331219157,
+      "winSharePct": 25.806451612903224,
+      "tStat": -6.294868588227063
+    },
+    "coinFlip": {
+      "trades": 403,
+      "hitPct": 19.106699751861044,
+      "stoppedPct": 57.5682382133995,
+      "meanGrossR": -0.06525067506869024,
+      "meanNetR": -0.08602360486876914,
+      "medianNetR": -1.0116074084805287,
+      "totalNetR": -34.667512762113965,
+      "winSharePct": 37.220843672456574,
+      "tStat": -1.4082627349485153
+    }
+  },
+  "versusAlwaysShort": {
+    "algorithmNetR": -0.042823182175064006,
+    "alwaysShortNetR": 0.3217060165295724,
+    "differenceR": -0.3645291987046364,
+    "algorithmBeatsIt": false,
+    "tradesRatio": 0.03722084367245657
+  },
+  "dates": [
+    {
+      "date": "2025-09-20",
+      "taken": 0,
+      "takenSymbols": [],
+      "medianResultR": null
+    },
+    {
+      "date": "2025-10-20",
+      "taken": 0,
+      "takenSymbols": [],
+      "medianResultR": null
+    },
+    {
+      "date": "2025-11-19",
+      "taken": 0,
+      "takenSymbols": [],
+      "medianResultR": null
+    },
+    {
+      "date": "2025-12-19",
+      "taken": 0,
+      "takenSymbols": [],
+      "medianResultR": null
+    },
+    {
+      "date": "2026-01-18",
+      "taken": 1,
+      "takenSymbols": [
+        "BCHUSDT:long"
+      ],
+      "medianResultR": -1.0279571355416404
+    },
+    {
+      "date": "2026-02-17",
+      "taken": 0,
+      "takenSymbols": [],
+      "medianResultR": null
+    },
+    {
+      "date": "2026-03-19",
+      "taken": 1,
+      "takenSymbols": [
+        "ZECUSDT:long"
+      ],
+      "medianResultR": 1.9876748311672796
+    },
+    {
+      "date": "2026-04-18",
+      "taken": 3,
+      "takenSymbols": [
+        "ZECUSDT:long",
+        "XLMUSDT:short",
+        "DEXEUSDT:long"
+      ],
+      "medianResultR": -1.0173511958610753
+    },
+    {
+      "date": "2026-05-18",
+      "taken": 2,
+      "takenSymbols": [
+        "ZECUSDT:long",
+        "ICPUSDT:short"
+      ],
+      "medianResultR": -1.015004076066464
+    },
+    {
+      "date": "2026-06-17",
+      "taken": 2,
+      "takenSymbols": [
+        "SUIUSDT:short",
+        "FILUSDT:short"
+      ],
+      "medianResultR": 0.311397331287528
+    },
+    {
+      "date": "2026-07-17",
+      "taken": 6,
+      "takenSymbols": [
+        "XRPUSDT:short",
+        "FETUSDT:short",
+        "BICOUSDT:short",
+        "SUIUSDT:short",
+        "TAOUSDT:short",
+        "ENAUSDT:short"
+      ],
+      "medianResultR": -0.5694995073232466
+    }
+  ]
+}

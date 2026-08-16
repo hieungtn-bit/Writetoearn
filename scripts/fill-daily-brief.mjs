@@ -25,7 +25,7 @@ import { pct, price as fmtPrice } from "../src/format.mjs";
 
 const D = JSON.parse(readFileSync("research/daily-brief.json", "utf8"));
 const b = D.breadth, r = D.rules, f = D.funnel, t = D.tally;
-const s = D.settledSummary;
+const s = D.settledSummary, st = D.selfTest;
 
 const monotonic = (x) => x.total >= x.tradeable && x.tradeable >= x.notThin && x.notThin >= x.unanimous;
 
@@ -45,6 +45,8 @@ const claims = {
   "the stop is the width this desk measured": r.stopAtr === 1.5,
   "position sizes follow from the stop, not from taste":
     D.taken.every((p) => Math.abs(p.positionUsd - r.riskPerTradeUsd / (p.stopPct / 100)) < 1),
+  "the pipeline's own walk-forward result travels with the picks":
+    st != null && Number.isFinite(st.algorithmNetR),
 };
 const bad = Object.entries(claims).filter(([, ok]) => !ok);
 if (bad.length) { console.error("ABORT:"); for (const [c] of bad) console.error("  x " + c); process.exit(1); }
@@ -176,7 +178,17 @@ THE RULES, SO YOU CAN HOLD ME TO THEM
 
 If a day comes when those filters admit ten longs, I will post ten longs. Today they admit ${D.taken.length} shorts, and the honest version of that is that the market is offering very little.
 
-Bias: **selective short**, ${D.taken.length} position${D.taken.length > 1 ? "s" : ""}, small.
+WHAT THIS PIPELINE IS WORTH, AS OF TODAY
+
+This line appears in every edition, whichever way it moves.
+
+Walked forward across ${st.rebalances} non-overlapping rebalances, the pipeline that picked the positions above returned **${st.algorithmNetR >= 0 ? "+" : ""}${st.algorithmNetR.toFixed(4)}R** per trade on ${st.trades} trades, t = ${st.tStat.toFixed(2)}.
+
+Shorting every liquid pair over the same window, with no signal at all, returned ${st.alwaysShortNetR >= 0 ? "+" : ""}${st.alwaysShortNetR.toFixed(4)}R. **The pipeline does not beat it.**
+
+Being long everything returned ${st.alwaysLongNetR.toFixed(4)}R, almost the exact mirror — so that gap is the window's drift rather than an edge either of us found. The full argument is in yesterday's post; the number belongs here, next to the picks, not filed somewhere a reader has to hunt for it.
+
+Bias: **selective short**, ${D.taken.length} position${D.taken.length > 1 ? "s" : ""}, small — and sized for a pipeline with no demonstrated edge.
 
 Board and every figure: maix8.study/signals
 

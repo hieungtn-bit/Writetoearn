@@ -44,6 +44,19 @@ import { AGREEMENT_WINDOWS, grid, summarise, walk } from "../src/signals.mjs";
 const BOARD = JSON.parse(readFileSync("site/signals.json", "utf8"));
 const PLAN_DIR = "data/plans";
 
+/**
+ * The pipeline's own walk-forward result, carried into every edition.
+ *
+ * research/self-backtest.json walked this exact pipeline across non-overlapping
+ * rebalances and found it behind a rule with no signal in it. A column that
+ * publishes positions from a pipeline while keeping that number in a separate
+ * post is choosing which of its own findings the reader has to go looking for.
+ * So it travels with the picks, whichever way it moves.
+ */
+const SELF_TEST = existsSync("research/self-backtest.json")
+  ? JSON.parse(readFileSync("research/self-backtest.json", "utf8"))
+  : null;
+
 /** The trade shape. Fixed by rule, not chosen per pair. */
 const STOP_ATR = 1.5;
 const RR = 2;
@@ -331,6 +344,16 @@ const out = {
   taken,
   declined,
   followed,
+  selfTest: SELF_TEST ? {
+    measuredAt: SELF_TEST.measuredAt,
+    trades: SELF_TEST.results.algorithm?.trades ?? 0,
+    rebalances: SELF_TEST.rebalances,
+    algorithmNetR: SELF_TEST.results.algorithm?.meanNetR ?? null,
+    alwaysShortNetR: SELF_TEST.results.alwaysShort?.meanNetR ?? null,
+    alwaysLongNetR: SELF_TEST.results.alwaysLong?.meanNetR ?? null,
+    tStat: SELF_TEST.results.algorithm?.tStat ?? null,
+    beatsNoThinking: SELF_TEST.versusAlwaysShort?.algorithmBeatsIt ?? null,
+  } : null,
   priorEdition: prior ? { day: prior.day, measuredAt: prior.measuredAt, positions: prior.taken.length } : null,
   settled,
   settledSummary,
@@ -366,6 +389,14 @@ for (const [s, a] of Object.entries(followed)) {
     + `  ${String(a.priceVsValueArea ?? "n/a").padEnd(6)} value area`
     + `  ${a.leaningShort}/${a.lookbackCount} lookbacks short`
     + `  · ${a.verdict.reason}`);
+}
+
+if (out.selfTest) {
+  const st = out.selfTest;
+  console.log(`\npipeline walked forward (${st.rebalances} rebalances, ${st.trades} trades):`);
+  console.log(`  algorithm ${st.algorithmNetR.toFixed(4)}R · always short ${st.alwaysShortNetR.toFixed(4)}R`
+    + ` · always long ${st.alwaysLongNetR.toFixed(4)}R · t ${st.tStat.toFixed(2)}`
+    + ` · beats doing nothing clever: ${st.beatsNoThinking}`);
 }
 
 if (settledSummary) {

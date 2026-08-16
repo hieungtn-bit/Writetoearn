@@ -1,0 +1,62 @@
+<!doctype html><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#0b0e11}
+  svg{display:block}
+  text{font-family:"DejaVu Sans",system-ui,sans-serif;fill:#e8eaed}
+  .kicker{font-size:19px;letter-spacing:3.5px;fill:#f0b90b;font-weight:700}
+  .title{font-size:40px;font-weight:800;letter-spacing:-0.5px}
+  .sub{font-size:17px;fill:#9aa3ad}
+  .lab{font-size:18px;font-weight:800}
+  .note{font-size:13px;fill:#8b949e}
+  .val{font-size:19px;font-weight:800}
+  .axis{font-size:14px;fill:#8b949e}
+  .stat{font-size:22px;font-weight:700}
+  .statlab{font-size:15px;fill:#8b949e}
+  .mark{font-size:17px;font-weight:700;fill:#f0b90b;letter-spacing:1px}
+</style>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0b0e11"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#c98500"/>
+
+  <text x="64" y="56" class="kicker">I WALKED MY OWN ALGORITHM FORWARD</text>
+  <text x="1136" y="56" text-anchor="end" class="mark">MAIX8</text>
+
+  <text x="64" y="118" class="title">Four months of filters lost to</text>
+  <text x="64" y="164" class="title">a rule with no thinking in it.</text>
+  <text x="64" y="200" class="sub">Mean net R per trade · 11 non-overlapping rebalances · 54 pairs · costs charged every time</text>
+
+  <line x1="64" x2="1136" y1="396" y2="396" stroke="#252a31" stroke-width="1"/>
+  <text x="64" y="522" class="axis">short and long are near-mirrors — that gap is the window, not an edge</text>
+
+  
+  <text x="183" y="262" text-anchor="middle" class="lab">the algorithm</text>
+  <text x="183" y="283" text-anchor="middle" class="note">15 trades · every filter</text>
+  <rect x="108" y="396" width="150" height="12.705218052564726" rx="3" fill="#e8eaed"/>
+  <text x="183" y="434.7052180525647" text-anchor="middle" class="val" fill="#e8eaed">-0.043</text>
+  <text x="383" y="262" text-anchor="middle" class="lab">board only</text>
+  <text x="383" y="283" text-anchor="middle" class="note">direction, no filters</text>
+  <rect x="308" y="392" width="150" height="4" rx="3" fill="#3987e5"/>
+  <text x="383" y="378" text-anchor="middle" class="val" fill="#3987e5">+0.005</text>
+  <text x="583" y="262" text-anchor="middle" class="lab">coin flip</text>
+  <text x="583" y="283" text-anchor="middle" class="note">seeded random</text>
+  <rect x="508" y="396" width="150" height="25.52235966625119" rx="3" fill="#c98500"/>
+  <text x="583" y="447.5223596662512" text-anchor="middle" class="val" fill="#c98500">-0.086</text>
+  <text x="783" y="262" text-anchor="middle" class="lab">always short</text>
+  <text x="783" y="283" text-anchor="middle" class="note">no signal at all</text>
+  <rect x="708" y="300.552980856937" width="150" height="95.44701914306302" rx="3" fill="#3987e5"/>
+  <text x="783" y="334.552980856937" text-anchor="middle" class="val" fill="#0b0e11">+0.322</text>
+  <text x="983" y="262" text-anchor="middle" class="lab">always long</text>
+  <text x="983" y="283" text-anchor="middle" class="note">the mirror</text>
+  <rect x="908" y="396" width="150" height="104" rx="3" fill="#c98500"/>
+  <text x="983" y="526" text-anchor="middle" class="val" fill="#c98500">-0.351</text>
+
+  <line x1="64" x2="1136" y1="546" y2="546" stroke="#252a31" stroke-width="1"/>
+  <text x="64" y="582" class="stat">3.7%</text>
+  <text x="64" y="604" class="statlab">Of chances the filters acted on</text>
+
+  <text x="620" y="582" class="stat">t = -0.13</text>
+  <text x="620" y="604" class="statlab">No evidence it is good, or bad</text>
+
+  <text x="1136" y="582" text-anchor="end" class="stat">5 of 11</text>
+  <text x="1136" y="604" text-anchor="end" class="statlab">Rebalances that took nothing</text>
+</svg>
