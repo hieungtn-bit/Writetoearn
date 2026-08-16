@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "persistence",
+      "draft": "86-persistence.txt",
+      "title": "Every Filter I Built Reads Past Direction. I Measured Whether It Continues.",
+      "description": "Every filter on this desk is a statement about the past being tidy.",
+      "published": "2026-08-16T16:27:18.019Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 356378369800753
+    },
+    {
       "slug": "brief-2026-08-16",
       "draft": "brief-2026-08-16.txt",
       "title": "How Is the Market? What Do We Do? — 16 August",
