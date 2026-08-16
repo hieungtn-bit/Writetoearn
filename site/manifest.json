@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "brief-2026-08-16",
+      "draft": "brief-2026-08-16.txt",
+      "title": "How Is the Market? What Do We Do? — 16 August",
+      "description": "Same two questions as every edition, in the same order:",
+      "published": "2026-08-16T16:11:48.919Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 356374564207713
+    },
+    {
       "slug": "self-backtest",
       "draft": "85-self-backtest.txt",
       "title": "I Walked My Own Algorithm Forward. It Lost to Shorting Everything With No Thought At All.",
