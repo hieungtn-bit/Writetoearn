@@ -10,6 +10,19 @@
   },
   "articles": [
     {
+      "slug": "self-backtest",
+      "draft": "85-self-backtest.txt",
+      "title": "I Walked My Own Algorithm Forward. It Lost to Shorting Everything With No Thought At All.",
+      "description": "All week I have been testing the pieces of my own system. The stop width was half wrong. The early detector did not survive fees. The per-pair optimiser keeps a tenth of itself. Trapped supply…",
+      "published": "2026-08-16T00:13:44.403Z",
+      "assets": [
+        "ZEC",
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 356139107672289
+    },
+    {
       "slug": "brief-2026-08-15",
       "draft": "brief-2026-08-15.txt",
       "title": "How Is the Market? What Do We Do? — 15 August",
