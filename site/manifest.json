@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "brief-2026-08-15",
+      "draft": "brief-2026-08-15.txt",
+      "title": "How Is the Market? What Do We Do? — 15 August",
+      "description": "This is the first edition of what I intend to run every day. Two questions, the same two, in the same order:",
+      "published": "2026-08-16T00:01:42.574Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 356136150995313
+    },
+    {
       "slug": "lucky-you-got-scammed",
       "draft": "84-meme.txt",
       "title": "\"Lucky You Got Scammed. If You'd Actually Bought the Coin, We Couldn't Get It Back.\"",
