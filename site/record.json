@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-08-16T16:27:29.311Z",
+  "generatedAt": "2026-08-16T21:31:10.097Z",
   "summary": {
     "scored": 39,
     "biasCorrect": 22,
     "biasTotal": 39,
     "biasPct": 56.41025641025641,
     "supportHeld": "3/3",
-    "pending": 8,
+    "pending": 9,
     "unscoreable": 5,
-    "publishedTotal": 52
+    "publishedTotal": 53
   },
   "backtest": {
-    "measuredAt": "2026-08-16T00:09:59.255Z",
-    "pairs": 54,
-    "rebalances": 11,
-    "lookbackDays": 330,
+    "measuredAt": "2026-08-16T16:47:42.728Z",
+    "pairs": 39,
+    "rebalances": 18,
+    "lookbackDays": 540,
     "rules": {
       "stopAtr": 1.5,
       "rewardRatio": 2,
@@ -23,41 +23,41 @@
       "minEffectiveN": 12
     },
     "funnel": {
-      "considered": 403,
-      "passedSample": 40,
-      "passedAgreement": 23,
-      "passedGeometry": 15
+      "considered": 515,
+      "passedSample": 46,
+      "passedAgreement": 19,
+      "passedGeometry": 13
     },
     "results": {
       "algorithm": {
-        "trades": 15,
-        "meanNetR": -0.042823182175064006,
-        "winSharePct": 40,
-        "tStat": -0.1338708871037089
+        "trades": 13,
+        "meanNetR": -0.0009472386376942663,
+        "winSharePct": 38.46153846153847,
+        "tStat": -0.002625317867401068
       },
       "boardOnly": {
-        "trades": 395,
-        "meanNetR": 0.005368031847404961,
-        "winSharePct": 40.25316455696203,
-        "tStat": 0.08439268387820495
+        "trades": 500,
+        "meanNetR": 0.08506502941441957,
+        "winSharePct": 41,
+        "tStat": 1.4178074430016718
       },
       "alwaysShort": {
-        "trades": 403,
-        "meanNetR": 0.3217060165295724,
-        "winSharePct": 52.853598014888334,
-        "tStat": 4.94194304183039
+        "trades": 515,
+        "meanNetR": 0.34395730207046554,
+        "winSharePct": 51.262135922330096,
+        "tStat": 5.6865994101501
       },
       "alwaysLong": {
-        "trades": 403,
-        "meanNetR": -0.3505340032560585,
-        "winSharePct": 25.806451612903224,
-        "tStat": -6.294868588227063
+        "trades": 515,
+        "meanNetR": -0.2534017642747306,
+        "winSharePct": 27.57281553398058,
+        "tStat": -4.692420125776643
       },
       "coinFlip": {
-        "trades": 403,
-        "meanNetR": -0.08602360486876914,
-        "winSharePct": 37.220843672456574,
-        "tStat": -1.4082627349485153
+        "trades": 515,
+        "meanNetR": 0.09003736021157346,
+        "winSharePct": 41.16504854368932,
+        "tStat": 1.5266161245379302
       }
     },
     "beatsDoingNothing": false
@@ -576,5 +576,5 @@
       ]
     }
   ],
-  "snapshots": 54
+  "snapshots": 56
 }

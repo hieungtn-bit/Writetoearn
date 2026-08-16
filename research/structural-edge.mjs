@@ -115,7 +115,24 @@ async function fullHistory(symbol) {
 const dayOf = (c) => new Date(c.openTime).toISOString().slice(0, 10);
 const yearOf = (d) => d.slice(0, 4);
 
-const { symbols } = await retry(() => liveUniverse({ limit: PAIRS }));
+/**
+ * The universe is pinned to whatever the cache already holds.
+ *
+ * `liveUniverse` returns today's most-traded pairs, so re-running this file to
+ * add one field would quietly redraw the sample and move every number in it —
+ * which is exactly how a year that reads +0.007 comes back as -0.007 and a
+ * reader cannot tell which change was the finding. REFRESH=1 redraws on
+ * purpose; anything else re-scores the same pairs.
+ */
+const cached = existsSync(CACHE)
+  ? [...new Set(readdirSync(CACHE)
+      .filter((f) => f.endsWith(".json"))
+      .map((f) => f.replace(/-\d{4}-\d{2}-\d{2}\.json$/, "")))]
+  : [];
+const pinned = cached.length && process.env.REFRESH !== "1";
+const { symbols } = pinned
+  ? { symbols: cached }
+  : await retry(() => liveUniverse({ limit: PAIRS }));
 const ordered = [NUMERAIRE, ...symbols.filter((s) => s !== NUMERAIRE)];
 
 const series = [];
@@ -500,6 +517,7 @@ const perYear = years.map((y) => {
   const b = buckets[y];
   return {
     year: y,
+    yearNumber: Number(y),
     pairsAlive: b.alive.size,
     rebalances: Math.round(b.driftRaw.length / Math.max(1, b.alive.size)),
     medianDriftRawPct: median(b.driftRaw),
@@ -523,6 +541,7 @@ const rawShortPositiveYears = withDrift.filter((r) => r.shortRawR > 0).length;
 
 const out = {
   measuredAt: new Date().toISOString(),
+  universePinnedToCache: pinned,
   pairs: series.length,
   numeraire: NUMERAIRE,
   firstDate: calendar[MIN_HISTORY] ?? null,
@@ -536,7 +555,8 @@ const out = {
     survivorship: "Universe is what trades liquidly today; delisted coins are absent and they died going down, so every short figure here is biased small.",
     relativeScoring: "The BTC-relative leg is scored on closes, not intraday path, because a ratio series has no honest high and low.",
     crossSectional: "Alts shorted against BTC on the same date move together. Significance is computed on the mean R per rebalance date; the pooled per-ticket t is reported only to show how far it inflates.",
-    funding: "The relative trade is two perp legs in practice and funding is not observable from here (fapi is blocked). The fee sweep stands in for it.",
+    funding: "Funding is priced from Binance's public monthly dumps; the futures API is geo-blocked from here. Episodes without a funding series are excluded rather than scored as free.",
+    httpStatusForBlockedApi: 451,
   },
   perYear,
   yearsMeasured: withDrift.length,
@@ -557,6 +577,7 @@ const out = {
     yearsCovered: [...fundedYears].sort(),
     byYear: Object.keys(carryByYear).sort().map((y) => ({
       year: y,
+      yearNumber: Number(y),
       episodes: carryByYear[y].carry.length,
       meanCarryR: mean(carryByYear[y].carry),
       incomePct: (carryByYear[y].carry.filter((v) => v > 0).length / carryByYear[y].carry.length) * 100,

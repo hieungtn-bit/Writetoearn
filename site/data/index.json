@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T16:27:29.310Z",
+  "generatedAt": "2026-08-16T21:31:10.096Z",
   "note": "Every figure published on this site traces to one of these snapshots.",
   "snapshots": [
     {
@@ -45,6 +45,10 @@
     {
       "file": "btc-cycle-stage.json",
       "url": "/data/btc-cycle-stage.json"
+    },
+    {
+      "file": "btc-now.json",
+      "url": "/data/btc-now.json"
     },
     {
       "file": "compression-signal.json",
@@ -177,6 +181,10 @@
     {
       "file": "stop-law.json",
       "url": "/data/stop-law.json"
+    },
+    {
+      "file": "structural-edge.json",
+      "url": "/data/structural-edge.json"
     },
     {
       "file": "three-stage.json",
