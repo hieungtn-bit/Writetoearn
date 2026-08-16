@@ -67,7 +67,19 @@ const lessons = LESSONS.map((lesson) => {
   return { ...lesson, example, measuredAt: lessonData.measuredAt };
 });
 
-const files = buildSite(manifest, drafts, lessons, signals, archive);
+/**
+ * The public record, when it has been exported.
+ *
+ * Optional for the same reason the board is: a clean checkout that has never
+ * published anything must still build. Regenerate it with
+ * `node scripts/build-record.mjs` before a deploy that should show fresh calls.
+ */
+const recordPath = path.join(root, "site", "record.json");
+const record = fs.existsSync(recordPath)
+  ? JSON.parse(fs.readFileSync(recordPath, "utf8"))
+  : null;
+
+const files = buildSite(manifest, drafts, lessons, signals, archive, record);
 
 fs.rmSync(out, { recursive: true, force: true });
 for (const f of files) {
@@ -76,5 +88,23 @@ for (const f of files) {
   fs.writeFileSync(dest, f.content);
 }
 
+/**
+ * Research snapshots, copied verbatim into the deploy.
+ *
+ * Every post ends by naming the file its figures came from. Serving those files
+ * is what turns that sentence from a promise into something a reader can open.
+ */
+const dataSrc = path.join(root, "site", "data");
+let snapshots = 0;
+if (fs.existsSync(dataSrc)) {
+  const dataOut = path.join(out, "data");
+  fs.mkdirSync(dataOut, { recursive: true });
+  for (const f of fs.readdirSync(dataSrc).filter((n) => n.endsWith(".json"))) {
+    fs.copyFileSync(path.join(dataSrc, f), path.join(dataOut, f));
+    snapshots += 1;
+  }
+}
+
 const bytes = files.reduce((s, f) => s + Buffer.byteLength(f.content), 0);
-console.log(`Built ${files.length} files (${(bytes / 1024).toFixed(0)} KB) into ${out}`);
+console.log(`Built ${files.length} files (${(bytes / 1024).toFixed(0)} KB) into ${out}`
+  + (snapshots ? ` · ${snapshots} research snapshot(s) served at /data/` : ""));

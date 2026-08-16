@@ -287,7 +287,19 @@ details.box[open] summary{margin-bottom:.7rem}
 .filters{display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.6rem;align-items:start}
 .filters .frow{grid-column:1/-1}
 }
-@media(max-width:480px){h1{font-size:1.6rem}body{font-size:16px}.readings{font-size:.88rem}}`;
+@media(max-width:480px){h1{font-size:1.6rem}body{font-size:16px}.readings{font-size:.88rem}}
+.record-page table.record{width:100%;border-collapse:collapse;margin:18px 0;font-variant-numeric:tabular-nums}
+.record-page table.record th{text-align:left;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#848e9c;border-bottom:1px solid #20262e;padding:8px 10px}
+.record-page table.record td{padding:8px 10px;border-bottom:1px solid #161b22}
+.record-page table.record tr.hero td{font-weight:700;background:#12161c}
+.record-page td.ok{color:#3987e5;font-weight:700}
+.record-page td.no{color:#c98500;font-weight:700}
+.record-page .nums{display:flex;flex-wrap:wrap;gap:22px;margin:18px 0}
+.record-page .nums div{min-width:120px}
+.record-page .nums span{display:block;font-size:13px;color:#848e9c}
+.record-page .nums b{font-size:26px}
+@media(max-width:640px){.record-page table.record{font-size:14px}.record-page table.record th,.record-page table.record td{padding:6px 6px}}
+`;
 
 function head({ title, description, canonical, image, jsonLd, site }) {
   return `<!doctype html>
@@ -310,13 +322,15 @@ ${image ? `<meta property="og:image" content="${image}">` : ""}
 ${image ? `<meta name="twitter:image" content="${image}">` : ""}
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <link rel="stylesheet" href="/style.css">
+<link rel="alternate" type="application/rss+xml" title="${escapeHtml(site.name)}" href="${site.baseUrl}/feed.xml">
+<link rel="alternate" type="application/feed+json" title="${escapeHtml(site.name)}" href="${site.baseUrl}/feed.json">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 </head>
 <body>
 <div class="wrap">
 <header class="site">
   <a class="brand" href="/">${escapeHtml(site.name)}</a>
-  <nav><a href="/signals/">Signals</a><a href="/learn/">Learn</a><a href="/">Research</a></nav>
+  <nav><a href="/signals/">Signals</a><a href="/record/">Record</a><a href="/learn/">Learn</a><a href="/">Research</a></nav>
 </header>`;
 }
 
@@ -393,6 +407,13 @@ export function renderIndexPage(site, articles) {
   })}
 <h1>Crypto research you can check</h1>
 <p class="lede">${escapeHtml(site.description)}</p>
+
+<details class="box warn" open>
+  <summary>How to check anything on this site</summary>
+  <p>Every figure in every post traces to a committed snapshot, and all of them are served: <a href="/data/index.json">/data/index.json</a>. Every call is scored against what happened next, losses included, on the <a href="/record/">track record</a> — which also prints what the strategy behind the calls is worth when walked forward, whether or not that number flatters us. The live board is at <a href="/signals/">/signals/</a>. Subscribe by <a href="/feed.xml">RSS</a> or <a href="/feed.json">JSON Feed</a>.</p>
+  <p>Nothing here asks to be believed. If a number looks wrong, open the snapshot it came from and recompute it.</p>
+</details>
+
 ${cards}
 ${foot(site)}`;
 }
@@ -994,10 +1015,133 @@ export function renderRobots(site) {
 }
 
 /**
+ * Syndication feeds.
+ *
+ * A site that wants to be cited has to be *subscribable* by things that are not
+ * browsers — readers, aggregators, bots and answer engines all start from a
+ * feed. Two formats because the ecosystem is split: RSS for everything old, and
+ * JSON Feed for everything written this decade.
+ *
+ * Both carry the description rather than the full text. The post lives at a URL
+ * with its figures and its research links intact, and a feed that inlines the
+ * body invites it to be republished stripped of both.
+ */
+function renderRssFeed(site, articles) {
+  const items = articles.slice(0, 50).map((a) => `  <item>
+    <title>${escapeHtml(a.title)}</title>
+    <link>${site.baseUrl}/${a.slug}/</link>
+    <guid isPermaLink="true">${site.baseUrl}/${a.slug}/</guid>
+    <pubDate>${new Date(a.published).toUTCString()}</pubDate>
+    <description>${escapeHtml(a.description ?? "")}</description>
+  </item>`).join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+  <title>${escapeHtml(site.name)}</title>
+  <link>${site.baseUrl}/</link>
+  <description>${escapeHtml(site.tagline ?? "")}</description>
+  <language>en</language>
+  <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+${items}
+</channel></rss>
+`;
+}
+
+function renderJsonFeed(site, articles) {
+  return `${JSON.stringify({
+    version: "https://jsonfeed.org/version/1.1",
+    title: site.name,
+    home_page_url: `${site.baseUrl}/`,
+    feed_url: `${site.baseUrl}/feed.json`,
+    description: site.tagline ?? "",
+    items: articles.slice(0, 50).map((a) => ({
+      id: `${site.baseUrl}/${a.slug}/`,
+      url: `${site.baseUrl}/${a.slug}/`,
+      title: a.title,
+      summary: a.description ?? "",
+      date_published: a.published,
+      tags: a.assets ?? [],
+    })),
+  }, null, 2)}\n`;
+}
+
+/**
+ * The public record: what was called, whether it worked, and what the strategy
+ * behind it is worth.
+ *
+ * This page exists because "trust us" is not a feature. The failures are listed
+ * beside the successes at the same size, the walk-forward result is printed
+ * even though it is negative, and every research snapshot is linked so a reader
+ * can recompute rather than believe.
+ */
+function renderRecordPage(site, record) {
+  const s = record.summary;
+  const b = record.backtest;
+  const canonical = `${site.baseUrl}/record/`;
+  const rows = record.calls.slice(0, 60).map((c) => `<tr>
+      <td>${escapeHtml(c.asset.replace(/USDT$/, ""))}</td>
+      <td>${escapeHtml(String(c.bias ?? "—"))}</td>
+      <td>${c.publishedAt.slice(0, 10)}</td>
+      <td>${c.movePct == null ? "—" : `${c.movePct >= 0 ? "+" : ""}${c.movePct.toFixed(2)}%`}</td>
+      <td class="${c.correct ? "ok" : "no"}">${c.correct ? "right" : "wrong"}</td>
+    </tr>`).join("\n");
+
+  const backtestBlock = b ? `
+<h2>What the strategy is worth</h2>
+<p class="lede">The pipeline that picks the calls, walked forward over ${b.rebalances} non-overlapping rebalances across ${b.pairs} pairs, using only data that existed on each decision date.</p>
+<table class="record">
+  <thead><tr><th>rule</th><th>trades</th><th>mean net R</th><th>t</th></tr></thead>
+  <tbody>
+${Object.entries(b.results).filter(([, v]) => v).map(([k, v]) => `    <tr${k === "algorithm" ? ' class="hero"' : ""}><td>${escapeHtml(k)}</td><td>${v.trades}</td><td>${v.meanNetR >= 0 ? "+" : ""}${v.meanNetR.toFixed(4)}</td><td>${v.tStat == null ? "—" : v.tStat.toFixed(2)}</td></tr>`).join("\n")}
+  </tbody>
+</table>
+<p><strong>Does the algorithm beat shorting everything with no signal at all? ${b.beatsDoingNothing ? "Yes." : "No."}</strong> Always-long lost close to the mirror image of always-short, so that gap is the window's drift rather than an edge. Sample is small and the honest reading is that there is no evidence the pipeline is good — or bad.</p>` : "";
+
+  return `${head({
+    title: `Track record — ${site.name}`,
+    description: "Every call this desk has published, scored against what happened next, with the losses shown at the same size as the wins.",
+    canonical,
+    jsonLd: {
+      "@context": "https://schema.org", "@type": "Dataset",
+      name: `${site.name} track record`, url: canonical,
+      description: "Published calls scored against subsequent price, plus the walk-forward result of the strategy behind them.",
+      distribution: [{ "@type": "DataDownload", encodingFormat: "application/json", contentUrl: `${site.baseUrl}/record.json` }],
+    },
+    site,
+  }).replace('<div class="wrap">', '<div class="wrap record-page">')}
+<h1>Track record</h1>
+<p class="lede">Everything below is generated from the same store the publisher writes to. Losing calls appear at the same size as winning ones, because a record that hides them is an advertisement.</p>
+
+<div class="nums">
+  <div><span>Calls scored</span><b>${s.scored}</b></div>
+  <div><span>Direction right</span><b>${s.biasPct == null ? "—" : `${s.biasCorrect}/${s.biasTotal}`}</b></div>
+  <div><span>Hit rate</span><b>${s.biasPct == null ? "—" : `${s.biasPct.toFixed(0)}%`}</b></div>
+  <div><span>Still open</span><b>${s.pending}</b></div>
+</div>
+
+<details class="box warn" open>
+  <summary>Read this before the percentage</summary>
+  <p>${s.unscoreable} of ${s.publishedTotal} published pieces stated no directional call and cannot be scored — methodology posts, audits and corrections. They are excluded from the rate rather than counted as wins. A call is judged on whether the direction was right over its stated horizon, not on whether a trade would have made money, and those are different questions.</p>
+</details>
+${backtestBlock}
+
+<h2>Every scored call</h2>
+<table class="record">
+  <thead><tr><th>asset</th><th>call</th><th>published</th><th>move</th><th>result</th></tr></thead>
+  <tbody>
+${rows}
+  </tbody>
+</table>
+
+<h2>Check the numbers yourself</h2>
+<p>Every figure in every post traces to a committed snapshot. All ${record.snapshots} of them are served here: <a href="/data/index.json">/data/index.json</a>. The record on this page is <a href="/record.json">/record.json</a>. Subscribe by <a href="/feed.xml">RSS</a> or <a href="/feed.json">JSON Feed</a>.</p>
+${foot(site)}`;
+}
+
+/**
  * Builds every file for the site.
  * @returns {{path: string, content: string}[]} Text files only; assets are copied separately.
  */
-export function buildSite(manifest, drafts, lessons = [], signals = null, archive = {}) {
+export function buildSite(manifest, drafts, lessons = [], signals = null, archive = {}, record = null) {
   const { site } = manifest;
   const articles = [...manifest.articles].sort((a, b) => b.published.localeCompare(a.published));
 
@@ -1006,7 +1150,16 @@ export function buildSite(manifest, drafts, lessons = [], signals = null, archiv
     { path: "index.html", content: renderIndexPage(site, articles) },
     { path: "sitemap.xml", content: renderSitemap(site, articles, lessons, signals) },
     { path: "robots.txt", content: renderRobots(site) },
+    { path: "feed.xml", content: renderRssFeed(site, articles) },
+    { path: "feed.json", content: renderJsonFeed(site, articles) },
   ];
+
+  // The record is optional so a clean checkout still builds, but when it exists
+  // it is the page a trader should read before any of the others.
+  if (record) {
+    files.push({ path: "record/index.html", content: renderRecordPage(site, record) });
+    files.push({ path: "record.json", content: `${JSON.stringify(record, null, 2)}\n` });
+  }
 
   /**
    * The signal board, when a scan has been captured.

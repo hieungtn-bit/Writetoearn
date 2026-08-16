@@ -313,3 +313,38 @@ Changing any of them requires its own post with a measurement attached.
 `FOLLOWED` in the brief holds the names that get a line whether or not they
 qualify — currently BTC, BNB, ICP. "It did not make the cut" is an answer
 readers deserve to see rather than an absence they have to infer.
+
+
+## Multi-platform distribution and the trust layer
+
+The site is the canonical copy; Square and every other network are mirrors that
+link back to it. Two commands rebuild both halves:
+
+```
+node scripts/build-record.mjs        # exports the public record + research snapshots
+npm run site                         # builds the site, including /record/ and the feeds
+node scripts/build-syndication.mjs   # per-platform copies under dist/syndication/
+```
+
+**What makes the site checkable rather than trustworthy-sounding:**
+
+- `/record/` — every scored call, losses at the same size as wins, plus the
+  walk-forward result of the pipeline behind them. Unscoreable posts are counted
+  separately so the denominator is visible.
+- `/data/index.json` — every research snapshot a post ever cited, served. The
+  sentence "every figure traces to research/<name>.json" is only true for a
+  reader if the file is reachable.
+- `/record.json`, `/feed.xml`, `/feed.json` — machine-readable, so aggregators
+  and answer engines can cite the numbers rather than paraphrase them.
+
+**Distribution.** `src/syndicate.mjs` reshapes a published draft per platform: an
+X thread split on the argument rather than on characters, Telegram whole,
+LinkedIn with cashtags stripped and its ceiling respected, Markdown for mirrors.
+Every format links back to the canonical page — a copy without that link
+separates a figure from the snapshot that justifies it, which is the one thing
+this project exists to argue against.
+
+**Posting is still manual off Square.** Only Binance Square has a credential on
+this host. The formatting is done and the payloads are written to disk; wiring a
+network up is one HTTP call per adapter once a token exists. Do not add a token
+to the repo — the Square key already leaked into a transcript once.

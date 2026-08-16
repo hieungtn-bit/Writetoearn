@@ -1,0 +1,211 @@
+{
+  "measuredAt": "2026-08-12T00:02:32.795Z",
+  "btcDominancePct": null,
+  "BNB": {
+    "price": 617.33,
+    "atrPct": 2.0458991413546723,
+    "sma20": 587.9395000000001,
+    "sma50": 576.691,
+    "rsi14": 69.35559828731829,
+    "range30": {
+      "low": 555.59,
+      "high": 617.73,
+      "widthPct": 11.18450656059324,
+      "positionPct": 99.35629224332156
+    },
+    "overhead": {
+      "byDailyBarsPct": 0,
+      "byProfilePct": 0.02280550374547779,
+      "agreeWithin2Points": true
+    },
+    "profile": {
+      "pocPrice": 570.96965,
+      "valueAreaLow": 563.6682000000001,
+      "valueAreaHigh": 592.5633,
+      "overheadPct": 0.02280550374547779
+    },
+    "vwap30d": 582.8906199490181,
+    "volumeTrendPct": -12.689964331874629,
+    "stage": "1 quiet",
+    "turnoverUsd": 54295351.35498634,
+    "ath": 1375.11,
+    "athDate": "2025-10-13",
+    "drawdownFromAthPct": 55.10686417813847,
+    "recentHigh": 745.74,
+    "fromRecentHighPct": -17.219138037385683,
+    "medianWeekPct": 10.330945516466986,
+    "beta": 0.5444746077523338,
+    "r": 0.6129219089968573,
+    "rSquaredPct": 37.567326652835185,
+    "byWindow": {
+      "180": {
+        "long": {
+          "positive": "34/64",
+          "medianR": 0.003826462008233661
+        },
+        "short": {
+          "positive": "1/64",
+          "medianR": -0.08780954020295445
+        }
+      },
+      "270": {
+        "long": {
+          "positive": "2/64",
+          "medianR": -0.07212962190402081
+        },
+        "short": {
+          "positive": "39/64",
+          "medianR": 0.01557783773015027
+        }
+      },
+      "365": {
+        "long": {
+          "positive": "24/64",
+          "medianR": -0.011629656218914299
+        },
+        "short": {
+          "positive": "28/64",
+          "medianR": -0.013533942477651061
+        }
+      },
+      "540": {
+        "long": {
+          "positive": "59/64",
+          "medianR": 0.027659630332472544
+        },
+        "short": {
+          "positive": "4/64",
+          "medianR": -0.049541688771492495
+        }
+      },
+      "730": {
+        "long": {
+          "positive": "58/64",
+          "medianR": 0.029424434980843003
+        },
+        "short": {
+          "positive": "0/64",
+          "medianR": -0.051301285651259285
+        }
+      }
+    },
+    "call": {
+      "bias": "LONG",
+      "reason": "long pays in 34 of 64 geometries",
+      "tradeable": true,
+      "agreeing": 3,
+      "windows": 5,
+      "plan": {
+        "horizonDays": 30,
+        "entry": 617.33,
+        "stop": 579.4401524920256,
+        "target": 674.1647712619616,
+        "stopPct": 6.137697424064017,
+        "hitPct": 39.33333333333333,
+        "expectancyR": 0.2840695302846794,
+        "effectiveN": 5
+      },
+      "recentLongR": 0.003826462008233661,
+      "recentShortR": -0.08780954020295445
+    }
+  },
+  "BTC": {
+    "price": 63587.8,
+    "atrPct": 2.0395052143523986,
+    "sma20": 64109.6125,
+    "sma50": 63395.57959999998,
+    "rsi14": 46.187846224262785,
+    "range30": {
+      "low": 62272.2,
+      "high": 66956.15,
+      "widthPct": 7.521735220531791,
+      "positionPct": 28.08740486128175
+    },
+    "overhead": {
+      "byDailyBarsPct": 88.85979215127016,
+      "byProfilePct": 78.81378620346108,
+      "agreeWithin2Points": false
+    },
+    "profile": {
+      "pocPrice": 63992.89355,
+      "valueAreaLow": 63415.6358,
+      "valueAreaHigh": 65391.1401,
+      "overheadPct": 78.81378620346108
+    },
+    "vwap30d": 64441.91595010116,
+    "volumeTrendPct": -36.25093463898757,
+    "stage": "1 quiet",
+    "turnoverUsd": 905694201.9659568,
+    "ath": 126199.63,
+    "athDate": "2025-10-06",
+    "drawdownFromAthPct": 49.6133229550673,
+    "recentHigh": 81664.45,
+    "fromRecentHighPct": -22.13527428397546,
+    "medianWeekPct": 9.514128152942897,
+    "beta": null,
+    "r": null,
+    "rSquaredPct": null,
+    "byWindow": {
+      "180": {
+        "long": {
+          "positive": "18/64",
+          "medianR": -0.021290592844965636
+        },
+        "short": {
+          "positive": "25/64",
+          "medianR": -0.009453835531043009
+        }
+      },
+      "270": {
+        "long": {
+          "positive": "5/64",
+          "medianR": -0.07882191382037526
+        },
+        "short": {
+          "positive": "62/64",
+          "medianR": 0.06857998092521231
+        }
+      },
+      "365": {
+        "long": {
+          "positive": "1/64",
+          "medianR": -0.09334572355350376
+        },
+        "short": {
+          "positive": "63/64",
+          "medianR": 0.11449843309079624
+        }
+      },
+      "540": {
+        "long": {
+          "positive": "14/64",
+          "medianR": -0.03610231662513576
+        },
+        "short": {
+          "positive": "52/64",
+          "medianR": 0.03060304740564774
+        }
+      },
+      "730": {
+        "long": {
+          "positive": "40/64",
+          "medianR": 0.004019726506992047
+        },
+        "short": {
+          "positive": "14/64",
+          "medianR": -0.01610618176045018
+        }
+      }
+    },
+    "call": {
+      "bias": "WAIT",
+      "reason": "both directions lose over the recent window",
+      "tradeable": true,
+      "agreeing": null,
+      "windows": null,
+      "plan": null,
+      "recentLongR": -0.021290592844965636,
+      "recentShortR": -0.009453835531043009
+    }
+  }
+}

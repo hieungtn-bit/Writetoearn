@@ -1,0 +1,66 @@
+{
+  "measuredAt": "2026-08-11T21:09:00.459Z",
+  "symbol": "ICPUSDT",
+  "price": 2.26,
+  "days": 30,
+  "hourlyBars": 720,
+  "bins": 200,
+  "claims": {
+    "POC lands in their 2.13-2.17 estimate": false,
+    "value area low near their 2.08": true,
+    "value area high near their 2.28": true,
+    "overhead is 43-47% as they estimate": false,
+    "range position is 68-75% as they estimate": false,
+    "2.08-2.18 is the thickest zone": true,
+    "2.28-2.38 is thinner than 2.18-2.28": true,
+    "base phase traded 2.02-2.15": false,
+    "expansion phase volume beat the base phase": true,
+    "the two overhead methods agree within 5 points": false
+  },
+  "profile": {
+    "pocPrice": 2.1743425,
+    "pocBin": [
+      2.173335,
+      2.17535
+    ],
+    "valueAreaLow": 2.0826599999999997,
+    "valueAreaHigh": 2.23177,
+    "valueAreaSharePct": 70.31120355738132,
+    "profileLow": 1.994,
+    "profileHigh": 2.397,
+    "binWidth": 0.002014999999999999
+  },
+  "overhead": {
+    "byProfilePct": 13.019357282806268,
+    "byDailyBarsPct": 18.812178474730892,
+    "differencePoints": -5.792821191924624
+  },
+  "zones": {
+    "2.00-2.08": 11.322871001980316,
+    "2.08-2.18": 43.89230663966183,
+    "2.18-2.28": 33.04100589671775,
+    "2.28-2.38": 11.070438130805734,
+    "2.38-2.45": 0.5520982138797598
+  },
+  "phases": {
+    "base": {
+      "low": 1.994,
+      "high": 2.127,
+      "meanHourlyQuoteUsd": 88990.52708898808,
+      "hours": 168
+    },
+    "expansion": {
+      "low": 2.087,
+      "high": 2.397,
+      "meanHourlyQuoteUsd": 281377.72239372344,
+      "hours": 94
+    }
+  },
+  "range30": {
+    "lo": 1.994,
+    "hi": 2.397,
+    "positionPct": 66.0049627791563
+  },
+  "vwap30d": 2.169220178411941,
+  "volumeTrendPct": 165.53117200837
+}

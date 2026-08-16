@@ -1,0 +1,304 @@
+{
+  "measuredAt": "2026-08-12T00:38:47.394Z",
+  "windowDays": 30,
+  "thresholds": {
+    "hangoverDrawdownPct": -60,
+    "breakdownVsVwapPct": -15,
+    "breakdownUnderwaterPct": 70,
+    "liveUnderwaterPct": 25,
+    "movePricePct": 5,
+    "drainingVolumePct": -20,
+    "expandingVolumePct": 20,
+    "quietConcentrationPct": 20,
+    "quietVolumeSwingPct": 40
+  },
+  "agreementWindows": [
+    180,
+    270,
+    365,
+    540,
+    730
+  ],
+  "rows": [
+    {
+      "asset": "SOL",
+      "price": 76.31,
+      "stage": "1 quiet",
+      "note": "turnover is structural, no event in progress",
+      "stageByDailyBars": "1 quiet",
+      "methodsDisagree": false,
+      "metrics": {
+        "underwaterPct": 31.599068066230902,
+        "underwaterByDailyBarsPct": 27.982608981122137,
+        "vsVwapPct": 1.4130392691620777,
+        "volumeTrendPct": -33.671408514304176,
+        "recentPricePct": 0.05244526025961224,
+        "concentrationPct": 14.515548459966391,
+        "drawdownPct": -3.453947368421057,
+        "vwap": 75.24673409842725
+      },
+      "gates": {
+        "live": false,
+        "moving": false,
+        "volumeExpanding": false,
+        "volumeDraining": true
+      },
+      "profile": {
+        "poc": 74.02745,
+        "valueAreaLow": 72.8642,
+        "valueAreaHigh": 76.5866,
+        "priceVsArea": "inside"
+      },
+      "rangePosition30d": 67.73049645390068,
+      "rsi14": 55.071056697714006,
+      "turnoverUsd": 100556593.87015533,
+      "call": {
+        "bias": "SHORT",
+        "agreeing": 5,
+        "windows": 5,
+        "expectancyR": 0.3151980565865666,
+        "effectiveN": 5
+      }
+    },
+    {
+      "asset": "BNB",
+      "price": 616.54,
+      "stage": "1 quiet",
+      "note": "turnover is structural, no event in progress",
+      "stageByDailyBars": "1 quiet",
+      "methodsDisagree": false,
+      "metrics": {
+        "underwaterPct": 0.15346608444516566,
+        "underwaterByDailyBarsPct": 0,
+        "vsVwapPct": 5.764857142697425,
+        "volumeTrendPct": -11.37990361043165,
+        "recentPricePct": 2.3761685734685996,
+        "concentrationPct": 15.817811805648372,
+        "drawdownPct": -0.1926407977595478,
+        "vwap": 582.9346501817397
+      },
+      "gates": {
+        "live": true,
+        "moving": false,
+        "volumeExpanding": false,
+        "volumeDraining": false
+      },
+      "profile": {
+        "poc": 570.96965,
+        "valueAreaLow": 563.6682000000001,
+        "valueAreaHigh": 592.5633,
+        "priceVsArea": "above"
+      },
+      "rangePosition30d": 98.08496942388147,
+      "rsi14": 68.96428263581655,
+      "turnoverUsd": 54295351.35498634,
+      "call": {
+        "bias": "LONG",
+        "agreeing": 3,
+        "windows": 5,
+        "expectancyR": 0.31019375107588754,
+        "effectiveN": 5
+      }
+    },
+    {
+      "asset": "GIGGLE",
+      "price": 37.88,
+      "stage": "mixed",
+      "note": "no clean stage; read the metrics directly",
+      "stageByDailyBars": "mixed",
+      "methodsDisagree": false,
+      "metrics": {
+        "underwaterPct": 54.924127538532105,
+        "underwaterByDailyBarsPct": 58.994649903255045,
+        "vsVwapPct": -2.2807612996651514,
+        "volumeTrendPct": -42.273187847969076,
+        "recentPricePct": 10.116279069767453,
+        "concentrationPct": 52.271826557167465,
+        "drawdownPct": -32.00502602764315,
+        "vwap": 38.76411697819562
+      },
+      "gates": {
+        "live": false,
+        "moving": true,
+        "volumeExpanding": false,
+        "volumeDraining": true
+      },
+      "profile": {
+        "poc": 34.207875,
+        "valueAreaLow": 32.112,
+        "valueAreaHigh": 45.929249999999996,
+        "priceVsArea": "inside"
+      },
+      "rangePosition30d": 42.576489533011284,
+      "rsi14": 58.85627025380924,
+      "turnoverUsd": 7163297.317918999,
+      "call": {
+        "bias": "LONG",
+        "agreeing": 1,
+        "windows": 1,
+        "expectancyR": 0.520418546111933,
+        "effectiveN": 5
+      }
+    },
+    {
+      "asset": "ENA",
+      "price": 0.0901,
+      "stage": "mixed",
+      "note": "no clean stage; read the metrics directly",
+      "stageByDailyBars": "mixed",
+      "methodsDisagree": false,
+      "metrics": {
+        "underwaterPct": 27.14740994825295,
+        "underwaterByDailyBarsPct": 21.798416045003997,
+        "vsVwapPct": 4.190805398957343,
+        "volumeTrendPct": -41.39723373682726,
+        "recentPricePct": 4.041570438799081,
+        "concentrationPct": 17.109781634249398,
+        "drawdownPct": -8.248472505091646,
+        "vwap": 0.08647596076736119
+      },
+      "gates": {
+        "live": false,
+        "moving": false,
+        "volumeExpanding": false,
+        "volumeDraining": true
+      },
+      "profile": {
+        "poc": 0.090197,
+        "valueAreaLow": 0.082512,
+        "valueAreaHigh": 0.093006,
+        "priceVsArea": "inside"
+      },
+      "rangePosition30d": 61.792452830188694,
+      "rsi14": 55.338763768175276,
+      "turnoverUsd": 10772196.657032967,
+      "call": {
+        "bias": "LONG",
+        "agreeing": 1,
+        "windows": 5,
+        "expectancyR": 0.16,
+        "effectiveN": 5
+      }
+    },
+    {
+      "asset": "ETH",
+      "price": 1882.2,
+      "stage": "1 quiet",
+      "note": "turnover is structural, no event in progress",
+      "stageByDailyBars": "1 quiet",
+      "methodsDisagree": false,
+      "metrics": {
+        "underwaterPct": 55.63078365626152,
+        "underwaterByDailyBarsPct": 68.7218249901182,
+        "vsVwapPct": -0.5606935285828575,
+        "volumeTrendPct": -35.72081198297566,
+        "recentPricePct": -1.4890220605553106,
+        "concentrationPct": 17.18478287129221,
+        "drawdownPct": -4.9988895843007395,
+        "vwap": 1892.8128793225444
+      },
+      "gates": {
+        "live": false,
+        "moving": false,
+        "volumeExpanding": false,
+        "volumeDraining": true
+      },
+      "profile": {
+        "poc": 1873.2288,
+        "valueAreaLow": 1855.3232,
+        "valueAreaHigh": 1926.9456,
+        "priceVsArea": "inside"
+      },
+      "rangePosition30d": 52.34566713179041,
+      "rsi14": 51.05113588222498,
+      "turnoverUsd": 400940281.4217597,
+      "call": {
+        "bias": "SHORT",
+        "agreeing": 5,
+        "windows": 5,
+        "expectancyR": 0.38666666666666666,
+        "effectiveN": 5
+      }
+    },
+    {
+      "asset": "BTC",
+      "price": 63720,
+      "stage": "1 quiet",
+      "note": "turnover is structural, no event in progress",
+      "stageByDailyBars": "1 quiet",
+      "methodsDisagree": false,
+      "metrics": {
+        "underwaterPct": 76.0674642317562,
+        "underwaterByDailyBarsPct": 79.32096979772648,
+        "vsVwapPct": -1.1198227824571165,
+        "volumeTrendPct": -35.89063777030242,
+        "recentPricePct": -1.820587138157935,
+        "concentrationPct": 15.4597316026898,
+        "drawdownPct": -4.833237872846623,
+        "vwap": 64441.632077389804
+      },
+      "gates": {
+        "live": false,
+        "moving": false,
+        "volumeExpanding": false,
+        "volumeDraining": true
+      },
+      "profile": {
+        "poc": 63992.89355,
+        "valueAreaLow": 63415.6358,
+        "valueAreaHigh": 65391.1401,
+        "priceVsArea": "inside"
+      },
+      "rangePosition30d": 30.909809028704487,
+      "rsi14": 47.07273743393421,
+      "turnoverUsd": 905694201.9659568,
+      "call": {
+        "bias": "WAIT",
+        "agreeing": null,
+        "windows": null,
+        "expectancyR": null,
+        "effectiveN": null
+      }
+    },
+    {
+      "asset": "ICP",
+      "price": 2.248,
+      "stage": "mixed",
+      "note": "no clean stage; read the metrics directly",
+      "stageByDailyBars": "mixed",
+      "methodsDisagree": false,
+      "metrics": {
+        "underwaterPct": 14.410963809751982,
+        "underwaterByDailyBarsPct": 19.67135209055455,
+        "vsVwapPct": 3.682941976800093,
+        "volumeTrendPct": 121.78187029565686,
+        "recentPricePct": 3.642231443061327,
+        "concentrationPct": 25.172678397572078,
+        "drawdownPct": -6.216103462661644,
+        "vwap": 2.168148354145862
+      },
+      "gates": {
+        "live": true,
+        "moving": false,
+        "volumeExpanding": true,
+        "volumeDraining": false
+      },
+      "profile": {
+        "poc": 2.1743425,
+        "valueAreaLow": 2.080645,
+        "valueAreaHigh": 2.229755,
+        "priceVsArea": "above"
+      },
+      "rangePosition30d": 63.027295285359884,
+      "rsi14": 57.85057839977059,
+      "turnoverUsd": 3143938.285071333,
+      "call": {
+        "bias": "LONG",
+        "agreeing": 1,
+        "windows": 5,
+        "expectancyR": 0.4885812177604899,
+        "effectiveN": 5
+      }
+    }
+  ]
+}

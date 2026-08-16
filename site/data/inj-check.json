@@ -1,0 +1,156 @@
+{
+  "measuredAt": "2026-08-11T16:09:47.996Z",
+  "price": 4.494,
+  "atrPct": 5.590139826362908,
+  "claims": {
+    "price 4.44–4.48": true,
+    "ATH about 52.6": true,
+    "down more than 91% from ATH": true,
+    "recent high about 7.3": true,
+    "24h volume 35–50M": false,
+    "range position is low": true,
+    "overhead is medium-high": false,
+    "volume trend cannot be computed from public data": false,
+    "overhead cannot be computed from public data": false
+  },
+  "ath": {
+    "price": 53,
+    "date": "2024-03-14",
+    "drawdownPct": 91.52075471698113
+  },
+  "recentHigh": {
+    "price": 7.345,
+    "date": "2026-06-01",
+    "fromHighPct": -38.81552076242342
+  },
+  "range20d": {
+    "lo": 4.283,
+    "hi": 5.453,
+    "positionPct": 18.034188034187984
+  },
+  "range30d": {
+    "lo": 4.283,
+    "hi": 5.49,
+    "positionPct": 17.481358740679322
+  },
+  "turnover": {
+    "ticker24hQuoteUsd": 3668426.28851,
+    "lastDailyBarQuoteUsd": 2472934.23553,
+    "median30dQuoteUsd": 3751953.42348,
+    "boardFieldUsed": 2472934.23553
+  },
+  "measured": {
+    "underwaterPct": 91.13020274511528,
+    "volumeTrendPct": -39.48689416524758,
+    "stage": "1 quiet",
+    "rangePosition30d": 17.481358740679322,
+    "rsi14": 41.560274917593404,
+    "change7dPct": -8.022922636103159,
+    "change30dPct": -7.777549764005755
+  },
+  "btc": {
+    "beta": 1.355301409217077,
+    "r": 0.5611887562063095,
+    "rSquaredPct": 31.493282009238467
+  },
+  "theirLadder": {
+    "entry": 4.575,
+    "stop": 4.25,
+    "stopPct": 7.103825136612025,
+    "stopInAtr": 1.2707777188525107,
+    "cells": {
+      "TP1 · 5d": {
+        "rr": 1.55,
+        "hitPct": 25.8,
+        "stoppedPct": 45,
+        "unresolvedPct": 29.2,
+        "expectancyR": 0.009,
+        "effectiveN": 72,
+        "breakEvenHitPct": 39.2
+      },
+      "TP1 · 10d": {
+        "rr": 1.55,
+        "hitPct": 36.1,
+        "stoppedPct": 53.2,
+        "unresolvedPct": 10.7,
+        "expectancyR": 0.072,
+        "effectiveN": 35.5,
+        "breakEvenHitPct": 39.2
+      },
+      "TP1 · 30d": {
+        "rr": 1.55,
+        "hitPct": 43.9,
+        "stoppedPct": 56.1,
+        "unresolvedPct": 0,
+        "expectancyR": 0.121,
+        "effectiveN": 11.2,
+        "breakEvenHitPct": 39.2
+      },
+      "TP2 · 5d": {
+        "rr": 2.85,
+        "hitPct": 7.5,
+        "stoppedPct": 47.5,
+        "unresolvedPct": 45,
+        "expectancyR": -0.059,
+        "effectiveN": 72,
+        "breakEvenHitPct": 26
+      },
+      "TP2 · 10d": {
+        "rr": 2.85,
+        "hitPct": 14.4,
+        "stoppedPct": 60.6,
+        "unresolvedPct": 25.1,
+        "expectancyR": -0.009,
+        "effectiveN": 35.5,
+        "breakEvenHitPct": 26
+      },
+      "TP2 · 30d": {
+        "rr": 2.85,
+        "hitPct": 22.7,
+        "stoppedPct": 74.3,
+        "unresolvedPct": 3,
+        "expectancyR": -0.095,
+        "effectiveN": 11.2,
+        "breakEvenHitPct": 26
+      },
+      "TP3 · 5d": {
+        "rr": 5,
+        "hitPct": 1.4,
+        "stoppedPct": 47.8,
+        "unresolvedPct": 50.8,
+        "expectancyR": -0.087,
+        "effectiveN": 72,
+        "breakEvenHitPct": 16.7
+      },
+      "TP3 · 10d": {
+        "rr": 5,
+        "hitPct": 4.2,
+        "stoppedPct": 61.7,
+        "unresolvedPct": 34.1,
+        "expectancyR": -0.054,
+        "effectiveN": 35.5,
+        "breakEvenHitPct": 16.7
+      },
+      "TP3 · 30d": {
+        "rr": 5,
+        "hitPct": 15.8,
+        "stoppedPct": 79.1,
+        "unresolvedPct": 5.1,
+        "expectancyR": 0.037,
+        "effectiveN": 11.2,
+        "breakEvenHitPct": 16.7
+      }
+    }
+  },
+  "boardCall": {
+    "entry": 4.481,
+    "stop": 3.9797010895493594,
+    "target": 5.984896731351923,
+    "stopPct": 11.187210677318477,
+    "targetPct": 33.56163203195543,
+    "stopInAtr": 2.0012398660512885,
+    "hitPct": 19.701492537313435,
+    "expectancyR": -0.02453092462302226,
+    "effectiveN": 11.166666666666666
+  }
+}

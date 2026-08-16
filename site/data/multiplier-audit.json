@@ -1,0 +1,331 @@
+{
+  "measuredAt": "2026-08-14T21:21:57.444Z",
+  "note": {
+    "statedBtcDominancePct": [
+      56.1,
+      56.2
+    ],
+    "statedThreshold": 6.5,
+    "statedCandidates": 0,
+    "requiredFields": [
+      "overhead supply %",
+      "volume trend %",
+      "range position %",
+      "BTC beta"
+    ],
+    "claimedDumpRange": [
+      70,
+      95
+    ]
+  },
+  "dominance": {
+    "measuredPct": 56.12468327201571,
+    "statedRange": [
+      56.1,
+      56.2
+    ],
+    "matches": true
+  },
+  "universe": 80,
+  "fieldsAvailable": {
+    "scanned": 80,
+    "withAllFourFields": 80,
+    "sharePct": 100
+  },
+  "dumpersToday": {
+    "over60": 16,
+    "over70": 10,
+    "medianOverhead": 94.04729220874694,
+    "medianVolumeTrend": 9.332578732628846,
+    "medianRangePosition": 11.909758585515135,
+    "medianBeta": 0.8359192012567305,
+    "negativeVolumeTrendShare": 50,
+    "detail": [
+      {
+        "symbol": "DEXEUSDT",
+        "price": 1.939,
+        "drawdownFromHighPct": -96.07743971516427,
+        "overheadPct": 100,
+        "volumeTrendPct": -90.01417976349887,
+        "rangePosition30d": 0.8353537579898611,
+        "btcBeta": 0.047327507032458,
+        "turnoverUsd": 33411806.61443367,
+        "atrPct": 82.68328815073794
+      },
+      {
+        "symbol": "BANKUSDT",
+        "price": 0.038,
+        "drawdownFromHighPct": -93.61344537815125,
+        "overheadPct": 99.13379308377606,
+        "volumeTrendPct": -78.36150348189655,
+        "rangePosition30d": 0.6953111071492246,
+        "btcBeta": 0.49751755653242785,
+        "turnoverUsd": 42565480.01648166,
+        "atrPct": 89.54753621929761
+      },
+      {
+        "symbol": "TUTUSDT",
+        "price": 0.03127,
+        "drawdownFromHighPct": -89.7686745411118,
+        "overheadPct": 93.91660691061529,
+        "volumeTrendPct": 88.82699569580566,
+        "rangePosition30d": 6.441602728047739,
+        "btcBeta": 1.0957415644079571,
+        "turnoverUsd": 20686504.891311664,
+        "atrPct": 100.80969756539577
+      },
+      {
+        "symbol": "HOMEUSDT",
+        "price": 0.00988,
+        "drawdownFromHighPct": -87.24667613269652,
+        "overheadPct": 17.986071773243108,
+        "volumeTrendPct": -9.88616433100728,
+        "rangePosition30d": 36.713545521835684,
+        "btcBeta": 0.13796546078016325,
+        "turnoverUsd": 9203252.200592667,
+        "atrPct": 18.984374495052997
+      },
+      {
+        "symbol": "SYNUSDT",
+        "price": 0.10216,
+        "drawdownFromHighPct": -85.77792627241341,
+        "overheadPct": 89.20591969601104,
+        "volumeTrendPct": -69.50114926425405,
+        "rangePosition30d": 12.258823529411764,
+        "btcBeta": 0.5062260289497811,
+        "turnoverUsd": 6035160.266798167,
+        "atrPct": 27.6445661576113
+      },
+      {
+        "symbol": "MOVEUSDT",
+        "price": 0.0068,
+        "drawdownFromHighPct": -78.27476038338659,
+        "overheadPct": 67.7110452904328,
+        "volumeTrendPct": 264.18974840062776,
+        "rangePosition30d": 15.68627450980391,
+        "btcBeta": 0.9907368232458637,
+        "turnoverUsd": 419650.077073,
+        "atrPct": 9.39868186936063
+      },
+      {
+        "symbol": "HEIUSDT",
+        "price": 0.1376,
+        "drawdownFromHighPct": -74.52323643769671,
+        "overheadPct": 84.72617522346656,
+        "volumeTrendPct": -35.642003946009424,
+        "rangePosition30d": 12.708739969637822,
+        "btcBeta": 0.33787832762438685,
+        "turnoverUsd": 9478286.856192334,
+        "atrPct": 33.46382394702988
+      },
+      {
+        "symbol": "BICOUSDT",
+        "price": 0.02517,
+        "drawdownFromHighPct": -72.03333333333333,
+        "overheadPct": 83.9706257285718,
+        "volumeTrendPct": -36.2872595762884,
+        "rangePosition30d": 17.686642965972577,
+        "btcBeta": 1.7006167836706627,
+        "turnoverUsd": 9213913.189943973,
+        "atrPct": 37.76314368600564
+      },
+      {
+        "symbol": "EPICUSDT",
+        "price": 0.367,
+        "drawdownFromHighPct": -71.55038759689923,
+        "overheadPct": 94.95707528989482,
+        "volumeTrendPct": -52.20332739568217,
+        "rangePosition30d": 4.421663042352699,
+        "btcBeta": 0.7052043517338186,
+        "turnoverUsd": 6262954.431851333,
+        "atrPct": 46.13384442751778
+      },
+      {
+        "symbol": "KAITOUSDT",
+        "price": 0.3943,
+        "drawdownFromHighPct": -71.35280441732054,
+        "overheadPct": 100,
+        "volumeTrendPct": 19.37061816940277,
+        "rangePosition30d": 0.33488938502130805,
+        "btcBeta": 0.5533545682930819,
+        "turnoverUsd": 9321935.546238998,
+        "atrPct": 29.002363994566394
+      }
+    ]
+  },
+  "baseline": {
+    "30": {
+      "medianPct": -5.487495295621036,
+      "upSharePct": 38.659296631547704,
+      "days": 53912
+    },
+    "90": {
+      "medianPct": -16.724266846926746,
+      "upSharePct": 33.55391757615247,
+      "days": 49112
+    }
+  },
+  "bands": [
+    {
+      "band": [
+        0,
+        20
+      ],
+      "days": 13011,
+      "sharePct": 23.105199602216224,
+      "forward": {
+        "30": {
+          "medianPct": -2.45464247598719,
+          "differencePct": 3.0328528196338462,
+          "upSharePct": 44.251368721732916,
+          "doubledSharePct": 2.5232087598190907,
+          "upFiftySharePct": 6.601602792985798,
+          "days": 12603,
+          "effectiveN": 420.1
+        },
+        "90": {
+          "medianPct": -10.837606837606838,
+          "differencePct": 5.8866600093199075,
+          "upSharePct": 39.77224441233959,
+          "doubledSharePct": 4.733576952494264,
+          "upFiftySharePct": 10.877878813631343,
+          "days": 11767,
+          "effectiveN": 130.74444444444444
+        }
+      }
+    },
+    {
+      "band": [
+        20,
+        40
+      ],
+      "days": 19089,
+      "sharePct": 33.8986361699105,
+      "forward": {
+        "30": {
+          "medianPct": -6.0384313644881615,
+          "differencePct": -0.5509360688671254,
+          "upSharePct": 37.09200438116101,
+          "doubledSharePct": 1.976998904709748,
+          "upFiftySharePct": 5.2957283680175244,
+          "days": 18260,
+          "effectiveN": 608.6666666666666
+        },
+        "90": {
+          "medianPct": -19.320066334991704,
+          "differencePct": -2.5957994880649586,
+          "upSharePct": 32.17849395723582,
+          "doubledSharePct": 5.156492097923769,
+          "upFiftySharePct": 10.759219088937092,
+          "days": 16135,
+          "effectiveN": 179.27777777777777
+        }
+      }
+    },
+    {
+      "band": [
+        40,
+        60
+      ],
+      "days": 17065,
+      "sharePct": 30.30437562153715,
+      "forward": {
+        "30": {
+          "medianPct": -6.224891182390096,
+          "differencePct": -0.7373958867690602,
+          "upSharePct": 36.48965007392804,
+          "doubledSharePct": 1.0965993100049285,
+          "upFiftySharePct": 3.382207984228684,
+          "days": 16232,
+          "effectiveN": 541.0666666666667
+        },
+        "90": {
+          "medianPct": -18.31887715423975,
+          "differencePct": -1.5946103073130047,
+          "upSharePct": 29.9375593864531,
+          "doubledSharePct": 3.4681688611375048,
+          "upFiftySharePct": 8.117279761096782,
+          "days": 14734,
+          "effectiveN": 163.7111111111111
+        }
+      }
+    },
+    {
+      "band": [
+        60,
+        80
+      ],
+      "days": 6489,
+      "sharePct": 11.523298764028981,
+      "forward": {
+        "30": {
+          "medianPct": -7.280513918629561,
+          "differencePct": -1.7930186230085248,
+          "upSharePct": 37.96133567662566,
+          "doubledSharePct": 0.8467806358843265,
+          "upFiftySharePct": 5.19252276721521,
+          "days": 6259,
+          "effectiveN": 208.63333333333333
+        },
+        "90": {
+          "medianPct": -16.70069416088199,
+          "differencePct": 0.02357268604475493,
+          "upSharePct": 34.09282700421941,
+          "doubledSharePct": 4.253164556962026,
+          "upFiftySharePct": 11.20675105485232,
+          "days": 5925,
+          "effectiveN": 65.83333333333333
+        }
+      }
+    },
+    {
+      "band": [
+        80,
+        100
+      ],
+      "days": 658,
+      "sharePct": 1.168489842307146,
+      "forward": {
+        "30": {
+          "medianPct": -12.465404976769129,
+          "differencePct": -6.977909681148093,
+          "upSharePct": 34.587813620071685,
+          "doubledSharePct": 9.85663082437276,
+          "upFiftySharePct": 15.949820788530467,
+          "days": 558,
+          "effectiveN": 18.6
+        },
+        "90": {
+          "medianPct": -22.86538461538462,
+          "differencePct": -6.141117768457875,
+          "upSharePct": 31.941923774954628,
+          "doubledSharePct": 4.900181488203267,
+          "upFiftySharePct": 9.43738656987296,
+          "days": 551,
+          "effectiveN": 6.122222222222222
+        }
+      }
+    }
+  ],
+  "trades": {
+    "deep60": {
+      "pairs": 47,
+      "medianExpectancyR": 0.02631578947368421,
+      "medianNetR": 0.004869333164266583,
+      "pairsPositiveNet": 24
+    },
+    "deep40": {
+      "pairs": 71,
+      "medianExpectancyR": -0.01333752563181129,
+      "medianNetR": -0.0375694316570421,
+      "pairsPositiveNet": 24
+    },
+    "shallow": {
+      "pairs": 76,
+      "medianExpectancyR": -0.027752926867561152,
+      "medianNetR": -0.06838484849832302,
+      "pairsPositiveNet": 21
+    }
+  },
+  "labelledDays": 56312
+}
