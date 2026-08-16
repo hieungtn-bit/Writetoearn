@@ -273,3 +273,43 @@ schedules sessions on your account.
 
 With an `ANTHROPIC_API_KEY` set, none of this is needed: `wte team --format
 <slot>` does all six steps unattended, and `wte slots` prints the crontab.
+
+## The daily column
+
+`How is the market? What do we do?` — the recurring piece, started 15 August.
+Two questions, the same two, in the same order every edition.
+
+Three commands:
+
+```
+node scripts/scan-daily.mjs              # the board, ~5 min
+node research/daily-brief.mjs            # breadth, funnel, plans, settlement
+node scripts/fill-daily-brief.mjs        # writes drafts/brief-<day>.txt
+node scripts/cover-daily-brief.mjs > media/brief.html
+node scripts/render-card.mjs media/brief.html media/brief.png
+wte check drafts/brief-<day>.txt --article --study research/daily-brief.json,research/stop-law.json,research/selection-bias.json
+wte ship drafts/brief-<day>.txt --title "How Is the Market? What Do We Do? — <D Month>" \
+  --cover media/brief.png --slug brief-<day> --claim-asset <SYM> --claim-bias "<bias>"
+```
+
+Nothing in the writer is dated by hand; every figure comes from
+`research/daily-brief.json`. A day with ten longs and no shorts passes the same
+claims block, because it checks internal consistency rather than a direction.
+
+**The order of sections is not negotiable.** Yesterday's positions are settled
+*before* today's are proposed. A column that offers new trades while the last
+set is unaccounted for is selling, not reporting.
+
+**The ledger** lives in `data/plans/<date>.json`, written by the brief and read
+by the next edition. Positions are walked forward on hourly candles with the
+stop checked before the target — the same rule the backtests use, so a live
+position is never scored more kindly than a historical one.
+
+**The filters do not move between editions**: liquid enough to fill, at least
+12 independent episodes, all five lookback windows agreeing. The geometry is
+fixed at 1.5 ATR with a 2:1 target over 30 days and is never fitted per pair.
+Changing any of them requires its own post with a measurement attached.
+
+`FOLLOWED` in the brief holds the names that get a line whether or not they
+qualify — currently BTC, BNB, ICP. "It did not make the cut" is an answer
+readers deserve to see rather than an absence they have to infer.
