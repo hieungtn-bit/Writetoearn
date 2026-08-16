@@ -45,7 +45,7 @@
  * rescuable. `pairsAlive` per year shows how thin the early years are.
  */
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { atr, fetchKlines } from "../src/analysis.mjs";
 import { liveUniverse } from "../src/universe.mjs";
 
@@ -92,6 +92,7 @@ const tStat = (xs) => {
  * result is robust to anything at all.
  */
 const CACHE = ".cache/klines";
+const FUNDING_CACHE = ".cache/funding";
 async function fullHistory(symbol) {
   const file = `${CACHE}/${symbol}-${new Date(START).toISOString().slice(0, 10)}.json`;
   if (existsSync(file)) return JSON.parse(readFileSync(file, "utf8"));
@@ -154,7 +155,14 @@ const scorePath = (daily, t, direction, stopPct) => {
   return (long ? move : -move) / stopPct;
 };
 
-/** The same, on a close-only series — all the ratio series can support. */
+/**
+ * The same, on a close-only series — all the ratio series can support.
+ *
+ * Returns the exit bar as well as the result, because funding is charged for
+ * the days a position is actually open. A trade stopped on day four pays four
+ * days of funding, not thirty, and assuming otherwise would overstate the cost
+ * of exactly the trades that went wrong fastest.
+ */
 const scoreCloses = (closes, t, direction, stopPct) => {
   if (t + HORIZON >= closes.length) return null;
   const entry = closes[t];
@@ -163,12 +171,60 @@ const scoreCloses = (closes, t, direction, stopPct) => {
   const target = long ? entry * (1 + stopPct * RR / 100) : entry * (1 - stopPct * RR / 100);
   for (let j = t + 1; j <= t + HORIZON; j++) {
     const c = closes[j];
-    if (long ? c <= stop : c >= stop) return -1;
-    if (long ? c >= target : c <= target) return RR;
+    if (long ? c <= stop : c >= stop) return { r: -1, exit: j };
+    if (long ? c >= target : c <= target) return { r: RR, exit: j };
   }
   const move = (closes[t + HORIZON] / entry - 1) * 100;
-  return (long ? move : -move) / stopPct;
+  return { r: (long ? move : -move) / stopPct, exit: t + HORIZON };
 };
+
+/* ================================================================== *
+ * Funding: the cost the first version of this study could not price.
+ * ================================================================== */
+
+/**
+ * Prefix sums over the funding series, so a thirty-day window is two lookups.
+ *
+ * Coverage is checked rather than assumed. A symbol whose perpetual listed
+ * after the episode began has no funding for it, and treating that absence as
+ * zero would score the trade as though it were free — which is the direction
+ * that flatters the result.
+ */
+const fundingIndex = (rates) => {
+  const times = new Float64Array(rates.length);
+  const prefix = new Float64Array(rates.length + 1);
+  for (let i = 0; i < rates.length; i++) {
+    times[i] = rates[i][0];
+    prefix[i + 1] = prefix[i] + rates[i][1];
+  }
+  return { times, prefix, first: times[0], last: times[times.length - 1] };
+};
+
+const lowerBound = (times, x) => {
+  let lo = 0, hi = times.length;
+  while (lo < hi) {
+    const mid = (lo + hi) >> 1;
+    if (times[mid] < x) lo = mid + 1; else hi = mid;
+  }
+  return lo;
+};
+
+/** Sum of funding rates paid in (from, to]. Null when the window is not covered. */
+const sumFunding = (idx, from, to) => {
+  if (!idx || !idx.times.length) return null;
+  if (idx.first > from || idx.last < to) return null;
+  const a = lowerBound(idx.times, from);
+  const b = lowerBound(idx.times, to);
+  return { sum: idx.prefix[b] - idx.prefix[a], intervals: b - a };
+};
+
+const funding = {};
+if (existsSync(FUNDING_CACHE)) {
+  for (const f of readdirSync(FUNDING_CACHE).filter((n) => n.endsWith(".json"))) {
+    const { symbol, rates } = JSON.parse(readFileSync(`${FUNDING_CACHE}/${f}`, "utf8"));
+    if (rates.length) funding[symbol] = fundingIndex(rates);
+  }
+}
 
 /** Close-to-close volatility, the only kind a ratio series can offer. */
 const ccVolPct = (closes, t, n = 14) => {
@@ -278,11 +334,11 @@ for (let k = MIN_HISTORY; k + HORIZON < calendar.length; k += HORIZON) {
         const sh = scoreCloses(s.ratio, t, "short", stopPct);
         const lo = scoreCloses(s.ratio, t, "long", stopPct);
         if (sh != null) {
-          b.shortRel.push(sh - feeR);
-          altOnly.shortRel.push(sh - feeR);
-          (byDate.shortRelAlts[date] ??= []).push(sh - feeR);
+          b.shortRel.push(sh.r - feeR);
+          altOnly.shortRel.push(sh.r - feeR);
+          (byDate.shortRelAlts[date] ??= []).push(sh.r - feeR);
         }
-        if (lo != null) b.longRel.push(lo - feeR);
+        if (lo != null) b.longRel.push(lo.r - feeR);
       }
       if (vol != null) episodes.push({ s, t, date, vol, rawVol: ccVolPct(s.closes, t) });
     }
@@ -303,7 +359,24 @@ for (let k = MIN_HISTORY; k + HORIZON < calendar.length; k += HORIZON) {
  * The only surviving difference is whether the price is divided by BTC. If the
  * gap holds under that, it is the numeraire doing the work.
  */
-const matchedPerDate = { vsUsdt: {}, vsBtc: {} };
+/**
+ * `vsBtcFundedOnly` carries the same trades as `vsBtcAfterFunding` *without*
+ * the carry applied.
+ *
+ * Funding history only exists where a perpetual existed, which is mostly the
+ * later years. Comparing the funded result against the full sample would mix
+ * the effect of funding with the effect of dropping 2019-2021, and the two
+ * would be impossible to separate. Differencing these two isolates the carry.
+ */
+const matchedPerDate = { vsUsdt: {}, vsBtc: {}, vsBtcFundedOnly: {}, vsBtcAfterFunding: {} };
+/** Funding actually collected or paid, in R, for the episodes it is known for. */
+const fundingR = [];
+let fundingCovered = 0, fundingMissing = 0;
+const fundedYears = new Set();
+const carryByYear = {};
+
+const btcFunding = funding[NUMERAIRE] ?? null;
+
 for (const e of episodes) {
   for (const [key, closes, vol] of [
     ["vsUsdt", e.s.closes, e.rawVol],
@@ -312,8 +385,44 @@ for (const e of episodes) {
     if (vol == null) continue;
     const stopPct = RELATIVE_STOP_VOL_MULT * vol;
     if (!(stopPct > 0 && stopPct < 60)) continue;
-    const r = scoreCloses(closes, e.t, "short", stopPct);
-    if (r != null) (matchedPerDate[key][e.date] ??= []).push(r - FEE_PCT_RELATIVE / stopPct);
+    const scored = scoreCloses(closes, e.t, "short", stopPct);
+    if (scored == null) continue;
+    const net = scored.r - FEE_PCT_RELATIVE / stopPct;
+    (matchedPerDate[key][e.date] ??= []).push(net);
+
+    if (key !== "vsBtc") continue;
+
+    /**
+     * Net funding on the pair of legs, over the days actually held.
+     *
+     * Short the alt, long BTC, equal notional. A positive rate means longs pay
+     * shorts, so the alt leg receives its rate and the BTC leg pays its own —
+     * the position's carry is the difference. Whether that difference is a cost
+     * or an income is the whole question, and it is not obvious in advance:
+     * alt perpetuals carry the more speculative long side.
+     */
+    const from = e.s.daily[e.t].openTime + 86_400_000;
+    const to = e.s.daily[scored.exit].openTime + 86_400_000;
+    const alt = sumFunding(funding[e.s.symbol], from, to);
+    const btc = sumFunding(btcFunding, from, to);
+    if (!alt || !btc) { fundingMissing += 1; continue; }
+    fundingCovered += 1;
+
+    // Rates are fractions; stopPct is in percent, so the carry is scaled to
+    // match before it can be expressed in R.
+    const carryPct = (alt.sum - btc.sum) * 100;
+    const carryR = carryPct / stopPct;
+    fundingR.push(carryR);
+    fundedYears.add(e.date.slice(0, 4));
+    // The practical question is not what funding averaged over seven years but
+    // whether it is getting worse as the trade becomes crowded, so it is kept
+    // by year alongside the result it is charged against.
+    const fy = (carryByYear[e.date.slice(0, 4)] ??= { carry: [], afterFunding: [], before: [] });
+    fy.carry.push(carryR);
+    fy.before.push(net);
+    fy.afterFunding.push(net + carryR);
+    (matchedPerDate.vsBtcFundedOnly[e.date] ??= []).push(net);
+    (matchedPerDate.vsBtcAfterFunding[e.date] ??= []).push(net + carryR);
   }
 }
 const matched = Object.fromEntries(Object.entries(matchedPerDate).map(([k, perDate]) => {
@@ -346,9 +455,9 @@ for (const mult of [1.5, 2, 2.5, 3, 4]) {
     for (const e of episodes) {
       const stopPct = mult * e.vol;
       if (!(stopPct > 0 && stopPct < 60)) continue;
-      const r = scoreCloses(e.s.ratio, e.t, "short", stopPct);
-      if (r == null) continue;
-      (perDate[e.date] ??= []).push(r - fee / stopPct);
+      const scored = scoreCloses(e.s.ratio, e.t, "short", stopPct);
+      if (scored == null) continue;
+      (perDate[e.date] ??= []).push(scored.r - fee / stopPct);
     }
     const dateMeans = Object.values(perDate).map(mean);
     sweep.push({
@@ -441,6 +550,27 @@ const out = {
     shortRelAlts: describe(altOnly.shortRel, byDate.shortRelAlts),
   },
   matched,
+  funding: fundingR.length ? {
+    symbolsWithPerp: Object.keys(funding).length,
+    episodesPriced: fundingCovered,
+    episodesWithoutData: fundingMissing,
+    yearsCovered: [...fundedYears].sort(),
+    byYear: Object.keys(carryByYear).sort().map((y) => ({
+      year: y,
+      episodes: carryByYear[y].carry.length,
+      meanCarryR: mean(carryByYear[y].carry),
+      incomePct: (carryByYear[y].carry.filter((v) => v > 0).length / carryByYear[y].carry.length) * 100,
+      beforeFundingR: mean(carryByYear[y].before),
+      afterFundingR: mean(carryByYear[y].afterFunding),
+    })),
+    coveragePct: (fundingCovered / (fundingCovered + fundingMissing)) * 100,
+    meanCarryR: mean(fundingR),
+    medianCarryR: median(fundingR),
+    /** Share of episodes where the pair of legs was paid to hold, not charged. */
+    incomePct: (fundingR.filter((v) => v > 0).length / fundingR.length) * 100,
+    worstCarryR: Math.min(...fundingR),
+    bestCarryR: Math.max(...fundingR),
+  } : null,
   sweep,
 };
 writeFileSync("research/structural-edge.json", `${JSON.stringify(out, null, 2)}\n`);
@@ -477,15 +607,43 @@ for (const [k, v] of Object.entries(out.pooled)) {
     + `${v.monthsPositivePct == null ? "—" : v.monthsPositivePct.toFixed(0) + "%"}`.padStart(10));
 }
 
+const LABELS = {
+  vsUsdt: "USDT",
+  vsBtc: "BTC",
+  vsBtcFundedOnly: "BTC, funded subset",
+  vsBtcAfterFunding: "BTC, after funding",
+};
 console.log("\nsame scorer, same vol, same stop, same fee — only the numeraire differs");
-console.log("  shorting alts vs   trades   months   mean net R   t(month)   +months   worst month");
+console.log("  shorting alts vs     trades   months   mean net R   t(month)   +months   worst month");
 for (const [k, v] of Object.entries(matched)) {
-  console.log(`  ${(k === "vsUsdt" ? "USDT" : "BTC").padEnd(19)}${String(v.trades).padStart(6)}`
+  if (!v.months) continue;
+  console.log(`  ${LABELS[k].padEnd(21)}${String(v.trades).padStart(6)}`
     + `${String(v.months).padStart(9)}`
     + `${(v.meanNetR >= 0 ? "+" : "") + v.meanNetR.toFixed(4)}`.padStart(13)
     + `${v.tStatByMonth == null ? "—" : v.tStatByMonth.toFixed(2)}`.padStart(11)
     + `${v.monthsPositivePct.toFixed(0)}%`.padStart(10)
     + `${v.worstMonthR.toFixed(2)}`.padStart(14));
+}
+
+if (out.funding) {
+  const f = out.funding;
+  console.log(`\nfunding on the two legs (short alt, long BTC), over the days actually held`);
+  console.log(`  ${f.episodesPriced.toLocaleString("en-US")} episodes priced · `
+    + `${f.episodesWithoutData.toLocaleString("en-US")} had no funding series (${(100 - f.coveragePct).toFixed(1)}% excluded)`);
+  console.log(`  mean carry ${(f.meanCarryR >= 0 ? "+" : "") + f.meanCarryR.toFixed(4)}R · `
+    + `median ${(f.medianCarryR >= 0 ? "+" : "") + f.medianCarryR.toFixed(4)}R · `
+    + `paid to hold in ${f.incomePct.toFixed(0)}% of them`);
+  console.log(`  worst ${f.worstCarryR.toFixed(3)}R · best +${f.bestCarryR.toFixed(3)}R`);
+  console.log("\n  year   episodes   mean carry   paid to hold   before carry   after carry");
+  for (const r of f.byYear) {
+    console.log(`  ${r.year}${String(r.episodes).padStart(11)}`
+      + `${(r.meanCarryR >= 0 ? "+" : "") + r.meanCarryR.toFixed(4)}`.padStart(13)
+      + `${r.incomePct.toFixed(0)}%`.padStart(15)
+      + `${(r.beforeFundingR >= 0 ? "+" : "") + r.beforeFundingR.toFixed(4)}`.padStart(15)
+      + `${(r.afterFundingR >= 0 ? "+" : "") + r.afterFundingR.toFixed(4)}`.padStart(14));
+  }
+} else {
+  console.log("\nfunding: no cache. Run research/fetch-funding.mjs first.");
 }
 
 console.log("\nshort alts vs BTC — does it depend on the two numbers I chose?");
