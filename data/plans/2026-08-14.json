@@ -1,0 +1,60 @@
+{
+  "day": "2026-08-14",
+  "measuredAt": "2026-08-14T21:03:11.704Z",
+  "rules": {
+    "stopAtr": 1.5,
+    "rewardRatio": 2,
+    "horizonDays": 30,
+    "feePct": 0.2,
+    "minEffectiveN": 12,
+    "accountBase": 1000,
+    "riskPct": 1,
+    "riskPerTradeUsd": 10
+  },
+  "taken": [
+    {
+      "symbol": "ARBUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.0744,
+      "stop": 0.08004124097218412,
+      "target": 0.0631175180556317,
+      "stopPct": 7.582313134656104,
+      "positionUsd": 131.8858746982302,
+      "fullNetR": 0.06846818588509622
+    },
+    {
+      "symbol": "BONKUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.00000236,
+      "stop": 0.0000026521408896726555,
+      "target": 0.000001775718220654688,
+      "stopPct": 12.378851257315926,
+      "positionUsd": 80.7829401301674,
+      "fullNetR": 0.06373712474791865
+    },
+    {
+      "symbol": "SUIUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.6782,
+      "stop": 0.714226484441352,
+      "target": 0.6061470311172962,
+      "stopPct": 5.312073789641982,
+      "positionUsd": 188.25039703889297,
+      "fullNetR": 0.04791693090149975
+    },
+    {
+      "symbol": "XRPUSDT",
+      "bias": "SHORT",
+      "direction": "short",
+      "entry": 0.9992,
+      "stop": 1.0425293107514944,
+      "target": 0.9125413784970116,
+      "stopPct": 4.33640019530567,
+      "positionUsd": 230.6060222676267,
+      "fullNetR": 0.04253858936090765
+    }
+  ]
+}

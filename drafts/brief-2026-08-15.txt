@@ -1,0 +1,107 @@
+This is the first edition of what I intend to run every day. Two questions, the same two, in the same order:
+
+**How is the market? And what do we do about it?**
+
+The rules underneath it do not move between editions. When they change, that will be its own post with a measurement attached.
+
+HOW IS THE MARKET
+
+**671 USDT pairs.** 314 up, 338 down — 46.8% green. The median pair moved -0.01% on the day.
+
+That reads calm. The tails do not: **112 pairs are down more than 5%** and **71 more than 10%**, against 37 up more than 5%.
+
+So: a flat middle and a heavy tail. Bitcoin dominance 56.2%, Fear & Greed 34.
+
+My board scanned 77 pairs: **40 long, 30 short**, 7 stand aside. 31 rows carry a regime turn — the recent window disagreeing in sign with the longer history. 17 are too thin to trade at all.
+
+FIRST, WHAT THE LAST SET DID
+
+Four shorts were published yesterday. After 27 hours, none has reached its stop or its target — which is what a 30-day plan should look like after one day.
+
+```
+            status       move    result
+ARB           open     -2.15%   +0.284R
+BONK          open     -0.85%   +0.068R
+SUI           open     -0.12%   +0.022R
+XRP           open      0.35%   -0.081R
+```
+
+**3 of 4 ahead.** Median +0.045R, total +0.294R marked to market.
+
+Nothing is settled yet and I am not going to pretend otherwise. Open positions are marked, not counted.
+
+WHAT SURVIVES THE FILTERS
+
+Three conditions, each traced to something measured rather than believed: liquid enough to fill, a sample of at least 12 independent episodes, and all five lookback windows agreeing on direction.
+
+```
+                            long    short
+signals on the board          40       30
+liquid enough to fill         36       23
+sample of 12+ episodes         6        5
+all 5 lookbacks agree          0        4
+```
+
+**40 long signals. 0 survive.** Second day running.
+
+They die at the sample step: only 6 longs on the whole board have an adequate sample, and none of those has all five windows behind it.
+
+WHAT WE DO
+
+**3 positions**, all short. Entry at the current price, stop and target from a **fixed rule** — 1.5 ATR stop, 2:1 target, 30 days — that I did not choose for these coins.
+
+That fixed geometry is the point. Optimising stop and target per pair keeps about a tenth of itself out of sample, so the shape of the trade is a rule here rather than a decision.
+
+```
+                entry         stop       target   size
+XRP             1.003        1.045       0.9181    237
+PEPE         0.000003     0.000003     0.000002    129
+SUI            0.6774       0.7121       0.6079    195
+```
+
+Size is the position on a 1000 account risking 1.00%. It is not the amount at risk — that is 10 on every line.
+
+**Declined:** XLM — full and recent windows disagree. It cleared every earlier filter and failed the last one.
+
+THE THREE WE FOLLOW
+
+$BTC, $BNB and $ICP get a line every edition whether or not they qualify, because people hold them and "it did not make the list" is an answer.
+
+```
+             price   range    vs VA    short
+BTC          63086   17.3%    below      3/5
+BNB         607.75   80.3%    above      1/5
+ICP          2.231   58.8%    above      4/5
+```
+
+**BTC** — the board stands aside: both directions lose recently. Price sits below its value area at 17.3% of its 30-day range, with the point of control at 63995.
+
+**BNB** — sample too thin — 5 independent episodes. It is the only one of the three whose lookbacks lean long, 4 of 5 of them — but it trades above its value area near the top of its range, and the sample is not there.
+
+**ICP** — sample too thin — 5 independent episodes. Worth noting what changed: **4 of its 5 lookbacks now lean short.** A reader asked me about it as a recovery candidate yesterday; the windows have moved the other way.
+
+No plan on any of the three today. Not a view about their future — a statement that they do not clear the same bar the 3 above did.
+
+THE RULES, SO YOU CAN HOLD ME TO THEM
+
+**Stop: 1.5 ATR.** Measured across 61 pairs; expectancy peaks there and decays either side.
+
+**Target: 2:1. Horizon: 30 days.** Fixed, never fitted per coin.
+
+**Minimum sample: 12 independent episodes.** Below that my own engine says thin, so I should not be trading it.
+
+**All five lookbacks must agree.** A direction that only pays measured one way is a property of the measurement.
+
+**Costs charged at 0.20% round trip**, every time, before anything is called an edge.
+
+If a day comes when those filters admit ten longs, I will post ten longs. Today they admit 3 shorts, and the honest version of that is that the market is offering very little.
+
+Bias: **selective short**, 3 positions, small.
+
+Board and every figure: maix8.study/signals
+
+Tomorrow, same two questions. Which of your own rules could you print in advance and be held to?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#TradingSignals #RiskManagement #Crypto

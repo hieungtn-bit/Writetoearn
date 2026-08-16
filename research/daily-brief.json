@@ -1,0 +1,399 @@
+{
+  "measuredAt": "2026-08-15T23:59:27.191Z",
+  "day": "2026-08-15",
+  "boardScannedAt": "2026-08-15T23:58:34.092Z",
+  "rules": {
+    "stopAtr": 1.5,
+    "rewardRatio": 2,
+    "horizonDays": 30,
+    "feePct": 0.2,
+    "minEffectiveN": 12,
+    "accountBase": 1000,
+    "riskPct": 1,
+    "riskPerTradeUsd": 10
+  },
+  "breadth": {
+    "pairs": 671,
+    "up": 314,
+    "down": 338,
+    "upSharePct": 46.79582712369598,
+    "medianChangePct": -0.01,
+    "upOver5": 37,
+    "downOver5": 112,
+    "downOver10": 71
+  },
+  "context": {
+    "btcDominancePct": 56.16631230946623,
+    "fearGreed": 34
+  },
+  "tally": {
+    "total": 77,
+    "LONG": 40,
+    "SHORT": 30,
+    "WAIT": 7,
+    "turning": 31,
+    "untradeable": 17
+  },
+  "funnel": {
+    "long": {
+      "total": 40,
+      "tradeable": 36,
+      "notThin": 6,
+      "unanimous": 0
+    },
+    "short": {
+      "total": 30,
+      "tradeable": 23,
+      "notThin": 5,
+      "unanimous": 4
+    }
+  },
+  "qualifying": 4,
+  "taken": [
+    {
+      "symbol": "XRPUSDT",
+      "direction": "short",
+      "entry": 1.0028,
+      "atrPct": 2.814003293082755,
+      "stopPct": 4.221004939624132,
+      "stop": 1.0451282375345508,
+      "target": 0.9181435249308983,
+      "positionUsd": 236.91040742753717,
+      "fullNetR": 0.04746327933923483,
+      "recentNetR": 0.10261791851449256,
+      "fullEffectiveN": 32.333333333333336,
+      "agreesAcrossWindows": true,
+      "feeR": 0.04738208148550743,
+      "bias": "SHORT",
+      "turnoverUsd": 55612673.18197068,
+      "boardEffectiveN": 17
+    },
+    {
+      "symbol": "PEPEUSDT",
+      "direction": "short",
+      "entry": 0.00000262,
+      "atrPct": 5.174050250392699,
+      "stopPct": 7.761075375589048,
+      "stop": 0.0000028233401748404333,
+      "target": 0.0000022133196503191336,
+      "positionUsd": 128.84812369498502,
+      "fullNetR": 0.03505511752904423,
+      "recentNetR": 0.03673037526100299,
+      "fullEffectiveN": 32.333333333333336,
+      "agreesAcrossWindows": true,
+      "feeR": 0.025769624738997007,
+      "bias": "SHORT",
+      "turnoverUsd": 13170992.340687271,
+      "boardEffectiveN": 17
+    },
+    {
+      "symbol": "SUIUSDT",
+      "direction": "short",
+      "entry": 0.6774,
+      "atrPct": 3.4177899935156484,
+      "stopPct": 5.126684990273473,
+      "stop": 0.7121281641241125,
+      "target": 0.607943671751775,
+      "positionUsd": 195.05782038436828,
+      "fullNetR": 0.03418431221178614,
+      "recentNetR": 0.09848843592312635,
+      "fullEffectiveN": 32.333333333333336,
+      "agreesAcrossWindows": true,
+      "feeR": 0.03901156407687366,
+      "bias": "SHORT",
+      "turnoverUsd": 12909642.69526667,
+      "boardEffectiveN": 17
+    }
+  ],
+  "declined": [
+    {
+      "symbol": "XLMUSDT",
+      "bias": "SHORT",
+      "fullNetR": 0.030671606680699966,
+      "reason": "full and recent windows disagree"
+    }
+  ],
+  "followed": {
+    "BTCUSDT": {
+      "price": 63086,
+      "atrPct": 2.0109102913330252,
+      "rsi14": 43.19906089278137,
+      "change7dPct": -2.8887390590893816,
+      "change30dPct": -1.1659057938091955,
+      "rangePosition30d": 17.32480266601158,
+      "range30": {
+        "low": 62275,
+        "high": 66956.15
+      },
+      "turnoverUsd": 854514772.5920819,
+      "medianWeekPct": 9.441061812677049,
+      "poc": 63995.322625,
+      "valueArea": [
+        63328.25875,
+        65317.7475
+      ],
+      "priceVsValueArea": "below",
+      "lookbacks": {
+        "180": {
+          "days": 180,
+          "long": "23/64",
+          "short": "22/64",
+          "leans": "long"
+        },
+        "270": {
+          "days": 270,
+          "long": "5/64",
+          "short": "62/64",
+          "leans": "short"
+        },
+        "365": {
+          "days": 365,
+          "long": "1/64",
+          "short": "63/64",
+          "leans": "short"
+        },
+        "540": {
+          "days": 540,
+          "long": "14/64",
+          "short": "52/64",
+          "leans": "short"
+        },
+        "730": {
+          "days": 730,
+          "long": "36/64",
+          "short": "15/64",
+          "leans": "long"
+        }
+      },
+      "leaningShort": 3,
+      "lookbackCount": 5,
+      "board": {
+        "bias": "WAIT",
+        "effectiveN": null,
+        "thin": null,
+        "agreeing": null,
+        "windows": null,
+        "turning": true
+      },
+      "verdict": {
+        "onBoard": true,
+        "reason": "the board stands aside: both directions lose recently"
+      },
+      "stopIfTaken": {
+        "atr": 1.5,
+        "pct": 3.016365436999538,
+        "shareOfMedianWeek": 0.31949430020141306
+      }
+    },
+    "BNBUSDT": {
+      "price": 607.75,
+      "atrPct": 2.0465643794984474,
+      "rsi14": 61.45741994599534,
+      "change7dPct": 1.1803682615789353,
+      "change30dPct": 6.166477421608866,
+      "rangePosition30d": 80.2955665024631,
+      "range30": {
+        "low": 555.59,
+        "high": 620.55
+      },
+      "turnoverUsd": 53208631.04359334,
+      "medianWeekPct": 10.577535253525362,
+      "poc": 571.018,
+      "valueArea": [
+        559.4876,
+        598.7884
+      ],
+      "priceVsValueArea": "above",
+      "lookbacks": {
+        "180": {
+          "days": 180,
+          "long": "48/64",
+          "short": "0/64",
+          "leans": "long"
+        },
+        "270": {
+          "days": 270,
+          "long": "4/64",
+          "short": "29/64",
+          "leans": "short"
+        },
+        "365": {
+          "days": 365,
+          "long": "27/64",
+          "short": "26/64",
+          "leans": "long"
+        },
+        "540": {
+          "days": 540,
+          "long": "60/64",
+          "short": "2/64",
+          "leans": "long"
+        },
+        "730": {
+          "days": 730,
+          "long": "58/64",
+          "short": "0/64",
+          "leans": "long"
+        }
+      },
+      "leaningShort": 1,
+      "lookbackCount": 5,
+      "board": {
+        "bias": "LONG",
+        "effectiveN": 5,
+        "thin": true,
+        "agreeing": 3,
+        "windows": 5,
+        "turning": false
+      },
+      "verdict": {
+        "onBoard": true,
+        "reason": "sample too thin — 5 independent episodes"
+      },
+      "stopIfTaken": {
+        "atr": 1.5,
+        "pct": 3.0698465692476713,
+        "shareOfMedianWeek": 0.2902232415840476
+      }
+    },
+    "ICPUSDT": {
+      "price": 2.231,
+      "atrPct": 4.318017012526999,
+      "rsi14": 55.313909792767774,
+      "change7dPct": 1.4090909090908952,
+      "change30dPct": 5.0871408384361585,
+      "rangePosition30d": 58.80893300248139,
+      "range30": {
+        "low": 1.994,
+        "high": 2.397
+      },
+      "turnoverUsd": 3062257.055977333,
+      "medianWeekPct": 21.793467554206508,
+      "poc": 2.1743425,
+      "valueArea": [
+        2.068555,
+        2.229755
+      ],
+      "priceVsValueArea": "above",
+      "lookbacks": {
+        "180": {
+          "days": 180,
+          "long": "61/64",
+          "short": "0/64",
+          "leans": "long"
+        },
+        "270": {
+          "days": 270,
+          "long": "16/64",
+          "short": "48/64",
+          "leans": "short"
+        },
+        "365": {
+          "days": 365,
+          "long": "3/64",
+          "short": "64/64",
+          "leans": "short"
+        },
+        "540": {
+          "days": 540,
+          "long": "1/64",
+          "short": "51/64",
+          "leans": "short"
+        },
+        "730": {
+          "days": 730,
+          "long": "1/64",
+          "short": "57/64",
+          "leans": "short"
+        }
+      },
+      "leaningShort": 4,
+      "lookbackCount": 5,
+      "board": {
+        "bias": "LONG",
+        "effectiveN": 5,
+        "thin": true,
+        "agreeing": 1,
+        "windows": 5,
+        "turning": true
+      },
+      "verdict": {
+        "onBoard": true,
+        "reason": "sample too thin — 5 independent episodes"
+      },
+      "stopIfTaken": {
+        "atr": 1.5,
+        "pct": 6.477025518790499,
+        "shareOfMedianWeek": 0.2972003194388551
+      }
+    }
+  },
+  "priorEdition": {
+    "day": "2026-08-14",
+    "measuredAt": "2026-08-14T21:03:11.704Z",
+    "positions": 4
+  },
+  "settled": [
+    {
+      "symbol": "ARBUSDT",
+      "direction": "short",
+      "entry": 0.0744,
+      "stop": 0.08004124097218412,
+      "target": 0.0631175180556317,
+      "status": "open",
+      "closedAt": null,
+      "lastPrice": 0.0728,
+      "movePct": -2.150537634408589,
+      "resultR": 0.2836255369854396,
+      "hoursHeld": 26.93748638888889
+    },
+    {
+      "symbol": "BONKUSDT",
+      "direction": "short",
+      "entry": 0.00000236,
+      "stop": 0.0000026521408896726555,
+      "target": 0.000001775718220654688,
+      "status": "open",
+      "closedAt": null,
+      "lastPrice": 0.00000234,
+      "movePct": -0.8474576271186307,
+      "resultR": 0.06846011875437807,
+      "hoursHeld": 26.93753611111111
+    },
+    {
+      "symbol": "SUIUSDT",
+      "direction": "short",
+      "entry": 0.6782,
+      "stop": 0.714226484441352,
+      "target": 0.6061470311172962,
+      "status": "open",
+      "closedAt": null,
+      "lastPrice": 0.6774,
+      "movePct": -0.11795930404010502,
+      "resultR": 0.022205885819981265,
+      "hoursHeld": 26.937585555555554
+    },
+    {
+      "symbol": "XRPUSDT",
+      "direction": "short",
+      "entry": 0.9992,
+      "stop": 1.0425293107514944,
+      "target": 0.9125413784970116,
+      "status": "open",
+      "closedAt": null,
+      "lastPrice": 1.0027,
+      "movePct": 0.35028022417933347,
+      "resultR": -0.08077672917700865,
+      "hoursHeld": 26.937635277777776
+    }
+  ],
+  "settledSummary": {
+    "positions": 4,
+    "stopped": 0,
+    "target": 0,
+    "open": 4,
+    "medianResultR": 0.045333002287179666,
+    "totalResultR": 0.2935148123827903,
+    "aheadCount": 3
+  }
+}
