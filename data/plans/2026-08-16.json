@@ -1,0 +1,52 @@
+{
+  "day": "2026-08-16",
+  "measuredAt": "2026-08-16T16:11:07.938Z",
+  "rules": {
+    "stopAtr": 1.5,
+    "rewardRatio": 2,
+    "horizonDays": 30,
+    "feePct": 0.2,
+    "minEffectiveN": 12,
+    "accountBase": 1000,
+    "riskPct": 1,
+    "riskPerTradeUsd": 10
+  },
+  "taken": [
+    {
+      "symbol": "SUIUSDT",
+      "direction": "short",
+      "entry": 0.6803,
+      "atrPct": 3.2472797968225686,
+      "stopPct": 4.870919695233853,
+      "stop": 0.7134368666866759,
+      "target": 0.6140262666266482,
+      "positionUsd": 205.30003830251815,
+      "fullNetR": 0.03213586862815617,
+      "recentNetR": 0.08393999233949637,
+      "fullEffectiveN": 32.333333333333336,
+      "agreesAcrossWindows": true,
+      "feeR": 0.04106000766050363,
+      "bias": "SHORT",
+      "turnoverUsd": 12343479.879869338,
+      "boardEffectiveN": 17
+    },
+    {
+      "symbol": "XRPUSDT",
+      "direction": "short",
+      "entry": 1.0016,
+      "atrPct": 2.6610617675964194,
+      "stopPct": 3.991592651394629,
+      "stop": 1.0415797919963687,
+      "target": 0.9216404160072629,
+      "positionUsd": 250.52656604390938,
+      "fullNetR": 0.02927613009018718,
+      "recentNetR": 0.08739468679121812,
+      "fullEffectiveN": 32.333333333333336,
+      "agreesAcrossWindows": true,
+      "feeR": 0.050105313208781886,
+      "bias": "SHORT",
+      "turnoverUsd": 53991279.85124633,
+      "boardEffectiveN": 17
+    }
+  ]
+}

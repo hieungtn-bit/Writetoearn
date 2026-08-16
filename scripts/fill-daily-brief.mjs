@@ -25,7 +25,8 @@ import { pct, price as fmtPrice } from "../src/format.mjs";
 
 const D = JSON.parse(readFileSync("research/daily-brief.json", "utf8"));
 const b = D.breadth, r = D.rules, f = D.funnel, t = D.tally;
-const s = D.settledSummary, st = D.selfTest;
+const s = D.settledSummary && D.settledSummary.positions ? D.settledSummary : null;
+const st = D.selfTest;
 
 const monotonic = (x) => x.total >= x.tradeable && x.tradeable >= x.notThin && x.notThin >= x.unanimous;
 
@@ -86,15 +87,34 @@ const followTable = Object.entries(D.followed).map(([sym, a]) => followRow(
   a.priceVsValueArea ?? "n/a", `${a.leaningShort}/${a.lookbackCount}`,
 )).join("\n");
 
+/**
+ * The opener depends on whether there is a previous edition.
+ *
+ * The first version of this file hardcoded "this is the first edition", which
+ * would have been false on the second day and is exactly the kind of sentence
+ * a reusable writer must not contain.
+ */
+const opener = D.priorEdition
+  ? `Same two questions as every edition, in the same order:
+
+**How is the market? And what do we do about it?**
+
+The rules underneath have not moved since the last one. When they change, that will be its own post with a measurement attached.`
+  : `This is the first edition of what I intend to run every day. Two questions, the same two, in the same order:
+
+**How is the market? And what do we do about it?**
+
+The rules underneath it do not move between editions. When they change, that will be its own post with a measurement attached.`;
+
+/** How the long side has fared across the editions on file, counted not recalled. */
+const longsSurviveToday = f.long.unanimous;
+const priorPositions = D.priorEdition ? D.priorEdition.positions : 0;
+
 const takenLine = D.taken.length
   ? `**${D.taken.length} position${D.taken.length > 1 ? "s" : ""}**, all ${D.taken[0].bias.toLowerCase()}`
   : "**nothing**";
 
-const text = `This is the first edition of what I intend to run every day. Two questions, the same two, in the same order:
-
-**How is the market? And what do we do about it?**
-
-The rules underneath it do not move between editions. When they change, that will be its own post with a measurement attached.
+const text = `${opener}
 
 HOW IS THE MARKET
 
@@ -108,7 +128,7 @@ My board scanned ${t.total} pairs: **${t.LONG} long, ${t.SHORT} short**, ${t.WAI
 
 FIRST, WHAT THE LAST SET DID
 
-${s ? `Four shorts were published yesterday. After ${Math.round(D.settled[0].hoursHeld)} hours, none has reached its stop or its target — which is what a 30-day plan should look like after one day.
+${s ? `${priorPositions} position${priorPositions === 1 ? "" : "s"} were published in the last edition (${D.priorEdition.day}). After ${Math.round(D.settled[0].hoursHeld)} hours, ${s.open === s.positions ? "none has reached its stop or its target — which is what a 30-day plan should look like this early" : `${s.target} reached target and ${s.stopped} were stopped`}.
 
 \`\`\`
 ${settleRow("", "status", "move", "result")}
@@ -128,9 +148,11 @@ ${row("", "long", "short", "")}
 ${funnelTable}
 \`\`\`
 
-**${f.long.total} long signals. ${f.long.unanimous} survive.** Second day running.
+**${f.long.total} long signals. ${longsSurviveToday} survive.**${longsSurviveToday === 0 ? " Again." : ""}
 
-They die at the sample step: only ${f.long.notThin} longs on the whole board have an adequate sample, and none of those has all five windows behind it.
+${longsSurviveToday === 0
+    ? `They die at the sample step: only ${f.long.notThin} longs on the whole board have an adequate sample, and none of those has all five windows behind it.`
+    : `${longsSurviveToday} cleared every filter, which has not happened often — the long side usually dies at the sample step, where only ${f.long.notThin} of ${f.long.tradeable} liquid longs have an adequate sample.`}
 
 WHAT WE DO
 
