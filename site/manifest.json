@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "numeraire",
+      "draft": "87-numeraire.txt",
+      "title": "Bitcoin Is Not a Call. It Is the Denominator.",
+      "description": "Someone asked me for BTC market data. Here it is, and then the part that actually matters.",
+      "published": "2026-08-16T21:31:01.667Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 356453013846562
+    },
+    {
       "slug": "persistence",
       "draft": "86-persistence.txt",
       "title": "Every Filter I Built Reads Past Direction. I Measured Whether It Continues.",
