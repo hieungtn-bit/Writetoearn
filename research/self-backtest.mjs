@@ -203,11 +203,22 @@ for (let k = lastIdx - LOOKBACK; k <= lastIdx - HORIZON; k += STEP) {
       takenSymbols: dayRows.algorithm.map((x) => `${x.symbol}:${x.direction}`),
       medianResultR: median(dayRows.algorithm.map((x) => x.resultR - x.feeR)),
     });
-    for (const k of Object.keys(strategies)) strategies[k].push(...dayRows[k]);
+    // Tagged with the rebalance so significance can be computed on months
+    // rather than on tickets. See the note on `tStatByDate` below.
+    for (const k of Object.keys(strategies)) {
+      strategies[k].push(...dayRows[k].map((r) => ({ ...r, date: dateLabel })));
+    }
   }
   process.stderr.write(`\r${dateLabel} · algorithm ${dayRows.algorithm.length} · board ${dayRows.boardOnly.length}   `);
 }
 process.stderr.write("\r");
+
+const tOf = (xs) => {
+  if (xs.length < 2) return null;
+  const m = xs.reduce((a, x) => a + x, 0) / xs.length;
+  const sd = Math.sqrt(xs.reduce((a, x) => a + (x - m) ** 2, 0) / (xs.length - 1));
+  return sd > 0 ? m / (sd / Math.sqrt(xs.length)) : null;
+};
 
 const summarise = (rows) => rows.length ? {
   trades: rows.length,
@@ -219,12 +230,24 @@ const summarise = (rows) => rows.length ? {
   totalNetR: rows.reduce((s, r) => s + r.resultR - r.feeR, 0),
   winSharePct: (rows.filter((r) => r.resultR - r.feeR > 0).length / rows.length) * 100,
   /** A crude t-like ratio: mean over standard error, to size the noise. */
-  tStat: (() => {
-    const xs = rows.map((r) => r.resultR - r.feeR);
-    const m = xs.reduce((a, x) => a + x, 0) / xs.length;
-    const sd = Math.sqrt(xs.reduce((a, x) => a + (x - m) ** 2, 0) / Math.max(1, xs.length - 1));
-    return sd > 0 ? m / (sd / Math.sqrt(xs.length)) : null;
+  tStat: tOf(rows.map((r) => r.resultR - r.feeR)),
+  /**
+   * The same ratio computed on one observation per rebalance date.
+   *
+   * `tStat` above treats four hundred tickets as four hundred independent
+   * bets. They are not: shorting sixty pairs on one morning is one bet on one
+   * month, sixty times over, and pooling them inflates the ratio by roughly
+   * the square root of the number of pairs. That is how always-short came to
+   * be reported at t = 4.94 on eleven rebalances. This is the honest one, and
+   * where the two disagree it is this one that is a claim about the world.
+   */
+  tStatByDate: (() => {
+    const perDate = {};
+    for (const r of rows) (perDate[r.date] ??= []).push(r.resultR - r.feeR);
+    const means = Object.values(perDate).map((xs) => xs.reduce((a, x) => a + x, 0) / xs.length);
+    return tOf(means);
   })(),
+  rebalances: new Set(rows.map((r) => r.date)).size,
 } : null;
 
 const results = Object.fromEntries(Object.entries(strategies).map(([k, v]) => [k, summarise(v)]));

@@ -204,11 +204,13 @@ WHAT THIS PIPELINE IS WORTH, AS OF TODAY
 
 This line appears in every edition, whichever way it moves.
 
-Walked forward across ${st.rebalances} non-overlapping rebalances, the pipeline that picked the positions above returned **${st.algorithmNetR >= 0 ? "+" : ""}${st.algorithmNetR.toFixed(4)}R** per trade on ${st.trades} trades, t = ${st.tStat.toFixed(2)}.
+Walked forward across ${st.rebalances} non-overlapping rebalances, the pipeline that picked the positions above returned **${st.algorithmNetR >= 0 ? "+" : ""}${st.algorithmNetR.toFixed(4)}R** per trade on ${st.trades} trades, t = ${st.algorithmTByDate.toFixed(2)}.
 
-Shorting every liquid pair over the same window, with no signal at all, returned ${st.alwaysShortNetR >= 0 ? "+" : ""}${st.alwaysShortNetR.toFixed(4)}R. **The pipeline does not beat it.**
+Shorting every liquid pair over the same window, with no signal at all, returned ${st.alwaysShortNetR >= 0 ? "+" : ""}${st.alwaysShortNetR.toFixed(4)}R at t = ${st.alwaysShortTByDate.toFixed(2)}. **The pipeline does not beat it — and that benchmark cannot be told from noise either.**
 
-Being long everything returned ${st.alwaysLongNetR.toFixed(4)}R, almost the exact mirror — so that gap is the window's drift rather than an edge either of us found. The full argument is in yesterday's post; the number belongs here, next to the picks, not filed somewhere a reader has to hunt for it.
+I have been quoting that comparison with an inflated number and it needs saying plainly: shorting sixty pairs on one morning is one bet on one month, sixty times over, so counting each ticket as an independent observation reported always-short at t = 5.69 when the figure computed per rebalance is ${st.alwaysShortTByDate.toFixed(2)}. Measured properly over ninety months rather than ${st.rebalances}, shorting alts outright pays nothing at all.
+
+Being long everything returned ${st.alwaysLongNetR.toFixed(4)}R, almost the exact mirror — so that gap is the window's drift rather than an edge either of us found.
 
 Bias: **selective short**, ${D.taken.length} position${D.taken.length > 1 ? "s" : ""}, small — and sized for a pipeline with no demonstrated edge.
 

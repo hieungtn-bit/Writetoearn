@@ -352,6 +352,17 @@ const out = {
     alwaysShortNetR: SELF_TEST.results.alwaysShort?.meanNetR ?? null,
     alwaysLongNetR: SELF_TEST.results.alwaysLong?.meanNetR ?? null,
     tStat: SELF_TEST.results.algorithm?.tStat ?? null,
+    /**
+     * Significance per rebalance, not per ticket.
+     *
+     * Sixty pairs shorted on one morning is one bet on one month, sixty times
+     * over. Pooling them reported always-short at t = 5.69 when the honest
+     * figure is 1.46 — so the benchmark this column has been measuring itself
+     * against is itself indistinguishable from noise, and the column has to
+     * say so rather than keep quoting the flattering comparison.
+     */
+    algorithmTByDate: SELF_TEST.results.algorithm?.tStatByDate ?? null,
+    alwaysShortTByDate: SELF_TEST.results.alwaysShort?.tStatByDate ?? null,
     beatsNoThinking: SELF_TEST.versusAlwaysShort?.algorithmBeatsIt ?? null,
   } : null,
   priorEdition: prior ? { day: prior.day, measuredAt: prior.measuredAt, positions: prior.taken.length } : null,

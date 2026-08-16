@@ -1,0 +1,323 @@
+{
+  "measuredAt": "2026-08-16T16:46:16.005Z",
+  "pairs": 73,
+  "numeraire": "BTCUSDT",
+  "firstDate": "2019-03-02",
+  "lastDate": "2026-08-16",
+  "rules": {
+    "horizonDays": 30,
+    "stopAtr": 1.5,
+    "rewardRatio": 2,
+    "feePct": 0.2,
+    "feePctRelative": 0.4,
+    "minTurnoverUsd": 2000000,
+    "relativeStopVolMultiple": 2.5
+  },
+  "caveats": {
+    "survivorship": "Universe is what trades liquidly today; delisted coins are absent and they died going down, so every short figure here is biased small.",
+    "relativeScoring": "The BTC-relative leg is scored on closes, not intraday path, because a ratio series has no honest high and low.",
+    "crossSectional": "Alts shorted against BTC on the same date move together. Significance is computed on the mean R per rebalance date; the pooled per-ticket t is reported only to show how far it inflates.",
+    "funding": "The relative trade is two perp legs in practice and funding is not observable from here (fapi is blocked). The fee sweep stands in for it."
+  },
+  "perYear": [
+    {
+      "year": "2019",
+      "pairsAlive": 12,
+      "rebalances": 9,
+      "medianDriftRawPct": -5.780461272186355,
+      "medianDriftRelPct": -10.732877513680005,
+      "shareNegativeRawPct": 58.03571428571429,
+      "shareNegativeRelPct": 68.31683168316832,
+      "shortRawR": -0.09452113766480405,
+      "longRawR": 0.1876339531032687,
+      "shortRelR": 0.6213603202682391,
+      "trades": 112
+    },
+    {
+      "year": "2020",
+      "pairsAlive": 24,
+      "rebalances": 7,
+      "medianDriftRawPct": 12.292161520190014,
+      "medianDriftRelPct": -3.5023912395118373,
+      "shareNegativeRawPct": 25.730994152046783,
+      "shareNegativeRelPct": 59.11949685534591,
+      "shortRawR": -0.3320368212313928,
+      "longRawR": 0.2716305873130337,
+      "shortRelR": 0.29737563232942366,
+      "trades": 171
+    },
+    {
+      "year": "2021",
+      "pairsAlive": 27,
+      "rebalances": 11,
+      "medianDriftRawPct": -2.400000000000002,
+      "medianDriftRelPct": 1.2828381998328364,
+      "shareNegativeRawPct": 54.09836065573771,
+      "shareNegativeRelPct": 48.80546075085324,
+      "shortRawR": -0.15902516582144754,
+      "longRawR": -0.04006060859908384,
+      "shortRelR": 0.007343169085366002,
+      "trades": 305
+    },
+    {
+      "year": "2022",
+      "pairsAlive": 29,
+      "rebalances": 11,
+      "medianDriftRawPct": -9.253731343283588,
+      "medianDriftRelPct": -2.41758370264179,
+      "shareNegativeRawPct": 70.09646302250803,
+      "shareNegativeRelPct": 58.19397993311036,
+      "shortRawR": 0.44310567598748674,
+      "longRawR": -0.30000554527156165,
+      "shortRelR": 0.25836214084038556,
+      "trades": 311
+    },
+    {
+      "year": "2023",
+      "pairsAlive": 34,
+      "rebalances": 9,
+      "medianDriftRawPct": 0.807600148490395,
+      "medianDriftRelPct": -6.0126740181530245,
+      "shareNegativeRawPct": 48.72611464968153,
+      "shareNegativeRelPct": 69.86754966887418,
+      "shortRawR": -0.23446696485664295,
+      "longRawR": 0.03806485512403469,
+      "shortRelR": 0.42073656584907043,
+      "trades": 314
+    },
+    {
+      "year": "2024",
+      "pairsAlive": 43,
+      "rebalances": 11,
+      "medianDriftRawPct": -4.2862332001452845,
+      "medianDriftRelPct": -8.021072632620596,
+      "shareNegativeRawPct": 57.0264765784114,
+      "shareNegativeRelPct": 64.85355648535564,
+      "shortRawR": -0.06151172888554349,
+      "longRawR": -0.006254612128058184,
+      "shortRelR": 0.32215471397822487,
+      "trades": 491
+    },
+    {
+      "year": "2025",
+      "pairsAlive": 65,
+      "rebalances": 8,
+      "medianDriftRawPct": -8.719500827293704,
+      "medianDriftRelPct": -8.365436133034699,
+      "shareNegativeRawPct": 67.11538461538461,
+      "shareNegativeRelPct": 69.29133858267717,
+      "shortRawR": 0.16993164712585723,
+      "longRawR": -0.23380153007640053,
+      "shortRelR": 0.5835451709833219,
+      "trades": 520
+    },
+    {
+      "year": "2026",
+      "pairsAlive": 65,
+      "rebalances": 4,
+      "medianDriftRawPct": -5.046775997527892,
+      "medianDriftRelPct": -4.296617993265256,
+      "shareNegativeRawPct": 62.5,
+      "shareNegativeRelPct": 61.278195488721806,
+      "shortRawR": 0.17674438255407024,
+      "longRawR": -0.2135935651260298,
+      "shortRelR": 0.08431160990469949,
+      "trades": 272
+    }
+  ],
+  "yearsMeasured": 8,
+  "rawNegativeYears": 6,
+  "relNegativeYears": 7,
+  "rawShortPositiveYears": 3,
+  "relShortPositiveYears": 8,
+  "pooled": {
+    "shortRawAlts": {
+      "trades": 2316,
+      "meanNetR": 0.0338509292141633,
+      "medianNetR": -1.010940422051818,
+      "winPct": 40.75993091537133,
+      "tStatPooled": 1.2349832197314452,
+      "months": 90,
+      "tStatByMonth": -0.31235618035529084,
+      "monthsPositivePct": 41.11111111111111,
+      "worstMonthR": -1.0288124445651536
+    },
+    "shortRawMajors": {
+      "trades": 180,
+      "meanNetR": -0.13247879744497956,
+      "medianNetR": -1.022400347238182,
+      "winPct": 32.22222222222222,
+      "tStatPooled": -1.3520527652790595,
+      "months": null,
+      "tStatByMonth": null,
+      "monthsPositivePct": null,
+      "worstMonthR": null
+    },
+    "shortRelAlts": {
+      "trades": 2405,
+      "meanNetR": 0.3282140684548286,
+      "medianNetR": 0.05017708211588095,
+      "winPct": 50.35343035343035,
+      "tStatPooled": 11.373200184184334,
+      "months": 90,
+      "tStatByMonth": 3.731777664545697,
+      "monthsPositivePct": 56.666666666666664,
+      "worstMonthR": -1.0835559343320527
+    }
+  },
+  "matched": {
+    "vsUsdt": {
+      "trades": 2404,
+      "months": 90,
+      "meanNetR": 0.07679792677248207,
+      "tStatByMonth": 0.7526422506596526,
+      "monthsPositivePct": 45.55555555555556,
+      "worstMonthR": -1.081546415125661
+    },
+    "vsBtc": {
+      "trades": 2405,
+      "months": 90,
+      "meanNetR": 0.3229654203173853,
+      "tStatByMonth": 3.731777664545697,
+      "monthsPositivePct": 56.666666666666664,
+      "worstMonthR": -1.0835559343320527
+    }
+  },
+  "sweep": [
+    {
+      "stopVolMultiple": 1.5,
+      "feePct": 0.4,
+      "trades": 2406,
+      "months": 90,
+      "meanNetR": 0.320718422802055,
+      "tStatByMonth": 3.5543242024848003,
+      "monthsPositivePct": 60
+    },
+    {
+      "stopVolMultiple": 1.5,
+      "feePct": 0.8,
+      "trades": 2406,
+      "months": 90,
+      "meanNetR": 0.19781510774148592,
+      "tStatByMonth": 2.197835997848341,
+      "monthsPositivePct": 55.55555555555556
+    },
+    {
+      "stopVolMultiple": 1.5,
+      "feePct": 1.6,
+      "trades": 2406,
+      "months": 90,
+      "meanNetR": -0.04799152237965231,
+      "tStatByMonth": -0.5322599283805015,
+      "monthsPositivePct": 45.55555555555556
+    },
+    {
+      "stopVolMultiple": 2,
+      "feePct": 0.4,
+      "trades": 2406,
+      "months": 90,
+      "meanNetR": 0.32378486684931745,
+      "tStatByMonth": 3.657581502215094,
+      "monthsPositivePct": 60
+    },
+    {
+      "stopVolMultiple": 2,
+      "feePct": 0.8,
+      "trades": 2406,
+      "months": 90,
+      "meanNetR": 0.2316073805538907,
+      "tStatByMonth": 2.626188877663389,
+      "monthsPositivePct": 58.88888888888889
+    },
+    {
+      "stopVolMultiple": 2,
+      "feePct": 1.6,
+      "trades": 2406,
+      "months": 90,
+      "meanNetR": 0.04725240796303712,
+      "tStatByMonth": 0.5376954562773059,
+      "monthsPositivePct": 53.333333333333336
+    },
+    {
+      "stopVolMultiple": 2.5,
+      "feePct": 0.4,
+      "trades": 2405,
+      "months": 90,
+      "meanNetR": 0.3229654203173853,
+      "tStatByMonth": 3.731777664545697,
+      "monthsPositivePct": 56.666666666666664
+    },
+    {
+      "stopVolMultiple": 2.5,
+      "feePct": 0.8,
+      "trades": 2405,
+      "months": 90,
+      "meanNetR": 0.24921482041463458,
+      "tStatByMonth": 2.885837568480232,
+      "monthsPositivePct": 55.55555555555556
+    },
+    {
+      "stopVolMultiple": 2.5,
+      "feePct": 1.6,
+      "trades": 2405,
+      "months": 90,
+      "meanNetR": 0.101713620609133,
+      "tStatByMonth": 1.1797548371980955,
+      "monthsPositivePct": 51.11111111111111
+    },
+    {
+      "stopVolMultiple": 3,
+      "feePct": 0.4,
+      "trades": 2403,
+      "months": 90,
+      "meanNetR": 0.31528325888856285,
+      "tStatByMonth": 3.7090307111189893,
+      "monthsPositivePct": 57.77777777777777
+    },
+    {
+      "stopVolMultiple": 3,
+      "feePct": 0.8,
+      "trades": 2403,
+      "months": 90,
+      "meanNetR": 0.2537991360262391,
+      "tStatByMonth": 2.9920606766952162,
+      "monthsPositivePct": 54.44444444444444
+    },
+    {
+      "stopVolMultiple": 3,
+      "feePct": 1.6,
+      "trades": 2403,
+      "months": 90,
+      "meanNetR": 0.13083089030159162,
+      "tStatByMonth": 1.545967528624,
+      "monthsPositivePct": 54.44444444444444
+    },
+    {
+      "stopVolMultiple": 4,
+      "feePct": 0.4,
+      "trades": 2398,
+      "months": 90,
+      "meanNetR": 0.27026443866919087,
+      "tStatByMonth": 3.4624364960345124,
+      "monthsPositivePct": 60
+    },
+    {
+      "stopVolMultiple": 4,
+      "feePct": 0.8,
+      "trades": 2398,
+      "months": 90,
+      "meanNetR": 0.22410846779696098,
+      "tStatByMonth": 2.8775935309939733,
+      "monthsPositivePct": 57.77777777777777
+    },
+    {
+      "stopVolMultiple": 4,
+      "feePct": 1.6,
+      "trades": 2398,
+      "months": 90,
+      "meanNetR": 0.1317965260525012,
+      "tStatByMonth": 1.6977845310116537,
+      "monthsPositivePct": 54.44444444444444
+    }
+  ]
+}

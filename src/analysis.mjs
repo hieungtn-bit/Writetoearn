@@ -20,14 +20,23 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
  * so a transient failure here is expected rather than exceptional. An
  * unattended slot run that gives up on the first 503 silently loses the post.
  */
-export async function fetchKlines(symbol, { interval = "1d", limit = 200, fetchImpl = globalThis.fetch } = {}) {
+export async function fetchKlines(
+  symbol,
+  { interval = "1d", limit = 200, startTime, endTime, fetchImpl = globalThis.fetch } = {},
+) {
   let lastError;
+
+  // The endpoint returns at most 1000 rows per call, so anything reaching
+  // further back has to page. Callers that page supply an explicit window;
+  // omitting both keeps the original "most recent N" behaviour untouched.
+  const window = `${startTime == null ? "" : `&startTime=${startTime}`}`
+    + `${endTime == null ? "" : `&endTime=${endTime}`}`;
 
   for (let attempt = 0; attempt <= RETRY_DELAYS_MS.length; attempt++) {
     if (attempt) await sleep(RETRY_DELAYS_MS[attempt - 1]);
     try {
       const res = await fetchImpl(
-        `${SPOT_BASE}/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`,
+        `${SPOT_BASE}/klines?symbol=${symbol}&interval=${interval}&limit=${limit}${window}`,
         { signal: AbortSignal.timeout(TIMEOUT_MS) },
       );
       if (!res.ok) throw new Error(`klines ${symbol} ${interval}: HTTP ${res.status}`);
