@@ -30,9 +30,21 @@ test("platform furniture is stripped, argument is kept", () => {
 
 test("an X thread stays inside the character limit and ends with the link", () => {
   const thread = toXThread(post, { url: meta.url });
-  for (const p of thread) assert.ok(p.length <= 320, `post too long: ${p.length}`);
+  for (const p of thread) assert.ok(p.length <= 280, `post too long: ${p.length}`);
   assert.match(thread.at(-1), /example\.test\/a-post/);
   assert.match(thread[0], /1\/\d/, "posts are numbered");
+});
+
+/**
+ * The counter is part of the post, and for a while it was not part of the
+ * budget: a paragraph measured at exactly 280 shipped as 285 once "4/6" was
+ * appended. The limit has to hold on the string that actually gets posted.
+ */
+test("the n/N counter is counted against the limit, not added after it", () => {
+  const exact = `Opening line with a 1 in it.\n\n${"a".repeat(272)} 9.9%.`;
+  for (const p of toXThread(exact, { url: meta.url })) {
+    assert.ok(p.length <= 280, `emitted post too long: ${p.length}`);
+  }
 });
 
 test("a long post is still cut to the thread ceiling", () => {

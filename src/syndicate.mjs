@@ -58,23 +58,37 @@ export function toXThread(text, { url, maxPosts = 6 } = {}) {
   const table = codeBlocks(text)[0];
   const posts = [];
 
+  /**
+   * The "4/6" counter is part of the post, so it has to be part of the budget.
+   *
+   * Measuring the body against 280 and *then* appending the counter shipped a
+   * 285-character tweet — the limit was enforced against a string that was
+   * never the one posted. Everything below budgets against the emitted text.
+   */
+  const counter = (i, n) => `\n\n${i + 1}/${n}`;
+  const BUDGET = HARD_LIMITS.x - counter(maxPosts - 1, maxPosts).length;
+
   const opener = paras[0] ?? "";
-  posts.push(opener.length <= HARD_LIMITS.x ? opener : `${opener.slice(0, HARD_LIMITS.x - 1)}…`);
+  posts.push(opener.length <= BUDGET ? opener : `${opener.slice(0, BUDGET - 1)}…`);
 
   // The strongest supporting paragraphs: the ones carrying figures.
   const withNumbers = paras.slice(1).filter((p) => /\d/.test(p));
   for (const p of withNumbers) {
     if (posts.length >= maxPosts - 1) break;
-    if (p.length <= HARD_LIMITS.x) posts.push(p);
+    if (p.length <= BUDGET) posts.push(p);
   }
 
   if (table && posts.length < maxPosts - 1) {
     const block = table.split("\n").slice(0, 7).join("\n");
-    if (block.length <= HARD_LIMITS.x - 20) posts.push(block);
+    if (block.length <= BUDGET - 20) posts.push(block);
   }
 
   posts.push(`Every figure traces to a published snapshot. Full post and the data behind it:\n${url}`);
-  return posts.slice(0, maxPosts).map((body, i, all) => `${body}\n\n${i + 1}/${all.length}`);
+  return posts.slice(0, maxPosts).map((body, i, all) => {
+    const suffix = counter(i, all.length);
+    const room = HARD_LIMITS.x - suffix.length;
+    return (body.length <= room ? body : `${body.slice(0, room - 1)}…`) + suffix;
+  });
 }
 
 /** Telegram takes the whole thing; it only needs the furniture swapped. */

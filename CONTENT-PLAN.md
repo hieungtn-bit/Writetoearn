@@ -133,12 +133,19 @@ until something appeared.
 
 Each of these has data on disk or a defined test. None needs a new idea.
 
-1. **The filters select for consistency, not persistence.** The failure the
-   walk-forward exposed. This is the most important unwritten piece.
-2. **How to check a gainers list in thirty seconds.** Six names, the checkable
+1. ~~**The filters select for consistency, not persistence.**~~ **Done** —
+   `research/persistence.mjs`, published as post 86. Direction persistence
+   measured 50.70% at a month and sits inside one standard error of a coin toss
+   at every horizon tested. The unanimous cut beats what it rejects by 0.18R at
+   t = 1.01: pointing the right way, indistinguishable from luck. Re-measured
+   **monthly**, not weekly — a base rate over 45,445 pair-days does not move in
+   seven days, and re-running a stable number until it wobbles somewhere
+   flattering is its own kind of cheating.
+2. **The 760-candle constraint.** Promoted: post 86 measured it in passing —
+   only 223 of 389 board rows ever had five windows to agree, so the filter the
+   desk leans on hardest is silently unavailable on most of the market. Next.
+3. **How to check a gainers list in thirty seconds.** Six names, the checkable
    ones wrong — teaches the reader the method rather than scoring a point.
-3. **The 760-candle constraint.** The five-window filter cannot be evaluated on
-   anything younger than two years, which quietly excludes most of the market.
 4. **Gold.** PAXG/XAUT are on the exchange; nothing here has ever tested them.
 5. **Fee arithmetic as a first-class idea.** `feeR = 0.2 / stopPct` decided four
    separate findings this week and has never had its own piece.

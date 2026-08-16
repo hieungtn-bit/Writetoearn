@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-08-16T16:11:56.741Z",
+  "generatedAt": "2026-08-16T16:27:29.311Z",
   "summary": {
     "scored": 39,
     "biasCorrect": 22,
     "biasTotal": 39,
     "biasPct": 56.41025641025641,
     "supportHeld": "3/3",
-    "pending": 7,
+    "pending": 8,
     "unscoreable": 5,
-    "publishedTotal": 51
+    "publishedTotal": 52
   },
   "backtest": {
     "measuredAt": "2026-08-16T00:09:59.255Z",
@@ -576,5 +576,5 @@
       ]
     }
   ],
-  "snapshots": 53
+  "snapshots": 54
 }

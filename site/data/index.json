@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T16:11:56.741Z",
+  "generatedAt": "2026-08-16T16:27:29.310Z",
   "note": "Every figure published on this site traces to one of these snapshots.",
   "snapshots": [
     {
@@ -145,6 +145,10 @@
     {
       "file": "overhead-test.json",
       "url": "/data/overhead-test.json"
+    },
+    {
+      "file": "persistence.json",
+      "url": "/data/persistence.json"
     },
     {
       "file": "pipeline-v3-check.json",

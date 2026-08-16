@@ -1,0 +1,69 @@
+<!doctype html><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#0b0e11}
+  svg{display:block}
+  text{font-family:"DejaVu Sans",system-ui,sans-serif;fill:#e8eaed}
+  .kicker{font-size:19px;letter-spacing:3.5px;fill:#f0b90b;font-weight:700}
+  .title{font-size:40px;font-weight:800;letter-spacing:-0.5px}
+  .sub{font-size:17px;fill:#9aa3ad}
+  .lab{font-size:18px;font-weight:800}
+  .note{font-size:13px;fill:#8b949e}
+  .val{font-size:21px;font-weight:800}
+  .axis{font-size:14px;fill:#8b949e}
+  .axisstrong{font-size:15px;font-weight:700;fill:#9aa3ad}
+  .stat{font-size:22px;font-weight:700}
+  .statlab{font-size:15px;fill:#8b949e}
+  .mark{font-size:17px;font-weight:700;fill:#f0b90b;letter-spacing:1px}
+</style>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0b0e11"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#c98500"/>
+
+  <text x="64" y="56" class="kicker">DOES DIRECTION PERSIST?</text>
+  <text x="1136" y="56" text-anchor="end" class="mark">MAIX8</text>
+
+  <text x="64" y="118" class="title">Every filter I built reads past</text>
+  <text x="64" y="164" class="title">direction. It continues 50.70%.</text>
+  <text x="64" y="200" class="sub">Sign of the trailing return vs the next one · 61 liquid pairs · box is one standard error, de-overlapped</text>
+  <text x="64" y="226" class="sub">Not one horizon leaves its own error bar.</text>
+
+  <line x1="64" x2="1136" y1="368" y2="368"
+        stroke="#9aa3ad" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="1136" y="354" text-anchor="end" class="axisstrong">50% — a coin toss</text>
+
+  
+  <rect x="204" y="341.87599779417536" width="108" height="52.248004411649276" rx="4"
+        fill="#39414b" fill-opacity="0.55"/>
+  <line x1="204" x2="312" y1="341.87599779417536" y2="341.87599779417536" stroke="#39414b" stroke-width="1.5"/>
+  <line x1="204" x2="312" y1="394.12400220582464" y2="394.12400220582464" stroke="#39414b" stroke-width="1.5"/>
+  <circle cx="258" cy="384.09395154544035" r="10" fill="#e8eaed" stroke="#0b0e11" stroke-width="2"/>
+  <text x="258" y="325.87599779417536" text-anchor="middle" class="val">49.55%</text>
+  <text x="258" y="497.6831021645293" text-anchor="middle" class="lab">10 days</text>
+  <text x="258" y="519.6831021645294" text-anchor="middle" class="note">4,782 independent</text>
+  <rect x="524" y="321.5865441115573" width="108" height="92.82691177688537" rx="4"
+        fill="#39414b" fill-opacity="0.55"/>
+  <line x1="524" x2="632" y1="321.5865441115573" y2="321.5865441115573" stroke="#39414b" stroke-width="1.5"/>
+  <line x1="524" x2="632" y1="414.4134558884427" y2="414.4134558884427" stroke="#39414b" stroke-width="1.5"/>
+  <circle cx="578" cy="342.8380708335849" r="10" fill="#e8eaed" stroke="#0b0e11" stroke-width="2"/>
+  <text x="578" y="305.5865441115573" text-anchor="middle" class="val">50.70%</text>
+  <text x="578" y="497.6831021645293" text-anchor="middle" class="lab">30 days</text>
+  <text x="578" y="519.6831021645294" text-anchor="middle" class="note">1,515 independent</text>
+  <rect x="844" y="280.3168978354707" width="108" height="175.36620432905863" rx="4"
+        fill="#39414b" fill-opacity="0.55"/>
+  <line x1="844" x2="952" y1="280.3168978354707" y2="280.3168978354707" stroke="#39414b" stroke-width="1.5"/>
+  <line x1="844" x2="952" y1="455.6831021645293" y2="455.6831021645293" stroke="#39414b" stroke-width="1.5"/>
+  <circle cx="898" cy="346.4360749873332" r="10" fill="#e8eaed" stroke="#0b0e11" stroke-width="2"/>
+  <text x="898" y="264.3168978354707" text-anchor="middle" class="val">50.60%</text>
+  <text x="898" y="497.6831021645293" text-anchor="middle" class="lab">90 days</text>
+  <text x="898" y="519.6831021645294" text-anchor="middle" class="note">424 independent</text>
+
+  <line x1="64" x2="1136" y1="546" y2="546" stroke="#252a31" stroke-width="1"/>
+  <text x="64" y="582" class="stat">+0.0045R</text>
+  <text x="64" y="604" class="statlab">All my filters, over the sign of last month</text>
+
+  <text x="560" y="582" class="stat">12.7x</text>
+  <text x="560" y="604" class="statlab">Run-to-run wobble in that number</text>
+
+  <text x="1136" y="582" text-anchor="end" class="stat">t = 1.06</text>
+  <text x="1136" y="604" text-anchor="end" class="statlab">The one filter still standing</text>
+</svg>
