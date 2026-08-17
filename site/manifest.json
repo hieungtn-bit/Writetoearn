@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "brief-2026-08-17",
+      "draft": "brief-2026-08-17.txt",
+      "title": "How Is the Market? What Do We Do? — 17 August",
+      "description": "Same two questions as every edition, in the same order:",
+      "published": "2026-08-17T05:06:51.442Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 356565038586417
+    },
+    {
       "slug": "numeraire",
       "draft": "87-numeraire.txt",
       "title": "Bitcoin Is Not a Call. It Is the Denominator.",
