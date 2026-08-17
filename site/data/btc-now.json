@@ -1,63 +1,63 @@
 {
-  "measuredAt": "2026-08-16T21:23:20.989Z",
+  "measuredAt": "2026-08-17T04:48:06.671Z",
   "symbol": "BTCUSDT",
-  "price": 63054,
+  "price": 63515,
   "spans": [
     {
       "days": 7,
-      "high": 65391.14,
+      "high": 64515.43,
       "low": 62535.24,
-      "positionPct": 18.16450155817787,
-      "changePct": -2.846756142646115,
-      "fromHighPct": -3.5740927593554717,
-      "fromLowPct": 0.8295482675048534
+      "positionPct": 49.478080386225606,
+      "changePct": -0.7112864293752682,
+      "fromHighPct": -1.550683301653574,
+      "fromLowPct": 1.566732613483217
     },
     {
       "days": 30,
       "high": 66956.15,
       "low": 62275,
-      "positionPct": 16.64120995909127,
-      "changePct": -1.372825080277112,
-      "fromHighPct": -5.8279187199383395,
-      "fromLowPct": 1.250903251706142
+      "positionPct": 26.48921739316197,
+      "changePct": -2.0347436947253605,
+      "fromHighPct": -5.139408403858338,
+      "fromLowPct": 1.9911682055399438
     },
     {
       "days": 90,
       "high": 78200,
       "low": 57800.19,
-      "positionPct": 25.754210455881687,
-      "changePct": -18.11368761386086,
-      "fromHighPct": -19.36828644501279,
-      "fromLowPct": 9.08960679887038
+      "positionPct": 28.014035424839733,
+      "changePct": -17.33516098787053,
+      "fromHighPct": -18.778772378516624,
+      "fromLowPct": 9.887182031754563
     },
     {
       "days": 365,
       "high": 126199.63,
       "low": 57800.19,
-      "positionPct": 7.681071657896611,
-      "changePct": -46.282462545363096,
-      "fromHighPct": -50.036303592966156,
-      "fromLowPct": 9.08960679887038
+      "positionPct": 8.355053784066065,
+      "changePct": -45.90094579439157,
+      "fromHighPct": -49.67100933655669,
+      "fromLowPct": 9.887182031754563
     }
   ],
   "volatility": {
-    "atrPct": 1.9159753389470906,
-    "stopAt15AtrPct": 2.873963008420636,
-    "realizedVol30Pct": 21.91961436551571,
-    "realizedVol90Pct": 33.67388957059485
+    "atrPct": 1.8795353212400228,
+    "stopAt15AtrPct": 2.819302981860034,
+    "realizedVol30Pct": 21.627386894428252,
+    "realizedVol90Pct": 33.758680333164655
   },
   "momentum": {
-    "rsi14": 42.981881588348266
+    "rsi14": 47.31894152965404
   },
   "profile": {
     "pointOfControl": 63995.322625,
-    "overheadPct": 91.96742664917198,
-    "valueAreaLow": 63375.07025,
+    "overheadPct": 79.6853866520862,
+    "valueAreaLow": 63351.6645,
     "valueAreaHigh": 65341.153249999996,
-    "priceVsValueArea": "below",
+    "priceVsValueArea": "inside",
     "hoursCovered": 720
   },
-  "turnoverUsd": 795134944.432974,
+  "turnoverUsd": 785865439.1180354,
   "engine": {
     "bias": "WAIT",
     "reason": "both directions lose over the recent window",
@@ -70,11 +70,11 @@
   "funding": {
     "live": {
       "venue": "OKX perpetual swaps",
-      "nextRatePct": 0.00924192520305,
-      "latestSettledPct": 0.00656875428578,
-      "latestSettledTime": "2026-08-16T16:00:00.000Z",
-      "annualised7dPct": 8.609879044782497,
-      "annualisedWindowPct": 4.863958324658207,
+      "nextRatePct": 0.0072618167835299995,
+      "latestSettledPct": 0.01,
+      "latestSettledTime": "2026-08-17T00:00:00.000Z",
+      "annualised7dPct": 8.650472828067231,
+      "annualisedWindowPct": 4.939371289506842,
       "windowDays": 30,
       "negativeSharePct": 10
     },
@@ -107,72 +107,72 @@
     }
   },
   "asNumeraire": {
-    "altsMeasured": 45,
-    "beatingBtc30d": 25,
-    "beatingBtc90d": 27,
-    "medianAltVsBtc30dPct": 3.56902585346619,
-    "medianAltVsBtc90dPct": 7.331031878196259,
+    "altsMeasured": 43,
+    "beatingBtc30d": 26,
+    "beatingBtc90d": 28,
+    "medianAltVsBtc30dPct": 4.082217417742373,
+    "medianAltVsBtc90dPct": 12.756375814792452,
     "strongest": [
       {
         "symbol": "TUTUSDT",
-        "vs30dPct": 152.7539693551984,
-        "vs90dPct": 263.9411406267814
+        "vs30dPct": 226.01994712456528,
+        "vs90dPct": 369.2552426699491
       },
       {
         "symbol": "ACEUSDT",
-        "vs30dPct": 102.7838677958575,
-        "vs90dPct": 37.79264860278491
-      },
-      {
-        "symbol": "PUMPUSDT",
-        "vs30dPct": 71.00985308013517,
-        "vs90dPct": 96.94786447508723
+        "vs30dPct": 167.40620602867432,
+        "vs90dPct": 72.38284342281351
       },
       {
         "symbol": "BICOUSDT",
-        "vs30dPct": 68.33937393975265,
-        "vs90dPct": 20.626214078910877
+        "vs30dPct": 78.57837013416487,
+        "vs90dPct": 19.16338946953755
       },
       {
         "symbol": "PORTALUSDT",
-        "vs30dPct": 56.32420295190299,
-        "vs90dPct": 134.59993814825384
+        "vs30dPct": 76.10882931861862,
+        "vs90dPct": 166.9938776983679
+      },
+      {
+        "symbol": "PUMPUSDT",
+        "vs30dPct": 76.10281043549685,
+        "vs90dPct": 106.95535167437757
       }
     ],
     "weakest": [
       {
         "symbol": "KAITOUSDT",
-        "vs30dPct": -59.426842702664004,
-        "vs90dPct": -12.684712703707145
+        "vs30dPct": -56.6709874411925,
+        "vs90dPct": -6.289374101327761
       },
       {
         "symbol": "ALLOUSDT",
-        "vs30dPct": -31.79088083230246,
-        "vs90dPct": 292.90948545139366
+        "vs30dPct": -38.9216845952297,
+        "vs90dPct": 285.3874095249363
       },
       {
         "symbol": "币安人生USDT",
-        "vs30dPct": -31.105296299590503,
-        "vs90dPct": 26.891883847974853
+        "vs30dPct": -29.282203270701203,
+        "vs90dPct": 38.29751303325357
       },
       {
         "symbol": "FETUSDT",
-        "vs30dPct": -22.12845202196695,
-        "vs90dPct": -22.768388336707545
+        "vs30dPct": -20.899962783463387,
+        "vs90dPct": -21.3788250654948
       },
       {
         "symbol": "NEARUSDT",
-        "vs30dPct": -15.761034680548036,
-        "vs90dPct": 20.242894042557324
+        "vs30dPct": -13.87911774480165,
+        "vs90dPct": 23.084755800506397
       }
     ]
   },
   "standing": {
     "directionPersistence30dPct": 50.696446253713276,
     "persistenceZ": 0.5421257410112558,
-    "shortAltsVsBtcAfterFundingR": 0.2805655985160791,
-    "shortAltsVsBtcT": 3.1465360044457156,
-    "shortAltsVsUsdtR": 0.07870492308065279,
-    "shortAltsVsUsdtT": 0.7810015806923288
+    "shortAltsVsBtcAfterFundingR": 0.2865687972211002,
+    "shortAltsVsBtcT": 3.242542978991708,
+    "shortAltsVsUsdtR": 0.08074561956266527,
+    "shortAltsVsUsdtT": 0.8025823004210338
   }
 }

@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-08-16T21:31:10.097Z",
+  "generatedAt": "2026-08-17T05:07:00.151Z",
   "summary": {
     "scored": 39,
     "biasCorrect": 22,
     "biasTotal": 39,
     "biasPct": 56.41025641025641,
     "supportHeld": "3/3",
-    "pending": 9,
+    "pending": 10,
     "unscoreable": 5,
-    "publishedTotal": 53
+    "publishedTotal": 54
   },
   "backtest": {
     "measuredAt": "2026-08-16T16:47:42.728Z",
@@ -574,7 +574,41 @@
           "target": 0.9216404160072629
         }
       ]
+    },
+    {
+      "day": "2026-08-17",
+      "measuredAt": "2026-08-17T04:47:27.754Z",
+      "positions": [
+        {
+          "symbol": "ARBUSDT",
+          "direction": "short",
+          "entry": 0.075,
+          "stop": 0.08034897151766035,
+          "target": 0.06430205696467932
+        },
+        {
+          "symbol": "DASHUSDT",
+          "direction": "short",
+          "entry": 30.36,
+          "stop": 32.040855056644595,
+          "target": 26.998289886710804
+        },
+        {
+          "symbol": "SUIUSDT",
+          "direction": "short",
+          "entry": 0.678,
+          "stop": 0.7107651006988521,
+          "target": 0.6124697986022958
+        },
+        {
+          "symbol": "XRPUSDT",
+          "direction": "short",
+          "entry": 1.0019,
+          "stop": 1.0415297048129546,
+          "target": 0.9226405903740911
+        }
+      ]
     }
   ],
-  "snapshots": 56
+  "snapshots": 57
 }
