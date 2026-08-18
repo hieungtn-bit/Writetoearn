@@ -9,8 +9,8 @@
  * That was half wrong, and this file is the correction. Crowding leaves
  * fingerprints that are observable *now*: if everyone has piled into the same
  * short, the alt perpetuals carry more open interest, their funding turns
- * negative against BTC's, and the account ratios lean long against a short
- * crowd. None of that requires waiting.
+ * negative against BTC's, and the share of accounts sitting short the alts
+ * rises. None of that requires waiting.
  *
  * The futures API is geo-blocked here, but the public archive publishes daily
  * metrics files per symbol — open interest, the global account long/short ratio,
@@ -207,12 +207,16 @@ const weekly = Object.keys(byDate).sort().map((date) => {
     altAccountLongShort: medAccount,
     btcAccountLongShort: btc.accountLongShort,
     /**
-     * The crowding reading.
+     * The crowding reading, and I had its sign backwards on the first pass.
      *
-     * A short crowd shows up as retail accounts leaning *long* against them —
-     * the account ratio counts accounts, and the crowded professional short
-     * sits opposite a mass of small longs. So a high alt ratio relative to
-     * BTC's is the fingerprint of a crowded alt short.
+     * The account ratio counts accounts long against accounts short. If the
+     * "alts bleed against BTC" trade becomes popular, more accounts sit short
+     * the alts, and the ratio *falls*. A falling alt ratio relative to BTC's is
+     * therefore the fingerprint of a crowded alt short — not a rising one.
+     *
+     * The arithmetic below never depended on which way I read it; only the
+     * interpretation did, which is exactly the kind of error that survives a
+     * passing test suite and ends up in a published sentence.
      */
     accountRatioVsBtc: medAccount / btc.accountLongShort,
     topTraderVsBtc: medTop / btc.topTraderLongShort,
