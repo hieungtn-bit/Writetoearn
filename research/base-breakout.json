@@ -1,6 +1,8 @@
 {
-  "measuredAt": "2026-08-17T16:11:34.380Z",
+  "measuredAt": "2026-08-18T05:19:16.990Z",
   "universePinnedToCache": true,
+  "historyFrom": "2019-01-01",
+  "historyFromYear": 2019,
   "pairs": 76,
   "rules": {
     "baseDays": 20,
@@ -61,6 +63,11 @@
   "randomBaseline": {
     "method": "Same symbol and same calendar month as each real setup, same liquidity floor, same management and same stop bounds. Only the entry rule differs.",
     "unmatchedSetups": 27
+  },
+  "derived": {
+    "entryRuleValueR": -0.06352251892905003,
+    "medianAdvantageR": 0.4209723292512712,
+    "winRateAdvantagePct": 7.6098901098901095
   },
   "gateSweep": [
     {

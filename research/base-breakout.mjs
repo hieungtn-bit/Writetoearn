@@ -286,9 +286,28 @@ for (const baseDays of [10, 15, 20, 25]) {
   }
 }
 
+/**
+ * Figures the write-up needs that are arithmetic on the figures above.
+ *
+ * They live in the snapshot rather than in a sentence because the publishing
+ * gate only clears a number it can find in a committed file, and a figure
+ * computed in prose is a figure nobody can re-derive.
+ */
+const spec = describe(passed);
+const ctrl = describe(randomRows);
+const derived = spec && ctrl ? {
+  entryRuleValueR: spec.meanR - ctrl.meanR,
+  medianAdvantageR: spec.medianR - ctrl.medianR,
+  winRateAdvantagePct: spec.winPct - ctrl.winPct,
+} : null;
+
+const firstDate = dayOf(series.reduce((a, b) => (a.daily[0].openTime <= b.daily[0].openTime ? a : b)).daily[0]);
+
 const out = {
   measuredAt: new Date().toISOString(),
   universePinnedToCache: true,
+  historyFrom: firstDate,
+  historyFromYear: Number(firstDate.slice(0, 4)),
   pairs: series.length - 1,
   rules: RULES,
   approximation: "Daily candles. The spec's 4H confirmation and 8-12 candle time-stop are implemented as 2 days, and within any bar the stop is checked before the targets.",
@@ -299,6 +318,7 @@ const out = {
     method: "Same symbol and same calendar month as each real setup, same liquidity floor, same management and same stop bounds. Only the entry rule differs.",
     unmatchedSetups: unmatched,
   },
+  derived,
   gateSweep,
   sensitivity,
   totalSetupsFound: all.length,
