@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "selection",
+      "draft": "88-selection.txt",
+      "title": "Shorting Alts Against BTC Works. Picking Which Ones Does Not.",
+      "description": "Almost every question this desk gets is a watchlist request wearing different clothes. Which tokens to watch. Deep dive on these five. What is your pick.",
+      "published": "2026-08-18T05:17:59.895Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 356921670934001
+    },
+    {
       "slug": "brief-2026-08-18",
       "draft": "brief-2026-08-18.txt",
       "title": "How Is the Market? What Do We Do? — 18 August",
