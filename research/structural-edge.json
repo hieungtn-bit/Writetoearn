@@ -1,5 +1,5 @@
 {
-  "measuredAt": "2026-08-16T21:29:15.222Z",
+  "measuredAt": "2026-08-18T05:41:36.620Z",
   "universePinnedToCache": true,
   "pairs": 81,
   "numeraire": "BTCUSDT",
@@ -209,6 +209,548 @@
       "worstMonthR": -1.0791253656197117
     }
   },
+  "monthlySeries": [
+    {
+      "date": "2019-03-02",
+      "positions": 8,
+      "vsBtcR": -0.5424129708914902,
+      "afterFundingR": null
+    },
+    {
+      "date": "2019-04-01",
+      "positions": 8,
+      "vsBtcR": 1.4997741573311194,
+      "afterFundingR": null
+    },
+    {
+      "date": "2019-05-01",
+      "positions": 9,
+      "vsBtcR": 1.9367124377185756,
+      "afterFundingR": null
+    },
+    {
+      "date": "2019-05-31",
+      "positions": 10,
+      "vsBtcR": 0.1338326320140164,
+      "afterFundingR": null
+    },
+    {
+      "date": "2019-06-30",
+      "positions": 11,
+      "vsBtcR": 1.6130482479947226,
+      "afterFundingR": null
+    },
+    {
+      "date": "2019-07-30",
+      "positions": 10,
+      "vsBtcR": 1.9285920694284286,
+      "afterFundingR": null
+    },
+    {
+      "date": "2019-08-29",
+      "positions": 7,
+      "vsBtcR": 0.2125357241015918,
+      "afterFundingR": null
+    },
+    {
+      "date": "2019-09-28",
+      "positions": 9,
+      "vsBtcR": -0.32608877551380544,
+      "afterFundingR": null
+    },
+    {
+      "date": "2019-10-28",
+      "positions": 9,
+      "vsBtcR": -0.4916252094288967,
+      "afterFundingR": null
+    },
+    {
+      "date": "2019-11-27",
+      "positions": 10,
+      "vsBtcR": 1.312014921557465,
+      "afterFundingR": null
+    },
+    {
+      "date": "2019-12-27",
+      "positions": 10,
+      "vsBtcR": -0.7948160246059961,
+      "afterFundingR": null
+    },
+    {
+      "date": "2020-01-26",
+      "positions": 11,
+      "vsBtcR": -0.9054424906331268,
+      "afterFundingR": -1.0791253656197117
+    },
+    {
+      "date": "2020-02-25",
+      "positions": 13,
+      "vsBtcR": 1.263634079769291,
+      "afterFundingR": 1.1252851522940435
+    },
+    {
+      "date": "2020-03-26",
+      "positions": 12,
+      "vsBtcR": -1.059146834157841,
+      "afterFundingR": -1.0003389495789046
+    },
+    {
+      "date": "2020-04-25",
+      "positions": 12,
+      "vsBtcR": 0.638644868852441,
+      "afterFundingR": 0.5082598369280854
+    },
+    {
+      "date": "2020-05-25",
+      "positions": 12,
+      "vsBtcR": -0.09835633602673738,
+      "afterFundingR": -0.1770174261627816
+    },
+    {
+      "date": "2020-06-24",
+      "positions": 13,
+      "vsBtcR": -0.45028147285447423,
+      "afterFundingR": -0.6098355982061446
+    },
+    {
+      "date": "2020-07-24",
+      "positions": 15,
+      "vsBtcR": -0.11189894194407687,
+      "afterFundingR": -0.32549717732473055
+    },
+    {
+      "date": "2020-08-23",
+      "positions": 15,
+      "vsBtcR": 1.1003474945266363,
+      "afterFundingR": 1.1953786664692687
+    },
+    {
+      "date": "2020-09-22",
+      "positions": 15,
+      "vsBtcR": -0.03891529536699235,
+      "afterFundingR": -0.3140892569262798
+    },
+    {
+      "date": "2020-10-22",
+      "positions": 15,
+      "vsBtcR": 1.4182203214435565,
+      "afterFundingR": 1.4766160776926367
+    },
+    {
+      "date": "2020-11-21",
+      "positions": 15,
+      "vsBtcR": -0.2185466406007204,
+      "afterFundingR": -0.16103950637641268
+    },
+    {
+      "date": "2020-12-21",
+      "positions": 24,
+      "vsBtcR": 1.575544626997982,
+      "afterFundingR": 1.603598709112597
+    },
+    {
+      "date": "2021-01-20",
+      "positions": 24,
+      "vsBtcR": -0.8393324983438842,
+      "afterFundingR": -0.7329837498845146
+    },
+    {
+      "date": "2021-02-19",
+      "positions": 25,
+      "vsBtcR": 0.2593340427071035,
+      "afterFundingR": 0.456374926925006
+    },
+    {
+      "date": "2021-03-21",
+      "positions": 25,
+      "vsBtcR": -0.7408620406843335,
+      "afterFundingR": -0.47351376495098113
+    },
+    {
+      "date": "2021-04-20",
+      "positions": 26,
+      "vsBtcR": -0.5779622151919906,
+      "afterFundingR": -0.7144968264033473
+    },
+    {
+      "date": "2021-05-20",
+      "positions": 26,
+      "vsBtcR": 0.9314071490946814,
+      "afterFundingR": 1.0192517575001991
+    },
+    {
+      "date": "2021-06-19",
+      "positions": 27,
+      "vsBtcR": 1.5357493429748557,
+      "afterFundingR": 1.4386569296924552
+    },
+    {
+      "date": "2021-07-19",
+      "positions": 27,
+      "vsBtcR": 0.02351827751637226,
+      "afterFundingR": 0.11711017182671897
+    },
+    {
+      "date": "2021-08-18",
+      "positions": 27,
+      "vsBtcR": -0.48698730283446595,
+      "afterFundingR": -0.2681326320255969
+    },
+    {
+      "date": "2021-09-17",
+      "positions": 27,
+      "vsBtcR": 1.3919008582192987,
+      "afterFundingR": 1.2915759136086116
+    },
+    {
+      "date": "2021-10-17",
+      "positions": 28,
+      "vsBtcR": -0.7121678116960032,
+      "afterFundingR": -0.7245157267109931
+    },
+    {
+      "date": "2021-11-16",
+      "positions": 27,
+      "vsBtcR": -0.24020064000778482,
+      "afterFundingR": -0.009079840981669432
+    },
+    {
+      "date": "2021-12-16",
+      "positions": 28,
+      "vsBtcR": -0.450990704329548,
+      "afterFundingR": -0.6074891524431033
+    },
+    {
+      "date": "2022-01-15",
+      "positions": 29,
+      "vsBtcR": 1.313310467524579,
+      "afterFundingR": 1.202484308681641
+    },
+    {
+      "date": "2022-02-14",
+      "positions": 30,
+      "vsBtcR": 0.4024344083377355,
+      "afterFundingR": 0.4709930446290609
+    },
+    {
+      "date": "2022-03-16",
+      "positions": 30,
+      "vsBtcR": -1.0520242318852964,
+      "afterFundingR": -1.0519921228979543
+    },
+    {
+      "date": "2022-04-15",
+      "positions": 29,
+      "vsBtcR": 1.4121316050171444,
+      "afterFundingR": 1.3614449139229705
+    },
+    {
+      "date": "2022-05-15",
+      "positions": 28,
+      "vsBtcR": 0.42084495197815147,
+      "afterFundingR": 0.4080617445594621
+    },
+    {
+      "date": "2022-06-14",
+      "positions": 29,
+      "vsBtcR": -0.7747065047418384,
+      "afterFundingR": -0.9719437741685428
+    },
+    {
+      "date": "2022-07-14",
+      "positions": 27,
+      "vsBtcR": -0.5424591209367183,
+      "afterFundingR": -0.5793015038515281
+    },
+    {
+      "date": "2022-08-13",
+      "positions": 30,
+      "vsBtcR": 0.972809128099464,
+      "afterFundingR": 0.8706768719253108
+    },
+    {
+      "date": "2022-09-12",
+      "positions": 26,
+      "vsBtcR": -0.4783963597869628,
+      "afterFundingR": -0.41495614301781336
+    },
+    {
+      "date": "2022-10-12",
+      "positions": 24,
+      "vsBtcR": 0.08076422923841907,
+      "afterFundingR": -0.025250318558751383
+    },
+    {
+      "date": "2022-11-11",
+      "positions": 24,
+      "vsBtcR": 0.20396961531323618,
+      "afterFundingR": 0.2615328363517565
+    },
+    {
+      "date": "2022-12-11",
+      "positions": 22,
+      "vsBtcR": 1.3715615861069559,
+      "afterFundingR": 1.4936666392842646
+    },
+    {
+      "date": "2023-01-10",
+      "positions": 21,
+      "vsBtcR": 0.7612881702819497,
+      "afterFundingR": 0.7277255537697909
+    },
+    {
+      "date": "2023-02-09",
+      "positions": 29,
+      "vsBtcR": 0.3395939981105898,
+      "afterFundingR": 0.5650471099050053
+    },
+    {
+      "date": "2023-03-11",
+      "positions": 30,
+      "vsBtcR": 1.6220485549534418,
+      "afterFundingR": 1.6125054037330628
+    },
+    {
+      "date": "2023-04-10",
+      "positions": 28,
+      "vsBtcR": -0.4022368674434055,
+      "afterFundingR": -0.5194854048190984
+    },
+    {
+      "date": "2023-05-10",
+      "positions": 27,
+      "vsBtcR": -0.15883733260328994,
+      "afterFundingR": -0.11337080786134533
+    },
+    {
+      "date": "2023-06-09",
+      "positions": 25,
+      "vsBtcR": 1.8836012848400747,
+      "afterFundingR": 1.8481754931397125
+    },
+    {
+      "date": "2023-07-09",
+      "positions": 27,
+      "vsBtcR": -0.5716491223185758,
+      "afterFundingR": -0.7525968742171945
+    },
+    {
+      "date": "2023-08-08",
+      "positions": 29,
+      "vsBtcR": 0.2948648019920913,
+      "afterFundingR": 0.33619364213394043
+    },
+    {
+      "date": "2023-09-07",
+      "positions": 26,
+      "vsBtcR": 0.8071578501482738,
+      "afterFundingR": 0.6615840096791875
+    },
+    {
+      "date": "2023-10-07",
+      "positions": 26,
+      "vsBtcR": 1.270087679281049,
+      "afterFundingR": 1.29586659689921
+    },
+    {
+      "date": "2023-11-06",
+      "positions": 30,
+      "vsBtcR": 0.5620603579557352,
+      "afterFundingR": 0.5469654214756655
+    },
+    {
+      "date": "2023-12-06",
+      "positions": 37,
+      "vsBtcR": -0.8264886109267434,
+      "afterFundingR": -1.0002835974935624
+    },
+    {
+      "date": "2024-01-05",
+      "positions": 36,
+      "vsBtcR": 0.49481666849958317,
+      "afterFundingR": 0.36679122042652484
+    },
+    {
+      "date": "2024-02-04",
+      "positions": 31,
+      "vsBtcR": 0.5541265257185503,
+      "afterFundingR": 0.8319281559606386
+    },
+    {
+      "date": "2024-03-05",
+      "positions": 38,
+      "vsBtcR": -0.1430002569295618,
+      "afterFundingR": -0.02942754393641385
+    },
+    {
+      "date": "2024-04-04",
+      "positions": 40,
+      "vsBtcR": 0.8366287174154212,
+      "afterFundingR": 0.8376312754943567
+    },
+    {
+      "date": "2024-05-04",
+      "positions": 42,
+      "vsBtcR": -0.00729817510701907,
+      "afterFundingR": 0.10859130960936586
+    },
+    {
+      "date": "2024-06-03",
+      "positions": 42,
+      "vsBtcR": 1.1302355157240083,
+      "afterFundingR": 1.2033076318230989
+    },
+    {
+      "date": "2024-07-03",
+      "positions": 41,
+      "vsBtcR": 0.6250775618822266,
+      "afterFundingR": 0.5577151722671254
+    },
+    {
+      "date": "2024-08-02",
+      "positions": 39,
+      "vsBtcR": 0.5126541317054515,
+      "afterFundingR": 0.5817785544812574
+    },
+    {
+      "date": "2024-09-01",
+      "positions": 40,
+      "vsBtcR": -0.7558586602908973,
+      "afterFundingR": -0.8602259675065134
+    },
+    {
+      "date": "2024-10-01",
+      "positions": 40,
+      "vsBtcR": 0.54137388290427,
+      "afterFundingR": 0.4586611201741884
+    },
+    {
+      "date": "2024-10-31",
+      "positions": 41,
+      "vsBtcR": -0.07830441591225673,
+      "afterFundingR": -0.10368907145447358
+    },
+    {
+      "date": "2024-11-30",
+      "positions": 46,
+      "vsBtcR": -0.14292003213901067,
+      "afterFundingR": 0.06232608362651554
+    },
+    {
+      "date": "2024-12-30",
+      "positions": 46,
+      "vsBtcR": 0.562738537375035,
+      "afterFundingR": 0.4524292904966127
+    },
+    {
+      "date": "2025-01-29",
+      "positions": 46,
+      "vsBtcR": 0.6408538621223799,
+      "afterFundingR": 0.6863959930334721
+    },
+    {
+      "date": "2025-02-28",
+      "positions": 45,
+      "vsBtcR": 1.0963481152550494,
+      "afterFundingR": 0.9037653818392423
+    },
+    {
+      "date": "2025-03-30",
+      "positions": 39,
+      "vsBtcR": 1.2254202978070985,
+      "afterFundingR": 1.332270688082348
+    },
+    {
+      "date": "2025-04-29",
+      "positions": 46,
+      "vsBtcR": -0.04086441005924512,
+      "afterFundingR": -0.11542761115826349
+    },
+    {
+      "date": "2025-05-29",
+      "positions": 44,
+      "vsBtcR": 1.6319571816227827,
+      "afterFundingR": 1.5385444314869288
+    },
+    {
+      "date": "2025-06-28",
+      "positions": 44,
+      "vsBtcR": -0.6326686632643043,
+      "afterFundingR": -0.6804530453128267
+    },
+    {
+      "date": "2025-07-28",
+      "positions": 48,
+      "vsBtcR": -0.08595819287404886,
+      "afterFundingR": -0.17554662849545888
+    },
+    {
+      "date": "2025-08-27",
+      "positions": 49,
+      "vsBtcR": 0.23731806985009907,
+      "afterFundingR": 0.32020026150582487
+    },
+    {
+      "date": "2025-09-26",
+      "positions": 51,
+      "vsBtcR": 1.3817075974945583,
+      "afterFundingR": 1.3758855391118436
+    },
+    {
+      "date": "2025-10-26",
+      "positions": 55,
+      "vsBtcR": 0.9077782276601897,
+      "afterFundingR": 0.8413886802368484
+    },
+    {
+      "date": "2025-11-25",
+      "positions": 50,
+      "vsBtcR": 1.3507980057197013,
+      "afterFundingR": 1.2348777193982865
+    },
+    {
+      "date": "2025-12-25",
+      "positions": 43,
+      "vsBtcR": -0.7399500541697129,
+      "afterFundingR": -0.7397549631709145
+    },
+    {
+      "date": "2026-01-24",
+      "positions": 49,
+      "vsBtcR": 0.46578773763194115,
+      "afterFundingR": 0.3532463846096387
+    },
+    {
+      "date": "2026-02-23",
+      "positions": 41,
+      "vsBtcR": 0.0035138042294786025,
+      "afterFundingR": -0.11111615800232726
+    },
+    {
+      "date": "2026-03-25",
+      "positions": 46,
+      "vsBtcR": 0.5668022489585262,
+      "afterFundingR": 0.6181748922029738
+    },
+    {
+      "date": "2026-04-24",
+      "positions": 50,
+      "vsBtcR": 0.1321823239047517,
+      "afterFundingR": 0.18200060085539232
+    },
+    {
+      "date": "2026-05-24",
+      "positions": 46,
+      "vsBtcR": -0.3983749349107233,
+      "afterFundingR": -0.4621776439802173
+    },
+    {
+      "date": "2026-06-23",
+      "positions": 51,
+      "vsBtcR": -0.1515569039515664,
+      "afterFundingR": -0.19985298489686068
+    }
+  ],
   "funding": {
     "symbolsWithPerp": 73,
     "episodesPriced": 2096,

@@ -1,0 +1,521 @@
+{
+  "measuredAt": "2026-08-18T05:41:50.276Z",
+  "source": "data.binance.vision futures bookDepth, USDS-M perpetuals",
+  "daysSampled": [
+    "2026-08-15",
+    "2026-08-14",
+    "2026-08-13",
+    "2026-08-12",
+    "2026-08-11",
+    "2026-08-10",
+    "2026-08-09",
+    "2026-08-08"
+  ],
+  "symbolsRequested": 32,
+  "symbolsWithData": 29,
+  "rules": {
+    "bands": [
+      0.2,
+      1
+    ],
+    "participationShare": 0.1,
+    "minTurnoverUsd": 2000000,
+    "note": "Capacity per name is the thinner of bid and ask, because a short sells into bids and buys back from asks. The tenth percentile is the thin-book case a position must still be closeable in."
+  },
+  "perBand": [
+    {
+      "band": 0.2,
+      "namesCounted": 28,
+      "medianTotalUsd": 32766034.7073365,
+      "thinTotalUsd": 25961639.827266105,
+      "perNameMedianUsd": 158042.98116,
+      "perNameWorstUsd": 4645.01617,
+      "btcHedgeUsd": 38520367.2683
+    },
+    {
+      "band": 1,
+      "namesCounted": 28,
+      "medianTotalUsd": 151138727.47844467,
+      "thinTotalUsd": 129489940.60911678,
+      "perNameMedianUsd": 1070325.30203,
+      "perNameWorstUsd": 33735.80077,
+      "btcHedgeUsd": 167523125.0616
+    }
+  ],
+  "participation": {
+    "shareOfDailyTurnover": 0.1,
+    "basketUsd": 95581005.48600493,
+    "perNameMedianUsd": 1415806.5973306666
+  },
+  "agreement": {
+    "depthAt1PctThinUsd": 129489940.60911678,
+    "participationUsd": 95581005.48600493,
+    "ratio": 1.3547664617116506
+  },
+  "bySymbol": [
+    {
+      "symbol": "BTCUSDT",
+      "days": 8,
+      "turnoverUsd": 793642899.9076341,
+      "depth": {
+        "1": {
+          "medianUsd": 197266843.9859,
+          "thinUsd": 167523125.0616
+        },
+        "0.2": {
+          "medianUsd": 44696538.5978,
+          "thinUsd": 38520367.2683
+        }
+      },
+      "participationUsd": 79364289.99076341
+    },
+    {
+      "symbol": "ETHUSDT",
+      "days": 8,
+      "turnoverUsd": 340495104.9015798,
+      "depth": {
+        "1": {
+          "medianUsd": 93223935.80709,
+          "thinUsd": 79052761.97614
+        },
+        "0.2": {
+          "medianUsd": 20107167.59909,
+          "thinUsd": 15720913.47702
+        }
+      },
+      "participationUsd": 34049510.490157984
+    },
+    {
+      "symbol": "SOLUSDT",
+      "days": 8,
+      "turnoverUsd": 90889284.69106,
+      "depth": {
+        "1": {
+          "medianUsd": 19424629.4294,
+          "thinUsd": 17079177.3658
+        },
+        "0.2": {
+          "medianUsd": 4466493.2602,
+          "thinUsd": 3764555.6167
+        }
+      },
+      "participationUsd": 9088928.469106002
+    },
+    {
+      "symbol": "XRPUSDT",
+      "days": 8,
+      "turnoverUsd": 52379156.228496335,
+      "depth": {
+        "1": {
+          "medianUsd": 7357290.51162,
+          "thinUsd": 6661960.97158
+        },
+        "0.2": {
+          "medianUsd": 1921939.16742,
+          "thinUsd": 1617051.46301
+        }
+      },
+      "participationUsd": 5237915.622849634
+    },
+    {
+      "symbol": "BNBUSDT",
+      "days": 8,
+      "turnoverUsd": 51243555.673155665,
+      "depth": {
+        "1": {
+          "medianUsd": 6114840.2299,
+          "thinUsd": 5170209.5831
+        },
+        "0.2": {
+          "medianUsd": 1158727.0987,
+          "thinUsd": 877263.2008
+        }
+      },
+      "participationUsd": 5124355.567315567
+    },
+    {
+      "symbol": "BANKUSDT",
+      "days": 8,
+      "turnoverUsd": 41934625.28004398,
+      "depth": {
+        "1": {
+          "medianUsd": 89708.51109,
+          "thinUsd": 69448.00948
+        },
+        "0.2": {
+          "medianUsd": 16702.48063,
+          "thinUsd": 11850.99021
+        }
+      },
+      "participationUsd": 4193462.5280043986
+    },
+    {
+      "symbol": "ZECUSDT",
+      "days": 8,
+      "turnoverUsd": 41445702.47929467,
+      "depth": {
+        "1": {
+          "medianUsd": 3070194.15687,
+          "thinUsd": 2531554.88687
+        },
+        "0.2": {
+          "medianUsd": 491224.64557,
+          "thinUsd": 392056.82204
+        }
+      },
+      "participationUsd": 4144570.2479294674
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "days": 8,
+      "turnoverUsd": 30595086.857943337,
+      "depth": {
+        "1": {
+          "medianUsd": 76948.17586,
+          "thinUsd": 61242.74193
+        },
+        "0.2": {
+          "medianUsd": 14263.87855,
+          "thinUsd": 10662.21309
+        }
+      },
+      "participationUsd": 3059508.685794334
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "days": 8,
+      "turnoverUsd": 25483282.147484668,
+      "depth": {
+        "1": {
+          "medianUsd": 4634454.92628,
+          "thinUsd": 4172842.4687
+        },
+        "0.2": {
+          "medianUsd": 966051.58638,
+          "thinUsd": 774754.51134
+        }
+      },
+      "participationUsd": 2548328.214748467
+    },
+    {
+      "symbol": "REUSDT",
+      "days": 8,
+      "turnoverUsd": 24357348.744273327,
+      "depth": {
+        "1": {
+          "medianUsd": 50692.4001,
+          "thinUsd": 37764.1354
+        },
+        "0.2": {
+          "medianUsd": 8404.9779,
+          "thinUsd": 6260.2137
+        }
+      },
+      "participationUsd": 2435734.874427333
+    },
+    {
+      "symbol": "TUTUSDT",
+      "days": 8,
+      "turnoverUsd": 22684557.635938663,
+      "depth": {
+        "1": {
+          "medianUsd": 63697.29021,
+          "thinUsd": 42373.0084
+        },
+        "0.2": {
+          "medianUsd": 10855.48624,
+          "thinUsd": 6450.28303
+        }
+      },
+      "participationUsd": 2268455.7635938665
+    },
+    {
+      "symbol": "TRXUSDT",
+      "days": 8,
+      "turnoverUsd": 22388259.932927668,
+      "depth": {
+        "1": {
+          "medianUsd": 1249714.95248,
+          "thinUsd": 1085019.63809
+        },
+        "0.2": {
+          "medianUsd": 288760.12697,
+          "thinUsd": 222016.71133
+        }
+      },
+      "participationUsd": 2238825.993292767
+    },
+    {
+      "symbol": "ADAUSDT",
+      "days": 8,
+      "turnoverUsd": 18262269.014278002,
+      "depth": {
+        "1": {
+          "medianUsd": 1775845.7188,
+          "thinUsd": 1555576.5035
+        },
+        "0.2": {
+          "medianUsd": 345977.9507,
+          "thinUsd": 265187.4619
+        }
+      },
+      "participationUsd": 1826226.9014278003
+    },
+    {
+      "symbol": "XAUTUSDT",
+      "days": 8,
+      "turnoverUsd": 17315972.6591363,
+      "depth": {
+        "1": {
+          "medianUsd": 2404839.42735,
+          "thinUsd": 1946095.18255
+        },
+        "0.2": {
+          "medianUsd": 916433.6555,
+          "thinUsd": 667304.84357
+        }
+      },
+      "participationUsd": 1731597.26591363
+    },
+    {
+      "symbol": "ALLOUSDT",
+      "days": 8,
+      "turnoverUsd": 16397159.940986332,
+      "depth": {
+        "1": {
+          "medianUsd": 48953.42154,
+          "thinUsd": 37056.8951
+        },
+        "0.2": {
+          "medianUsd": 15867.82685,
+          "thinUsd": 9134.87086
+        }
+      },
+      "participationUsd": 1639715.9940986333
+    },
+    {
+      "symbol": "NEARUSDT",
+      "days": 8,
+      "turnoverUsd": 14158065.973306665,
+      "depth": {
+        "1": {
+          "medianUsd": 1246236.303,
+          "thinUsd": 1093322.549
+        },
+        "0.2": {
+          "medianUsd": 168669.91,
+          "thinUsd": 129208.311
+        }
+      },
+      "participationUsd": 1415806.5973306666
+    },
+    {
+      "symbol": "UNIUSDT",
+      "days": 8,
+      "turnoverUsd": 14063606.480817335,
+      "depth": {
+        "1": {
+          "medianUsd": 686131.268,
+          "thinUsd": 531155.931
+        },
+        "0.2": {
+          "medianUsd": 122420.313,
+          "thinUsd": 98270.943
+        }
+      },
+      "participationUsd": 1406360.6480817336
+    },
+    {
+      "symbol": "ACEUSDT",
+      "days": 8,
+      "turnoverUsd": 12415465.777793,
+      "depth": {
+        "1": {
+          "medianUsd": 36305.8633017,
+          "thinUsd": 24604.5904408
+        },
+        "0.2": {
+          "medianUsd": 5908.4364925,
+          "thinUsd": 4213.8649391
+        }
+      },
+      "participationUsd": 1241546.5777793
+    },
+    {
+      "symbol": "XPLUSDT",
+      "days": 8,
+      "turnoverUsd": 12175877.877164634,
+      "depth": {
+        "1": {
+          "medianUsd": 169310.83679,
+          "thinUsd": 150580.16989
+        },
+        "0.2": {
+          "medianUsd": 21972.38221,
+          "thinUsd": 15744.08003
+        }
+      },
+      "participationUsd": 1217587.7877164634
+    },
+    {
+      "symbol": "SUIUSDT",
+      "days": 8,
+      "turnoverUsd": 11903480.07265767,
+      "depth": {
+        "1": {
+          "medianUsd": 1770652.07478,
+          "thinUsd": 1623457.66033
+        },
+        "0.2": {
+          "medianUsd": 431633.11031,
+          "thinUsd": 346637.70532
+        }
+      },
+      "participationUsd": 1190348.007265767
+    },
+    {
+      "symbol": "LINKUSDT",
+      "days": 8,
+      "turnoverUsd": 11741865.892827667,
+      "depth": {
+        "1": {
+          "medianUsd": 1592503.60444,
+          "thinUsd": 1362409.76361
+        },
+        "0.2": {
+          "medianUsd": 315821.1125,
+          "thinUsd": 254512.54631
+        }
+      },
+      "participationUsd": 1174186.5892827667
+    },
+    {
+      "symbol": "WLDUSDT",
+      "days": 8,
+      "turnoverUsd": 11639412.482099332,
+      "depth": {
+        "1": {
+          "medianUsd": 962336.261,
+          "thinUsd": 803672.8093
+        },
+        "0.2": {
+          "medianUsd": 169816.8377,
+          "thinUsd": 128033.7117
+        }
+      },
+      "participationUsd": 1163941.2482099333
+    },
+    {
+      "symbol": "PUMPUSDT",
+      "days": 8,
+      "turnoverUsd": 11444485.329378033,
+      "depth": {
+        "1": {
+          "medianUsd": 519797.221873,
+          "thinUsd": 436224.073682
+        },
+        "0.2": {
+          "medianUsd": 80173.449886,
+          "thinUsd": 58848.751886
+        }
+      },
+      "participationUsd": 1144448.5329378033
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "days": 8,
+      "turnoverUsd": 10540648.890120331,
+      "depth": {
+        "1": {
+          "medianUsd": 1124170.651,
+          "thinUsd": 987440.519
+        },
+        "0.2": {
+          "medianUsd": 119434.247,
+          "thinUsd": 97349.262
+        }
+      },
+      "participationUsd": 1054064.8890120331
+    },
+    {
+      "symbol": "ONDOUSDT",
+      "days": 8,
+      "turnoverUsd": 10285059.261901,
+      "depth": {
+        "1": {
+          "medianUsd": 1070325.30203,
+          "thinUsd": 938189.39917
+        },
+        "0.2": {
+          "medianUsd": 158042.98116,
+          "thinUsd": 125462.2884
+        }
+      },
+      "participationUsd": 1028505.9261901001
+    },
+    {
+      "symbol": "HEIUSDT",
+      "days": 8,
+      "turnoverUsd": 10106513.964335667,
+      "depth": {
+        "1": {
+          "medianUsd": 30257.86665,
+          "thinUsd": 21903.631654
+        },
+        "0.2": {
+          "medianUsd": 6215.013168,
+          "thinUsd": 4186.437181
+        }
+      },
+      "participationUsd": 1010651.3964335667
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "days": 8,
+      "turnoverUsd": 9936534.571372665,
+      "depth": {
+        "1": {
+          "medianUsd": 919698.051,
+          "thinUsd": 776509.231
+        },
+        "0.2": {
+          "medianUsd": 142955.555,
+          "thinUsd": 112947.893
+        }
+      },
+      "participationUsd": 993653.4571372666
+    },
+    {
+      "symbol": "LTCUSDT",
+      "days": 8,
+      "turnoverUsd": 9811204.204411669,
+      "depth": {
+        "1": {
+          "medianUsd": 1375223.46459,
+          "thinUsd": 1203651.11363
+        },
+        "0.2": {
+          "medianUsd": 286926.84165,
+          "thinUsd": 236116.33773
+        }
+      },
+      "participationUsd": 981120.420441167
+    },
+    {
+      "symbol": "BICOUSDT",
+      "days": 8,
+      "turnoverUsd": 9716467.895264773,
+      "depth": {
+        "1": {
+          "medianUsd": 50033.7514,
+          "thinUsd": 33735.80077
+        },
+        "0.2": {
+          "medianUsd": 7174.77656,
+          "thinUsd": 4645.01617
+        }
+      },
+      "participationUsd": 971646.7895264773
+    }
+  ]
+}

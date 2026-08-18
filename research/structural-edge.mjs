@@ -570,6 +570,17 @@ const out = {
     shortRelAlts: describe(altOnly.shortRel, byDate.shortRelAlts),
   },
   matched,
+  /**
+   * The trade's result per rebalance date, exported so other studies can join
+   * to it instead of re-implementing the scoring and quietly diverging from it.
+   */
+  monthlySeries: Object.keys(matchedPerDate.vsBtc).sort().map((date) => ({
+    date,
+    positions: matchedPerDate.vsBtc[date].length,
+    vsBtcR: mean(matchedPerDate.vsBtc[date]),
+    afterFundingR: matchedPerDate.vsBtcAfterFunding[date]
+      ? mean(matchedPerDate.vsBtcAfterFunding[date]) : null,
+  })),
   funding: fundingR.length ? {
     symbolsWithPerp: Object.keys(funding).length,
     episodesPriced: fundingCovered,
