@@ -42,6 +42,27 @@ const rows = STEPS.map(([label, a, c], i) => {
 
 const takenList = D.taken.map((p) => p.symbol.replace(/USDT$/, "")).join(" · ") || "nothing";
 
+/**
+ * The settled line has to carry its own context.
+ *
+ * "4/4 ahead" on a card, on a day four-fifths of the market fell, claims for
+ * the selection what the tape did. The body of the column says so; a card that
+ * gets screenshotted on its own has to say it too, because the card is what
+ * travels.
+ */
+const settledLabel = (() => {
+  const s = D.settledSummary;
+  if (!s || !s.positions) return "No prior set to settle";
+  const dirs = new Set((D.settled ?? []).map((x) => x.direction));
+  if (dirs.size === 1) {
+    const withPct = dirs.has("short") ? 100 - D.breadth.upSharePct : D.breadth.upSharePct;
+    if (withPct >= 65) {
+      return `Yesterday's · ${withPct.toFixed(0)}% of pairs went that way`;
+    }
+  }
+  return "Yesterday's, ahead so far";
+})();
+
 process.stdout.write(`<!doctype html><meta charset="utf-8">
 <style>
   html,body{margin:0;width:${CARD.width}px;height:${CARD.height}px;overflow:hidden;background:${SURFACE}}
@@ -77,8 +98,8 @@ process.stdout.write(`<!doctype html><meta charset="utf-8">
   <text x="${CARD.margin}" y="${CARD.statY}" class="stat">${takenList}</text>
   <text x="${CARD.margin}" y="${CARD.statLabelY}" class="statlab">Taken today, at a geometry nobody chose</text>
 
-  <text x="720" y="${CARD.statY}" class="stat">${D.settledSummary ? `${D.settledSummary.aheadCount}/${D.settledSummary.positions}` : "—"}</text>
-  <text x="720" y="${CARD.statLabelY}" class="statlab">Yesterday's, ahead so far</text>
+  <text x="620" y="${CARD.statY}" class="stat">${D.settledSummary ? `${D.settledSummary.aheadCount}/${D.settledSummary.positions}` : "—"}</text>
+  <text x="620" y="${CARD.statLabelY}" class="statlab">${settledLabel}</text>
 
   <text x="${CARD.right}" y="${CARD.statY}" text-anchor="end" class="stat">${b.downOver10}</text>
   <text x="${CARD.right}" y="${CARD.statLabelY}" text-anchor="end" class="statlab">Pairs down over 10%</text>

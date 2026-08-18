@@ -26,6 +26,28 @@ import { pct, price as fmtPrice } from "../src/format.mjs";
 const D = JSON.parse(readFileSync("research/daily-brief.json", "utf8"));
 const b = D.breadth, r = D.rules, f = D.funnel, t = D.tally;
 const s = D.settledSummary && D.settledSummary.positions ? D.settledSummary : null;
+
+/**
+ * Was the last set carried by the market rather than by the selection?
+ *
+ * A column that prints "4 of 4 ahead" on a day the whole market fell is
+ * claiming credit for beta. Every position here points the same way, so the
+ * check is cheap: if the board moved with them, say so in the same breath as
+ * the result, and say it whichever way it falls. The alternative — reporting
+ * the good days plainly and the bad days with context — is how a track record
+ * quietly becomes marketing.
+ */
+const tailwind = (() => {
+  if (!s || !D.settled?.length) return "";
+  const dirs = new Set(D.settled.map((x) => x.direction));
+  if (dirs.size !== 1) return "";
+  const short = dirs.has("short");
+  const b = D.breadth;
+  const withPct = short ? 100 - b.upSharePct : b.upSharePct;
+  // Only worth saying when the market clearly leaned the same way.
+  if (withPct < 65) return "";
+  return `\nBefore that reads as skill: **${withPct.toFixed(1)}% of the market moved the same way** on the day, and the median pair moved ${b.medianChangePct >= 0 ? "+" : ""}${b.medianChangePct.toFixed(2)}%. Every one of those positions is ${short ? "short" : "long"}. On a day like this the board and a coin flip both look clever, and the number that decides between them is at the bottom of this post, not here.\n`;
+})();
 const st = D.selfTest;
 
 const monotonic = (x) => x.total >= x.tradeable && x.tradeable >= x.notThin && x.notThin >= x.unanimous;
@@ -136,7 +158,7 @@ ${settleTable}
 \`\`\`
 
 **${s.aheadCount} of ${s.positions} ahead.** Median ${s.medianResultR >= 0 ? "+" : ""}${s.medianResultR.toFixed(3)}R, total ${s.totalResultR >= 0 ? "+" : ""}${s.totalResultR.toFixed(3)}R marked to market.
-
+${tailwind}
 Nothing is settled yet and I am not going to pretend otherwise. Open positions are marked, not counted.` : "No prior edition to settle — this is the first."}
 
 WHAT SURVIVES THE FILTERS

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T05:07:00.151Z",
+  "generatedAt": "2026-08-18T05:14:54.845Z",
   "note": "Every figure published on this site traces to one of these snapshots.",
   "snapshots": [
     {
@@ -9,6 +9,10 @@
     {
       "file": "audited-claims-2026-08-02.json",
       "url": "/data/audited-claims-2026-08-02.json"
+    },
+    {
+      "file": "base-breakout.json",
+      "url": "/data/base-breakout.json"
     },
     {
       "file": "bnb-btc.json",
