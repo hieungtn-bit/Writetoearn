@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "base-breakout",
+      "draft": "89-base-breakout.txt",
+      "title": "I Ran the Strategy You Sent Me. The Exit Ladder Is Doing the Work.",
+      "description": "Someone sent me a base-breakout strategy. Not a paragraph of vibes — an actual specification: base length, volume multiple, breakout confirmation, a hard gate, stop placement, a scaled exit ladder, a…",
+      "published": "2026-08-18T05:20:48.649Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 356922362191058
+    },
+    {
       "slug": "selection",
       "draft": "88-selection.txt",
       "title": "Shorting Alts Against BTC Works. Picking Which Ones Does Not.",
