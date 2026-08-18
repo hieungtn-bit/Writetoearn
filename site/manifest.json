@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "brief-2026-08-18",
+      "draft": "brief-2026-08-18.txt",
+      "title": "How Is the Market? What Do We Do? — 18 August",
+      "description": "Same two questions as every edition, in the same order:",
+      "published": "2026-08-18T05:14:44.651Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 356920871225361
+    },
+    {
       "slug": "brief-2026-08-17",
       "draft": "brief-2026-08-17.txt",
       "title": "How Is the Market? What Do We Do? — 17 August",
