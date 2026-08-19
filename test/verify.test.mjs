@@ -105,6 +105,20 @@ test("a Vietnamese admission of absence reads as disclosure, not as a claim", ()
 test("unavailable-field checks only apply to fields actually missing", () => {
   const withOi = { ...brief, unavailable: [] };
   assert.equal(verifyNoForbiddenClaims("Open interest is climbing.", withOi).ok, true);
+
+  // The archive publishes what the API geo-blocks, so a study built on those
+  // dumps holds the field even when the live brief comes back without it.
+  // Blocking that would enforce "the live fetch lacked it" rather than the rule
+  // the gate is for, and would punish the study that went and got the data.
+  const studyWithOi = [{ baseRate: [{ oiChangePct: 1.2 }] }];
+  assert.equal(
+    verifyNoForbiddenClaims("Open interest rose on the day.", brief, studyWithOi).ok,
+    true,
+  );
+  assert.equal(
+    verifyNoForbiddenClaims("Open interest rose on the day.", brief, [{ unrelated: 1 }]).ok,
+    false,
+  );
 });
 
 test("structure requires tags, a disclaimer and a question", () => {

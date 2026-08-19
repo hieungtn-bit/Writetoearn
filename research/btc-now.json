@@ -1,63 +1,63 @@
 {
-  "measuredAt": "2026-08-17T04:48:06.671Z",
+  "measuredAt": "2026-08-19T02:00:09.564Z",
   "symbol": "BTCUSDT",
-  "price": 63515,
+  "price": 64400.48,
   "spans": [
     {
       "days": 7,
-      "high": 64515.43,
+      "high": 65058.81,
       "low": 62535.24,
-      "positionPct": 49.478080386225606,
-      "changePct": -0.7112864293752682,
-      "fromHighPct": -1.550683301653574,
-      "fromLowPct": 1.566732613483217
+      "positionPct": 73.91275058746163,
+      "changePct": 1.4500474874050946,
+      "fromHighPct": -1.0118998487675912,
+      "fromLowPct": 2.9827022331728563
     },
     {
       "days": 30,
       "high": 66956.15,
       "low": 62275,
-      "positionPct": 26.48921739316197,
-      "changePct": -2.0347436947253605,
-      "fromHighPct": -5.139408403858338,
-      "fromLowPct": 1.9911682055399438
+      "positionPct": 45.40508208453063,
+      "changePct": -1.3102801587176298,
+      "fromHighPct": -3.816930931661978,
+      "fromLowPct": 3.413054997992779
     },
     {
       "days": 90,
-      "high": 78200,
+      "high": 78080,
       "low": 57800.19,
-      "positionPct": 28.014035424839733,
-      "changePct": -17.33516098787053,
-      "fromHighPct": -18.778772378516624,
-      "fromLowPct": 9.887182031754563
+      "positionPct": 32.546113597711226,
+      "changePct": -17.026285464556572,
+      "fromHighPct": -17.519877049180323,
+      "fromLowPct": 11.419149314215058
     },
     {
       "days": 365,
       "high": 126199.63,
       "low": 57800.19,
-      "positionPct": 8.355053784066065,
-      "changePct": -45.90094579439157,
-      "fromHighPct": -49.67100933655669,
-      "fromLowPct": 9.887182031754563
+      "positionPct": 9.649625786409949,
+      "changePct": -42.94427495693166,
+      "fromHighPct": -48.96935910192447,
+      "fromLowPct": 11.419149314215058
     }
   ],
   "volatility": {
-    "atrPct": 1.8795353212400228,
-    "stopAt15AtrPct": 2.819302981860034,
-    "realizedVol30Pct": 21.627386894428252,
-    "realizedVol90Pct": 33.758680333164655
+    "atrPct": 1.846823619792899,
+    "stopAt15AtrPct": 2.7702354296893485,
+    "realizedVol30Pct": 23.128742728550854,
+    "realizedVol90Pct": 34.07565545717394
   },
   "momentum": {
-    "rsi14": 47.31894152965404
+    "rsi14": 52.967817879213676
   },
   "profile": {
-    "pointOfControl": 63995.322625,
-    "overheadPct": 79.6853866520862,
+    "pointOfControl": 64159.162874999995,
+    "overheadPct": 42.76543297965139,
     "valueAreaLow": 63351.6645,
-    "valueAreaHigh": 65341.153249999996,
+    "valueAreaHigh": 65317.7475,
     "priceVsValueArea": "inside",
     "hoursCovered": 720
   },
-  "turnoverUsd": 785865439.1180354,
+  "turnoverUsd": 772810051.8312919,
   "engine": {
     "bias": "WAIT",
     "reason": "both directions lose over the recent window",
@@ -70,13 +70,13 @@
   "funding": {
     "live": {
       "venue": "OKX perpetual swaps",
-      "nextRatePct": 0.0072618167835299995,
-      "latestSettledPct": 0.01,
-      "latestSettledTime": "2026-08-17T00:00:00.000Z",
-      "annualised7dPct": 8.650472828067231,
-      "annualisedWindowPct": 4.939371289506842,
+      "nextRatePct": 0.007585742425079999,
+      "latestSettledPct": 0.00591412493872,
+      "latestSettledTime": "2026-08-19T00:00:00.000Z",
+      "annualised7dPct": 6.908786030209243,
+      "annualisedWindowPct": 4.816759887111573,
       "windowDays": 30,
-      "negativeSharePct": 10
+      "negativeSharePct": 11.11111111111111
     },
     "history": {
       "source": "data.binance.vision monthly dumps, Binance USDS-M perpetual",
@@ -107,63 +107,63 @@
     }
   },
   "asNumeraire": {
-    "altsMeasured": 43,
-    "beatingBtc30d": 26,
-    "beatingBtc90d": 28,
-    "medianAltVsBtc30dPct": 4.082217417742373,
-    "medianAltVsBtc90dPct": 12.756375814792452,
+    "altsMeasured": 36,
+    "beatingBtc30d": 17,
+    "beatingBtc90d": 22,
+    "medianAltVsBtc30dPct": -0.4776451904913548,
+    "medianAltVsBtc90dPct": 7.013964310036669,
     "strongest": [
       {
         "symbol": "TUTUSDT",
-        "vs30dPct": 226.01994712456528,
-        "vs90dPct": 369.2552426699491
+        "vs30dPct": 186.2773511201028,
+        "vs90dPct": 309.11796331588306
       },
       {
         "symbol": "ACEUSDT",
-        "vs30dPct": 167.40620602867432,
-        "vs90dPct": 72.38284342281351
+        "vs30dPct": 106.69052583491982,
+        "vs90dPct": 130.72991705400136
       },
       {
-        "symbol": "BICOUSDT",
-        "vs30dPct": 78.57837013416487,
-        "vs90dPct": 19.16338946953755
-      },
-      {
-        "symbol": "PORTALUSDT",
-        "vs30dPct": 76.10882931861862,
-        "vs90dPct": 166.9938776983679
+        "symbol": "GPSUSDT",
+        "vs30dPct": 60.45380434048906,
+        "vs90dPct": 149.58771550850344
       },
       {
         "symbol": "PUMPUSDT",
-        "vs30dPct": 76.10281043549685,
-        "vs90dPct": 106.95535167437757
+        "vs30dPct": 53.86425387414988,
+        "vs90dPct": 104.47269506766257
+      },
+      {
+        "symbol": "EDENUSDT",
+        "vs30dPct": 22.77066134519408,
+        "vs90dPct": -49.44659935181684
       }
     ],
     "weakest": [
       {
-        "symbol": "KAITOUSDT",
-        "vs30dPct": -56.6709874411925,
-        "vs90dPct": -6.289374101327761
-      },
-      {
         "symbol": "ALLOUSDT",
-        "vs30dPct": -38.9216845952297,
-        "vs90dPct": 285.3874095249363
+        "vs30dPct": -35.39937016283026,
+        "vs90dPct": 301.2950778191059
       },
       {
-        "symbol": "币安人生USDT",
-        "vs30dPct": -29.282203270701203,
-        "vs90dPct": 38.29751303325357
-      },
-      {
-        "symbol": "FETUSDT",
-        "vs30dPct": -20.899962783463387,
-        "vs90dPct": -21.3788250654948
+        "symbol": "GALAUSDT",
+        "vs30dPct": -31.901036305390218,
+        "vs90dPct": -51.61524611648767
       },
       {
         "symbol": "NEARUSDT",
-        "vs30dPct": -13.87911774480165,
-        "vs90dPct": 23.084755800506397
+        "vs30dPct": -18.78433206577268,
+        "vs90dPct": -0.744477653192066
+      },
+      {
+        "symbol": "XLMUSDT",
+        "vs30dPct": -17.046695427961843,
+        "vs90dPct": 26.845962819152014
+      },
+      {
+        "symbol": "WLDUSDT",
+        "vs30dPct": -15.542530194448478,
+        "vs90dPct": 42.4165238736403
       }
     ]
   },

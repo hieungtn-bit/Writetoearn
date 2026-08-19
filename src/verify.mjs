@@ -424,12 +424,46 @@ const DISCLOSURE = new RegExp(
 );
 
 /**
+ * Does a cited snapshot actually carry the field the live brief could not get?
+ *
+ * The rule this gate enforces is "do not write about data you do not have", and
+ * for a long time the live brief was the only way to have any. It is not any
+ * more: the exchange's public archive publishes open interest and the account
+ * ratios that its API geo-blocks, so a study built on those dumps holds the
+ * field even on a day the brief comes back without it.
+ *
+ * Keeping the block in that case would enforce something narrower and wrong —
+ * "do not write about data the *live fetch* did not have" — and would punish
+ * the study that went and got it properly.
+ */
+const SNAPSHOT_EVIDENCE = {
+  // Matched inside key names rather than as whole keys: a snapshot naming a
+  // field `conditionedOnOpenInterest` or `oiRising` plainly holds the data, and
+  // demanding one exact spelling made the check fail on studies that had it.
+  openInterest: /"[^"]*(?:openinterest|oiusd|oirising|oifalling|oichange)[^"]*"/i,
+  longShortRatio: /"[^"]*longshort[^"]*"/i,
+};
+
+const fieldsCoveredByStudy = (study) => {
+  const covered = new Set();
+  if (!study) return covered;
+  const blob = JSON.stringify(study);
+  for (const [field, pattern] of Object.entries(SNAPSHOT_EVIDENCE)) {
+    if (pattern.test(blob)) covered.add(field);
+  }
+  return covered;
+};
+
+/**
  * Flags claims about data we never had, while allowing honest admissions that
  * we lack it. The check runs per sentence, so a disclosure in one sentence does
  * not licence a fabricated claim in the next.
  */
-export function verifyNoForbiddenClaims(text, brief) {
-  const missing = new Set((brief.unavailable ?? []).map((u) => u.field));
+export function verifyNoForbiddenClaims(text, brief, study) {
+  const covered = fieldsCoveredByStudy(study);
+  const missing = new Set(
+    (brief.unavailable ?? []).map((u) => u.field).filter((f) => !covered.has(f)),
+  );
   const sentences = text.split(/(?<=[.!?\n])/);
   const violations = new Set();
 
@@ -597,7 +631,7 @@ export function verifyStructure(text, { maxWords = 220, minWords = 40, requireBi
 /** Runs every gate. Publishing should be blocked unless this passes. */
 export function verifyPost(text, brief, opts = {}) {
   const numbers = verifyNumbers(text, brief, { screen: opts.screen, candles: opts.candles, stages: opts.stages, study: opts.study });
-  const claims = verifyNoForbiddenClaims(text, brief);
+  const claims = verifyNoForbiddenClaims(text, brief, opts.study);
   const structure = verifyStructure(text, opts);
 
   // The channel publishes in English on both surfaces. This gate is here

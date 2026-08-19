@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T05:20:57.375Z",
+  "generatedAt": "2026-08-19T02:04:32.180Z",
   "note": "Every figure published on this site traces to one of these snapshots.",
   "snapshots": [
     {
@@ -55,6 +55,10 @@
       "url": "/data/btc-now.json"
     },
     {
+      "file": "capacity.json",
+      "url": "/data/capacity.json"
+    },
+    {
       "file": "compression-signal.json",
       "url": "/data/compression-signal.json"
     },
@@ -75,6 +79,10 @@
       "url": "/data/cross-section.json"
     },
     {
+      "file": "crowding.json",
+      "url": "/data/crowding.json"
+    },
+    {
       "file": "daily-brief.json",
       "url": "/data/daily-brief.json"
     },
@@ -85,6 +93,10 @@
     {
       "file": "ena-icp-deep.json",
       "url": "/data/ena-icp-deep.json"
+    },
+    {
+      "file": "event-window.json",
+      "url": "/data/event-window.json"
     },
     {
       "file": "five-deep.json",
