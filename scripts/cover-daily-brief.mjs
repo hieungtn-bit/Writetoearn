@@ -51,6 +51,10 @@ const takenList = D.taken.map((p) => p.symbol.replace(/USDT$/, "")).join(" · ")
  * travels.
  */
 const settledLabel = (() => {
+  // The book, not the slice: the card carries whatever the post says decides.
+  if (D.bookSummary) {
+    return `Whole open book, ${D.bookSummary.editions} editions`;
+  }
   const s = D.settledSummary;
   if (!s || !s.positions) return "No prior set to settle";
   const dirs = new Set((D.settled ?? []).map((x) => x.direction));
@@ -98,7 +102,9 @@ process.stdout.write(`<!doctype html><meta charset="utf-8">
   <text x="${CARD.margin}" y="${CARD.statY}" class="stat">${takenList}</text>
   <text x="${CARD.margin}" y="${CARD.statLabelY}" class="statlab">Taken today, at a geometry nobody chose</text>
 
-  <text x="620" y="${CARD.statY}" class="stat">${D.settledSummary ? `${D.settledSummary.aheadCount}/${D.settledSummary.positions}` : "—"}</text>
+  <text x="620" y="${CARD.statY}" class="stat">${D.bookSummary
+    ? `${D.bookSummary.aheadCount}/${D.bookSummary.positions}`
+    : D.settledSummary ? `${D.settledSummary.aheadCount}/${D.settledSummary.positions}` : "—"}</text>
   <text x="620" y="${CARD.statLabelY}" class="statlab">${settledLabel}</text>
 
   <text x="${CARD.right}" y="${CARD.statY}" text-anchor="end" class="stat">${b.downOver10}</text>

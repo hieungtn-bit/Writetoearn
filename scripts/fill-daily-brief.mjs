@@ -28,6 +28,23 @@ const b = D.breadth, r = D.rules, f = D.funnel, t = D.tally;
 const s = D.settledSummary && D.settledSummary.positions ? D.settledSummary : null;
 
 /**
+ * The whole open book, because one edition is not the position.
+ *
+ * The column settled only the most recent set, which reports a slice of what is
+ * actually at risk and lets a bad day vanish behind a good one tomorrow. Every
+ * edition whose positions have not closed is still live, so the running total
+ * goes in beside the day's slice — and it is the number that decides whether
+ * any of this is working, not the three lines above it.
+ */
+const bk = D.bookSummary;
+const book = bk ? `\nAND THE WHOLE BOOK, WHICH MATTERS MORE\n
+The last edition is a slice. **${bk.positions} positions across ${bk.editions} editions are still live**, and none has reached a stop or a target yet.
+
+**${bk.aheadCount} of ${bk.positions} ahead.** Median ${bk.medianResultR >= 0 ? "+" : ""}${bk.medianResultR.toFixed(3)}R, mean ${bk.meanResultR >= 0 ? "+" : ""}${bk.meanResultR.toFixed(3)}R, total ${bk.totalResultR >= 0 ? "+" : ""}${bk.totalResultR.toFixed(3)}R marked to market.
+
+One edition swinging from ahead to behind inside a day is why the running book is the honest number and the daily slice is not.` : "";
+
+/**
  * Was the last set carried by the market rather than by the selection?
  *
  * A column that prints "4 of 4 ahead" on a day the whole market fell is
@@ -160,6 +177,7 @@ ${settleTable}
 **${s.aheadCount} of ${s.positions} ahead.** Median ${s.medianResultR >= 0 ? "+" : ""}${s.medianResultR.toFixed(3)}R, total ${s.totalResultR >= 0 ? "+" : ""}${s.totalResultR.toFixed(3)}R marked to market.
 ${tailwind}
 Nothing is settled yet and I am not going to pretend otherwise. Open positions are marked, not counted.` : "No prior edition to settle — this is the first."}
+${book}
 
 WHAT SURVIVES THE FILTERS
 

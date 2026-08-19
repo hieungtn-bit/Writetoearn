@@ -268,7 +268,18 @@ for (const symbol of FOLLOWED) {
  * ------------------------------------------------------------------ */
 
 mkdirSync(PLAN_DIR, { recursive: true });
-const priorFiles = readdirSync(PLAN_DIR).filter((f) => f.endsWith(".json")).sort();
+/**
+ * Today's own plan is not a prior edition.
+ *
+ * The file for today is written at the end of every run, so a second run on
+ * the same day picked it up as "the last edition", tried to settle positions
+ * against the minute they were opened, found no candles, and silently dropped
+ * the settlement section from the column. Excluding today makes re-running safe.
+ */
+const runDay = new Date().toISOString().slice(0, 10);
+const priorFiles = readdirSync(PLAN_DIR)
+  .filter((f) => f.endsWith(".json") && f.replace(/\.json$/, "") < runDay)
+  .sort();
 const priorPath = priorFiles.length ? `${PLAN_DIR}/${priorFiles.at(-1)}` : null;
 const prior = priorPath && existsSync(priorPath) ? JSON.parse(readFileSync(priorPath, "utf8")) : null;
 
@@ -314,6 +325,43 @@ if (prior?.taken?.length) {
     } catch { /* absent rather than guessed */ }
   }
 }
+
+/**
+ * The whole open book, not just yesterday's slice.
+ *
+ * The column has been settling only the most recent edition, which reports a
+ * fraction of what is actually at risk and lets a bad set disappear behind a
+ * good one the following day. Every prior edition whose positions have not
+ * closed is still a live position, so all of them are marked here and the
+ * running total goes in the post beside the day's slice.
+ */
+const openBook = [];
+for (const f of readdirSync(PLAN_DIR).filter((n) => n.endsWith(".json")).sort()) {
+  const edition = f.replace(/\.json$/, "");
+  if (edition >= runDay) continue;
+  let plan;
+  try { plan = JSON.parse(readFileSync(`${PLAN_DIR}/${f}`, "utf8")); } catch { continue; }
+  if (!plan?.taken?.length || !plan.measuredAt) continue;
+  const since = new Date(plan.measuredAt).getTime();
+  for (const p of plan.taken) {
+    try {
+      const r = await settle(p, since);
+      if (r) openBook.push({ ...r, edition });
+    } catch { /* absent rather than guessed */ }
+  }
+}
+
+const bookSummary = openBook.length ? {
+  editions: new Set(openBook.map((r) => r.edition)).size,
+  positions: openBook.length,
+  stillOpen: openBook.filter((r) => r.status === "open").length,
+  stopped: openBook.filter((r) => r.status === "stopped").length,
+  target: openBook.filter((r) => r.status === "target").length,
+  aheadCount: openBook.filter((r) => r.resultR > 0).length,
+  medianResultR: median(openBook.map((r) => r.resultR)),
+  totalResultR: openBook.reduce((a, r) => a + r.resultR, 0),
+  meanResultR: openBook.reduce((a, r) => a + r.resultR, 0) / openBook.length,
+} : null;
 const settledSummary = settled.length ? {
   positions: settled.length,
   stopped: settled.filter((s) => s.status === "stopped").length,
@@ -326,7 +374,7 @@ const settledSummary = settled.length ? {
 
 /* ------------------------------------------------------------------ */
 
-const day = new Date().toISOString().slice(0, 10);
+const day = runDay;
 const out = {
   measuredAt: new Date().toISOString(),
   day,
@@ -368,6 +416,8 @@ const out = {
   priorEdition: prior ? { day: prior.day, measuredAt: prior.measuredAt, positions: prior.taken.length } : null,
   settled,
   settledSummary,
+  openBook,
+  bookSummary,
 };
 writeFileSync("research/daily-brief.json", `${JSON.stringify(out, null, 2)}\n`);
 writeFileSync(`${PLAN_DIR}/${day}.json`, `${JSON.stringify({ day, measuredAt: out.measuredAt, rules: out.rules, taken }, null, 2)}\n`);
@@ -408,6 +458,13 @@ if (out.selfTest) {
   console.log(`  algorithm ${st.algorithmNetR.toFixed(4)}R · always short ${st.alwaysShortNetR.toFixed(4)}R`
     + ` · always long ${st.alwaysLongNetR.toFixed(4)}R · t ${st.tStat.toFixed(2)}`
     + ` · beats doing nothing clever: ${st.beatsNoThinking}`);
+}
+
+if (bookSummary) {
+  const b = bookSummary;
+  console.log(`\nthe whole open book — ${b.positions} positions across ${b.editions} editions:`);
+  console.log(`  ${b.aheadCount}/${b.positions} ahead · ${b.stillOpen} still open · ${b.target} at target · ${b.stopped} stopped`);
+  console.log(`  median ${b.medianResultR.toFixed(3)}R · mean ${b.meanResultR.toFixed(3)}R · total ${b.totalResultR.toFixed(3)}R`);
 }
 
 if (settledSummary) {
