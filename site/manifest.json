@@ -10,6 +10,20 @@
   },
   "articles": [
     {
+      "slug": "brief-2026-08-19",
+      "draft": "brief-2026-08-19.txt",
+      "title": "How Is the Market? What Do We Do? — 19 August",
+      "description": "Same two questions as every edition, in the same order:",
+      "published": "2026-08-19T10:05:47.644Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 357346294087202
+    },
+    {
       "slug": "event-window",
       "draft": "90-event-window.txt",
       "title": "You Told Me to Watch the 24-72 Hour Reaction. I Measured It.",
