@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "event-window",
+      "draft": "90-event-window.txt",
+      "title": "You Told Me to Watch the 24-72 Hour Reaction. I Measured It.",
+      "description": "A reader sent me a BTC brief today. Price, an ETF flow figure, an SEC proposal out for comment, and a recommended action.",
+      "published": "2026-08-19T02:04:13.613Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 357227944142897
+    },
+    {
       "slug": "base-breakout",
       "draft": "89-base-breakout.txt",
       "title": "I Ran the Strategy You Sent Me. The Exit Ladder Is Doing the Work.",
