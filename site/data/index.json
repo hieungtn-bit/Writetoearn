@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T07:58:09.260Z",
+  "generatedAt": "2026-08-20T08:22:17.652Z",
   "note": "Every figure published on this site traces to one of these snapshots.",
   "snapshots": [
     {
@@ -109,6 +109,10 @@
     {
       "file": "gainers-study.json",
       "url": "/data/gainers-study.json"
+    },
+    {
+      "file": "grok-check.json",
+      "url": "/data/grok-check.json"
     },
     {
       "file": "hour-of-day.json",
