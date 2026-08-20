@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-20T12:28:57.148Z",
+  "generatedAt": "2026-08-20T12:42:08.484Z",
   "summary": {
-    "scored": 39,
-    "biasCorrect": 22,
-    "biasTotal": 39,
-    "biasPct": 56.41025641025641,
-    "supportHeld": "3/3",
-    "pending": 18,
+    "scored": 54,
+    "biasCorrect": 25,
+    "biasTotal": 48,
+    "biasPct": 52.083333333333336,
+    "supportHeld": "7/13",
+    "pending": 3,
     "unscoreable": 5,
     "publishedTotal": 62
   },
@@ -63,6 +63,171 @@
     "beatsDoingNothing": false
   },
   "calls": [
+    {
+      "asset": "BTCUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-19T10:05:48.406Z",
+      "correct": false,
+      "movePct": 11.792012419542148,
+      "typicalMovePct": 0.7471942202380288,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/357346294087202?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": null,
+      "publishedAt": "2026-08-19T02:04:14.895Z",
+      "correct": null,
+      "movePct": 7.6430107493478285,
+      "typicalMovePct": 0.7517657730862881,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/357227944142897?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": null,
+      "publishedAt": "2026-08-18T05:20:49.887Z",
+      "correct": null,
+      "movePct": -0.009090647296110725,
+      "typicalMovePct": 0.7509530390947816,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356922362191058?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": null,
+      "publishedAt": "2026-08-18T05:18:01.213Z",
+      "correct": null,
+      "movePct": 0.03257801242668278,
+      "typicalMovePct": 0.7509530390947816,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356921670934001?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-18T05:14:46.143Z",
+      "correct": false,
+      "movePct": 0.017127284215292454,
+      "typicalMovePct": 0.7509530390947816,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356920871225361?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-17T05:06:52.678Z",
+      "correct": false,
+      "movePct": 1.1568291782714897,
+      "typicalMovePct": 0.7347508154757709,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356565038586417?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": null,
+      "publishedAt": "2026-08-16T21:31:02.856Z",
+      "correct": null,
+      "movePct": 2.154393635590619,
+      "typicalMovePct": 0.7424592518578521,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356453013846562?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": null,
+      "publishedAt": "2026-08-16T16:27:19.276Z",
+      "correct": null,
+      "movePct": 1.2368704685530787,
+      "typicalMovePct": 0.7488784704466622,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356378369800753?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "SUIUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-16T16:11:49.642Z",
+      "correct": true,
+      "movePct": -0.38207200587803775,
+      "typicalMovePct": 0.9436175015395842,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356374564207713?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "XRPUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-16T00:01:43.881Z",
+      "correct": true,
+      "movePct": -0.9174311926605381,
+      "typicalMovePct": 1.0011919937613079,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356136150995313?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "XRPUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-14T21:24:48.843Z",
+      "correct": false,
+      "movePct": 0.5406487785342371,
+      "typicalMovePct": 1.0288443872864317,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355743692859970?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "XRPUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-14T21:04:10.635Z",
+      "correct": false,
+      "movePct": 0.5406487785342371,
+      "typicalMovePct": 1.0288443872864317,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355738621561474?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-14T20:50:56.781Z",
+      "correct": true,
+      "movePct": 0.2870985705622038,
+      "typicalMovePct": 0.778444012839552,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355735369776481?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-14T17:15:22.751Z",
+      "correct": false,
+      "movePct": -0.17430975284671485,
+      "typicalMovePct": 0.7798772660383868,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355682390353745?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "XRPUSDT",
+      "bias": "SHORT",
+      "publishedAt": "2026-08-14T05:48:46.163Z",
+      "correct": null,
+      "movePct": -0.4657615697156028,
+      "typicalMovePct": 1.0471204188481575,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355513644035778?r=LOHZTAM2&l=en"
+    },
     {
       "asset": "BNBUSDT",
       "bias": "WAIT",

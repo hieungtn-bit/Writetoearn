@@ -22,7 +22,7 @@ import { probeDurationSeconds } from "./media.mjs";
 import { collectBrief, formatBrief } from "./market.mjs";
 import { fetchKlines } from "./analysis.mjs";
 import { FORMATS, crontabLines, getFormat } from "./slots.mjs";
-import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
+import { extractClaim, formatScoreboard, retargetClaim, scoreDueClaims } from "./scoreboard.mjs";
 import { formatDoctor, runDoctor } from "./doctor.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
 import { formatPulse, pulse } from "./pulse.mjs";
@@ -1351,11 +1351,16 @@ async function cmdShip([file], flags, argv) {
      * The alternative is what happened once: a post arguing that BNB should be
      * left alone was logged as a BNB short, because BNB was the word it used
      * most. A gap in the record is visible and fixable; a confident wrong entry
-     * is neither. `--claim-asset` sets it when the human knows the answer.
+     * is neither. `--claim-asset` sets it when the human knows the answer, and
+     * `retargetClaim` moves the price and levels with the symbol — assigning
+     * the symbol alone once left BTC's numbers on four XRP and SUI calls,
+     * which settled at -100.00% and were printed as wins.
      */
     if (flags["claim-asset"]) {
-      claim.asset = String(flags["claim-asset"]).toUpperCase();
-      claim.ambiguous = false;
+      Object.assign(claim, retargetClaim(claim, brief, flags["claim-asset"]));
+      if (claim.priceAtPost == null) {
+        console.error(`  Call: ${claim.asset} is outside the brief — entry price will be recovered from candles at scoring.`);
+      }
     }
     if (flags["claim-bias"]) claim.bias = String(flags["claim-bias"]);
     if (claim.ambiguous) {

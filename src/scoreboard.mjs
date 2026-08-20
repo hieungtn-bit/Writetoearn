@@ -307,3 +307,33 @@ export function formatScoreboard(claims, { days = 7 } = {}) {
 
   return lines.join("\n");
 }
+
+/**
+ * Re-points a claim at a different asset, moving its numbers with it.
+ *
+ * Lives here rather than inline in the ship command because the bug it fixes
+ * was invisible precisely because it was inline and untested: assigning a new
+ * symbol left the previous asset's spot and pivots attached, and four calls
+ * settled at -100.00% and were printed as wins.
+ *
+ * A symbol the brief does not cover yields nulls, which is scoreable — the
+ * scorer recovers an entry from candles and judges a levelless claim on the
+ * move. A number belonging to another asset is the only unrecoverable outcome.
+ */
+export function retargetClaim(claim, brief, rawSymbol) {
+  const raw = String(rawSymbol).toUpperCase();
+  // The record stores exchange pairs; a bare ticker is fetched verbatim at
+  // scoring time and fails, leaving the call permanently unsettled.
+  const asset = raw.endsWith("USDT") ? raw : `${raw}USDT`;
+  const levels = (brief?.levels ?? []).find((l) => l.symbol === asset);
+  return {
+    ...claim,
+    asset,
+    ambiguous: false,
+    support: levels?.support ?? null,
+    resistance: levels?.resistance ?? null,
+    priceAtPost: levels?.spot
+      ?? (brief?.spot ?? []).find((s) => s.symbol === asset)?.price
+      ?? null,
+  };
+}

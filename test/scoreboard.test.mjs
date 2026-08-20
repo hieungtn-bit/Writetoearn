@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { BIAS, extractClaim, formatScoreboard, scoreClaim, tally } from "../src/scoreboard.mjs";
+import { BIAS, extractClaim, formatScoreboard, retargetClaim, scoreClaim, tally } from "../src/scoreboard.mjs";
 
 const brief = {
   spot: [
@@ -245,4 +245,48 @@ test("a WAIT through an ordinary move is still correct", async () => {
   );
   assert.ok(score);
   assert.equal(score.biasCorrect, true, "an unremarkable move vindicates standing aside");
+});
+
+/*
+ * Retargeting a claim.
+ *
+ * The bug these cover shipped four calls into the public record labelled XRP
+ * and SUI while carrying BTC's spot and BTC's support. Scoring divided an XRP
+ * close by a BTC entry, produced -100.00%, and the scoreboard printed each as
+ * a correct short. Two of the four wins on that board were the arithmetic of
+ * a mismatched denominator, so these assert the numbers move with the symbol.
+ */
+
+test("retargeting an asset moves its price and levels with it", () => {
+  const claim = extractClaim("$BTC leads. Bias: Selective Short", brief);
+  assert.equal(claim.asset, "BTCUSDT");
+
+  const moved = retargetClaim(claim, brief, "SOL");
+  assert.equal(moved.asset, "SOLUSDT");
+  assert.equal(moved.priceAtPost, 73.5, "the entry must be SOL's, not BTC's");
+  assert.equal(moved.support, 72.32);
+  assert.equal(moved.resistance, 77.5);
+});
+
+test("retargeting to an asset the brief does not cover clears the numbers", () => {
+  const claim = extractClaim("$BTC leads. Bias: Selective Short", brief);
+  const moved = retargetClaim(claim, brief, "XRP");
+
+  assert.equal(moved.asset, "XRPUSDT");
+  assert.equal(moved.priceAtPost, null, "no price is scoreable; a wrong one is not");
+  assert.equal(moved.support, null);
+  assert.equal(moved.resistance, null);
+});
+
+test("retargeting normalises a bare ticker to its exchange pair", () => {
+  const claim = extractClaim("$BTC leads. Bias: WAIT", brief);
+  // "BTC" was recorded verbatim once and could never be fetched at scoring,
+  // so the call sat unsettled rather than being judged.
+  assert.equal(retargetClaim(claim, brief, "BTC").asset, "BTCUSDT");
+  assert.equal(retargetClaim(claim, brief, "btcusdt").asset, "BTCUSDT");
+});
+
+test("retargeting clears the ambiguity flag it is used to resolve", () => {
+  const claim = extractClaim("$BTC and $SOL both matter. Bias: WAIT", brief);
+  assert.equal(retargetClaim(claim, brief, "SOL").ambiguous, false);
 });
