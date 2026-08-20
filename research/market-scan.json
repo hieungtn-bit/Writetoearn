@@ -1,0 +1,330 @@
+{
+  "measuredAt": "2026-08-20T12:08:49.920Z",
+  "source": "Binance spot 24hr tickers (rolling window); OKX perpetual funding",
+  "note": "Intraday scan. Writes no plan file — the morning ledger stands.",
+  "breadth": {
+    "pairs": 671,
+    "up": 469,
+    "down": 202,
+    "upSharePct": 69.89567809239941,
+    "downSharePct": 30.104321907600596,
+    "medianChangePct": 4.468,
+    "upOver5": 316,
+    "upOver10": 93,
+    "upOver20": 11,
+    "upOver30": 3,
+    "downOver5": 106,
+    "downOver10": 66
+  },
+  "retrace": {
+    "medianOffHighPct": -2.033898305084747,
+    "withinOnePctOfHigh": 140,
+    "moreThanFivePctOffHigh": 174
+  },
+  "morningComparison": {
+    "day": "2026-08-20",
+    "measuredAt": "2026-08-20T07:57:15.392Z",
+    "upSharePct": 69.29955290611028,
+    "medianChangePct": 3.333,
+    "upSharePctDelta": 0.5961251862891288,
+    "medianChangePctDelta": 1.1349999999999998,
+    "bookStopped": 19,
+    "bookPositions": 20,
+    "bookTotalR": -19.444990771903466
+  },
+  "claimsChecked": [
+    {
+      "symbol": "BTCUSDT",
+      "label": "BTC",
+      "kind": "floor",
+      "floorUsd": 70000,
+      "text": "above $70k, holding the highs",
+      "actualPrice": 71592.55,
+      "actualChangePct": 10.97,
+      "high24h": 72490,
+      "inRange": true,
+      "missPct": 2.27507142857144
+    },
+    {
+      "symbol": "ETHUSDT",
+      "label": "ETH",
+      "kind": "change",
+      "lowPct": 17,
+      "highPct": 20,
+      "text": "leading, +17-20%",
+      "actualPrice": 2273.75,
+      "actualChangePct": 18.169,
+      "high24h": 2333.65,
+      "inRange": true,
+      "missPct": 0
+    },
+    {
+      "symbol": "BNBUSDT",
+      "label": "BNB",
+      "kind": "band",
+      "lowUsd": 645,
+      "highUsd": 646,
+      "text": "around $645-646",
+      "actualPrice": 642.44,
+      "actualChangePct": 6.555,
+      "high24h": 649,
+      "inRange": false,
+      "missPct": -0.3968992248061909
+    }
+  ],
+  "claimsInRange": 2,
+  "claimsTotal": 3,
+  "ranked": [
+    {
+      "symbol": "ETHUSDT",
+      "price": 2273.75,
+      "changePct": 18.169
+    },
+    {
+      "symbol": "ARBUSDT",
+      "price": 0.0878,
+      "changePct": 14.026
+    },
+    {
+      "symbol": "SOLUSDT",
+      "price": 86.77,
+      "changePct": 11.961
+    },
+    {
+      "symbol": "BNBUSDT",
+      "price": 642.44,
+      "changePct": 6.555
+    }
+  ],
+  "rankedLeadRank": 13,
+  "resistance": {
+    "lowUsd": 649,
+    "highUsd": 652,
+    "symbol": "BNBUSDT",
+    "actualPrice": 642.44,
+    "high24h": 649,
+    "alreadyThroughIt": false,
+    "touchedIt": true,
+    "distanceToLowPct": 1.021107029450219
+  },
+  "runners": {
+    "lowPct": 20,
+    "highPct": 30,
+    "text": "alts already +20-30%",
+    "inBand": 8,
+    "aboveBand": 3,
+    "inBandLiquid": 9,
+    "liquidFloorUsd": 2000000
+  },
+  "leaders": [
+    {
+      "symbol": "BOMEUSDT",
+      "changePct": 72.996,
+      "price": 0.0013056,
+      "turnoverUsd": 19120078.7686193
+    },
+    {
+      "symbol": "NEIROUSDT",
+      "changePct": 27.615,
+      "price": 0.00008004,
+      "turnoverUsd": 4322194.41954318
+    },
+    {
+      "symbol": "ORDIUSDT",
+      "changePct": 27.356,
+      "price": 4.325,
+      "turnoverUsd": 6906667.74982
+    },
+    {
+      "symbol": "PNUTUSDT",
+      "changePct": 26.098,
+      "price": 0.0517,
+      "turnoverUsd": 3276712.01679
+    },
+    {
+      "symbol": "REDUSDT",
+      "changePct": 23.375,
+      "price": 0.1082,
+      "turnoverUsd": 6787167.70695
+    },
+    {
+      "symbol": "MSTRBUSDT",
+      "changePct": 21.877,
+      "price": 113.37,
+      "turnoverUsd": 11686481.05634
+    },
+    {
+      "symbol": "BIOUSDT",
+      "changePct": 21.395,
+      "price": 0.03115,
+      "turnoverUsd": 12184651.877342
+    },
+    {
+      "symbol": "METUSDT",
+      "changePct": 20.911,
+      "price": 0.207,
+      "turnoverUsd": 6891916.34263
+    },
+    {
+      "symbol": "REUSDT",
+      "changePct": 20.239,
+      "price": 0.5133,
+      "turnoverUsd": 77880502.26811
+    },
+    {
+      "symbol": "FORMUSDT",
+      "changePct": 19.833,
+      "price": 0.2447,
+      "turnoverUsd": 2233308.60557
+    }
+  ],
+  "laggards": [
+    {
+      "symbol": "NFPUSDT",
+      "changePct": -66.168,
+      "price": 0.00181,
+      "turnoverUsd": 3834002.83185
+    },
+    {
+      "symbol": "VANRYUSDT",
+      "changePct": -37.128,
+      "price": 0.00074,
+      "turnoverUsd": 2320295.244185
+    },
+    {
+      "symbol": "SCRTUSDT",
+      "changePct": -22.605,
+      "price": 0.0202,
+      "turnoverUsd": 2629789.99573
+    },
+    {
+      "symbol": "BBUSDT",
+      "changePct": -17.283,
+      "price": 0.00895,
+      "turnoverUsd": 7985539.224842
+    },
+    {
+      "symbol": "TUTUSDT",
+      "changePct": -16.658,
+      "price": 0.03177,
+      "turnoverUsd": 12092619.06999
+    },
+    {
+      "symbol": "HEIUSDT",
+      "changePct": -15.204,
+      "price": 0.1266,
+      "turnoverUsd": 4596084.28114
+    },
+    {
+      "symbol": "SNXXBUSDT",
+      "changePct": -8.987,
+      "price": 14.38,
+      "turnoverUsd": 15384654.9503
+    },
+    {
+      "symbol": "SOXLBUSDT",
+      "changePct": -8.345,
+      "price": 117.19,
+      "turnoverUsd": 13503957.63445
+    },
+    {
+      "symbol": "LRCUSDT",
+      "changePct": -6.238,
+      "price": 0.01879,
+      "turnoverUsd": 2891184.21049
+    },
+    {
+      "symbol": "EDENUSDT",
+      "changePct": -4.644,
+      "price": 0.05359,
+      "turnoverUsd": 6752432.587482
+    }
+  ],
+  "funding": [
+    {
+      "instrument": "BTC-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.95,
+      "nextFundingTime": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "instrument": "ETH-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.95,
+      "nextFundingTime": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "instrument": "SOL-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.95,
+      "nextFundingTime": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "instrument": "BNB-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.00602291022034,
+      "annualisedPct": 6.5950866912723,
+      "nextFundingTime": "2026-08-21T00:00:00.000Z"
+    }
+  ],
+  "engine": {
+    "scannedAt": "2026-08-20T12:06:15.857Z",
+    "rows": 100,
+    "tally": {
+      "total": 100,
+      "LONG": 59,
+      "SHORT": 36,
+      "WAIT": 5,
+      "turning": 40,
+      "untradeable": 18
+    },
+    "minEffectiveN": 12,
+    "agreementWindowDays": [
+      180,
+      270,
+      365,
+      540,
+      730
+    ],
+    "funnel": [
+      {
+        "bias": "LONG",
+        "rows": 59,
+        "haveFiveWindows": 29,
+        "unanimous": 5,
+        "unanimousSharePct": 17.24137931034483,
+        "deepEnough": 0,
+        "offered": 0,
+        "symbols": []
+      },
+      {
+        "bias": "SHORT",
+        "rows": 36,
+        "haveFiveWindows": 23,
+        "unanimous": 20,
+        "unanimousSharePct": 86.95652173913044,
+        "deepEnough": 6,
+        "offered": 5,
+        "symbols": [
+          "BONKUSDT",
+          "ARBUSDT",
+          "XRPUSDT",
+          "SUIUSDT",
+          "ADAUSDT"
+        ]
+      }
+    ],
+    "rowsWithFiveWindows": 52
+  },
+  "baseRates": {
+    "continuation1dPct": 50.69204152249135,
+    "continuation2dPct": 45.48611111111111,
+    "continuation3dPct": 42.1875,
+    "continuation3dWindows": 192,
+    "persistence10dPct": 49.55454241258156,
+    "persistence30dPct": 50.696446253713276
+  }
+}
