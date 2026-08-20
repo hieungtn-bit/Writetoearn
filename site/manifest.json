@@ -10,6 +10,18 @@
   },
   "articles": [
     {
+      "slug": "grok-check",
+      "draft": "91-grok-check.txt",
+      "title": "I Audited a Call That Beat Mine, on the Day My Book Was Wiped Out.",
+      "description": "A reader forwarded me a bullish quick-scan today. Alts leading, ETH the momentum leader, protect profits, wait for a BTC retest before adding anything new.",
+      "published": "2026-08-20T08:21:58.044Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 357674672279378
+    },
+    {
       "slug": "brief-2026-08-20",
       "draft": "brief-2026-08-20.txt",
       "title": "How Is the Market? What Do We Do? — 20 August",
