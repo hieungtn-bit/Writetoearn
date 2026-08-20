@@ -37,7 +37,7 @@
  * Writes research/market-scan.json.
  */
 
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 
 const retry = async (fn, n = 5) => {
   let last;
@@ -312,6 +312,67 @@ const engine = board ? {
   rowsWithFiveWindows: rows.filter((r) => r.agreement?.windows === 5).length,
 } : null;
 
+/**
+ * The same two numbers, every archived scan since the board started keeping them.
+ *
+ * One evening's funnel could be a fluke of one evening. What makes it a
+ * property of the machine rather than of today is the pair of columns below:
+ * the share of rows the engine read LONG, against the direction of every
+ * position the column actually offered on the same date.
+ *
+ * The archive is read rather than remembered. Each scan was written at the
+ * time it ran and committed, so this is a record, not a reconstruction.
+ */
+const SCAN_DIR = "site/signals-archive/scans";
+const boardHistory = existsSync(SCAN_DIR)
+  ? readdirSync(SCAN_DIR).filter((f) => f.endsWith(".json")).sort().map((f) => {
+      const s = JSON.parse(readFileSync(`${SCAN_DIR}/${f}`, "utf8"));
+      const day = s.scannedAt.slice(0, 10);
+      const planPath = `data/plans/${day}.json`;
+      const plan = existsSync(planPath) ? JSON.parse(readFileSync(planPath, "utf8")) : null;
+      const taken = plan?.taken ?? [];
+      return {
+        scannedAt: s.scannedAt,
+        day,
+        rows: s.tally.total,
+        long: s.tally.LONG,
+        short: s.tally.SHORT,
+        longSharePct: (s.tally.LONG / s.tally.total) * 100,
+        offered: taken.length,
+        offeredDirections: [...new Set(taken.map((t) => t.direction))],
+      };
+    })
+  : [];
+
+/**
+ * The count the argument rests on, derived rather than asserted in prose.
+ *
+ * A sentence that says "every position was short" is a claim about a file the
+ * reader cannot see. A number computed from that file, printed beside the
+ * total it was drawn from, is one they can check.
+ */
+/**
+ * One edition per day, not one per scan.
+ *
+ * Two scans ran on 14 August and two on 20 August, and each reads the same
+ * four positions out of that day's single plan file. Counting rows would
+ * report thirty-two positions where twenty-four were taken — the same
+ * double-count that once turned a t of 1.46 into 5.69 on this desk by scoring
+ * one rebalance sixty times. The plan file is the unit, so the day is the key.
+ */
+const byDay = new Map();
+for (const h of boardHistory) byDay.set(h.day, h);
+const offeredEver = [...byDay.values()].filter((h) => h.offered > 0);
+const boardSummary = offeredEver.length ? {
+  editions: offeredEver.length,
+  positions: offeredEver.reduce((a, h) => a + h.offered, 0),
+  editionsOfferingAnyLong: offeredEver.filter((h) => h.offeredDirections.includes("long")).length,
+  longSharePctFirst: offeredEver[0].longSharePct,
+  longSharePctLast: offeredEver.at(-1).longSharePct,
+  firstDay: offeredEver[0].day,
+  lastDay: offeredEver.at(-1).day,
+} : null;
+
 /* ------------------------------------------------------------------ *
  * 5. The base rates that apply to the brief's advice
  * ------------------------------------------------------------------ */
@@ -364,6 +425,8 @@ const out = {
   laggards,
   funding,
   engine,
+  boardHistory,
+  boardSummary,
   baseRates,
 };
 
