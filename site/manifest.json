@@ -10,6 +10,23 @@
   },
   "articles": [
     {
+      "slug": "where-every-long-died",
+      "draft": "92-the-filter.txt",
+      "title": "My Board Read Long All Week. It Could Not Offer a Single One.",
+      "description": "The signal engine read long on most rows for seven straight editions while the book stayed short. Counting every row through all four filters shows where each long died — and that agreement, spanning 180 to 730 days, cannot admit a change of trend by construction.",
+      "published": "2026-08-20T12:28:48.351Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [
+        "quant",
+        "filter design",
+        "selection bias",
+        "agreement windows"
+      ],
+      "squareId": 357735334974812
+    },
+    {
       "slug": "grok-check",
       "draft": "91-grok-check.txt",
       "title": "I Audited a Call That Beat Mine, on the Day My Book Was Wiped Out.",
