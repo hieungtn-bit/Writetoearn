@@ -1,7 +1,7 @@
 {
-  "measuredAt": "2026-08-19T10:04:21.191Z",
-  "day": "2026-08-19",
-  "boardScannedAt": "2026-08-19T10:01:51.658Z",
+  "measuredAt": "2026-08-20T07:57:15.392Z",
+  "day": "2026-08-20",
+  "boardScannedAt": "2026-08-20T07:54:51.676Z",
   "rules": {
     "stopAtr": 1.5,
     "rewardRatio": 2,
@@ -14,172 +14,166 @@
   },
   "breadth": {
     "pairs": 671,
-    "up": 276,
-    "down": 381,
-    "upSharePct": 41.132637853949326,
-    "medianChangePct": -0.336,
-    "upOver5": 32,
-    "downOver5": 116,
-    "downOver10": 71
+    "up": 465,
+    "down": 200,
+    "upSharePct": 69.29955290611028,
+    "downSharePct": 30.700447093889714,
+    "medianChangePct": 3.333,
+    "upOver5": 258,
+    "downOver5": 109,
+    "downOver10": 67
   },
   "context": {
-    "btcDominancePct": 56.47411125618233,
-    "fearGreed": 46
+    "btcDominancePct": 58.27001091219076,
+    "fearGreed": 62
   },
   "tally": {
-    "total": 90,
-    "LONG": 47,
-    "SHORT": 35,
-    "WAIT": 8,
-    "turning": 34,
+    "total": 100,
+    "LONG": 56,
+    "SHORT": 37,
+    "WAIT": 7,
+    "turning": 41,
     "untradeable": 20
   },
   "funnel": {
     "long": {
-      "total": 47,
-      "tradeable": 35,
+      "total": 56,
+      "tradeable": 44,
       "notThin": 4,
       "unanimous": 0
     },
     "short": {
-      "total": 35,
-      "tradeable": 30,
-      "notThin": 6,
-      "unanimous": 5
+      "total": 37,
+      "tradeable": 33,
+      "notThin": 5,
+      "unanimous": 4
     }
   },
-  "qualifying": 5,
+  "qualifying": 4,
   "taken": [
+    {
+      "symbol": "ADAUSDT",
+      "direction": "short",
+      "entry": 0.1841,
+      "atrPct": 4.829691396519063,
+      "stopPct": 7.244537094778595,
+      "stop": 0.19743719279148741,
+      "target": 0.1574256144170252,
+      "positionUsd": 138.03504446415724,
+      "fullNetR": 0.0904016354913787,
+      "recentNetR": 0.04898948892825386,
+      "fullEffectiveN": 32.333333333333336,
+      "agreesAcrossWindows": true,
+      "feeR": 0.027607008892831453,
+      "bias": "SHORT",
+      "turnoverUsd": 18763393.735247,
+      "boardEffectiveN": 17
+    },
     {
       "symbol": "ARBUSDT",
       "direction": "short",
-      "entry": 0.0771,
-      "atrPct": 4.508509581029639,
-      "stopPct": 6.762764371544458,
-      "stop": 0.08231409133046078,
-      "target": 0.06667181733907844,
-      "positionUsd": 147.8685261026806,
-      "fullNetR": 0.07455000611967007,
-      "recentNetR": 0.2329262947794639,
+      "entry": 0.089,
+      "atrPct": 4.836867011174277,
+      "stopPct": 7.255300516761416,
+      "stop": 0.09545721745991766,
+      "target": 0.07608556508016467,
+      "positionUsd": 137.8302659813704,
+      "fullNetR": 0.08583600865939603,
+      "recentNetR": 0.24743394680372593,
       "fullEffectiveN": 32.333333333333336,
       "agreesAcrossWindows": true,
-      "feeR": 0.02957370522053612,
+      "feeR": 0.02756605319627408,
       "bias": "SHORT",
-      "turnoverUsd": 2929290.881540666,
+      "turnoverUsd": 3162101.8140289993,
       "boardEffectiveN": 17
     },
     {
       "symbol": "SUIUSDT",
       "direction": "short",
-      "entry": 0.6573,
-      "atrPct": 3.4205210855923736,
-      "stopPct": 5.1307816283885606,
-      "stop": 0.691024627643398,
-      "target": 0.589850744713204,
-      "positionUsd": 194.90207777836628,
-      "fullNetR": 0.043493811248450455,
-      "recentNetR": 0.11101958444432675,
+      "entry": 0.7015,
+      "atrPct": 3.8071635761552916,
+      "stopPct": 5.710745364232937,
+      "stop": 0.741560878730094,
+      "target": 0.6213782425398119,
+      "positionUsd": 175.10849043683797,
+      "fullNetR": 0.07624999695752879,
+      "recentNetR": 0.14386806938575533,
       "fullEffectiveN": 32.333333333333336,
       "agreesAcrossWindows": true,
-      "feeR": 0.038980415555673255,
+      "feeR": 0.035021698087367596,
       "bias": "SHORT",
-      "turnoverUsd": 12591342.044581337,
-      "boardEffectiveN": 59
+      "turnoverUsd": 13292578.856965335,
+      "boardEffectiveN": 35
     },
     {
       "symbol": "XRPUSDT",
       "direction": "short",
-      "entry": 1.0038,
-      "atrPct": 2.5071620840671915,
-      "stopPct": 3.7607431261007873,
-      "stop": 1.0415503394997998,
-      "target": 0.9282993210004007,
-      "positionUsd": 265.90489338654186,
-      "fullNetR": 0.03238603163196998,
-      "recentNetR": 0.07181902132269163,
+      "entry": 1.1116,
+      "atrPct": 3.038171915264491,
+      "stopPct": 4.557257872896736,
+      "stop": 1.16225847851512,
+      "target": 1.0102830429697598,
+      "positionUsd": 219.43019857341727,
+      "fullNetR": 0.0370532353073033,
+      "recentNetR": 0.09991019683251302,
       "fullEffectiveN": 32.333333333333336,
       "agreesAcrossWindows": true,
-      "feeR": 0.05318097867730837,
+      "feeR": 0.04388603971468345,
       "bias": "SHORT",
-      "turnoverUsd": 54168351.08635999,
+      "turnoverUsd": 58377321.21489067,
       "boardEffectiveN": 17
-    },
-    {
-      "symbol": "HBARUSDT",
-      "direction": "short",
-      "entry": 0.0676,
-      "atrPct": 2.7170723960351326,
-      "stopPct": 4.075608594052699,
-      "stop": 0.07035511140957962,
-      "target": 0.062089777180840744,
-      "positionUsd": 245.36212860558845,
-      "fullNetR": 0.007082320459585165,
-      "recentNetR": 0.044553006759223024,
-      "fullEffectiveN": 32.333333333333336,
-      "agreesAcrossWindows": true,
-      "feeR": 0.049072425721117696,
-      "bias": "SHORT",
-      "turnoverUsd": 3614952.2449863334,
-      "boardEffectiveN": 35
     }
   ],
-  "declined": [
-    {
-      "symbol": "XLMUSDT",
-      "bias": "SHORT",
-      "fullNetR": 0.050172190172352304,
-      "reason": "full and recent windows disagree"
-    }
-  ],
+  "declined": [],
   "followed": {
     "BTCUSDT": {
-      "price": 64410.24,
-      "atrPct": 1.871303589371611,
-      "rsi14": 53.04041348938967,
-      "change7dPct": 1.4654224110621317,
-      "change30dPct": -1.2953235673125596,
-      "rangePosition30d": 45.61357786014122,
+      "price": 69739,
+      "atrPct": 2.220173382722067,
+      "rsi14": 74.44115473323008,
+      "change7dPct": 9.84100703628837,
+      "change30dPct": 4.782186953093443,
+      "rangePosition30d": 96.3469730218149,
       "range30": {
         "low": 62275,
-        "high": 66956.15
+        "high": 70022
       },
-      "turnoverUsd": 817574835.7752203,
-      "medianWeekPct": 9.514128152942897,
-      "poc": 64159.162874999995,
+      "turnoverUsd": 836761050.0695584,
+      "medianWeekPct": 9.542358573996207,
+      "poc": 64153.6475,
       "valueArea": [
-        63351.6645,
-        65317.7475
+        63088.435,
+        65335.065
       ],
-      "priceVsValueArea": "inside",
+      "priceVsValueArea": "above",
       "lookbacks": {
         "180": {
           "days": 180,
-          "long": "32/64",
-          "short": "21/64",
+          "long": "43/64",
+          "short": "14/64",
           "leans": "long"
         },
         "270": {
           "days": 270,
-          "long": "3/64",
-          "short": "62/64",
+          "long": "5/64",
+          "short": "61/64",
           "leans": "short"
         },
         "365": {
           "days": 365,
-          "long": "1/64",
-          "short": "60/64",
+          "long": "2/64",
+          "short": "64/64",
           "leans": "short"
         },
         "540": {
           "days": 540,
-          "long": "17/64",
+          "long": "16/64",
           "short": "49/64",
           "leans": "short"
         },
         "730": {
           "days": 730,
-          "long": "29/64",
-          "short": "24/64",
+          "long": "33/64",
+          "short": "21/64",
           "leans": "long"
         }
       },
@@ -187,41 +181,41 @@
       "lookbackCount": 5,
       "board": {
         "bias": "LONG",
-        "effectiveN": 5,
-        "thin": true,
-        "agreeing": 1,
+        "effectiveN": 17,
+        "thin": false,
+        "agreeing": 2,
         "windows": 5,
         "turning": false
       },
       "verdict": {
         "onBoard": true,
-        "reason": "sample too thin — 5 independent episodes"
+        "reason": "only 2 of 5 lookbacks agree"
       },
       "stopIfTaken": {
         "atr": 1.5,
-        "pct": 2.8069553840574164,
-        "shareOfMedianWeek": 0.2950302265152034
+        "pct": 3.3302600740831005,
+        "shareOfMedianWeek": 0.34899758254299534
       }
     },
     "BNBUSDT": {
-      "price": 602.56,
-      "atrPct": 1.7796254327341043,
-      "rsi14": 56.00394253358869,
-      "change7dPct": -1.2908721577878428,
-      "change30dPct": 5.477269942409013,
-      "rangePosition30d": 72.13013168086752,
+      "price": 629.74,
+      "atrPct": 2.0341020260400935,
+      "rsi14": 70.27747816694404,
+      "change7dPct": 3.116045258797133,
+      "change30dPct": 9.7203589162819,
+      "rangePosition30d": 91.50018612731105,
       "range30": {
         "low": 556,
-        "high": 620.55
+        "high": 636.59
       },
-      "turnoverUsd": 52603168.482551,
-      "medianWeekPct": 9.967916370504376,
-      "poc": 592.632125,
+      "turnoverUsd": 55317223.79164401,
+      "medianWeekPct": 10.323043900997682,
+      "poc": 605.3613750000001,
       "valueArea": [
-        576.97875,
-        616.35425
+        577.7593,
+        620.0690500000001
       ],
-      "priceVsValueArea": "inside",
+      "priceVsValueArea": "above",
       "lookbacks": {
         "180": {
           "days": 180,
@@ -232,24 +226,24 @@
         "270": {
           "days": 270,
           "long": "7/64",
-          "short": "30/64",
+          "short": "28/64",
           "leans": "short"
         },
         "365": {
           "days": 365,
-          "long": "30/64",
-          "short": "24/64",
+          "long": "32/64",
+          "short": "29/64",
           "leans": "long"
         },
         "540": {
           "days": 540,
-          "long": "59/64",
+          "long": "61/64",
           "short": "0/64",
           "leans": "long"
         },
         "730": {
           "days": 730,
-          "long": "51/64",
+          "long": "55/64",
           "short": "0/64",
           "leans": "long"
         }
@@ -270,58 +264,58 @@
       },
       "stopIfTaken": {
         "atr": 1.5,
-        "pct": 2.6694381491011567,
-        "shareOfMedianWeek": 0.2678030242107743
+        "pct": 3.0511530390601402,
+        "shareOfMedianWeek": 0.29556718622162
       }
     },
     "ICPUSDT": {
-      "price": 2.186,
-      "atrPct": 4.238435337265862,
-      "rsi14": 50.13395410612298,
-      "change7dPct": 1.1568718186024947,
-      "change30dPct": -0.8166969147005552,
-      "rangePosition30d": 47.642679900744426,
+      "price": 2.312,
+      "atrPct": 4.411698449531057,
+      "rsi14": 59.86562568509982,
+      "change7dPct": 6.201194304088185,
+      "change30dPct": 3.9568345323740837,
+      "rangePosition30d": 78.90818858560795,
       "range30": {
         "low": 1.994,
         "high": 2.397
       },
-      "turnoverUsd": 3106394.4909806666,
-      "medianWeekPct": 18.9346375926761,
-      "poc": 2.0957575,
+      "turnoverUsd": 3213376.3742499994,
+      "medianWeekPct": 20.112656438772785,
+      "poc": 2.1743425,
       "valueArea": [
-        2.052435,
-        2.2358
+        2.108855,
+        2.3244599999999997
       ],
       "priceVsValueArea": "inside",
       "lookbacks": {
         "180": {
           "days": 180,
-          "long": "63/64",
+          "long": "62/64",
           "short": "0/64",
           "leans": "long"
         },
         "270": {
           "days": 270,
           "long": "18/64",
-          "short": "43/64",
+          "short": "45/64",
           "leans": "short"
         },
         "365": {
           "days": 365,
           "long": "3/64",
-          "short": "63/64",
+          "short": "64/64",
           "leans": "short"
         },
         "540": {
           "days": 540,
           "long": "1/64",
-          "short": "49/64",
+          "short": "51/64",
           "leans": "short"
         },
         "730": {
           "days": 730,
-          "long": "0/64",
-          "short": "58/64",
+          "long": "1/64",
+          "short": "59/64",
           "leans": "short"
         }
       },
@@ -341,8 +335,8 @@
       },
       "stopIfTaken": {
         "atr": 1.5,
-        "pct": 6.3576530058987935,
-        "shareOfMedianWeek": 0.33576840194490587
+        "pct": 6.617547674296586,
+        "shareOfMedianWeek": 0.3290240498286147
       }
     }
   },
@@ -359,58 +353,71 @@
     "beatsNoThinking": false
   },
   "priorEdition": {
-    "day": "2026-08-18",
-    "measuredAt": "2026-08-18T05:12:17.477Z",
-    "positions": 3
+    "day": "2026-08-19",
+    "measuredAt": "2026-08-19T10:04:21.191Z",
+    "positions": 4
   },
   "settled": [
     {
+      "symbol": "ARBUSDT",
+      "direction": "short",
+      "entry": 0.0771,
+      "stop": 0.08231409133046078,
+      "target": 0.06667181733907844,
+      "status": "stopped",
+      "closedAt": "2026-08-19T19:00:00.000Z",
+      "lastPrice": 0.089,
+      "movePct": 15.43450064850842,
+      "resultR": -1,
+      "hoursHeld": 21.88056388888889
+    },
+    {
       "symbol": "SUIUSDT",
       "direction": "short",
-      "entry": 0.649,
-      "stop": 0.6838765220775055,
-      "target": 0.579246955844989,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 0.6573,
-      "movePct": 1.2788906009244982,
-      "resultR": -0.23798244508311456,
-      "hoursHeld": 28.866803055555554
+      "entry": 0.6573,
+      "stop": 0.691024627643398,
+      "target": 0.589850744713204,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 0.7015,
+      "movePct": 6.724478928951783,
+      "resultR": -1,
+      "hoursHeld": 21.880623055555557
     },
     {
       "symbol": "XRPUSDT",
       "direction": "short",
-      "entry": 0.9962,
-      "stop": 1.0350814095712129,
-      "target": 0.9184371808575743,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 1.0037,
-      "movePct": 0.7528608713109897,
-      "resultR": -0.19289424130222257,
-      "hoursHeld": 28.866851666666665
+      "entry": 1.0038,
+      "stop": 1.0415503394997998,
+      "target": 0.9282993210004007,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 1.1117,
+      "movePct": 10.749153217772456,
+      "resultR": -1,
+      "hoursHeld": 21.88067527777778
     },
     {
       "symbol": "HBARUSDT",
       "direction": "short",
-      "entry": 0.06566,
-      "stop": 0.06838267492460223,
-      "target": 0.06021465015079553,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 0.0676,
-      "movePct": 2.954614681693579,
-      "resultR": -0.7125345675570974,
-      "hoursHeld": 28.8669
+      "entry": 0.0676,
+      "stop": 0.07035511140957962,
+      "target": 0.062089777180840744,
+      "status": "stopped",
+      "closedAt": "2026-08-19T16:00:00.000Z",
+      "lastPrice": 0.07139,
+      "movePct": 5.6065088757396575,
+      "resultR": -1,
+      "hoursHeld": 21.880725
     }
   ],
   "settledSummary": {
-    "positions": 3,
-    "stopped": 0,
+    "positions": 4,
+    "stopped": 4,
     "target": 0,
-    "open": 3,
-    "medianResultR": -0.23798244508311456,
-    "totalResultR": -1.1434112539424346,
+    "open": 0,
+    "medianResultR": -1,
+    "totalResultR": -4,
     "aheadCount": 0
   },
   "openBook": [
@@ -420,12 +427,12 @@
       "entry": 0.0744,
       "stop": 0.08004124097218412,
       "target": 0.0631175180556317,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 0.0771,
-      "movePct": 3.629032258064524,
-      "resultR": -0.47861809366293323,
-      "hoursHeld": 109.01855222222223,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 0.089,
+      "movePct": 19.6236559139785,
+      "resultR": -1,
+      "hoursHeld": 130.90007694444444,
       "edition": "2026-08-14"
     },
     {
@@ -436,10 +443,10 @@
       "target": 0.000001775718220654688,
       "status": "open",
       "closedAt": null,
-      "lastPrice": 0.00000229,
-      "movePct": -2.9661016949152463,
-      "resultR": 0.23961041564032642,
-      "hoursHeld": 109.01860277777777,
+      "lastPrice": 0.00000249,
+      "movePct": 5.508474576271194,
+      "resultR": -0.44499077190346514,
+      "hoursHeld": 130.90012611111112,
       "edition": "2026-08-14"
     },
     {
@@ -448,12 +455,12 @@
       "entry": 0.6782,
       "stop": 0.714226484441352,
       "target": 0.6061470311172962,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 0.6573,
-      "movePct": -3.0816868180477797,
-      "resultR": 0.5801287670470173,
-      "hoursHeld": 109.01865222222222,
+      "status": "stopped",
+      "closedAt": "2026-08-19T21:00:00.000Z",
+      "lastPrice": 0.7015,
+      "movePct": 3.4355647301680836,
+      "resultR": -1,
+      "hoursHeld": 130.90017527777778,
       "edition": "2026-08-14"
     },
     {
@@ -462,12 +469,12 @@
       "entry": 0.9992,
       "stop": 1.0425293107514944,
       "target": 0.9125413784970116,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 1.0037,
-      "movePct": 0.45036028823060015,
-      "resultR": -0.10385579465616056,
-      "hoursHeld": 109.01870138888889,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 1.1117,
+      "movePct": 11.259007205764604,
+      "resultR": -1,
+      "hoursHeld": 130.90022555555555,
       "edition": "2026-08-14"
     },
     {
@@ -476,12 +483,12 @@
       "entry": 1.0028,
       "stop": 1.0451282375345508,
       "target": 0.9181435249308983,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 1.0037,
-      "movePct": 0.08974870362985499,
-      "resultR": -0.021262401943042228,
-      "hoursHeld": 82.08112555555556,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 1.1117,
+      "movePct": 10.859593139210212,
+      "resultR": -1,
+      "hoursHeld": 103.96264083333334,
       "edition": "2026-08-15"
     },
     {
@@ -490,12 +497,12 @@
       "entry": 0.00000262,
       "stop": 0.0000028233401748404333,
       "target": 0.0000022133196503191336,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 0.00000259,
-      "movePct": -1.1450381679389166,
-      "resultR": 0.14753601949807255,
-      "hoursHeld": 82.08117388888888,
+      "status": "stopped",
+      "closedAt": "2026-08-19T21:00:00.000Z",
+      "lastPrice": 0.00000296,
+      "movePct": 12.977099236641232,
+      "resultR": -1,
+      "hoursHeld": 103.96268972222222,
       "edition": "2026-08-15"
     },
     {
@@ -504,12 +511,12 @@
       "entry": 0.6774,
       "stop": 0.7121281641241125,
       "target": 0.607943671751775,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 0.6573,
-      "movePct": -2.967227635075287,
-      "resultR": 0.5787809550820492,
-      "hoursHeld": 82.08122277777778,
+      "status": "stopped",
+      "closedAt": "2026-08-19T21:00:00.000Z",
+      "lastPrice": 0.7015,
+      "movePct": 3.5577206967818187,
+      "resultR": -1,
+      "hoursHeld": 103.96273972222222,
       "edition": "2026-08-15"
     },
     {
@@ -518,12 +525,12 @@
       "entry": 0.6803,
       "stop": 0.7134368666866759,
       "target": 0.6140262666266482,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 0.6573,
-      "movePct": -3.3808613846832314,
-      "resultR": 0.6940909717709719,
-      "hoursHeld": 65.88661972222222,
+      "status": "stopped",
+      "closedAt": "2026-08-19T21:00:00.000Z",
+      "lastPrice": 0.7015,
+      "movePct": 3.1162722328384573,
+      "resultR": -1,
+      "hoursHeld": 87.7681375,
       "edition": "2026-08-16"
     },
     {
@@ -532,12 +539,12 @@
       "entry": 1.0016,
       "stop": 1.0415797919963687,
       "target": 0.9216404160072629,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 1.0037,
-      "movePct": 0.20966453674120533,
-      "resultR": -0.05252653641096125,
-      "hoursHeld": 65.88666888888889,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 1.1117,
+      "movePct": 10.99241214057507,
+      "resultR": -1,
+      "hoursHeld": 87.76818833333333,
       "edition": "2026-08-16"
     },
     {
@@ -546,12 +553,12 @@
       "entry": 0.075,
       "stop": 0.08034897151766035,
       "target": 0.06430205696467932,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 0.0771,
-      "movePct": 2.8000000000000025,
-      "resultR": -0.39259883756467423,
-      "hoursHeld": 53.281214166666665,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 0.089,
+      "movePct": 18.666666666666675,
+      "resultR": -1,
+      "hoursHeld": 75.1627338888889,
       "edition": "2026-08-17"
     },
     {
@@ -560,12 +567,12 @@
       "entry": 30.36,
       "stop": 32.040855056644595,
       "target": 26.998289886710804,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 29.87,
-      "movePct": -1.613965744400525,
-      "resultR": 0.2915182948481949,
-      "hoursHeld": 53.281263611111115,
+      "status": "stopped",
+      "closedAt": "2026-08-19T21:00:00.000Z",
+      "lastPrice": 31.88,
+      "movePct": 5.006587615283276,
+      "resultR": -1,
+      "hoursHeld": 75.16278333333334,
       "edition": "2026-08-17"
     },
     {
@@ -574,12 +581,12 @@
       "entry": 0.678,
       "stop": 0.7107651006988521,
       "target": 0.6124697986022958,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 0.6573,
-      "movePct": -3.053097345132749,
-      "resultR": 0.6317697659548238,
-      "hoursHeld": 53.28131472222222,
+      "status": "stopped",
+      "closedAt": "2026-08-19T21:00:00.000Z",
+      "lastPrice": 0.7015,
+      "movePct": 3.466076696165188,
+      "resultR": -1,
+      "hoursHeld": 75.16283277777778,
       "edition": "2026-08-17"
     },
     {
@@ -588,12 +595,12 @@
       "entry": 1.0019,
       "stop": 1.0415297048129546,
       "target": 0.9226405903740911,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 1.0037,
-      "movePct": 0.1796586485677265,
-      "resultR": -0.04542047457824242,
-      "hoursHeld": 53.28136361111111,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 1.1117,
+      "movePct": 10.959177562630984,
+      "resultR": -1,
+      "hoursHeld": 75.16288277777778,
       "edition": "2026-08-17"
     },
     {
@@ -602,12 +609,12 @@
       "entry": 0.649,
       "stop": 0.6838765220775055,
       "target": 0.579246955844989,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 0.6573,
-      "movePct": 1.2788906009244982,
-      "resultR": -0.23798244508311456,
-      "hoursHeld": 28.867600833333334,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 0.7015,
+      "movePct": 8.089368258859775,
+      "resultR": -1,
+      "hoursHeld": 50.74912055555556,
       "edition": "2026-08-18"
     },
     {
@@ -616,12 +623,12 @@
       "entry": 0.9962,
       "stop": 1.0350814095712129,
       "target": 0.9184371808575743,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 1.0037,
-      "movePct": 0.7528608713109897,
-      "resultR": -0.19289424130222257,
-      "hoursHeld": 28.86764972222222,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 1.1117,
+      "movePct": 11.594057418189108,
+      "resultR": -1,
+      "hoursHeld": 50.74917083333333,
       "edition": "2026-08-18"
     },
     {
@@ -630,24 +637,80 @@
       "entry": 0.06566,
       "stop": 0.06838267492460223,
       "target": 0.06021465015079553,
-      "status": "open",
-      "closedAt": null,
-      "lastPrice": 0.0676,
-      "movePct": 2.954614681693579,
-      "resultR": -0.7125345675570974,
-      "hoursHeld": 28.867698333333333,
+      "status": "stopped",
+      "closedAt": "2026-08-19T14:00:00.000Z",
+      "lastPrice": 0.07139,
+      "movePct": 8.726774291806283,
+      "resultR": -1,
+      "hoursHeld": 50.74922138888889,
       "edition": "2026-08-18"
+    },
+    {
+      "symbol": "ARBUSDT",
+      "direction": "short",
+      "entry": 0.0771,
+      "stop": 0.08231409133046078,
+      "target": 0.06667181733907844,
+      "status": "stopped",
+      "closedAt": "2026-08-19T19:00:00.000Z",
+      "lastPrice": 0.089,
+      "movePct": 15.43450064850842,
+      "resultR": -1,
+      "hoursHeld": 21.8815725,
+      "edition": "2026-08-19"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "direction": "short",
+      "entry": 0.6573,
+      "stop": 0.691024627643398,
+      "target": 0.589850744713204,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 0.7015,
+      "movePct": 6.724478928951783,
+      "resultR": -1,
+      "hoursHeld": 21.881621944444444,
+      "edition": "2026-08-19"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "direction": "short",
+      "entry": 1.0038,
+      "stop": 1.0415503394997998,
+      "target": 0.9282993210004007,
+      "status": "stopped",
+      "closedAt": "2026-08-19T15:00:00.000Z",
+      "lastPrice": 1.1116,
+      "movePct": 10.739191073919097,
+      "resultR": -1,
+      "hoursHeld": 21.881671666666666,
+      "edition": "2026-08-19"
+    },
+    {
+      "symbol": "HBARUSDT",
+      "direction": "short",
+      "entry": 0.0676,
+      "stop": 0.07035511140957962,
+      "target": 0.062089777180840744,
+      "status": "stopped",
+      "closedAt": "2026-08-19T16:00:00.000Z",
+      "lastPrice": 0.07139,
+      "movePct": 5.6065088757396575,
+      "resultR": -1,
+      "hoursHeld": 21.8817225,
+      "edition": "2026-08-19"
     }
   ],
   "bookSummary": {
-    "editions": 5,
-    "positions": 16,
-    "stillOpen": 16,
-    "stopped": 0,
+    "editions": 6,
+    "positions": 20,
+    "stillOpen": 1,
+    "stopped": 19,
     "target": 0,
-    "aheadCount": 7,
-    "medianResultR": -0.03334143826064233,
-    "totalResultR": 0.9257417970830076,
-    "meanResultR": 0.05785886231768798
+    "aheadCount": 0,
+    "medianResultR": -1,
+    "totalResultR": -19.444990771903466,
+    "meanResultR": -0.9722495385951733
   }
 }

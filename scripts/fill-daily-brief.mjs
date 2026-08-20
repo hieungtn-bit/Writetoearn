@@ -37,12 +37,21 @@ const s = D.settledSummary && D.settledSummary.positions ? D.settledSummary : nu
  * any of this is working, not the three lines above it.
  */
 const bk = D.bookSummary;
+const bookState = bk
+  ? (bk.stopped || bk.target
+      ? `**${bk.stopped} stopped, ${bk.target} at target, ${bk.stillOpen} still open.**`
+      : "None has reached a stop or a target yet.")
+  : "";
+const bookLesson = bk && bk.stopped > bk.positions / 2
+  ? `This is what a pipeline with no demonstrated edge looks like when the market moves against it. The walk-forward number at the bottom of every edition said this was possible; today it happened, and the number was not decoration.`
+  : `One edition swinging from ahead to behind inside a day is why the running book is the honest number and the daily slice is not.`;
+
 const book = bk ? `\nAND THE WHOLE BOOK, WHICH MATTERS MORE\n
-The last edition is a slice. **${bk.positions} positions across ${bk.editions} editions are still live**, and none has reached a stop or a target yet.
+The last edition is a slice. **${bk.positions} positions across ${bk.editions} editions.** ${bookState}
 
-**${bk.aheadCount} of ${bk.positions} ahead.** Median ${bk.medianResultR >= 0 ? "+" : ""}${bk.medianResultR.toFixed(3)}R, mean ${bk.meanResultR >= 0 ? "+" : ""}${bk.meanResultR.toFixed(3)}R, total ${bk.totalResultR >= 0 ? "+" : ""}${bk.totalResultR.toFixed(3)}R marked to market.
+**${bk.aheadCount} of ${bk.positions} ahead.** Median ${bk.medianResultR >= 0 ? "+" : ""}${bk.medianResultR.toFixed(3)}R, mean ${bk.meanResultR >= 0 ? "+" : ""}${bk.meanResultR.toFixed(3)}R, total ${bk.totalResultR >= 0 ? "+" : ""}${bk.totalResultR.toFixed(3)}R.
 
-One edition swinging from ahead to behind inside a day is why the running book is the honest number and the daily slice is not.` : "";
+${bookLesson}` : "";
 
 /**
  * Was the last set carried by the market rather than by the selection?
@@ -60,10 +69,18 @@ const tailwind = (() => {
   if (dirs.size !== 1) return "";
   const short = dirs.has("short");
   const b = D.breadth;
-  const withPct = short ? 100 - b.upSharePct : b.upSharePct;
-  // Only worth saying when the market clearly leaned the same way.
-  if (withPct < 65) return "";
-  return `\nBefore that reads as skill: **${withPct.toFixed(1)}% of the market moved the same way** on the day, and the median pair moved ${b.medianChangePct >= 0 ? "+" : ""}${b.medianChangePct.toFixed(2)}%. Every one of those positions is ${short ? "short" : "long"}. On a day like this the board and a coin flip both look clever, and the number that decides between them is at the bottom of this post, not here.\n`;
+  const withPct = short ? b.downSharePct : b.upSharePct;
+  const withText = `${withPct.toFixed(1)}% of the market moved the same way`;
+  const median = `${b.medianChangePct >= 0 ? "+" : ""}${b.medianChangePct.toFixed(2)}%`;
+  if (withPct >= 65) {
+    return `\nBefore that reads as skill: **${withText}** on the day, and the median pair moved ${median}. Every one of those positions is ${short ? "short" : "long"}. On a day like this the board and a coin flip both look clever, and the number that decides between them is at the bottom of this post, not here.\n`;
+  }
+  // The symmetric case. Reporting the tailwind and staying quiet about the
+  // headwind is how a track record turns into marketing one sentence at a time.
+  if (withPct <= 35) {
+    return `\nAnd the tape was against every line: only **${withText}**, with the median pair at ${median}. Every position was ${short ? "short" : "long"} into that. It does not excuse the result — the filters chose those positions and the market is not obliged to agree — but it is the same disclosure I make on the days this runs the other way.\n`;
+  }
+  return "";
 })();
 const st = D.selfTest;
 
@@ -176,7 +193,9 @@ ${settleTable}
 
 **${s.aheadCount} of ${s.positions} ahead.** Median ${s.medianResultR >= 0 ? "+" : ""}${s.medianResultR.toFixed(3)}R, total ${s.totalResultR >= 0 ? "+" : ""}${s.totalResultR.toFixed(3)}R marked to market.
 ${tailwind}
-Nothing is settled yet and I am not going to pretend otherwise. Open positions are marked, not counted.` : "No prior edition to settle — this is the first."}
+${s.open === s.positions
+  ? "Nothing is settled yet and I am not going to pretend otherwise. Open positions are marked, not counted."
+  : `${s.stopped + s.target} of these are closed and counted at their real result. I am not going to describe a stop as an open position.`}` : "No prior edition to settle — this is the first."}
 ${book}
 
 WHAT SURVIVES THE FILTERS
@@ -222,7 +241,7 @@ ${followTable}
 
 **BNB** — ${D.followed.BNBUSDT.verdict.reason}. It is the only one of the three whose lookbacks lean long, ${D.followed.BNBUSDT.lookbackCount - D.followed.BNBUSDT.leaningShort} of ${D.followed.BNBUSDT.lookbackCount} of them — but it trades ${D.followed.BNBUSDT.priceVsValueArea} its value area near the top of its range, and the sample is not there.
 
-**ICP** — ${D.followed.ICPUSDT.verdict.reason}. Worth noting what changed: **${D.followed.ICPUSDT.leaningShort} of its ${D.followed.ICPUSDT.lookbackCount} lookbacks now lean short.** A reader asked me about it as a recovery candidate yesterday; the windows have moved the other way.
+**ICP** — ${D.followed.ICPUSDT.verdict.reason}. **${D.followed.ICPUSDT.leaningShort} of its ${D.followed.ICPUSDT.lookbackCount} lookbacks lean short**, and it sits ${D.followed.ICPUSDT.priceVsValueArea ?? "n/a"} its value area at ${pct(D.followed.ICPUSDT.rangePosition30d)}% of its 30-day range.
 
 No plan on any of the three today. Not a view about their future — a statement that they do not clear the same bar the ${D.taken.length} above did.
 
@@ -238,7 +257,11 @@ THE RULES, SO YOU CAN HOLD ME TO THEM
 
 **Costs charged at ${pct(r.feePct)}% round trip**, every time, before anything is called an edge.
 
-If a day comes when those filters admit ten longs, I will post ten longs. Today they admit ${D.taken.length} shorts, and the honest version of that is that the market is offering very little.
+If a day comes when those filters admit ten longs, I will post ten longs. ${
+  b.upSharePct >= 60
+    ? `Today ${b.upSharePct.toFixed(1)}% of the market rose and the median pair gained ${b.medianChangePct >= 0 ? "+" : ""}${b.medianChangePct.toFixed(2)}%, and the filters still admit ${D.taken.length} shorts and no longs. That gap is not a view I hold — it is what the rules produce when the recent window disagrees with the day, and it is exactly the situation in which they have just cost the most.`
+    : `Today they admit ${D.taken.length} ${D.taken.length === 1 ? "position" : "positions"}, and the honest version of that is that the market is offering very little.`
+}
 
 WHAT THIS PIPELINE IS WORTH, AS OF TODAY
 

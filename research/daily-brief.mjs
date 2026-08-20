@@ -101,6 +101,12 @@ const breadth = {
   up: changes.filter((c) => c > 0).length,
   down: changes.filter((c) => c < 0).length,
   upSharePct: (changes.filter((c) => c > 0).length / changes.length) * 100,
+  /**
+   * Stored rather than derived in prose: the column reports the share of the
+   * market that moved *with* a set of positions, and for a short book that is
+   * this number. A figure computed inside a sentence is one nobody can check.
+   */
+  downSharePct: (changes.filter((c) => c <= 0).length / changes.length) * 100,
   medianChangePct: median(changes),
   upOver5: changes.filter((c) => c > 5).length,
   downOver5: changes.filter((c) => c < -5).length,
