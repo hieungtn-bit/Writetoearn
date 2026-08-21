@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T00:55:38.065Z",
+  "generatedAt": "2026-08-21T01:44:24.024Z",
   "note": "Every figure published on this site traces to one of these snapshots.",
   "snapshots": [
     {
@@ -21,6 +21,10 @@
     {
       "file": "bnb-deep.json",
       "url": "/data/bnb-deep.json"
+    },
+    {
+      "file": "bnb-hardfork.json",
+      "url": "/data/bnb-hardfork.json"
     },
     {
       "file": "bnb-setups.json",
