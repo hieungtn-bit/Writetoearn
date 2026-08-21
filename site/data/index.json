@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T12:42:08.484Z",
+  "generatedAt": "2026-08-21T00:55:38.065Z",
   "note": "Every figure published on this site traces to one of these snapshots.",
   "snapshots": [
     {
@@ -157,6 +157,10 @@
     {
       "file": "market-call.json",
       "url": "/data/market-call.json"
+    },
+    {
+      "file": "market-scan-2026-08-21.json",
+      "url": "/data/market-scan-2026-08-21.json"
     },
     {
       "file": "market-scan.json",

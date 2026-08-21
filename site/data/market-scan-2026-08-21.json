@@ -1,0 +1,619 @@
+{
+  "measuredAt": "2026-08-21T00:54:36.380Z",
+  "previousRun": {
+    "measuredAt": "2026-08-21T00:53:29.262Z",
+    "claimsInRange": 2,
+    "claimsChecked": [
+      {
+        "label": "BTC",
+        "inRange": false,
+        "actualChangePct": 6.173,
+        "actualPrice": 73790.01
+      },
+      {
+        "label": "BTC px",
+        "inRange": false,
+        "actualChangePct": 6.173,
+        "actualPrice": 73790.01
+      },
+      {
+        "label": "PUMP",
+        "inRange": false,
+        "actualChangePct": 23.342,
+        "actualPrice": 0.003794
+      },
+      {
+        "label": "PUMP px",
+        "inRange": false,
+        "actualChangePct": 23.342,
+        "actualPrice": 0.003794
+      },
+      {
+        "label": "ENA",
+        "inRange": false,
+        "actualChangePct": 26.064,
+        "actualPrice": 0.1185
+      },
+      {
+        "label": "BOME",
+        "inRange": true,
+        "actualChangePct": 37.688,
+        "actualPrice": 0.0011932
+      },
+      {
+        "label": "XRP",
+        "inRange": true,
+        "actualChangePct": 14.107,
+        "actualPrice": 1.2659
+      }
+    ]
+  },
+  "source": "Binance spot 24hr tickers (rolling window); OKX perpetual funding",
+  "note": "Intraday scan. Writes no plan file — the morning ledger stands.",
+  "breadth": {
+    "pairs": 671,
+    "up": 452,
+    "down": 219,
+    "upSharePct": 67.36214605067065,
+    "downSharePct": 32.63785394932936,
+    "medianChangePct": 2.477,
+    "upOver5": 164,
+    "upOver10": 41,
+    "upOver20": 12,
+    "upOver30": 6,
+    "downOver5": 93,
+    "downOver10": 63
+  },
+  "retrace": {
+    "medianOffHighPct": -1.831129196337733,
+    "withinOnePctOfHigh": 210,
+    "moreThanFivePctOffHigh": 174
+  },
+  "morningComparison": {
+    "day": "2026-08-21",
+    "measuredAt": "2026-08-21T00:49:10.745Z",
+    "upSharePct": 67.6602086438152,
+    "medianChangePct": 2.294,
+    "upSharePctDelta": -0.2980625931445502,
+    "medianChangePctDelta": 0.18299999999999983,
+    "bookStopped": 23,
+    "bookPositions": 24,
+    "bookTotalR": -23.263271294571158
+  },
+  "claimsChecked": [
+    {
+      "symbol": "BTCUSDT",
+      "label": "BTC",
+      "kind": "change",
+      "lowPct": 5.4,
+      "highPct": 5.4,
+      "text": "~$73,300, +5.4%",
+      "actualPrice": 73708,
+      "actualChangePct": 6.024,
+      "high24h": 73990,
+      "inRange": false,
+      "missPct": 0.6239999999999997
+    },
+    {
+      "symbol": "BTCUSDT",
+      "label": "BTC px",
+      "kind": "band",
+      "lowUsd": 73000,
+      "highUsd": 73600,
+      "text": "~$73,300",
+      "actualPrice": 73708,
+      "actualChangePct": 6.024,
+      "high24h": 73990,
+      "inRange": false,
+      "missPct": 0.14673913043479203
+    },
+    {
+      "symbol": "PUMPUSDT",
+      "label": "PUMP",
+      "kind": "change",
+      "lowPct": 25,
+      "highPct": 30,
+      "text": "+25-30%, score 85",
+      "actualPrice": 0.00379,
+      "actualChangePct": 23.012,
+      "high24h": 0.003929,
+      "inRange": false,
+      "missPct": -1.9879999999999995
+    },
+    {
+      "symbol": "PUMPUSDT",
+      "label": "PUMP px",
+      "kind": "band",
+      "lowUsd": 0.0038,
+      "highUsd": 0.0039,
+      "text": "~$0.0038-0.0039",
+      "actualPrice": 0.00379,
+      "actualChangePct": 23.012,
+      "high24h": 0.003929,
+      "inRange": false,
+      "missPct": -0.2631578947368429
+    },
+    {
+      "symbol": "ENAUSDT",
+      "label": "ENA",
+      "kind": "change",
+      "lowPct": 20,
+      "highPct": 26,
+      "text": "+20-26%, score 82",
+      "actualPrice": 0.1189,
+      "actualChangePct": 26.489,
+      "high24h": 0.119,
+      "inRange": false,
+      "missPct": 0.48900000000000077
+    },
+    {
+      "symbol": "BOMEUSDT",
+      "label": "BOME",
+      "kind": "change",
+      "lowPct": 30,
+      "highPct": 65,
+      "text": "+30-65%, score 80",
+      "actualPrice": 0.0011877,
+      "actualChangePct": 36.863,
+      "high24h": 0.001329,
+      "inRange": true,
+      "missPct": 0
+    },
+    {
+      "symbol": "XRPUSDT",
+      "label": "XRP",
+      "kind": "change",
+      "lowPct": 13,
+      "highPct": 15,
+      "text": "+13-15%, score 79",
+      "actualPrice": 1.2695,
+      "actualChangePct": 14.369,
+      "high24h": 1.3441,
+      "inRange": true,
+      "missPct": 0
+    }
+  ],
+  "claimsInRange": 2,
+  "claimsTotal": 7,
+  "ranked": [
+    {
+      "symbol": "BOMEUSDT",
+      "price": 0.0011877,
+      "changePct": 36.863
+    },
+    {
+      "symbol": "ENAUSDT",
+      "price": 0.1189,
+      "changePct": 26.489
+    },
+    {
+      "symbol": "PUMPUSDT",
+      "price": 0.00379,
+      "changePct": 23.012
+    },
+    {
+      "symbol": "XRPUSDT",
+      "price": 1.2695,
+      "changePct": 14.369
+    }
+  ],
+  "rankedLeadRank": 2,
+  "runners": {
+    "lowPct": 80,
+    "highPct": 150,
+    "text": "avoid names already +80-150% on fading volume",
+    "inBand": 1,
+    "aboveBand": 0,
+    "inBandLiquid": 1,
+    "liquidFloorUsd": 2000000
+  },
+  "leaders": [
+    {
+      "symbol": "ONGUSDT",
+      "changePct": 136.82,
+      "price": 0.14491,
+      "turnoverUsd": 23744273.14693,
+      "turnoverUsdRounded": 24000000
+    },
+    {
+      "symbol": "BOMEUSDT",
+      "changePct": 36.863,
+      "price": 0.0011877,
+      "turnoverUsd": 32886372.6059699,
+      "turnoverUsdRounded": 33000000
+    },
+    {
+      "symbol": "OSMOUSDT",
+      "changePct": 30.769,
+      "price": 0.0408,
+      "turnoverUsd": 3583615.905167,
+      "turnoverUsdRounded": 4000000
+    },
+    {
+      "symbol": "PEOPLEUSDT",
+      "changePct": 30.549,
+      "price": 0.01047,
+      "turnoverUsd": 9803281.961012,
+      "turnoverUsdRounded": 10000000
+    },
+    {
+      "symbol": "NEIROUSDT",
+      "changePct": 28.621,
+      "price": 0.00008898,
+      "turnoverUsd": 13422763.60153158,
+      "turnoverUsdRounded": 13000000
+    },
+    {
+      "symbol": "ACEUSDT",
+      "changePct": 28.249,
+      "price": 0.2447,
+      "turnoverUsd": 52796525.98153,
+      "turnoverUsdRounded": 53000000
+    },
+    {
+      "symbol": "ONTUSDT",
+      "changePct": 27.678,
+      "price": 0.05125,
+      "turnoverUsd": 10665438.95798,
+      "turnoverUsdRounded": 11000000
+    },
+    {
+      "symbol": "ENAUSDT",
+      "changePct": 26.489,
+      "price": 0.1189,
+      "turnoverUsd": 37702894.794066,
+      "turnoverUsdRounded": 38000000
+    },
+    {
+      "symbol": "PUMPUSDT",
+      "changePct": 23.012,
+      "price": 0.00379,
+      "turnoverUsd": 38367761.797359,
+      "turnoverUsdRounded": 38000000
+    },
+    {
+      "symbol": "UTKUSDT",
+      "changePct": 16.228,
+      "price": 0.00795,
+      "turnoverUsd": 10207948.62723,
+      "turnoverUsdRounded": 10000000
+    }
+  ],
+  "laggards": [
+    {
+      "symbol": "NFPUSDT",
+      "changePct": -66.168,
+      "price": 0.00181,
+      "turnoverUsd": 3834002.83185,
+      "turnoverUsdRounded": 4000000
+    },
+    {
+      "symbol": "VANRYUSDT",
+      "changePct": -37.128,
+      "price": 0.00074,
+      "turnoverUsd": 2320295.244185,
+      "turnoverUsdRounded": 2000000
+    },
+    {
+      "symbol": "SCRTUSDT",
+      "changePct": -20,
+      "price": 0.0204,
+      "turnoverUsd": 3109726.33226,
+      "turnoverUsdRounded": 3000000
+    },
+    {
+      "symbol": "ICXUSDT",
+      "changePct": -12.957,
+      "price": 0.01619,
+      "turnoverUsd": 2130275.327375,
+      "turnoverUsdRounded": 2000000
+    },
+    {
+      "symbol": "MANTRAUSDT",
+      "changePct": -9.631,
+      "price": 0.00441,
+      "turnoverUsd": 4980652.00994,
+      "turnoverUsdRounded": 5000000
+    },
+    {
+      "symbol": "TRUMPUSDT",
+      "changePct": -8.394,
+      "price": 1.648,
+      "turnoverUsd": 29371950.794504,
+      "turnoverUsdRounded": 29000000
+    },
+    {
+      "symbol": "LRCUSDT",
+      "changePct": -6.238,
+      "price": 0.01879,
+      "turnoverUsd": 2891184.21049,
+      "turnoverUsdRounded": 3000000
+    },
+    {
+      "symbol": "REUSDT",
+      "changePct": -4.259,
+      "price": 0.517,
+      "turnoverUsd": 51270875.27696,
+      "turnoverUsdRounded": 51000000
+    },
+    {
+      "symbol": "SPCXBUSDT",
+      "changePct": -3.622,
+      "price": 134.11,
+      "turnoverUsd": 27620231.98295,
+      "turnoverUsdRounded": 28000000
+    },
+    {
+      "symbol": "EDENUSDT",
+      "changePct": -2.648,
+      "price": 0.05515,
+      "turnoverUsd": 2708678.072237,
+      "turnoverUsdRounded": 3000000
+    }
+  ],
+  "funding": [
+    {
+      "instrument": "BTC-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.00195488919114,
+      "annualisedPct": 2.1406036642983,
+      "nextFundingTime": "2026-08-21T16:00:00.000Z"
+    },
+    {
+      "instrument": "ETH-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.00988284072673,
+      "annualisedPct": 10.82171059576935,
+      "nextFundingTime": "2026-08-21T16:00:00.000Z"
+    },
+    {
+      "instrument": "XRP-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.95,
+      "nextFundingTime": "2026-08-21T16:00:00.000Z"
+    },
+    {
+      "instrument": "ENA-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.005,
+      "annualisedPct": 5.475,
+      "nextFundingTime": "2026-08-21T08:00:00.000Z"
+    }
+  ],
+  "fearGreed": {
+    "value": 72,
+    "label": "Greed",
+    "source": "alternative.me"
+  },
+  "engine": {
+    "scannedAt": "2026-08-21T00:48:57.511Z",
+    "rows": 100,
+    "tally": {
+      "total": 100,
+      "LONG": 55,
+      "SHORT": 41,
+      "WAIT": 4,
+      "turning": 40,
+      "untradeable": 22
+    },
+    "minEffectiveN": 12,
+    "agreementWindowDays": [
+      180,
+      270,
+      365,
+      540,
+      730
+    ],
+    "funnel": [
+      {
+        "bias": "LONG",
+        "rows": 55,
+        "haveFiveWindows": 27,
+        "unanimous": 3,
+        "unanimousSharePct": 11.11111111111111,
+        "deepEnough": 0,
+        "offered": 0,
+        "symbols": []
+      },
+      {
+        "bias": "SHORT",
+        "rows": 41,
+        "haveFiveWindows": 26,
+        "unanimous": 23,
+        "unanimousSharePct": 88.46153846153845,
+        "deepEnough": 8,
+        "offered": 7,
+        "symbols": [
+          "BONKUSDT",
+          "ARBUSDT",
+          "SUIUSDT",
+          "ADAUSDT",
+          "XRPUSDT",
+          "FILUSDT",
+          "XLMUSDT"
+        ]
+      }
+    ],
+    "rowsWithFiveWindows": 53
+  },
+  "boardHistory": [
+    {
+      "scannedAt": "2026-08-11T16:19:05.654Z",
+      "day": "2026-08-11",
+      "rows": 32,
+      "long": 11,
+      "short": 19,
+      "longSharePct": 34.375,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-12T00:05:05.342Z",
+      "day": "2026-08-12",
+      "rows": 32,
+      "long": 12,
+      "short": 19,
+      "longSharePct": 37.5,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-12T02:15:15.197Z",
+      "day": "2026-08-12",
+      "rows": 100,
+      "long": 44,
+      "short": 46,
+      "longSharePct": 44,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-13T03:07:55.554Z",
+      "day": "2026-08-13",
+      "rows": 100,
+      "long": 46,
+      "short": 44,
+      "longSharePct": 46,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-14T05:27:17.003Z",
+      "day": "2026-08-14",
+      "rows": 94,
+      "long": 45,
+      "short": 42,
+      "longSharePct": 47.87234042553192,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-14T20:36:36.332Z",
+      "day": "2026-08-14",
+      "rows": 100,
+      "long": 46,
+      "short": 46,
+      "longSharePct": 46,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-15T23:58:34.092Z",
+      "day": "2026-08-15",
+      "rows": 77,
+      "long": 40,
+      "short": 30,
+      "longSharePct": 51.94805194805194,
+      "offered": 3,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-16T16:10:48.305Z",
+      "day": "2026-08-16",
+      "rows": 76,
+      "long": 39,
+      "short": 27,
+      "longSharePct": 51.31578947368421,
+      "offered": 2,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-17T04:46:39.428Z",
+      "day": "2026-08-17",
+      "rows": 84,
+      "long": 45,
+      "short": 31,
+      "longSharePct": 53.57142857142857,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-18T05:12:09.282Z",
+      "day": "2026-08-18",
+      "rows": 99,
+      "long": 54,
+      "short": 38,
+      "longSharePct": 54.54545454545454,
+      "offered": 3,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-19T10:01:51.658Z",
+      "day": "2026-08-19",
+      "rows": 90,
+      "long": 47,
+      "short": 35,
+      "longSharePct": 52.22222222222223,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-20T07:54:51.676Z",
+      "day": "2026-08-20",
+      "rows": 100,
+      "long": 56,
+      "short": 37,
+      "longSharePct": 56.00000000000001,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-20T12:06:15.857Z",
+      "day": "2026-08-20",
+      "rows": 100,
+      "long": 59,
+      "short": 36,
+      "longSharePct": 59,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-21T00:48:57.511Z",
+      "day": "2026-08-21",
+      "rows": 100,
+      "long": 55,
+      "short": 41,
+      "longSharePct": 55.00000000000001,
+      "offered": 5,
+      "offeredDirections": [
+        "short"
+      ]
+    }
+  ],
+  "boardSummary": {
+    "editions": 8,
+    "positions": 29,
+    "editionsOfferingAnyLong": 0,
+    "longSharePctFirst": 46,
+    "longSharePctLast": 55.00000000000001,
+    "firstDay": "2026-08-14",
+    "lastDay": "2026-08-21"
+  },
+  "baseRates": {
+    "continuation1dPct": 50.69204152249135,
+    "continuation2dPct": 45.48611111111111,
+    "continuation3dPct": 42.1875,
+    "continuation3dWindows": 192,
+    "persistence10dPct": 49.55454241258156,
+    "persistence30dPct": 50.696446253713276
+  }
+}

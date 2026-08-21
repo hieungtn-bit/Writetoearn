@@ -1,40 +1,40 @@
 /**
- * An intraday scan of the whole exchange, run against a forwarded evening brief.
+ * The market scan: every USDT pair, checked against whatever brief arrived.
  *
- * This is the second read of 20 August. The morning edition already recorded
- * what happened to this desk: 69.3% of pairs green, median +3.33%, and a short
- * book that lost nineteen of twenty positions for -19.44R. A reader then sent
- * an evening scan — BTC above 70k, ETH the momentum leader at +17-20%, BNB
- * around 645-646 with resistance at 649-652, take profit, do not chase.
- *
- * Two things have to be kept apart here, and the file is arranged around that.
+ * Readers forward quick-scans most mornings — rankings, targets, a stance.
+ * This is the file that answers them with the tape rather than with an
+ * opinion, and it is arranged around keeping two jobs apart.
  *
  *   The tape. Breadth, the majors, the leaders and the laggards across every
- *   USDT pair rather than a hand-picked list — because the last time this desk
- *   scanned a fixed roster of names it missed most of the day's movers, and
- *   the fix was to derive the universe from the market every run.
+ *   pair rather than a hand-picked list — because the last time this desk
+ *   scanned a fixed roster it missed most of the day's movers, and the fix was
+ *   to derive the universe from the market on every run.
  *
- *   The claims. Each number the brief asserts, written down before anything is
- *   fetched, then checked. A 24-hour change is a rolling window, so a claim
- *   about it is only meaningful with the timestamp attached; both are stored.
+ *   The claims. Each number the brief asserts, written down at the top of this
+ *   file before anything is fetched, then checked. A 24-hour change is a
+ *   rolling window, so a claim about one is only meaningful with a timestamp;
+ *   both are stored.
  *
  * What this file deliberately does NOT do is write a plan.
  *
- * data/plans/<date>.json is the ledger tomorrow's edition settles against. It
- * was written this morning, at this morning's prices. Re-running the planner
- * now would replace those entries with 19:05 entries — the same positions,
- * re-opened after the move they were wrong about, at prices that flatter them.
- * That is not a re-scan, it is a rewrite of the scorecard. So this reports and
- * stops, and the morning's ledger stands.
+ * data/plans/<date>.json is the ledger the next edition settles against, and
+ * it is written by research/daily-brief.mjs at the top of the day. Re-running
+ * the planner from here would replace those entries with later ones — the same
+ * positions, reopened after the move they were wrong about, at prices that
+ * flatter them. That is a rewrite of the scorecard, not a re-scan.
  *
- * The "short squeeze" the brief cites is the one claim of the set that is about
- * mechanism rather than price, so it gets a mechanism check: perpetual funding.
- * A squeeze that has run its course leaves funding positive and expensive for
- * longs. Funding is fetched live rather than from the monthly dumps, because
- * the dumps stop at the last complete month and once got labelled "current"
- * here when they were three weeks stale.
+ * Claims about mechanism get a mechanism check. A squeeze that has run its
+ * course leaves funding positive and expensive for longs, so funding is
+ * fetched live rather than from the monthly dumps — those stop at the last
+ * complete month, and were once labelled "current" here while three weeks
+ * stale.
  *
- * Writes research/market-scan.json.
+ * Writes research/market-scan-<date>.json.
+ *
+ * Dated, not overwritten. research/market-scan.json is the evidence behind a
+ * published post; rewriting it each morning would silently change the figures
+ * a reader is invited to check. A snapshot a post cites has to stay the
+ * snapshot that post cited.
  */
 
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
@@ -65,19 +65,20 @@ const median = (xs) => {
  * ------------------------------------------------------------------ */
 
 const CLAIMS = [
-  { symbol: "BTCUSDT", label: "BTC", kind: "floor", floorUsd: 70_000, text: "above $70k, holding the highs" },
-  { symbol: "ETHUSDT", label: "ETH", kind: "change", lowPct: 17, highPct: 20, text: "leading, +17-20%" },
-  { symbol: "BNBUSDT", label: "BNB", kind: "band", lowUsd: 645, highUsd: 646, text: "around $645-646" },
+  { symbol: "BTCUSDT", label: "BTC", kind: "change", lowPct: 5.4, highPct: 5.4, text: "~$73,300, +5.4%" },
+  { symbol: "BTCUSDT", label: "BTC px", kind: "band", lowUsd: 73_000, highUsd: 73_600, text: "~$73,300" },
+  { symbol: "PUMPUSDT", label: "PUMP", kind: "change", lowPct: 25, highPct: 30, text: "+25-30%, score 85" },
+  { symbol: "PUMPUSDT", label: "PUMP px", kind: "band", lowUsd: 0.0038, highUsd: 0.0039, text: "~$0.0038-0.0039" },
+  { symbol: "ENAUSDT", label: "ENA", kind: "change", lowPct: 20, highPct: 26, text: "+20-26%, score 82" },
+  { symbol: "BOMEUSDT", label: "BOME", kind: "change", lowPct: 30, highPct: 65, text: "+30-65%, score 80" },
+  { symbol: "XRPUSDT", label: "XRP", kind: "change", lowPct: 13, highPct: 15, text: "+13-15%, score 79" },
 ];
 
-/** A level the brief tells the reader to watch, quoted so the post can cite it. */
-const CLAIMED_RESISTANCE = { lowUsd: 649, highUsd: 652, symbol: "BNBUSDT" };
-
 /** The ordering the brief asserts among the names it ranks. */
-const RANKED = ["ETHUSDT", "SOLUSDT", "BNBUSDT", "ARBUSDT"];
+const RANKED = ["PUMPUSDT", "ENAUSDT", "BOMEUSDT", "XRPUSDT"];
 
 /** Its FOMO warning, stated as a testable population claim. */
-const CLAIMED_RUNNERS = { lowPct: 20, highPct: 30, text: "alts already +20-30%" };
+const CLAIMED_RUNNERS = { lowPct: 80, highPct: 150, text: "avoid names already +80-150% on fading volume" };
 
 /* ------------------------------------------------------------------ *
  * 1. The tape, across every pair
@@ -168,17 +169,6 @@ const ranked = RANKED.map((s) => bySymbol.get(s)).filter(Boolean)
   .map((t) => ({ symbol: t.symbol, price: t.price, changePct: t.changePct }))
   .sort((a, b) => b.changePct - a.changePct);
 
-/** Its resistance level, against where the pair actually is. */
-const bnb = bySymbol.get(CLAIMED_RESISTANCE.symbol);
-const resistance = bnb ? {
-  ...CLAIMED_RESISTANCE,
-  actualPrice: bnb.price,
-  high24h: bnb.high,
-  alreadyThroughIt: bnb.price > CLAIMED_RESISTANCE.highUsd,
-  touchedIt: bnb.high >= CLAIMED_RESISTANCE.lowUsd,
-  distanceToLowPct: ((CLAIMED_RESISTANCE.lowUsd / bnb.price) - 1) * 100,
-} : null;
-
 /**
  * The FOMO claim, as a population rather than an anecdote.
  *
@@ -198,8 +188,19 @@ const runners = {
 
 /** Leaders and laggards drawn from the whole exchange, above the liquidity floor. */
 const liquid = usdt.filter((t) => t.turnoverUsd >= LIQUID_FLOOR_USD);
+/**
+ * Turnover is stored in millions as well as in full.
+ *
+ * Posts quote "$24M", and the verifier requires every figure above a hundred
+ * to appear in a cited snapshot. A value the write-up derives by dividing is
+ * one the gate cannot trace, so the snapshot carries the published form too.
+ */
 const top = (arr, n) => arr.slice(0, n).map((t) => ({
-  symbol: t.symbol, changePct: t.changePct, price: t.price, turnoverUsd: t.turnoverUsd,
+  symbol: t.symbol, changePct: t.changePct, price: t.price,
+  turnoverUsd: t.turnoverUsd,
+  // "$24M" is read by the gate as 24,000,000, so the rounded figure is stored
+  // at the magnitude the post prints it — not as the bare 24.
+  turnoverUsdRounded: Math.round(t.turnoverUsd / 1e6) * 1e6,
 }));
 const leaders = top([...liquid].sort((a, b) => b.changePct - a.changePct), 10);
 const laggards = top([...liquid].sort((a, b) => a.changePct - b.changePct), 10);
@@ -220,7 +221,7 @@ const rankedLeadRank = ranked.length
  * 3. The mechanism claim: was this a squeeze, and is it paid for
  * ------------------------------------------------------------------ */
 
-const FUNDING = ["BTC-USDT-SWAP", "ETH-USDT-SWAP", "SOL-USDT-SWAP", "BNB-USDT-SWAP"];
+const FUNDING = ["BTC-USDT-SWAP", "ETH-USDT-SWAP", "XRP-USDT-SWAP", "ENA-USDT-SWAP"];
 const funding = [];
 for (const inst of FUNDING) {
   try {
@@ -234,6 +235,18 @@ for (const inst of FUNDING) {
     });
   } catch { /* absent rather than guessed */ }
 }
+
+/**
+ * The sentiment reading the brief quotes, fetched rather than taken on trust.
+ *
+ * It is one of the few figures in a forwarded scan that has a single canonical
+ * source, so there is no excuse for repeating it unchecked.
+ */
+let fearGreed = null;
+try {
+  const d = (await j("https://api.alternative.me/fng/?limit=1")).data[0];
+  fearGreed = { value: Number(d.value), label: d.value_classification, source: "alternative.me" };
+} catch { /* absent rather than guessed */ }
 
 /* ------------------------------------------------------------------ *
  * 4. What this desk's own engine says right now
@@ -397,8 +410,34 @@ const baseRates = {
   persistence30dPct: pers?.persistence?.["30"]?.matchPct ?? null,
 };
 
+/**
+ * The previous run of the same day, if there was one.
+ *
+ * A 24-hour change is a rolling window: ENA read +25.19% on one pass and
+ * +26.06% eight minutes later, crossing out of a claimed band in between. The
+ * brief did not change; the window moved. Carrying the earlier reading forward
+ * means a post can say that and have the figure traceable, instead of the
+ * drift being invisible or quietly rounded away.
+ */
+const OUT_PATH_EARLY = `research/market-scan-${new Date().toISOString().slice(0, 10)}.json`;
+const previousRun = existsSync(OUT_PATH_EARLY)
+  ? (() => {
+      const prev = JSON.parse(readFileSync(OUT_PATH_EARLY, "utf8"));
+      return {
+        measuredAt: prev.measuredAt,
+        claimsInRange: prev.claimsInRange,
+        claimsChecked: prev.claimsChecked.map((c) => ({
+          label: c.label, inRange: c.inRange,
+          actualChangePct: c.actualChangePct ?? null,
+          actualPrice: c.actualPrice ?? null,
+        })),
+      };
+    })()
+  : null;
+
 const out = {
   measuredAt,
+  previousRun,
   source: "Binance spot 24hr tickers (rolling window); OKX perpetual funding",
   note: "Intraday scan. Writes no plan file — the morning ledger stands.",
   breadth,
@@ -419,25 +458,33 @@ const out = {
   claimsTotal: checked.length,
   ranked,
   rankedLeadRank,
-  resistance,
   runners,
   leaders,
   laggards,
   funding,
+  fearGreed,
   engine,
   boardHistory,
   boardSummary,
   baseRates,
 };
 
-writeFileSync("research/market-scan.json", `${JSON.stringify(out, null, 2)}\n`);
+const OUT_PATH = `research/market-scan-${measuredAt.slice(0, 10)}.json`;
+writeFileSync(OUT_PATH, `${JSON.stringify(out, null, 2)}\n`);
 
 /* ------------------------------------------------------------------ *
  * Printed the way it would be read aloud
  * ------------------------------------------------------------------ */
 
 const f = (v, dp = 2) => (v == null ? "—" : (v >= 0 ? "+" : "") + v.toFixed(dp));
-const money = (v) => Math.round(v).toLocaleString("en-US");
+/**
+ * Prices span eight orders of magnitude here, so one rounding rule cannot
+ * serve them. Whole dollars above a dollar; significant digits below, because
+ * rounding 0.0038 to the nearest dollar prints "$0" and erases the claim.
+ */
+const money = (v) => (Math.abs(v) >= 1
+  ? Math.round(v).toLocaleString("en-US")
+  : Number(v.toPrecision(3)).toString());
 
 console.log(`market scan ${measuredAt}\n`);
 
@@ -472,12 +519,6 @@ for (const [i, r] of ranked.entries()) {
 }
 if (rankedLeadRank) console.log(`  its leader ranks ${rankedLeadRank} of ${liquid.length} liquid pairs exchange-wide`);
 
-if (resistance) {
-  console.log(`\nthe level it says to watch: $${money(resistance.lowUsd)}-${money(resistance.highUsd)} on BNB`);
-  console.log(`  BNB is at $${money(resistance.actualPrice)}, 24h high $${money(resistance.high24h)}`
-    + `   ${resistance.alreadyThroughIt ? "ALREADY THROUGH IT" : resistance.touchedIt ? "touched, not held" : "not reached"}`);
-}
-
 console.log(`\nits FOMO warning, counted: ${runners.inBand} pairs are ${runners.lowPct}-${runners.highPct}%,`
   + ` ${runners.aboveBand} are past ${runners.highPct}%`
   + ` (${runners.inBandLiquid} above $${(LIQUID_FLOOR_USD / 1e6).toFixed(0)}M turnover)`);
@@ -500,6 +541,8 @@ if (funding.length) {
       + `   ${f(r.annualisedPct, 1)}% annualised`);
   }
 }
+
+if (fearGreed) console.log(`\nfear & greed: ${fearGreed.value} (${fearGreed.label})`);
 
 if (engine) {
   const t = engine.tally ?? {};
