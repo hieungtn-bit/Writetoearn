@@ -14,13 +14,24 @@
  * Regenerated wholesale each run rather than appended to, so a post that is
  * corrected on the site cannot leave a stale copy waiting to be pasted
  * somewhere.
+ *
+ * Exported as a function as well as runnable on its own, because the site
+ * build deletes the whole output directory before writing: running this first
+ * meant every file it produced was removed moments later, and the deploy
+ * shipped none of them while both commands reported success. The site build
+ * now calls this at the end, so the order cannot be got wrong again.
+ *
+ *   node scripts/build-syndication.mjs      # standalone; site/dist must exist
  */
 
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { PLATFORMS, syndicate } from "../src/syndicate.mjs";
 
-const root = process.cwd();
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+export function buildSyndication({ quiet = false } = {}) {
 const manifest = JSON.parse(readFileSync(path.join(root, "site", "manifest.json"), "utf8"));
 const OUT = path.join(root, "site", "dist", "syndication");
 
@@ -71,5 +82,14 @@ writeFileSync(path.join(OUT, "index.json"), `${JSON.stringify({
   posts: index,
 }, null, 2)}\n`);
 
-console.log(`${index.length} posts × ${PLATFORMS.length} platforms → ${files + 1} files in site/dist/syndication/`);
-console.log(`  index: /syndication/index.json`);
+if (!quiet) {
+  console.log(`${index.length} posts × ${PLATFORMS.length} platforms → ${files + 1} files in site/dist/syndication/`);
+  console.log(`  index: /syndication/index.json`);
+}
+return files + 1;
+}
+
+// Runnable on its own, for a rebuild that does not touch the rest of the site.
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  buildSyndication();
+}

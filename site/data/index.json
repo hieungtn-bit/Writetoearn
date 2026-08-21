@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T01:44:24.024Z",
+  "generatedAt": "2026-08-21T13:49:37.939Z",
   "note": "Every figure published on this site traces to one of these snapshots.",
   "snapshots": [
     {
@@ -133,6 +133,10 @@
     {
       "file": "icp-grok-check.json",
       "url": "/data/icp-grok-check.json"
+    },
+    {
+      "file": "icp-strategy.json",
+      "url": "/data/icp-strategy.json"
     },
     {
       "file": "icp-volume-profile.json",

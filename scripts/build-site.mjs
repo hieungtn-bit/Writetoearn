@@ -105,6 +105,26 @@ if (fs.existsSync(dataSrc)) {
   }
 }
 
+/**
+ * Syndication is rebuilt here, last, because this script deletes the whole
+ * output directory first.
+ *
+ * It was a separate command run before this one, and the rmSync above removed
+ * every file it had just written. The build reported "638 files" and the
+ * deploy shipped none of them, twice, without anything failing — the two
+ * commands each succeeded and only their order was wrong.
+ *
+ * Ordering by convention did not survive contact with a human running them in
+ * the order they were written in a note, so the site build now owns it: one
+ * command, one output directory, no way to sequence them wrongly.
+ */
+let syndicated = 0;
+if (out === path.resolve(root, "site/dist")) {
+  const { buildSyndication } = await import("./build-syndication.mjs");
+  syndicated = buildSyndication({ quiet: true });
+}
+
 const bytes = files.reduce((s, f) => s + Buffer.byteLength(f.content), 0);
 console.log(`Built ${files.length} files (${(bytes / 1024).toFixed(0)} KB) into ${out}`
-  + (snapshots ? ` · ${snapshots} research snapshot(s) served at /data/` : ""));
+  + (snapshots ? ` · ${snapshots} research snapshot(s) served at /data/` : "")
+  + (syndicated ? ` · ${syndicated} syndication file(s)` : ""));

@@ -1,0 +1,126 @@
+{
+  "measuredAt": "2026-08-21T13:45:42.616Z",
+  "symbol": "ICPUSDT",
+  "source": "Binance spot daily klines",
+  "plan": {
+    "breakoutTrigger": {
+      "lowUsd": 2.48,
+      "highUsd": 2.5
+    },
+    "entry": {
+      "lowUsd": 2.5,
+      "highUsd": 2.53
+    },
+    "stop": {
+      "lowUsd": 2.38,
+      "highUsd": 2.4
+    },
+    "tp1": {
+      "lowUsd": 2.65,
+      "highUsd": 2.7,
+      "takePct": 45
+    },
+    "tp2": {
+      "lowUsd": 2.85,
+      "highUsd": 2.9
+    },
+    "fallbackEntry": {
+      "lowUsd": 2.28,
+      "highUsd": 2.3
+    },
+    "fallbackStopUsd": 2.25,
+    "invalidationUsd": 2.28,
+    "baseInvalidationUsd": 2,
+    "claimedRR": {
+      "low": 2.5,
+      "high": 3
+    }
+  },
+  "arithmetic": {
+    "entryUsd": 2.5149999999999997,
+    "stopUsd": 2.3899999999999997,
+    "riskUsd": 0.125,
+    "stopPct": 4.970178926441352,
+    "tp1Usd": 2.675,
+    "tp2Usd": 2.875,
+    "tp1R": 1.2800000000000011,
+    "tp2R": 2.8800000000000026,
+    "blendedBestCaseR": 2.160000000000002,
+    "claimedLowR": 2.5,
+    "claimedHighR": 3,
+    "fallbackEntryUsd": 2.29,
+    "fallbackStopPct": 1.746724890829696,
+    "blendedClearsClaim": false
+  },
+  "instrument": {
+    "spotUsd": 2.486,
+    "atrPct": 4.941960694173081,
+    "dailyBars": 1929,
+    "firstBar": "2021-05-11",
+    "planStopPct": 4.970178926441352,
+    "fallbackStopPct": 1.746724890829696,
+    "daysTakingPlanStopFromOpenPct": 29.652669777086572,
+    "daysTakingFallbackStopFromOpenPct": 71.90254017625712,
+    "medianDailyRangePct": 6.988783433994827
+  },
+  "backtest": {
+    "baseDays": 20,
+    "horizonDays": 30,
+    "feePct": 0.2,
+    "geometry": {
+      "stopPct": 4.970178926441352,
+      "tp1Pct": 6.361829025844937,
+      "tp2Pct": 14.314115308151107
+    },
+    "takeAtFirstTargetPct": 45,
+    "unmatchedSignals": 0,
+    "all": {
+      "n": 74,
+      "meanR": 0.09078702702702808,
+      "medianR": -1.04024,
+      "winSharePct": 43.24324324324324,
+      "worstR": -1.04024,
+      "bestR": 2.119760000000008
+    },
+    "withVolumeConfirmation": {
+      "n": 71,
+      "meanR": 0.1385769014084518,
+      "medianR": -1.04024,
+      "winSharePct": 45.07042253521127,
+      "worstR": -1.04024,
+      "bestR": 2.119760000000008
+    },
+    "withoutVolumeConfirmation": {
+      "n": 3,
+      "meanR": -1.04024,
+      "medianR": -1.04024,
+      "winSharePct": 0,
+      "worstR": -1.04024,
+      "bestR": -1.04024
+    },
+    "control": {
+      "n": 370,
+      "meanR": 0.3170356756756767,
+      "medianR": 0.5357600000000005,
+      "winSharePct": 51.35135135135135,
+      "worstR": -1.04024,
+      "bestR": 2.119760000000008
+    },
+    "welchTVsControl": -1.2677465536864,
+    "welchTVolumeVsNot": 7.065195337510209,
+    "effectiveN": 2.466666666666667
+  },
+  "houseAlternative": {
+    "stopPct": 7.4129410412596215,
+    "targetPct": 14.825882082519243,
+    "atrMultiple": 1.5,
+    "rewardRatio": 2,
+    "daysTakingThisStopFromOpenPct": 15.396578538102643,
+    "n": 74,
+    "meanR": -0.013466331447726815,
+    "medianR": -1.0269798449612404,
+    "winSharePct": 33.78378378378378,
+    "worstR": -1.0269798449612404,
+    "bestR": 1.9730201550387623
+  }
+}
