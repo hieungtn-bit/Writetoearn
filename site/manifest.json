@@ -10,6 +10,23 @@
   },
   "articles": [
     {
+      "slug": "bsc-hardforks-and-bnb",
+      "draft": "94-bnb-hardfork.txt",
+      "title": "Twenty BSC Hardforks Later, Here Is What Pasteur Will Do to BNB",
+      "description": "Every BSC mainnet activation since 2021, read out of the client source and measured against BTC: no post-event window separates from the surrounding regime, the one-day test detects 1.26%, and the strongest result sits before the event and fails correction for six windows.",
+      "published": "2026-08-21T01:44:16.783Z",
+      "assets": [
+        "BNB"
+      ],
+      "topics": [
+        "event study",
+        "BNB Chain",
+        "statistical power",
+        "multiple comparisons"
+      ],
+      "squareId": 357930830747733
+    },
+    {
       "slug": "two-days-same-floor",
       "draft": "93-again-2026-08-21.txt",
       "title": "I Published This Flaw Last Night. A Fresh Board Did It Again by Morning.",
