@@ -10,6 +10,23 @@
   },
   "articles": [
     {
+      "slug": "icp-plan-checked",
+      "draft": "95-icp-strategy.txt",
+      "title": "A Reader's ICP Plan, Checked Three Ways Instead of Restated",
+      "description": "The plan claims 1:2.5-3 reward-to-risk but its own partial exit caps the best case at 2.16R, its fallback stop is one nearly three ICP days in four would take from the open, and 74 breakouts across five years are only 2.5 independent episodes — not enough to convict the rule either way.",
+      "published": "2026-08-21T13:49:10.262Z",
+      "assets": [
+        "ICP"
+      ],
+      "topics": [
+        "strategy audit",
+        "position sizing",
+        "stop placement",
+        "statistical power"
+      ],
+      "squareId": 358108980005238
+    },
+    {
       "slug": "bsc-hardforks-and-bnb",
       "draft": "94-bnb-hardfork.txt",
       "title": "Twenty BSC Hardforks Later, Here Is What Pasteur Will Do to BNB",
