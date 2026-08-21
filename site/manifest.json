@@ -10,6 +10,25 @@
   },
   "articles": [
     {
+      "slug": "two-days-same-floor",
+      "draft": "93-again-2026-08-21.txt",
+      "title": "I Published This Flaw Last Night. A Fresh Board Did It Again by Morning.",
+      "description": "The agreement filter admitted no long position on 20 August and none again on 21 August, on a rescanned board with the universe re-drawn between them — 87% and 88% of short rows pass, 17% and 11% of long ones — while the open book reached 0 of 24 ahead at -23.3R.",
+      "published": "2026-08-21T00:55:31.314Z",
+      "assets": [
+        "ADA",
+        "XRP",
+        "BTC"
+      ],
+      "topics": [
+        "quant",
+        "filter design",
+        "reproducibility",
+        "open ledger"
+      ],
+      "squareId": 357918848207890
+    },
+    {
       "slug": "where-every-long-died",
       "draft": "92-the-filter.txt",
       "title": "My Board Read Long All Week. It Could Not Offer a Single One.",
