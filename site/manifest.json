@@ -10,6 +10,25 @@
   },
   "articles": [
     {
+      "slug": "ai-sector-or-label",
+      "draft": "97-ai-sector.txt",
+      "title": "I Expected the AI Sector to Be a Label. It Is the Strongest Result on the Page.",
+      "description": "Regressing BTC out of ten AI pairs leaves them correlated at 0.404 against 0.116 for 200 random baskets of the same size — z +6.07, surviving the loss of any member. The sector is real; the ranking that put RENDER first is not, since its 180-day alpha is negative while TAO's is the basket's best.",
+      "published": "2026-08-22T02:13:37.887Z",
+      "assets": [
+        "RENDER",
+        "TAO",
+        "ICP"
+      ],
+      "topics": [
+        "sector cohesion",
+        "alpha vs beta",
+        "bootstrap control",
+        "portfolio risk"
+      ],
+      "squareId": 358291938598270
+    },
+    {
       "slug": "icp-followthrough",
       "draft": "96-followthrough-2026-08-22.txt",
       "title": "The Trigger Fired 91 Minutes After I Published the Warning",
