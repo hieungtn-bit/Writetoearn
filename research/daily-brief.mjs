@@ -426,7 +426,33 @@ const out = {
   bookSummary,
 };
 writeFileSync("research/daily-brief.json", `${JSON.stringify(out, null, 2)}\n`);
-writeFileSync(`${PLAN_DIR}/${day}.json`, `${JSON.stringify({ day, measuredAt: out.measuredAt, rules: out.rules, taken }, null, 2)}\n`);
+
+/**
+ * A day's plan is written once. A second run reports; it does not re-file.
+ *
+ * Running this twice in one UTC day replaced the morning's ledger with an
+ * evening one — the same names, re-entered after the move they were wrong
+ * about, at prices that flatter them. The 21 August book went from five
+ * positions opened at ADA 0.2032 and SUI 0.7374 to four opened at 0.2296 and
+ * 0.8454, and tomorrow's settlement would have judged entries nobody was ever
+ * shown. The column had already published the first set.
+ *
+ * That is not a re-scan, it is a rewrite of the scorecard, and it is the one
+ * failure this file cannot be allowed to have: everything else it publishes
+ * rests on the ledger being what it said it was.
+ *
+ * REPLAN=1 overrides, for the case where the first run genuinely was wrong and
+ * nothing has been published from it.
+ */
+const planPath = `${PLAN_DIR}/${day}.json`;
+if (existsSync(planPath) && !process.env.REPLAN) {
+  const existing = JSON.parse(readFileSync(planPath, "utf8"));
+  console.error(`\nLedger for ${day} already exists (${existing.taken?.length ?? 0} position(s), `
+    + `written ${existing.measuredAt}). Left untouched.`);
+  console.error("This run reports only. Set REPLAN=1 to overwrite deliberately.\n");
+} else {
+  writeFileSync(planPath, `${JSON.stringify({ day, measuredAt: out.measuredAt, rules: out.rules, taken }, null, 2)}\n`);
+}
 
 console.log(`=== ${day} ===\n`);
 console.log(`market: ${breadth.pairs} pairs · ${breadth.up} up / ${breadth.down} down (${breadth.upSharePct.toFixed(1)}% green)`

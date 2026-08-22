@@ -65,20 +65,18 @@ const median = (xs) => {
  * ------------------------------------------------------------------ */
 
 const CLAIMS = [
-  { symbol: "BTCUSDT", label: "BTC", kind: "change", lowPct: 5.4, highPct: 5.4, text: "~$73,300, +5.4%" },
-  { symbol: "BTCUSDT", label: "BTC px", kind: "band", lowUsd: 73_000, highUsd: 73_600, text: "~$73,300" },
-  { symbol: "PUMPUSDT", label: "PUMP", kind: "change", lowPct: 25, highPct: 30, text: "+25-30%, score 85" },
-  { symbol: "PUMPUSDT", label: "PUMP px", kind: "band", lowUsd: 0.0038, highUsd: 0.0039, text: "~$0.0038-0.0039" },
-  { symbol: "ENAUSDT", label: "ENA", kind: "change", lowPct: 20, highPct: 26, text: "+20-26%, score 82" },
-  { symbol: "BOMEUSDT", label: "BOME", kind: "change", lowPct: 30, highPct: 65, text: "+30-65%, score 80" },
-  { symbol: "XRPUSDT", label: "XRP", kind: "change", lowPct: 13, highPct: 15, text: "+13-15%, score 79" },
+  { symbol: "BTCUSDT", label: "BTC", kind: "band", lowUsd: 77_000, highUsd: 78_000, text: "holding $77k-78k" },
+  { symbol: "ICPUSDT", label: "ICP", kind: "floor", floorUsd: 2.50, text: "broke $2.50, pulling back healthily" },
 ];
 
-/** The ordering the brief asserts among the names it ranks. */
-const RANKED = ["PUMPUSDT", "ENAUSDT", "BOMEUSDT", "XRPUSDT"];
+/** Its read on where the market's leadership sits. */
+const CLAIMED_DOMINANCE = { lowPct: 59, highPct: 60 };
 
-/** Its FOMO warning, stated as a testable population claim. */
-const CLAIMED_RUNNERS = { lowPct: 80, highPct: 150, text: "avoid names already +80-150% on fading volume" };
+/** The ordering the brief asserts among the names it ranks. */
+const RANKED = ["ICPUSDT", "ENAUSDT", "XRPUSDT"];
+
+/** Its claim that clean early setups are scarce, as a countable statement. */
+const CLAIMED_RUNNERS = { lowPct: 20, highPct: 40, text: "few clean early-stage setups left" };
 
 /* ------------------------------------------------------------------ *
  * 1. The tape, across every pair
@@ -221,7 +219,7 @@ const rankedLeadRank = ranked.length
  * 3. The mechanism claim: was this a squeeze, and is it paid for
  * ------------------------------------------------------------------ */
 
-const FUNDING = ["BTC-USDT-SWAP", "ETH-USDT-SWAP", "XRP-USDT-SWAP", "ENA-USDT-SWAP"];
+const FUNDING = ["BTC-USDT-SWAP", "ETH-USDT-SWAP", "XRP-USDT-SWAP", "ICP-USDT-SWAP"];
 const funding = [];
 for (const inst of FUNDING) {
   try {
@@ -242,6 +240,11 @@ for (const inst of FUNDING) {
  * It is one of the few figures in a forwarded scan that has a single canonical
  * source, so there is no excuse for repeating it unchecked.
  */
+let dominancePct = null;
+try {
+  dominancePct = (await j("https://api.coingecko.com/api/v3/global")).data.market_cap_percentage.btc;
+} catch { /* absent rather than guessed */ }
+
 let fearGreed = null;
 try {
   const d = (await j("https://api.alternative.me/fng/?limit=1")).data[0];
@@ -463,6 +466,8 @@ const out = {
   laggards,
   funding,
   fearGreed,
+  dominancePct,
+  claimedDominance: CLAIMED_DOMINANCE,
   engine,
   boardHistory,
   boardSummary,
@@ -482,9 +487,12 @@ const f = (v, dp = 2) => (v == null ? "—" : (v >= 0 ? "+" : "") + v.toFixed(dp
  * serve them. Whole dollars above a dollar; significant digits below, because
  * rounding 0.0038 to the nearest dollar prints "$0" and erases the claim.
  */
-const money = (v) => (Math.abs(v) >= 1
-  ? Math.round(v).toLocaleString("en-US")
-  : Number(v.toPrecision(3)).toString());
+const money = (v) => {
+  const a = Math.abs(v);
+  if (a >= 1000) return Math.round(v).toLocaleString("en-US");
+  if (a >= 1) return Number(v.toFixed(2)).toString();
+  return Number(v.toPrecision(3)).toString();
+};
 
 console.log(`market scan ${measuredAt}\n`);
 
@@ -542,7 +550,11 @@ if (funding.length) {
   }
 }
 
-if (fearGreed) console.log(`\nfear & greed: ${fearGreed.value} (${fearGreed.label})`);
+if (dominancePct != null) {
+  const inBand = dominancePct >= CLAIMED_DOMINANCE.lowPct && dominancePct <= CLAIMED_DOMINANCE.highPct;
+  console.log(`\nBTC dominance: ${dominancePct.toFixed(2)}%  (claimed ${CLAIMED_DOMINANCE.lowPct}-${CLAIMED_DOMINANCE.highPct}% — ${inBand ? "in range" : "outside"})`);
+}
+if (fearGreed) console.log(`fear & greed: ${fearGreed.value} (${fearGreed.label})`);
 
 if (engine) {
   const t = engine.tally ?? {};

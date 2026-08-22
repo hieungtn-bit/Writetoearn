@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T13:49:37.939Z",
+  "generatedAt": "2026-08-22T00:05:07.171Z",
   "note": "Every figure published on this site traces to one of these snapshots.",
   "snapshots": [
     {
@@ -127,6 +127,10 @@
       "url": "/data/icp-4h-check.json"
     },
     {
+      "file": "icp-followthrough.json",
+      "url": "/data/icp-followthrough.json"
+    },
+    {
       "file": "icp-full.json",
       "url": "/data/icp-full.json"
     },
@@ -169,6 +173,10 @@
     {
       "file": "market-scan-2026-08-21.json",
       "url": "/data/market-scan-2026-08-21.json"
+    },
+    {
+      "file": "market-scan-2026-08-22.json",
+      "url": "/data/market-scan-2026-08-22.json"
     },
     {
       "file": "market-scan.json",
