@@ -10,6 +10,24 @@
   },
   "articles": [
     {
+      "slug": "ena-funding-control",
+      "draft": "98-ena.txt",
+      "title": "ENA Is Built on Funding. XRP Tracks Funding Better.",
+      "description": "Ethena's yield is perpetual funding, so the price should track it — and over 28 non-overlapping windows it does, at r +0.479, p 0.010. Then 48 tokens with no claim on funding average +0.257, XRP hits +0.66, and ENA lands at the 77th percentile of a distribution it should dominate.",
+      "published": "2026-08-25T03:24:39.869Z",
+      "assets": [
+        "ENA",
+        "XRP"
+      ],
+      "topics": [
+        "control groups",
+        "protocol fundamentals",
+        "funding rates",
+        "significance"
+      ],
+      "squareId": 359371079026212
+    },
+    {
       "slug": "ai-sector-or-label",
       "draft": "97-ai-sector.txt",
       "title": "I Expected the AI Sector to Be a Label. It Is the Strongest Result on the Page.",
