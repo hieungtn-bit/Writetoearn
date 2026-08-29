@@ -1,0 +1,287 @@
+{
+  "measuredAt": "2026-08-18T05:19:16.990Z",
+  "universePinnedToCache": true,
+  "historyFrom": "2019-01-01",
+  "historyFromYear": 2019,
+  "pairs": 76,
+  "rules": {
+    "baseDays": 20,
+    "baseMaxRangePct": 35,
+    "volumeMultiple": 4,
+    "earlyGatePct": 60,
+    "minTurnoverUsd": 5000000,
+    "tp1Pct": 20,
+    "tp1Fraction": 0.35,
+    "tp2Pct": 50,
+    "tp2Fraction": 0.3,
+    "timeStopDays": 2,
+    "timeStopCut": 0.5,
+    "maxHoldDays": 60,
+    "minStopPct": 2,
+    "maxStopPct": 25
+  },
+  "approximation": "Daily candles. The spec's 4H confirmation and 8-12 candle time-stop are implemented as 2 days, and within any bar the stop is checked before the targets.",
+  "asSpecified": {
+    "setups": 195,
+    "months": 58,
+    "meanR": 0.25836546100831714,
+    "medianR": -0.28403755868544583,
+    "bestR": 10.033529411764706,
+    "worstR": -1,
+    "winPct": 41.53846153846154,
+    "tStatByMonth": 1.7927985220623803,
+    "medianStopPct": 12.226374799786441,
+    "medianHoldDays": 7,
+    "stoppedPct": 84.61538461538461
+  },
+  "rejectedByGate": {
+    "setups": 3,
+    "months": 3,
+    "meanR": -0.6358476309728119,
+    "medianR": -0.6256983240223464,
+    "bestR": -0.540155440414508,
+    "worstR": -0.7416891284815814,
+    "winPct": 0,
+    "tStatByMonth": -10.888050286401661,
+    "medianStopPct": 22.98636926889715,
+    "medianHoldDays": 8,
+    "stoppedPct": 100
+  },
+  "randomEntrySameManagement": {
+    "setups": 168,
+    "months": 52,
+    "meanR": 0.3218879799373672,
+    "medianR": -0.705009887936717,
+    "bestR": 9.817313915857598,
+    "worstR": -1,
+    "winPct": 33.92857142857143,
+    "tStatByMonth": 0.8066255665909349,
+    "medianStopPct": 4.719066795338936,
+    "medianHoldDays": 3,
+    "stoppedPct": 89.88095238095238
+  },
+  "randomBaseline": {
+    "method": "Same symbol and same calendar month as each real setup, same liquidity floor, same management and same stop bounds. Only the entry rule differs.",
+    "unmatchedSetups": 27
+  },
+  "derived": {
+    "entryRuleValueR": -0.06352251892905003,
+    "medianAdvantageR": 0.4209723292512712,
+    "winRateAdvantagePct": 7.6098901098901095
+  },
+  "gateSweep": [
+    {
+      "gatePct": 40,
+      "setups": 145,
+      "months": 51,
+      "meanR": 0.26692114610979306,
+      "medianR": -0.28403755868544583,
+      "bestR": 10.033529411764706,
+      "worstR": -1,
+      "winPct": 39.310344827586206,
+      "tStatByMonth": 1.5980359444551115,
+      "medianStopPct": 10.93605189990731,
+      "medianHoldDays": 7,
+      "stoppedPct": 83.44827586206897
+    },
+    {
+      "gatePct": 50,
+      "setups": 180,
+      "months": 58,
+      "meanR": 0.2314722300121707,
+      "medianR": -0.3949541284403676,
+      "bestR": 10.033529411764706,
+      "worstR": -1,
+      "winPct": 40,
+      "tStatByMonth": 1.5133510859956099,
+      "medianStopPct": 11.535426581154052,
+      "medianHoldDays": 7,
+      "stoppedPct": 85
+    },
+    {
+      "gatePct": 55,
+      "setups": 189,
+      "months": 58,
+      "meanR": 0.2562913160533216,
+      "medianR": -0.28403755868544583,
+      "bestR": 10.033529411764706,
+      "worstR": -1,
+      "winPct": 41.269841269841265,
+      "tStatByMonth": 1.7717535348337603,
+      "medianStopPct": 12.145969498910683,
+      "medianHoldDays": 7,
+      "stoppedPct": 84.65608465608466
+    },
+    {
+      "gatePct": 60,
+      "setups": 195,
+      "months": 58,
+      "meanR": 0.25836546100831714,
+      "medianR": -0.28403755868544583,
+      "bestR": 10.033529411764706,
+      "worstR": -1,
+      "winPct": 41.53846153846154,
+      "tStatByMonth": 1.7927985220623803,
+      "medianStopPct": 12.226374799786441,
+      "medianHoldDays": 7,
+      "stoppedPct": 84.61538461538461
+    },
+    {
+      "gatePct": 70,
+      "setups": 198,
+      "months": 58,
+      "meanR": 0.24481677779648178,
+      "medianR": -0.3949541284403676,
+      "bestR": 10.033529411764706,
+      "worstR": -1,
+      "winPct": 40.909090909090914,
+      "tStatByMonth": 1.748718296906565,
+      "medianStopPct": 12.252240180313896,
+      "medianHoldDays": 7,
+      "stoppedPct": 84.84848484848484
+    },
+    {
+      "gatePct": 100,
+      "setups": 198,
+      "months": 58,
+      "meanR": 0.24481677779648178,
+      "medianR": -0.3949541284403676,
+      "bestR": 10.033529411764706,
+      "worstR": -1,
+      "winPct": 40.909090909090914,
+      "tStatByMonth": 1.748718296906565,
+      "medianStopPct": 12.252240180313896,
+      "medianHoldDays": 7,
+      "stoppedPct": 84.84848484848484
+    },
+    {
+      "gatePct": null,
+      "setups": 198,
+      "months": 58,
+      "meanR": 0.24481677779648178,
+      "medianR": -0.3949541284403676,
+      "bestR": 10.033529411764706,
+      "worstR": -1,
+      "winPct": 40.909090909090914,
+      "tStatByMonth": 1.748718296906565,
+      "medianStopPct": 12.252240180313896,
+      "medianHoldDays": 7,
+      "stoppedPct": 84.84848484848484
+    }
+  ],
+  "sensitivity": [
+    {
+      "baseDays": 10,
+      "volumeMultiple": 2,
+      "setups": 1190,
+      "meanR": 0.27883858216941626,
+      "tStatByMonth": 1.6458983741274689
+    },
+    {
+      "baseDays": 10,
+      "volumeMultiple": 3,
+      "setups": 630,
+      "meanR": 0.2585144733596595,
+      "tStatByMonth": 1.5418469361620895
+    },
+    {
+      "baseDays": 10,
+      "volumeMultiple": 4,
+      "setups": 401,
+      "meanR": 0.20042528709227692,
+      "tStatByMonth": 1.571514016710137
+    },
+    {
+      "baseDays": 10,
+      "volumeMultiple": 6,
+      "setups": 203,
+      "meanR": 0.09520088844955837,
+      "tStatByMonth": 0.9337799092724806
+    },
+    {
+      "baseDays": 15,
+      "volumeMultiple": 2,
+      "setups": 790,
+      "meanR": 0.25799027967850563,
+      "tStatByMonth": 0.48323599857426536
+    },
+    {
+      "baseDays": 15,
+      "volumeMultiple": 3,
+      "setups": 440,
+      "meanR": 0.27586217192325274,
+      "tStatByMonth": 0.81644049225614
+    },
+    {
+      "baseDays": 15,
+      "volumeMultiple": 4,
+      "setups": 285,
+      "meanR": 0.22367600353409586,
+      "tStatByMonth": 1.2335601583143965
+    },
+    {
+      "baseDays": 15,
+      "volumeMultiple": 6,
+      "setups": 142,
+      "meanR": 0.12108484404608034,
+      "tStatByMonth": 1.1050774443211608
+    },
+    {
+      "baseDays": 20,
+      "volumeMultiple": 2,
+      "setups": 523,
+      "meanR": 0.2836554242443149,
+      "tStatByMonth": 0.9180972701549058
+    },
+    {
+      "baseDays": 20,
+      "volumeMultiple": 3,
+      "setups": 308,
+      "meanR": 0.32102049817259454,
+      "tStatByMonth": 1.3177311734312094
+    },
+    {
+      "baseDays": 20,
+      "volumeMultiple": 4,
+      "setups": 195,
+      "meanR": 0.25836546100831714,
+      "tStatByMonth": 1.7927985220623803
+    },
+    {
+      "baseDays": 20,
+      "volumeMultiple": 6,
+      "setups": 93,
+      "meanR": 0.047087284860493406,
+      "tStatByMonth": 0.33123757862221365
+    },
+    {
+      "baseDays": 25,
+      "volumeMultiple": 2,
+      "setups": 374,
+      "meanR": 0.2985503486895455,
+      "tStatByMonth": 0.7509276073030391
+    },
+    {
+      "baseDays": 25,
+      "volumeMultiple": 3,
+      "setups": 221,
+      "meanR": 0.36571284223864925,
+      "tStatByMonth": 1.5993856722717597
+    },
+    {
+      "baseDays": 25,
+      "volumeMultiple": 4,
+      "setups": 141,
+      "meanR": 0.3113944963545748,
+      "tStatByMonth": 1.4288089252662797
+    },
+    {
+      "baseDays": 25,
+      "volumeMultiple": 6,
+      "setups": 68,
+      "meanR": 0.08589083083942829,
+      "tStatByMonth": 0.7466266097733277
+    }
+  ],
+  "totalSetupsFound": 198
+}

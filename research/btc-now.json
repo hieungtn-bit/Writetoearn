@@ -1,0 +1,178 @@
+{
+  "measuredAt": "2026-08-19T02:00:09.564Z",
+  "symbol": "BTCUSDT",
+  "price": 64400.48,
+  "spans": [
+    {
+      "days": 7,
+      "high": 65058.81,
+      "low": 62535.24,
+      "positionPct": 73.91275058746163,
+      "changePct": 1.4500474874050946,
+      "fromHighPct": -1.0118998487675912,
+      "fromLowPct": 2.9827022331728563
+    },
+    {
+      "days": 30,
+      "high": 66956.15,
+      "low": 62275,
+      "positionPct": 45.40508208453063,
+      "changePct": -1.3102801587176298,
+      "fromHighPct": -3.816930931661978,
+      "fromLowPct": 3.413054997992779
+    },
+    {
+      "days": 90,
+      "high": 78080,
+      "low": 57800.19,
+      "positionPct": 32.546113597711226,
+      "changePct": -17.026285464556572,
+      "fromHighPct": -17.519877049180323,
+      "fromLowPct": 11.419149314215058
+    },
+    {
+      "days": 365,
+      "high": 126199.63,
+      "low": 57800.19,
+      "positionPct": 9.649625786409949,
+      "changePct": -42.94427495693166,
+      "fromHighPct": -48.96935910192447,
+      "fromLowPct": 11.419149314215058
+    }
+  ],
+  "volatility": {
+    "atrPct": 1.846823619792899,
+    "stopAt15AtrPct": 2.7702354296893485,
+    "realizedVol30Pct": 23.128742728550854,
+    "realizedVol90Pct": 34.07565545717394
+  },
+  "momentum": {
+    "rsi14": 52.967817879213676
+  },
+  "profile": {
+    "pointOfControl": 64159.162874999995,
+    "overheadPct": 42.76543297965139,
+    "valueAreaLow": 63351.6645,
+    "valueAreaHigh": 65317.7475,
+    "priceVsValueArea": "inside",
+    "hoursCovered": 720
+  },
+  "turnoverUsd": 772810051.8312919,
+  "engine": {
+    "bias": "WAIT",
+    "reason": "both directions lose over the recent window",
+    "effectiveN": null,
+    "expectancyR": null,
+    "agreeingWindows": null,
+    "windows": null,
+    "regimeTurning": true
+  },
+  "funding": {
+    "live": {
+      "venue": "OKX perpetual swaps",
+      "nextRatePct": 0.007585742425079999,
+      "latestSettledPct": 0.00591412493872,
+      "latestSettledTime": "2026-08-19T00:00:00.000Z",
+      "annualised7dPct": 6.908786030209243,
+      "annualisedWindowPct": 4.816759887111573,
+      "windowDays": 30,
+      "negativeSharePct": 11.11111111111111
+    },
+    "history": {
+      "source": "data.binance.vision monthly dumps, Binance USDS-M perpetual",
+      "through": "2026-07-31",
+      "windows": [
+        {
+          "days": 30,
+          "intervals": 91,
+          "meanPerIntervalPct": 0.006134318681318683,
+          "annualisedPct": 6.717078956043958,
+          "positiveSharePct": 98.9010989010989
+        },
+        {
+          "days": 90,
+          "intervals": 271,
+          "meanPerIntervalPct": 0.0037440701107011067,
+          "annualisedPct": 4.099756771217711,
+          "positiveSharePct": 83.76383763837639
+        },
+        {
+          "days": 365,
+          "intervals": 1096,
+          "meanPerIntervalPct": 0.003061226277372259,
+          "annualisedPct": 3.3520427737226237,
+          "positiveSharePct": 76.0036496350365
+        }
+      ]
+    }
+  },
+  "asNumeraire": {
+    "altsMeasured": 36,
+    "beatingBtc30d": 17,
+    "beatingBtc90d": 22,
+    "medianAltVsBtc30dPct": -0.4776451904913548,
+    "medianAltVsBtc90dPct": 7.013964310036669,
+    "strongest": [
+      {
+        "symbol": "TUTUSDT",
+        "vs30dPct": 186.2773511201028,
+        "vs90dPct": 309.11796331588306
+      },
+      {
+        "symbol": "ACEUSDT",
+        "vs30dPct": 106.69052583491982,
+        "vs90dPct": 130.72991705400136
+      },
+      {
+        "symbol": "GPSUSDT",
+        "vs30dPct": 60.45380434048906,
+        "vs90dPct": 149.58771550850344
+      },
+      {
+        "symbol": "PUMPUSDT",
+        "vs30dPct": 53.86425387414988,
+        "vs90dPct": 104.47269506766257
+      },
+      {
+        "symbol": "EDENUSDT",
+        "vs30dPct": 22.77066134519408,
+        "vs90dPct": -49.44659935181684
+      }
+    ],
+    "weakest": [
+      {
+        "symbol": "ALLOUSDT",
+        "vs30dPct": -35.39937016283026,
+        "vs90dPct": 301.2950778191059
+      },
+      {
+        "symbol": "GALAUSDT",
+        "vs30dPct": -31.901036305390218,
+        "vs90dPct": -51.61524611648767
+      },
+      {
+        "symbol": "NEARUSDT",
+        "vs30dPct": -18.78433206577268,
+        "vs90dPct": -0.744477653192066
+      },
+      {
+        "symbol": "XLMUSDT",
+        "vs30dPct": -17.046695427961843,
+        "vs90dPct": 26.845962819152014
+      },
+      {
+        "symbol": "WLDUSDT",
+        "vs30dPct": -15.542530194448478,
+        "vs90dPct": 42.4165238736403
+      }
+    ]
+  },
+  "standing": {
+    "directionPersistence30dPct": 50.696446253713276,
+    "persistenceZ": 0.5421257410112558,
+    "shortAltsVsBtcAfterFundingR": 0.2865687972211002,
+    "shortAltsVsBtcT": 3.242542978991708,
+    "shortAltsVsUsdtR": 0.08074561956266527,
+    "shortAltsVsUsdtT": 0.8025823004210338
+  }
+}

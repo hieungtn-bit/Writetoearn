@@ -1,0 +1,128 @@
+Someone sent me a "2x–3x potential altcoin" scan that scored four coins to one decimal place. I re-measured all four with the same ruler.
+
+That score implies a promise: **a higher number is a better trade.** That promise is testable.
+
+THE VOLUME DESCRIPTIONS: WRONG THREE FOR THREE
+
+The scan described volume for three of the coins. Here is the measured volume trend:
+
+```
+       scan said        measured
+$ICP        weak           24.5%    expanding
+$ENA    improving         -52.0%    contracting
+$ONDO      stable         -68.1%    collapsing
+```
+
+Three for three, backwards. The only coin called "weak" is the only one whose volume is expanding. The two praised as "improving" and "stable" lost more than half and more than two thirds respectively.
+
+This is not a rounding issue. These descriptions are the reverse of what is happening.
+
+THE NUMBER THE SCAN NEVER GIVES
+
+"2x is a probabilistic target, not a guarantee." That sentence is true and useless, because it comes with no number. What probability?
+
+It is measurable. I walked each coin's history **bar by bar** and asked: from any given day, does price double within the next 90 days?
+
+The easiest test first — no stop, path ignored, just does it touch double at some point:
+
+```
+$ICP         12.3%
+$ENA         23.2%
+$ONDO         0.8%
+ARB          12.5%
+```
+
+Now apply the invalidation level the scan set for itself. Path matters now — whichever level is reached first is the one that counts:
+
+```
+            doubles    stopped out
+$ICP           3.0%          96.0%
+$ENA          11.0%          88.5%
+$ONDO          0.8%          81.4%
+ARB            7.6%          87.7%
+```
+
+ICP: doubles 3.0% of the time, hits the stop first 96.0%.
+
+THE TRAP INSIDE A BEAUTIFUL RATIO
+
+At this point many people say: fine, if the reward-to-risk is that good, winning rarely is still profitable.
+
+For ICP, buying at 2.22 with a stop at 2.12 targeting 4.35 is exactly **20.91 to 1**. It sounds like a gift.
+
+Multiply it by 3.0%.
+
+```
+                R:R    90d hit    expectancy
+$ICP          20.91       3.0%        -0.34R
+$ENA           7.01      11.0%        -0.11R
+$ONDO         14.11       0.8%        -0.71R
+ARB            7.91       7.6%        -0.28R
+```
+
+All four are negative.
+
+Reward-to-risk is not expectancy. The scan hands you the first column and hides the next two — and the next two are the ones that decide the account.
+
+DOES THE SCORE RANK THEM CORRECTLY?
+
+The scan ranks: **ICP > ENA > ONDO > ARB**.
+
+Ranked by measured expectancy: **ENA > ARB > ICP > ONDO**.
+
+Rank correlation: **0.00**.
+
+The top-scored coin comes third. The bottom-scored coin comes second.
+
+And I have to say this here, because not saying it would be making the exact error I am pointing at: **four samples is far too few to conclude the score is useless.** That 0.00 says the ranking is *unproven*, not that it is wrong. A real conclusion would need hundreds of scans tracked through to resolution — which is what my live scoreboard is doing, and which is what no scan ever publishes.
+
+WHAT NOBODY IN THAT TABLE MEASURED
+
+All four setups talk about bases, narratives and resistance. None mentions **supply trapped overhead** — the share of the last month's volume that traded above the current price, which is the number of people underwater and waiting to break even to get out.
+
+```
+$ICP          7.4%
+$ENA         21.9%
+$ONDO        82.3%
+ARB          75.7%
+```
+
+ONDO and ARB carry roughly three quarters of a month's volume above them. Every bounce is another wave of old holders leaving. ICP is almost clear.
+
+That is the largest difference between these four names, and it does not appear on any line of the original table.
+
+AS FOR "WAIT FOR CONFIRMATION"
+
+The scan closes with: *prefer to wait for a resistance break before entering.*
+
+But the stop stays where it was. Entering higher with a fixed stop lengthens the risk leg:
+
+```
+          enter now  after waiting
+$ICP          4.60%          9.03%
+$ENA         14.17%         26.19%
+$ONDO         7.62%         25.29%
+ARB          12.61%         33.33%
+```
+
+ONDO: risk more than triples. Its reward-to-risk falls from 14.11 to 2.68.
+
+Waiting is not the mistake. Waiting without moving the stop is.
+
+WHERE I AM BLIND
+
+**Binance funding and open interest**: the futures endpoint is geo-blocked from this host. **Real liquidation data**: CoinGlass, Glassnode and CryptoQuant all refuse without a paid API. No free data at this time.
+
+And one limit of this post itself: ONDO has only 487 candles of history, which is about 4.4 independent episodes at a 90-day horizon once the overlap is removed. Its 0.8% is much thinner than the other three. I am leaving it in the table, with this sentence attached.
+
+Bias: **WAIT** on all four. Not because they are bad — ICP genuinely has the cleanest structure of the group, volume really is expanding, and there is almost no trapped supply. But a 2x target with that stop, measured on their own history, does not pay for the risk. If you want to keep the idea, change the geometry — not the conviction.
+
+One more thing worth remembering: BTC explains 31.8% of ICP's daily variance and 33.0% of ENA's. Every altcoin trade is a BTC trade wearing a different outfit.
+
+Next time you see a "2x potential" table, ask exactly one question: **what probability, measured over how many samples?** If the table cannot answer, it is a wish list, not a scan result.
+
+Have you ever asked for that number?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Altcoins #RiskManagement #MarketAnalysis

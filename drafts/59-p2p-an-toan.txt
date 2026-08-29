@@ -1,25 +1,25 @@
-Bảy điều kiểm trước khi bấm "Nhả coin" trên Binance P2P. Tôi dán cái này cạnh màn hình.
+Seven checks before you press "Release Coin" on Binance P2P. I keep this taped beside my screen.
 
-1. Tiền phải VÀO tài khoản. Mở app ngân hàng, xem số dư thật. Ảnh chụp màn hình không phải bằng chứng — nó là thứ dễ giả nhất.
+1. The money must be IN the account. Open your banking app and look at the real balance. A screenshot is not evidence — it is the easiest thing in the world to fake.
 
-2. Tên người chuyển phải TRÙNG tên KYC của đối tác trên Binance. Khác một chữ cũng dừng. Đây là bước bị bỏ qua nhiều nhất.
+2. The sender's name must MATCH your counterparty's KYC name on Binance. One letter different, you stop. This is the most skipped step of all.
 
-3. Không nhận thanh toán bên thứ ba. Tiền từ tài khoản lạ nghĩa là bạn có thể đang nhận tiền bẩn.
+3. Never accept third-party payment. Money from an unfamiliar account means you may be receiving dirty money.
 
-4. Chat chỉ trong Binance P2P. Ai kéo bạn qua Telegram hay Zalo "cho nhanh" — mở khiếu nại. Ra khỏi sàn là ra khỏi vùng bảo vệ.
+4. Chat only inside Binance P2P. Anyone pulling you onto Telegram or Zalo "to go faster" — open a dispute. Off the platform is outside the protection.
 
-5. Giục giã là dấu hiệu. Kẻ lừa luôn tạo cảm giác gấp. Bạn không nợ ai sự vội vàng.
+5. Rushing is a signal. Scammers always manufacture urgency. You do not owe anyone your haste.
 
-6. Bẫy hoàn tiền: người mua chuyển khoản, bạn nhả coin, rồi trong 72 giờ họ báo ngân hàng "tôi không thực hiện giao dịch này" và ngân hàng thu hồi. Coin đi rồi, tiền cũng đi.
+6. The chargeback trap: the buyer transfers, you release the coin, then within 72 hours they tell the bank "I did not authorise this transaction" and the bank claws it back. The coin is gone and so is the money.
 
-7. Nghi ngờ thì mở khiếu nại kèm bằng chứng, đừng tự thương lượng.
+7. If you have doubts, open a dispute with evidence. Do not negotiate it yourself.
 
-Sáu bước đầu mất chưa tới một phút. Bước bảy tiết kiệm cả tháng lương.
+The first six steps take under a minute. The seventh saves a month's salary.
 
-Theo hướng dẫn chính thức của Binance. Nội dung giáo dục, không phải lời khuyên đầu tư.
+Following Binance's official guidance. Educational content, not financial advice.
 
-Bạn từng suýt trượt ở bước nào?
+Which step have you come closest to slipping on?
 
 @Binance Vietnam
 
-$USDT #BinanceP2PAnToan #P2PTrading
+$USDT #BinanceP2PSafety #P2PTrading

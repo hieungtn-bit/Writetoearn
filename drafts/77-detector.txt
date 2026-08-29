@@ -1,0 +1,104 @@
+Two days ago a reader sent me the gainers tab — $HOLO and $PROM at the top of it — and asked why my board never has those names on it. I published what buying that list actually returns.
+
+Then came the sharper version of the question: **the algorithm should catch them early and make money, not lose it.**
+
+Fair. So I built the early detector. This is what it does, and why it is not going on the board.
+
+WHAT IT LOOKS FOR
+
+Not a price move. **Turnover arriving before the price has paid for it.**
+
+On hourly candles, for each pair: is this hour's volume unusual against the last three days, has price moved at least a little in the last six hours — and, the important part, has it moved **less than 6%** so far.
+
+That ceiling is the entire product. Without it you are buying things that already ran, which is the gainers tab with extra steps.
+
+One signal per pair then goes quiet for twelve hours, so a single event does not get counted twelve times and flatter the results.
+
+IT WORKS. THAT IS NOT THE PROBLEM.
+
+Across 100 pairs and 42 days of hourly data it fired **716 times** — about 1.2 signals per pair per week. Enough to trade, not so many that it is firing at noise.
+
+Of 36 stop/target/holding combinations tested, **26 were profitable** and **24 beat their own baseline** — the same trade taken at a random hour on the same pair.
+
+The best of them: a 3% stop, a 3:1 target, 12 hours. It hit **7.0%** of the time against a baseline of 3.9%. Nearly double.
+
+The signal is real. Hold that thought.
+
+AND BEING EARLY IS WHAT MAKES IT REAL
+
+I varied the recipe to find out which ingredient was doing the work:
+
+```
+what I asked for      signals  beat base      edge
+already moving 0.5-6%      716      24/36    +0.006
+bigger volume spike       488      16/36    +0.001
+only tiny moves           532      14/36    -0.016
+no ceiling at all         874      11/36    -0.010
+```
+
+Take the ceiling off — let it fire on moves of any size — and it goes from 24 settings out of 36 beating baseline to 11, with a **negative** median edge.
+
+Demand a *bigger* volume spike and it gets worse, not better: 488 signals instead of 716, and the median edge falls from +0.006 to +0.001. Being fussier costs you sample and buys you nothing.
+
+So: the volume spike is not the edge. **Catching it before it has run is the edge.** That is a genuinely useful thing to know, and it is the last piece of good news in this post.
+
+THEN I CHARGED THE FEES
+
+Round trip on Binance, in and out, is about 0.2%. Stated as a fraction of the risk you took — which is the only way to compare it to anything — that is:
+
+```
+fee ÷ your stop          = cost in R
+0.2% ÷ 3% stop                0.067R
+```
+
+Now put the best setting next to its own bill:
+
+```
+best setting, gross           +0.032
+cost of trading it            -0.067
+what you keep                 -0.034
+```
+
+The fee is **2.1 times the edge**. Not close. Not marginal. The single best configuration out of everything I tried loses 0.034R per trade after costs.
+
+I THEN CHECKED ALL 144 OF THEM
+
+Every configuration, every stop, every target, every holding period, across all four recipes. **144 combinations. 2 finish above zero after fees.**
+
+By how much? 0.0011R and 0.0007R.
+
+That is a rounding error wearing a strategy's clothes. And there is a second tell: **both survivors need the widest stop I tested (8%)** — not because a wide stop is smart here, but because the fee gets divided by it. They are not surviving on merit; they are surviving on a smaller denominator.
+
+One more number, which is the one that settles it. Search 144 combinations at a normal false-positive rate and you would expect around **7 to clear any bar by luck alone.** I found 2. The search produced *fewer* winners than pure chance would hand me.
+
+SO IT IS NOT SHIPPING
+
+The code is written, tested and committed. It runs. It will not appear on the board, and I am telling you it exists rather than quietly deleting it, because "we built a detector and it did not pay" is more useful to you than another feature announcement.
+
+What would change my mind, stated in advance so it is not a moving target:
+
+**A gross edge above 0.07R at a 3% stop.** That is the bar. It is currently at 0.032R.
+
+**Or a smaller toll.** Entering with resting orders instead of crossing the spread changes this arithmetic materially. I have not measured whether the signal survives waiting for a fill, and until I have, I am not going to imply it would.
+
+WHY THIS MATTERS IF YOU TRADE THESE BY HAND
+
+You are paying the same toll on the same trades.
+
+If you are trading hourly breakouts on a 3% stop, every round trip costs you 0.067R before you are right about anything. Ten trades a week is 0.667R of pure friction — and the honest version of most "profitable" strategies is that they were profitable until this subtraction, which is the step almost no published backtest performs.
+
+The uncomfortable finding is not that the detector failed. It is that it **worked, and still lost money.** Being right about direction is not the same as being paid for it.
+
+LIMITS
+
+100 pairs, 42 days of hourly history, one exchange, spot fees, market entries. A different fee tier, a different venue or a maker-only entry would each move the answer, and none of those are measured here.
+
+Board and every figure: maix8.study/signals
+
+Bias: **stand aside** on this idea, which is a call about my own tool rather than about the market.
+
+What is the last strategy you checked after fees rather than before?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Trading #RiskManagement #Crypto

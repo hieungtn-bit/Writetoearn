@@ -1,0 +1,94 @@
+Two days ago a reader told me $BNB had broken $615. I said it had touched it, not broken it, because no daily candle had closed above the band.
+
+On 12 August BNB reached **620.55** — a new 30-day high — and closed that same day at **610.44**. It gave back 1.63% before the day was out.
+
+It is now 612.31, back **below** the band.
+
+```
+                close      vs 618
+08-08          600.66       below
+08-09          602.23       below
+08-10          599.23       below
+08-11          616.69       below
+08-12          610.44       below
+08-13          612.31       below
+```
+
+Daily closes above 618 in the last thirty days: **0**.
+
+That band has now been visited 20 times in three months and turned price back on 7 of them. This was the latest.
+
+WHAT HOLDING FROM HERE HAS ACTUALLY PAID
+
+BNB sits at **87.3% of its 30-day range**. That is a describable state, so it can be tested: every past day where BNB was at 85% or more of its range, and what the next few days did.
+
+```
+hold        from here    baseline    sample
+3 days         -0.22%       0.41%      n≈42
+5 days         -0.14%       0.36%      n≈25
+10 days        -1.43%       0.73%      n≈12
+30 days         5.41%       1.58%       n≈4
+```
+
+Three days, five days, ten days — all negative, and all worse than an arbitrary day. Ten days out is the clearest: **-1.43%** against a baseline of 0.73%, higher only 44.4% of the time, on 12 independent episodes.
+
+The 30-day row looks encouraging. Ignore it. **4 independent episodes** is not a measurement, it is four coin flips.
+
+THE PART THAT MATTERS MORE THAN THE RETURN
+
+A median return hides the ride. Over the ten days after a day like today:
+
+```
+deepest fall     -7.41% base -4.61%
+highest rise      5.38%
+pain / gain       1.38
+```
+
+You sit through more than you collect. One time in four the fall is worse than 11.6%; one time in ten, worse than 21.1%.
+
+That ratio is the whole argument. Not "BNB will fall" — it might not. But from this specific position, the distribution has historically handed you a bigger drawdown than upside.
+
+THE STRONGEST ARGUMENT AGAINST ME
+
+BNB's supply trapped overhead is **3.17%**.
+
+That is the share of the last month's turnover that traded above today's price — the people underwater, waiting to break even and sell. Across everything I scan, nothing else reads like that. Almost nobody who bought BNB this month is holding a loss, so there is no wall of sellers on the way up.
+
+It is a genuinely excellent number and I am not going to bury it. But it argues that BNB is **not a short**. It does not argue that chasing it at the top of its range is a good entry. Those are different claims and the second one is the one on the table.
+
+Turnover $55.00M a day, RSI 64.7, up 3.36% on the week.
+
+WHAT THE LOOKBACKS SAY
+
+I score every call over five lengths of history. If a direction only pays when measured one particular way, that is a property of the measurement.
+
+```
+                 long       short
+180d            42/64        0/64
+270d             3/64       38/64
+365d            29/64       28/64
+540d            60/64        2/64
+730d            59/64        0/64
+```
+
+**3 of 5** back the long. The six-month, eighteen-month and two-year windows do. The nine-month window says the opposite outright, and the one-year window is a coin flip.
+
+A call three lookbacks out of five agree with is not a bad call. It is a call you size smaller than one that five agree with — and I have nothing on the board today with five.
+
+WHAT I AM DOING
+
+Bias: **stand aside on BNB**, unchanged from Tuesday and for the same reason, now with a failed attempt on the ceiling added to it.
+
+If you are already long and in profit, the measurement above is the argument for taking some off rather than adding: negative expected return over three to ten days, and a pain-to-gain ratio of 1.38 pointing the wrong way. That is not the same as calling a top. It is saying this is a below-average place to be adding size.
+
+If BNB closes a day above 618 on rising volume, this post is wrong about the ceiling and I will say so with the same numbers.
+
+Funding, open interest and liquidation data are blocked from this host, so none of it is used here. Prices are spot.
+
+Board and every figure: maix8.study/signals
+
+What would it take to change your mind about a position you are already holding?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#BNB #RiskManagement #TechnicalAnalysis

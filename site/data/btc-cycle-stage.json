@@ -1,0 +1,73 @@
+{
+  "measuredAt": "2026-08-04T01:07:40.383Z",
+  "method": {
+    "interval": "1M",
+    "monthsAvailable": 109,
+    "peakRule": "highest monthly close to date, unbeaten for the following 12 months",
+    "caveat": "A handful of completed cycles on this venue's record, and the first sits at the very start of it. A comparison, never a probability."
+  },
+  "now": {
+    "price": 63462.02,
+    "allTimeHigh": 126199.63,
+    "allTimeHighMonth": "2025-10",
+    "drawdownFromHighPct": -49.712990442206525,
+    "monthsSinceHigh": 10
+  },
+  "completedCycles": [
+    {
+      "peakMonth": "2017-12",
+      "peakClose": 13716.36,
+      "troughMonth": "2018-12",
+      "troughClose": 3702.9,
+      "drawdownPct": -76.98908456762581,
+      "troughLow": 3156.26,
+      "monthsToTrough": 12,
+      "monthsToRecover": 34,
+      "troughVolumeRatio": 0.7378495160942042
+    },
+    {
+      "peakMonth": "2021-10",
+      "peakClose": 61299.8,
+      "troughMonth": "2022-11",
+      "troughClose": 17163.64,
+      "drawdownPct": -74.7535881030607,
+      "troughLow": 15476,
+      "monthsToTrough": 13,
+      "monthsToRecover": 29,
+      "troughVolumeRatio": 1.8256435878754402
+    }
+  ],
+  "completedSummary": {
+    "n": 2,
+    "medianDrawdownPct": -74.7535881030607,
+    "medianMonthsToTrough": 13
+  },
+  "recentVolume": [
+    {
+      "month": "2026-04",
+      "quoteVolume": 34760574343.13581,
+      "ratioToPriorYear": 0.6100786550263588
+    },
+    {
+      "month": "2026-05",
+      "quoteVolume": 33245850882.883526,
+      "ratioToPriorYear": 0.6126893062339863
+    },
+    {
+      "month": "2026-06",
+      "quoteVolume": 39983815660.80909,
+      "ratioToPriorYear": 0.776916426514648
+    },
+    {
+      "month": "2026-07",
+      "quoteVolume": 31598141581.41197,
+      "ratioToPriorYear": 0.6190154910175694
+    }
+  ],
+  "sentiment": {
+    "value": 25,
+    "label": "Extreme Fear",
+    "min30d": 20,
+    "max30d": 33
+  }
+}

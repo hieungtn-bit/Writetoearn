@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { BIAS, extractClaim, formatScoreboard, scoreClaim, tally } from "../src/scoreboard.mjs";
+import { BIAS, extractClaim, formatScoreboard, retargetClaim, scoreClaim, tally } from "../src/scoreboard.mjs";
 
 const brief = {
   spot: [
@@ -72,6 +72,40 @@ test("a long call that went up is scored correct", async () => {
   assert.ok(score.movePct > 0);
   assert.equal(score.supportHeld, true);
   assert.equal(score.resistanceBroken, false);
+});
+
+test("a claim logged without an entry price is still scoreable", async () => {
+  const start = new Date(publishedAt).getTime();
+  // Two bars that completed before publication, then the judging window. The
+  // last completed close is 63250; the bar straddling publication closes at
+  // 70000 and must NOT be used, since it settles after the call was written.
+  const before = [
+    { openTime: start - 3 * 3_600_000, open: 63250, high: 63250, low: 63250, close: 63250, volume: 1, quoteVolume: 1 },
+    { openTime: start - 2 * 3_600_000, open: 63250, high: 63250, low: 63250, close: 63250, volume: 1, quoteVolume: 1 },
+    { openTime: start - 3_600_000 / 2, open: 63250, high: 70000, low: 63250, close: 70000, volume: 1, quoteVolume: 1 },
+  ];
+  const fetchImpl = stubFetch([...before, ...candles({ start, low: 63200, high: 64000, close: 64000 })]);
+  const score = await scoreClaim(
+    { ...base, priceAtPost: null, bias: BIAS.LONG },
+    { fetchImpl },
+  );
+
+  assert.ok(score, "a missing entry price must not make the call unscoreable forever");
+  assert.equal(score.priceRecovered, true);
+  assert.equal(score.priceAtPost, 63250, "recovered from the last close completed before publication");
+  assert.equal(score.biasCorrect, true);
+});
+
+test("a recorded entry price is never overwritten by the recovered one", async () => {
+  const start = new Date(publishedAt).getTime();
+  const before = [
+    { openTime: start - 2 * 3_600_000, open: 1, high: 1, low: 1, close: 1, volume: 1, quoteVolume: 1 },
+  ];
+  const fetchImpl = stubFetch([...before, ...candles({ start, low: 63200, high: 64000, close: 64000 })]);
+  const score = await scoreClaim({ ...base, bias: BIAS.LONG }, { fetchImpl });
+
+  assert.equal(score.priceAtPost, base.priceAtPost);
+  assert.equal(score.priceRecovered, false);
 });
 
 test("a long call that went down is scored wrong", async () => {
@@ -151,4 +185,108 @@ test("the scoreboard shows losses alongside wins", () => {
 
 test("an empty scoreboard says so instead of inventing a record", () => {
   assert.match(formatScoreboard([]), /needs 7 days of published calls/);
+});
+
+test("a WAIT with no levels is judged, not waved through", async () => {
+  // The old rule read "right when neither level gave way". With no levels,
+  // supportHeld and resistanceBroken are both null, and
+  // `null !== false && null !== true` is true — so every levelless WAIT scored
+  // correct automatically and the scoreboard could only ever report 100%.
+  const publishedAt = new Date("2026-01-02T00:00:00Z").getTime();
+  const hour = 3_600_000;
+
+  // 60 quiet hours before publication, then a violent 24 hours after it.
+  const candles = [];
+  for (let i = -60; i < 24; i++) {
+    const flat = i < 0;
+    const close = flat ? 100 : 100 + (i + 1) * 0.8;
+    candles.push({
+      openTime: publishedAt + i * hour,
+      open: close, high: close * 1.001, low: close * 0.999, close,
+    });
+  }
+  const fetchImpl = async () => ({
+    ok: true,
+    json: async () => candles.map((c) => [c.openTime, c.open, c.high, c.low, c.close, 0, 0, 0, 0, 0, 0]),
+  });
+
+  const claim = {
+    asset: "TESTUSDT", bias: "WAIT", priceAtPost: 100,
+    publishedAt: new Date(publishedAt).toISOString(), support: null, resistance: null,
+  };
+  const score = await scoreClaim(claim, { hours: 24, fetchImpl });
+
+  assert.ok(score, "the call should be scoreable");
+  assert.ok(score.movePct > 15, `expected a large move, got ${score.movePct}`);
+  assert.equal(score.biasCorrect, false, "standing aside through a large move is a miss");
+});
+
+test("a WAIT through an ordinary move is still correct", async () => {
+  const publishedAt = new Date("2026-01-02T00:00:00Z").getTime();
+  const hour = 3_600_000;
+  const candles = [];
+  for (let i = -60; i < 24; i++) {
+    // Steady 1% oscillation both before and after: nothing unusual happened.
+    const close = 100 + Math.sin(i / 3) * 1;
+    candles.push({
+      openTime: publishedAt + i * hour,
+      open: close, high: close * 1.001, low: close * 0.999, close,
+    });
+  }
+  const fetchImpl = async () => ({
+    ok: true,
+    json: async () => candles.map((c) => [c.openTime, c.open, c.high, c.low, c.close, 0, 0, 0, 0, 0, 0]),
+  });
+
+  const score = await scoreClaim(
+    { asset: "TESTUSDT", bias: "WAIT", priceAtPost: 100,
+      publishedAt: new Date(publishedAt).toISOString(), support: null, resistance: null },
+    { hours: 24, fetchImpl },
+  );
+  assert.ok(score);
+  assert.equal(score.biasCorrect, true, "an unremarkable move vindicates standing aside");
+});
+
+/*
+ * Retargeting a claim.
+ *
+ * The bug these cover shipped four calls into the public record labelled XRP
+ * and SUI while carrying BTC's spot and BTC's support. Scoring divided an XRP
+ * close by a BTC entry, produced -100.00%, and the scoreboard printed each as
+ * a correct short. Two of the four wins on that board were the arithmetic of
+ * a mismatched denominator, so these assert the numbers move with the symbol.
+ */
+
+test("retargeting an asset moves its price and levels with it", () => {
+  const claim = extractClaim("$BTC leads. Bias: Selective Short", brief);
+  assert.equal(claim.asset, "BTCUSDT");
+
+  const moved = retargetClaim(claim, brief, "SOL");
+  assert.equal(moved.asset, "SOLUSDT");
+  assert.equal(moved.priceAtPost, 73.5, "the entry must be SOL's, not BTC's");
+  assert.equal(moved.support, 72.32);
+  assert.equal(moved.resistance, 77.5);
+});
+
+test("retargeting to an asset the brief does not cover clears the numbers", () => {
+  const claim = extractClaim("$BTC leads. Bias: Selective Short", brief);
+  const moved = retargetClaim(claim, brief, "XRP");
+
+  assert.equal(moved.asset, "XRPUSDT");
+  assert.equal(moved.priceAtPost, null, "no price is scoreable; a wrong one is not");
+  assert.equal(moved.support, null);
+  assert.equal(moved.resistance, null);
+});
+
+test("retargeting normalises a bare ticker to its exchange pair", () => {
+  const claim = extractClaim("$BTC leads. Bias: WAIT", brief);
+  // "BTC" was recorded verbatim once and could never be fetched at scoring,
+  // so the call sat unsettled rather than being judged.
+  assert.equal(retargetClaim(claim, brief, "BTC").asset, "BTCUSDT");
+  assert.equal(retargetClaim(claim, brief, "btcusdt").asset, "BTCUSDT");
+});
+
+test("retargeting clears the ambiguity flag it is used to resolve", () => {
+  const claim = extractClaim("$BTC and $SOL both matter. Bias: WAIT", brief);
+  assert.equal(retargetClaim(claim, brief, "SOL").ambiguous, false);
 });

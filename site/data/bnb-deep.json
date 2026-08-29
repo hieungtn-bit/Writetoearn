@@ -1,0 +1,271 @@
+{
+  "measuredAt": "2026-08-13T04:07:03.989Z",
+  "price": 612.31,
+  "atrPct": 2.0686223271734714,
+  "zone": [
+    612,
+    618
+  ],
+  "rangePosition30d": 87.31527093596057,
+  "range30": {
+    "low": 555.59,
+    "high": 620.55
+  },
+  "highDay": {
+    "day": "2026-08-12",
+    "high": 620.55,
+    "close": 610.44,
+    "gaveBackPct": -1.6291999033115623
+  },
+  "belowHighPct": -1.327854322778177,
+  "closesAboveZoneLast30": 0,
+  "last12": [
+    {
+      "day": "2026-08-02",
+      "close": 588.46,
+      "high": 590.99,
+      "aboveZone": false
+    },
+    {
+      "day": "2026-08-03",
+      "close": 589.35,
+      "high": 594.32,
+      "aboveZone": false
+    },
+    {
+      "day": "2026-08-04",
+      "close": 593.18,
+      "high": 594.96,
+      "aboveZone": false
+    },
+    {
+      "day": "2026-08-05",
+      "close": 593.85,
+      "high": 605.5,
+      "aboveZone": false
+    },
+    {
+      "day": "2026-08-06",
+      "close": 592.39,
+      "high": 598.32,
+      "aboveZone": false
+    },
+    {
+      "day": "2026-08-07",
+      "close": 592.57,
+      "high": 594.68,
+      "aboveZone": false
+    },
+    {
+      "day": "2026-08-08",
+      "close": 600.66,
+      "high": 612,
+      "aboveZone": false
+    },
+    {
+      "day": "2026-08-09",
+      "close": 602.23,
+      "high": 611.55,
+      "aboveZone": false
+    },
+    {
+      "day": "2026-08-10",
+      "close": 599.23,
+      "high": 606.84,
+      "aboveZone": false
+    },
+    {
+      "day": "2026-08-11",
+      "close": 616.69,
+      "high": 617.73,
+      "aboveZone": false
+    },
+    {
+      "day": "2026-08-12",
+      "close": 610.44,
+      "high": 620.55,
+      "aboveZone": false
+    },
+    {
+      "day": "2026-08-13",
+      "close": 612.31,
+      "high": 612.66,
+      "aboveZone": false
+    }
+  ],
+  "visits": {
+    "total": 20,
+    "rejected": 7,
+    "detail": [
+      {
+        "at": "2026-06-03",
+        "high": 657.51,
+        "laterClose": 595.76,
+        "rejected": true,
+        "brokeThrough": false
+      },
+      {
+        "at": "2026-06-04",
+        "high": 624.57,
+        "laterClose": 573.13,
+        "rejected": true,
+        "brokeThrough": false
+      },
+      {
+        "at": "2026-06-12",
+        "high": 613.39,
+        "laterClose": 608.15,
+        "rejected": true,
+        "brokeThrough": false
+      },
+      {
+        "at": "2026-06-13",
+        "high": 612.33,
+        "laterClose": 617.87,
+        "rejected": false,
+        "brokeThrough": false
+      },
+      {
+        "at": "2026-06-14",
+        "high": 617.24,
+        "laterClose": 604.94,
+        "rejected": true,
+        "brokeThrough": false
+      },
+      {
+        "at": "2026-06-15",
+        "high": 621.77,
+        "laterClose": 601.63,
+        "rejected": true,
+        "brokeThrough": false
+      },
+      {
+        "at": "2026-06-17",
+        "high": 612.5,
+        "laterClose": 578.77,
+        "rejected": true,
+        "brokeThrough": false
+      },
+      {
+        "at": "2026-08-08",
+        "high": 612,
+        "laterClose": 601.11,
+        "rejected": true,
+        "brokeThrough": false
+      }
+    ]
+  },
+  "profile": {
+    "pocPrice": 571.018,
+    "valueAreaLow": 563.71,
+    "valueAreaHigh": 593.5916,
+    "overheadPct": 3.1731312315340174,
+    "totalQuoteVolume": 1646179897.4433591,
+    "binWidth": 0.3247999999999996
+  },
+  "overheadPct": 3.1731312315340174,
+  "rsi14": 64.7413749967186,
+  "change7dPct": 3.362649605833987,
+  "change30dPct": 5.231409077629014,
+  "volumeZScoreCompleted": 0.6818817195148174,
+  "turnoverUsd": 54997575.10880101,
+  "medianWeekPct": 10.4288241906421,
+  "forward": {
+    "3": {
+      "conditionalMedianPct": -0.2208255478172383,
+      "baselineMedianPct": 0.4058395873286047,
+      "differencePct": -0.626665135145843,
+      "upSharePct": 45.6,
+      "days": 125,
+      "effectiveN": 41.666666666666664
+    },
+    "5": {
+      "conditionalMedianPct": -0.13645806980826514,
+      "baselineMedianPct": 0.35851042695042024,
+      "differencePct": -0.4949684967586854,
+      "upSharePct": 48.8,
+      "days": 125,
+      "effectiveN": 25
+    },
+    "10": {
+      "conditionalMedianPct": -1.4325226272919156,
+      "baselineMedianPct": 0.7289326009110475,
+      "differencePct": -2.1614552282029633,
+      "upSharePct": 44.354838709677416,
+      "days": 124,
+      "effectiveN": 12.4
+    },
+    "30": {
+      "conditionalMedianPct": 5.405405405405417,
+      "baselineMedianPct": 1.5844198712658963,
+      "differencePct": 3.8209855341395205,
+      "upSharePct": 57.72357723577236,
+      "days": 123,
+      "effectiveN": 4.1
+    }
+  },
+  "path": {
+    "medianDrawdownPct": -7.408256857644934,
+    "baselineDrawdownPct": -4.608859510148683,
+    "medianRisePct": 5.384198622183856,
+    "painToGain": 1.3759256256115067,
+    "worstQuarterPct": -11.612903225806459,
+    "worstTenthPct": -21.106749096512633,
+    "days": 124
+  },
+  "byWindow": {
+    "180": {
+      "longPositive": "42/64",
+      "longMedianR": 0.01460358677290052,
+      "shortPositive": "0/64",
+      "shortMedianR": -0.10180457663397785
+    },
+    "270": {
+      "longPositive": "3/64",
+      "longMedianR": -0.07089957252010741,
+      "shortPositive": "38/64",
+      "shortMedianR": 0.014131052370886842
+    },
+    "365": {
+      "longPositive": "29/64",
+      "longMedianR": -0.006490991187246877,
+      "shortPositive": "28/64",
+      "shortMedianR": -0.01403624626043587
+    },
+    "540": {
+      "longPositive": "60/64",
+      "longMedianR": 0.03164508083086791,
+      "shortPositive": "2/64",
+      "shortMedianR": -0.047801799402355384
+    },
+    "730": {
+      "longPositive": "59/64",
+      "longMedianR": 0.032298992441807464,
+      "shortPositive": "0/64",
+      "shortMedianR": -0.051844460945987325
+    }
+  },
+  "call": {
+    "bias": "LONG",
+    "agreeing": 3,
+    "windows": 5,
+    "plan": {
+      "direction": "long",
+      "horizonDays": 30,
+      "stopAtr": 3,
+      "stopPct": 6.205866981520414,
+      "targetPct": 9.30880047228062,
+      "rr": 1.4999999999999998,
+      "hitPct": 40.666666666666664,
+      "stoppedPct": 39.33333333333333,
+      "unresolvedPct": 20,
+      "expectancyR": 0.32364253473044347,
+      "effectiveN": 5,
+      "entry": 612.31,
+      "stop": 574.3108558854523,
+      "target": 669.3087161718214,
+      "positionUsdPer1000": 161.13783988244683,
+      "maxLeverage": 16.11378398824468
+    }
+  }
+}

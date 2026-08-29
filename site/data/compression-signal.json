@@ -1,0 +1,83 @@
+{
+  "measuredAt": "2026-08-02T05:32:52.519Z",
+  "method": {
+    "tightThresholdPct": 35,
+    "zThreshold": 3.5,
+    "horizonsDays": [
+      5,
+      10
+    ],
+    "winThresholdPct": 30
+  },
+  "pairsSampled": 78,
+  "howCommon": {
+    "compressedSharePct": 32.42209517674531,
+    "medianCompressionPct": 43.89103897804482,
+    "quartile1CompressionPct": 30.81632653061226
+  },
+  "baseline": {
+    "n": 24838,
+    "hit5dPct": 5.483533295756502,
+    "medianPeak5dPct": 5.350098658982095,
+    "medianClose5dPct": -1.1295300368280081,
+    "endedLower5dPct": 57.23488203559063,
+    "hit10dPct": 10.326918431435704,
+    "medianPeak10dPct": 7.72968386013998,
+    "medianClose10dPct": -2.52038562460557,
+    "endedLower10dPct": 59.90015299138417
+  },
+  "compressed": {
+    "n": 8053,
+    "hit5dPct": 5.848752017881535,
+    "medianPeak5dPct": 6.227106227106227,
+    "medianClose5dPct": -0.7112140258021982,
+    "endedLower5dPct": 54.50142803924003,
+    "hit10dPct": 11.424313920278157,
+    "medianPeak10dPct": 9.090909090909083,
+    "medianClose10dPct": -2.359882005899716,
+    "endedLower10dPct": 58.69862163169005
+  },
+  "loose": {
+    "n": 16785,
+    "hit5dPct": 5.3083109919571045,
+    "medianPeak5dPct": 5.000000000000004,
+    "medianClose5dPct": -1.3125221709826107,
+    "endedLower5dPct": 58.546321120047665,
+    "hit10dPct": 9.800417039022937,
+    "medianPeak10dPct": 7.177322074788894,
+    "medianClose10dPct": -2.588996763754048,
+    "endedLower10dPct": 60.47661602621388
+  },
+  "volumeSignal": {
+    "n": 718,
+    "hit5dPct": 16.991643454038996,
+    "medianPeak5dPct": 8.23374719714526,
+    "medianClose5dPct": -3.0677669818343025,
+    "endedLower5dPct": 61.28133704735376,
+    "hit10dPct": 22.42339832869081,
+    "medianPeak10dPct": 11.794659272047625,
+    "medianClose10dPct": -2.9682027204160075,
+    "endedLower10dPct": 59.610027855153206
+  },
+  "compressedAndVolume": {
+    "n": 26,
+    "hit5dPct": 23.076923076923077,
+    "medianPeak5dPct": 9.342818055574654,
+    "medianClose5dPct": -3.7169284828441507,
+    "endedLower5dPct": 61.53846153846154,
+    "hit10dPct": 42.30769230769231,
+    "medianPeak10dPct": 14.315801947772133,
+    "medianClose10dPct": -5.260723296888137,
+    "endedLower10dPct": 61.53846153846154
+  },
+  "derived": {
+    "compressionLift5d": 1.0666028092521407,
+    "compressionLift10d": 1.106265532755824,
+    "volumeLift10d": 2.1713542599922895,
+    "effectiveNCompressed": 805.3,
+    "effectiveNLoose": 1678.5,
+    "differencePp": 1.62389688125522,
+    "standardErrorPp": 1.3353754629956356,
+    "sigmas": 1.2160601465690755
+  }
+}

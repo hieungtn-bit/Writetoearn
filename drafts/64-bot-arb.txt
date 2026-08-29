@@ -1,0 +1,105 @@
+Someone sent me a technical analysis of the viral story about a 19-year-old turning $68 into $750,000 with an arbitrage bot. The analysis concluded it was not feasible.
+
+The conclusion is right. But it argues in words — latency is too high, fees eat it, HFT is faster. All true sentences, and all uncheckable.
+
+I measured it. On exactly the kind of machine being discussed.
+
+HOW IT WAS MEASURED
+
+Two venues: Binance spot and OKX spot. Eight pairs. 40 samples, 3 seconds apart, **both venues polled in the same beat** — sample them a few seconds apart and the "spread" you find is just time passing, not an opportunity.
+
+320 observations in total.
+
+And most importantly: I measured **executable prices**, not the midpoint. You buy at the ask and sell at the bid. The midpoint is a price nobody trades at — and it is exactly where every "arbitrage opportunity" table gets its artificial beauty.
+
+REAL LATENCY FROM THIS MACHINE
+
+```
+Binance                       160 ms      p90 172 ms
+OKX                           193 ms      p90 232 ms
+```
+
+The analysis says retail bots run at 50–300ms. **Correct.** My numbers sit inside that. A point to them.
+
+REAL PRICE SPREADS
+
+```
+                              median         maximum
+executable                   0.0000%         0.0203%
+round-trip fees                0.20%
+```
+
+Read those two lines again.
+
+The largest gap that appeared across 320 observations is **0.0203%**. The fee for both legs is **0.20%**.
+
+The fee is **9.8 times** larger than the best opportunity.
+
+THE NUMBER THAT ANSWERS EVERYTHING
+
+```
+positive gap exists            23.4%       before fees
+actually profitable             0.0%        after fees
+```
+
+Gaps **do** open — 23.4% of the time the two venues genuinely disagree. That is the part that makes people believe.
+
+Times the gap was wide enough to pay the fee: **not once.** Not rare. Zero out of 320.
+
+The best round trip I observed still loses **0.180%**.
+
+AND HERE IS WHERE THE STORY COLLAPSES
+
+$68 to $750,000 is **11,029 times**.
+
+Assume the impossible: every trade wins, none loses, all profit compounds, nothing is withdrawn.
+
+```
+consecutive winning trades    spread needed    vs the maximum
+100                                 9.955%              490x
+1,000                               1.135%               56x
+10,000                              0.293%               14x
+100,000                             0.209%               10x
+```
+
+The more trades you run, the less each one needs. But it never drops below **0.20%**, because that is the fee — you pay it before there is any profit at all.
+
+Which means: **no number of trades makes this story work.** Not hard. Non-existent. Every round makes the account smaller, and a series multiplied by a number below 1 never grows 11,029 times.
+
+That is why I would rather measure than argue. You can argue about latency. You cannot argue with multiplication.
+
+TWO PLACES THE OTHER ANALYSIS WAS OFF
+
+They are right in the conclusion. But two details are wrong, and both are wrong in the direction of being **too generous to the story**.
+
+**One.** They describe arbitrage spreads as sitting in a 0.05–0.30% band. I measured a median of **0.0000%** — meaning that most of the time there is no executable gap at all, rather than a small one. The largest gap in all 320 observations barely reaches the **bottom** of their band and falls far short of its top. The market is far tighter than even the person debunking it assumed.
+
+**Two.** They worried that $68 of capital would not clear minimum order sizes. I checked: the Binance minimum on these pairs is $5. That capital clears it comfortably. The real barrier is not order size — it is the fee, and no amount of capital escapes that.
+
+As for "scanning 50+ markets is a bandwidth problem"? I pulled all eight pairs with **one** request per venue. Scanning is not expensive. Scanning and finding nothing is the problem.
+
+WHAT I COULD NOT CHECK
+
+I sampled prices over REST every 3 seconds. A real bot uses WebSocket and sees more ticks — so **I cannot measure how long a gap survives**, and I cannot rule out brief gaps slipping between my samples.
+
+But that bot still pays the same 0.20% and still looks at these same two order books. Seeing more ticks does not make the fee smaller.
+
+CEX–DEX arbitrage, prediction markets and gas costs: **no free data at this time**, so I say nothing about them.
+
+WHAT IS ACTUALLY WORTH REMEMBERING
+
+Arbitrage is real. It is the profession of people who put servers inside the exchange's own data centre, pay the lowest fee tier, and live on a few thousandths of a percent multiplied by enormous volume.
+
+What is not real is the version you can run from a bedroom with $68.
+
+And the way to test a story like this is not to argue about technology. It is to ask: **what spread, what fees, measured over how many samples?** Those three questions take ten minutes to answer with public data, and no viral story survives them.
+
+This post takes no position on any market. It is just a subtraction.
+
+Have you ever subtracted the fees from an opportunity before believing it?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+$BTC $ETH $SOL
+
+#Arbitrage #TradingBots #RiskManagement

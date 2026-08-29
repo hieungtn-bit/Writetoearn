@@ -10,10 +10,608 @@
   },
   "articles": [
     {
+      "slug": "ena-funding-control",
+      "draft": "98-ena.txt",
+      "title": "ENA Is Built on Funding. XRP Tracks Funding Better.",
+      "description": "Ethena's yield is perpetual funding, so the price should track it — and over 28 non-overlapping windows it does, at r +0.479, p 0.010. Then 48 tokens with no claim on funding average +0.257, XRP hits +0.66, and ENA lands at the 77th percentile of a distribution it should dominate.",
+      "published": "2026-08-25T03:24:39.869Z",
+      "assets": [
+        "ENA",
+        "XRP"
+      ],
+      "topics": [
+        "control groups",
+        "protocol fundamentals",
+        "funding rates",
+        "significance"
+      ],
+      "squareId": 359371079026212
+    },
+    {
+      "slug": "ai-sector-or-label",
+      "draft": "97-ai-sector.txt",
+      "title": "I Expected the AI Sector to Be a Label. It Is the Strongest Result on the Page.",
+      "description": "Regressing BTC out of ten AI pairs leaves them correlated at 0.404 against 0.116 for 200 random baskets of the same size — z +6.07, surviving the loss of any member. The sector is real; the ranking that put RENDER first is not, since its 180-day alpha is negative while TAO's is the basket's best.",
+      "published": "2026-08-22T02:13:37.887Z",
+      "assets": [
+        "RENDER",
+        "TAO",
+        "ICP"
+      ],
+      "topics": [
+        "sector cohesion",
+        "alpha vs beta",
+        "bootstrap control",
+        "portfolio risk"
+      ],
+      "squareId": 358291938598270
+    },
+    {
+      "slug": "icp-followthrough",
+      "draft": "96-followthrough-2026-08-22.txt",
+      "title": "The Trigger Fired 91 Minutes After I Published the Warning",
+      "description": "Yesterday's audit of a reader's ICP plan said its stop sits inside a normal day; the trigger fired 91 minutes later and the trade spent 67% of its risk budget before going anywhere, with 0.33R of room left — while the desk's own short book closed at 24 of 24 stopped, -24.000R.",
+      "published": "2026-08-22T00:04:54.584Z",
+      "assets": [
+        "XRP",
+        "BTC"
+      ],
+      "topics": [
+        "live follow-up",
+        "stop placement",
+        "open ledger",
+        "disclosure"
+      ],
+      "squareId": 358260303950680
+    },
+    {
+      "slug": "icp-plan-checked",
+      "draft": "95-icp-strategy.txt",
+      "title": "A Reader's ICP Plan, Checked Three Ways Instead of Restated",
+      "description": "The plan claims 1:2.5-3 reward-to-risk but its own partial exit caps the best case at 2.16R, its fallback stop is one nearly three ICP days in four would take from the open, and 74 breakouts across five years are only 2.5 independent episodes — not enough to convict the rule either way.",
+      "published": "2026-08-21T13:49:10.262Z",
+      "assets": [
+        "ICP"
+      ],
+      "topics": [
+        "strategy audit",
+        "position sizing",
+        "stop placement",
+        "statistical power"
+      ],
+      "squareId": 358108980005238
+    },
+    {
+      "slug": "bsc-hardforks-and-bnb",
+      "draft": "94-bnb-hardfork.txt",
+      "title": "Twenty BSC Hardforks Later, Here Is What Pasteur Will Do to BNB",
+      "description": "Every BSC mainnet activation since 2021, read out of the client source and measured against BTC: no post-event window separates from the surrounding regime, the one-day test detects 1.26%, and the strongest result sits before the event and fails correction for six windows.",
+      "published": "2026-08-21T01:44:16.783Z",
+      "assets": [
+        "BNB"
+      ],
+      "topics": [
+        "event study",
+        "BNB Chain",
+        "statistical power",
+        "multiple comparisons"
+      ],
+      "squareId": 357930830747733
+    },
+    {
+      "slug": "two-days-same-floor",
+      "draft": "93-again-2026-08-21.txt",
+      "title": "I Published This Flaw Last Night. A Fresh Board Did It Again by Morning.",
+      "description": "The agreement filter admitted no long position on 20 August and none again on 21 August, on a rescanned board with the universe re-drawn between them — 87% and 88% of short rows pass, 17% and 11% of long ones — while the open book reached 0 of 24 ahead at -23.3R.",
+      "published": "2026-08-21T00:55:31.314Z",
+      "assets": [
+        "ADA",
+        "XRP",
+        "BTC"
+      ],
+      "topics": [
+        "quant",
+        "filter design",
+        "reproducibility",
+        "open ledger"
+      ],
+      "squareId": 357918848207890
+    },
+    {
+      "slug": "where-every-long-died",
+      "draft": "92-the-filter.txt",
+      "title": "My Board Read Long All Week. It Could Not Offer a Single One.",
+      "description": "The signal engine read long on most rows for seven straight editions while the book stayed short. Counting every row through all four filters shows where each long died — and that agreement, spanning 180 to 730 days, cannot admit a change of trend by construction.",
+      "published": "2026-08-20T12:28:48.351Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [
+        "quant",
+        "filter design",
+        "selection bias",
+        "agreement windows"
+      ],
+      "squareId": 357735334974812
+    },
+    {
+      "slug": "grok-check",
+      "draft": "91-grok-check.txt",
+      "title": "I Audited a Call That Beat Mine, on the Day My Book Was Wiped Out.",
+      "description": "A reader forwarded me a bullish quick-scan today. Alts leading, ETH the momentum leader, protect profits, wait for a BTC retest before adding anything new.",
+      "published": "2026-08-20T08:21:58.044Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 357674672279378
+    },
+    {
+      "slug": "brief-2026-08-20",
+      "draft": "brief-2026-08-20.txt",
+      "title": "How Is the Market? What Do We Do? — 20 August",
+      "description": "Same two questions as every edition, in the same order:",
+      "published": "2026-08-20T07:57:52.319Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 357668750541906
+    },
+    {
+      "slug": "brief-2026-08-19",
+      "draft": "brief-2026-08-19.txt",
+      "title": "How Is the Market? What Do We Do? — 19 August",
+      "description": "Same two questions as every edition, in the same order:",
+      "published": "2026-08-19T10:05:47.644Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 357346294087202
+    },
+    {
+      "slug": "event-window",
+      "draft": "90-event-window.txt",
+      "title": "You Told Me to Watch the 24-72 Hour Reaction. I Measured It.",
+      "description": "A reader sent me a BTC brief today. Price, an ETF flow figure, an SEC proposal out for comment, and a recommended action.",
+      "published": "2026-08-19T02:04:13.613Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 357227944142897
+    },
+    {
+      "slug": "base-breakout",
+      "draft": "89-base-breakout.txt",
+      "title": "I Ran the Strategy You Sent Me. The Exit Ladder Is Doing the Work.",
+      "description": "Someone sent me a base-breakout strategy. Not a paragraph of vibes — an actual specification: base length, volume multiple, breakout confirmation, a hard gate, stop placement, a scaled exit ladder, a…",
+      "published": "2026-08-18T05:20:48.649Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 356922362191058
+    },
+    {
+      "slug": "selection",
+      "draft": "88-selection.txt",
+      "title": "Shorting Alts Against BTC Works. Picking Which Ones Does Not.",
+      "description": "Almost every question this desk gets is a watchlist request wearing different clothes. Which tokens to watch. Deep dive on these five. What is your pick.",
+      "published": "2026-08-18T05:17:59.895Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 356921670934001
+    },
+    {
+      "slug": "brief-2026-08-18",
+      "draft": "brief-2026-08-18.txt",
+      "title": "How Is the Market? What Do We Do? — 18 August",
+      "description": "Same two questions as every edition, in the same order:",
+      "published": "2026-08-18T05:14:44.651Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 356920871225361
+    },
+    {
+      "slug": "brief-2026-08-17",
+      "draft": "brief-2026-08-17.txt",
+      "title": "How Is the Market? What Do We Do? — 17 August",
+      "description": "Same two questions as every edition, in the same order:",
+      "published": "2026-08-17T05:06:51.442Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 356565038586417
+    },
+    {
+      "slug": "numeraire",
+      "draft": "87-numeraire.txt",
+      "title": "Bitcoin Is Not a Call. It Is the Denominator.",
+      "description": "Someone asked me for BTC market data. Here it is, and then the part that actually matters.",
+      "published": "2026-08-16T21:31:01.667Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 356453013846562
+    },
+    {
+      "slug": "persistence",
+      "draft": "86-persistence.txt",
+      "title": "Every Filter I Built Reads Past Direction. I Measured Whether It Continues.",
+      "description": "Every filter on this desk is a statement about the past being tidy.",
+      "published": "2026-08-16T16:27:18.019Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 356378369800753
+    },
+    {
+      "slug": "brief-2026-08-16",
+      "draft": "brief-2026-08-16.txt",
+      "title": "How Is the Market? What Do We Do? — 16 August",
+      "description": "Same two questions as every edition, in the same order:",
+      "published": "2026-08-16T16:11:48.919Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 356374564207713
+    },
+    {
+      "slug": "self-backtest",
+      "draft": "85-self-backtest.txt",
+      "title": "I Walked My Own Algorithm Forward. It Lost to Shorting Everything With No Thought At All.",
+      "description": "All week I have been testing the pieces of my own system. The stop width was half wrong. The early detector did not survive fees. The per-pair optimiser keeps a tenth of itself. Trapped supply…",
+      "published": "2026-08-16T00:13:44.403Z",
+      "assets": [
+        "ZEC",
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 356139107672289
+    },
+    {
+      "slug": "brief-2026-08-15",
+      "draft": "brief-2026-08-15.txt",
+      "title": "How Is the Market? What Do We Do? — 15 August",
+      "description": "This is the first edition of what I intend to run every day. Two questions, the same two, in the same order:",
+      "published": "2026-08-16T00:01:42.574Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 356136150995313
+    },
+    {
+      "slug": "lucky-you-got-scammed",
+      "draft": "84-meme.txt",
+      "title": "\"Lucky You Got Scammed. If You'd Actually Bought the Coin, We Couldn't Get It Back.\"",
+      "description": "A friend of mine wanted to get into crypto.",
+      "published": "2026-08-15T05:05:02.193Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 355856802249298
+    },
+    {
+      "slug": "multiplier-audit",
+      "draft": "83-multiplier-audit.txt",
+      "title": "A Multiplier Scan Returned Zero Because of Missing Data. The Data Is Free, and the Premise Is What Fails.",
+      "description": "A reader sent me a full-market \"multiplier scan\" — hunting alts down 60–90% from their highs for a 1.5–3x bounce. It returned **zero candidates**.",
+      "published": "2026-08-14T21:24:47.587Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 355743692859970
+    },
+    {
+      "slug": "market-call",
+      "draft": "82-market-call.txt",
+      "title": "I Scanned 671 Pairs and Filtered by What Survived Testing. Four Shorts Left, No Longs.",
+      "description": "I scanned the exchange, then ran everything through the filters that survived this week's testing. Here is what the market looks like and what I would actually take.",
+      "published": "2026-08-14T21:04:09.473Z",
+      "assets": [
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 355738621561474
+    },
+    {
+      "slug": "btc-bnb-overhead",
+      "draft": "81-btc-bnb.txt",
+      "title": "I Deleted My Favourite Argument. BTC and BNB Both Reversed It on Their Own Data.",
+      "description": "Yesterday I gave $BTC a stand-aside call, and one of my reasons was that the great majority of the last month's turnover had traded above the current price — a wall of trapped sellers overhead.",
+      "published": "2026-08-14T20:50:55.559Z",
+      "assets": [
+        "BTC",
+        "BNB"
+      ],
+      "topics": [],
+      "squareId": 355735369776481
+    },
+    {
+      "slug": "overhead-test",
+      "draft": "80-overhead.txt",
+      "title": "I Have Quoted Trapped Supply in Nearly Every Post. Measured Across 60,000 Days, It Predicts Nothing.",
+      "description": "Every post on this channel quotes **overhead supply** — the share of the last month's turnover that changed hands above the current price. The money currently underwater. The people waiting to get…",
+      "published": "2026-08-14T20:47:06.844Z",
+      "assets": [
+        "BNB",
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 355734432940177
+    },
+    {
+      "slug": "btc-audit",
+      "draft": "79-btc-audit.txt",
+      "title": "A Reader's BTC Note Reached My Own Conclusion. Its Triggers Are Sold at 1:2 and Compute to 1:1.",
+      "description": "A reader sent me a full multi-timeframe $BTC note last night: technicals, on-chain, ETF flows, sentiment, and two conditional triggers. Its recommendation is **WAIT**.",
+      "published": "2026-08-14T17:15:21.152Z",
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 355682390353745
+    },
+    {
+      "slug": "board-overfit",
+      "draft": "78-board-overfit.txt",
+      "title": "I Pointed This Morning's Test at My Own Board. It Keeps a Tenth of What It Shows.",
+      "description": "This morning I published a post arguing that if you search 144 settings and two come out ahead, you have measured your search rather than the market.",
+      "published": "2026-08-14T05:48:43.199Z",
+      "assets": [
+        "XRP",
+        "SUI",
+        "XLM"
+      ],
+      "topics": [],
+      "squareId": 355513644035778
+    },
+    {
+      "slug": "detector-costs",
+      "draft": "77-detector.txt",
+      "title": "I Built the Early Detector You Asked For. It Works, and the Fee Is Twice the Edge.",
+      "description": "Two days ago a reader sent me the gainers tab — $HOLO and $PROM at the top of it — and asked why my board never has those names on it. I published what buying that list actually returns.",
+      "published": "2026-08-14T05:42:15.060Z",
+      "assets": [
+        "HOLO",
+        "PROM"
+      ],
+      "topics": [],
+      "squareId": 355512054109986
+    },
+    {
+      "slug": "stop-law",
+      "draft": "76-stop-law.txt",
+      "title": "I Repeated the Same Stop-Loss Rule Six Times. Measured Across 61 Pairs, Half of It Is Wrong.",
+      "description": "I have written this sentence about six times:",
+      "published": "2026-08-14T05:37:25.872Z",
+      "assets": [
+        "ICP",
+        "XLM",
+        "BNB"
+      ],
+      "topics": [],
+      "squareId": 355510869512193
+    },
+    {
+      "slug": "bnb-ceiling",
+      "draft": "75-bnb-ceiling.txt",
+      "title": "BNB Tried 620.55 and Closed 610.44. The Ceiling Won Again.",
+      "description": "Two days ago a reader told me $BNB had broken $615. I said it had touched it, not broken it, because no daily candle had closed above the band.",
+      "published": "2026-08-13T04:11:49.408Z",
+      "assets": [
+        "BNB"
+      ],
+      "topics": [],
+      "squareId": 355135935926850
+    },
+    {
+      "slug": "gainers-study",
+      "draft": "74-gainers.txt",
+      "title": "Buying the Top Ten Gainers Is Ordinary. Buying Number One Is Not.",
+      "description": "Yesterday someone sent me the \"Top Gainers\" tab and asked why my scanner misses those names. I gave two reasons and one confident line: a gainers list is a list of moves that have already happened.",
+      "published": "2026-08-13T04:11:33.711Z",
+      "assets": [
+        "HOLO",
+        "PROM"
+      ],
+      "topics": [],
+      "squareId": 355135871663266
+    },
+    {
+      "slug": "watchlist-check",
+      "draft": "73-watchlist.txt",
+      "title": "Touched, Not Broken: Checking a Watchlist Note One Number at a Time",
+      "description": "A watchlist note went round this morning covering seven coins. I checked every number in it. Four things were right and three were wrong, and one of the wrong ones was the headline.",
+      "published": "2026-08-12T00:55:50.833Z",
+      "assets": [
+        "BNB",
+        "GIGGLE",
+        "ENA"
+      ],
+      "topics": [],
+      "squareId": 354733878462994
+    },
+    {
+      "slug": "bnb-setups",
+      "draft": "72-bnb-setups.txt",
+      "title": "Three BNB Setups, Ranked by Confidence. Measurement Reverses the Order.",
+      "description": "Someone sent me three $BNB setups this morning, ranked by confidence: a pullback long first, a breakout long second, a short third.",
+      "published": "2026-08-12T00:19:18.999Z",
+      "assets": [
+        "BNB"
+      ],
+      "topics": [],
+      "squareId": 354724900723457
+    },
+    {
+      "slug": "bnb-btc",
+      "draft": "71-bnb-btc.txt",
+      "title": "Nobody Is Trapped Above BNB. That Still Is Not a Reason to Buy It.",
+      "description": "Someone sent me a $BNB read this morning putting overhead supply at 35–45% — \"medium, not too heavy.\"",
+      "published": "2026-08-12T00:08:34.541Z",
+      "assets": [
+        "BNB",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 354722260935441
+    },
+    {
+      "slug": "lookbacks",
+      "draft": "70-lookbacks.txt",
+      "title": "All Five Say LONG. Only Two Survive the Question.",
+      "description": "Five names, measured properly. The headline is not about any of them — it is about the window I was measuring in.",
+      "published": "2026-08-11T16:24:27.161Z",
+      "assets": [
+        "ICP",
+        "ENA",
+        "GIGGLE"
+      ],
+      "topics": [],
+      "squareId": 354608197949233
+    },
+    {
+      "slug": "toi-sai",
+      "draft": "69-toi-sai.txt",
+      "title": "A Trader Said My System Was Broken. He Was Right.",
+      "description": "A trader messaged me: *\"Your algorithm only ever says WAIT. You are missing a lot of opportunities.\"*",
+      "published": "2026-08-11T09:04:28.963Z",
+      "assets": [
+        "ICP",
+        "BTC",
+        "BICO"
+      ],
+      "topics": [],
+      "squareId": 354500070929921
+    },
+    {
+      "slug": "cong-chua-chay",
+      "draft": "68-cong-chua-chay.txt",
+      "title": "The Screen Is Right, But It Was Never Given Numbers to Run On",
+      "description": "Someone just rebuilt their altcoin screen around exactly what I have been measuring these past few days, re-ran it, and sent me the result to check.",
+      "published": "2026-08-11T01:28:39.501Z",
+      "assets": [
+        "SUI",
+        "ENA",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 354388049368946
+    },
+    {
+      "slug": "ena-icp",
+      "draft": "67-ena-icp.txt",
+      "title": "ENA and ICP: 90 Geometries Each, and ENA Has Not One Positive",
+      "description": "This morning's market scan ranked $ENA first and $ICP third. I measured both with the same ruler. The order reverses — and one of them reverses hard.",
+      "published": "2026-08-11T00:56:32.723Z",
+      "assets": [
+        "ENA",
+        "ICP",
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 354380156446673
+    },
+    {
+      "slug": "icp-4h",
+      "draft": "66-icp-4h.txt",
+      "title": "\"Repeatedly Rejected\" — Times Price Touched That Zone: 0",
+      "description": "Someone sent me a 4H analysis of $ICP — support zones, resistance zones, bull and bear scenarios. The kind of post everybody reads every day.",
+      "published": "2026-08-10T09:56:54.102Z",
+      "assets": [
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 354159060270418
+    },
+    {
+      "slug": "quet-v2",
+      "draft": "65-quet-v2.txt",
+      "title": "The Two Numbers the Scan Said It Could Not Get",
+      "description": "Yesterday's 2x scan came back, corrected. It dropped the backwards volume descriptions, it brought the trapped-supply figure where it had one, it says to move the stop if you wait for a break,…",
+      "published": "2026-08-10T09:49:48.109Z",
+      "assets": [
+        "SUI",
+        "XLM",
+        "ICP"
+      ],
+      "topics": [],
+      "squareId": 354157315465522
+    },
+    {
+      "slug": "bot-arb",
+      "draft": "64-bot-arb.txt",
+      "title": "The Gaps Really Do Open. Not Once Were They Enough to Pay the Fee.",
+      "description": "Someone sent me a technical analysis of the viral story about a 19-year-old turning $68 into $750,000 with an arbitrage bot. The analysis concluded it was not feasible.",
+      "published": "2026-08-10T09:41:27.336Z",
+      "assets": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "topics": [],
+      "squareId": 354155264228305
+    },
+    {
+      "slug": "quet-2x",
+      "draft": "63-quet-2x.txt",
+      "title": "The Score Ranks One Way, Measured Expectancy Ranks Another",
+      "description": "Someone sent me a \"2x–3x potential altcoin\" scan that scored four coins to one decimal place. I re-measured all four with the same ruler.",
+      "published": "2026-08-10T09:20:29.892Z",
+      "assets": [
+        "ICP",
+        "ENA",
+        "ONDO"
+      ],
+      "topics": [],
+      "squareId": 354150113339602
+    },
+    {
+      "slug": "cho-xac-nhan",
+      "draft": "62-cho-xac-nhan.txt",
+      "title": "Waiting for Confirmation Does Not Make the Trade Safer",
+      "description": "Someone sent me an AI-written $ICP plan and asked whether it was worth taking. I re-measured all of it. Two of its market descriptions are backwards — but that is not what kills this trade.",
+      "published": "2026-08-10T09:12:48.351Z",
+      "assets": [
+        "ICP",
+        "BTC"
+      ],
+      "topics": [],
+      "squareId": 354148223360081
+    },
+    {
       "slug": "bnb-tuan",
       "draft": "61-bnb-tuan.txt",
-      "title": "BNB: 0% Hàng Kẹt Trên Đầu — Và Cái Stop Mà Hầu Hết Kế Hoạch Tuần Đặt Sai",
-      "description": "Trước hết một điều phải nói ngay: $BNB là token của chính sàn mà tôi đăng bài này lên. Tôi không làm mềm bất cứ con số nào vì lý do đó, và mọi con số chống lại lệnh mua đều nằm cùng bảng với những…",
+      "title": "BNB: 0% Trapped Supply — And the Stop Most Weekly Plans Get Wrong",
+      "description": "One thing has to be said first: $BNB is the token of the exchange I am posting this on. I have softened no number because of that, and every figure that argues against a long sits on the same…",
       "published": "2026-08-10T01:23:53.590Z",
       "assets": [
         "BNB"
@@ -24,8 +622,8 @@
     {
       "slug": "icp-avax",
       "draft": "60-icp-avax.txt",
-      "title": "Nền ICP Sạch Hơn AVAX Thật. Nhưng Đó Là Khác Biệt Nhỏ Nhất Giữa Hai Đồng.",
-      "description": "Có người gửi tôi bản so sánh $ICP với $AVAX, kết luận ICP có nền sạch hơn. Tôi đo lại bằng cùng một thước cho cả hai.",
+      "title": "ICP's Base Really Is Cleaner Than AVAX's. It Is Also the Smallest Difference Between Them.",
+      "description": "Someone sent me a comparison of $ICP against $AVAX concluding that ICP has the cleaner base. I measured both with the same ruler.",
       "published": "2026-08-09T06:49:52.581Z",
       "assets": [
         "ICP",
@@ -37,8 +635,8 @@
     {
       "slug": "live-vs-backtest",
       "draft": "58-live-vs-backtest.txt",
-      "title": "Backtest Hứa 28.72%. Chạy Bằng Tiền Thật Trả 23.46%.",
-      "description": "Backtest hứa cảnh báo volume theo giờ của tôi chạm +10% trong 12 tiếng 28.72% số lần.",
+      "title": "The Backtest Promised 28.72%. Real Money Paid 23.46%.",
+      "description": "The backtest promised that my hourly volume alerts reach +10% within 12 hours 28.72% of the time.",
       "published": "2026-08-09T06:30:39.755Z",
       "assets": [
         "BTC"
@@ -49,8 +647,8 @@
     {
       "slug": "funding-nguong",
       "draft": "57-funding-nguong.txt",
-      "title": "Hai Ngưỡng Funding Ai Cũng Chép. Tôi Đo Thử — Chúng Chưa Từng Xảy Ra.",
-      "description": "Bộ ngưỡng funding này được chép khắp nơi: \"lành mạnh\" -0.005% đến 0.01% mỗi 8 tiếng, trên 0.015% là long đông, trên 0.04% là cực đoan.",
+      "title": "Two Funding Thresholds Everyone Copies. I Measured Them — They Have Never Happened.",
+      "description": "This set of funding thresholds gets copied everywhere: \"healthy\" is -0.005% to 0.01% per 8 hours, above 0.015% means longs are crowded, above 0.04% is extreme.",
       "published": "2026-08-08T03:23:41.927Z",
       "assets": [
         "BTC"
@@ -61,8 +659,8 @@
     {
       "slug": "gio-thi-truong",
       "draft": "56-gio-thi-truong.txt",
-      "title": "BTC Ngủ Ban Ngày. Nó Thức Lúc 9 Giờ Tối.",
-      "description": "Tối nay $BTC lên hay xuống? Tôi không biết. Và tôi đo được rằng tôi không biết.",
+      "title": "BTC Sleeps During the Day. It Wakes Up at 9pm.",
+      "description": "Is $BTC going up or down tonight? I do not know. And I can measure that I do not know.",
       "published": "2026-08-05T12:21:59.434Z",
       "assets": [
         "BTC"
@@ -73,8 +671,8 @@
     {
       "slug": "bico-vi",
       "draft": "55-bico-vi.txt",
-      "title": "Hệ Thống Của Tôi Gọi Đúng BICO. Nó Tăng 25%. Tôi Vẫn Chấm Là Trượt.",
-      "description": "Hệ thống của tôi báo $BICO hai hôm trước ở giá $0.01962. Bây giờ nó $0.02465, tăng 25.6%.",
+      "title": "My System Called BICO. It Rose 25%. I Still Scored It a Miss.",
+      "description": "My system flagged $BICO two days ago at $0.01962. It is $0.02465 now, up 25.6%.",
       "published": "2026-08-05T08:14:52.880Z",
       "assets": [
         "BICO"

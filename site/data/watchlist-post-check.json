@@ -1,0 +1,324 @@
+{
+  "measuredAt": "2026-08-12T00:47:09.763Z",
+  "claims": {
+    "BNB has broken above the 612-618 zone": false,
+    "the zone rejected BNB many times before": true,
+    "SOL is outperforming BTC over 24h": true,
+    "SOL is outperforming ETH over 24h": true,
+    "ENA is not extended": false,
+    "ENA has a cleaner structure than ICP": false,
+    "ICP is pulling back": true
+  },
+  "bnb": {
+    "price": 616.73,
+    "zone": [
+      612,
+      618
+    ],
+    "state": "inside the zone",
+    "high30d": 617.73,
+    "clearsPriorHighBy": -0.16188302332734716,
+    "touches4h": {
+      "total": 21,
+      "rejected": 7,
+      "detail": [
+        {
+          "at": "2026-05-20T20:00",
+          "high": 651.77,
+          "closedAbove": true,
+          "laterClose": 650.44,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-05-21T20:00",
+          "high": 659,
+          "closedAbove": true,
+          "laterClose": 656.26,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-05-22T20:00",
+          "high": 654.03,
+          "closedAbove": true,
+          "laterClose": 656.57,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-05-23T20:00",
+          "high": 663.93,
+          "closedAbove": true,
+          "laterClose": 663.15,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-05-24T20:00",
+          "high": 657.65,
+          "closedAbove": true,
+          "laterClose": 656.43,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-05-25T20:00",
+          "high": 663.29,
+          "closedAbove": true,
+          "laterClose": 648.84,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-05-26T20:00",
+          "high": 657.85,
+          "closedAbove": true,
+          "laterClose": 638.24,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-05-27T20:00",
+          "high": 654.97,
+          "closedAbove": true,
+          "laterClose": 643.1,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-05-28T20:00",
+          "high": 642.53,
+          "closedAbove": true,
+          "laterClose": 718.74,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-05-29T20:00",
+          "high": 643.87,
+          "closedAbove": true,
+          "laterClose": 710.55,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-05-30T20:00",
+          "high": 729,
+          "closedAbove": true,
+          "laterClose": 693.1,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-05-31T20:00",
+          "high": 714.83,
+          "closedAbove": true,
+          "laterClose": 650.69,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-06-01T20:00",
+          "high": 701.73,
+          "closedAbove": true,
+          "laterClose": 620.63,
+          "rejected": false,
+          "brokeThrough": true
+        },
+        {
+          "at": "2026-06-02T20:00",
+          "high": 663.45,
+          "closedAbove": true,
+          "laterClose": 604.53,
+          "rejected": true,
+          "brokeThrough": false
+        },
+        {
+          "at": "2026-06-03T20:00",
+          "high": 630,
+          "closedAbove": true,
+          "laterClose": 572.22,
+          "rejected": true,
+          "brokeThrough": false
+        },
+        {
+          "at": "2026-06-12T12:00",
+          "high": 613.39,
+          "closedAbove": false,
+          "laterClose": 608.15,
+          "rejected": true,
+          "brokeThrough": false
+        },
+        {
+          "at": "2026-06-13T20:00",
+          "high": 612.33,
+          "closedAbove": false,
+          "laterClose": 617.87,
+          "rejected": false,
+          "brokeThrough": false
+        },
+        {
+          "at": "2026-06-14T20:00",
+          "high": 617.24,
+          "closedAbove": false,
+          "laterClose": 604.94,
+          "rejected": true,
+          "brokeThrough": false
+        },
+        {
+          "at": "2026-06-15T20:00",
+          "high": 621.77,
+          "closedAbove": false,
+          "laterClose": 601.63,
+          "rejected": true,
+          "brokeThrough": false
+        },
+        {
+          "at": "2026-06-17T12:00",
+          "high": 612.5,
+          "closedAbove": false,
+          "laterClose": 578.77,
+          "rejected": true,
+          "brokeThrough": false
+        },
+        {
+          "at": "2026-08-08T12:00",
+          "high": 612,
+          "closedAbove": false,
+          "laterClose": 601.11,
+          "rejected": true,
+          "brokeThrough": false
+        }
+      ]
+    },
+    "touches1d": {
+      "total": 112,
+      "rejected": 11
+    },
+    "recentCloses": [
+      {
+        "day": "2026-08-03",
+        "close": 589.35,
+        "aboveZone": false
+      },
+      {
+        "day": "2026-08-04",
+        "close": 593.18,
+        "aboveZone": false
+      },
+      {
+        "day": "2026-08-05",
+        "close": 593.85,
+        "aboveZone": false
+      },
+      {
+        "day": "2026-08-06",
+        "close": 592.39,
+        "aboveZone": false
+      },
+      {
+        "day": "2026-08-07",
+        "close": 592.57,
+        "aboveZone": false
+      },
+      {
+        "day": "2026-08-08",
+        "close": 600.66,
+        "aboveZone": false
+      },
+      {
+        "day": "2026-08-09",
+        "close": 602.23,
+        "aboveZone": false
+      },
+      {
+        "day": "2026-08-10",
+        "close": 599.23,
+        "aboveZone": false
+      },
+      {
+        "day": "2026-08-11",
+        "close": 616.69,
+        "aboveZone": false
+      },
+      {
+        "day": "2026-08-12",
+        "close": 616.73,
+        "aboveZone": false
+      }
+    ]
+  },
+  "perf": {
+    "SOL": {
+      "price": 76.29,
+      "change24hPct": 0.5138339920948587,
+      "change7dPct": 3.038897893030801,
+      "change30dPct": 1.706439141447813,
+      "rangePosition30d": 67.49408983451539,
+      "overheadPct": 31.600128960037573,
+      "vsBtc24h": 0.9881625367544444,
+      "vsBtc7d": 4.475512283793826
+    },
+    "BNB": {
+      "price": 616.72,
+      "change24hPct": 2.802086979713625,
+      "change7dPct": 3.851140860486657,
+      "change30dPct": 8.675042732030525,
+      "rangePosition30d": 98.37463791438688,
+      "overheadPct": 0.12690929504637563,
+      "vsBtc24h": 3.2764155243732107,
+      "vsBtc7d": 5.287755251249681
+    },
+    "GIGGLE": {
+      "price": 37.87,
+      "change24hPct": 10.730994152046769,
+      "change7dPct": 12.074578277596926,
+      "change30dPct": 44.376667937476164,
+      "rangePosition30d": 42.544283413848625,
+      "overheadPct": 54.92232161819024,
+      "vsBtc24h": 11.205322696706354,
+      "vsBtc7d": 13.51119266835995
+    },
+    "ENA": {
+      "price": 0.0902,
+      "change24hPct": 1.8058690744920947,
+      "change7dPct": -2.3809523809523725,
+      "change30dPct": 14.758269720101769,
+      "rangePosition30d": 62.26415094339626,
+      "overheadPct": 26.136666037516786,
+      "vsBtc24h": 2.2801976191516804,
+      "vsBtc7d": -0.9443379901893478
+    },
+    "ETH": {
+      "price": 1883.27,
+      "change24hPct": 0.42392764968113283,
+      "change7dPct": -1.3426580753313488,
+      "change30dPct": 5.997005718402448,
+      "rangePosition30d": 52.86051099456284,
+      "overheadPct": 54.33953874732935,
+      "vsBtc24h": 0.8982561943407186,
+      "vsBtc7d": 0.09395631543167582
+    },
+    "BTC": {
+      "price": 63736.24,
+      "change24hPct": -0.47432854465958574,
+      "change7dPct": -1.4366143907630247,
+      "change30dPct": 2.2487058535142435,
+      "rangePosition30d": 31.256524941555774,
+      "overheadPct": 76.0668969903664,
+      "vsBtc24h": 0,
+      "vsBtc7d": 0
+    },
+    "ICP": {
+      "price": 2.248,
+      "change24hPct": -4.664970313825267,
+      "change7dPct": 7.559808612440211,
+      "change30dPct": 3.261368856224167,
+      "rangePosition30d": 63.027295285359884,
+      "overheadPct": 14.411433552410232,
+      "vsBtc24h": -4.190641769165682,
+      "vsBtc7d": 8.996423003203235
+    }
+  }
+}

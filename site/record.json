@@ -1,0 +1,915 @@
+{
+  "generatedAt": "2026-08-25T03:24:59.286Z",
+  "summary": {
+    "scored": 54,
+    "biasCorrect": 25,
+    "biasTotal": 48,
+    "biasPct": 52.083333333333336,
+    "supportHeld": "7/13",
+    "pending": 9,
+    "unscoreable": 5,
+    "publishedTotal": 68
+  },
+  "backtest": {
+    "measuredAt": "2026-08-16T16:47:42.728Z",
+    "pairs": 39,
+    "rebalances": 18,
+    "lookbackDays": 540,
+    "rules": {
+      "stopAtr": 1.5,
+      "rewardRatio": 2,
+      "horizonDays": 30,
+      "feePct": 0.2,
+      "minEffectiveN": 12
+    },
+    "funnel": {
+      "considered": 515,
+      "passedSample": 46,
+      "passedAgreement": 19,
+      "passedGeometry": 13
+    },
+    "results": {
+      "algorithm": {
+        "trades": 13,
+        "meanNetR": -0.0009472386376942663,
+        "winSharePct": 38.46153846153847,
+        "tStat": -0.002625317867401068
+      },
+      "boardOnly": {
+        "trades": 500,
+        "meanNetR": 0.08506502941441957,
+        "winSharePct": 41,
+        "tStat": 1.4178074430016718
+      },
+      "alwaysShort": {
+        "trades": 515,
+        "meanNetR": 0.34395730207046554,
+        "winSharePct": 51.262135922330096,
+        "tStat": 5.6865994101501
+      },
+      "alwaysLong": {
+        "trades": 515,
+        "meanNetR": -0.2534017642747306,
+        "winSharePct": 27.57281553398058,
+        "tStat": -4.692420125776643
+      },
+      "coinFlip": {
+        "trades": 515,
+        "meanNetR": 0.09003736021157346,
+        "winSharePct": 41.16504854368932,
+        "tStat": 1.5266161245379302
+      }
+    },
+    "beatsDoingNothing": false
+  },
+  "calls": [
+    {
+      "asset": "BTCUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-19T10:05:48.406Z",
+      "correct": false,
+      "movePct": 11.792012419542148,
+      "typicalMovePct": 0.7471942202380288,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/357346294087202?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": null,
+      "publishedAt": "2026-08-19T02:04:14.895Z",
+      "correct": null,
+      "movePct": 7.6430107493478285,
+      "typicalMovePct": 0.7517657730862881,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/357227944142897?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": null,
+      "publishedAt": "2026-08-18T05:20:49.887Z",
+      "correct": null,
+      "movePct": -0.009090647296110725,
+      "typicalMovePct": 0.7509530390947816,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356922362191058?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": null,
+      "publishedAt": "2026-08-18T05:18:01.213Z",
+      "correct": null,
+      "movePct": 0.03257801242668278,
+      "typicalMovePct": 0.7509530390947816,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356921670934001?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-18T05:14:46.143Z",
+      "correct": false,
+      "movePct": 0.017127284215292454,
+      "typicalMovePct": 0.7509530390947816,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356920871225361?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-17T05:06:52.678Z",
+      "correct": false,
+      "movePct": 1.1568291782714897,
+      "typicalMovePct": 0.7347508154757709,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356565038586417?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": null,
+      "publishedAt": "2026-08-16T21:31:02.856Z",
+      "correct": null,
+      "movePct": 2.154393635590619,
+      "typicalMovePct": 0.7424592518578521,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356453013846562?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": null,
+      "publishedAt": "2026-08-16T16:27:19.276Z",
+      "correct": null,
+      "movePct": 1.2368704685530787,
+      "typicalMovePct": 0.7488784704466622,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356378369800753?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "SUIUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-16T16:11:49.642Z",
+      "correct": true,
+      "movePct": -0.38207200587803775,
+      "typicalMovePct": 0.9436175015395842,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356374564207713?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "XRPUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-16T00:01:43.881Z",
+      "correct": true,
+      "movePct": -0.9174311926605381,
+      "typicalMovePct": 1.0011919937613079,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/356136150995313?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "XRPUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-14T21:24:48.843Z",
+      "correct": false,
+      "movePct": 0.5406487785342371,
+      "typicalMovePct": 1.0288443872864317,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355743692859970?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "XRPUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-14T21:04:10.635Z",
+      "correct": false,
+      "movePct": 0.5406487785342371,
+      "typicalMovePct": 1.0288443872864317,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355738621561474?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-14T20:50:56.781Z",
+      "correct": true,
+      "movePct": 0.2870985705622038,
+      "typicalMovePct": 0.778444012839552,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355735369776481?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-14T17:15:22.751Z",
+      "correct": false,
+      "movePct": -0.17430975284671485,
+      "typicalMovePct": 0.7798772660383868,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355682390353745?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "XRPUSDT",
+      "bias": "SHORT",
+      "publishedAt": "2026-08-14T05:48:46.163Z",
+      "correct": null,
+      "movePct": -0.4657615697156028,
+      "typicalMovePct": 1.0471204188481575,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355513644035778?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BNBUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-13T04:11:50.226Z",
+      "correct": true,
+      "movePct": -0.2987901448234266,
+      "typicalMovePct": 0.821280363933119,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355135935926850?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "HOLOUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-13T04:11:35.815Z",
+      "correct": true,
+      "movePct": 1.2875536480686667,
+      "typicalMovePct": 2.8982486721360115,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/355135871663266?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BNBUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-12T00:55:58.132Z",
+      "correct": false,
+      "movePct": -1.0499027867790047,
+      "typicalMovePct": 0.8363592558811916,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/354733878462994?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BNBUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-12T00:19:20.493Z",
+      "correct": false,
+      "movePct": -0.7927225471085113,
+      "typicalMovePct": 0.8363592558811916,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/354724900723457?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-12T00:08:35.795Z",
+      "correct": true,
+      "movePct": -0.048562774620296116,
+      "typicalMovePct": 0.8936525265127893,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": "https://app.binance.com/uni-qr/cart/354722260935441?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "ICPUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-11T16:24:29.167Z",
+      "correct": true,
+      "movePct": -2.1671826625386967,
+      "typicalMovePct": 1.2220922643757959,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/354608197949233?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "ICPUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-11T09:04:30.175Z",
+      "correct": true,
+      "movePct": -3.1547104580812424,
+      "typicalMovePct": 1.2115563839701915,
+      "hours": 24,
+      "priceRecovered": true,
+      "shareLink": "https://app.binance.com/uni-qr/cart/354500070929921?r=LOHZTAM2&l=en"
+    },
+    {
+      "asset": "SUIUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-11T01:28:39.501Z",
+      "correct": false,
+      "movePct": 1.3356562137049923,
+      "typicalMovePct": 1.1576729593258839,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "ENAUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-11T00:56:32.723Z",
+      "correct": true,
+      "movePct": 1.5801354401805852,
+      "typicalMovePct": 2.30582524271844,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "ICPUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-10T09:56:54.102Z",
+      "correct": false,
+      "movePct": 3.5426008968609946,
+      "typicalMovePct": 1.1770031688546956,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "SUIUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-10T09:49:48.109Z",
+      "correct": true,
+      "movePct": -0.12994513427664048,
+      "typicalMovePct": 1.2276290489572683,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "ICPUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-10T09:20:29.892Z",
+      "correct": false,
+      "movePct": 3.5426008968609946,
+      "typicalMovePct": 1.1770031688546956,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "ICPUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-10T09:12:48.351Z",
+      "correct": false,
+      "movePct": 3.5426008968609946,
+      "typicalMovePct": 1.1770031688546956,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BNBUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-10T01:23:53.590Z",
+      "correct": true,
+      "movePct": -0.7737199728867278,
+      "typicalMovePct": 0.8452872735649375,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "ICPUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-09T06:49:52.581Z",
+      "correct": true,
+      "movePct": 1.142595978062153,
+      "typicalMovePct": 1.2020342117429417,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-09T06:30:39.755Z",
+      "correct": true,
+      "movePct": 0.6929993358518691,
+      "typicalMovePct": 0.9448672776887213,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-08T03:23:41.927Z",
+      "correct": true,
+      "movePct": -0.37550166838373916,
+      "typicalMovePct": 0.9620787298759814,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-05T12:21:59.434Z",
+      "correct": true,
+      "movePct": 0.1423387862078266,
+      "typicalMovePct": 1.0357870796603885,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BICOUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-05T08:14:52.880Z",
+      "correct": false,
+      "movePct": 17.734187349879903,
+      "typicalMovePct": 2.3217247097844007,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BICOUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-05T08:07:58.929Z",
+      "correct": false,
+      "movePct": 17.734187349879903,
+      "typicalMovePct": 2.3217247097844007,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-04T14:53:35.080Z",
+      "correct": true,
+      "movePct": 0.5421439879043247,
+      "typicalMovePct": 1.0655252834958606,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-04T14:18:16.331Z",
+      "correct": true,
+      "movePct": 0.5421439879043247,
+      "typicalMovePct": 1.0655252834958606,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-04T01:09:44.019Z",
+      "correct": true,
+      "movePct": 0.7610426837643698,
+      "typicalMovePct": 1.0582040758382982,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-03T09:00:46.569Z",
+      "correct": false,
+      "movePct": 1.2195444114492353,
+      "typicalMovePct": 1.0761301315143634,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-03T08:37:56.418Z",
+      "correct": false,
+      "movePct": 1.67479193815307,
+      "typicalMovePct": 1.0770287338174978,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "GIGGLEUSDT",
+      "bias": "Selective Short",
+      "publishedAt": "2026-08-03T07:19:02.192Z",
+      "correct": true,
+      "movePct": -20.5970840083314,
+      "typicalMovePct": 2.2551897647536623,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "KAITOUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-03T01:43:39.803Z",
+      "correct": false,
+      "movePct": -11.262135922330096,
+      "typicalMovePct": 4.472578717715104,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BANKUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-02T05:34:17.069Z",
+      "correct": true,
+      "movePct": -9.650924024640663,
+      "typicalMovePct": 10.42869602927491,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "ORDIUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-02T05:25:31.683Z",
+      "correct": false,
+      "movePct": -4.813706826217026,
+      "typicalMovePct": 2.379952820758857,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BANKUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-02T05:15:17.230Z",
+      "correct": true,
+      "movePct": -9.650924024640663,
+      "typicalMovePct": 10.42869602927491,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "ENAUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-02T03:42:49.256Z",
+      "correct": false,
+      "movePct": 3.659976387249121,
+      "typicalMovePct": 2.3387123305698143,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-02T01:50:19.263Z",
+      "correct": true,
+      "movePct": 0.36564490701848146,
+      "typicalMovePct": 1.0857684971388115,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-02T00:30:26.956Z",
+      "correct": true,
+      "movePct": 0.769663043839808,
+      "typicalMovePct": 1.085773865162154,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-02T00:17:30.204Z",
+      "correct": true,
+      "movePct": 0.769663043839808,
+      "typicalMovePct": 1.085773865162154,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "UNIUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-01T10:25:00Z",
+      "correct": false,
+      "movePct": 3.8792045175546144,
+      "typicalMovePct": 2.294816414686829,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "XRPUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-01T10:05:00Z",
+      "correct": false,
+      "movePct": 1.7221908526256338,
+      "typicalMovePct": 1.3481508471488324,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "ENAUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-01T09:45:00Z",
+      "correct": false,
+      "movePct": 10.383189122373306,
+      "typicalMovePct": 2.428217879392075,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "BTCUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-01T09:20:00Z",
+      "correct": true,
+      "movePct": 0.3501330702326371,
+      "typicalMovePct": 1.105762930380516,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    },
+    {
+      "asset": "GIGGLEUSDT",
+      "bias": "WAIT",
+      "publishedAt": "2026-08-01T08:55:00Z",
+      "correct": false,
+      "movePct": -15.088819226750259,
+      "typicalMovePct": 2.1052631578947434,
+      "hours": 24,
+      "priceRecovered": false,
+      "shareLink": null
+    }
+  ],
+  "ledger": [
+    {
+      "day": "2026-08-14",
+      "measuredAt": "2026-08-14T21:03:11.704Z",
+      "positions": [
+        {
+          "symbol": "ARBUSDT",
+          "direction": "short",
+          "entry": 0.0744,
+          "stop": 0.08004124097218412,
+          "target": 0.0631175180556317
+        },
+        {
+          "symbol": "BONKUSDT",
+          "direction": "short",
+          "entry": 0.00000236,
+          "stop": 0.0000026521408896726555,
+          "target": 0.000001775718220654688
+        },
+        {
+          "symbol": "SUIUSDT",
+          "direction": "short",
+          "entry": 0.6782,
+          "stop": 0.714226484441352,
+          "target": 0.6061470311172962
+        },
+        {
+          "symbol": "XRPUSDT",
+          "direction": "short",
+          "entry": 0.9992,
+          "stop": 1.0425293107514944,
+          "target": 0.9125413784970116
+        }
+      ]
+    },
+    {
+      "day": "2026-08-15",
+      "measuredAt": "2026-08-15T23:59:27.191Z",
+      "positions": [
+        {
+          "symbol": "XRPUSDT",
+          "direction": "short",
+          "entry": 1.0028,
+          "stop": 1.0451282375345508,
+          "target": 0.9181435249308983
+        },
+        {
+          "symbol": "PEPEUSDT",
+          "direction": "short",
+          "entry": 0.00000262,
+          "stop": 0.0000028233401748404333,
+          "target": 0.0000022133196503191336
+        },
+        {
+          "symbol": "SUIUSDT",
+          "direction": "short",
+          "entry": 0.6774,
+          "stop": 0.7121281641241125,
+          "target": 0.607943671751775
+        }
+      ]
+    },
+    {
+      "day": "2026-08-16",
+      "measuredAt": "2026-08-16T16:11:07.938Z",
+      "positions": [
+        {
+          "symbol": "SUIUSDT",
+          "direction": "short",
+          "entry": 0.6803,
+          "stop": 0.7134368666866759,
+          "target": 0.6140262666266482
+        },
+        {
+          "symbol": "XRPUSDT",
+          "direction": "short",
+          "entry": 1.0016,
+          "stop": 1.0415797919963687,
+          "target": 0.9216404160072629
+        }
+      ]
+    },
+    {
+      "day": "2026-08-17",
+      "measuredAt": "2026-08-17T04:47:27.754Z",
+      "positions": [
+        {
+          "symbol": "ARBUSDT",
+          "direction": "short",
+          "entry": 0.075,
+          "stop": 0.08034897151766035,
+          "target": 0.06430205696467932
+        },
+        {
+          "symbol": "DASHUSDT",
+          "direction": "short",
+          "entry": 30.36,
+          "stop": 32.040855056644595,
+          "target": 26.998289886710804
+        },
+        {
+          "symbol": "SUIUSDT",
+          "direction": "short",
+          "entry": 0.678,
+          "stop": 0.7107651006988521,
+          "target": 0.6124697986022958
+        },
+        {
+          "symbol": "XRPUSDT",
+          "direction": "short",
+          "entry": 1.0019,
+          "stop": 1.0415297048129546,
+          "target": 0.9226405903740911
+        }
+      ]
+    },
+    {
+      "day": "2026-08-18",
+      "measuredAt": "2026-08-18T05:12:17.477Z",
+      "positions": [
+        {
+          "symbol": "SUIUSDT",
+          "direction": "short",
+          "entry": 0.649,
+          "stop": 0.6838765220775055,
+          "target": 0.579246955844989
+        },
+        {
+          "symbol": "XRPUSDT",
+          "direction": "short",
+          "entry": 0.9962,
+          "stop": 1.0350814095712129,
+          "target": 0.9184371808575743
+        },
+        {
+          "symbol": "HBARUSDT",
+          "direction": "short",
+          "entry": 0.06566,
+          "stop": 0.06838267492460223,
+          "target": 0.06021465015079553
+        }
+      ]
+    },
+    {
+      "day": "2026-08-19",
+      "measuredAt": "2026-08-19T10:04:21.191Z",
+      "positions": [
+        {
+          "symbol": "ARBUSDT",
+          "direction": "short",
+          "entry": 0.0771,
+          "stop": 0.08231409133046078,
+          "target": 0.06667181733907844
+        },
+        {
+          "symbol": "SUIUSDT",
+          "direction": "short",
+          "entry": 0.6573,
+          "stop": 0.691024627643398,
+          "target": 0.589850744713204
+        },
+        {
+          "symbol": "XRPUSDT",
+          "direction": "short",
+          "entry": 1.0038,
+          "stop": 1.0415503394997998,
+          "target": 0.9282993210004007
+        },
+        {
+          "symbol": "HBARUSDT",
+          "direction": "short",
+          "entry": 0.0676,
+          "stop": 0.07035511140957962,
+          "target": 0.062089777180840744
+        }
+      ]
+    },
+    {
+      "day": "2026-08-20",
+      "measuredAt": "2026-08-20T07:57:15.392Z",
+      "positions": [
+        {
+          "symbol": "ADAUSDT",
+          "direction": "short",
+          "entry": 0.1841,
+          "stop": 0.19743719279148741,
+          "target": 0.1574256144170252
+        },
+        {
+          "symbol": "ARBUSDT",
+          "direction": "short",
+          "entry": 0.089,
+          "stop": 0.09545721745991766,
+          "target": 0.07608556508016467
+        },
+        {
+          "symbol": "SUIUSDT",
+          "direction": "short",
+          "entry": 0.7015,
+          "stop": 0.741560878730094,
+          "target": 0.6213782425398119
+        },
+        {
+          "symbol": "XRPUSDT",
+          "direction": "short",
+          "entry": 1.1116,
+          "stop": 1.16225847851512,
+          "target": 1.0102830429697598
+        }
+      ]
+    },
+    {
+      "day": "2026-08-21",
+      "measuredAt": "2026-08-21T00:49:10.745Z",
+      "positions": [
+        {
+          "symbol": "ADAUSDT",
+          "direction": "short",
+          "entry": 0.2032,
+          "stop": 0.2175827504492383,
+          "target": 0.17443449910152342
+        },
+        {
+          "symbol": "SUIUSDT",
+          "direction": "short",
+          "entry": 0.7374,
+          "stop": 0.7795493873922302,
+          "target": 0.6531012252155397
+        },
+        {
+          "symbol": "ARBUSDT",
+          "direction": "short",
+          "entry": 0.0907,
+          "stop": 0.09697532437604599,
+          "target": 0.07814935124790802
+        },
+        {
+          "symbol": "XRPUSDT",
+          "direction": "short",
+          "entry": 1.2625,
+          "stop": 1.3338928218864892,
+          "target": 1.1197143562270218
+        },
+        {
+          "symbol": "BONKUSDT",
+          "direction": "short",
+          "entry": 0.00000262,
+          "stop": 0.000002870707320544242,
+          "target": 0.0000021185853589115154
+        }
+      ]
+    }
+  ],
+  "snapshots": 70
+}

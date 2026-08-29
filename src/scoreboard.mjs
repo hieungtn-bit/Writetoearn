@@ -11,7 +11,7 @@
  */
 
 import { fetchKlines } from "./analysis.mjs";
-import { BIAS_PATTERNS } from "./verify.mjs";
+import { BIAS_PATTERNS, BIAS_PHRASES } from "./verify.mjs";
 
 export const BIAS = {
   WAIT: "WAIT",
@@ -19,11 +19,39 @@ export const BIAS = {
   SHORT: "Selective Short",
 };
 
+/** Majors that appear as bare tickers in prose, without a cashtag. */
+const BARE_TICKERS = ["BTC", "ETH", "BNB", "SOL", "XRP"];
+
+/**
+ * The sentence a bias is stated in, which is the only place its subject can be.
+ *
+ * Splitting on sentence punctuation is crude, but the alternative — assuming
+ * the bias belongs to whichever asset the post mentions most — is what put a
+ * short on BNB into the record from a post that said to stand aside on it.
+ */
+function biasSentence(text) {
+  for (const sentence of text.split(/(?<=[.!?])\s+|\n+/)) {
+    if (Object.values(BIAS_PATTERNS).some((re) => re.test(sentence))) return sentence;
+  }
+  return null;
+}
+
 /**
  * Reads back what a post committed to. Levels come from the brief rather than
  * from parsing prose, so a formatting quirk cannot corrupt the record.
  *
- * @returns {{asset: string|null, bias: string|null, support: number|null, resistance: number|null}}
+ * The subject is resolved from the sentence stating the bias, not from the
+ * post's most-mentioned asset. Those two are usually the same, and when they
+ * are not, guessing produces a record of a call nobody made — a post arguing
+ * that BNB should be left alone was logged as a BNB short because BNB was the
+ * word it used most.
+ *
+ * When the bias sentence is genuinely about more than one thing, the claim is
+ * returned `ambiguous` with no asset. An unscoreable claim is a gap in the
+ * record; a confidently wrong one is a lie in it.
+ *
+ * @returns {{asset: string|null, bias: string|null, support: number|null,
+ *   resistance: number|null, ambiguous: boolean, ambiguityReason: string|null}}
  */
 export function extractClaim(text, brief) {
   const cashtags = [...text.matchAll(/\$([A-Z]{2,10})\b/g)].map((m) => m[1]);
@@ -37,23 +65,49 @@ export function extractClaim(text, brief) {
     return cashtags.indexOf(a[0]) - cashtags.indexOf(b[0]);
   });
 
-  const base = ranked[0]?.[0] ?? null;
-  const symbol = base ? `${base}USDT` : null;
-  const levels = (brief.levels ?? []).find((l) => l.symbol === symbol);
+  const dominant = ranked[0]?.[0] ?? null;
 
   // Same patterns the gate admits the post with, so a post can never pass one
   // and be invisible to the other.
+  const sentence = biasSentence(text) ?? "";
   let bias = null;
   if (BIAS_PATTERNS.LONG.test(text)) bias = BIAS.LONG;
   else if (BIAS_PATTERNS.SHORT.test(text)) bias = BIAS.SHORT;
   else if (BIAS_PATTERNS.WAIT.test(text)) bias = BIAS.WAIT;
 
+  /** Assets actually named where the bias is stated. */
+  const known = new Set([...cashtags, ...BARE_TICKERS]);
+  const named = [...new Set(
+    [...sentence.matchAll(/\$?([A-Z]{2,10})\b/g)].map((m) => m[1]).filter((t) => known.has(t)),
+  )];
+
+  // Bare phrases, so a second commitment later in the sentence is not missed.
+  const biasesInSentence = Object.values(BIAS_PHRASES).filter((re) => re.test(sentence)).length;
+
+  let asset = null, ambiguous = false, ambiguityReason = null;
+  if (biasesInSentence > 1) {
+    ambiguous = true;
+    ambiguityReason = `the bias sentence states ${biasesInSentence} biases; say which asset each belongs to, or set the claim by hand`;
+  } else if (named.length === 1) {
+    asset = `${named[0]}USDT`;
+  } else if (named.length > 1) {
+    ambiguous = true;
+    ambiguityReason = `the bias sentence names ${named.join(", ")}; only one asset can be scored`;
+  } else if (dominant) {
+    // The bias sentence names nothing, so it is about the post's subject.
+    asset = `${dominant}USDT`;
+  }
+
+  const levels = (brief.levels ?? []).find((l) => l.symbol === asset);
+
   return {
-    asset: symbol,
+    asset,
     bias,
+    ambiguous,
+    ambiguityReason,
     support: levels?.support ?? null,
     resistance: levels?.resistance ?? null,
-    priceAtPost: levels?.spot ?? (brief.spot ?? []).find((s) => s.symbol === symbol)?.price ?? null,
+    priceAtPost: levels?.spot ?? (brief.spot ?? []).find((s) => s.symbol === asset)?.price ?? null,
   };
 }
 
@@ -66,31 +120,104 @@ export function extractClaim(text, brief) {
  * @returns {Promise<object|null>} null when there is not enough history yet
  */
 export async function scoreClaim(claim, { hours = 24, fetchImpl = globalThis.fetch } = {}) {
-  if (!claim.asset || !claim.priceAtPost) return null;
+  if (!claim.asset) return null;
 
   const publishedAt = new Date(claim.publishedAt).getTime();
   const deadline = publishedAt + hours * 3_600_000;
   if (Date.now() < deadline) return null; // too early to judge; leave it open
 
-  // Hourly candles give enough resolution to see an intraday wick through a level.
-  const candles = await fetchKlines(claim.asset, { interval: "1h", limit: 200, fetchImpl });
+  /**
+   * Hourly candles give enough resolution to see an intraday wick through a
+   * level, and the window has to reach back past the call, not just around it.
+   *
+   * 200 bars covered eight days, which was fine while the only consumer was a
+   * claim settled a day after publication. The yardstick a WAIT is judged
+   * against needs candles from *before* the call, so on anything older than a
+   * week there were none and the call went unscoreable — silently, as a null.
+   * A thousand bars covers six weeks and costs the same single request.
+   */
+  const candles = await fetchKlines(claim.asset, { interval: "1h", limit: 1000, fetchImpl });
+
+  /**
+   * The entry price, recovered from the candles when it was never recorded.
+   *
+   * A claim is logged with the spot price from the brief fetched at publication.
+   * When the asset sits outside that brief — anything past the majors — the
+   * field was written as null, and every such call was then unscoreable
+   * forever: the scorer returned null, the doctor reported it as stuck, and
+   * running `wte score` could not clear it because the missing number was the
+   * reason it could not be scored. Three calls had been sitting in that state.
+   *
+   * The candles needed to settle the claim already span the publication, so the
+   * price is recoverable at no extra cost. The last hourly close *completed*
+   * before publication is used rather than the candle straddling it, because
+   * that bar's close lies up to an hour after the call and would judge the post
+   * against a price it could not have been written at.
+   */
+  const priceAtPost = claim.priceAtPost
+    ?? candles.filter((c) => c.openTime + 3_600_000 <= publishedAt).at(-1)?.close
+    ?? null;
+  if (!priceAtPost) return null;
+
   const window = candles.filter((c) => c.openTime > publishedAt && c.openTime <= deadline);
   if (!window.length) return null;
 
   const low = Math.min(...window.map((c) => c.low));
   const high = Math.max(...window.map((c) => c.high));
   const close = window.at(-1).close;
-  const movePct = ((close - claim.priceAtPost) / claim.priceAtPost) * 100;
+  const movePct = ((close - priceAtPost) / priceAtPost) * 100;
 
   const supportHeld = claim.support == null ? null : low >= claim.support;
   const resistanceBroken = claim.resistance == null ? null : high > claim.resistance;
+
+  /**
+   * What an ordinary move looks like on this pair over this horizon.
+   *
+   * Computed only from candles that closed *before* publication, so the
+   * yardstick could have been known at the time. Median rather than mean:
+   * one spike in the lookback should not raise the bar a WAIT has to clear.
+   */
+  const typicalMovePct = (() => {
+    const before = candles.filter((c) => c.openTime <= publishedAt);
+    const step = Math.max(1, Math.round(hours));
+    const moves = [];
+    for (let i = step; i < before.length; i++) {
+      moves.push(Math.abs((before[i].close / before[i - step].close - 1) * 100));
+    }
+    if (moves.length < 10) return null;
+    const sorted = moves.sort((a, b) => a - b);
+    const m = sorted.length >> 1;
+    return sorted.length % 2 ? sorted[m] : (sorted[m - 1] + sorted[m]) / 2;
+  })();
 
   let biasCorrect = null;
   if (claim.bias === BIAS.LONG) biasCorrect = movePct > 0;
   else if (claim.bias === BIAS.SHORT) biasCorrect = movePct < 0;
   else if (claim.bias === BIAS.WAIT) {
-    // WAIT is a claim that the range holds, so it is right when neither side gave way.
-    biasCorrect = supportHeld !== false && resistanceBroken !== true;
+    /**
+     * WAIT has to be falsifiable, and for a long time it was not.
+     *
+     * The old rule read "right when neither level gave way", which sounds
+     * reasonable until the claim carries no levels — then `supportHeld` and
+     * `resistanceBroken` are both null, `null !== false && null !== true` is
+     * true, and every levelless WAIT scored correct automatically. The
+     * scoreboard reported 100% because it could not report anything else, and
+     * a WAIT published before a 17.7% move counted as a win.
+     *
+     * So: when the post named levels, judge it on those — it made that claim.
+     * Otherwise judge it against how far this pair ordinarily travels in the
+     * same time. Standing aside is right when the move was unremarkable and
+     * wrong when it was not, in *either* direction, because a WAIT gives up
+     * both sides. Where neither test can run the call is unscoreable, which is
+     * a null and drops out of the tally rather than padding it.
+     */
+    if (supportHeld !== null || resistanceBroken !== null) {
+      biasCorrect = supportHeld !== false && resistanceBroken !== true;
+    } else if (typicalMovePct != null) {
+      biasCorrect = Math.abs(movePct) <= typicalMovePct;
+    } else {
+      biasCorrect = null;
+    }
   }
 
   return {
@@ -98,7 +225,11 @@ export async function scoreClaim(claim, { hours = 24, fetchImpl = globalThis.fet
     low,
     high,
     close,
+    priceAtPost,
+    /** True when the entry price was reconstructed rather than recorded. */
+    priceRecovered: claim.priceAtPost == null,
     movePct,
+    typicalMovePct,
     supportHeld,
     resistanceBroken,
     biasCorrect,
@@ -175,4 +306,34 @@ export function formatScoreboard(claims, { days = 7 } = {}) {
   }
 
   return lines.join("\n");
+}
+
+/**
+ * Re-points a claim at a different asset, moving its numbers with it.
+ *
+ * Lives here rather than inline in the ship command because the bug it fixes
+ * was invisible precisely because it was inline and untested: assigning a new
+ * symbol left the previous asset's spot and pivots attached, and four calls
+ * settled at -100.00% and were printed as wins.
+ *
+ * A symbol the brief does not cover yields nulls, which is scoreable — the
+ * scorer recovers an entry from candles and judges a levelless claim on the
+ * move. A number belonging to another asset is the only unrecoverable outcome.
+ */
+export function retargetClaim(claim, brief, rawSymbol) {
+  const raw = String(rawSymbol).toUpperCase();
+  // The record stores exchange pairs; a bare ticker is fetched verbatim at
+  // scoring time and fails, leaving the call permanently unsettled.
+  const asset = raw.endsWith("USDT") ? raw : `${raw}USDT`;
+  const levels = (brief?.levels ?? []).find((l) => l.symbol === asset);
+  return {
+    ...claim,
+    asset,
+    ambiguous: false,
+    support: levels?.support ?? null,
+    resistance: levels?.resistance ?? null,
+    priceAtPost: levels?.spot
+      ?? (brief?.spot ?? []).find((s) => s.symbol === asset)?.price
+      ?? null,
+  };
 }

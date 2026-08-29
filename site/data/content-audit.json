@@ -1,0 +1,954 @@
+{
+  "measuredAt": "2026-08-16T16:03:45.455Z",
+  "corpus": {
+    "posts": 56,
+    "spanDays": 16,
+    "postsPerDay": 3.5,
+    "medianWords": 831.5,
+    "byTopic": {
+      "method study": 22,
+      "market call": 21,
+      "self-audit": 7,
+      "other": 4,
+      "reader audit": 2
+    },
+    "byAsset": {
+      "BTC": 30,
+      "ICP": 13,
+      "ENA": 10,
+      "ETH": 10,
+      "BNB": 10,
+      "GIGGLE": 7,
+      "BANK": 4,
+      "SOL": 3,
+      "ORDI": 3,
+      "BICO": 3,
+      "SUI": 3,
+      "XLM": 3,
+      "XRP": 2,
+      "KAITO": 2,
+      "HOLO": 2,
+      "PROM": 2,
+      "PUMP": 1,
+      "UNI": 1,
+      "ATOM": 1,
+      "MIRA": 1,
+      "MORPHO": 1,
+      "INJ": 1,
+      "HOME": 1,
+      "AVAX": 1,
+      "ONDO": 1,
+      "ZEC": 1
+    },
+    "tracesToSnapshot": 18,
+    "statesBias": 43,
+    "hasTable": 25,
+    "busiestDay": [
+      "2026-08-01",
+      9
+    ],
+    "daysPublished": 14
+  },
+  "demand": {
+    "note": "Reader-initiated requests only. No platform analytics exist: the Square API exposes /content/add and nothing else.",
+    "requests": 16,
+    "byKind": {
+      "audit my analysis": 5,
+      "deep dive": 5,
+      "algorithm complaint": 3,
+      "scan request": 1,
+      "position question": 1,
+      "entertainment": 1
+    },
+    "detail": [
+      {
+        "day": "2026-08-11",
+        "kind": "audit my analysis",
+        "subject": "INJ"
+      },
+      {
+        "day": "2026-08-12",
+        "kind": "audit my analysis",
+        "subject": "ICP volume profile"
+      },
+      {
+        "day": "2026-08-12",
+        "kind": "deep dive",
+        "subject": "BNB INJ ENA ICP GIGGLE"
+      },
+      {
+        "day": "2026-08-13",
+        "kind": "deep dive",
+        "subject": "BNB BTC"
+      },
+      {
+        "day": "2026-08-13",
+        "kind": "deep dive",
+        "subject": "BNBUSDT setups"
+      },
+      {
+        "day": "2026-08-13",
+        "kind": "scan request",
+        "subject": "watchlist stages"
+      },
+      {
+        "day": "2026-08-13",
+        "kind": "algorithm complaint",
+        "subject": "why does the scanner miss gainers"
+      },
+      {
+        "day": "2026-08-13",
+        "kind": "algorithm complaint",
+        "subject": "it must be early AND profitable"
+      },
+      {
+        "day": "2026-08-13",
+        "kind": "position question",
+        "subject": "should I close BNB"
+      },
+      {
+        "day": "2026-08-14",
+        "kind": "deep dive",
+        "subject": "BTC BNB ICP stages"
+      },
+      {
+        "day": "2026-08-14",
+        "kind": "audit my analysis",
+        "subject": "BTC multi-timeframe"
+      },
+      {
+        "day": "2026-08-15",
+        "kind": "audit my analysis",
+        "subject": "multiplier scan, zero results"
+      },
+      {
+        "day": "2026-08-15",
+        "kind": "entertainment",
+        "subject": "meme post"
+      },
+      {
+        "day": "2026-08-15",
+        "kind": "deep dive",
+        "subject": "BTC BNB, make it a column"
+      },
+      {
+        "day": "2026-08-15",
+        "kind": "algorithm complaint",
+        "subject": "audit the algorithm itself"
+      },
+      {
+        "day": "2026-08-16",
+        "kind": "audit my analysis",
+        "subject": "BTC confluence + gold"
+      }
+    ]
+  },
+  "capacity": {
+    "boardSize": 77,
+    "qualifying": 4,
+    "positionsToday": 3,
+    "longsSurviving": 0,
+    "shortsSurviving": 4,
+    "selectionRatePct": 5.194805194805195,
+    "researchSnapshots": 53,
+    "walkForwardNetR": -0.042823182175064006,
+    "beatsDoingNothing": false
+  },
+  "record": {
+    "published": 50,
+    "scored": 39,
+    "correct": 22,
+    "unscoreable": 5
+  },
+  "rows": [
+    {
+      "slug": "early-turning-point-detection-bitcoin",
+      "published": "2026-08-01T07:50:00Z",
+      "day": "2026-08-01",
+      "words": 2573,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "other",
+      "tracesToSnapshot": false,
+      "statesBias": false,
+      "hasTable": false
+    },
+    {
+      "slug": "chart-is-green-money-is-red",
+      "published": "2026-08-01T08:00:00Z",
+      "day": "2026-08-01",
+      "words": 1116,
+      "assets": [
+        "BANK",
+        "GIGGLE"
+      ],
+      "topic": "other",
+      "tracesToSnapshot": false,
+      "statesBias": false,
+      "hasTable": false
+    },
+    {
+      "slug": "pump-or-dump-five-stages",
+      "published": "2026-08-01T08:15:00Z",
+      "day": "2026-08-01",
+      "words": 946,
+      "assets": [
+        "GIGGLE",
+        "PUMP",
+        "BANK"
+      ],
+      "topic": "other",
+      "tracesToSnapshot": false,
+      "statesBias": false,
+      "hasTable": false
+    },
+    {
+      "slug": "auditing-a-narrative-scan",
+      "published": "2026-08-01T08:35:00Z",
+      "day": "2026-08-01",
+      "words": 893,
+      "assets": [
+        "GIGGLE"
+      ],
+      "topic": "reader audit",
+      "tracesToSnapshot": true,
+      "statesBias": false,
+      "hasTable": false
+    },
+    {
+      "slug": "watching-a-stage-2-in-real-time",
+      "published": "2026-08-01T08:55:00Z",
+      "day": "2026-08-01",
+      "words": 794,
+      "assets": [
+        "GIGGLE"
+      ],
+      "topic": "self-audit",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "btc-tightest-30-day-range",
+      "published": "2026-08-01T09:20:00Z",
+      "day": "2026-08-01",
+      "words": 721,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "ena-runs-on-funding",
+      "published": "2026-08-01T09:45:00Z",
+      "day": "2026-08-01",
+      "words": 829,
+      "assets": [
+        "ENA",
+        "ETH",
+        "BTC"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "xrp-attention-versus-participation",
+      "published": "2026-08-01T10:05:00Z",
+      "day": "2026-08-01",
+      "words": 579,
+      "assets": [
+        "XRP",
+        "BTC",
+        "ETH"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "uni-volume-tripled-classifier-refused",
+      "published": "2026-08-01T10:25:00Z",
+      "day": "2026-08-01",
+      "words": 609,
+      "assets": [
+        "UNI",
+        "BTC",
+        "ETH"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "sol-floor-broke",
+      "published": "2026-08-02T00:17:30.204Z",
+      "day": "2026-08-02",
+      "words": 529,
+      "assets": [
+        "SOL",
+        "BTC",
+        "ETH"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "weekend-volume-effect",
+      "published": "2026-08-02T00:30:26.956Z",
+      "day": "2026-08-02",
+      "words": 431,
+      "assets": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "risk-you-paid-for",
+      "published": "2026-08-02T01:50:19.263Z",
+      "day": "2026-08-02",
+      "words": 995,
+      "assets": [
+        "BTC",
+        "ETH",
+        "ATOM"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "ena-ordinary-day",
+      "published": "2026-08-02T03:42:49.256Z",
+      "day": "2026-08-02",
+      "words": 1035,
+      "assets": [
+        "ENA",
+        "ETH",
+        "BTC"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "next-bank-measured",
+      "published": "2026-08-02T05:15:17.230Z",
+      "day": "2026-08-02",
+      "words": 970,
+      "assets": [
+        "BANK",
+        "ENA",
+        "ORDI"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "auditing-four-tokens",
+      "published": "2026-08-02T05:25:31.683Z",
+      "day": "2026-08-02",
+      "words": 795,
+      "assets": [
+        "MIRA",
+        "ORDI",
+        "KAITO"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "compression-is-weather",
+      "published": "2026-08-02T05:34:17.069Z",
+      "day": "2026-08-02",
+      "words": 811,
+      "assets": [
+        "BANK",
+        "MORPHO",
+        "INJ"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "same-day-followthrough",
+      "published": "2026-08-03T01:43:39.803Z",
+      "day": "2026-08-03",
+      "words": 799,
+      "assets": [
+        "KAITO",
+        "ORDI",
+        "ENA"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "long-short-board",
+      "published": "2026-08-03T07:19:02.192Z",
+      "day": "2026-08-03",
+      "words": 833,
+      "assets": [
+        "GIGGLE",
+        "HOME",
+        "ENA"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "btc-three-horizons",
+      "published": "2026-08-03T08:37:56.418Z",
+      "day": "2026-08-03",
+      "words": 751,
+      "assets": [
+        "BTC",
+        "ETH"
+      ],
+      "topic": "other",
+      "tracesToSnapshot": false,
+      "statesBias": false,
+      "hasTable": false
+    },
+    {
+      "slug": "both-sides-btc",
+      "published": "2026-08-03T09:00:46.569Z",
+      "day": "2026-08-03",
+      "words": 260,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "btc-cycle-stage",
+      "published": "2026-08-04T01:09:44.019Z",
+      "day": "2026-08-04",
+      "words": 503,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "cross-market",
+      "published": "2026-08-04T14:18:16.331Z",
+      "day": "2026-08-04",
+      "words": 483,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "case-for-long",
+      "published": "2026-08-04T14:53:35.080Z",
+      "day": "2026-08-04",
+      "words": 634,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": false,
+      "hasTable": false
+    },
+    {
+      "slug": "two-sided",
+      "published": "2026-08-05T08:02:12.734Z",
+      "day": "2026-08-05",
+      "words": 997,
+      "assets": [
+        "BTC",
+        "ETH"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": false,
+      "hasTable": false
+    },
+    {
+      "slug": "bico-miss",
+      "published": "2026-08-05T08:07:58.929Z",
+      "day": "2026-08-05",
+      "words": 236,
+      "assets": [
+        "BICO"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "bico-vi",
+      "published": "2026-08-05T08:14:52.880Z",
+      "day": "2026-08-05",
+      "words": 200,
+      "assets": [
+        "BICO"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "gio-thi-truong",
+      "published": "2026-08-05T12:21:59.434Z",
+      "day": "2026-08-05",
+      "words": 242,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "funding-nguong",
+      "published": "2026-08-08T03:23:41.927Z",
+      "day": "2026-08-08",
+      "words": 230,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "live-vs-backtest",
+      "published": "2026-08-09T06:30:39.755Z",
+      "day": "2026-08-09",
+      "words": 231,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "icp-avax",
+      "published": "2026-08-09T06:49:52.581Z",
+      "day": "2026-08-09",
+      "words": 234,
+      "assets": [
+        "ICP",
+        "AVAX"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "bnb-tuan",
+      "published": "2026-08-10T01:23:53.590Z",
+      "day": "2026-08-10",
+      "words": 795,
+      "assets": [
+        "BNB"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": false
+    },
+    {
+      "slug": "cho-xac-nhan",
+      "published": "2026-08-10T09:12:48.351Z",
+      "day": "2026-08-10",
+      "words": 935,
+      "assets": [
+        "ICP",
+        "BTC"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "quet-2x",
+      "published": "2026-08-10T09:20:29.892Z",
+      "day": "2026-08-10",
+      "words": 890,
+      "assets": [
+        "ICP",
+        "ENA",
+        "ONDO"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "bot-arb",
+      "published": "2026-08-10T09:41:27.336Z",
+      "day": "2026-08-10",
+      "words": 845,
+      "assets": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "topic": "reader audit",
+      "tracesToSnapshot": false,
+      "statesBias": false,
+      "hasTable": true
+    },
+    {
+      "slug": "quet-v2",
+      "published": "2026-08-10T09:49:48.109Z",
+      "day": "2026-08-10",
+      "words": 1066,
+      "assets": [
+        "SUI",
+        "XLM",
+        "ICP"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "icp-4h",
+      "published": "2026-08-10T09:56:54.102Z",
+      "day": "2026-08-10",
+      "words": 1102,
+      "assets": [
+        "ICP"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "ena-icp",
+      "published": "2026-08-11T00:56:32.723Z",
+      "day": "2026-08-11",
+      "words": 1083,
+      "assets": [
+        "ENA",
+        "ICP",
+        "BTC"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "cong-chua-chay",
+      "published": "2026-08-11T01:28:39.501Z",
+      "day": "2026-08-11",
+      "words": 977,
+      "assets": [
+        "SUI",
+        "ENA",
+        "ICP"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "toi-sai",
+      "published": "2026-08-11T09:04:28.963Z",
+      "day": "2026-08-11",
+      "words": 822,
+      "assets": [
+        "ICP",
+        "BTC",
+        "BICO"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "lookbacks",
+      "published": "2026-08-11T16:24:27.161Z",
+      "day": "2026-08-11",
+      "words": 918,
+      "assets": [
+        "ICP",
+        "ENA",
+        "GIGGLE"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "bnb-btc",
+      "published": "2026-08-12T00:08:34.541Z",
+      "day": "2026-08-12",
+      "words": 958,
+      "assets": [
+        "BNB",
+        "ICP"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "bnb-setups",
+      "published": "2026-08-12T00:19:18.999Z",
+      "day": "2026-08-12",
+      "words": 736,
+      "assets": [
+        "BNB"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "watchlist-check",
+      "published": "2026-08-12T00:55:50.833Z",
+      "day": "2026-08-12",
+      "words": 846,
+      "assets": [
+        "BNB",
+        "GIGGLE",
+        "ENA"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "gainers-study",
+      "published": "2026-08-13T04:11:33.711Z",
+      "day": "2026-08-13",
+      "words": 712,
+      "assets": [
+        "HOLO",
+        "PROM"
+      ],
+      "topic": "self-audit",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "bnb-ceiling",
+      "published": "2026-08-13T04:11:49.408Z",
+      "day": "2026-08-13",
+      "words": 757,
+      "assets": [
+        "BNB"
+      ],
+      "topic": "market call",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "stop-law",
+      "published": "2026-08-14T05:37:25.872Z",
+      "day": "2026-08-14",
+      "words": 948,
+      "assets": [
+        "ICP",
+        "XLM",
+        "BNB"
+      ],
+      "topic": "self-audit",
+      "tracesToSnapshot": true,
+      "statesBias": false,
+      "hasTable": true
+    },
+    {
+      "slug": "detector-costs",
+      "published": "2026-08-14T05:42:15.060Z",
+      "day": "2026-08-14",
+      "words": 1001,
+      "assets": [
+        "HOLO",
+        "PROM"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "board-overfit",
+      "published": "2026-08-14T05:48:43.199Z",
+      "day": "2026-08-14",
+      "words": 960,
+      "assets": [
+        "XRP",
+        "SUI",
+        "XLM"
+      ],
+      "topic": "self-audit",
+      "tracesToSnapshot": false,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "btc-audit",
+      "published": "2026-08-14T17:15:21.152Z",
+      "day": "2026-08-14",
+      "words": 1407,
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topic": "self-audit",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "overhead-test",
+      "published": "2026-08-14T20:47:06.844Z",
+      "day": "2026-08-14",
+      "words": 1032,
+      "assets": [
+        "BNB",
+        "BTC"
+      ],
+      "topic": "self-audit",
+      "tracesToSnapshot": true,
+      "statesBias": false,
+      "hasTable": true
+    },
+    {
+      "slug": "btc-bnb-overhead",
+      "published": "2026-08-14T20:50:55.559Z",
+      "day": "2026-08-14",
+      "words": 1005,
+      "assets": [
+        "BTC",
+        "BNB"
+      ],
+      "topic": "self-audit",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "market-call",
+      "published": "2026-08-14T21:04:09.473Z",
+      "day": "2026-08-14",
+      "words": 877,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "multiplier-audit",
+      "published": "2026-08-14T21:24:47.587Z",
+      "day": "2026-08-14",
+      "words": 1005,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": true,
+      "statesBias": false,
+      "hasTable": true
+    },
+    {
+      "slug": "lucky-you-got-scammed",
+      "published": "2026-08-15T05:05:02.193Z",
+      "day": "2026-08-15",
+      "words": 418,
+      "assets": [
+        "BTC"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": true,
+      "statesBias": false,
+      "hasTable": true
+    },
+    {
+      "slug": "brief-2026-08-15",
+      "published": "2026-08-16T00:01:42.574Z",
+      "day": "2026-08-16",
+      "words": 830,
+      "assets": [
+        "BTC",
+        "BNB",
+        "ICP"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": true,
+      "statesBias": true,
+      "hasTable": true
+    },
+    {
+      "slug": "self-backtest",
+      "published": "2026-08-16T00:13:44.403Z",
+      "day": "2026-08-16",
+      "words": 992,
+      "assets": [
+        "ZEC",
+        "BTC"
+      ],
+      "topic": "method study",
+      "tracesToSnapshot": true,
+      "statesBias": false,
+      "hasTable": true
+    }
+  ]
+}

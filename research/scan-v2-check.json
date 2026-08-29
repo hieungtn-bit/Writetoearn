@@ -1,0 +1,487 @@
+{
+  "measuredAt": "2026-08-10T09:45:45.053Z",
+  "method": {
+    "horizonDays": 90,
+    "firstTouch": "Walked bar by bar. A bar touching both levels is charged to the stop.",
+    "overlap": "Windows overlap; effectiveN = n / horizon is the de-overlapped count.",
+    "stopChoice": "The scan names an invalidation for ICP and ENA only, so every pair is also measured against its own 30-day low as a uniform structural stop. Both readings are reported.",
+    "beta": "Regression slope of daily log returns on BTC's, alongside correlation from the same returns. They are different quantities and the scan's 'high beta' claim is about the first.",
+    "unavailable": "Binance futures is geo-blocked from this host, so nothing here uses funding or open interest."
+  },
+  "rows": [
+    {
+      "asset": "ICP",
+      "claimed": {
+        "score": 7.3,
+        "priceBand": [
+          2.18,
+          2.21
+        ],
+        "statedStop": 2.115,
+        "betaClaim": "cao",
+        "overheadStated": 7
+      },
+      "measured": {
+        "price": 2.226,
+        "priceInsideClaimedBand": false,
+        "marketCapUsd": 1233589423,
+        "marketCapRank": 59,
+        "fromAthPct": -99.68229501177478,
+        "multipleToReclaimAth": 314.7574123989218,
+        "underwaterPct": 3.5613015645231596,
+        "volumeTrendPct": 25.258014444459054,
+        "stage": "2 expansion",
+        "volumeZScoreCompleted": 1.1521897116828617,
+        "rsi14": 57.7966628423264,
+        "atrPct": 3.626936699182666,
+        "rangePosition30d": 78.37837837837837,
+        "low30d": 1.994,
+        "structuralStopPct": 10.422282120395332,
+        "statedStopPct": 4.986522911051205,
+        "structuralStopInAtr": 2.873577066493607,
+        "statedStopInAtr": 1.3748579930206455
+      },
+      "btc": [
+        {
+          "days": 30,
+          "n": 30,
+          "beta": 0.7981288474018865,
+          "r": 0.554639397475797,
+          "varianceExplainedPct": 30.76248612323152
+        },
+        {
+          "days": 90,
+          "n": 90,
+          "beta": 0.6714725652397846,
+          "r": 0.3258460290113846,
+          "varianceExplainedPct": 10.617563462248809
+        }
+      ],
+      "ladder": [
+        {
+          "multiple": 1.5,
+          "targetPrice": 3.339,
+          "rewardPct": 50,
+          "bare": {
+            "n": 910,
+            "hitPct": 45.494505494505496,
+            "effectiveN": 10.11111111111111
+          },
+          "structural": {
+            "stopPct": 10.422282120395332,
+            "rr": 4.797413793103447,
+            "n": 910,
+            "upPct": 17.47252747252747,
+            "downPct": 79.01098901098901,
+            "neitherPct": 3.5164835164835164,
+            "effectiveN": 10.11111111111111,
+            "expectancyR": 0.048119552860931836
+          },
+          "stated": {
+            "stopPct": 4.986522911051205,
+            "rr": 10.027027027027042,
+            "n": 910,
+            "upPct": 9.340659340659341,
+            "downPct": 89.78021978021978,
+            "neitherPct": 0.8791208791208791,
+            "effectiveN": 10.11111111111111,
+            "expectancyR": 0.038788238788240226
+          }
+        },
+        {
+          "multiple": 2,
+          "targetPrice": 4.452,
+          "rewardPct": 100,
+          "bare": {
+            "n": 910,
+            "hitPct": 12.307692307692308,
+            "effectiveN": 10.11111111111111
+          },
+          "structural": {
+            "stopPct": 10.422282120395332,
+            "rr": 9.594827586206893,
+            "n": 910,
+            "upPct": 5.714285714285714,
+            "downPct": 86.81318681318682,
+            "neitherPct": 7.472527472527473,
+            "effectiveN": 10.11111111111111,
+            "expectancyR": -0.3198560060629029
+          },
+          "stated": {
+            "stopPct": 4.986522911051205,
+            "rr": 20.054054054054085,
+            "n": 910,
+            "upPct": 3.1868131868131866,
+            "downPct": 95.6043956043956,
+            "neitherPct": 1.208791208791209,
+            "effectiveN": 10.11111111111111,
+            "expectancyR": -0.316958716958716
+          }
+        }
+      ],
+      "candles": 1000
+    },
+    {
+      "asset": "ENA",
+      "claimed": {
+        "score": 6.9,
+        "priceBand": [
+          0.076,
+          0.089
+        ],
+        "statedStop": 0.0775,
+        "betaClaim": null,
+        "overheadStated": 22
+      },
+      "measured": {
+        "price": 0.0901,
+        "priceInsideClaimedBand": false,
+        "marketCapUsd": 884469711,
+        "marketCapRank": 72,
+        "fromAthPct": -94.07236842105263,
+        "multipleToReclaimAth": 16.870144284128745,
+        "underwaterPct": 21.892387266488242,
+        "volumeTrendPct": -51.19651024712548,
+        "stage": "mixed",
+        "volumeZScoreCompleted": -1.1226015790321475,
+        "rsi14": 55.142070094988775,
+        "atrPct": 5.982555817242549,
+        "rangePosition30d": 61.792452830188694,
+        "low30d": 0.077,
+        "structuralStopPct": 14.539400665926749,
+        "statedStopPct": 13.984461709211981,
+        "structuralStopInAtr": 2.430299208245111,
+        "statedStopInAtr": 2.3375396964800292
+      },
+      "btc": [
+        {
+          "days": 30,
+          "n": 30,
+          "beta": 1.6122710885289495,
+          "r": 0.5700480008258809,
+          "varianceExplainedPct": 32.49547232455836
+        },
+        {
+          "days": 90,
+          "n": 90,
+          "beta": 0.7239330807529539,
+          "r": 0.2611343302576001,
+          "varianceExplainedPct": 6.819113843908535
+        }
+      ],
+      "ladder": [
+        {
+          "multiple": 1.5,
+          "targetPrice": 0.13515,
+          "rewardPct": 50,
+          "bare": {
+            "n": 771,
+            "hitPct": 33.07392996108949,
+            "effectiveN": 8.566666666666666
+          },
+          "structural": {
+            "stopPct": 14.539400665926749,
+            "rr": 3.4389312977099236,
+            "n": 771,
+            "upPct": 17.509727626459142,
+            "downPct": 82.49027237354085,
+            "neitherPct": 0,
+            "effectiveN": 8.566666666666666,
+            "expectancyR": -0.2227552202453441
+          },
+          "stated": {
+            "stopPct": 13.984461709211981,
+            "rr": 3.575396825396827,
+            "n": 771,
+            "upPct": 16.861219195849547,
+            "downPct": 83.13878080415046,
+            "neitherPct": 0,
+            "effectiveN": 8.566666666666666,
+            "expectancyR": -0.22853231218989944
+          }
+        },
+        {
+          "multiple": 2,
+          "targetPrice": 0.1802,
+          "rewardPct": 100,
+          "bare": {
+            "n": 771,
+            "hitPct": 23.216601815823605,
+            "effectiveN": 8.566666666666666
+          },
+          "structural": {
+            "stopPct": 14.539400665926749,
+            "rr": 6.877862595419847,
+            "n": 771,
+            "upPct": 11.413748378728924,
+            "downPct": 87.93774319066148,
+            "neitherPct": 0.648508430609598,
+            "effectiveN": 8.566666666666666,
+            "expectancyR": -0.09435550143067895
+          },
+          "stated": {
+            "stopPct": 13.984461709211981,
+            "rr": 7.150793650793654,
+            "n": 771,
+            "upPct": 10.894941634241246,
+            "downPct": 88.58625162127107,
+            "neitherPct": 0.5188067444876783,
+            "effectiveN": 8.566666666666666,
+            "expectancyR": -0.10678772157371341
+          }
+        }
+      ],
+      "candles": 861
+    },
+    {
+      "asset": "SUI",
+      "claimed": {
+        "score": 6.7,
+        "priceBand": [
+          0.69,
+          0.72
+        ],
+        "statedStop": null,
+        "betaClaim": null,
+        "overheadStated": null
+      },
+      "measured": {
+        "price": 0.6936,
+        "priceInsideClaimedBand": true,
+        "marketCapUsd": 2823812219,
+        "marketCapRank": 31,
+        "fromAthPct": -87.03551401869159,
+        "multipleToReclaimAth": 7.713379469434832,
+        "underwaterPct": 60.71838129740832,
+        "volumeTrendPct": -23.25931760158591,
+        "stage": "1 quiet",
+        "volumeZScoreCompleted": -0.5294353274435865,
+        "rsi14": 46.18923695624152,
+        "atrPct": 3.620916921656388,
+        "rangePosition30d": 26.243567753001702,
+        "low30d": 0.663,
+        "structuralStopPct": 4.411764705882348,
+        "statedStopPct": null,
+        "structuralStopInAtr": 1.2184109167200077,
+        "statedStopInAtr": null
+      },
+      "btc": [
+        {
+          "days": 30,
+          "n": 30,
+          "beta": 1.2323687138681103,
+          "r": 0.8059944416382663,
+          "varianceExplainedPct": 64.96270399517806
+        },
+        {
+          "days": 90,
+          "n": 90,
+          "beta": 1.2280448076703256,
+          "r": 0.7404674910119249,
+          "varianceExplainedPct": 54.82921052454951
+        }
+      ],
+      "ladder": [
+        {
+          "multiple": 1.5,
+          "targetPrice": 1.0404,
+          "rewardPct": 50,
+          "bare": {
+            "n": 910,
+            "hitPct": 40.54945054945055,
+            "effectiveN": 10.11111111111111
+          },
+          "structural": {
+            "stopPct": 4.411764705882348,
+            "rr": 11.333333333333346,
+            "n": 910,
+            "upPct": 8.021978021978022,
+            "downPct": 91.86813186813187,
+            "neitherPct": 0.10989010989010989,
+            "effectiveN": 10.11111111111111,
+            "expectancyR": -0.00952380952380849
+          },
+          "stated": null
+        },
+        {
+          "multiple": 2,
+          "targetPrice": 1.3872,
+          "rewardPct": 100,
+          "bare": {
+            "n": 910,
+            "hitPct": 22.52747252747253,
+            "effectiveN": 10.11111111111111
+          },
+          "structural": {
+            "stopPct": 4.411764705882348,
+            "rr": 22.666666666666693,
+            "n": 910,
+            "upPct": 4.175824175824175,
+            "downPct": 94.5054945054945,
+            "neitherPct": 1.3186813186813187,
+            "effectiveN": 10.11111111111111,
+            "expectancyR": 0.0014652014652024592
+          },
+          "stated": null
+        }
+      ],
+      "candles": 1000
+    },
+    {
+      "asset": "XLM",
+      "claimed": {
+        "score": 6.5,
+        "priceBand": [
+          0.16,
+          0.18
+        ],
+        "statedStop": null,
+        "betaClaim": null,
+        "overheadStated": null
+      },
+      "measured": {
+        "price": 0.1639,
+        "priceInsideClaimedBand": true,
+        "marketCapUsd": 5645451624,
+        "marketCapRank": 20,
+        "fromAthPct": -81.28061601506687,
+        "multipleToReclaimAth": 5.342056131787675,
+        "underwaterPct": 92.5300563840984,
+        "volumeTrendPct": -57.98516631174561,
+        "stage": "mixed",
+        "volumeZScoreCompleted": -1.0434023481214982,
+        "rsi14": 36.95716563790182,
+        "atrPct": 4.00098114618104,
+        "rangePosition30d": 13.101604278074838,
+        "low30d": 0.159,
+        "structuralStopPct": 2.9896278218425776,
+        "statedStopPct": null,
+        "structuralStopInAtr": 0.747223671547714,
+        "statedStopInAtr": null
+      },
+      "btc": [
+        {
+          "days": 30,
+          "n": 30,
+          "beta": 0.8704391345004383,
+          "r": 0.6454371680394695,
+          "varianceExplainedPct": 41.65891378868104
+        },
+        {
+          "days": 90,
+          "n": 90,
+          "beta": 0.6472233737365195,
+          "r": 0.22464301762856662,
+          "varianceExplainedPct": 5.0464485369268495
+        }
+      ],
+      "ladder": [
+        {
+          "multiple": 1.5,
+          "targetPrice": 0.24584999999999999,
+          "rewardPct": 50,
+          "bare": {
+            "n": 910,
+            "hitPct": 29.340659340659343,
+            "effectiveN": 10.11111111111111
+          },
+          "structural": {
+            "stopPct": 2.9896278218425776,
+            "rr": 16.72448979591842,
+            "n": 910,
+            "upPct": 4.175824175824175,
+            "downPct": 95.71428571428572,
+            "neitherPct": 0.10989010989010989,
+            "effectiveN": 10.11111111111111,
+            "expectancyR": -0.2587575689616486
+          },
+          "stated": null
+        },
+        {
+          "multiple": 2,
+          "targetPrice": 0.3278,
+          "rewardPct": 100,
+          "bare": {
+            "n": 910,
+            "hitPct": 14.505494505494507,
+            "effectiveN": 10.11111111111111
+          },
+          "structural": {
+            "stopPct": 2.9896278218425776,
+            "rr": 33.44897959183684,
+            "n": 910,
+            "upPct": 3.5164835164835164,
+            "downPct": 96.15384615384616,
+            "neitherPct": 0.32967032967032966,
+            "effectiveN": 10.11111111111111,
+            "expectancyR": 0.2146893922404164
+          },
+          "stated": null
+        }
+      ],
+      "candles": 1000
+    }
+  ],
+  "targetComparison": [
+    {
+      "asset": "ICP",
+      "at1_5x": {
+        "hitPct": 17.47252747252747,
+        "rr": 4.797413793103447,
+        "expectancyR": 0.048119552860931836
+      },
+      "at2x": {
+        "hitPct": 5.714285714285714,
+        "rr": 9.594827586206893,
+        "expectancyR": -0.3198560060629029
+      },
+      "smallerTargetHelps": true,
+      "eitherPositive": true
+    },
+    {
+      "asset": "ENA",
+      "at1_5x": {
+        "hitPct": 17.509727626459142,
+        "rr": 3.4389312977099236,
+        "expectancyR": -0.2227552202453441
+      },
+      "at2x": {
+        "hitPct": 11.413748378728924,
+        "rr": 6.877862595419847,
+        "expectancyR": -0.09435550143067895
+      },
+      "smallerTargetHelps": false,
+      "eitherPositive": false
+    },
+    {
+      "asset": "SUI",
+      "at1_5x": {
+        "hitPct": 8.021978021978022,
+        "rr": 11.333333333333346,
+        "expectancyR": -0.00952380952380849
+      },
+      "at2x": {
+        "hitPct": 4.175824175824175,
+        "rr": 22.666666666666693,
+        "expectancyR": 0.0014652014652024592
+      },
+      "smallerTargetHelps": false,
+      "eitherPositive": true
+    },
+    {
+      "asset": "XLM",
+      "at1_5x": {
+        "hitPct": 4.175824175824175,
+        "rr": 16.72448979591842,
+        "expectancyR": -0.2587575689616486
+      },
+      "at2x": {
+        "hitPct": 3.5164835164835164,
+        "rr": 33.44897959183684,
+        "expectancyR": 0.2146893922404164
+      },
+      "smallerTargetHelps": false,
+      "eitherPositive": true
+    }
+  ]
+}

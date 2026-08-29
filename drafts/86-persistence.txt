@@ -1,0 +1,119 @@
+Every filter on this desk is a statement about the past being tidy.
+
+A direction that paid over the last 30 days. Five nested lookback windows that agree on it. A sample of twelve or more episodes behind it. A recent history whose sign matches the full one.
+
+Not one of them asks the question a position actually depends on: does a direction that held **keep** holding.
+
+Last week I walked this whole pipeline forward and it lost to shorting everything with no thought in it. I ended that post by naming what I thought the problem was — the filters select for consistency, not persistence — and then I left it as a sentence. A sentence is a hypothesis. This is the measurement.
+
+THREE QUESTIONS, NOT ONE
+
+Consistency and persistence are different properties, and lumping them together is how you end up unable to say which one failed. So:
+
+**A.** Does agreement predict? Score every call by how many of its five windows agreed, then look at what the trade did next.
+
+**B.** Does direction persist at all? For every pair and every day, does the sign of the trailing return match the sign of the next one.
+
+**C.** Would anything cheaper have worked? Four selectors at identical geometry on identical days.
+
+**B** is the one that decides the argument, and it is deliberately the cheapest thing here. No engine, no filters, no stop, no target. Just the sign of one return against the sign of the next.
+
+B. DOES DIRECTION PERSIST
+
+```
+horizon       match   median pair   pairs >50%       z
+10 days      49.55%         50.3%        31/61   -0.62
+30 days      50.70%         51.2%        37/61   +0.54
+90 days      50.60%         48.0%        27/61   +0.25
+```
+
+**It is a coin toss.**
+
+50.70% at 30 days, on 45,445 pair-days. At 10 days it is 49.55% — fractionally on the *wrong* side of half.
+
+The z column is the honest part. Overlapping windows inflate a sample badly: 45,445 day-pairs at a 30-day horizon is really about 1,515 independent ones, because you are reading the same month thirty times. De-overlapped, every horizon sits inside **0.62 standard errors of a coin toss**. There is nothing there.
+
+Look at 90 days, too. Pooled it reads 50.60%, above half. The **median pair** reads 48.0%, below half, and only 27 of 61 pairs beat a toss. The pooled number is being carried by a handful of coins with long histories, not by a property of the market. If I had printed only the first figure I would have had a finding.
+
+This is worse than "my filters underperform". It is a statement about what any filter of this shape could do at its best. **If direction does not continue, nothing that reads past direction can work** — not my five windows, not anyone's moving average cross, not the trend line on the chart someone will post under this.
+
+A. DOES AGREEMENT PREDICT
+
+```
+agreeing      trades   mean net R    win%       t
+1 of 5            19      -0.2207     32%   -0.78
+2 of 5            14      +0.0751     43%    0.20
+3 of 5            13      -0.1662     31%   -0.48
+4 of 5            21      +0.0232     48%    0.10
+5 of 5           156      +0.1096     45%    1.06
+```
+
+It is not a ladder. It goes down, up, down, up, up. If lookback agreement measured conviction, that column would rise.
+
+But I have to be careful here, because four of those five buckets hold fewer than 25 trades and a zigzag across thin buckets is what noise looks like. So the test that actually decides is the cut the filter really performs — everything it keeps, against everything it throws away:
+
+**Unanimous: +0.1096R on 156 trades. Rejected: -0.0719R on 67.**
+
+A difference of **+0.1814R** in the filter's favour, and a t of **1.01**.
+
+That points the right way. It also cannot be told from luck. Both halves of that sentence are the finding, and I am not going to publish only the half I prefer — which, given I built the thing, is a live risk.
+
+C. WOULD ANYTHING CHEAPER HAVE WORKED
+
+Same 11 dates, same 1.5 ATR stop, same 2:1 target, same 0.2% charged every time.
+
+```
+selector                        trades   mean net R    win%       t
+sign of the last month             389      +0.0581     44%    0.91
+the opposite of that               389      -0.0803     36%   -1.26
+my engine's direction              381      +0.0626     43%    0.96
++ all five lookbacks agreeing      156      +0.1096     45%    1.06
+```
+
+My engine returned +0.0626R. **The sign of the last month returned +0.0581R.**
+
+Four months of work buys **+0.0045R** over a rule you can evaluate in your head.
+
+And here is how much that +0.0045 is worth. Last week's walk-forward measured the same quantity — my engine's raw direction, over these same 11 dates, at this same geometry — on a live universe that happened to contain 54 pairs instead of 61. It got **+0.0054R** across 395 trades.
+
+Same measurement, a week apart, off by **+0.0573R** — about **12.7 times** the edge the engine claims over the crude rule. When two honest runs of one number disagree by more than the effect you are testing, you do not have an effect. You have a sample size.
+
+One detail worth keeping: betting *against* the last month lost -0.0803R, and the two do not sum to zero. They cannot. With a stop checked before a target, a long and a short opened on the same bar can **both** get stopped inside the month. That gap is the whipsaw, and it is charged to whoever is holding.
+
+A TAUTOLOGY I SHIPPED, THEN DELETED
+
+The first version of this file had a fifth selector: the recent window on its own, without demanding the others agree. It returned numbers identical to my engine's to sixteen decimal places.
+
+Not similar. Identical. Because the engine picks its side **as** the side with positive recent expectancy, so a filter asking "is recent expectancy positive?" can never exclude a call the engine did not already make. I had written a test that could only ever agree with the thing it was testing.
+
+I caught it because two rows in a table matched exactly, which is not something real data does. It is exactly the failure this post is about, committed inside the post that is about it.
+
+WHAT I AM CHANGING
+
+**The claim underneath the daily column changes.** It has been saying the positions survive because five lookbacks agree, as though agreement were evidence. The measured version is narrower and I would rather say it: **the unanimous cut is the only one of my filters that has not been ruled out**, on 156 trades and a t of 1.06. That is a reason to keep collecting, not a reason to size up.
+
+**223 of the 389 rows even had five windows to agree.** The rest are too young for the longest lookback to exist. So the filter I lean on hardest is silently unavailable on most of the market — which is its own piece, and it is next.
+
+WHAT I AM NOT CHANGING
+
+Not deleting the filters. "Cannot be told from luck" is not "refuted", and tearing out a rule on 156 trades would be the same over-reaction as keeping it on 156 trades.
+
+Not switching to a reversal rule. It lost, and it lost in a window where nearly everything did.
+
+Not re-running this until it says something nicer. The configuration was fixed before it ran: 61 pairs, 11 non-overlapping rebalances, costs charged every time. This one gets re-measured monthly rather than weekly, because a base rate over 45,445 pair-days does not move in seven days — and re-running a stable number weekly until it wobbles somewhere flattering is its own kind of cheating.
+
+WHAT THIS MEANS IF YOU TRADE
+
+Almost every retail method is a persistence bet wearing different clothes. Trend continuation. Higher highs. The break of a level "confirming" direction. Multi-timeframe alignment — which is agreement across windows, exactly what section A tests.
+
+I am not telling you those never work. I am telling you that on 61 liquid pairs, the raw base rate they all draw on measured **50.70%** at a one-month horizon, and that anything built on top of it has to pay for its stop, its target and its fees out of that.
+
+Ask the question of your own method: not "did it work in the past", but "does the property it detects continue". Those are different questions, and I spent four months answering the first one.
+
+Every figure: research/persistence.json, alongside last week's research/self-backtest.json. Both are on the site and you can recompute either.
+
+$BTC and the board: maix8.study/record
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Trading #RiskManagement #Crypto

@@ -1,0 +1,70 @@
+{
+  "day": "2026-08-15",
+  "measuredAt": "2026-08-15T23:59:27.191Z",
+  "rules": {
+    "stopAtr": 1.5,
+    "rewardRatio": 2,
+    "horizonDays": 30,
+    "feePct": 0.2,
+    "minEffectiveN": 12,
+    "accountBase": 1000,
+    "riskPct": 1,
+    "riskPerTradeUsd": 10
+  },
+  "taken": [
+    {
+      "symbol": "XRPUSDT",
+      "direction": "short",
+      "entry": 1.0028,
+      "atrPct": 2.814003293082755,
+      "stopPct": 4.221004939624132,
+      "stop": 1.0451282375345508,
+      "target": 0.9181435249308983,
+      "positionUsd": 236.91040742753717,
+      "fullNetR": 0.04746327933923483,
+      "recentNetR": 0.10261791851449256,
+      "fullEffectiveN": 32.333333333333336,
+      "agreesAcrossWindows": true,
+      "feeR": 0.04738208148550743,
+      "bias": "SHORT",
+      "turnoverUsd": 55612673.18197068,
+      "boardEffectiveN": 17
+    },
+    {
+      "symbol": "PEPEUSDT",
+      "direction": "short",
+      "entry": 0.00000262,
+      "atrPct": 5.174050250392699,
+      "stopPct": 7.761075375589048,
+      "stop": 0.0000028233401748404333,
+      "target": 0.0000022133196503191336,
+      "positionUsd": 128.84812369498502,
+      "fullNetR": 0.03505511752904423,
+      "recentNetR": 0.03673037526100299,
+      "fullEffectiveN": 32.333333333333336,
+      "agreesAcrossWindows": true,
+      "feeR": 0.025769624738997007,
+      "bias": "SHORT",
+      "turnoverUsd": 13170992.340687271,
+      "boardEffectiveN": 17
+    },
+    {
+      "symbol": "SUIUSDT",
+      "direction": "short",
+      "entry": 0.6774,
+      "atrPct": 3.4177899935156484,
+      "stopPct": 5.126684990273473,
+      "stop": 0.7121281641241125,
+      "target": 0.607943671751775,
+      "positionUsd": 195.05782038436828,
+      "fullNetR": 0.03418431221178614,
+      "recentNetR": 0.09848843592312635,
+      "fullEffectiveN": 32.333333333333336,
+      "agreesAcrossWindows": true,
+      "feeR": 0.03901156407687366,
+      "bias": "SHORT",
+      "turnoverUsd": 12909642.69526667,
+      "boardEffectiveN": 17
+    }
+  ]
+}

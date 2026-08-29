@@ -1,21 +1,21 @@
-Có người gửi tôi bản so sánh $ICP với $AVAX, kết luận ICP có nền sạch hơn. Tôi đo lại bằng cùng một thước cho cả hai.
+Someone sent me a comparison of $ICP against $AVAX concluding that ICP has the cleaner base. I measured both with the same ruler.
 
-Họ đúng. Nền ICP rộng 12.35%, AVAX 14.53%. ICP cách đỉnh nền 2.97%, AVAX 7.06%. Chặt hơn và gần hơn.
+They are right. ICP's base is 12.35% wide, AVAX's is 14.53%. ICP sits 2.97% below the top of its base, AVAX 7.06%. Tighter, and closer.
 
-Nhưng bản so sánh bỏ sót con số lớn nhất bảng: **ICP đang cách đỉnh lịch sử 99.7%**. AVAX 95.5%.
+But the comparison leaves out the largest number on the board: **ICP is 99.7% below its all-time high**. AVAX is 95.5%.
 
-Để về lại đỉnh cũ, AVAX cần 22 lần. ICP cần **320 lần**. Hai con số đó không cùng một loại.
+To get back to the old high, AVAX needs 22 times. ICP needs **320 times**. Those two numbers are not the same kind of thing.
 
-Và "AVAX thanh khoản tốt hơn" đúng về mức, sai về ý nghĩa. AVAX khớp $102.4 triệu so với $45.9 triệu. Nhưng tính theo phần trăm vốn hoá: 3.66% với 3.78%. Tỷ lệ 0.97. Lợi thế thanh khoản của AVAX là lợi thế **kích cỡ**, không phải chất lượng.
+And "AVAX has better liquidity" is right about the level and wrong about what it means. AVAX trades $102.4 million against $45.9 million. But as a share of market cap: 3.66% against 3.78%. A ratio of 0.97. AVAX's liquidity advantage is an advantage of **size**, not of quality.
 
-Khoảng cách thật sự tách hai đồng này chẳng ai nhắc: **hàng kẹt trên đầu**. ICP 27.3% khối lượng tháng nằm trên giá. AVAX 65.7%. Chênh 38.3 điểm — gấp nhiều lần chênh lệch bề rộng nền.
+The gap that actually separates these two is the one nobody mentions: **supply trapped overhead**. 27.3% of ICP's monthly volume sits above the current price. For AVAX it is 65.7%. A 38.3-point difference — several times the difference in base width.
 
-Xu hướng khối lượng cũng ngược nhau: ICP 8.1%, AVAX -56.5%.
+The volume trends point opposite ways too: ICP 8.1%, AVAX -56.5%.
 
-Quan điểm: CHỜ. Tôi đo nén biên độ trên 43,088 pair-day: 1.01x, 0.09 sigma. Nền đẹp mô tả quá khứ, không dự báo gì.
+Bias: WAIT. I measured range compression across 43,088 pair-days: 1.01x, 0.09 sigma. A clean base describes the past. It forecasts nothing.
 
-Bạn chọn nền sạch hay ít hàng kẹt?
+Would you take the clean base, or the lighter overhead supply?
 
-Nghiên cứu giáo dục, không phải lời khuyên đầu tư.
+Educational research, not financial advice.
 
 #Altcoins #MarketAnalysis #WriteToEarn

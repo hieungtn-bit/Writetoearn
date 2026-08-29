@@ -33,6 +33,24 @@ for (const article of manifest.articles) {
 // Worked examples come from site/lesson-data.json, captured by
 // scripts/refresh-lessons.mjs. The build stays offline on purpose: a deploy
 // must not fail because an exchange is unreachable from the build region.
+// The signal board, when a scan has been committed. Optional: a clean checkout
+// that has never run scripts/scan-daily.mjs still builds, and the build never
+// reaches for the market to fill the gap.
+const signalsPath = path.join(root, "site", "signals.json");
+const signals = fs.existsSync(signalsPath)
+  ? JSON.parse(fs.readFileSync(signalsPath, "utf8"))
+  : null;
+
+// Every archived scan, so the board's date picker has something to pick from.
+// Read from disk rather than fetched: the build stays offline.
+const archiveDir = path.join(root, "site", "signals-archive");
+const archive = {};
+if (fs.existsSync(archiveDir)) {
+  for (const file of fs.readdirSync(archiveDir).filter((f) => f.endsWith(".json"))) {
+    archive[file.replace(/\.json$/, "")] = JSON.parse(fs.readFileSync(path.join(archiveDir, file), "utf8"));
+  }
+}
+
 const dataPath = path.join(root, "site", "lesson-data.json");
 if (!fs.existsSync(dataPath)) {
   console.error(`Missing ${dataPath}. Run: node scripts/refresh-lessons.mjs`);
@@ -49,7 +67,19 @@ const lessons = LESSONS.map((lesson) => {
   return { ...lesson, example, measuredAt: lessonData.measuredAt };
 });
 
-const files = buildSite(manifest, drafts, lessons);
+/**
+ * The public record, when it has been exported.
+ *
+ * Optional for the same reason the board is: a clean checkout that has never
+ * published anything must still build. Regenerate it with
+ * `node scripts/build-record.mjs` before a deploy that should show fresh calls.
+ */
+const recordPath = path.join(root, "site", "record.json");
+const record = fs.existsSync(recordPath)
+  ? JSON.parse(fs.readFileSync(recordPath, "utf8"))
+  : null;
+
+const files = buildSite(manifest, drafts, lessons, signals, archive, record);
 
 fs.rmSync(out, { recursive: true, force: true });
 for (const f of files) {
@@ -58,5 +88,43 @@ for (const f of files) {
   fs.writeFileSync(dest, f.content);
 }
 
+/**
+ * Research snapshots, copied verbatim into the deploy.
+ *
+ * Every post ends by naming the file its figures came from. Serving those files
+ * is what turns that sentence from a promise into something a reader can open.
+ */
+const dataSrc = path.join(root, "site", "data");
+let snapshots = 0;
+if (fs.existsSync(dataSrc)) {
+  const dataOut = path.join(out, "data");
+  fs.mkdirSync(dataOut, { recursive: true });
+  for (const f of fs.readdirSync(dataSrc).filter((n) => n.endsWith(".json"))) {
+    fs.copyFileSync(path.join(dataSrc, f), path.join(dataOut, f));
+    snapshots += 1;
+  }
+}
+
+/**
+ * Syndication is rebuilt here, last, because this script deletes the whole
+ * output directory first.
+ *
+ * It was a separate command run before this one, and the rmSync above removed
+ * every file it had just written. The build reported "638 files" and the
+ * deploy shipped none of them, twice, without anything failing — the two
+ * commands each succeeded and only their order was wrong.
+ *
+ * Ordering by convention did not survive contact with a human running them in
+ * the order they were written in a note, so the site build now owns it: one
+ * command, one output directory, no way to sequence them wrongly.
+ */
+let syndicated = 0;
+if (out === path.resolve(root, "site/dist")) {
+  const { buildSyndication } = await import("./build-syndication.mjs");
+  syndicated = buildSyndication({ quiet: true });
+}
+
 const bytes = files.reduce((s, f) => s + Buffer.byteLength(f.content), 0);
-console.log(`Built ${files.length} files (${(bytes / 1024).toFixed(0)} KB) into ${out}`);
+console.log(`Built ${files.length} files (${(bytes / 1024).toFixed(0)} KB) into ${out}`
+  + (snapshots ? ` · ${snapshots} research snapshot(s) served at /data/` : "")
+  + (syndicated ? ` · ${syndicated} syndication file(s)` : ""));

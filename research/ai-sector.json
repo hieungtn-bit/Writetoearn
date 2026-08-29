@@ -1,0 +1,345 @@
+{
+  "measuredAt": "2026-08-22T02:12:14.219Z",
+  "source": "Binance spot daily klines",
+  "windowDays": 180,
+  "basket": [
+    "RENDERUSDT",
+    "TAOUSDT",
+    "FETUSDT",
+    "ICPUSDT",
+    "VIRTUALUSDT",
+    "ARKMUSDT",
+    "WLDUSDT",
+    "AIXBTUSDT",
+    "IOUSDT",
+    "GRTUSDT"
+  ],
+  "namedByBrief": [
+    "RENDERUSDT",
+    "TAOUSDT",
+    "FETUSDT",
+    "ICPUSDT",
+    "VIRTUALUSDT",
+    "AKTUSDT"
+  ],
+  "unlistedHere": "AKTUSDT",
+  "excluded": {
+    "symbol": "PHBUSDT",
+    "reason": "moved -69% on a token event; one corporate action would decide the statistic"
+  },
+  "belowLiquidityFloor": [
+    "AIUSDT"
+  ],
+  "minTurnoverUsd": 1000000,
+  "betas": [
+    {
+      "symbol": "VIRTUALUSDT",
+      "beta": 1.3980403422945562,
+      "alphaDailyPct": -0.01668387608481757,
+      "rsq": 0.4745725404117477,
+      "alphaWindowPct": -2.9584527431253727,
+      "price": 0.7392,
+      "changePct": 14.445,
+      "turnoverUsd": 10728883.21556
+    },
+    {
+      "symbol": "FETUSDT",
+      "beta": 1.3826837472114546,
+      "alphaDailyPct": -0.06465046000859245,
+      "rsq": 0.37620833465918724,
+      "alphaWindowPct": -10.985492864382685,
+      "price": 0.1731,
+      "changePct": 18.48,
+      "turnoverUsd": 24673166.85401
+    },
+    {
+      "symbol": "AIXBTUSDT",
+      "beta": 1.2439085886442593,
+      "alphaDailyPct": -0.023560399298193486,
+      "rsq": 0.2446011636383869,
+      "alphaWindowPct": -4.152204739376685,
+      "price": 0.02199,
+      "changePct": 11.908,
+      "turnoverUsd": 1046634.296094
+    },
+    {
+      "symbol": "TAOUSDT",
+      "beta": 1.1413828744889702,
+      "alphaDailyPct": 0.06790230565368074,
+      "rsq": 0.31111738028242797,
+      "alphaWindowPct": 13.00073647451847,
+      "price": 230.8,
+      "changePct": 5.92,
+      "turnoverUsd": 42274928.72525
+    },
+    {
+      "symbol": "ARKMUSDT",
+      "beta": 1.1226410017565822,
+      "alphaDailyPct": -0.06538077873752494,
+      "rsq": 0.2884865448751103,
+      "alphaWindowPct": -11.102432115983497,
+      "price": 0.1127,
+      "changePct": 15.471,
+      "turnoverUsd": 1389338.01333
+    },
+    {
+      "symbol": "WLDUSDT",
+      "beta": 1.0713585686807412,
+      "alphaDailyPct": -0.03995664120025226,
+      "rsq": 0.11486422554082565,
+      "alphaWindowPct": -6.939647728973042,
+      "price": 0.4163,
+      "changePct": 11.549,
+      "turnoverUsd": 36295328.26855
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "beta": 1.0608904457644277,
+      "alphaDailyPct": -0.03481629038987851,
+      "rsq": 0.38408805278361147,
+      "alphaWindowPct": -6.074598767859896,
+      "price": 1.549,
+      "changePct": 9.625,
+      "turnoverUsd": 6785862.15184
+    },
+    {
+      "symbol": "IOUSDT",
+      "beta": 1.0310028854183735,
+      "alphaDailyPct": 0.05411207741991794,
+      "rsq": 0.20980904489447183,
+      "alphaWindowPct": 10.230312322676415,
+      "price": 0.1432,
+      "changePct": 7.669,
+      "turnoverUsd": 1899014.426676
+    },
+    {
+      "symbol": "GRTUSDT",
+      "beta": 1.018104819437264,
+      "alphaDailyPct": -0.320485904152457,
+      "rsq": 0.5166736739175305,
+      "alphaWindowPct": -43.83490050809993,
+      "price": 0.01731,
+      "changePct": 13.957,
+      "turnoverUsd": 1974007.8449
+    },
+    {
+      "symbol": "ICPUSDT",
+      "beta": 0.7770349026232475,
+      "alphaDailyPct": 0.03338848771129209,
+      "rsq": 0.16660863880401444,
+      "alphaWindowPct": 6.194196865990853,
+      "price": 2.559,
+      "changePct": 6.315,
+      "turnoverUsd": 9686385.001
+    }
+  ],
+  "cohesion": {
+    "aiWithinCorr": 0.4046037248852828,
+    "pairs": 45,
+    "controlBaskets": 200,
+    "controlMeanCorr": 0.11632061743278461,
+    "controlSd": 0.04868256667542569,
+    "percentileVsControl": 100,
+    "zVsControl": 5.921690805140306,
+    "poolSize": 260,
+    "skippedShortHistory": 300,
+    "leaveOneOut": [
+      {
+        "dropped": "ARKMUSDT",
+        "withinCorr": 0.3770307486116116,
+        "controlMean": 0.11086893384396432,
+        "z": 4.499823431170592
+      },
+      {
+        "dropped": "RENDERUSDT",
+        "withinCorr": 0.3908192784783026,
+        "controlMean": 0.12300281217987963,
+        "z": 5.367947217496411
+      },
+      {
+        "dropped": "VIRTUALUSDT",
+        "withinCorr": 0.3970005683378173,
+        "controlMean": 0.10130739217893424,
+        "z": 5.500955104165307
+      },
+      {
+        "dropped": "ICPUSDT",
+        "withinCorr": 0.40844162732843015,
+        "controlMean": 0.1112516594219751,
+        "z": 5.769811198063064
+      },
+      {
+        "dropped": "IOUSDT",
+        "withinCorr": 0.4080716903079933,
+        "controlMean": 0.10777526845214838,
+        "z": 5.88709196602498
+      },
+      {
+        "dropped": "GRTUSDT",
+        "withinCorr": 0.39873764624086677,
+        "controlMean": 0.10114338414664711,
+        "z": 6.130540383123551
+      },
+      {
+        "dropped": "WLDUSDT",
+        "withinCorr": 0.41458599993541906,
+        "controlMean": 0.1087584640129537,
+        "z": 6.158238666625747
+      },
+      {
+        "dropped": "FETUSDT",
+        "withinCorr": 0.3903887913155493,
+        "controlMean": 0.11291443955010018,
+        "z": 6.210548558901417
+      },
+      {
+        "dropped": "AIXBTUSDT",
+        "withinCorr": 0.4251948361269202,
+        "controlMean": 0.09921956604581081,
+        "z": 6.50789564422733
+      },
+      {
+        "dropped": "TAOUSDT",
+        "withinCorr": 0.4357660621699188,
+        "controlMean": 0.10662718738915641,
+        "z": 7.318084170820923
+      }
+    ],
+    "weakestAfterDropping": {
+      "dropped": "ARKMUSDT",
+      "withinCorr": 0.3770307486116116,
+      "controlMean": 0.11086893384396432,
+      "z": 4.499823431170592
+    }
+  },
+  "render": {
+    "beta": 1.0608904457644277,
+    "alphaDailyPct": -0.03481629038987851,
+    "rsq": 0.38408805278361147,
+    "atrPct": 3.5691229364567008,
+    "priceUsd": 1.549,
+    "changePct": 9.625,
+    "turnoverUsd": 6785862.15184,
+    "bases": [
+      {
+        "days": 20,
+        "highUsd": 1.536,
+        "lowUsd": 1.226,
+        "widthPct": 25.285481239804252,
+        "dailyRangesWide": 7.084508348403035,
+        "lastCloseUsd": 1.549,
+        "positionInRangePct": 104.19354838709674
+      },
+      {
+        "days": 40,
+        "highUsd": 1.565,
+        "lowUsd": 1.226,
+        "widthPct": 27.650897226753667,
+        "dailyRangesWide": 7.747252677769766,
+        "lastCloseUsd": 1.549,
+        "positionInRangePct": 95.28023598820059
+      },
+      {
+        "days": 60,
+        "highUsd": 1.641,
+        "lowUsd": 1.226,
+        "widthPct": 33.84991843393148,
+        "dailyRangesWide": 9.484099885765348,
+        "lastCloseUsd": 1.549,
+        "positionInRangePct": 77.8313253012048
+      }
+    ]
+  },
+  "today": [
+    {
+      "symbol": "FETUSDT",
+      "price": 0.1731,
+      "changePct": 18.48,
+      "turnoverUsd": 24673166.85401
+    },
+    {
+      "symbol": "ARKMUSDT",
+      "price": 0.1127,
+      "changePct": 15.471,
+      "turnoverUsd": 1389338.01333
+    },
+    {
+      "symbol": "VIRTUALUSDT",
+      "price": 0.7392,
+      "changePct": 14.445,
+      "turnoverUsd": 10728883.21556
+    },
+    {
+      "symbol": "GRTUSDT",
+      "price": 0.01731,
+      "changePct": 13.957,
+      "turnoverUsd": 1974007.8449
+    },
+    {
+      "symbol": "AIXBTUSDT",
+      "price": 0.02199,
+      "changePct": 11.908,
+      "turnoverUsd": 1046634.296094
+    },
+    {
+      "symbol": "WLDUSDT",
+      "price": 0.4163,
+      "changePct": 11.549,
+      "turnoverUsd": 36295328.26855
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "price": 1.549,
+      "changePct": 9.625,
+      "turnoverUsd": 6785862.15184
+    },
+    {
+      "symbol": "IOUSDT",
+      "price": 0.1432,
+      "changePct": 7.669,
+      "turnoverUsd": 1899014.426676
+    },
+    {
+      "symbol": "ICPUSDT",
+      "price": 2.559,
+      "changePct": 6.315,
+      "turnoverUsd": 9686385.001
+    },
+    {
+      "symbol": "TAOUSDT",
+      "price": 230.8,
+      "changePct": 5.92,
+      "turnoverUsd": 42274928.72525
+    }
+  ],
+  "quoted": [
+    {
+      "symbol": "RENDERUSDT",
+      "lowUsd": 1.48,
+      "highUsd": 1.53,
+      "actualUsd": 1.549,
+      "inRange": false
+    },
+    {
+      "symbol": "TAOUSDT",
+      "lowUsd": 225,
+      "highUsd": 235,
+      "actualUsd": 230.8,
+      "inRange": true
+    },
+    {
+      "symbol": "FETUSDT",
+      "lowUsd": 0.165,
+      "highUsd": 0.175,
+      "actualUsd": 0.1731,
+      "inRange": true
+    },
+    {
+      "symbol": "ICPUSDT",
+      "lowUsd": 2.45,
+      "highUsd": 2.55,
+      "actualUsd": 2.559,
+      "inRange": false
+    }
+  ]
+}

@@ -1,0 +1,407 @@
+{
+  "measuredAt": "2026-08-25T03:21:58.154Z",
+  "symbol": "ENAUSDT",
+  "sources": {
+    "price": "Binance spot daily klines",
+    "fundingHistory": "data.binance.vision monthly fundingRate dumps, cached",
+    "fundingLive": "OKX perpetual funding-rate"
+  },
+  "tape": {
+    "priceUsd": 0.1555,
+    "changePct24h": -4.543,
+    "turnoverUsd": 62545206.306243,
+    "atrPct": 9.196141479099676,
+    "dailyBars": 876,
+    "firstBar": "2024-04-02",
+    "allTimeHighUsd": 1.523,
+    "drawdownFromHighPct": -89.78988837820093,
+    "medianDailyRangePct": 9.418142569788554
+  },
+  "engineLegs": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT"
+  ],
+  "archiveEndsAt": "2026-07-31T16:00:00.000Z",
+  "fundingMonthsMissing": {
+    "BTCUSDT": 13,
+    "ETHUSDT": 13,
+    "SOLUSDT": 2
+  },
+  "fundingVsPrice": {
+    "windows": 28,
+    "windowDays": 30,
+    "corrWithUsdReturn": 0.5482437837292071,
+    "corrWithVsBtcReturn": 0.47850056716695055,
+    "meanFundingPct": 4.206721609126985,
+    "medianFundingPct": 4.118737055555555,
+    "windowsWithNegativeFunding": 5,
+    "meanVsBtcPct": -2.8718748893598574,
+    "usdTest": {
+      "t": 3.34263263494813,
+      "p": 0.0025240304450283918
+    },
+    "vsBtcTest": {
+      "t": 2.778634751015317,
+      "p": 0.010001884301105008
+    }
+  },
+  "control": {
+    "tokens": 48,
+    "minTurnoverUsd": 5000000,
+    "meanCorr": 0.25661591287849894,
+    "medianCorr": 0.2630480464790187,
+    "sdCorr": 0.24786246801259854,
+    "enaPercentile": 77.08333333333334,
+    "highest": [
+      {
+        "symbol": "XRPUSDT",
+        "corr": 0.6626478689165707,
+        "windows": 28
+      },
+      {
+        "symbol": "ADAUSDT",
+        "corr": 0.6425804749221097,
+        "windows": 28
+      },
+      {
+        "symbol": "XLMUSDT",
+        "corr": 0.6410758218732246,
+        "windows": 28
+      },
+      {
+        "symbol": "HBARUSDT",
+        "corr": 0.6349662839622301,
+        "windows": 28
+      },
+      {
+        "symbol": "DOGEUSDT",
+        "corr": 0.6092303363281184,
+        "windows": 28
+      }
+    ],
+    "lowest": [
+      {
+        "symbol": "TAOUSDT",
+        "corr": -0.23983018296765304,
+        "windows": 28
+      },
+      {
+        "symbol": "PROMUSDT",
+        "corr": -0.18450104060794845,
+        "windows": 28
+      },
+      {
+        "symbol": "FETUSDT",
+        "corr": -0.12794659386898122,
+        "windows": 28
+      },
+      {
+        "symbol": "ZECUSDT",
+        "corr": -0.1066694522150281,
+        "windows": 28
+      },
+      {
+        "symbol": "BNBUSDT",
+        "corr": -0.06565712470719529,
+        "windows": 28
+      }
+    ]
+  },
+  "windows": [
+    {
+      "from": "2024-04-12",
+      "to": "2024-05-12",
+      "fundingAnnualisedPct": 6.031933222222223,
+      "enaReturnPct": -38.62973760932945,
+      "btcReturnPct": -13.113461473357436,
+      "enaVsBtcPct": -25.516276135972017
+    },
+    {
+      "from": "2024-05-12",
+      "to": "2024-06-11",
+      "fundingAnnualisedPct": 11.033917555555549,
+      "enaReturnPct": -8.432304038004744,
+      "btcReturnPct": 14.326129340434912,
+      "enaVsBtcPct": -22.758433378439655
+    },
+    {
+      "from": "2024-06-11",
+      "to": "2024-07-11",
+      "fundingAnnualisedPct": 8.717672166666674,
+      "enaReturnPct": -46.17380025940337,
+      "btcReturnPct": -16.988999137187232,
+      "enaVsBtcPct": -29.18480112221614
+    },
+    {
+      "from": "2024-07-11",
+      "to": "2024-08-10",
+      "fundingAnnualisedPct": 5.847835333333334,
+      "enaReturnPct": -24.819277108433734,
+      "btcReturnPct": 5.3912415321731855,
+      "enaVsBtcPct": -30.21051864060692
+    },
+    {
+      "from": "2024-08-10",
+      "to": "2024-09-09",
+      "fundingAnnualisedPct": 1.1591548333333335,
+      "enaReturnPct": -29.487179487179482,
+      "btcReturnPct": -9.80972579797591,
+      "enaVsBtcPct": -19.677453689203574
+    },
+    {
+      "from": "2024-09-09",
+      "to": "2024-10-09",
+      "fundingAnnualisedPct": 4.597207444444444,
+      "enaReturnPct": 28.454545454545467,
+      "btcReturnPct": 13.286944857795579,
+      "enaVsBtcPct": 15.167600596749889
+    },
+    {
+      "from": "2024-10-09",
+      "to": "2024-11-08",
+      "fundingAnnualisedPct": 9.285299888888893,
+      "enaReturnPct": 79.83014861995753,
+      "btcReturnPct": 22.035540582128622,
+      "enaVsBtcPct": 57.79460803782891
+    },
+    {
+      "from": "2024-11-08",
+      "to": "2024-12-08",
+      "fundingAnnualisedPct": 21.592122499999995,
+      "enaReturnPct": 106.55253837072021,
+      "btcReturnPct": 31.60396367470808,
+      "enaVsBtcPct": 74.94857469601213
+    },
+    {
+      "from": "2024-12-08",
+      "to": "2025-01-07",
+      "fundingAnnualisedPct": 8.349594000000002,
+      "enaReturnPct": 11.650947889873287,
+      "btcReturnPct": 2.4076551013357594,
+      "enaVsBtcPct": 9.243292788537527
+    },
+    {
+      "from": "2025-01-07",
+      "to": "2025-02-06",
+      "fundingAnnualisedPct": 4.832113333333334,
+      "enaReturnPct": -53.14846416382252,
+      "btcReturnPct": -5.500207364166698,
+      "enaVsBtcPct": -47.64825679965582
+    },
+    {
+      "from": "2025-02-06",
+      "to": "2025-03-08",
+      "fundingAnnualisedPct": 1.9401128888888894,
+      "enaReturnPct": -22.01784738663267,
+      "btcReturnPct": -10.154676784343375,
+      "enaVsBtcPct": -11.863170602289296
+    },
+    {
+      "from": "2025-03-08",
+      "to": "2025-04-07",
+      "fundingAnnualisedPct": 0.801353444444445,
+      "enaReturnPct": -35.47407753386269,
+      "btcReturnPct": -9.644678822719587,
+      "enaVsBtcPct": -25.829398711143103
+    },
+    {
+      "from": "2025-04-07",
+      "to": "2025-05-07",
+      "fundingAnnualisedPct": 0.36993561111111123,
+      "enaReturnPct": -2.352515381831344,
+      "btcReturnPct": 23.46553614688258,
+      "enaVsBtcPct": -25.818051528713923
+    },
+    {
+      "from": "2025-05-07",
+      "to": "2025-06-06",
+      "fundingAnnualisedPct": 5.314789333333335,
+      "enaReturnPct": 5.226093402520382,
+      "btcReturnPct": 4.827497608794906,
+      "enaVsBtcPct": 0.3985957937254758
+    },
+    {
+      "from": "2025-06-06",
+      "to": "2025-07-06",
+      "fundingAnnualisedPct": 3.4327114444444446,
+      "enaReturnPct": -10.179640718562865,
+      "btcReturnPct": 6.590017720652064,
+      "enaVsBtcPct": -16.76965843921493
+    },
+    {
+      "from": "2025-07-06",
+      "to": "2025-08-05",
+      "fundingAnnualisedPct": 7.793812555555556,
+      "enaReturnPct": 136.86274509803923,
+      "btcReturnPct": 6.337365196363853,
+      "enaVsBtcPct": 130.52537990167536
+    },
+    {
+      "from": "2025-08-05",
+      "to": "2025-09-04",
+      "fundingAnnualisedPct": 6.726090222222222,
+      "enaReturnPct": 20.960264900662253,
+      "btcReturnPct": -2.911059168816865,
+      "enaVsBtcPct": 23.87132406947912
+    },
+    {
+      "from": "2025-09-04",
+      "to": "2025-10-04",
+      "fundingAnnualisedPct": 3.989701444444444,
+      "enaReturnPct": -15.617300848617566,
+      "btcReturnPct": 9.423233601934932,
+      "enaVsBtcPct": -25.0405344505525
+    },
+    {
+      "from": "2025-10-04",
+      "to": "2025-11-03",
+      "fundingAnnualisedPct": -1.7704568333333393,
+      "enaReturnPct": -39.253852392538526,
+      "btcReturnPct": -9.564860265724207,
+      "enaVsBtcPct": -29.68899212681432
+    },
+    {
+      "from": "2025-11-03",
+      "to": "2025-12-03",
+      "fundingAnnualisedPct": 3.145302333333333,
+      "enaReturnPct": -28.010680907877173,
+      "btcReturnPct": -17.42598290511691,
+      "enaVsBtcPct": -10.584698002760263
+    },
+    {
+      "from": "2025-12-03",
+      "to": "2026-01-02",
+      "fundingAnnualisedPct": 4.247772666666666,
+      "enaReturnPct": -19.287833827893188,
+      "btcReturnPct": -2.6718850174872744,
+      "enaVsBtcPct": -16.615948810405914
+    },
+    {
+      "from": "2026-01-02",
+      "to": "2026-02-01",
+      "fundingAnnualisedPct": 3.4693979999999995,
+      "enaReturnPct": -36.25919117647059,
+      "btcReturnPct": -11.366568121402477,
+      "enaVsBtcPct": -24.89262305506811
+    },
+    {
+      "from": "2026-02-01",
+      "to": "2026-03-03",
+      "fundingAnnualisedPct": -5.299479611111111,
+      "enaReturnPct": -17.880317231434738,
+      "btcReturnPct": -12.586859033828457,
+      "enaVsBtcPct": -5.293458197606281
+    },
+    {
+      "from": "2026-03-03",
+      "to": "2026-04-02",
+      "fundingAnnualisedPct": -2.896960388888889,
+      "enaReturnPct": -20.807726075504828,
+      "btcReturnPct": -1.0404465723261036,
+      "enaVsBtcPct": -19.767279503178724
+    },
+    {
+      "from": "2026-04-02",
+      "to": "2026-05-02",
+      "fundingAnnualisedPct": -1.196457833333333,
+      "enaReturnPct": 13.192904656319282,
+      "btcReturnPct": 14.853366242906008,
+      "enaVsBtcPct": -1.6604615865867256
+    },
+    {
+      "from": "2026-05-02",
+      "to": "2026-06-01",
+      "fundingAnnualisedPct": 2.446396277777778,
+      "enaReturnPct": -13.712047012732608,
+      "btcReturnPct": -5.8247145349939355,
+      "enaVsBtcPct": -7.887332477738672
+    },
+    {
+      "from": "2026-06-01",
+      "to": "2026-07-01",
+      "fundingAnnualisedPct": -0.4723992222222232,
+      "enaReturnPct": -18.047673098751417,
+      "btcReturnPct": -20.42728823407971,
+      "enaVsBtcPct": 2.3796151353282937
+    },
+    {
+      "from": "2026-07-01",
+      "to": "2026-07-31",
+      "fundingAnnualisedPct": 4.299732444444445,
+      "enaReturnPct": 12.465373961218829,
+      "btcReturnPct": 10.499514624464656,
+      "enaVsBtcPct": 1.965859336754173
+    }
+  ],
+  "fundingPercentileNow": 32.72050045365551,
+  "recentWindowFundingPct": 4.299732444444445,
+  "liveFunding": [
+    {
+      "instrument": "BTC-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.950000000000001
+    },
+    {
+      "instrument": "ETH-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.950000000000001
+    },
+    {
+      "instrument": "SOL-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.950000000000001
+    },
+    {
+      "instrument": "ENA-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.005,
+      "annualisedPct": 5.4750000000000005
+    }
+  ],
+  "liveEngineMeanAnnualisedPct": 10.950000000000001,
+  "marketModel": {
+    "days": 180,
+    "beta": 1.3589737571183187,
+    "alphaDailyPct": 0.08204675354398683,
+    "alphaWindowPct": 15.914672944018227
+  },
+  "bases": [
+    {
+      "days": 20,
+      "highUsd": 0.1835,
+      "lowUsd": 0.0811,
+      "widthPct": 126.26387176325524,
+      "dailyRangesWide": 13.730092349081255,
+      "positionInRangePct": 72.65625
+    },
+    {
+      "days": 40,
+      "highUsd": 0.1835,
+      "lowUsd": 0.077,
+      "widthPct": 138.3116883116883,
+      "dailyRangesWide": 15.040187085641634,
+      "positionInRangePct": 73.70892018779342
+    },
+    {
+      "days": 60,
+      "highUsd": 0.1835,
+      "lowUsd": 0.0702,
+      "widthPct": 161.39601139601137,
+      "dailyRangesWide": 17.55040543502082,
+      "positionInRangePct": 75.28684907325685
+    }
+  ],
+  "board": {
+    "scannedAt": "2026-08-21T23:57:56.227Z",
+    "bias": "LONG",
+    "side": "long",
+    "agreeing": 1,
+    "windows": 5,
+    "effectiveN": 5,
+    "reason": "long pays in 59 of 64 geometries"
+  }
+}

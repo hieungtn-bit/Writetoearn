@@ -8,6 +8,8 @@
  * instead of going out under the account owner's name.
  */
 
+import { verifyEnglish } from "./lang.mjs";
+
 /** Numbers that carry no market claim and appear constantly in prose. */
 const STRUCTURAL_MAX = 100;
 
@@ -43,6 +45,19 @@ const SUFFIXES = { k: 1e3, m: 1e6, b: 1e9 };
  * is a different word, and guessing is how a billion becomes a thousand.
  */
 const WORD_SUFFIXES = { nghìn: 1e3, ngàn: 1e3, triệu: 1e6, tỷ: 1e9, tỉ: 1e9 };
+
+/**
+ * Compounds where "tỷ"/"tỉ" is not a magnitude at all.
+ *
+ * "tỷ lệ" is ratio, "tỷ giá" is exchange rate, "tỷ trọng" is proportion — none
+ * of them mean a billion, and all of them routinely follow a number. "5 tỷ lệ
+ * được–mất" is five ratios; read as a magnitude it becomes five billion, and
+ * the gate then demands the market vouch for a figure the writer never wrote.
+ *
+ * Only the head word is excluded, so "5 tỷ đô" and "1.2 tỷ vốn hoá" still parse
+ * as magnitudes the way they should.
+ */
+const NOT_A_MAGNITUDE = String.raw`(?!\s+(?:lệ|giá|trọng))`;
 
 /**
  * Pulls every numeric literal out of the text, keeping enough context to tell
@@ -86,7 +101,12 @@ export function extractNumbers(text) {
   const insideDate = (i) => skipSpans.some(([a, b]) => i >= a && i < b);
   // A magnitude suffix has to sit flush against the digits and not begin a
   // word: without both guards, "66,956\n\nBias:" reads as 66,956 billion.
-  const re = /(\d[\d,]*(?:\.\d+)?)(?:\s*(nghìn|ngàn|triệu|tỷ|tỉ)|([KkMmBb])(?![A-Za-z]))?(\s*%)?/giu;
+  const re = new RegExp(
+    String.raw`(\d[\d,]*(?:\.\d+)?)`
+    + String.raw`(?:\s*(nghìn|ngàn|triệu|(?:tỷ|tỉ)${NOT_A_MAGNITUDE})|([KkMmBb])(?![A-Za-z]))?`
+    + String.raw`(\s*%)?`,
+    "giu",
+  );
 
   for (const m of text.matchAll(re)) {
     if (insideDate(m.index)) continue;
@@ -132,7 +152,8 @@ function pushAssetNumbers(push, a) {
   push(a.avgQuoteVolume30d);
   push(a.upDownVolumeRatio30d);
   push(a.upDownVolumeRatio90d);
-  push(a.quoteVolumeLatest);
+  push(a.quoteVolumePartialDay);
+  push(a.quoteVolumeLastCompleteDay);
   push(a.rangeCompressionPct);
   push(a.todayChangePct);
   push(a.dailySigmaPct);
@@ -305,11 +326,44 @@ export function collectBriefNumbers(brief) {
   return values;
 }
 
-function matches(value, allowed) {
+/**
+ * How many decimal places a figure was written to.
+ *
+ * The precision of the statement, not of the underlying value — "3.56" asserts
+ * something to within half of a hundredth, "3.6" only to within half a tenth.
+ */
+function printedDecimals(raw) {
+  const m = /\.(\d+)/.exec(String(raw ?? ""));
+  return m ? m[1].length : 0;
+}
+
+/**
+ * Does a written figure trace to one of the values the data vouches for?
+ *
+ * Two allowances, and the wider of the two wins.
+ *
+ * The relative one is the original: 0.5% of scale, which keeps "63.2K" matched
+ * to 63,250 and stops a large figure needing absurd precision.
+ *
+ * The second exists because the first was generating *false rejections* on
+ * small numbers, twice in one day. A true value of 3.56 printed as "3.6" is a
+ * 1.1% relative error and the gate refused it — correctly by its own rule, and
+ * wrongly by any reasonable reading, since 3.6 is what 3.56 rounds to. Rounding
+ * is not fabrication. So a figure also matches when it is within half a unit of
+ * its own printed precision, which is exactly the range of true values that
+ * round to what was written.
+ *
+ * This never weakens the gate: an invented number is not within half a printed
+ * unit of anything real, and the relative allowance is unchanged where it was
+ * already the looser of the two.
+ */
+function matches(value, allowed, raw) {
   const target = Math.abs(value);
+  const halfStep = 0.5 * 10 ** -printedDecimals(raw);
   return allowed.some((a) => {
     const scale = Math.max(Math.abs(a), target, 1);
-    return Math.abs(a - target) / scale <= TOLERANCE;
+    const diff = Math.abs(a - target);
+    return diff / scale <= TOLERANCE || diff <= halfStep;
   });
 }
 
@@ -337,7 +391,7 @@ export function verifyNumbers(text, brief, { screen, candles, stages, study } = 
     if (structural) continue;
 
     checked++;
-    if (!matches(n.value, allowed)) unmatched.push({ raw: n.raw, value: n.value });
+    if (!matches(n.value, allowed, n.raw)) unmatched.push({ raw: n.raw, value: n.value });
   }
 
   return { ok: unmatched.length === 0, unmatched, checked };
@@ -355,15 +409,61 @@ const FORBIDDEN = [
  * me" is the most honest sentence in the post, and blocking it would punish
  * exactly the behaviour the channel is built on.
  */
-const DISCLOSURE = /\b(not available|unavailable|cannot|can't|could not|couldn't|do not have|don't have|no data|not visible|not accessible|geo-blocked|no source|without)\b/i;
+const DISCLOSURE = new RegExp(
+  [
+    String.raw`\b(not available|unavailable|cannot|can't|could not|couldn't|do not have|don't have`,
+    String.raw`|no data|not visible|not accessible|geo-blocked|no source|without)\b`,
+    // Vietnamese carries the same admissions, and \b cannot delimit them: in
+    // JavaScript it is defined on ASCII word characters, so a boundary asked
+    // for next to "ế" or "ộ" is a boundary the engine will not find. Unicode
+    // lookarounds do the job the same way the bias patterns below do.
+    String.raw`|(?<!\p{L})(?:không\s+(?:có|xem|lấy|kiểm|truy\s+cập|tiếp\s+cận)`,
+    String.raw`|chưa\s+có|chặn\s+địa\s+lý|bị\s+chặn|thiếu\s+dữ\s+liệu)(?!\p{L})`,
+  ].join(""),
+  "iu",
+);
+
+/**
+ * Does a cited snapshot actually carry the field the live brief could not get?
+ *
+ * The rule this gate enforces is "do not write about data you do not have", and
+ * for a long time the live brief was the only way to have any. It is not any
+ * more: the exchange's public archive publishes open interest and the account
+ * ratios that its API geo-blocks, so a study built on those dumps holds the
+ * field even on a day the brief comes back without it.
+ *
+ * Keeping the block in that case would enforce something narrower and wrong —
+ * "do not write about data the *live fetch* did not have" — and would punish
+ * the study that went and got it properly.
+ */
+const SNAPSHOT_EVIDENCE = {
+  // Matched inside key names rather than as whole keys: a snapshot naming a
+  // field `conditionedOnOpenInterest` or `oiRising` plainly holds the data, and
+  // demanding one exact spelling made the check fail on studies that had it.
+  openInterest: /"[^"]*(?:openinterest|oiusd|oirising|oifalling|oichange)[^"]*"/i,
+  longShortRatio: /"[^"]*longshort[^"]*"/i,
+};
+
+const fieldsCoveredByStudy = (study) => {
+  const covered = new Set();
+  if (!study) return covered;
+  const blob = JSON.stringify(study);
+  for (const [field, pattern] of Object.entries(SNAPSHOT_EVIDENCE)) {
+    if (pattern.test(blob)) covered.add(field);
+  }
+  return covered;
+};
 
 /**
  * Flags claims about data we never had, while allowing honest admissions that
  * we lack it. The check runs per sentence, so a disclosure in one sentence does
  * not licence a fabricated claim in the next.
  */
-export function verifyNoForbiddenClaims(text, brief) {
-  const missing = new Set((brief.unavailable ?? []).map((u) => u.field));
+export function verifyNoForbiddenClaims(text, brief, study) {
+  const covered = fieldsCoveredByStudy(study);
+  const missing = new Set(
+    (brief.unavailable ?? []).map((u) => u.field).filter((f) => !covered.has(f)),
+  );
   const sentences = text.split(/(?<=[.!?\n])/);
   const violations = new Set();
 
@@ -434,7 +534,31 @@ const BIAS_LABEL = String.raw`(?:bias|quan\s+điểm|khuyến\s+nghị)\s*[:\uFF
 export const BIAS_PATTERNS = {
   LONG: /(?<!\p{L})(?:selective\s+long|long\s+chọn\s+lọc|mua\s+chọn\s+lọc)(?!\p{L})/iu,
   SHORT: /(?<!\p{L})(?:selective\s+short|short\s+chọn\s+lọc|bán\s+chọn\s+lọc)(?!\p{L})/iu,
-  WAIT: new RegExp(`${BIAS_LABEL}(?:wait|chờ|đứng\\s+ngoài)(?!\\p{L})`, "iu"),
+  // "stand aside" earns its place next to "wait": it is the phrase this desk
+  // actually reaches for, and while it was missing, a sentence reading
+  // "selective short on the alts and stand aside on BTC" looked like a single
+  // unambiguous short — which is how a BTC stand-aside entered the record as a
+  // BNB short.
+  WAIT: new RegExp(`${BIAS_LABEL}(?:wait|stand\\s+aside|chờ|đứng\\s+ngoài)(?!\\p{L})`, "iu"),
+};
+
+/**
+ * The same vocabulary without the "Bias:" prefix.
+ *
+ * `BIAS_PATTERNS.WAIT` requires the label within thirty characters, which is
+ * right for admitting a post — it stops the ordinary word "wait" in prose from
+ * being read as a call. But it also means a *second* bias further along the
+ * same sentence goes unseen, and that is exactly the sentence that needs
+ * catching: "Bias: selective short across the alts, and stand aside on BTC"
+ * looked like one unambiguous short.
+ *
+ * Used only to detect that a sentence commits to more than one thing. Never
+ * used to admit a post or to read its primary bias.
+ */
+export const BIAS_PHRASES = {
+  LONG: BIAS_PATTERNS.LONG,
+  SHORT: BIAS_PATTERNS.SHORT,
+  WAIT: /(?<!\p{L})(?:stand\s+aside|đứng\s+ngoài)(?!\p{L})/iu,
 };
 
 /**
@@ -507,8 +631,13 @@ export function verifyStructure(text, { maxWords = 220, minWords = 40, requireBi
 /** Runs every gate. Publishing should be blocked unless this passes. */
 export function verifyPost(text, brief, opts = {}) {
   const numbers = verifyNumbers(text, brief, { screen: opts.screen, candles: opts.candles, stages: opts.stages, study: opts.study });
-  const claims = verifyNoForbiddenClaims(text, brief);
+  const claims = verifyNoForbiddenClaims(text, brief, opts.study);
   const structure = verifyStructure(text, opts);
+
+  // The channel publishes in English on both surfaces. This gate is here
+  // rather than in a checklist because the last time it was only a convention,
+  // fourteen posts went out in another language before anyone noticed.
+  const english = verifyEnglish(text);
 
   // Naming the sources that were actually searched keeps the failure honest:
   // "not in the brief" is misleading when an alt figure was never checkable.
@@ -522,6 +651,7 @@ export function verifyPost(text, brief, opts = {}) {
     ...numbers.unmatched.map((u) => `figure "${u.raw}" does not appear in ${sources}`),
     ...claims.violations.map((v) => `mentions ${v}, which the brief could not retrieve`),
     ...structure.problems,
+    ...english.problems,
   ];
 
   return { ok: problems.length === 0, problems, numbersChecked: numbers.checked, words: structure.words };

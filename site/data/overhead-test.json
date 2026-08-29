@@ -1,0 +1,260 @@
+{
+  "measuredAt": "2026-08-14T20:42:24.278Z",
+  "pairs": 75,
+  "windowDays": 30,
+  "horizons": [
+    10,
+    30
+  ],
+  "stopAtr": 1.5,
+  "rewardRatio": 2,
+  "feePct": 0.2,
+  "labelledDays": 60386,
+  "baseline": {
+    "10": {
+      "medianPct": -1.7857142857142905,
+      "upSharePct": 43.87953585082836,
+      "days": 59636
+    },
+    "30": {
+      "medianPct": -5.21178114779775,
+      "upSharePct": 39.48672079262419,
+      "days": 58136
+    }
+  },
+  "bands": [
+    {
+      "band": [
+        0,
+        20
+      ],
+      "days": 10033,
+      "sharePct": 16.614778259861556,
+      "forward": {
+        "10": {
+          "medianPct": -1.504211793020438,
+          "differencePct": 0.2815024926938525,
+          "upSharePct": 45.020684088386645,
+          "days": 9911,
+          "effectiveN": 991.1
+        },
+        "30": {
+          "medianPct": -4.761904761904767,
+          "differencePct": 0.44987638589298307,
+          "upSharePct": 41.156356854212,
+          "days": 9651,
+          "effectiveN": 321.7
+        }
+      }
+    },
+    {
+      "band": [
+        20,
+        40
+      ],
+      "days": 6811,
+      "sharePct": 11.279104428178718,
+      "forward": {
+        "10": {
+          "medianPct": -2.264619202729956,
+          "differencePct": -0.4789049170156656,
+          "upSharePct": 42.46920908146609,
+          "days": 6739,
+          "effectiveN": 673.9
+        },
+        "30": {
+          "medianPct": -5.184470701712074,
+          "differencePct": 0.0273104460856759,
+          "upSharePct": 39.40594059405941,
+          "days": 6565,
+          "effectiveN": 218.83333333333334
+        }
+      }
+    },
+    {
+      "band": [
+        40,
+        60
+      ],
+      "days": 7753,
+      "sharePct": 12.839068658298281,
+      "forward": {
+        "10": {
+          "medianPct": -2.4969549330085217,
+          "differencePct": -0.7112406472942312,
+          "upSharePct": 41.49615534992832,
+          "days": 7673,
+          "effectiveN": 767.3
+        },
+        "30": {
+          "medianPct": -5.701080487049453,
+          "differencePct": -0.4892993392517031,
+          "upSharePct": 38.190552441953564,
+          "days": 7494,
+          "effectiveN": 249.8
+        }
+      }
+    },
+    {
+      "band": [
+        60,
+        80
+      ],
+      "days": 11243,
+      "sharePct": 18.618553969463118,
+      "forward": {
+        "10": {
+          "medianPct": -2.623480573009412,
+          "differencePct": -0.8377662872951217,
+          "upSharePct": 40.34992784992785,
+          "days": 11088,
+          "effectiveN": 1108.8
+        },
+        "30": {
+          "medianPct": -5.011053795136333,
+          "differencePct": 0.20072735266141706,
+          "upSharePct": 39.356913183279744,
+          "days": 10885,
+          "effectiveN": 362.8333333333333
+        }
+      }
+    },
+    {
+      "band": [
+        80,
+        100
+      ],
+      "days": 24546,
+      "sharePct": 40.64849468419832,
+      "forward": {
+        "10": {
+          "medianPct": -1.078809902339306,
+          "differencePct": 0.7069043833749844,
+          "upSharePct": 46.17543859649123,
+          "days": 24225,
+          "effectiveN": 2422.5
+        },
+        "30": {
+          "medianPct": -5.291359678499674,
+          "differencePct": -0.07957853070192389,
+          "upSharePct": 39.29739603245402,
+          "days": 23541,
+          "effectiveN": 784.7
+        }
+      }
+    }
+  ],
+  "spread10": -0.4254018906811319,
+  "spread30": 0.529454916594907,
+  "trades": {
+    "lowOverheadLong": {
+      "pairs": 66,
+      "medianExpectancyR": -0.09257508342602891,
+      "medianNetR": -0.12017320832830214,
+      "pairsPositiveNet": 22,
+      "medianEffectiveN": 4.383333333333333
+    },
+    "highOverheadLong": {
+      "pairs": 72,
+      "medianExpectancyR": 0.003604880107184168,
+      "medianNetR": -0.024146901099748246,
+      "pairsPositiveNet": 31,
+      "medianEffectiveN": 10.9
+    },
+    "lowOverheadShort": {
+      "pairs": 66,
+      "medianExpectancyR": 0.0419286381450969,
+      "medianNetR": 0.01875827637851548,
+      "pairsPositiveNet": 36,
+      "medianEffectiveN": 4.383333333333333
+    },
+    "highOverheadShort": {
+      "pairs": 72,
+      "medianExpectancyR": 0.019017245976217727,
+      "medianNetR": -0.015645229149294077,
+      "pairsPositiveNet": 35,
+      "medianEffectiveN": 10.9
+    }
+  },
+  "proxyCheck": {
+    "pairs": 75,
+    "medianAbsDifferencePct": 2.234674108686619,
+    "worstAbsDifferencePct": 37.09165015437863,
+    "medianProxyPct": 80.9875382530484,
+    "medianProfilePct": 81.58733322264638,
+    "detail": [
+      {
+        "symbol": "DOLOUSDT",
+        "proxyPct": 0,
+        "profilePct": 37.09165015437863,
+        "differencePct": -37.09165015437863
+      },
+      {
+        "symbol": "AVNTUSDT",
+        "proxyPct": 0,
+        "profilePct": 25.977423763015185,
+        "differencePct": -25.977423763015185
+      },
+      {
+        "symbol": "EDENUSDT",
+        "proxyPct": 67.46339920377876,
+        "profilePct": 44.65293223583615,
+        "differencePct": 22.810466967942617
+      },
+      {
+        "symbol": "ALICEUSDT",
+        "proxyPct": 0,
+        "profilePct": 20.155345131687216,
+        "differencePct": -20.155345131687216
+      },
+      {
+        "symbol": "HOMEUSDT",
+        "proxyPct": 17.950761526149158,
+        "profilePct": 27.049904731880268,
+        "differencePct": -9.09914320573111
+      },
+      {
+        "symbol": "ETHUSDT",
+        "proxyPct": 71.82429963488295,
+        "profilePct": 63.40773998766932,
+        "differencePct": 8.416559647213624
+      },
+      {
+        "symbol": "WLFIUSDT",
+        "proxyPct": 40.58869302335599,
+        "profilePct": 32.826812547862666,
+        "differencePct": 7.761880475493321
+      },
+      {
+        "symbol": "PLUMEUSDT",
+        "proxyPct": 26.144792993747572,
+        "profilePct": 33.83690919818851,
+        "differencePct": -7.692116204440936
+      },
+      {
+        "symbol": "AVAXUSDT",
+        "proxyPct": 77.6714446344361,
+        "profilePct": 71.3072632202489,
+        "differencePct": 6.3641814141872
+      },
+      {
+        "symbol": "PROMUSDT",
+        "proxyPct": 43.46947005224824,
+        "profilePct": 49.82037681547525,
+        "differencePct": -6.350906763227009
+      },
+      {
+        "symbol": "SCRTUSDT",
+        "proxyPct": 100,
+        "profilePct": 93.72297869928902,
+        "differencePct": 6.2770213007109845
+      },
+      {
+        "symbol": "RVNUSDT",
+        "proxyPct": 100,
+        "profilePct": 93.78460886968621,
+        "differencePct": 6.21539113031379
+      }
+    ]
+  }
+}

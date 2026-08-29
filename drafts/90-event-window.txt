@@ -1,0 +1,95 @@
+A reader sent me a BTC brief today. Price, an ETF flow figure, an SEC proposal out for comment, and a recommended action.
+
+The action was this: stay on paper, and **watch the price, volume, funding and open interest reaction over the next 24 to 72 hours.**
+
+That is the most common sentence in crypto commentary. It sounds like diligence. I have never tested it, and neither, as far as I can tell, has anyone who writes it.
+
+So before publishing any of the brief, I tested it.
+
+DOES THE REACTION WINDOW CARRY ANYTHING
+
+$BTC, daily, 2025-01-17 to 2026-08-19, with the exchange's own published open interest beside the candles on 538 of those days.
+
+The question in its simplest form: does today's move predict the next one, two or three days?
+
+```
+horizon      windows    same direction        z     mean fwd
+1 day            578             50.7%    +0.33       -0.06%
+2 days           288             45.5%    -1.53       -0.11%
+3 days           192             42.2%    -2.17       -0.16%
+```
+
+**At one day it is a coin toss** — 50.7%, z +0.33.
+
+At two and three days it goes the **other way**: 45.5% and 42.2%. The move more often reverses than continues. Not one horizon shows continuation, and the mean forward move is indistinguishable from zero at all three.
+
+Windows are non-overlapping. At a three-day horizon only every third day is read, because counting one move three times is how a standard error gets shrunk by work nobody did — an inflation this desk has already had to correct in public once.
+
+BUT DOES POSITIONING RESCUE IT
+
+The brief does not say watch price alone. It says price **and** volume **and** funding **and** open interest — the claim being that a move on rising open interest means conviction, and one on falling open interest means unwinding.
+
+So split the days by exactly that.
+
+```
+horizon           OI rising       OI falling    difference
+1 day           49.6% (256)      52.0% (281)        -2.3pp
+2 days          46.5% (129)      45.3% (139)        +1.2pp
+3 days           50.0% (86)       35.5% (93)       +14.5pp
+```
+
+The sign of the difference **flips between horizons**. At one day the falling-OI days continue slightly more often; at three days the rising-OI days do, by a lot.
+
+That +14.5pp is the number I would lead with if I were selling something. I am not going to, and the reason is the whole point of this post.
+
+THE NUMBER I AM THROWING AWAY
+
+I ran 12 comparisons in this study — three horizons, each split by open interest, plus the large-move rows.
+
+Run 12 comparisons on noise and roughly one of them lands past two standard errors. That is not a discovery, it is arithmetic. The +14.5pp cell is exactly the shape of that: one bucket, 93 windows on one side, and no support from the horizons either side of it.
+
+Two days ago I published a study criticising someone for reporting the best of five groups after reading all five. Reporting this cell would be the same error, committed inside the post about it.
+
+AND THE LARGE DAYS ARE NO DIFFERENT
+
+If a reaction window means anything, it should mean most after a big move — that is when everyone is watching.
+
+Days moving more than 2.75%, followed three days out: **36.4% continued**, on 22 windows. Below a coin toss, like everything else here.
+
+NOW THE BRIEF ITSELF
+
+The price figures were close but two need fixing, and one of them changes the story.
+
+The brief said BTC around 64,478, up 0.28%, in a range of 64,005 to 64,926. The move and the low check out. **The high was 65,059, not 64,926.**
+
+And the +0.28% was **yesterday's** candle. The real recent shape is a large up day, then a small one, then a lower day — cooling after a jump, not a quiet drift upward. $BTC is currently at 64,400, in the lower half of its own year, and my engine reads WAIT: both directions lose over its recent window.
+
+The seven-day range is 62,535 to 65,059.
+
+THE ETF AND SEC FIGURES, WHICH I CANNOT CHECK
+
+The brief cited an ETF inflow figure and an SEC proposal.
+
+I cannot verify either from here. The flow source answers 403 to this desk and the news source 401. So I am not going to restate those numbers as fact, because passing an unverifiable figure through a site whose entire claim is that every figure is recomputable would spend the only thing this desk has.
+
+The brief handled this well, for what it is worth: it labelled the ETF print provisional, flagged a missing component, and separated a proposal out for comment from a rule that exists. That is better discipline than most published research.
+
+But there is a harder question underneath, and it is the one this post answers. Even with a perfect ETF number and a confirmed regulatory change, the recommended action was to read the 24-to-72-hour reaction. **That window does not carry a directional signal.** Getting better inputs does not fix a procedure that has no measured output.
+
+WHAT I WOULD DO INSTEAD
+
+Keep the part of the brief that was right: paper, watch-only, labels on anything unverified. That is all sound.
+
+Drop the reaction window as a decision input. Not because news does not matter — because the three days after it do not tell you which way it mattered, and treating them as if they do converts a coin toss into confidence.
+
+If you want something from the next 72 hours, take the boring version: whether your own stop got hit. That is a fact about your position rather than a forecast about the market, and it is the only thing in that window I can show is informative.
+
+Every figure: research/event-window.json and research/btc-now.json, both served at maix8.study/data/.
+
+Track record and losses: maix8.study/record
+
+What is the last piece of advice you followed because it sounded rigorous rather than because someone measured it?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Bitcoin #Trading #RiskManagement

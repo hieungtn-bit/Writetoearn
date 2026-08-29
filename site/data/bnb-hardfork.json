@@ -1,0 +1,420 @@
+{
+  "measuredAt": "2026-08-21T01:44:00.593Z",
+  "chainBaseline": {
+    "sampledAt": "2026-08-21T01:44:00.593Z",
+    "headBlock": 117146251,
+    "blocksSampled": 200,
+    "meanBlockTimeMs": 450,
+    "gasLimit": 55000000,
+    "meanGasUsed": 26934389.4,
+    "meanGasUsedPct": 48.971617090909085,
+    "blocksMeasuredForGas": 20
+  },
+  "specification": {
+    "confirmed": {
+      "activationUtc": "2026-08-25T02:30:00Z",
+      "clientVersion": "1.7.7",
+      "beps": [
+        "BEP-682",
+        "BEP-695"
+      ],
+      "bepNumbers": [
+        682,
+        695
+      ],
+      "testnetSince": "2026-07-21",
+      "source": "https://cryptobriefing.com/pasteur-hardfork-bsc-mainnet-august/"
+    },
+    "quotedButUnverifiedHere": {
+      "beps": [
+        "BEP-675"
+      ],
+      "bepNumbers": [
+        675
+      ],
+      "claimedGasLimit": 100000000,
+      "blogHttpStatus": 503,
+      "testnetTpsBefore": 1237,
+      "testnetTpsAfter": 2324,
+      "validatorCriticalPathMsBefore": 125,
+      "validatorCriticalPathMsAfter": 15,
+      "note": "from the reader's brief; the BNB Chain blog returned 503 to this desk, so these are recorded as quotations rather than measurements"
+    }
+  },
+  "sources": {
+    "activations": "https://raw.githubusercontent.com/bnb-chain/bsc/master/params/config.go",
+    "blockTimestamps": "https://bsc-dataseed.bnbchain.org",
+    "price": "Binance spot daily klines, BNBUSDT and BTCUSDT"
+  },
+  "method": {
+    "numeraire": "return measured against BTC as well as USDT; the BTC-relative figure is the one the study answers on",
+    "control": "every day within 60 days of an event, excluding days within 10 days of any fork",
+    "dedupeToleranceSeconds": 3600,
+    "windows": [
+      "7d before",
+      "3d before",
+      "1d before",
+      "1d after",
+      "3d after",
+      "7d after"
+    ]
+  },
+  "upcoming": [
+    {
+      "names": [
+        "Pasteur"
+      ],
+      "at": "2026-08-25T02:30:00.000Z",
+      "unixSeconds": 1787625000,
+      "from": "timestamp"
+    }
+  ],
+  "eventCount": 20,
+  "firstEventYear": 2021,
+  "controlDays": 1774,
+  "events": [
+    {
+      "names": [
+        "MirrorSync"
+      ],
+      "at": "2021-02-25T10:43:12.000Z",
+      "from": "block height, resolved via RPC",
+      "post1VsBtcPct": -2.4588026187701058,
+      "post3VsBtcPct": -4.255832298354878,
+      "post7VsBtcPct": -6.830633753428916,
+      "pre7VsBtcPct": 58.6324456526467
+    },
+    {
+      "names": [
+        "Bruno"
+      ],
+      "at": "2021-11-30T17:26:29.000Z",
+      "from": "block height, resolved via RPC",
+      "post1VsBtcPct": 1.2847470491551327,
+      "post3VsBtcPct": 1.681543183990375,
+      "post7VsBtcPct": 6.9356259802077815,
+      "pre7VsBtcPct": 8.742271561293059
+    },
+    {
+      "names": [
+        "Euler"
+      ],
+      "at": "2022-06-22T09:56:19.000Z",
+      "from": "block height, resolved via RPC",
+      "post1VsBtcPct": 0.9595203105556505,
+      "post3VsBtcPct": 6.651118685192348,
+      "post7VsBtcPct": 5.223456917684432,
+      "pre7VsBtcPct": 5.082203499065308
+    },
+    {
+      "names": [
+        "Nano"
+      ],
+      "at": "2022-10-06T22:13:14.000Z",
+      "from": "block height, resolved via RPC",
+      "post1VsBtcPct": -1.4671210248315303,
+      "post3VsBtcPct": -2.377865931924872,
+      "post7VsBtcPct": -2.945494005458949,
+      "pre7VsBtcPct": 0.6344951165588641
+    },
+    {
+      "names": [
+        "Moran"
+      ],
+      "at": "2022-10-12T08:56:58.000Z",
+      "from": "block height, resolved via RPC",
+      "post1VsBtcPct": -0.6854366345736662,
+      "post3VsBtcPct": -1.3504034113272279,
+      "post7VsBtcPct": -0.7767662294379418,
+      "pre7VsBtcPct": -2.0897468529560204
+    },
+    {
+      "names": [
+        "Gibbs"
+      ],
+      "at": "2022-12-12T16:52:46.000Z",
+      "from": "block height, resolved via RPC",
+      "post1VsBtcPct": -3.6487708751843706,
+      "post3VsBtcPct": -10.07510108760873,
+      "post7VsBtcPct": -9.713943574862173,
+      "pre7VsBtcPct": -2.415263556456826
+    },
+    {
+      "names": [
+        "Planck"
+      ],
+      "at": "2023-04-12T10:35:10.000Z",
+      "from": "block height, resolved via RPC",
+      "post1VsBtcPct": 0.2896092958462826,
+      "post3VsBtcPct": 1.1653103990351132,
+      "post7VsBtcPct": 5.858954040683106,
+      "pre7VsBtcPct": -3.5248528109200983
+    },
+    {
+      "names": [
+        "Luban"
+      ],
+      "at": "2023-06-11T22:33:32.000Z",
+      "from": "block height, resolved via RPC",
+      "post1VsBtcPct": -1.7088663849412433,
+      "post3VsBtcPct": 1.9441024056282785,
+      "post7VsBtcPct": -0.18529698424967211,
+      "pre7VsBtcPct": -17.60956391862608
+    },
+    {
+      "names": [
+        "Plato"
+      ],
+      "at": "2023-08-10T03:33:14.000Z",
+      "from": "block height, resolved via RPC",
+      "post1VsBtcPct": -0.5166500879707159,
+      "post3VsBtcPct": -0.922385282623861,
+      "post7VsBtcPct": -1.9616598578041762,
+      "pre7VsBtcPct": -0.06883565865472008
+    },
+    {
+      "names": [
+        "Berlin",
+        "London",
+        "Hertz"
+      ],
+      "at": "2023-08-30T10:27:37.000Z",
+      "from": "block height, resolved via RPC",
+      "post1VsBtcPct": 0.13594183245261293,
+      "post3VsBtcPct": 1.0783553002276847,
+      "post7VsBtcPct": 1.5217291478751847,
+      "pre7VsBtcPct": 1.2143355602908246
+    },
+    {
+      "names": [
+        "Hertzfix"
+      ],
+      "at": "2023-12-07T08:11:33.000Z",
+      "from": "block height, resolved via RPC",
+      "post1VsBtcPct": 2.5135902874584115,
+      "post3VsBtcPct": 3.7303074409498427,
+      "post7VsBtcPct": 11.89384638588118,
+      "pre7VsBtcPct": -14.683312520178916
+    },
+    {
+      "names": [
+        "Shanghai",
+        "Kepler"
+      ],
+      "at": "2024-01-23T08:00:00.000Z",
+      "from": "timestamp",
+      "post1VsBtcPct": -3.1539653349373697,
+      "post3VsBtcPct": -5.504681453978777,
+      "post7VsBtcPct": -7.869492269902189,
+      "pre7VsBtcPct": 3.269542663401082
+    },
+    {
+      "names": [
+        "Feynman",
+        "FeynmanFix"
+      ],
+      "at": "2024-04-18T05:49:00.000Z",
+      "from": "timestamp",
+      "post1VsBtcPct": -0.2081802874051908,
+      "post3VsBtcPct": 0.9119994956923394,
+      "post7VsBtcPct": 9.070431334327168,
+      "pre7VsBtcPct": 0.8435103183487946
+    },
+    {
+      "names": [
+        "Cancun",
+        "Haber"
+      ],
+      "at": "2024-06-20T06:05:00.000Z",
+      "from": "timestamp",
+      "post1VsBtcPct": -1.7749435633329536,
+      "post3VsBtcPct": -0.271892204502755,
+      "post7VsBtcPct": 1.9361637266317242,
+      "pre7VsBtcPct": 1.5738923638418116
+    },
+    {
+      "names": [
+        "HaberFix",
+        "Bohr"
+      ],
+      "at": "2024-09-26T02:02:00.000Z",
+      "from": "timestamp",
+      "post1VsBtcPct": -1.68661514279016,
+      "post3VsBtcPct": -1.9525715278047695,
+      "post7VsBtcPct": -3.6808291848718255,
+      "pre7VsBtcPct": 2.7326764155323424
+    },
+    {
+      "names": [
+        "Pascal",
+        "Prague"
+      ],
+      "at": "2025-03-20T02:10:00.000Z",
+      "from": "timestamp",
+      "post1VsBtcPct": 4.922148664335313,
+      "post3VsBtcPct": 4.803692090465894,
+      "post7VsBtcPct": -0.18756383606585159,
+      "pre7VsBtcPct": 4.785380640941694
+    },
+    {
+      "names": [
+        "Lorentz"
+      ],
+      "at": "2025-04-29T05:05:00.000Z",
+      "from": "timestamp",
+      "post1VsBtcPct": -0.05729067310047409,
+      "post3VsBtcPct": -2.63364806117935,
+      "post7VsBtcPct": -1.1184477839116358,
+      "pre7VsBtcPct": -7.087522609778318
+    },
+    {
+      "names": [
+        "Maxwell"
+      ],
+      "at": "2025-06-30T02:30:00.000Z",
+      "from": "timestamp",
+      "post1VsBtcPct": 1.422466819411139,
+      "post3VsBtcPct": 0.2797900039776646,
+      "post7VsBtcPct": 0.47508757524343803,
+      "pre7VsBtcPct": -0.9747436775606966
+    },
+    {
+      "names": [
+        "Fermi"
+      ],
+      "at": "2026-01-14T02:30:00.000Z",
+      "from": "timestamp",
+      "post1VsBtcPct": -1.1094299048998835,
+      "post3VsBtcPct": -0.7337330983063217,
+      "post7VsBtcPct": 1.0141847724015935,
+      "pre7VsBtcPct": 1.0660257485151536
+    },
+    {
+      "names": [
+        "Osaka",
+        "Mendel"
+      ],
+      "at": "2026-04-28T02:30:00.000Z",
+      "from": "timestamp",
+      "post1VsBtcPct": 0.9656335727540655,
+      "post3VsBtcPct": -0.5021943880983759,
+      "post7VsBtcPct": -3.887884224303728,
+      "pre7VsBtcPct": -2.4040086325596732
+    }
+  ],
+  "summary": [
+    {
+      "window": "7d before",
+      "key": "pre7",
+      "events": 20,
+      "meanUsdtPct": 2.6780445843605047,
+      "meanVsBtcPct": 1.8859464651372158,
+      "medianVsBtcPct": 0.7390027174538294,
+      "upSharePct": 55.00000000000001,
+      "controlMeanVsBtcPct": 0.9730498075875144,
+      "controlMedianVsBtcPct": 0.06588158692969426,
+      "welchT": 0.27663196349521296,
+      "welchDf": 19.155851005952165,
+      "pValue": 0.7850255193384532,
+      "detectableEffectPct": 9.221260842800053,
+      "sdVsBtcPct": 14.728118630541374
+    },
+    {
+      "window": "3d before",
+      "key": "pre3",
+      "events": 20,
+      "meanUsdtPct": 0.13086823537948317,
+      "meanVsBtcPct": -1.2518602939059271,
+      "medianVsBtcPct": -1.3240937539411635,
+      "upSharePct": 40,
+      "controlMeanVsBtcPct": 0.41328274150539934,
+      "controlMedianVsBtcPct": -0.07459516902645902,
+      "welchT": -2.6743196790819197,
+      "welchDf": 20.5996472223212,
+      "pValue": 0.014341169668714153,
+      "detectableEffectPct": 1.708510809013162,
+      "sdVsBtcPct": 2.7288187923189935
+    },
+    {
+      "window": "1d before",
+      "key": "pre1",
+      "events": 20,
+      "meanUsdtPct": 0.183539999891611,
+      "meanVsBtcPct": -0.08420353967413774,
+      "medianVsBtcPct": 0.022629803446078123,
+      "upSharePct": 50,
+      "controlMeanVsBtcPct": 0.1418738519811802,
+      "controlMedianVsBtcPct": -0.09731118994316112,
+      "welchT": -0.3306239391239744,
+      "welchDf": 19.36619637096967,
+      "pValue": 0.7444788021545536,
+      "detectableEffectPct": 1.905496168239869,
+      "sdVsBtcPct": 3.0434421164640884
+    },
+    {
+      "window": "1d after",
+      "key": "post1",
+      "events": 20,
+      "meanUsdtPct": -0.8449920932610148,
+      "meanVsBtcPct": -0.2991207350384529,
+      "medianVsBtcPct": -0.36241518768795333,
+      "upSharePct": 40,
+      "controlMeanVsBtcPct": 0.1351681669117823,
+      "controlMedianVsBtcPct": -0.09754632793932405,
+      "welchT": -0.9557810273222287,
+      "welchDf": 19.84116045896228,
+      "pValue": 0.3506842118653072,
+      "detectableEffectPct": 1.2585614708016453,
+      "sdVsBtcPct": 2.0101635732675684
+    },
+    {
+      "window": "3d after",
+      "key": "post3",
+      "events": 20,
+      "meanUsdtPct": -0.6443559500994451,
+      "meanVsBtcPct": -0.41670448702751894,
+      "medianVsBtcPct": -0.38704329630056544,
+      "upSharePct": 45,
+      "controlMeanVsBtcPct": 0.40916695032314676,
+      "controlMedianVsBtcPct": -0.061273980061127276,
+      "welchT": -0.9919730172059568,
+      "welchDf": 19.855816130660646,
+      "pValue": 0.33314620245175597,
+      "detectableEffectPct": 2.3056134975998814,
+      "sdVsBtcPct": 3.682506078910274
+    },
+    {
+      "window": "7d after",
+      "key": "post7",
+      "events": 20,
+      "meanUsdtPct": -1.1215737747728054,
+      "meanVsBtcPct": 0.2385734088319275,
+      "medianVsBtcPct": -0.18643041015776185,
+      "upSharePct": 45,
+      "controlMeanVsBtcPct": 1.208652979006757,
+      "controlMedianVsBtcPct": 0.06331377381815217,
+      "welchT": -0.7681146378603269,
+      "welchDf": 20.347168517592813,
+      "pValue": 0.45124226576740933,
+      "detectableEffectPct": 3.4761646583731594,
+      "sdVsBtcPct": 5.552100340789085
+    }
+  ],
+  "strongestWindow": "3d before",
+  "leaveOneOut": {
+    "window": "3d before",
+    "fullT": -2.6743196790819197,
+    "fullP": 0.014341169668714153,
+    "weakestT": -2.360311653585072,
+    "weakestWhenDropping": "Luban",
+    "stillPastTwo": true
+  },
+  "comparisons": {
+    "windowsTested": 6,
+    "alpha": 0.05,
+    "bonferroniAlpha": 0.008333333333333333,
+    "strongestP": 0.014341169668714153,
+    "clearsCorrectedThreshold": false,
+    "note": "one window out of six clearing an uncorrected 5% is roughly what testing six windows produces on its own"
+  }
+}

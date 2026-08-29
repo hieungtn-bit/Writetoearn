@@ -1,0 +1,89 @@
+$ENA is the only token I follow whose fundamentals I can actually fetch.
+
+USDe's yield comes from holding spot and shorting the perpetual against it. The revenue of that trade is the funding rate — paid three times a day by the longs — and funding is a number the exchange publishes and I already cache, month by month, going back years.
+
+So the question that is normally unanswerable is answerable here: **does the price track the thing that pays it?**
+
+THE ANSWER THAT LOOKS GREAT
+
+28 non-overlapping 30-day windows. Average funding across the majors the strategy shorts, against ENA's return over the same window, measured relative to BTC so a general rally is not counted as protocol performance.
+
+**r +0.479, t +2.78, p 0.0100.**
+
+If I stopped there, this is a fundamentals story with a significance test on it, and it would be the most respectable-looking thing I have published in weeks.
+
+THE CONTROL
+
+Funding rises when leverage is long and risk appetite is high. So does every alt. Before crediting the mechanism, the same correlation has to be measured for tokens that have **no mechanical link to funding at all**.
+
+48 of them, above $5M turnover, same windows:
+
+```
+token       corr with funding
+XRP                     +0.66
+ADA                     +0.64
+XLM                     +0.64
+HBAR                    +0.63
+DOGE                    +0.61
+ENA                     +0.48
+```
+
+**Average across all 48: +0.257.** ENA sits at the **77th percentile** of them.
+
+$XRP tracks perpetual funding *better than Ethena does*. So do ADA, XLM, HBAR and DOGE. None of them earn a cent from it.
+
+So the number is not measuring Ethena. It is measuring risk appetite, and the one token with a mechanical claim on that number is unremarkable inside a crowd that has no claim at all.
+
+A p of 0.01 and a correct control are different things. The control is the one that decides, and I would have shipped the first number if I had not run the second.
+
+WHAT IS ACTUALLY TRUE ABOUT THE ENGINE
+
+**Funding is not high.** The last archived window averaged +4.3% annualised — the **33rd percentile** of every interval in the archive. Live right now it is +11.0% across the three legs.
+
+That is a working engine, not a lucrative one.
+
+**And it runs backwards sometimes.** 5 of the 28 windows had negative average funding — months where the delta-neutral position *paid* to stay open instead of earning. That is the actual risk in the model, and it is not hypothetical.
+
+One thing I will not do: quote the archive as current. The monthly dumps stop at 2026-07-31, and this desk once reported late-July funding as "the last seven days". Live is fetched separately, from a different venue, and labelled as such.
+
+THE TAPE
+
+$0.1555, -4.5% today, $62.5M turnover, ATR **9.20%** a day.
+
+All-time high $1.5230. It is **-89.8%** from there.
+
+Is there a base?
+
+```
+20d         $0.0811-0.1835  126% wide   13.7 daily ranges
+40d         $0.0770-0.1835  138% wide   15.0 daily ranges
+60d         $0.0702-0.1835  161% wide   17.6 daily ranges
+```
+
+**13.7 daily ranges wide** over twenty days. A consolidation is two or three. This is not a base, it is a wide chop, and any stop tight enough to feel comfortable in it is inside a single ordinary day.
+
+THE ONE NUMBER IN ITS FAVOUR
+
+Beta to BTC **1.36**, alpha **+0.082% a day — +15.9% over 180 days.**
+
+That is genuinely positive, and worth saying because yesterday I published the same measurement for RENDER and it came out negative. On this one number ENA has paid for its risk over the window. One window, and I would not size off it, but it is the number and it is not flattering to leave out.
+
+WHAT I WOULD WATCH
+
+Not the price. **Funding turning negative and staying there.**
+
+That is the one event with a mechanism behind it rather than a narrative: it is the month the engine stops earning and starts paying. It has happened in 5 of 28 windows already, so it is not a tail scenario, and it is three API calls to check.
+
+My board reads ENA **LONG**, 1 of 5 windows agreeing, 5 independent episodes against a floor of 12. Refused, as usual, and not in today's book — which took 4 shorts, none of them this.
+
+Bias: WAIT
+
+Every figure: research/ena.json at maix8.study/data/ — all 28 windows and all 48 control tokens, so you can check whether the control is fair rather than take my word for it.
+
+The book, all of it stopped: maix8.study/record
+
+If the token built on funding tracks funding worse than XRP does, what was the correlation ever telling you?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#ENA #Bitcoin #Trading #Quant

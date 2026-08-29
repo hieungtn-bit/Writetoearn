@@ -1,0 +1,1938 @@
+{
+  "measuredAt": "2026-08-11T08:21:36.856Z",
+  "method": {
+    "question": "Is WAIT a market judgement or a missing branch?",
+    "hypotheses": {
+      "H1": "The grid was long-only, so WAIT was the only alternative to a bad long.",
+      "H2": "Horizons of 30-90 days cannot see a swing that resolves in days.",
+      "H3": "The market is genuinely poor and WAIT is correct."
+    },
+    "walk": "Bar by bar, both directions. A short's stop sits above entry, so the high is checked for the stop and the low for the target. A bar reaching both is charged to the stop.",
+    "unresolved": "Closed at the market in the direction held, not counted as flat.",
+    "grid": "4 stop distances x 4 reward ratios x 6 horizons x 2 directions; stops wider than 60% rejected as untradeable.",
+    "counterfactual": "Plain buy-and-hold over the window the desk was saying WAIT, with the worst drawdown along the way."
+  },
+  "rows": [
+    {
+      "asset": "ICP",
+      "price": 2.316,
+      "atrPct": 3.934940169908359,
+      "long": {
+        "cells": 96,
+        "positive": 2,
+        "positiveSharePct": 2.083333333333333,
+        "medianExpectancyR": -0.09027749103710886,
+        "best": {
+          "direction": "long",
+          "stopAtr": 3,
+          "stopPct": 11.804820509725078,
+          "rr": 3,
+          "horizonDays": 90,
+          "n": 910,
+          "hitPct": 24.395604395604394,
+          "stoppedPct": 73.73626373626374,
+          "unresolvedPct": 1.8681318681318682,
+          "expectancyR": 0.007936773195862465,
+          "effectiveN": 10.11111111111111
+        }
+      },
+      "short": {
+        "cells": 96,
+        "positive": 89,
+        "positiveSharePct": 92.70833333333334,
+        "medianExpectancyR": 0.058357001405338796,
+        "best": {
+          "direction": "short",
+          "stopAtr": 2,
+          "stopPct": 7.869880339816718,
+          "rr": 3,
+          "horizonDays": 90,
+          "n": 910,
+          "hitPct": 29.450549450549453,
+          "stoppedPct": 70.54945054945055,
+          "unresolvedPct": 0,
+          "expectancyR": 0.17802197802197803,
+          "effectiveN": 10.11111111111111
+        }
+      },
+      "byHorizon": [
+        {
+          "horizonDays": 3,
+          "long": {
+            "cells": 16,
+            "positive": 1,
+            "positiveSharePct": 6.25,
+            "medianExpectancyR": -0.0692144356415978,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 11.804820509725078,
+              "rr": 3,
+              "horizonDays": 3,
+              "n": 997,
+              "hitPct": 2.206619859578736,
+              "stoppedPct": 14.24272818455366,
+              "unresolvedPct": 83.55065195586761,
+              "expectancyR": 0.0028071856874848956,
+              "effectiveN": 332.3333333333333
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.04636929157246967,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 3.934940169908359,
+              "rr": 3,
+              "horizonDays": 3,
+              "n": 997,
+              "hitPct": 11.23370110330993,
+              "stoppedPct": 54.26278836509528,
+              "unresolvedPct": 34.503510531594785,
+              "expectancyR": 0.08344760105004616,
+              "effectiveN": 332.3333333333333
+            }
+          }
+        },
+        {
+          "horizonDays": 5,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.09016913862076911,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 11.804820509725078,
+              "rr": 3,
+              "horizonDays": 5,
+              "n": 995,
+              "hitPct": 3.919597989949749,
+              "stoppedPct": 25.728643216080403,
+              "unresolvedPct": 70.35175879396985,
+              "expectancyR": -0.010987146800874082,
+              "effectiveN": 199
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.0569967241322864,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 3.934940169908359,
+              "rr": 3,
+              "horizonDays": 5,
+              "n": 995,
+              "hitPct": 18.090452261306535,
+              "stoppedPct": 63.21608040201006,
+              "unresolvedPct": 18.693467336683415,
+              "expectancyR": 0.0810405623697464,
+              "effectiveN": 199
+            }
+          }
+        },
+        {
+          "horizonDays": 10,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.08500522299402419,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 11.804820509725078,
+              "rr": 3,
+              "horizonDays": 10,
+              "n": 990,
+              "hitPct": 7.575757575757576,
+              "stoppedPct": 41.313131313131315,
+              "unresolvedPct": 51.11111111111111,
+              "expectancyR": -0.02157581842843916,
+              "effectiveN": 99
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.062382161410041534,
+            "best": {
+              "direction": "short",
+              "stopAtr": 2,
+              "stopPct": 7.869880339816718,
+              "rr": 3,
+              "horizonDays": 10,
+              "n": 990,
+              "hitPct": 11.212121212121213,
+              "stoppedPct": 52.02020202020202,
+              "unresolvedPct": 36.76767676767677,
+              "expectancyR": 0.1183840603571934,
+              "effectiveN": 99
+            }
+          }
+        },
+        {
+          "horizonDays": 30,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.10352901091356265,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 11.804820509725078,
+              "rr": 1.5,
+              "horizonDays": 30,
+              "n": 970,
+              "hitPct": 36.391752577319586,
+              "stoppedPct": 58.04123711340207,
+              "unresolvedPct": 5.567010309278351,
+              "expectancyR": -0.040969593528660975,
+              "effectiveN": 32.333333333333336
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.06296330798255542,
+            "best": {
+              "direction": "short",
+              "stopAtr": 2,
+              "stopPct": 7.869880339816718,
+              "rr": 3,
+              "horizonDays": 30,
+              "n": 970,
+              "hitPct": 22.783505154639176,
+              "stoppedPct": 67.42268041237114,
+              "unresolvedPct": 9.793814432989691,
+              "expectancyR": 0.12311067955469249,
+              "effectiveN": 32.333333333333336
+            }
+          }
+        },
+        {
+          "horizonDays": 60,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.08909574468085106,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 11.804820509725078,
+              "rr": 2,
+              "horizonDays": 60,
+              "n": 940,
+              "hitPct": 32.4468085106383,
+              "stoppedPct": 66.80851063829788,
+              "unresolvedPct": 0.7446808510638299,
+              "expectancyR": -0.018914069554239143,
+              "effectiveN": 15.666666666666666
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 14,
+            "positiveSharePct": 87.5,
+            "medianExpectancyR": 0.06329787234042553,
+            "best": {
+              "direction": "short",
+              "stopAtr": 2,
+              "stopPct": 7.869880339816718,
+              "rr": 3,
+              "horizonDays": 60,
+              "n": 940,
+              "hitPct": 28.617021276595743,
+              "stoppedPct": 71.17021276595744,
+              "unresolvedPct": 0.2127659574468085,
+              "expectancyR": 0.15141949894806067,
+              "effectiveN": 15.666666666666666
+            }
+          }
+        },
+        {
+          "horizonDays": 90,
+          "long": {
+            "cells": 16,
+            "positive": 1,
+            "positiveSharePct": 6.25,
+            "medianExpectancyR": -0.10934065934065934,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 11.804820509725078,
+              "rr": 3,
+              "horizonDays": 90,
+              "n": 910,
+              "hitPct": 24.395604395604394,
+              "stoppedPct": 73.73626373626374,
+              "unresolvedPct": 1.8681318681318682,
+              "expectancyR": 0.007936773195862465,
+              "effectiveN": 10.11111111111111
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.08681318681318681,
+            "best": {
+              "direction": "short",
+              "stopAtr": 2,
+              "stopPct": 7.869880339816718,
+              "rr": 3,
+              "horizonDays": 90,
+              "n": 910,
+              "hitPct": 29.450549450549453,
+              "stoppedPct": 70.54945054945055,
+              "unresolvedPct": 0,
+              "expectancyR": 0.17802197802197803,
+              "effectiveN": 10.11111111111111
+            }
+          }
+        }
+      ],
+      "overall": {
+        "cells": 192,
+        "positive": 91,
+        "positiveSharePct": 47.39583333333333,
+        "medianExpectancyR": -0.017354067913508804,
+        "best": {
+          "direction": "short",
+          "stopAtr": 2,
+          "stopPct": 7.869880339816718,
+          "rr": 3,
+          "horizonDays": 90,
+          "n": 910,
+          "hitPct": 29.450549450549453,
+          "stoppedPct": 70.54945054945055,
+          "unresolvedPct": 0,
+          "expectancyR": 0.17802197802197803,
+          "effectiveN": 10.11111111111111
+        }
+      }
+    },
+    {
+      "asset": "ENA",
+      "price": 0.0902,
+      "atrPct": 5.8862888773638025,
+      "long": {
+        "cells": 96,
+        "positive": 0,
+        "positiveSharePct": 0,
+        "medianExpectancyR": -0.051408559416060116,
+        "best": {
+          "direction": "long",
+          "stopAtr": 3,
+          "stopPct": 17.658866632091407,
+          "rr": 2,
+          "horizonDays": 3,
+          "n": 859,
+          "hitPct": 2.4447031431897557,
+          "stoppedPct": 10.477299185098952,
+          "unresolvedPct": 87.07799767171129,
+          "expectancyR": -0.017704430460434968,
+          "effectiveN": 286.3333333333333
+        }
+      },
+      "short": {
+        "cells": 96,
+        "positive": 95,
+        "positiveSharePct": 98.95833333333334,
+        "medianExpectancyR": 0.05640492076325433,
+        "best": {
+          "direction": "short",
+          "stopAtr": 3,
+          "stopPct": 17.658866632091407,
+          "rr": 3,
+          "horizonDays": 90,
+          "n": 772,
+          "hitPct": 27.072538860103627,
+          "stoppedPct": 65.15544041450777,
+          "unresolvedPct": 7.772020725388601,
+          "expectancyR": 0.24755181122621822,
+          "effectiveN": 8.577777777777778
+        }
+      },
+      "byHorizon": [
+        {
+          "horizonDays": 3,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.03877419014457427,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 17.658866632091407,
+              "rr": 2,
+              "horizonDays": 3,
+              "n": 859,
+              "hitPct": 2.4447031431897557,
+              "stoppedPct": 10.477299185098952,
+              "unresolvedPct": 87.07799767171129,
+              "expectancyR": -0.017704430460434968,
+              "effectiveN": 286.3333333333333
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.02453071715053161,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 5.8862888773638025,
+              "rr": 3,
+              "horizonDays": 3,
+              "n": 859,
+              "hitPct": 9.19674039580908,
+              "stoppedPct": 54.83119906868452,
+              "unresolvedPct": 35.9720605355064,
+              "expectancyR": 0.1059460689548235,
+              "effectiveN": 286.3333333333333
+            }
+          }
+        },
+        {
+          "horizonDays": 5,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.06569311274143974,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 17.658866632091407,
+              "rr": 2,
+              "horizonDays": 5,
+              "n": 857,
+              "hitPct": 5.600933488914819,
+              "stoppedPct": 21.120186697782962,
+              "unresolvedPct": 73.27887981330223,
+              "expectancyR": -0.04065832648164952,
+              "effectiveN": 171.4
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 16,
+            "positiveSharePct": 100,
+            "medianExpectancyR": 0.04523068585773189,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 5.8862888773638025,
+              "rr": 3,
+              "horizonDays": 5,
+              "n": 857,
+              "hitPct": 16.102683780630105,
+              "stoppedPct": 61.84364060676779,
+              "unresolvedPct": 22.0536756126021,
+              "expectancyR": 0.1396387714541272,
+              "effectiveN": 171.4
+            }
+          }
+        },
+        {
+          "horizonDays": 10,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.05420097062424069,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 17.658866632091407,
+              "rr": 1.5,
+              "horizonDays": 10,
+              "n": 852,
+              "hitPct": 23.474178403755868,
+              "stoppedPct": 39.436619718309856,
+              "unresolvedPct": 37.08920187793427,
+              "expectancyR": -0.03314263310806096,
+              "effectiveN": 85.2
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 16,
+            "positiveSharePct": 100,
+            "medianExpectancyR": 0.06203019288988047,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 5.8862888773638025,
+              "rr": 3,
+              "horizonDays": 10,
+              "n": 852,
+              "hitPct": 25.938967136150236,
+              "stoppedPct": 69.13145539906104,
+              "unresolvedPct": 4.929577464788732,
+              "expectancyR": 0.13924934392117824,
+              "effectiveN": 85.2
+            }
+          }
+        },
+        {
+          "horizonDays": 30,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.039663461538461536,
+            "best": {
+              "direction": "long",
+              "stopAtr": 1.5,
+              "stopPct": 8.829433316045703,
+              "rr": 3,
+              "horizonDays": 30,
+              "n": 832,
+              "hitPct": 23.677884615384613,
+              "stoppedPct": 74.75961538461539,
+              "unresolvedPct": 1.5625,
+              "expectancyR": -0.023046486669958805,
+              "effectiveN": 27.733333333333334
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 16,
+            "positiveSharePct": 100,
+            "medianExpectancyR": 0.048318453667276856,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 5.8862888773638025,
+              "rr": 3,
+              "horizonDays": 30,
+              "n": 832,
+              "hitPct": 28.60576923076923,
+              "stoppedPct": 71.39423076923077,
+              "unresolvedPct": 0,
+              "expectancyR": 0.14423076923076922,
+              "effectiveN": 27.733333333333334
+            }
+          }
+        },
+        {
+          "horizonDays": 60,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.057356608478802994,
+            "best": {
+              "direction": "long",
+              "stopAtr": 1.5,
+              "stopPct": 8.829433316045703,
+              "rr": 3,
+              "horizonDays": 60,
+              "n": 802,
+              "hitPct": 24.064837905236907,
+              "stoppedPct": 75.93516209476309,
+              "unresolvedPct": 0,
+              "expectancyR": -0.03740648379052369,
+              "effectiveN": 13.366666666666667
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 16,
+            "positiveSharePct": 100,
+            "medianExpectancyR": 0.08755808201158496,
+            "best": {
+              "direction": "short",
+              "stopAtr": 3,
+              "stopPct": 17.658866632091407,
+              "rr": 3,
+              "horizonDays": 60,
+              "n": 802,
+              "hitPct": 19.201995012468828,
+              "stoppedPct": 63.34164588528678,
+              "unresolvedPct": 17.45635910224439,
+              "expectancyR": 0.22714686523218217,
+              "effectiveN": 13.366666666666667
+            }
+          }
+        },
+        {
+          "horizonDays": 90,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.046632124352331605,
+            "best": {
+              "direction": "long",
+              "stopAtr": 1,
+              "stopPct": 5.8862888773638025,
+              "rr": 3,
+              "horizonDays": 90,
+              "n": 772,
+              "hitPct": 24.22279792746114,
+              "stoppedPct": 75.77720207253887,
+              "unresolvedPct": 0,
+              "expectancyR": -0.031088082901554404,
+              "effectiveN": 8.577777777777778
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 16,
+            "positiveSharePct": 100,
+            "medianExpectancyR": 0.07966321243523317,
+            "best": {
+              "direction": "short",
+              "stopAtr": 3,
+              "stopPct": 17.658866632091407,
+              "rr": 3,
+              "horizonDays": 90,
+              "n": 772,
+              "hitPct": 27.072538860103627,
+              "stoppedPct": 65.15544041450777,
+              "unresolvedPct": 7.772020725388601,
+              "expectancyR": 0.24755181122621822,
+              "effectiveN": 8.577777777777778
+            }
+          }
+        }
+      ],
+      "overall": {
+        "cells": 192,
+        "positive": 95,
+        "positiveSharePct": 49.47916666666667,
+        "medianExpectancyR": -0.009686736400796819,
+        "best": {
+          "direction": "short",
+          "stopAtr": 3,
+          "stopPct": 17.658866632091407,
+          "rr": 3,
+          "horizonDays": 90,
+          "n": 772,
+          "hitPct": 27.072538860103627,
+          "stoppedPct": 65.15544041450777,
+          "unresolvedPct": 7.772020725388601,
+          "expectancyR": 0.24755181122621822,
+          "effectiveN": 8.577777777777778
+        }
+      }
+    },
+    {
+      "asset": "SUI",
+      "price": 0.6877,
+      "atrPct": 3.4944242559655123,
+      "long": {
+        "cells": 96,
+        "positive": 0,
+        "positiveSharePct": 0,
+        "medianExpectancyR": -0.11128765667733578,
+        "best": {
+          "direction": "long",
+          "stopAtr": 2,
+          "stopPct": 6.988848511931025,
+          "rr": 3,
+          "horizonDays": 90,
+          "n": 910,
+          "hitPct": 24.945054945054945,
+          "stoppedPct": 75.05494505494505,
+          "unresolvedPct": 0,
+          "expectancyR": -0.002197802197802198,
+          "effectiveN": 10.11111111111111
+        }
+      },
+      "short": {
+        "cells": 96,
+        "positive": 90,
+        "positiveSharePct": 93.75,
+        "medianExpectancyR": 0.08233927972387949,
+        "best": {
+          "direction": "short",
+          "stopAtr": 3,
+          "stopPct": 10.483272767896537,
+          "rr": 3,
+          "horizonDays": 60,
+          "n": 940,
+          "hitPct": 27.76595744680851,
+          "stoppedPct": 68.93617021276596,
+          "unresolvedPct": 3.2978723404255317,
+          "expectancyR": 0.19128367120856044,
+          "effectiveN": 15.666666666666666
+        }
+      },
+      "byHorizon": [
+        {
+          "horizonDays": 3,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.11240743116482102,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 10.483272767896537,
+              "rr": 3,
+              "horizonDays": 3,
+              "n": 997,
+              "hitPct": 1.7051153460381143,
+              "stoppedPct": 24.37311935807422,
+              "unresolvedPct": 73.92176529588767,
+              "expectancyR": -0.024809360257188513,
+              "effectiveN": 332.3333333333333
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.06417028164465871,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 3.4944242559655123,
+              "rr": 3,
+              "horizonDays": 3,
+              "n": 997,
+              "hitPct": 18.455366098294885,
+              "stoppedPct": 61.28385155466399,
+              "unresolvedPct": 20.260782347041122,
+              "expectancyR": 0.13752087222532772,
+              "effectiveN": 332.3333333333333
+            }
+          }
+        },
+        {
+          "horizonDays": 5,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.12855937814599713,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 10.483272767896537,
+              "rr": 2,
+              "horizonDays": 5,
+              "n": 995,
+              "hitPct": 11.959798994974873,
+              "stoppedPct": 37.58793969849246,
+              "unresolvedPct": 50.45226130653266,
+              "expectancyR": -0.04876049895466806,
+              "effectiveN": 199
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.08608904903173892,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 3.4944242559655123,
+              "rr": 3,
+              "horizonDays": 5,
+              "n": 995,
+              "hitPct": 24.522613065326635,
+              "stoppedPct": 66.13065326633166,
+              "unresolvedPct": 9.346733668341708,
+              "expectancyR": 0.1635527486223112,
+              "effectiveN": 199
+            }
+          }
+        },
+        {
+          "horizonDays": 10,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.1188236776998998,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 10.483272767896537,
+              "rr": 3,
+              "horizonDays": 10,
+              "n": 990,
+              "hitPct": 10.202020202020202,
+              "stoppedPct": 53.73737373737374,
+              "unresolvedPct": 36.06060606060606,
+              "expectancyR": -0.05150520115285137,
+              "effectiveN": 99
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.10010051211776487,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 3.4944242559655123,
+              "rr": 3,
+              "horizonDays": 10,
+              "n": 990,
+              "hitPct": 27.979797979797983,
+              "stoppedPct": 69.4949494949495,
+              "unresolvedPct": 2.525252525252525,
+              "expectancyR": 0.16549422262760544,
+              "effectiveN": 99
+            }
+          }
+        },
+        {
+          "horizonDays": 30,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.11712857410260051,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 10.483272767896537,
+              "rr": 3,
+              "horizonDays": 30,
+              "n": 970,
+              "hitPct": 20.309278350515463,
+              "stoppedPct": 70.82474226804123,
+              "unresolvedPct": 8.8659793814433,
+              "expectancyR": -0.06674854277540637,
+              "effectiveN": 32.333333333333336
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.08663429490054864,
+            "best": {
+              "direction": "short",
+              "stopAtr": 3,
+              "stopPct": 10.483272767896537,
+              "rr": 3,
+              "horizonDays": 30,
+              "n": 970,
+              "hitPct": 22.164948453608247,
+              "stoppedPct": 64.5360824742268,
+              "unresolvedPct": 13.29896907216495,
+              "expectancyR": 0.14293436457210706,
+              "effectiveN": 32.333333333333336
+            }
+          }
+        },
+        {
+          "horizonDays": 60,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.10425531914893617,
+            "best": {
+              "direction": "long",
+              "stopAtr": 2,
+              "stopPct": 6.988848511931025,
+              "rr": 3,
+              "horizonDays": 60,
+              "n": 940,
+              "hitPct": 24.148936170212764,
+              "stoppedPct": 75.85106382978724,
+              "unresolvedPct": 0,
+              "expectancyR": -0.03404255319148936,
+              "effectiveN": 15.666666666666666
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.08776595744680851,
+            "best": {
+              "direction": "short",
+              "stopAtr": 3,
+              "stopPct": 10.483272767896537,
+              "rr": 3,
+              "horizonDays": 60,
+              "n": 940,
+              "hitPct": 27.76595744680851,
+              "stoppedPct": 68.93617021276596,
+              "unresolvedPct": 3.2978723404255317,
+              "expectancyR": 0.19128367120856044,
+              "effectiveN": 15.666666666666666
+            }
+          }
+        },
+        {
+          "horizonDays": 90,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.09285714285714286,
+            "best": {
+              "direction": "long",
+              "stopAtr": 2,
+              "stopPct": 6.988848511931025,
+              "rr": 3,
+              "horizonDays": 90,
+              "n": 910,
+              "hitPct": 24.945054945054945,
+              "stoppedPct": 75.05494505494505,
+              "unresolvedPct": 0,
+              "expectancyR": -0.002197802197802198,
+              "effectiveN": 10.11111111111111
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.0706043956043956,
+            "best": {
+              "direction": "short",
+              "stopAtr": 3,
+              "stopPct": 10.483272767896537,
+              "rr": 3,
+              "horizonDays": 90,
+              "n": 910,
+              "hitPct": 28.57142857142857,
+              "stoppedPct": 70.76923076923077,
+              "unresolvedPct": 0.6593406593406593,
+              "expectancyR": 0.15637372619287135,
+              "effectiveN": 10.11111111111111
+            }
+          }
+        }
+      ],
+      "overall": {
+        "cells": 192,
+        "positive": 90,
+        "positiveSharePct": 46.875,
+        "medianExpectancyR": -0.036446558044141736,
+        "best": {
+          "direction": "short",
+          "stopAtr": 3,
+          "stopPct": 10.483272767896537,
+          "rr": 3,
+          "horizonDays": 60,
+          "n": 940,
+          "hitPct": 27.76595744680851,
+          "stoppedPct": 68.93617021276596,
+          "unresolvedPct": 3.2978723404255317,
+          "expectancyR": 0.19128367120856044,
+          "effectiveN": 15.666666666666666
+        }
+      }
+    },
+    {
+      "asset": "CRV",
+      "price": 0.2599,
+      "atrPct": 4.895382447281696,
+      "long": {
+        "cells": 96,
+        "positive": 6,
+        "positiveSharePct": 6.25,
+        "medianExpectancyR": -0.07041762856415128,
+        "best": {
+          "direction": "long",
+          "stopAtr": 2,
+          "stopPct": 9.790764894563392,
+          "rr": 1,
+          "horizonDays": 90,
+          "n": 910,
+          "hitPct": 51.208791208791204,
+          "stoppedPct": 48.79120879120879,
+          "unresolvedPct": 0,
+          "expectancyR": 0.024175824175824177,
+          "effectiveN": 10.11111111111111
+        }
+      },
+      "short": {
+        "cells": 96,
+        "positive": 65,
+        "positiveSharePct": 67.70833333333334,
+        "medianExpectancyR": 0.014585863469752845,
+        "best": {
+          "direction": "short",
+          "stopAtr": 3,
+          "stopPct": 14.686147341845087,
+          "rr": 2,
+          "horizonDays": 60,
+          "n": 940,
+          "hitPct": 34.57446808510639,
+          "stoppedPct": 57.659574468085104,
+          "unresolvedPct": 7.76595744680851,
+          "expectancyR": 0.16846438463598878,
+          "effectiveN": 15.666666666666666
+        }
+      },
+      "byHorizon": [
+        {
+          "horizonDays": 3,
+          "long": {
+            "cells": 16,
+            "positive": 3,
+            "positiveSharePct": 18.75,
+            "medianExpectancyR": -0.013861927092433755,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 14.686147341845087,
+              "rr": 3,
+              "horizonDays": 3,
+              "n": 997,
+              "hitPct": 0.802407221664995,
+              "stoppedPct": 10.330992978936811,
+              "unresolvedPct": 88.86659979939819,
+              "expectancyR": 0.00660114651747411,
+              "effectiveN": 332.3333333333333
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 10,
+            "positiveSharePct": 62.5,
+            "medianExpectancyR": 0.0023454745393826017,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1.5,
+              "stopPct": 7.343073670922544,
+              "rr": 3,
+              "horizonDays": 3,
+              "n": 997,
+              "hitPct": 3.4102306920762286,
+              "stoppedPct": 36.2086258776329,
+              "unresolvedPct": 60.38114343029088,
+              "expectancyR": 0.028296925083633056,
+              "effectiveN": 332.3333333333333
+            }
+          }
+        },
+        {
+          "horizonDays": 5,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.03629808386538451,
+            "best": {
+              "direction": "long",
+              "stopAtr": 3,
+              "stopPct": 14.686147341845087,
+              "rr": 3,
+              "horizonDays": 5,
+              "n": 995,
+              "hitPct": 1.9095477386934674,
+              "stoppedPct": 19.09547738693467,
+              "unresolvedPct": 78.99497487437186,
+              "expectancyR": -0.011456508628006744,
+              "effectiveN": 199
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 13,
+            "positiveSharePct": 81.25,
+            "medianExpectancyR": 0.015716187514892854,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1.5,
+              "stopPct": 7.343073670922544,
+              "rr": 3,
+              "horizonDays": 5,
+              "n": 995,
+              "hitPct": 6.432160804020101,
+              "stoppedPct": 46.53266331658292,
+              "unresolvedPct": 47.03517587939699,
+              "expectancyR": 0.04885246237216808,
+              "effectiveN": 199
+            }
+          }
+        },
+        {
+          "horizonDays": 10,
+          "long": {
+            "cells": 16,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.08676533404274081,
+            "best": {
+              "direction": "long",
+              "stopAtr": 2,
+              "stopPct": 9.790764894563392,
+              "rr": 1,
+              "horizonDays": 10,
+              "n": 990,
+              "hitPct": 43.03030303030303,
+              "stoppedPct": 45.151515151515156,
+              "unresolvedPct": 11.818181818181818,
+              "expectancyR": -0.018847701172418643,
+              "effectiveN": 99
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 14,
+            "positiveSharePct": 87.5,
+            "medianExpectancyR": 0.03524385190992386,
+            "best": {
+              "direction": "short",
+              "stopAtr": 3,
+              "stopPct": 14.686147341845087,
+              "rr": 1,
+              "horizonDays": 10,
+              "n": 990,
+              "hitPct": 34.84848484848485,
+              "stoppedPct": 28.58585858585859,
+              "unresolvedPct": 36.56565656565657,
+              "expectancyR": 0.07050558679863222,
+              "effectiveN": 99
+            }
+          }
+        },
+        {
+          "horizonDays": 30,
+          "long": {
+            "cells": 16,
+            "positive": 1,
+            "positiveSharePct": 6.25,
+            "medianExpectancyR": -0.10059802936065829,
+            "best": {
+              "direction": "long",
+              "stopAtr": 2,
+              "stopPct": 9.790764894563392,
+              "rr": 1,
+              "horizonDays": 30,
+              "n": 970,
+              "hitPct": 50.30927835051546,
+              "stoppedPct": 49.381443298969074,
+              "unresolvedPct": 0.30927835051546393,
+              "expectancyR": 0.007969168946840851,
+              "effectiveN": 32.333333333333336
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 11,
+            "positiveSharePct": 68.75,
+            "medianExpectancyR": 0.03409739309429606,
+            "best": {
+              "direction": "short",
+              "stopAtr": 3,
+              "stopPct": 14.686147341845087,
+              "rr": 2,
+              "horizonDays": 30,
+              "n": 970,
+              "hitPct": 24.432989690721648,
+              "stoppedPct": 48.24742268041237,
+              "unresolvedPct": 27.31958762886598,
+              "expectancyR": 0.16391537849157917,
+              "effectiveN": 32.333333333333336
+            }
+          }
+        },
+        {
+          "horizonDays": 60,
+          "long": {
+            "cells": 16,
+            "positive": 1,
+            "positiveSharePct": 6.25,
+            "medianExpectancyR": -0.09442616355624553,
+            "best": {
+              "direction": "long",
+              "stopAtr": 2,
+              "stopPct": 9.790764894563392,
+              "rr": 1,
+              "horizonDays": 60,
+              "n": 940,
+              "hitPct": 50.212765957446805,
+              "stoppedPct": 49.787234042553195,
+              "unresolvedPct": 0,
+              "expectancyR": 0.00425531914893617,
+              "effectiveN": 15.666666666666666
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 11,
+            "positiveSharePct": 68.75,
+            "medianExpectancyR": 0.03448412846960995,
+            "best": {
+              "direction": "short",
+              "stopAtr": 3,
+              "stopPct": 14.686147341845087,
+              "rr": 2,
+              "horizonDays": 60,
+              "n": 940,
+              "hitPct": 34.57446808510639,
+              "stoppedPct": 57.659574468085104,
+              "unresolvedPct": 7.76595744680851,
+              "expectancyR": 0.16846438463598878,
+              "effectiveN": 15.666666666666666
+            }
+          }
+        },
+        {
+          "horizonDays": 90,
+          "long": {
+            "cells": 16,
+            "positive": 1,
+            "positiveSharePct": 6.25,
+            "medianExpectancyR": -0.07912087912087912,
+            "best": {
+              "direction": "long",
+              "stopAtr": 2,
+              "stopPct": 9.790764894563392,
+              "rr": 1,
+              "horizonDays": 90,
+              "n": 910,
+              "hitPct": 51.208791208791204,
+              "stoppedPct": 48.79120879120879,
+              "unresolvedPct": 0,
+              "expectancyR": 0.024175824175824177,
+              "effectiveN": 10.11111111111111
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 6,
+            "positiveSharePct": 37.5,
+            "medianExpectancyR": -0.004395604395604396,
+            "best": {
+              "direction": "short",
+              "stopAtr": 3,
+              "stopPct": 14.686147341845087,
+              "rr": 2,
+              "horizonDays": 90,
+              "n": 910,
+              "hitPct": 38.24175824175824,
+              "stoppedPct": 60.879120879120876,
+              "unresolvedPct": 0.8791208791208791,
+              "expectancyR": 0.15986484175358878,
+              "effectiveN": 10.11111111111111
+            }
+          }
+        }
+      ],
+      "overall": {
+        "cells": 192,
+        "positive": 71,
+        "positiveSharePct": 36.97916666666667,
+        "medianExpectancyR": -0.01435056165688756,
+        "best": {
+          "direction": "short",
+          "stopAtr": 3,
+          "stopPct": 14.686147341845087,
+          "rr": 2,
+          "horizonDays": 60,
+          "n": 940,
+          "hitPct": 34.57446808510639,
+          "stoppedPct": 57.659574468085104,
+          "unresolvedPct": 7.76595744680851,
+          "expectancyR": 0.16846438463598878,
+          "effectiveN": 15.666666666666666
+        }
+      }
+    },
+    {
+      "asset": "BICO",
+      "price": 0.03925,
+      "atrPct": 25.80595320343183,
+      "long": {
+        "cells": 72,
+        "positive": 14,
+        "positiveSharePct": 19.444444444444446,
+        "medianExpectancyR": -0.0236235582086622,
+        "best": {
+          "direction": "long",
+          "stopAtr": 1.5,
+          "stopPct": 38.70892980514775,
+          "rr": 3,
+          "horizonDays": 90,
+          "n": 910,
+          "hitPct": 16.043956043956044,
+          "stoppedPct": 52.307692307692314,
+          "unresolvedPct": 31.648351648351646,
+          "expectancyR": 0.058753185312790474,
+          "effectiveN": 10.11111111111111
+        }
+      },
+      "short": {
+        "cells": 72,
+        "positive": 72,
+        "positiveSharePct": 100,
+        "medianExpectancyR": 0.02807957920888799,
+        "best": {
+          "direction": "short",
+          "stopAtr": 1,
+          "stopPct": 25.80595320343183,
+          "rr": 3,
+          "horizonDays": 90,
+          "n": 910,
+          "hitPct": 6.263736263736264,
+          "stoppedPct": 54.175824175824175,
+          "unresolvedPct": 39.56043956043956,
+          "expectancyR": 0.28792780914960936,
+          "effectiveN": 10.11111111111111
+        }
+      },
+      "byHorizon": [
+        {
+          "horizonDays": 3,
+          "long": {
+            "cells": 12,
+            "positive": 6,
+            "positiveSharePct": 50,
+            "medianExpectancyR": -0.0003735802453946252,
+            "best": {
+              "direction": "long",
+              "stopAtr": 2,
+              "stopPct": 51.61190640686366,
+              "rr": 3,
+              "horizonDays": 3,
+              "n": 997,
+              "hitPct": 0.4012036108324975,
+              "stoppedPct": 0.4012036108324975,
+              "unresolvedPct": 99.19759277833501,
+              "expectancyR": 0.004737382888792915,
+              "effectiveN": 332.3333333333333
+            }
+          },
+          "short": {
+            "cells": 12,
+            "positive": 12,
+            "positiveSharePct": 100,
+            "medianExpectancyR": 0.004715903866139981,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 25.80595320343183,
+              "rr": 1,
+              "horizonDays": 3,
+              "n": 997,
+              "hitPct": 2.8084252758274824,
+              "stoppedPct": 4.112337011033099,
+              "unresolvedPct": 93.07923771313942,
+              "expectancyR": 0.010736002058795706,
+              "effectiveN": 332.3333333333333
+            }
+          }
+        },
+        {
+          "horizonDays": 5,
+          "long": {
+            "cells": 12,
+            "positive": 4,
+            "positiveSharePct": 33.33333333333333,
+            "medianExpectancyR": -0.0036211769170549353,
+            "best": {
+              "direction": "long",
+              "stopAtr": 2,
+              "stopPct": 51.61190640686366,
+              "rr": 3,
+              "horizonDays": 5,
+              "n": 995,
+              "hitPct": 0.9045226130653266,
+              "stoppedPct": 0.7035175879396985,
+              "unresolvedPct": 98.39195979899498,
+              "expectancyR": 0.010440692242460883,
+              "effectiveN": 199
+            }
+          },
+          "short": {
+            "cells": 12,
+            "positive": 12,
+            "positiveSharePct": 100,
+            "medianExpectancyR": 0.011764145466531425,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 25.80595320343183,
+              "rr": 2,
+              "horizonDays": 5,
+              "n": 995,
+              "hitPct": 0.7035175879396985,
+              "stoppedPct": 7.135678391959798,
+              "unresolvedPct": 92.1608040201005,
+              "expectancyR": 0.019100125701552683,
+              "effectiveN": 199
+            }
+          }
+        },
+        {
+          "horizonDays": 10,
+          "long": {
+            "cells": 12,
+            "positive": 1,
+            "positiveSharePct": 8.333333333333332,
+            "medianExpectancyR": -0.019097382738123746,
+            "best": {
+              "direction": "long",
+              "stopAtr": 2,
+              "stopPct": 51.61190640686366,
+              "rr": 3,
+              "horizonDays": 10,
+              "n": 990,
+              "hitPct": 1.5151515151515151,
+              "stoppedPct": 1.4141414141414141,
+              "unresolvedPct": 97.07070707070707,
+              "expectancyR": 0.009150862657840013,
+              "effectiveN": 99
+            }
+          },
+          "short": {
+            "cells": 12,
+            "positive": 12,
+            "positiveSharePct": 100,
+            "medianExpectancyR": 0.025345511868537986,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 25.80595320343183,
+              "rr": 3,
+              "horizonDays": 10,
+              "n": 990,
+              "hitPct": 0.5050505050505051,
+              "stoppedPct": 17.87878787878788,
+              "unresolvedPct": 81.61616161616162,
+              "expectancyR": 0.02920941840331724,
+              "effectiveN": 99
+            }
+          }
+        },
+        {
+          "horizonDays": 30,
+          "long": {
+            "cells": 12,
+            "positive": 0,
+            "positiveSharePct": 0,
+            "medianExpectancyR": -0.041216494487943525,
+            "best": {
+              "direction": "long",
+              "stopAtr": 2,
+              "stopPct": 51.61190640686366,
+              "rr": 3,
+              "horizonDays": 30,
+              "n": 970,
+              "hitPct": 3.1958762886597936,
+              "stoppedPct": 5.567010309278351,
+              "unresolvedPct": 91.23711340206185,
+              "expectancyR": -0.0044323878442402735,
+              "effectiveN": 32.333333333333336
+            }
+          },
+          "short": {
+            "cells": 12,
+            "positive": 12,
+            "positiveSharePct": 100,
+            "medianExpectancyR": 0.058657596348900755,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1.5,
+              "stopPct": 38.70892980514775,
+              "rr": 1,
+              "horizonDays": 30,
+              "n": 970,
+              "hitPct": 19.072164948453608,
+              "stoppedPct": 24.536082474226802,
+              "unresolvedPct": 56.391752577319586,
+              "expectancyR": 0.06943361852967789,
+              "effectiveN": 32.333333333333336
+            }
+          }
+        },
+        {
+          "horizonDays": 60,
+          "long": {
+            "cells": 12,
+            "positive": 1,
+            "positiveSharePct": 8.333333333333332,
+            "medianExpectancyR": -0.060744023685341014,
+            "best": {
+              "direction": "long",
+              "stopAtr": 1.5,
+              "stopPct": 38.70892980514775,
+              "rr": 3,
+              "horizonDays": 60,
+              "n": 940,
+              "hitPct": 11.702127659574469,
+              "stoppedPct": 38.08510638297872,
+              "unresolvedPct": 50.212765957446805,
+              "expectancyR": 0.014207479767614337,
+              "effectiveN": 15.666666666666666
+            }
+          },
+          "short": {
+            "cells": 12,
+            "positive": 12,
+            "positiveSharePct": 100,
+            "medianExpectancyR": 0.07269112608631652,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 25.80595320343183,
+              "rr": 3,
+              "horizonDays": 60,
+              "n": 940,
+              "hitPct": 3.9361702127659575,
+              "stoppedPct": 51.59574468085106,
+              "unresolvedPct": 44.46808510638298,
+              "expectancyR": 0.15642954085087127,
+              "effectiveN": 15.666666666666666
+            }
+          }
+        },
+        {
+          "horizonDays": 90,
+          "long": {
+            "cells": 12,
+            "positive": 2,
+            "positiveSharePct": 16.666666666666664,
+            "medianExpectancyR": -0.06479745525942487,
+            "best": {
+              "direction": "long",
+              "stopAtr": 1.5,
+              "stopPct": 38.70892980514775,
+              "rr": 3,
+              "horizonDays": 90,
+              "n": 910,
+              "hitPct": 16.043956043956044,
+              "stoppedPct": 52.307692307692314,
+              "unresolvedPct": 31.648351648351646,
+              "expectancyR": 0.058753185312790474,
+              "effectiveN": 10.11111111111111
+            }
+          },
+          "short": {
+            "cells": 12,
+            "positive": 12,
+            "positiveSharePct": 100,
+            "medianExpectancyR": 0.12231502930600222,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 25.80595320343183,
+              "rr": 3,
+              "horizonDays": 90,
+              "n": 910,
+              "hitPct": 6.263736263736264,
+              "stoppedPct": 54.175824175824175,
+              "unresolvedPct": 39.56043956043956,
+              "expectancyR": 0.28792780914960936,
+              "effectiveN": 10.11111111111111
+            }
+          }
+        }
+      ],
+      "overall": {
+        "cells": 144,
+        "positive": 86,
+        "positiveSharePct": 59.72222222222222,
+        "medianExpectancyR": 0.0042958007768380555,
+        "best": {
+          "direction": "short",
+          "stopAtr": 1,
+          "stopPct": 25.80595320343183,
+          "rr": 3,
+          "horizonDays": 90,
+          "n": 910,
+          "hitPct": 6.263736263736264,
+          "stoppedPct": 54.175824175824175,
+          "unresolvedPct": 39.56043956043956,
+          "expectancyR": 0.28792780914960936,
+          "effectiveN": 10.11111111111111
+        }
+      }
+    },
+    {
+      "asset": "BTC",
+      "price": 64060.59,
+      "atrPct": 2.067385687463983,
+      "long": {
+        "cells": 96,
+        "positive": 87,
+        "positiveSharePct": 90.625,
+        "medianExpectancyR": 0.0427708210987877,
+        "best": {
+          "direction": "long",
+          "stopAtr": 1,
+          "stopPct": 2.067385687463983,
+          "rr": 3,
+          "horizonDays": 90,
+          "n": 910,
+          "hitPct": 29.67032967032967,
+          "stoppedPct": 70.32967032967034,
+          "unresolvedPct": 0,
+          "expectancyR": 0.18681318681318682,
+          "effectiveN": 10.11111111111111
+        }
+      },
+      "short": {
+        "cells": 96,
+        "positive": 21,
+        "positiveSharePct": 21.875,
+        "medianExpectancyR": -0.031604289825051715,
+        "best": {
+          "direction": "short",
+          "stopAtr": 1,
+          "stopPct": 2.067385687463983,
+          "rr": 3,
+          "horizonDays": 10,
+          "n": 990,
+          "hitPct": 24.242424242424242,
+          "stoppedPct": 71.01010101010101,
+          "unresolvedPct": 4.747474747474747,
+          "expectancyR": 0.06552002024675753,
+          "effectiveN": 99
+        }
+      },
+      "byHorizon": [
+        {
+          "horizonDays": 3,
+          "long": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.019962986301615655,
+            "best": {
+              "direction": "long",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 3,
+              "horizonDays": 3,
+              "n": 997,
+              "hitPct": 10.732196589769307,
+              "stoppedPct": 54.56369107321966,
+              "unresolvedPct": 34.70411233701103,
+              "expectancyR": 0.07143590702279624,
+              "effectiveN": 332.3333333333333
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 5,
+            "positiveSharePct": 31.25,
+            "medianExpectancyR": -0.01510978423204699,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 3,
+              "horizonDays": 3,
+              "n": 997,
+              "hitPct": 12.437311935807422,
+              "stoppedPct": 55.46639919759278,
+              "unresolvedPct": 32.0962888665998,
+              "expectancyR": 0.0461155011189262,
+              "effectiveN": 332.3333333333333
+            }
+          }
+        },
+        {
+          "horizonDays": 5,
+          "long": {
+            "cells": 16,
+            "positive": 14,
+            "positiveSharePct": 87.5,
+            "medianExpectancyR": 0.03174199071105829,
+            "best": {
+              "direction": "long",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 3,
+              "horizonDays": 5,
+              "n": 995,
+              "hitPct": 18.592964824120603,
+              "stoppedPct": 62.51256281407035,
+              "unresolvedPct": 18.894472361809044,
+              "expectancyR": 0.07851240671104899,
+              "effectiveN": 199
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 5,
+            "positiveSharePct": 31.25,
+            "medianExpectancyR": -0.019205463994482523,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 3,
+              "horizonDays": 5,
+              "n": 995,
+              "hitPct": 17.48743718592965,
+              "stoppedPct": 63.71859296482412,
+              "unresolvedPct": 18.79396984924623,
+              "expectancyR": 0.03705698387501976,
+              "effectiveN": 199
+            }
+          }
+        },
+        {
+          "horizonDays": 10,
+          "long": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.0543878385856878,
+            "best": {
+              "direction": "long",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 3,
+              "horizonDays": 10,
+              "n": 990,
+              "hitPct": 24.646464646464647,
+              "stoppedPct": 69.4949494949495,
+              "unresolvedPct": 5.858585858585859,
+              "expectancyR": 0.11661344483707241,
+              "effectiveN": 99
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 3,
+            "positiveSharePct": 18.75,
+            "medianExpectancyR": -0.03409335784519864,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 3,
+              "horizonDays": 10,
+              "n": 990,
+              "hitPct": 24.242424242424242,
+              "stoppedPct": 71.01010101010101,
+              "unresolvedPct": 4.747474747474747,
+              "expectancyR": 0.06552002024675753,
+              "effectiveN": 99
+            }
+          }
+        },
+        {
+          "horizonDays": 30,
+          "long": {
+            "cells": 16,
+            "positive": 15,
+            "positiveSharePct": 93.75,
+            "medianExpectancyR": 0.06110041707681827,
+            "best": {
+              "direction": "long",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 3,
+              "horizonDays": 30,
+              "n": 970,
+              "hitPct": 28.659793814432987,
+              "stoppedPct": 71.34020618556701,
+              "unresolvedPct": 0,
+              "expectancyR": 0.1463917525773196,
+              "effectiveN": 32.333333333333336
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 3,
+            "positiveSharePct": 18.75,
+            "medianExpectancyR": -0.05463917525773196,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 3,
+              "horizonDays": 30,
+              "n": 970,
+              "hitPct": 26.288659793814436,
+              "stoppedPct": 73.71134020618557,
+              "unresolvedPct": 0,
+              "expectancyR": 0.05154639175257732,
+              "effectiveN": 32.333333333333336
+            }
+          }
+        },
+        {
+          "horizonDays": 60,
+          "long": {
+            "cells": 16,
+            "positive": 14,
+            "positiveSharePct": 87.5,
+            "medianExpectancyR": 0.04455569072938578,
+            "best": {
+              "direction": "long",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 3,
+              "horizonDays": 60,
+              "n": 940,
+              "hitPct": 29.04255319148936,
+              "stoppedPct": 70.95744680851064,
+              "unresolvedPct": 0,
+              "expectancyR": 0.16170212765957448,
+              "effectiveN": 15.666666666666666
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 3,
+            "positiveSharePct": 18.75,
+            "medianExpectancyR": -0.054255319148936165,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 3,
+              "horizonDays": 60,
+              "n": 940,
+              "hitPct": 26.489361702127663,
+              "stoppedPct": 73.51063829787235,
+              "unresolvedPct": 0,
+              "expectancyR": 0.059574468085106386,
+              "effectiveN": 15.666666666666666
+            }
+          }
+        },
+        {
+          "horizonDays": 90,
+          "long": {
+            "cells": 16,
+            "positive": 14,
+            "positiveSharePct": 87.5,
+            "medianExpectancyR": 0.07692307692307698,
+            "best": {
+              "direction": "long",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 3,
+              "horizonDays": 90,
+              "n": 910,
+              "hitPct": 29.67032967032967,
+              "stoppedPct": 70.32967032967034,
+              "unresolvedPct": 0,
+              "expectancyR": 0.18681318681318682,
+              "effectiveN": 10.11111111111111
+            }
+          },
+          "short": {
+            "cells": 16,
+            "positive": 2,
+            "positiveSharePct": 12.5,
+            "medianExpectancyR": -0.07417582417582418,
+            "best": {
+              "direction": "short",
+              "stopAtr": 1,
+              "stopPct": 2.067385687463983,
+              "rr": 2,
+              "horizonDays": 90,
+              "n": 910,
+              "hitPct": 33.956043956043956,
+              "stoppedPct": 66.04395604395604,
+              "unresolvedPct": 0,
+              "expectancyR": 0.01868131868131868,
+              "effectiveN": 10.11111111111111
+            }
+          }
+        }
+      ],
+      "overall": {
+        "cells": 192,
+        "positive": 108,
+        "positiveSharePct": 56.25,
+        "medianExpectancyR": 0.011999064366895433,
+        "best": {
+          "direction": "long",
+          "stopAtr": 1,
+          "stopPct": 2.067385687463983,
+          "rr": 3,
+          "horizonDays": 90,
+          "n": 910,
+          "hitPct": 29.67032967032967,
+          "stoppedPct": 70.32967032967034,
+          "unresolvedPct": 0,
+          "expectancyR": 0.18681318681318682,
+          "effectiveN": 10.11111111111111
+        }
+      }
+    }
+  ],
+  "holding": [
+    {
+      "asset": "ICP",
+      "hold7dPct": 10.760401721664259,
+      "worstDrawdown7dPct": -8.067940552016983,
+      "hold14dPct": 9.245283018867912,
+      "worstDrawdown14dPct": -8.067940552016983,
+      "hold30dPct": 4.230423042304232,
+      "worstDrawdown30dPct": -12.925764192139743
+    },
+    {
+      "asset": "ENA",
+      "hold7dPct": -2.3809523809523725,
+      "worstDrawdown7dPct": -12.729124236252542,
+      "hold14dPct": 8.023952095808372,
+      "worstDrawdown14dPct": -12.729124236252542,
+      "hold30dPct": 12.891113892365457,
+      "worstDrawdown30dPct": -17.381974248927044
+    },
+    {
+      "asset": "SUI",
+      "hold7dPct": -0.7791083537729171,
+      "worstDrawdown7dPct": -5.140654005426248,
+      "hold14dPct": -0.7074790643950335,
+      "worstDrawdown14dPct": -6.302996042962117,
+      "hold30dPct": -6.562500000000004,
+      "worstDrawdown30dPct": -14.956387891226264
+    },
+    {
+      "asset": "CRV",
+      "hold7dPct": 26.656920077972714,
+      "worstDrawdown7dPct": -11.414670658682635,
+      "hold14dPct": 22.71010387157697,
+      "worstDrawdown14dPct": -11.414670658682635,
+      "hold30dPct": 25.43436293436294,
+      "worstDrawdown30dPct": -13.677811550151976
+    },
+    {
+      "asset": "BICO",
+      "hold7dPct": 85.56554661618554,
+      "worstDrawdown7dPct": -59.133333333333326,
+      "hold14dPct": 227.022518765638,
+      "worstDrawdown14dPct": -59.133333333333326,
+      "hold30dPct": 186.6228070175439,
+      "worstDrawdown30dPct": -59.133333333333326
+    },
+    {
+      "asset": "BTC",
+      "hold7dPct": -0.07169313093698948,
+      "worstDrawdown7dPct": -2.5478484282268288,
+      "hold14dPct": 0.22780255026206842,
+      "worstDrawdown14dPct": -4.792204686898971,
+      "hold30dPct": 0.43994982753214895,
+      "worstDrawdown30dPct": -6.991366737782856
+    }
+  ],
+  "holdingAverages": {
+    "avg7dPct": 19.958519091693372,
+    "avg14dPct": 44.420363539626386,
+    "avg30dPct": 37.17602611901811
+  }
+}

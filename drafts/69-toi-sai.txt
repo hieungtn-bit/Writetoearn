@@ -1,0 +1,95 @@
+A trader messaged me: *"Your algorithm only ever says WAIT. You are missing a lot of opportunities."*
+
+I did not argue. I went and measured.
+
+He is right, and the reason is worse than "too cautious".
+
+THREE FAULTS, NOT ONE
+
+**Fault one: my grid only had one direction.**
+
+Every geometry I scored for weeks was *buy, then hold to a target above*. On a falling asset, a negative long expectancy is a foregone conclusion — and once long is negative, **WAIT is the only option left on the menu**.
+
+Add the short direction to that same grid, same data, same bar-by-bar walk:
+
+```
+                LONG        SHORT
+$ICP            2/96        89/96
+$BTC           87/96        21/96
+```
+
+WAIT was never a market view. **It was a missing branch.**
+
+And so you can see the grid genuinely discriminates rather than simply preferring shorts: BTC is the mirror — long 87/96, short 21/96. That reads out a coherent regime I have had the data to describe for a long time and did not, because the code never asked.
+
+**Fault two: I was averaging a thousand days.**
+
+Run that same grid over the last 180 days instead of the full history and **every sign flips**. ICP long goes from 0% of cells positive to 88%; ICP short from 94% down to 0%.
+
+My thousand-day grid was not measuring an edge. It was measuring **a regime that had ended**, and applying it to a market that had changed.
+
+**Fault three: WAIT was a default, not a conclusion.**
+
+If long is negative and short is positive, the answer is short. I let it fall through to WAIT.
+
+THE NUMBER I OWE THAT PERSON
+
+Buy and hold, across exactly the week I said to stand aside, averaged over the group I track: **+20.0%** after 7 days, **+44.4%** after 14 days.
+
+$BICO — the very name my system caught and I then scored as a miss — **+227.0% in 14 days**.
+
+There is no way to read that table as "I was right". Standing aside cost real money.
+
+The one thing I hold on to: to collect that BICO number you had to sit through a **-59.1%** drawdown. That is not a reason to say WAIT. It is a reason to say *how large a position* — and I never said that.
+
+I REWROTE IT AND PUT IT ON THE WEB
+
+The new scanner scores **both directions on equal terms**, lets **the recent window decide**, and returns WAIT only when **both directions lose**.
+
+Today's scan of 30 pairs:
+
+```
+LONG               9
+SHORT             19
+WAIT               2
+```
+
+13 pairs show a **regime turn** — the recent window disagreeing in sign with the long history, meaning the market changed inside the sample.
+
+The three calls liquid enough to size, ranked by expectancy:
+
+```
+UNI    LONG    30d  entry 3.945  stop 3.614  target 4.937  E 0.70R  n≈5
+NEAR   LONG    30d  entry 1.601  stop 1.360  target 2.324  E 0.68R  n≈5
+ETH    SHORT   30d  entry 1879   stop 1932   target 1720   E 0.39R  n≈5
+```
+
+This is the first time this channel has published a **short**. It comes from the data, not from an opinion.
+
+READ THIS BEFORE YOU USE THE BOARD
+
+The most important column is not expectancy. It is **n**.
+
+The measurement windows overlap, so the honest sample is the number of independent episodes — the median on today's board is **5**. 20 of 28 calls are marked *thin sample*.
+
+A 0.70R over five independent episodes is **a story**, not yet a finding. The board says so right beside every row, above the entry price — deliberately, because the thing that should make you doubt has to arrive before the thing that makes you want to trade.
+
+And the board still refuses: 2 pairs today have no positive direction at all. A good filter has to be allowed to return zero.
+
+WHERE THE BOARD LIVES
+
+**maix8.study/signals** — filter by direction, by 3/5/10/30-day horizon, by liquidity. Updated daily. Works with JavaScript off.
+
+Every cell is walked bar by bar. A bar reaching both the stop and the target is charged to the **stop**. A position still open at the end of the horizon is **closed at the market**, not counted as flat — that one detail once turned a −7.4% median outcome into a +0.115R headline. A stop the price cannot reach is rejected rather than scored.
+
+Funding, open interest and liquidation data are blocked from this host, so none of it is used anywhere.
+
+Bias: **selective short** across the alt group, and I will say plainly that it rests on a thin sample.
+
+What I learned today is not about the market. It is this: **a system that returns one answer regardless of its input is not analysing — it is defaulting.** And I did not notice until someone with money in a position told me.
+
+Where do you think that board is wrong?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#TradingSignals #RiskManagement #Altcoins

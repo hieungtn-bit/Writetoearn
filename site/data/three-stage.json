@@ -1,0 +1,1045 @@
+{
+  "measuredAt": "2026-08-14T17:03:11.278Z",
+  "horizons": [
+    5,
+    10,
+    30
+  ],
+  "assets": {
+    "BTCUSDT": {
+      "price": 63164.01,
+      "atrPct": 2.1302856739347087,
+      "rsi14": 43.562279282834375,
+      "change7dPct": -2.709632721374289,
+      "change30dPct": -2.458865765606049,
+      "rangePosition30d": 18.991273511850785,
+      "range30": {
+        "low": 62275,
+        "high": 66956.15
+      },
+      "turnoverUsd": 868456088.5608393,
+      "medianWeekPct": 9.51197348797115,
+      "stage": "1 quiet",
+      "stageAgrees": true,
+      "stagesByWindow": {
+        "30": {
+          "stage": "1 quiet",
+          "note": "turnover is structural, no event in progress",
+          "underwaterPct": 95.65178985383008,
+          "vsVwapPct": -1.843809951296824,
+          "volumeTrendPct": -15.520589233595997,
+          "recentPricePct": -0.6855188679245251,
+          "concentrationPct": 15.354708945537027,
+          "drawdownPct": -5.6636171583939525,
+          "vwap": 64350.51112788634
+        },
+        "60": {
+          "stage": "1 quiet",
+          "note": "turnover is structural, no event in progress",
+          "underwaterPct": 67.10336003969552,
+          "vsVwapPct": -0.15153072612346152,
+          "volumeTrendPct": -25.225644148293107,
+          "recentPricePct": -0.6855188679245251,
+          "concentrationPct": 9.227978775900416,
+          "drawdownPct": -5.714100191067587,
+          "vwap": 63259.86813753355
+        },
+        "90": {
+          "stage": "1 quiet",
+          "note": "turnover is structural, no event in progress",
+          "underwaterPct": 70.10916656134492,
+          "vsVwapPct": -3.414300808435184,
+          "volumeTrendPct": -32.31908135653519,
+          "recentPricePct": -0.6855188679245251,
+          "concentrationPct": 8.74934627960372,
+          "drawdownPct": -19.638653898047572,
+          "vwap": 65396.855361291775
+        }
+      },
+      "heldDays": 5,
+      "transitions": [
+        {
+          "date": "2026-06-07",
+          "from": "4 breakdown",
+          "to": "mixed"
+        },
+        {
+          "date": "2026-07-04",
+          "from": "mixed",
+          "to": "1 quiet"
+        },
+        {
+          "date": "2026-07-05",
+          "from": "1 quiet",
+          "to": "mixed"
+        },
+        {
+          "date": "2026-07-06",
+          "from": "mixed",
+          "to": "1 quiet"
+        },
+        {
+          "date": "2026-08-09",
+          "from": "1 quiet",
+          "to": "mixed"
+        },
+        {
+          "date": "2026-08-10",
+          "from": "mixed",
+          "to": "1 quiet"
+        }
+      ],
+      "stageStats": {
+        "1 quiet": {
+          "days": 414,
+          "baseRatePct": 42.68041237113402,
+          "forward": {
+            "5": {
+              "medianPct": 0.13618077154111674,
+              "baselineMedianPct": 0.19968190499543015,
+              "differencePct": -0.06350113345431341,
+              "upSharePct": 50.8557457212714,
+              "worstQuarterPct": -2.7805007386608294,
+              "days": 409,
+              "effectiveN": 81.8
+            },
+            "10": {
+              "medianPct": 0.37915395757168735,
+              "baselineMedianPct": 0.19058051757017136,
+              "differencePct": 0.188573440001516,
+              "upSharePct": 52.345679012345684,
+              "worstQuarterPct": -4.395165987527316,
+              "days": 405,
+              "effectiveN": 40.5
+            },
+            "30": {
+              "medianPct": 1.5144563970797886,
+              "baselineMedianPct": 0.8255711133528187,
+              "differencePct": 0.6888852837269699,
+              "upSharePct": 52.2077922077922,
+              "worstQuarterPct": -8.318059103576402,
+              "days": 385,
+              "effectiveN": 12.833333333333334
+            }
+          }
+        },
+        "2 expansion": {
+          "days": 47,
+          "baseRatePct": 4.845360824742269,
+          "forward": {
+            "5": {
+              "medianPct": 1.49681485266564,
+              "baselineMedianPct": 0.10442477564787112,
+              "differencePct": 1.3923900770177688,
+              "upSharePct": 70.2127659574468,
+              "worstQuarterPct": -0.2125080692382486,
+              "days": 47,
+              "effectiveN": 9.4
+            },
+            "10": {
+              "medianPct": 2.526657977572344,
+              "baselineMedianPct": 0.18766588834027154,
+              "differencePct": 2.3389920892320726,
+              "upSharePct": 63.829787234042556,
+              "worstQuarterPct": -1.1513152541490212,
+              "days": 47,
+              "effectiveN": 4.7
+            },
+            "30": {
+              "medianPct": 8.626184886920152,
+              "baselineMedianPct": 0.654844983615499,
+              "differencePct": 7.971339903304653,
+              "upSharePct": 70.2127659574468,
+              "worstQuarterPct": -3.344430001534171,
+              "days": 47,
+              "effectiveN": 1.5666666666666667
+            }
+          }
+        },
+        "mixed": {
+          "days": 490,
+          "baseRatePct": 50.51546391752577,
+          "forward": {
+            "5": {
+              "medianPct": 0.05360597688395252,
+              "baselineMedianPct": 0.31610678452764773,
+              "differencePct": -0.2625008076436952,
+              "upSharePct": 51.02040816326531,
+              "worstQuarterPct": -2.715848392290221,
+              "days": 490,
+              "effectiveN": 98
+            },
+            "10": {
+              "medianPct": 0.11658273184853574,
+              "baselineMedianPct": 0.6505903241861732,
+              "differencePct": -0.5340075923376375,
+              "upSharePct": 51.124744376278116,
+              "worstQuarterPct": -4.008336149161829,
+              "days": 489,
+              "effectiveN": 48.9
+            },
+            "30": {
+              "medianPct": 0.4372004225930981,
+              "baselineMedianPct": 1.616672072810088,
+              "differencePct": -1.17947165021699,
+              "upSharePct": 52.965235173824134,
+              "worstQuarterPct": -5.759932550876535,
+              "days": 489,
+              "effectiveN": 16.3
+            }
+          }
+        },
+        "3 exhaustion": {
+          "days": 8,
+          "baseRatePct": 0.8247422680412372,
+          "forward": {
+            "5": {
+              "medianPct": -0.8406109590375133,
+              "baselineMedianPct": 0.2072188235517025,
+              "differencePct": -1.0478297825892158,
+              "upSharePct": 25,
+              "worstQuarterPct": -4.397104305686539,
+              "days": 8,
+              "effectiveN": 1.6
+            },
+            "10": {
+              "medianPct": -4.0897854941467475,
+              "baselineMedianPct": 0.2920682034223687,
+              "differencePct": -4.381853697569117,
+              "upSharePct": 12.5,
+              "worstQuarterPct": -6.450903013825593,
+              "days": 8,
+              "effectiveN": 0.8
+            },
+            "30": {
+              "medianPct": -5.300693215934238,
+              "baselineMedianPct": 1.0522084008142585,
+              "differencePct": -6.352901616748497,
+              "upSharePct": 25,
+              "worstQuarterPct": -7.84371606561125,
+              "days": 8,
+              "effectiveN": 0.26666666666666666
+            }
+          }
+        },
+        "4 breakdown": {
+          "days": 11,
+          "baseRatePct": 1.134020618556701,
+          "forward": {
+            "5": {
+              "medianPct": 1.858019738903982,
+              "baselineMedianPct": 0.1563325800097326,
+              "differencePct": 1.7016871588942495,
+              "upSharePct": 72.72727272727273,
+              "worstQuarterPct": -1.6475127742418327,
+              "days": 11,
+              "effectiveN": 2.2
+            },
+            "10": {
+              "medianPct": 2.9121564837611524,
+              "baselineMedianPct": 0.19058051757017136,
+              "differencePct": 2.721575966190981,
+              "upSharePct": 90.9090909090909,
+              "worstQuarterPct": 1.331807451479139,
+              "days": 11,
+              "effectiveN": 1.1
+            },
+            "30": {
+              "medianPct": 4.247756216499243,
+              "baselineMedianPct": 0.828026830524653,
+              "differencePct": 3.4197293859745903,
+              "upSharePct": 72.72727272727273,
+              "worstQuarterPct": -1.1614126978387485,
+              "days": 11,
+              "effectiveN": 0.36666666666666664
+            }
+          }
+        }
+      },
+      "currentStageStats": {
+        "days": 414,
+        "baseRatePct": 42.68041237113402,
+        "forward": {
+          "5": {
+            "medianPct": 0.13618077154111674,
+            "baselineMedianPct": 0.19968190499543015,
+            "differencePct": -0.06350113345431341,
+            "upSharePct": 50.8557457212714,
+            "worstQuarterPct": -2.7805007386608294,
+            "days": 409,
+            "effectiveN": 81.8
+          },
+          "10": {
+            "medianPct": 0.37915395757168735,
+            "baselineMedianPct": 0.19058051757017136,
+            "differencePct": 0.188573440001516,
+            "upSharePct": 52.345679012345684,
+            "worstQuarterPct": -4.395165987527316,
+            "days": 405,
+            "effectiveN": 40.5
+          },
+          "30": {
+            "medianPct": 1.5144563970797886,
+            "baselineMedianPct": 0.8255711133528187,
+            "differencePct": 0.6888852837269699,
+            "upSharePct": 52.2077922077922,
+            "worstQuarterPct": -8.318059103576402,
+            "days": 385,
+            "effectiveN": 12.833333333333334
+          }
+        }
+      },
+      "profile": {
+        "pocPrice": 63995.322625,
+        "valueAreaLow": 63398.475999999995,
+        "valueAreaHigh": 65247.530249999996,
+        "overheadPct": 89.77689282670084,
+        "totalQuoteVolume": 25657420399.93583,
+        "binWidth": 23.40574999999997
+      },
+      "overheadPct": 89.77689282670084,
+      "lookbacks": {
+        "180": {
+          "longPositive": "21/64",
+          "longMedianR": -0.018755414722382024,
+          "shortPositive": "23/64",
+          "shortMedianR": -0.013341608867967062
+        },
+        "270": {
+          "longPositive": "7/64",
+          "longMedianR": -0.07337426168813574,
+          "shortPositive": "61/64",
+          "shortMedianR": 0.06719838632681105
+        },
+        "365": {
+          "longPositive": "2/64",
+          "longMedianR": -0.09036908893070447,
+          "shortPositive": "63/64",
+          "shortMedianR": 0.11532540546483991
+        },
+        "540": {
+          "longPositive": "13/64",
+          "longMedianR": -0.03953513284675482,
+          "shortPositive": "52/64",
+          "shortMedianR": 0.037700004281602785
+        },
+        "730": {
+          "longPositive": "35/64",
+          "longMedianR": 0.0038209721001522348,
+          "shortPositive": "21/64",
+          "shortMedianR": -0.011982055582955835
+        }
+      },
+      "call": {
+        "bias": "WAIT",
+        "reason": "both directions lose over the recent window",
+        "agreeing": null,
+        "windows": null,
+        "effectiveN": null,
+        "thin": null,
+        "turning": true
+      }
+    },
+    "BNBUSDT": {
+      "price": 606.87,
+      "atrPct": 2.1326571047357166,
+      "rsi14": 60.754138742030214,
+      "change7dPct": 2.413217003898266,
+      "change30dPct": 4.533631900783749,
+      "rangePosition30d": 78.94088669950744,
+      "range30": {
+        "low": 555.59,
+        "high": 620.55
+      },
+      "turnoverUsd": 54103567.67070068,
+      "medianWeekPct": 10.4288241906421,
+      "stage": "1 quiet",
+      "stageAgrees": false,
+      "stagesByWindow": {
+        "30": {
+          "stage": "1 quiet",
+          "note": "turnover is structural, no event in progress",
+          "underwaterPct": 14.24827614647668,
+          "vsVwapPct": 3.6171516647405575,
+          "volumeTrendPct": -13.218790369796917,
+          "recentPricePct": -1.5923721805120967,
+          "concentrationPct": 15.812257418896229,
+          "drawdownPct": -2.2044960116026027,
+          "vwap": 585.6848892773697
+        },
+        "60": {
+          "stage": "1 quiet",
+          "note": "turnover is structural, no event in progress",
+          "underwaterPct": 9.616188824467834,
+          "vsVwapPct": 4.695093257560953,
+          "volumeTrendPct": -22.742873488044413,
+          "recentPricePct": -1.5923721805120967,
+          "concentrationPct": 9.0811901363494,
+          "drawdownPct": -2.2044960116026027,
+          "vwap": 579.6546725518797
+        },
+        "90": {
+          "stage": "mixed",
+          "note": "no clean stage; read the metrics directly",
+          "underwaterPct": 39.98303219892412,
+          "vsVwapPct": -0.9628111813415278,
+          "volumeTrendPct": -43.43484473418558,
+          "recentPricePct": -1.5923721805120967,
+          "concentrationPct": 14.754598550971812,
+          "drawdownPct": -18.6217716630461,
+          "vwap": 612.7698163072926
+        }
+      },
+      "heldDays": 41,
+      "transitions": [
+        {
+          "date": "2026-05-09",
+          "from": "mixed",
+          "to": "1 quiet"
+        },
+        {
+          "date": "2026-05-12",
+          "from": "1 quiet",
+          "to": "mixed"
+        },
+        {
+          "date": "2026-05-16",
+          "from": "mixed",
+          "to": "1 quiet"
+        },
+        {
+          "date": "2026-05-30",
+          "from": "1 quiet",
+          "to": "2 expansion"
+        },
+        {
+          "date": "2026-06-01",
+          "from": "2 expansion",
+          "to": "mixed"
+        },
+        {
+          "date": "2026-07-05",
+          "from": "mixed",
+          "to": "1 quiet"
+        }
+      ],
+      "stageStats": {
+        "mixed": {
+          "days": 624,
+          "baseRatePct": 64.3298969072165,
+          "forward": {
+            "5": {
+              "medianPct": 0.23029368396845218,
+              "baselineMedianPct": 0.5242766212601113,
+              "differencePct": -0.29398293729165914,
+              "upSharePct": 51.60256410256411,
+              "worstQuarterPct": -3.000390636737882,
+              "days": 624,
+              "effectiveN": 124.8
+            },
+            "10": {
+              "medianPct": 0.8081852139405932,
+              "baselineMedianPct": 0.2737645684023682,
+              "differencePct": 0.534420645538225,
+              "upSharePct": 54.006410256410255,
+              "worstQuarterPct": -3.7536694871352028,
+              "days": 624,
+              "effectiveN": 62.4
+            },
+            "30": {
+              "medianPct": 0.7894709209628314,
+              "baselineMedianPct": 3.4171707353533587,
+              "differencePct": -2.6276998143905272,
+              "upSharePct": 54.166666666666664,
+              "worstQuarterPct": -4.823581956230461,
+              "days": 624,
+              "effectiveN": 20.8
+            }
+          }
+        },
+        "2 expansion": {
+          "days": 61,
+          "baseRatePct": 6.288659793814433,
+          "forward": {
+            "5": {
+              "medianPct": 0.0495215345849509,
+              "baselineMedianPct": 0.3391584297408379,
+              "differencePct": -0.289636895155887,
+              "upSharePct": 50.81967213114754,
+              "worstQuarterPct": -5.00216616122906,
+              "days": 61,
+              "effectiveN": 12.2
+            },
+            "10": {
+              "medianPct": -1.4663977203598688,
+              "baselineMedianPct": 0.6673188456432166,
+              "differencePct": -2.1337165660030855,
+              "upSharePct": 45.90163934426229,
+              "worstQuarterPct": -5.885278514588855,
+              "days": 61,
+              "effectiveN": 6.1
+            },
+            "30": {
+              "medianPct": 2.3341232227488184,
+              "baselineMedianPct": 1.7038875103391193,
+              "differencePct": 0.6302357124096991,
+              "upSharePct": 54.09836065573771,
+              "worstQuarterPct": -6.757173711817355,
+              "days": 61,
+              "effectiveN": 2.033333333333333
+            }
+          }
+        },
+        "3 exhaustion": {
+          "days": 7,
+          "baseRatePct": 0.7216494845360825,
+          "forward": {
+            "5": {
+              "medianPct": -0.989772352358953,
+              "baselineMedianPct": 0.33453167653185734,
+              "differencePct": -1.3243040288908103,
+              "upSharePct": 28.57142857142857,
+              "worstQuarterPct": -5.420823458083013,
+              "days": 7,
+              "effectiveN": 1.4
+            },
+            "10": {
+              "medianPct": -4.261224489795923,
+              "baselineMedianPct": 0.659181962172739,
+              "differencePct": -4.920406451968662,
+              "upSharePct": 28.57142857142857,
+              "worstQuarterPct": -7.278742762613732,
+              "days": 7,
+              "effectiveN": 0.7
+            },
+            "30": {
+              "medianPct": 1.7038875103391193,
+              "baselineMedianPct": 1.73292558613658,
+              "differencePct": -0.02903807579746065,
+              "upSharePct": 57.14285714285714,
+              "worstQuarterPct": -2.0081632653061177,
+              "days": 7,
+              "effectiveN": 0.23333333333333334
+            }
+          }
+        },
+        "1 quiet": {
+          "days": 249,
+          "baseRatePct": 25.670103092783503,
+          "forward": {
+            "5": {
+              "medianPct": 0.5860313066894385,
+              "baselineMedianPct": 0.15969980903030034,
+              "differencePct": 0.42633149765913814,
+              "upSharePct": 56.557377049180324,
+              "worstQuarterPct": -1.7517722368657895,
+              "days": 244,
+              "effectiveN": 48.8
+            },
+            "10": {
+              "medianPct": 0.5013538300288278,
+              "baselineMedianPct": 0.6704389358672236,
+              "differencePct": -0.16908510583839576,
+              "upSharePct": 54.39330543933054,
+              "worstQuarterPct": -2.912298219337661,
+              "days": 239,
+              "effectiveN": 23.9
+            },
+            "30": {
+              "medianPct": 3.606391713509738,
+              "baselineMedianPct": 0.9990856582145824,
+              "differencePct": 2.6073060552951555,
+              "upSharePct": 66.21004566210046,
+              "worstQuarterPct": -2.365765845852963,
+              "days": 219,
+              "effectiveN": 7.3
+            }
+          }
+        },
+        "4 breakdown": {
+          "days": 29,
+          "baseRatePct": 2.9896907216494846,
+          "forward": {
+            "5": {
+              "medianPct": 0.5616239886698571,
+              "baselineMedianPct": 0.31403903948444833,
+              "differencePct": 0.24758494918540874,
+              "upSharePct": 51.724137931034484,
+              "worstQuarterPct": -1.3872354497354467,
+              "days": 29,
+              "effectiveN": 5.8
+            },
+            "10": {
+              "medianPct": 0.0830226765859754,
+              "baselineMedianPct": 0.6550933508024936,
+              "differencePct": -0.5720706742165182,
+              "upSharePct": 51.724137931034484,
+              "worstQuarterPct": -3.640094354864787,
+              "days": 29,
+              "effectiveN": 2.9
+            },
+            "30": {
+              "medianPct": 3.1152647975077885,
+              "baselineMedianPct": 1.6295764536970347,
+              "differencePct": 1.4856883438107538,
+              "upSharePct": 65.51724137931035,
+              "worstQuarterPct": -1.4241035879562935,
+              "days": 29,
+              "effectiveN": 0.9666666666666667
+            }
+          }
+        }
+      },
+      "currentStageStats": {
+        "days": 249,
+        "baseRatePct": 25.670103092783503,
+        "forward": {
+          "5": {
+            "medianPct": 0.5860313066894385,
+            "baselineMedianPct": 0.15969980903030034,
+            "differencePct": 0.42633149765913814,
+            "upSharePct": 56.557377049180324,
+            "worstQuarterPct": -1.7517722368657895,
+            "days": 244,
+            "effectiveN": 48.8
+          },
+          "10": {
+            "medianPct": 0.5013538300288278,
+            "baselineMedianPct": 0.6704389358672236,
+            "differencePct": -0.16908510583839576,
+            "upSharePct": 54.39330543933054,
+            "worstQuarterPct": -2.912298219337661,
+            "days": 239,
+            "effectiveN": 23.9
+          },
+          "30": {
+            "medianPct": 3.606391713509738,
+            "baselineMedianPct": 0.9990856582145824,
+            "differencePct": 2.6073060552951555,
+            "upSharePct": 66.21004566210046,
+            "worstQuarterPct": -2.365765845852963,
+            "days": 219,
+            "effectiveN": 7.3
+          }
+        }
+      },
+      "profile": {
+        "pocPrice": 571.018,
+        "valueAreaLow": 563.0604000000001,
+        "valueAreaHigh": 596.8396,
+        "overheadPct": 13.038640436603007,
+        "totalQuoteVolume": 1596181016.0020695,
+        "binWidth": 0.3247999999999996
+      },
+      "overheadPct": 13.038640436603007,
+      "lookbacks": {
+        "180": {
+          "longPositive": "43/64",
+          "longMedianR": 0.017996737108436536,
+          "shortPositive": "2/64",
+          "shortMedianR": -0.0986632702067989
+        },
+        "270": {
+          "longPositive": "4/64",
+          "longMedianR": -0.05850663076170798,
+          "shortPositive": "41/64",
+          "shortMedianR": 0.020615801108335604
+        },
+        "365": {
+          "longPositive": "30/64",
+          "longMedianR": -0.005750254504009086,
+          "shortPositive": "30/64",
+          "shortMedianR": -0.012109574552940625
+        },
+        "540": {
+          "longPositive": "60/64",
+          "longMedianR": 0.04248160056903899,
+          "shortPositive": "3/64",
+          "shortMedianR": -0.050567172526221005
+        },
+        "730": {
+          "longPositive": "58/64",
+          "longMedianR": 0.03434727585632148,
+          "shortPositive": "0/64",
+          "shortMedianR": -0.05364125255271055
+        }
+      },
+      "call": {
+        "bias": "LONG",
+        "reason": "long pays in 43 of 64 geometries",
+        "agreeing": 3,
+        "windows": 5,
+        "effectiveN": 5,
+        "thin": true,
+        "turning": false
+      }
+    },
+    "ICPUSDT": {
+      "price": 2.214,
+      "atrPct": 4.277388663474584,
+      "rsi14": 54.4203061300219,
+      "change7dPct": 5.378391242265587,
+      "change30dPct": 1.60624139513539,
+      "rangePosition30d": 54.590570719602994,
+      "range30": {
+        "low": 1.994,
+        "high": 2.397
+      },
+      "turnoverUsd": 3071666.072818666,
+      "medianWeekPct": 20.887436603426977,
+      "stage": "mixed",
+      "stageAgrees": true,
+      "stagesByWindow": {
+        "30": {
+          "stage": "mixed",
+          "note": "no clean stage; read the metrics directly",
+          "underwaterPct": 23.069077168227636,
+          "vsVwapPct": 2.1827385251756013,
+          "volumeTrendPct": -29.128096111362456,
+          "recentPricePct": -1.2048192771084396,
+          "concentrationPct": 25.207274424165117,
+          "drawdownPct": -7.63454317897371,
+          "vwap": 2.166706463298122
+        },
+        "60": {
+          "stage": "mixed",
+          "note": "no clean stage; read the metrics directly",
+          "underwaterPct": 40.87428398949247,
+          "vsVwapPct": 0.10173636094852698,
+          "volumeTrendPct": -43.03634017964623,
+          "recentPricePct": -1.2048192771084396,
+          "concentrationPct": 11.819240076827453,
+          "drawdownPct": -10.400647511129101,
+          "vwap": 2.2117498461931984
+        },
+        "90": {
+          "stage": "mixed",
+          "note": "no clean stage; read the metrics directly",
+          "underwaterPct": 76.46022776995981,
+          "vsVwapPct": -10.962997177610992,
+          "volumeTrendPct": -65.99824484159478,
+          "recentPricePct": -1.2048192771084396,
+          "concentrationPct": 14.776517788753186,
+          "drawdownPct": -31.476323119777156,
+          "vwap": 2.4866066127770345
+        }
+      },
+      "heldDays": 4,
+      "transitions": [
+        {
+          "date": "2026-07-21",
+          "from": "mixed",
+          "to": "1 quiet"
+        },
+        {
+          "date": "2026-08-01",
+          "from": "1 quiet",
+          "to": "mixed"
+        },
+        {
+          "date": "2026-08-03",
+          "from": "mixed",
+          "to": "1 quiet"
+        },
+        {
+          "date": "2026-08-09",
+          "from": "1 quiet",
+          "to": "mixed"
+        },
+        {
+          "date": "2026-08-10",
+          "from": "mixed",
+          "to": "2 expansion"
+        },
+        {
+          "date": "2026-08-11",
+          "from": "2 expansion",
+          "to": "mixed"
+        }
+      ],
+      "stageStats": {
+        "mixed": {
+          "days": 401,
+          "baseRatePct": 41.340206185567006,
+          "forward": {
+            "5": {
+              "medianPct": -2.0264847512038497,
+              "baselineMedianPct": -1.2599034848976787,
+              "differencePct": -0.7665812663061711,
+              "upSharePct": 42.0654911838791,
+              "worstQuarterPct": -7.744593202883632,
+              "days": 397,
+              "effectiveN": 79.4
+            },
+            "10": {
+              "medianPct": -1.4551498758418158,
+              "baselineMedianPct": -2.5981326233915745,
+              "differencePct": 1.1429827475497587,
+              "upSharePct": 45.45454545454545,
+              "worstQuarterPct": -11.452408039438755,
+              "days": 396,
+              "effectiveN": 39.6
+            },
+            "30": {
+              "medianPct": -4.2258924960834054,
+              "baselineMedianPct": -5.531483418027211,
+              "differencePct": 1.3055909219438053,
+              "upSharePct": 39.795918367346935,
+              "worstQuarterPct": -16.490123103349564,
+              "days": 392,
+              "effectiveN": 13.066666666666666
+            }
+          }
+        },
+        "2 expansion": {
+          "days": 67,
+          "baseRatePct": 6.907216494845361,
+          "forward": {
+            "5": {
+              "medianPct": -1.988787395485958,
+              "baselineMedianPct": -1.4391447368421129,
+              "differencePct": -0.5496426586438452,
+              "upSharePct": 33.33333333333333,
+              "worstQuarterPct": -9.136129995025687,
+              "days": 66,
+              "effectiveN": 13.2
+            },
+            "10": {
+              "medianPct": -8.951561673166601,
+              "baselineMedianPct": -2.246763009327446,
+              "differencePct": -6.7047986638391555,
+              "upSharePct": 27.27272727272727,
+              "worstQuarterPct": -15.639460800751115,
+              "days": 66,
+              "effectiveN": 6.6
+            },
+            "30": {
+              "medianPct": -12.260673134891858,
+              "baselineMedianPct": -4.4679001596956205,
+              "differencePct": -7.792772975196238,
+              "upSharePct": 25.757575757575758,
+              "worstQuarterPct": -27.006352025134895,
+              "days": 66,
+              "effectiveN": 2.2
+            }
+          }
+        },
+        "4 breakdown": {
+          "days": 187,
+          "baseRatePct": 19.27835051546392,
+          "forward": {
+            "5": {
+              "medianPct": -0.02476473501734633,
+              "baselineMedianPct": -1.9267671383247365,
+              "differencePct": 1.9020024033073901,
+              "upSharePct": 49.73262032085562,
+              "worstQuarterPct": -5.8046350444011185,
+              "days": 187,
+              "effectiveN": 37.4
+            },
+            "10": {
+              "medianPct": -1.2824728707662048,
+              "baselineMedianPct": -2.7624309392265123,
+              "differencePct": 1.4799580684603075,
+              "upSharePct": 45.45454545454545,
+              "worstQuarterPct": -8.058164192668894,
+              "days": 187,
+              "effectiveN": 18.7
+            },
+            "30": {
+              "medianPct": -1.1655011655011593,
+              "baselineMedianPct": -6.09441408621737,
+              "differencePct": 4.92891292071621,
+              "upSharePct": 47.593582887700535,
+              "worstQuarterPct": -11.931171786120597,
+              "days": 187,
+              "effectiveN": 6.233333333333333
+            }
+          }
+        },
+        "1 quiet": {
+          "days": 304,
+          "baseRatePct": 31.34020618556701,
+          "forward": {
+            "5": {
+              "medianPct": -1.4570046286604799,
+              "baselineMedianPct": -1.439182915506021,
+              "differencePct": -0.017821713154458907,
+              "upSharePct": 41.776315789473685,
+              "worstQuarterPct": -6.40234948604993,
+              "days": 304,
+              "effectiveN": 60.8
+            },
+            "10": {
+              "medianPct": -2.5518063983003714,
+              "baselineMedianPct": -2.394278721351001,
+              "differencePct": -0.1575276769493703,
+              "upSharePct": 37.333333333333336,
+              "worstQuarterPct": -9.87327093514454,
+              "days": 300,
+              "effectiveN": 30
+            },
+            "30": {
+              "medianPct": -7.273931271598238,
+              "baselineMedianPct": -4.259201606560165,
+              "differencePct": -3.0147296650380735,
+              "upSharePct": 34.154929577464785,
+              "worstQuarterPct": -18.91240750301153,
+              "days": 284,
+              "effectiveN": 9.466666666666667
+            }
+          }
+        },
+        "3 exhaustion": {
+          "days": 2,
+          "baseRatePct": 0.2061855670103093,
+          "forward": {
+            "5": {
+              "medianPct": -3.92787926340214,
+              "baselineMedianPct": -1.4509803921568643,
+              "differencePct": -2.4768988712452757,
+              "upSharePct": 50,
+              "worstQuarterPct": -13.534482758620692,
+              "days": 2,
+              "effectiveN": 0.4
+            },
+            "10": {
+              "medianPct": 0.9101382797516049,
+              "baselineMedianPct": -2.4406221385790126,
+              "differencePct": 3.3507604183306174,
+              "upSharePct": 50,
+              "worstQuarterPct": -11.793103448275865,
+              "days": 2,
+              "effectiveN": 0.2
+            },
+            "30": {
+              "medianPct": -1.4140546412907957,
+              "baselineMedianPct": -5.134089422050159,
+              "differencePct": 3.720034780759363,
+              "upSharePct": 50,
+              "worstQuarterPct": -12.793103448275867,
+              "days": 2,
+              "effectiveN": 0.06666666666666667
+            }
+          }
+        },
+        "5 hangover": {
+          "days": 9,
+          "baseRatePct": 0.9278350515463918,
+          "forward": {
+            "5": {
+              "medianPct": -5.6317478844470354,
+              "baselineMedianPct": -1.4391447368421129,
+              "differencePct": -4.192603147604922,
+              "upSharePct": 11.11111111111111,
+              "worstQuarterPct": -8.929045973956951,
+              "days": 9,
+              "effectiveN": 1.8
+            },
+            "10": {
+              "medianPct": -12.808730614589326,
+              "baselineMedianPct": -2.390998593530247,
+              "differencePct": -10.417732021059079,
+              "upSharePct": 0,
+              "worstQuarterPct": -15.792364734962927,
+              "days": 9,
+              "effectiveN": 0.9
+            },
+            "30": {
+              "medianPct": -14.117000823949466,
+              "baselineMedianPct": -5.113177041228778,
+              "differencePct": -9.003823782720687,
+              "upSharePct": 0,
+              "worstQuarterPct": -20.22322614934893,
+              "days": 9,
+              "effectiveN": 0.3
+            }
+          }
+        }
+      },
+      "currentStageStats": {
+        "days": 401,
+        "baseRatePct": 41.340206185567006,
+        "forward": {
+          "5": {
+            "medianPct": -2.0264847512038497,
+            "baselineMedianPct": -1.2599034848976787,
+            "differencePct": -0.7665812663061711,
+            "upSharePct": 42.0654911838791,
+            "worstQuarterPct": -7.744593202883632,
+            "days": 397,
+            "effectiveN": 79.4
+          },
+          "10": {
+            "medianPct": -1.4551498758418158,
+            "baselineMedianPct": -2.5981326233915745,
+            "differencePct": 1.1429827475497587,
+            "upSharePct": 45.45454545454545,
+            "worstQuarterPct": -11.452408039438755,
+            "days": 396,
+            "effectiveN": 39.6
+          },
+          "30": {
+            "medianPct": -4.2258924960834054,
+            "baselineMedianPct": -5.531483418027211,
+            "differencePct": 1.3055909219438053,
+            "upSharePct": 39.795918367346935,
+            "worstQuarterPct": -16.490123103349564,
+            "days": 392,
+            "effectiveN": 13.066666666666666
+          }
+        }
+      },
+      "profile": {
+        "pocPrice": 2.1743425,
+        "valueAreaLow": 2.076615,
+        "valueAreaHigh": 2.22774,
+        "overheadPct": 24.999794168078022,
+        "totalQuoteVolume": 91515900.09242997,
+        "binWidth": 0.002014999999999999
+      },
+      "overheadPct": 24.999794168078022,
+      "lookbacks": {
+        "180": {
+          "longPositive": "59/64",
+          "longMedianR": 0.07786770424089653,
+          "shortPositive": "0/64",
+          "shortMedianR": -0.10743647140109319
+        },
+        "270": {
+          "longPositive": "12/64",
+          "longMedianR": -0.046963834408834004,
+          "shortPositive": "51/64",
+          "shortMedianR": 0.04699915895220037
+        },
+        "365": {
+          "longPositive": "3/64",
+          "longMedianR": -0.09927955561958066,
+          "shortPositive": "64/64",
+          "shortMedianR": 0.08391200496461426
+        },
+        "540": {
+          "longPositive": "1/64",
+          "longMedianR": -0.0784313725490196,
+          "shortPositive": "54/64",
+          "shortMedianR": 0.054905752688363875
+        },
+        "730": {
+          "longPositive": "1/64",
+          "longMedianR": -0.06327096891308581,
+          "shortPositive": "58/64",
+          "shortMedianR": 0.04795919563241538
+        }
+      },
+      "call": {
+        "bias": "LONG",
+        "reason": "long pays in 59 of 64 geometries",
+        "agreeing": 1,
+        "windows": 5,
+        "effectiveN": 5,
+        "thin": true,
+        "turning": true
+      }
+    }
+  }
+}

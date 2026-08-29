@@ -87,9 +87,38 @@ test("writing about unavailable fields is blocked", () => {
   assert.equal(verifyNoForbiddenClaims("Funding on OKX is positive.", brief).ok, true);
 });
 
+test("a Vietnamese admission of absence reads as disclosure, not as a claim", () => {
+  // The channel publishes in Vietnamese, and a gate that only recognises
+  // English disclosure would block the honest sentence while leaving the
+  // fabricated one untouched — the exact inversion of what it is for.
+  assert.equal(
+    verifyNoForbiddenClaims("Open interest thì không có dữ liệu miễn phí.", brief).ok,
+    true,
+  );
+  assert.equal(
+    verifyNoForbiddenClaims("Open interest Binance bị chặn địa lý từ máy này.", brief).ok,
+    true,
+  );
+  assert.equal(verifyNoForbiddenClaims("Open interest đang tăng mạnh.", brief).ok, false);
+});
+
 test("unavailable-field checks only apply to fields actually missing", () => {
   const withOi = { ...brief, unavailable: [] };
   assert.equal(verifyNoForbiddenClaims("Open interest is climbing.", withOi).ok, true);
+
+  // The archive publishes what the API geo-blocks, so a study built on those
+  // dumps holds the field even when the live brief comes back without it.
+  // Blocking that would enforce "the live fetch lacked it" rather than the rule
+  // the gate is for, and would punish the study that went and got the data.
+  const studyWithOi = [{ baseRate: [{ oiChangePct: 1.2 }] }];
+  assert.equal(
+    verifyNoForbiddenClaims("Open interest rose on the day.", brief, studyWithOi).ok,
+    true,
+  );
+  assert.equal(
+    verifyNoForbiddenClaims("Open interest rose on the day.", brief, [{ unrelated: 1 }]).ok,
+    false,
+  );
 });
 
 test("structure requires tags, a disclaimer and a question", () => {
@@ -438,4 +467,35 @@ test("having no hashtags at all is still its own failure", () => {
   const none = verifyStructure("word ".repeat(60) + "Bias: WAIT. Does it? Not financial advice. $BTC");
   assert.ok(none.problems.includes("no hashtags"));
   assert.ok(none.problems.every((p) => !p.includes("meta tag")));
+});
+
+test("a Vietnamese ratio is not a billion", () => {
+  // "tỷ lệ" is ratio, not a magnitude. Read as one, "5 tỷ lệ được–mất" becomes
+  // five billion and the gate demands the market vouch for a figure nobody
+  // wrote — a false rejection, which teaches writers to drop units.
+  const ratio = extractNumbers("Thử 5 tỷ lệ được–mất và 3 tỷ giá khác nhau.");
+  assert.deepEqual(ratio.map((n) => n.value), [5, 3]);
+
+  // The genuine magnitude still parses.
+  const cap = extractNumbers("Vốn hoá 1.31 tỷ đô.");
+  assert.equal(cap[0].value, 1.31e9);
+});
+
+test("rounding to the precision you printed is not fabrication", () => {
+  // 3.56 written as "3.6" is a 1.1% relative error, twice the tolerance, and
+  // the gate used to reject it. Rounding is not inventing: 3.6 is exactly what
+  // 3.56 rounds to, and refusing it teaches writers to drop decimals.
+  const withSmall = {
+    ...brief,
+    spot: [...brief.spot, { symbol: "TSTUSDT", price: 3.56, quoteVolume24h: 1 }],
+  };
+  assert.equal(verifyNumbers("Reading 3.6 on the day.", withSmall).ok, true);
+  assert.equal(verifyNumbers("Reading 3.56 on the day.", withSmall).ok, true);
+
+  // A figure outside the rounding band is still caught.
+  assert.equal(verifyNumbers("Reading 4.2 on the day.", withSmall).ok, false);
+});
+
+test("the rounding allowance does not admit an invented large number", () => {
+  assert.equal(verifyNumbers("BTC tapped 71,400 today.", brief).ok, false);
 });

@@ -1,0 +1,243 @@
+{
+  "measuredAt": "2026-08-05T07:47:21.944Z",
+  "method": {
+    "interval": "1h",
+    "lookbackHours": 168,
+    "horizonHours": 12,
+    "targetPct": 10,
+    "alertThresholdZ": 5,
+    "bucketBoundsPct": {
+      "upHard": 2,
+      "quiet": 0,
+      "downHard": -2
+    },
+    "resolution": "The first target reached is decided bar by bar. An hourly candle spanning both targets is counted as sameHour and awarded to neither.",
+    "note": "touchedUpPct and touchedDownPct are the naive one-sided views and will sum past 100. longFirstPct and shortFirstPct are what a position would actually have collected."
+  },
+  "pairsSampled": 60,
+  "universe": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "USD1USDT",
+    "SPCXBUSDT",
+    "BNBUSDT",
+    "EULUSDT",
+    "BANKUSDT",
+    "SNDKBUSDT",
+    "ZECUSDT",
+    "XRPUSDT",
+    "RLUSDUSDT",
+    "TRXUSDT",
+    "HOMEUSDT",
+    "XAUTUSDT",
+    "ADAUSDT",
+    "HEIUSDT",
+    "UUSDT",
+    "SOXLBUSDT",
+    "SKHYBUSDT",
+    "BICOUSDT",
+    "MUBUSDT",
+    "PAXGUSDT",
+    "ERAUSDT",
+    "DOGEUSDT",
+    "PUMPUSDT",
+    "UNIUSDT",
+    "MIRAUSDT",
+    "TAOUSDT",
+    "DEXEUSDT",
+    "SYNUSDT",
+    "LDOUSDT",
+    "WLDUSDT",
+    "HFTUSDT",
+    "LINKUSDT",
+    "LTCUSDT",
+    "UTKUSDT",
+    "COTIUSDT",
+    "AVAXUSDT",
+    "ENAUSDT",
+    "ONDOUSDT",
+    "GIGGLEUSDT",
+    "VICUSDT",
+    "NEARUSDT",
+    "CRCLBUSDT",
+    "XLMUSDT",
+    "EPICUSDT",
+    "TONUSDT",
+    "PEPEUSDT",
+    "AAVEUSDT",
+    "AXTIBUSDT",
+    "SNXXBUSDT",
+    "SUIUSDT",
+    "STOUSDT",
+    "TUTUSDT",
+    "QQQBUSDT",
+    "KORUBUSDT",
+    "ETHFIUSDT",
+    "GRAMUSDT",
+    "AMDBUSDT"
+  ],
+  "baseline": {
+    "n": 30971,
+    "touchedUpPct": 6.5932646669464985,
+    "touchedDownPct": 4.659197313615963,
+    "touchedBothPct": 1.0138516676891285,
+    "longFirstPct": 6.112169448839237,
+    "shortFirstPct": 4.084466113460979,
+    "sameHourPct": 0.045203577540279614,
+    "neitherPct": 89.7581608601595,
+    "endedHigherPct": 48.542184624325984
+  },
+  "allAlerts": {
+    "n": 397,
+    "touchedUpPct": 28.71536523929471,
+    "touchedDownPct": 17.632241813602015,
+    "touchedBothPct": 7.8085642317380355,
+    "longFirstPct": 24.181360201511335,
+    "shortFirstPct": 13.09823677581864,
+    "sameHourPct": 1.2594458438287155,
+    "neitherPct": 61.46095717884131,
+    "endedHigherPct": 54.65994962216625,
+    "longVsRandomHour": {
+      "differencePp": 18.0691907526721,
+      "standardErrorPp": 7.459216690145194,
+      "sigmas": 2.4223978875079952
+    },
+    "shortVsRandomHour": {
+      "differencePp": 9.01377066235766,
+      "standardErrorPp": 5.878574011640509,
+      "sigmas": 1.5333260488868496
+    },
+    "longLiftVsRandomHour": 3.956264695198138,
+    "shortLiftVsRandomHour": 3.2068418275405466,
+    "naiveOverstatementPp": 4.534005037783373,
+    "naiveLiftVsRandomHour": 4.355257477111637
+  },
+  "buckets": {
+    "upHard": {
+      "n": 132,
+      "touchedUpPct": 42.42424242424242,
+      "touchedDownPct": 34.090909090909086,
+      "touchedBothPct": 14.393939393939394,
+      "longFirstPct": 33.33333333333333,
+      "shortFirstPct": 28.030303030303028,
+      "sameHourPct": 0.7575757575757576,
+      "neitherPct": 37.878787878787875,
+      "endedHigherPct": 54.54545454545454,
+      "longVsAllAlerts": {
+        "differencePp": 9.151973131821997,
+        "standardErrorPp": 16.044867370619905,
+        "sigmas": 0.5703988023347808
+      },
+      "shortVsAllAlerts": {
+        "differencePp": 14.932066254484388,
+        "standardErrorPp": 14.758038346689903,
+        "sigmas": 1.0117920758644403
+      },
+      "longVsRandomHour": {
+        "differencePp": 27.221163884494093,
+        "standardErrorPp": 14.221200678218468,
+        "sigmas": 1.9141255721246293
+      },
+      "shortVsRandomHour": {
+        "differencePp": 23.945836916842048,
+        "standardErrorPp": 13.547901992448857,
+        "sigmas": 1.7674941057433577
+      }
+    },
+    "upMild": {
+      "n": 91,
+      "touchedUpPct": 20.87912087912088,
+      "touchedDownPct": 4.395604395604396,
+      "touchedBothPct": 2.197802197802198,
+      "longFirstPct": 19.78021978021978,
+      "shortFirstPct": 3.296703296703297,
+      "sameHourPct": 0,
+      "neitherPct": 76.92307692307693,
+      "endedHigherPct": 58.24175824175825,
+      "longVsAllAlerts": {
+        "differencePp": -4.401140421291555,
+        "standardErrorPp": 16.26841380766681,
+        "sigmas": -0.2705328542366823
+      },
+      "shortVsAllAlerts": {
+        "differencePp": -9.801533479115342,
+        "standardErrorPp": 8.743321695059802,
+        "sigmas": -1.121030864580158
+      },
+      "longVsRandomHour": {
+        "differencePp": 13.668050331380543,
+        "standardErrorPp": 14.472942603591788,
+        "sigmas": 0.944386411647104
+      },
+      "shortVsRandomHour": {
+        "differencePp": -0.7877628167576824,
+        "standardErrorPp": 6.495508203207308,
+        "sigmas": -0.1212780881977343
+      }
+    },
+    "downMild": {
+      "n": 89,
+      "touchedUpPct": 7.865168539325842,
+      "touchedDownPct": 3.3707865168539324,
+      "touchedBothPct": 1.1235955056179776,
+      "longFirstPct": 7.865168539325842,
+      "shortFirstPct": 2.247191011235955,
+      "sameHourPct": 0,
+      "neitherPct": 89.8876404494382,
+      "endedHigherPct": 50.56179775280899,
+      "longVsAllAlerts": {
+        "differencePp": -16.316191662185492,
+        "standardErrorPp": 12.37432789653632,
+        "sigmas": -1.318551746697494
+      },
+      "shortVsAllAlerts": {
+        "differencePp": -10.851045764582684,
+        "standardErrorPp": 8.001510080631808,
+        "sigmas": -1.3561247383601212
+      },
+      "longVsRandomHour": {
+        "differencePp": 1.752999090486606,
+        "standardErrorPp": 9.895896658735634,
+        "sigmas": 0.17714403766930412
+      },
+      "shortVsRandomHour": {
+        "differencePp": -1.8372751022250242,
+        "standardErrorPp": 5.456199787863572,
+        "sigmas": -0.3367316399065414
+      }
+    },
+    "downHard": {
+      "n": 85,
+      "touchedUpPct": 37.64705882352941,
+      "touchedDownPct": 21.176470588235293,
+      "touchedBothPct": 10.588235294117647,
+      "longFirstPct": 31.76470588235294,
+      "shortFirstPct": 11.76470588235294,
+      "sameHourPct": 4.705882352941177,
+      "neitherPct": 51.76470588235295,
+      "endedHigherPct": 55.294117647058826,
+      "longVsAllAlerts": {
+        "differencePp": 7.583345680841605,
+        "standardErrorPp": 19.010889068408783,
+        "sigmas": 0.39889484671409603
+      },
+      "shortVsAllAlerts": {
+        "differencePp": -1.333530893465698,
+        "standardErrorPp": 13.451981615977957,
+        "sigmas": -0.09913267290536291
+      },
+      "longVsRandomHour": {
+        "differencePp": 25.6525364335137,
+        "standardErrorPp": 17.49910520457325,
+        "sigmas": 1.4659341796979206
+      },
+      "shortVsRandomHour": {
+        "differencePp": 7.680239768891961,
+        "standardErrorPp": 12.112050278596064,
+        "sigmas": 0.6340990659908485
+      }
+    }
+  },
+  "maxBucketSigmaVsAllAlerts": 1.3561247383601212
+}

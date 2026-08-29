@@ -1,0 +1,241 @@
+{
+  "measuredAt": "2026-08-10T09:39:47.536Z",
+  "audited": {
+    "retailLatencyRangeMs": [
+      50,
+      300
+    ],
+    "hftLatencyMs": "single-digit, co-located",
+    "quotedSpreadRangePct": [
+      0.05,
+      0.3
+    ],
+    "opportunityLifetime": "a few hundred milliseconds",
+    "concern": "minimum order size makes many opportunities uneconomic at $68",
+    "verdict": "not feasible"
+  },
+  "method": {
+    "venues": [
+      "Binance spot (data-api.binance.vision)",
+      "OKX spot (www.okx.com)"
+    ],
+    "samples": 40,
+    "sampleGapMs": 3000,
+    "observations": 320,
+    "fees": {
+      "binanceTakerPct": 0.1,
+      "okxTakerPct": 0.1,
+      "roundTripPct": 0.2,
+      "tier": "entry tier, no VIP or token discount"
+    },
+    "spread": "Both venues fetched in the same tick. Executable spread crosses each book: buy the ask, sell the bid.",
+    "latency": "Wall-clock round trip from this host, including TLS and the agent proxy — the same path a retail bot takes.",
+    "caveat": "REST top-of-book, sampled every few seconds. A real bot uses WebSocket and sees more ticks; it also faces the same fees and the same books."
+  },
+  "latency": {
+    "binance": {
+      "medianMs": 160.3002525,
+      "p90Ms": 172.252649,
+      "n": 40
+    },
+    "okx": {
+      "medianMs": 192.85467999999997,
+      "p90Ms": 232.09062,
+      "n": 40
+    }
+  },
+  "spreads": {
+    "midpointMedianPct": 0.004169913574693057,
+    "midpointP90Pct": 0.022482014388476745,
+    "midpointMaxPct": 0.051059484299217126,
+    "executableMedianPct": 0,
+    "executableMaxPct": 0.020330183023781104,
+    "roundTripFeePct": 0.2,
+    "midpointLooksProfitablePct": 0,
+    "trulyProfitablePct": 0,
+    "medianShortfallPct": 0.2,
+    "feeOverBestObservedX": 9.83758974358722,
+    "histogram": [
+      {
+        "fromPct": -0.05,
+        "toPct": -0.04,
+        "count": 36
+      },
+      {
+        "fromPct": -0.02,
+        "toPct": -0.01,
+        "count": 73
+      },
+      {
+        "fromPct": -0.01,
+        "toPct": 0,
+        "count": 98
+      },
+      {
+        "fromPct": 0,
+        "toPct": 0.01,
+        "count": 65
+      },
+      {
+        "fromPct": 0.01,
+        "toPct": 0.02,
+        "count": 9
+      },
+      {
+        "fromPct": 0.02,
+        "toPct": 0.03,
+        "count": 1
+      }
+    ],
+    "positiveBeforeFeesPct": 23.4375
+  },
+  "perPair": [
+    {
+      "pair": "BTCUSDT",
+      "samples": 40,
+      "midSpreadMedianPct": 0.0021895412911039865,
+      "midSpreadP90Pct": 0.005308916313415479,
+      "executableMedianPct": 0.0021050325181468698,
+      "executableMaxPct": 0.008972757540414295,
+      "midpointLooksProfitablePct": 0,
+      "trulyProfitablePct": 0
+    },
+    {
+      "pair": "ETHUSDT",
+      "samples": 40,
+      "midSpreadMedianPct": 0.004169609281546469,
+      "midSpreadP90Pct": 0.01199056394750313,
+      "executableMedianPct": 0.0036483986136052085,
+      "executableMaxPct": 0.020330183023781104,
+      "midpointLooksProfitablePct": 0,
+      "trulyProfitablePct": 0
+    },
+    {
+      "pair": "SOLUSDT",
+      "samples": 40,
+      "midSpreadMedianPct": 0,
+      "midSpreadP90Pct": 0.013030164831573269,
+      "executableMedianPct": -0.013027618551335482,
+      "executableMaxPct": 0,
+      "midpointLooksProfitablePct": 0,
+      "trulyProfitablePct": 0
+    },
+    {
+      "pair": "XRPUSDT",
+      "samples": 40,
+      "midSpreadMedianPct": 0.009696029475907008,
+      "midSpreadP90Pct": 0.00969696969699016,
+      "executableMedianPct": 0,
+      "executableMaxPct": 0.01939111886755652,
+      "midpointLooksProfitablePct": 0,
+      "trulyProfitablePct": 0
+    },
+    {
+      "pair": "DOGEUSDT",
+      "samples": 40,
+      "midSpreadMedianPct": 0,
+      "midSpreadP90Pct": 0.01430103682516428,
+      "executableMedianPct": -0.01429592566118102,
+      "executableMaxPct": 0,
+      "midpointLooksProfitablePct": 0,
+      "trulyProfitablePct": 0
+    },
+    {
+      "pair": "ADAUSDT",
+      "samples": 40,
+      "midSpreadMedianPct": 0,
+      "midSpreadP90Pct": 0.02555583950932507,
+      "executableMedianPct": -0.051072522982629716,
+      "executableMaxPct": 0,
+      "midpointLooksProfitablePct": 0,
+      "trulyProfitablePct": 0
+    },
+    {
+      "pair": "LINKUSDT",
+      "samples": 40,
+      "midSpreadMedianPct": 0.012169151201675318,
+      "midSpreadP90Pct": 0.012173595471394112,
+      "executableMedianPct": 0,
+      "executableMaxPct": 0.01216841080554205,
+      "midpointLooksProfitablePct": 0,
+      "trulyProfitablePct": 0
+    },
+    {
+      "pair": "ICPUSDT",
+      "samples": 40,
+      "midSpreadMedianPct": 0.022502250225030017,
+      "midSpreadP90Pct": 0.04497413986957004,
+      "executableMedianPct": -0.04496402877699343,
+      "executableMaxPct": 0,
+      "midpointLooksProfitablePct": 0,
+      "trulyProfitablePct": 0
+    }
+  ],
+  "minNotional": [
+    {
+      "pair": "BTCUSDT",
+      "minNotionalUsd": 5
+    },
+    {
+      "pair": "ETHUSDT",
+      "minNotionalUsd": 5
+    },
+    {
+      "pair": "ADAUSDT",
+      "minNotionalUsd": 5
+    },
+    {
+      "pair": "XRPUSDT",
+      "minNotionalUsd": 5
+    },
+    {
+      "pair": "LINKUSDT",
+      "minNotionalUsd": 5
+    },
+    {
+      "pair": "DOGEUSDT",
+      "minNotionalUsd": 1
+    },
+    {
+      "pair": "SOLUSDT",
+      "minNotionalUsd": 5
+    },
+    {
+      "pair": "ICPUSDT",
+      "minNotionalUsd": 5
+    }
+  ],
+  "story": {
+    "startUsd": 68,
+    "endUsd": 750000,
+    "multiple": 11029.411764705883,
+    "requiredGainPerTradePct": [
+      {
+        "trades": 100,
+        "gainPerTradePct": 9.755305644761414,
+        "requiredGrossSpreadPct": 9.955305644761413,
+        "timesLargerThanBestObserved": 489.68106352590416
+      },
+      {
+        "trades": 1000,
+        "gainPerTradePct": 0.9351777931253968,
+        "requiredGrossSpreadPct": 1.1351777931253968,
+        "timesLargerThanBestObserved": 55.83706707399189
+      },
+      {
+        "trades": 10000,
+        "gainPerTradePct": 0.0931265436663331,
+        "requiredGrossSpreadPct": 0.2931265436663331,
+        "timesLargerThanBestObserved": 14.418293397725451
+      },
+      {
+        "trades": 100000,
+        "gainPerTradePct": 0.009308754017967047,
+        "requiredGrossSpreadPct": 0.20930875401796706,
+        "timesLargerThanBestObserved": 10.295468258850866
+      }
+    ],
+    "bestObservedGrossPct": 0.020330183023781104,
+    "bestObservedNetPct": -0.17966981697621892
+  }
+}

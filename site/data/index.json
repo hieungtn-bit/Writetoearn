@@ -1,0 +1,286 @@
+{
+  "generatedAt": "2026-08-25T03:24:59.286Z",
+  "note": "Every figure published on this site traces to one of these snapshots.",
+  "snapshots": [
+    {
+      "file": "ai-sector.json",
+      "url": "/data/ai-sector.json"
+    },
+    {
+      "file": "arb-reality.json",
+      "url": "/data/arb-reality.json"
+    },
+    {
+      "file": "audited-claims-2026-08-02.json",
+      "url": "/data/audited-claims-2026-08-02.json"
+    },
+    {
+      "file": "base-breakout.json",
+      "url": "/data/base-breakout.json"
+    },
+    {
+      "file": "bnb-btc.json",
+      "url": "/data/bnb-btc.json"
+    },
+    {
+      "file": "bnb-deep.json",
+      "url": "/data/bnb-deep.json"
+    },
+    {
+      "file": "bnb-hardfork.json",
+      "url": "/data/bnb-hardfork.json"
+    },
+    {
+      "file": "bnb-setups.json",
+      "url": "/data/bnb-setups.json"
+    },
+    {
+      "file": "bnb-week.json",
+      "url": "/data/bnb-week.json"
+    },
+    {
+      "file": "breakout-signal.json",
+      "url": "/data/breakout-signal.json"
+    },
+    {
+      "file": "btc-audit-2.json",
+      "url": "/data/btc-audit-2.json"
+    },
+    {
+      "file": "btc-audit.json",
+      "url": "/data/btc-audit.json"
+    },
+    {
+      "file": "btc-bnb-final.json",
+      "url": "/data/btc-bnb-final.json"
+    },
+    {
+      "file": "btc-cycle-stage.json",
+      "url": "/data/btc-cycle-stage.json"
+    },
+    {
+      "file": "btc-now.json",
+      "url": "/data/btc-now.json"
+    },
+    {
+      "file": "capacity.json",
+      "url": "/data/capacity.json"
+    },
+    {
+      "file": "compression-signal.json",
+      "url": "/data/compression-signal.json"
+    },
+    {
+      "file": "content-audit.json",
+      "url": "/data/content-audit.json"
+    },
+    {
+      "file": "coverage-gap.json",
+      "url": "/data/coverage-gap.json"
+    },
+    {
+      "file": "cross-market.json",
+      "url": "/data/cross-market.json"
+    },
+    {
+      "file": "cross-section.json",
+      "url": "/data/cross-section.json"
+    },
+    {
+      "file": "crowding.json",
+      "url": "/data/crowding.json"
+    },
+    {
+      "file": "daily-brief.json",
+      "url": "/data/daily-brief.json"
+    },
+    {
+      "file": "detector-costs.json",
+      "url": "/data/detector-costs.json"
+    },
+    {
+      "file": "ena-icp-deep.json",
+      "url": "/data/ena-icp-deep.json"
+    },
+    {
+      "file": "ena.json",
+      "url": "/data/ena.json"
+    },
+    {
+      "file": "event-window.json",
+      "url": "/data/event-window.json"
+    },
+    {
+      "file": "five-deep.json",
+      "url": "/data/five-deep.json"
+    },
+    {
+      "file": "funding-distribution.json",
+      "url": "/data/funding-distribution.json"
+    },
+    {
+      "file": "gainers-study.json",
+      "url": "/data/gainers-study.json"
+    },
+    {
+      "file": "grok-check.json",
+      "url": "/data/grok-check.json"
+    },
+    {
+      "file": "hour-of-day.json",
+      "url": "/data/hour-of-day.json"
+    },
+    {
+      "file": "icp-4h-check.json",
+      "url": "/data/icp-4h-check.json"
+    },
+    {
+      "file": "icp-followthrough.json",
+      "url": "/data/icp-followthrough.json"
+    },
+    {
+      "file": "icp-full.json",
+      "url": "/data/icp-full.json"
+    },
+    {
+      "file": "icp-grok-check.json",
+      "url": "/data/icp-grok-check.json"
+    },
+    {
+      "file": "icp-strategy.json",
+      "url": "/data/icp-strategy.json"
+    },
+    {
+      "file": "icp-volume-profile.json",
+      "url": "/data/icp-volume-profile.json"
+    },
+    {
+      "file": "icp-vs-avax.json",
+      "url": "/data/icp-vs-avax.json"
+    },
+    {
+      "file": "inj-check.json",
+      "url": "/data/inj-check.json"
+    },
+    {
+      "file": "intraday-direction.json",
+      "url": "/data/intraday-direction.json"
+    },
+    {
+      "file": "intraday-signal.json",
+      "url": "/data/intraday-signal.json"
+    },
+    {
+      "file": "live-catches.json",
+      "url": "/data/live-catches.json"
+    },
+    {
+      "file": "market-call.json",
+      "url": "/data/market-call.json"
+    },
+    {
+      "file": "market-scan-2026-08-21.json",
+      "url": "/data/market-scan-2026-08-21.json"
+    },
+    {
+      "file": "market-scan-2026-08-22.json",
+      "url": "/data/market-scan-2026-08-22.json"
+    },
+    {
+      "file": "market-scan.json",
+      "url": "/data/market-scan.json"
+    },
+    {
+      "file": "momentum-backtest.json",
+      "url": "/data/momentum-backtest.json"
+    },
+    {
+      "file": "multiplier-audit.json",
+      "url": "/data/multiplier-audit.json"
+    },
+    {
+      "file": "multiplier-scan-check.json",
+      "url": "/data/multiplier-scan-check.json"
+    },
+    {
+      "file": "overhead-test.json",
+      "url": "/data/overhead-test.json"
+    },
+    {
+      "file": "persistence.json",
+      "url": "/data/persistence.json"
+    },
+    {
+      "file": "pipeline-v3-check.json",
+      "url": "/data/pipeline-v3-check.json"
+    },
+    {
+      "file": "recommendations.json",
+      "url": "/data/recommendations.json"
+    },
+    {
+      "file": "scan-v2-check.json",
+      "url": "/data/scan-v2-check.json"
+    },
+    {
+      "file": "selection-bias.json",
+      "url": "/data/selection-bias.json"
+    },
+    {
+      "file": "self-backtest.json",
+      "url": "/data/self-backtest.json"
+    },
+    {
+      "file": "short-signal.json",
+      "url": "/data/short-signal.json"
+    },
+    {
+      "file": "stop-law.json",
+      "url": "/data/stop-law.json"
+    },
+    {
+      "file": "structural-edge.json",
+      "url": "/data/structural-edge.json"
+    },
+    {
+      "file": "three-stage.json",
+      "url": "/data/three-stage.json"
+    },
+    {
+      "file": "today-market.json",
+      "url": "/data/today-market.json"
+    },
+    {
+      "file": "today-trade.json",
+      "url": "/data/today-trade.json"
+    },
+    {
+      "file": "tokenised-equities.json",
+      "url": "/data/tokenised-equities.json"
+    },
+    {
+      "file": "two-sided.json",
+      "url": "/data/two-sided.json"
+    },
+    {
+      "file": "venue-census.json",
+      "url": "/data/venue-census.json"
+    },
+    {
+      "file": "volume-signal.json",
+      "url": "/data/volume-signal.json"
+    },
+    {
+      "file": "watchlist-post-check.json",
+      "url": "/data/watchlist-post-check.json"
+    },
+    {
+      "file": "watchlist-stages.json",
+      "url": "/data/watchlist-stages.json"
+    },
+    {
+      "file": "why-always-wait.json",
+      "url": "/data/why-always-wait.json"
+    }
+  ]
+}
