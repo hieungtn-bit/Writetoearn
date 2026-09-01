@@ -17,14 +17,6 @@
     {
       "source": "/scan/:path*",
       "destination": "https://market-scan-git-claude-market-sca-76d538-hieungtn-bits-projects.vercel.app/scan/:path*"
-    },
-    {
-      "source": "/scanprobe",
-      "destination": "https://market-scan-git-claude-market-sca-76d538-hieungtn-bits-projects.vercel.app/scan/"
-    },
-    {
-      "source": "/scanprobe2/",
-      "destination": "https://market-scan-git-claude-market-sca-76d538-hieungtn-bits-projects.vercel.app/scan/"
     }
   ],
   "headers": [
