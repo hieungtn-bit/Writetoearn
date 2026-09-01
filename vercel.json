@@ -5,6 +5,16 @@
   "installCommand": "echo no-deps",
   "trailingSlash": true,
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/scan",
+      "destination": "https://market-scan-git-claude-market-sca-76d538-hieungtn-bits-projects.vercel.app/scan"
+    },
+    {
+      "source": "/scan/:path*",
+      "destination": "https://market-scan-git-claude-market-sca-76d538-hieungtn-bits-projects.vercel.app/scan/:path*"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
