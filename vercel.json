@@ -5,18 +5,16 @@
   "installCommand": "echo no-deps",
   "trailingSlash": true,
   "cleanUrls": true,
-  "rewrites": [
+  "redirects": [
     {
       "source": "/scan",
-      "destination": "https://market-scan-git-claude-market-sca-76d538-hieungtn-bits-projects.vercel.app/scan"
-    },
-    {
-      "source": "/scan/",
-      "destination": "https://market-scan-git-claude-market-sca-76d538-hieungtn-bits-projects.vercel.app/scan/"
+      "destination": "https://scan.maix8.study/",
+      "permanent": false
     },
     {
       "source": "/scan/:path(.*)",
-      "destination": "https://market-scan-git-claude-market-sca-76d538-hieungtn-bits-projects.vercel.app/scan/:path"
+      "destination": "https://scan.maix8.study/:path",
+      "permanent": false
     }
   ],
   "headers": [
