@@ -1,0 +1,8 @@
+{
+  "source": "A four-token comparison table circulating on 2 August 2026, covering ORDI, MIRA, AIXBT and KAITO.",
+  "note": "These are the figures the document asserts, recorded verbatim so an audit can quote them while refuting them. They are claims, not measurements. Nothing here is verified — verifying them is the point of the article that cites this file.",
+  "claimedVolume24hUsd": { "ORDI": 5000000, "MIRA": 93000000, "AIXBT": 4500000, "KAITO": 65000000 },
+  "claimedPriceUsd": { "ORDI": 3.63, "MIRA": 0.0414, "AIXBT": 0.0172, "KAITO": 1.2 },
+  "claimedSimilarityScore": { "ORDI": 6.3, "MIRA": 6.8, "AIXBT": 7.0, "KAITO": 5.8 },
+  "claimedNarrativeScoreRange": { "ORDI": [55, 60], "MIRA": [76, 78], "AIXBT": [68, 70], "KAITO": [71, 73] }
+}

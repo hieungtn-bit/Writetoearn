@@ -138,3 +138,24 @@ test("history outside the window is not shown to the writer", async (t) => {
   assert.equal(recent.length, 1);
   assert.equal(recent[0].asset, "NEW");
 });
+
+test("recording the same post twice corrects the row instead of doubling it", () => {
+  // A recovery run with a better publication timestamp made every row look new
+  // under the old asset-plus-time key, and the track record doubled to 59 rows
+  // for 32 published calls.
+  const store = new Store({ dir: fs.mkdtempSync(path.join(os.tmpdir(), "wte-claims-")) });
+  store.recordClaim({ postId: "abc", asset: "BTCUSDT", bias: "WAIT", publishedAt: "2026-08-01T00:00:00Z" });
+  store.recordClaim({ postId: "abc", asset: "BTCUSDT", bias: "WAIT", publishedAt: "2026-08-01T00:05:00Z" });
+
+  const claims = store.listClaims();
+  assert.equal(claims.length, 1, "one published post is one row");
+  assert.equal(claims[0].publishedAt, "2026-08-01T00:05:00Z", "the later record corrects the earlier");
+});
+
+test("a claim with no score key is still pending, not silently settled", () => {
+  const store = new Store({ dir: fs.mkdtempSync(path.join(os.tmpdir(), "wte-claims-")) });
+  store.recordClaim({ postId: "x", asset: "BTCUSDT", bias: "WAIT", publishedAt: "2026-08-01T00:00:00Z" });
+  const state = store.load();
+  delete state.claims[0].score;
+  assert.equal(store.listClaims({ scored: false }).length, 1);
+});

@@ -1,0 +1,58 @@
+{
+  "measuredAt": "2026-08-03T13:19:27.963Z",
+  "method": {
+    "interval": "1h",
+    "lookbackHours": 168,
+    "horizonHours": 12,
+    "targetGainPct": 10,
+    "note": "Detection latency, not prediction. The alert fires on a move already under way."
+  },
+  "pairsSampled": 59,
+  "baseline": {
+    "n": 31515,
+    "followThroughPct": 6.216087577344122,
+    "endedHigherPct": 45.76233539584325
+  },
+  "thresholds": {
+    "z3": {
+      "n": 973,
+      "followThroughPct": 20.452209660842755,
+      "endedHigherPct": 46.76258992805755,
+      "liftVsBaseline": 3.2902061636623756,
+      "alertsPerPairPerDay": 0.7409804854831032,
+      "differencePp": 14.236122083498632,
+      "standardErrorPp": 4.504094444691824,
+      "sigmas": 3.160706832041726
+    },
+    "z5": {
+      "n": 399,
+      "followThroughPct": 27.56892230576441,
+      "endedHigherPct": 50.6265664160401,
+      "liftVsBaseline": 4.435092324993187,
+      "alertsPerPairPerDay": 0.30385530699666824,
+      "differencePp": 21.35283472842029,
+      "standardErrorPp": 7.7638598124727505,
+      "sigmas": 2.7502859716911243
+    },
+    "z8": {
+      "n": 166,
+      "followThroughPct": 34.33734939759036,
+      "endedHigherPct": 45.78313253012048,
+      "liftVsBaseline": 5.5239487813428285,
+      "alertsPerPairPerDay": 0.12641599238457876,
+      "differencePp": 28.12126182024624,
+      "standardErrorPp": 12.775405781034236,
+      "sigmas": 2.2012030226072143
+    },
+    "z12": {
+      "n": 69,
+      "followThroughPct": 34.78260869565217,
+      "endedHigherPct": 43.47826086956522,
+      "liftVsBaseline": 5.595578933351089,
+      "alertsPerPairPerDay": 0.05254640647310804,
+      "differencePp": 28.566521118308053,
+      "standardErrorPp": 19.86785638132666,
+      "sigmas": 1.4378260326643524
+    }
+  }
+}

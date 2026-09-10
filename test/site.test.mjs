@@ -123,6 +123,8 @@ test("buildSite emits an index, sitemap, robots and a page per article", () => {
   assert.deepEqual(paths.sort(), [
     "assets/btc-range.svg",
     "btc-range/index.html",
+    "feed.json",
+    "feed.xml",
     "index.html",
     "robots.txt",
     "sitemap.xml",
@@ -131,6 +133,48 @@ test("buildSite emits an index, sitemap, robots and a page per article", () => {
   const page = files.find((f) => f.path === "btc-range/index.html").content;
   assert.match(page, /<h1>BTC&#39;s Tightest Range<\/h1>/);
   assert.match(page, /Originally published on Binance Square/);
+});
+
+test("the feeds carry every article and link back to its own page", () => {
+  const manifest = { site, articles: [article] };
+  const files = buildSite(manifest, { "18.txt": "THE MEASUREMENT\n\nBTC held." });
+
+  const rss = files.find((f) => f.path === "feed.xml").content;
+  assert.match(rss, /<rss version="2\.0">/);
+  assert.match(rss, new RegExp(`${site.baseUrl}/btc-range/`));
+
+  const json = JSON.parse(files.find((f) => f.path === "feed.json").content);
+  assert.equal(json.items.length, 1);
+  assert.equal(json.items[0].url, `${site.baseUrl}/btc-range/`);
+});
+
+test("the record page only appears when a record has been exported", () => {
+  const manifest = { site, articles: [article] };
+  const drafts = { "18.txt": "THE MEASUREMENT\n\nBTC held." };
+
+  const without = buildSite(manifest, drafts).map((f) => f.path);
+  assert.ok(!without.includes("record/index.html"), "a clean checkout must still build");
+
+  const record = {
+    generatedAt: new Date().toISOString(),
+    summary: { scored: 2, biasCorrect: 1, biasTotal: 2, biasPct: 50, pending: 0, unscoreable: 3, publishedTotal: 5 },
+    backtest: null,
+    calls: [
+      { asset: "BTCUSDT", bias: "WAIT", publishedAt: "2026-08-01T00:00:00.000Z", correct: true, movePct: 0.4, hours: 24 },
+      { asset: "SOLUSDT", bias: "LONG", publishedAt: "2026-08-02T00:00:00.000Z", correct: false, movePct: -3.1, hours: 24 },
+    ],
+    ledger: [],
+    snapshots: 7,
+  };
+  const page = buildSite(manifest, drafts, [], null, {}, record)
+    .find((f) => f.path === "record/index.html").content;
+
+  // The losing call has to be on the page, at the same size as the winner.
+  assert.match(page, /SOL/);
+  assert.match(page, /class="no">wrong/);
+  assert.match(page, /class="ok">right/);
+  // And the unscoreable posts have to be declared, not silently dropped.
+  assert.match(page, /3 of 5 published pieces stated no directional call/);
 });
 
 test("a manifest referencing a missing draft fails loudly", () => {

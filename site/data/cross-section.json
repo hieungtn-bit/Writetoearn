@@ -1,0 +1,85 @@
+{
+  "measuredAt": "2026-08-17T04:47:11.336Z",
+  "universePinnedToCache": true,
+  "pairs": 80,
+  "rebalances": 71,
+  "rules": {
+    "horizonDays": 30,
+    "rewardRatio": 2,
+    "feePct": 0.4,
+    "stopVolMultiple": 2.5,
+    "rankLookbackDays": 30,
+    "groups": 5,
+    "minTurnoverUsd": 2000000
+  },
+  "question": "Shorting alts against BTC works. Does it matter which ones you pick?",
+  "byGroup": [
+    {
+      "group": 1,
+      "label": "weakest vs BTC",
+      "trades": 498,
+      "months": 71,
+      "meanNetR": 0.42035286478383926,
+      "medianNetR": 0.5875948351200537,
+      "tStatByMonth": 3.6172167423300285,
+      "monthsPositivePct": 63.38028169014085
+    },
+    {
+      "group": 2,
+      "label": "weak",
+      "trades": 471,
+      "months": 71,
+      "meanNetR": 0.34713120378986856,
+      "medianNetR": 0.21675315134094741,
+      "tStatByMonth": 3.126856940632059,
+      "monthsPositivePct": 61.97183098591549
+    },
+    {
+      "group": 3,
+      "label": "middle",
+      "trades": 478,
+      "months": 71,
+      "meanNetR": 0.27594741721457655,
+      "medianNetR": -0.7743872529640701,
+      "tStatByMonth": 2.446325398689226,
+      "monthsPositivePct": 56.33802816901409
+    },
+    {
+      "group": 4,
+      "label": "strong",
+      "trades": 471,
+      "months": 71,
+      "meanNetR": 0.3706537553567964,
+      "medianNetR": 0.4269540706141985,
+      "tStatByMonth": 3.8349919646678488,
+      "monthsPositivePct": 63.38028169014085
+    },
+    {
+      "group": 5,
+      "label": "strongest vs BTC",
+      "trades": 445,
+      "months": 71,
+      "meanNetR": 0.19292571907775127,
+      "medianNetR": -1.006690552026227,
+      "tStatByMonth": 1.8848689474386489,
+      "monthsPositivePct": 53.52112676056338
+    }
+  ],
+  "allAlts": {
+    "trades": 2363,
+    "months": 71,
+    "meanNetR": 0.32381178706669433,
+    "medianNetR": 0.014344973663728174,
+    "tStatByMonth": 3.5352697573274776,
+    "monthsPositivePct": 60.56338028169014
+  },
+  "spread": {
+    "weakestMeanR": 0.4140181998311557,
+    "strongestMeanR": 0.1740630305246058,
+    "differenceR": 0.23995516930654986,
+    "welchTByMonth": 1.6316072323018218,
+    "favours": "momentum"
+  },
+  "monotone": false,
+  "bestGroupOverAllR": 0.09654107771714493
+}

@@ -1,0 +1,102 @@
+Every post on this channel quotes **overhead supply** — the share of the last month's turnover that changed hands above the current price. The money currently underwater. The people waiting to get out at breakeven.
+
+I have used it as the headline argument more than any other number I publish. Two days ago I wrote that $BNB's reading of 3.17% was *"the best number on the board"* and *"genuinely excellent"*, and that it was the reason BNB was not a short.
+
+I had never checked whether a low reading is followed by better returns than a high one.
+
+It is not.
+
+THE TEST
+
+Label every day of every pair by its overhead reading. Bucket the days. Compare what followed against the same universe's own baseline — because "low overhead names went up" and "everything went up that month" look identical without one.
+
+75 pairs. **60,386 labelled days.**
+
+```
+overhead       share     10d vs     30d vs
+0-20%          16.6%       0.28       0.45
+20-40%         11.3%      -0.48       0.03
+40-60%         12.8%      -0.71      -0.49
+60-80%         18.6%      -0.84       0.20
+80-100%        40.6%       0.71      -0.08
+```
+
+Those last two columns are the entire finding. Every band lands within **0.84 of a percentage point** of the baseline, at both horizons.
+
+Not a weak signal. Not a signal that needs better conditioning. Nothing.
+
+IT IS WORSE THAN NOTHING
+
+Read the top and bottom rows against each other.
+
+At **ten days**, the band I call dangerous — 80–100% underwater, a wall of trapped sellers — did **better** than the band I call clean, by 0.43 of a point. At thirty days it flips the other way by about the same margin.
+
+A metric that changes sign depending on how long you hold, by a margin smaller than a rounding error, is not measuring the thing I said it measures.
+
+CAN YOU TRADE IT? NO.
+
+A gap between medians is not an edge until it survives a stop, a target and a fee. So each extreme band was walked with a **1.5 ATR stop** — the width I published this morning — and a 2:1 target, bar by bar, stop charged first when a bar reaches both.
+
+```
+                          gross       net pairs +ve
+buy low overhead         -0.093    -0.120     22/66
+buy high overhead        +0.004    -0.024     31/72
+short low overhead       +0.042    +0.019     36/66
+short high overhead      +0.019    -0.016     35/72
+```
+
+**Buying the low-overhead state — the thing I have been calling bullish — is the worst of the four.** -0.120R after costs, profitable on 22 of 66 pairs.
+
+The only cell that clears fees is **shorting** low-overhead names, at +0.019R. That is the opposite of how I have used the metric — and before anyone acts on it, it is positive on 36 of 66 pairs, which is a coin flip wearing a decimal point.
+
+There is no trade here in either direction. That is the honest summary.
+
+THE NUMBER THAT REFRAMES EVERY POST I HAVE WRITTEN
+
+Look at the share column again. **40.6% of all days sit in the 80–100% band.**
+
+High overhead is not a warning sign. It is the **normal condition** of this universe. Most of the time, on most coins, most of the recent money is underwater — because the median liquid altcoin drifts down, which is the same baseline column that keeps turning up in these studies: -1.79% over ten days, -5.21% over thirty.
+
+Yesterday I cited $BTC's overhead of about 90% as part of the case for standing aside. That number is barely above the median of everything I scan. It was true and it was not evidence.
+
+WHICH OF MY OWN POSTS THIS DAMAGES
+
+I would rather name them than leave a general lesson floating.
+
+**The BNB posts.** "Almost nobody who bought BNB this month is holding a loss, so there is no wall of sellers on the way up." The mechanism sounds right. It does not pay. Measured, that state is the single worst of the four cells above.
+
+**Every stage read.** Overhead is the first line of the classifier I publish. It still describes where supply sits — that part is real and checkable. It just does not forecast the next move, and I presented it as though it did.
+
+**Yesterday's BTC note.** See above.
+
+WHAT OVERHEAD ACTUALLY IS
+
+It is a true description of the present. Where the money changed hands, and how much of it is above you. That is worth knowing when you are asking *"if this rallies, who is waiting to sell into it"* — a question about mechanics.
+
+It is not a forecast, and I have been using it as one.
+
+THE CAVEAT, WITH A NUMBER
+
+The history has to use a daily-bar proxy: hourly candles reach back only six weeks, so a whole day's turnover gets charged to one side of the price. The board publishes the hourly volume profile instead, which is finer.
+
+So I measured both on the same day across 75 pairs. Median disagreement: **2.23 points**. Median proxy 81.0% against median profile 81.6%. Close enough that the buckets above are not an artefact.
+
+On individual names it is not always close — the worst pair disagreed by **37.1 points**. That is a limit on reading any single row of this study, and it is why the conclusion is stated across the universe rather than per coin.
+
+WHAT I AM CHANGING
+
+Overhead stays on the board. It is a real measurement and readers use it.
+
+What stops is **leading an argument with it.** If a post's case rests on a low overhead reading, that post has no case, and I will not be writing "the best number on the board" about a figure that does not predict returns.
+
+Three of the four things I have tested on myself this week came back negative: the stop rule was half wrong, the early detector did not survive fees, my own board's plan keeps a tenth of what it shows. This is the fourth.
+
+That ratio is not a crisis. It is what testing looks like when you were not testing before.
+
+Board and every figure: maix8.study/signals
+
+Which number in your own process have you never checked against what followed it?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#RiskManagement #Trading #Crypto

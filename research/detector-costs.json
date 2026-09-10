@@ -1,0 +1,47 @@
+{
+  "measuredAt": "2026-08-14T05:40:21.003Z",
+  "source": "research/momentum-backtest.json",
+  "sourceMeasuredAt": "2026-08-12T02:33:51.932Z",
+  "feePct": 0.2,
+  "falsePositiveRate": 0.05,
+  "cellsTested": 144,
+  "survivingCells": 2,
+  "expectedByChance": 7.2,
+  "widestStopPct": 8,
+  "survivorsUseWidestStop": true,
+  "bestGross": {
+    "stopPct": 3,
+    "rr": 3,
+    "horizonBars": 12,
+    "hitPct": 7.02247191011236,
+    "baselineHitPct": 3.9270500532481365,
+    "expectancyR": 0.03241225268654849,
+    "edgeR": 0.039545254410529314,
+    "feeR": 0.06666666666666667,
+    "netR": -0.03425441398011818,
+    "feeToEdgeRatio": 2.0568353366668095
+  },
+  "frictionPerTenTradesR": 0.6666666666666666,
+  "survivors": [
+    {
+      "config": "z4 · move 0.5-6%",
+      "stopPct": 8,
+      "rr": 1.5,
+      "horizonBars": 24,
+      "expectancyR": 0.02608501124565764,
+      "feeR": 0.025,
+      "netR": 0.001085011245657637,
+      "effectiveN": 235.5
+    },
+    {
+      "config": "z3 · no ceiling",
+      "stopPct": 8,
+      "rr": 3,
+      "horizonBars": 24,
+      "expectancyR": 0.025699070076203017,
+      "feeR": 0.025,
+      "netR": 0.0006990700762030157,
+      "effectiveN": 424.5
+    }
+  ]
+}

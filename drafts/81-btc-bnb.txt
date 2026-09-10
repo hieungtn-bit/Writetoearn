@@ -1,0 +1,119 @@
+Yesterday I gave $BTC a stand-aside call, and one of my reasons was that the great majority of the last month's turnover had traded above the current price — a wall of trapped sellers overhead.
+
+This morning I published a study across 75 pairs showing that reasoning **does not work**. Overhead supply predicts nothing.
+
+So here are both coins again, with my most-used argument deleted. And the first thing that happened when I removed it was worse than I expected.
+
+EACH COIN'S OWN HISTORY DISAGREES WITH ME
+
+Take today's overhead reading on each coin, find every past day within ten points of it, and see what followed — against that same coin's own baseline.
+
+$BTC reads **94.8%** underwater. About as bad as the metric gets.
+
+```
+hold           from hereits baseline   sample
+10 days            1.35%       0.14%     n≈16
+30 days            3.50%       0.51%      n≈5
+```
+
+**Better** than its own average, at both horizons.
+
+$BNB reads **13.5%**. Two days ago I called that "the best number on the board".
+
+```
+hold           from hereits baseline   sample
+10 days            0.01%       0.67%     n≈18
+30 days            1.93%       1.58%      n≈6
+```
+
+**Worse** than its own average over ten days — 0.01% against 0.67%, higher exactly 50.0% of the time.
+
+Two coins. Opposite readings. Both contradicting how I used the number, each on its own data.
+
+NOW THE PART THAT KEEPS ME HONEST
+
+The obvious move is to flip the metric around and start buying high overhead.
+
+No.
+
+Both differences are about **one percentage point**, on samples of five to eighteen independent episodes. That is well inside the noise the universe study already measured — where five bands landed within 0.84 of a point of each other and changed sign between horizons.
+
+Two days ago I published a measurement showing that picking the best-looking cell per coin buys nothing. Flipping an indicator because two coins happened to lean the other way is that same mistake wearing a different hat.
+
+The finding is **stop using it**, not **use it backwards**. A dead indicator run in reverse is still a dead indicator.
+
+$BTC — WHAT IS ACTUALLY LEFT
+
+62916. Down 3.09% on the week, RSI 42.1.
+
+**Range position 13.7%** — the bottom of its 30-day range (62275–66956).
+
+Price sits **below** its value area (63375–65248), with the point of control — the single price where most volume changed hands — at 63995, **1.72% above here**. That is a statement about where volume is, not a forecast, and I am labelling it as such this time.
+
+```
+lookback        long     short
+180d           20/64     24/64
+270d            7/64     61/64
+365d            2/64     64/64
+540d           13/64     52/64
+730d           33/64     22/64
+```
+
+**4 of 5 lookbacks lean short.** Only the two-year window leans long. The board's call is **WAIT** — both directions lose over the recent window — and the row carries a regime turn.
+
+$BNB — AND WHERE I DISAGREE WITH MY OWN BOARD
+
+606.44. Up 2.34% on the week, 4.46% on the month, RSI 60.4.
+
+**Range position 78.3%** — near the top. And price sits **above** its value area (562.74–596.84), with the POC 5.84% *below*.
+
+That is the number that replaces overhead in the BNB argument, and it points the other way: there is no volume shelf under this price. The nearest one is nearly 6% down.
+
+```
+lookback        long     short
+180d           43/64      2/64
+270d            4/64     41/64
+365d           30/64     30/64
+540d           60/64      3/64
+730d           58/64      0/64
+```
+
+4 of 5 lean long — genuinely the best structural profile on my board. But the nine-month window says the opposite outright, the sample behind the call is **5 independent episodes**, and the board flags it thin.
+
+The board says **LONG**. I am not taking it, and I will say exactly why rather than quietly ignoring my own tool: two days ago I measured that long plans on this board held **−0.048R** out of sample and stayed positive on only 27% of pairs. A thin long, at the top of its range, above its value area, is the weakest version of a call that already fails that test.
+
+WHAT CHANGED ON THE BOARD TODAY
+
+The board used to sort by raw expectancy. That put **seven tokenised equities at the top**, every one showing above 1.6R on fewer than two independent episodes.
+
+That is not bad luck. The plan is the best of 64 geometries, and a maximum over noisy estimates is largest exactly where the sample is smallest — so the old sort was reliably surfacing the rows with the least evidence behind them.
+
+Rows are now ordered by expectancy **weighted for sample size**. BNB's own headline moves from 0.33R to 0.18R under that weighting. The published figure is unchanged — only what you see first is.
+
+IF YOU ARE TRADING EITHER
+
+A 1.5 ATR stop — the width I measured this morning as the useful one — is **3.21%** on BTC and **3.20%** on BNB.
+
+On both that is about **a third of an ordinary week** (9.51% and 10.4%). Costs run 0.062R a round trip at that width.
+
+Anything tighter and an unremarkable week takes you out. Anything much wider and you are past the point where widening stopped helping.
+
+WHERE I LAND
+
+Bias: **WAIT on both.**
+
+$BTC because four of five lookbacks lean short while price sits under its value area — the direction is contested and the location is poor.
+
+$BNB because the case for it was largely the number I retired this morning, and what remains is a thin long above its volume shelf.
+
+If BNB closes back inside its value area on rising participation, the location argument changes and I will say so with the same figures.
+
+One last number worth keeping. 40.6% of all days in this universe sit in the highest overhead band. Most of the time, on most coins, most of the recent money is underwater. It is not a warning. It is Tuesday.
+
+Board and every figure: maix8.study/signals
+
+What would you still hold if you deleted your favourite reason for holding it?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#BTC #BNB #RiskManagement

@@ -1,0 +1,68 @@
+<!doctype html><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#0b0e11}
+  svg{display:block}
+  text{font-family:"DejaVu Sans",system-ui,sans-serif;fill:#e8eaed}
+  .kicker{font-size:19px;letter-spacing:3.5px;fill:#f0b90b;font-weight:700}
+  .title{font-size:43px;font-weight:800;letter-spacing:-0.5px}
+  .sub{font-size:19px;fill:#9aa3ad}
+  .rlab{font-size:22px;font-weight:700}
+  .rnote{font-size:15px;fill:#8b949e}
+  .rval{font-size:19px;font-weight:700}
+  .rbe{font-size:17px;font-weight:700;fill:#9aa3ad}
+  .legend{font-size:16px;font-weight:700}
+  .axis{font-size:14px;fill:#6b757f}
+  .stat{font-size:22px;font-weight:700}
+  .statlab{font-size:15px;fill:#8b949e}
+  .mark{font-size:17px;font-weight:700;fill:#f0b90b;letter-spacing:1px}
+</style>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0b0e11"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#c98500"/>
+
+  <text x="64" y="56" class="kicker">HÌNH HỌC CỦA MỘT KÈO</text>
+  <text x="1136" y="56" text-anchor="end" class="mark">MAIX8</text>
+
+  <text x="64" y="118" class="title">Chờ xác nhận không làm kèo an toàn hơn.</text>
+  <text x="64" y="164" class="title">Nó đảo ngược tỷ lệ được–mất.</text>
+  <text x="64" y="200" class="sub">Cùng một mức cắt lỗ 2.12 · $ICP 2.22 · mục tiêu đầu 2.50</text>
+
+  <g>
+    <rect x="756" y="190" width="14" height="14" rx="3" fill="#c98500"/>
+    <text x="780" y="202" class="legend" fill="#c98500">rủi ro</text>
+    <rect x="872" y="190" width="14" height="14" rx="3" fill="#3987e5"/>
+    <text x="896" y="202" class="legend" fill="#3987e5">lợi nhuận tới TP1</text>
+  </g>
+
+  
+  <text x="64" y="282" class="rlab">Vào ngay</text>
+  <text x="64" y="304" class="rnote">vào ở 2.22 · R:R 2.74 · cần thắng 26.8%</text>
+
+  <rect x="362.2574738156346" y="307" width="135.74252618436537" height="30" rx="4" fill="#c98500"/>
+  <text x="350.2574738156346" y="328" text-anchor="end" class="rval" fill="#c98500">−4.64%</text>
+
+  <rect x="502" y="307" width="371.6445862523409" height="30" rx="4" fill="#3987e5"/>
+  <text x="885.6445862523409" y="328" class="rval" fill="#3987e5">+12.71%</text>
+  <text x="64" y="412" class="rlab">Chờ xác nhận</text>
+  <text x="64" y="434" class="rnote">vào ở 2.33 · R:R 0.83 · cần thắng 54.5%</text>
+
+  <rect x="233.98014888337462" y="437" width="264.0198511166254" height="30" rx="4" fill="#c98500"/>
+  <text x="221.98014888337462" y="458" text-anchor="end" class="rval" fill="#c98500">−9.03%</text>
+
+  <rect x="502" y="437" width="220.01654259718757" height="30" rx="4" fill="#3987e5"/>
+  <text x="734.0165425971876" y="458" class="rval" fill="#3987e5">+7.53%</text>
+
+  <!-- the entry itself: neutral midpoint both legs are measured from -->
+  <line x1="500" x2="500" y1="248" y2="478" stroke="#39414b" stroke-width="2"/>
+  <text x="500" y="240" text-anchor="middle" class="axis">điểm vào</text>
+
+  <line x1="64" x2="1136" y1="512" y2="512" stroke="#252a31" stroke-width="1"/>
+  <text x="64" y="548" class="stat" fill="#3987e5">2.74 → 0.83</text>
+  <text x="64" y="570" class="statlab">R:R sau khi chờ · dưới 1 là chân dưới dài hơn chân trên</text>
+
+  <text x="560" y="548" class="stat" fill="#c98500">49.2%</text>
+  <text x="560" y="570" class="statlab">Tỷ lệ chạm TP1 trước, đo từng nến trên 970 cửa sổ</text>
+
+  <text x="1136" y="548" text-anchor="end" class="stat">54.5%</text>
+  <text x="1136" y="570" text-anchor="end" class="statlab">Tỷ lệ cần có để hoà vốn</text>
+</svg>

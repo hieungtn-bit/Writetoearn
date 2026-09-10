@@ -1,0 +1,63 @@
+<!doctype html><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#0b0e11}
+  svg{display:block}
+  text{font-family:"DejaVu Sans",system-ui,sans-serif;fill:#e8eaed}
+  .kicker{font-size:19px;letter-spacing:3.5px;fill:#f0b90b;font-weight:700}
+  .title{font-size:40px;font-weight:800;letter-spacing:-0.5px}
+  .sub{font-size:17px;fill:#9aa3ad}
+  .lab{font-size:19px;font-weight:800}
+  .val{font-size:18px;font-weight:800}
+  rect.other{fill:#5a636d}
+  rect.ena{fill:#c98500}
+  .lab.other,.val.other{fill:#5a636d}
+  .lab.ena,.val.ena{fill:#c98500}
+  .ref{font-size:14px;fill:#6b757f}
+  .stat{font-size:22px;font-weight:700}
+  .statlab{font-size:15px;fill:#8b949e}
+  .mark{font-size:17px;font-weight:700;fill:#f0b90b;letter-spacing:1px}
+</style>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0b0e11"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#c98500"/>
+
+  <text x="64" y="56" class="kicker">A P-VALUE THAT LOST TO ITS CONTROL</text>
+  <text x="1136" y="56" text-anchor="end" class="mark">MAIX8</text>
+
+  <text x="64" y="118" class="title">ENA is built on funding.</text>
+  <text x="64" y="164" class="title">XRP tracks it better.</text>
+  <text x="64" y="200" class="sub">Correlation with perpetual funding over 28 non-overlapping 30-day windows, measured against BTC</text>
+
+  <line x1="499.0" x2="499.0" y1="238" y2="502" stroke="#39414b" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="499.0" y="518" text-anchor="middle" class="ref">average of all 48 tokens with no claim on funding: +0.257</text>
+
+  
+  <text x="230" y="266" text-anchor="end" class="lab other">XRP</text>
+  <rect x="250" y="248" width="642.9" height="26" rx="3" class="other"/>
+  <text x="906.9" y="268" class="val other">+0.66</text>
+  <text x="230" y="308" text-anchor="end" class="lab other">ADA</text>
+  <rect x="250" y="290" width="623.4" height="26" rx="3" class="other"/>
+  <text x="887.4" y="310" class="val other">+0.64</text>
+  <text x="230" y="350" text-anchor="end" class="lab other">XLM</text>
+  <rect x="250" y="332" width="621.9" height="26" rx="3" class="other"/>
+  <text x="885.9" y="352" class="val other">+0.64</text>
+  <text x="230" y="392" text-anchor="end" class="lab other">HBAR</text>
+  <rect x="250" y="374" width="616.0" height="26" rx="3" class="other"/>
+  <text x="880.0" y="394" class="val other">+0.63</text>
+  <text x="230" y="434" text-anchor="end" class="lab other">DOGE</text>
+  <rect x="250" y="416" width="591.0" height="26" rx="3" class="other"/>
+  <text x="855.0" y="436" class="val other">+0.61</text>
+  <text x="230" y="476" text-anchor="end" class="lab ena">ENA</text>
+  <rect x="250" y="458" width="464.2" height="26" rx="3" class="ena"/>
+  <text x="728.2" y="478" class="val ena">+0.48</text>
+
+  <line x1="64" x2="1136" y1="546" y2="546" stroke="#252a31" stroke-width="1"/>
+  <text x="64" y="582" class="stat">p 0.010</text>
+  <text x="64" y="604" class="statlab">ENA's correlation, taken on its own</text>
+
+  <text x="470" y="582" class="stat">77th</text>
+  <text x="470" y="604" class="statlab">Percentile among tokens earning nothing from it</text>
+
+  <text x="1136" y="582" text-anchor="end" class="stat">33rd</text>
+  <text x="1136" y="604" text-anchor="end" class="statlab">Where funding sits in its own history</text>
+</svg>

@@ -1,0 +1,85 @@
+Yesterday someone sent me the "Top Gainers" tab and asked why my scanner misses those names. I gave two reasons and one confident line: a gainers list is a list of moves that have already happened.
+
+Today, one day later:
+
+```
+             yesterday        today
+$HOLO           +38.30%     -24.2%
+$PROM           +22.67%     -11.1%
+```
+
+They were the two names at the top of that screenshot.
+
+That is a satisfying result and I do not entirely trust satisfying results, so I measured the general claim properly. It turns out I was **partly wrong**, and the part I was wrong about matters.
+
+THE TEST
+
+At the close of every day, rank every liquid pair by that day's move. Buy the top ten. Hold. Compare against buying an arbitrary liquid pair the same day — because "gainers fall" and "everything fell that week" look identical without a baseline.
+
+100 pairs, 999 days.
+
+```
+hold         gainers    baseline       diff
+1 day         -0.43%      -0.20%      -0.24
+3 days        -0.68%      -0.42%      -0.26
+7 days        -1.13%      -1.01%      -0.12
+14 days       -2.25%      -2.25%      -0.00
+```
+
+The top ten do underperform. But look at the size of it: **-0.24** at one day, **-0.12** at a week, and **-0.00** at two weeks.
+
+That is not the destruction my line yesterday implied. Buying the day's top ten is a slightly below-average way to buy — not a trap.
+
+I said something stronger than the data supports, so I am correcting it here rather than quietly moving on.
+
+WHERE THE REAL EFFECT IS
+
+Now the same question about the **single biggest gainer** of each day:
+
+```
+hold          median          up
+1 day         -1.12%       42.6%
+3 days        -1.73%       43.7%
+7 days        -3.15%       41.4%
+14 days       -4.26%       40.7%
+```
+
+That is a different picture entirely. The number one name loses **3.15%** over a week and **4.26%** over two, and it finishes higher only 40.7% of the time. Across 985 days.
+
+So the effect is real and it **scales with how extreme the move was**. Tenth place is roughly ordinary. First place is a bad trade.
+
+Which is exactly the row people screenshot.
+
+THE NUMBER UNDER BOTH TABLES
+
+Notice the baseline column. It is negative at every horizon — -1.01% over a week, -2.25% over two.
+
+That is not a statement about gainers. It is a statement about this universe: the median liquid altcoin drifts **down** over these windows. Most of what looks like a bad entry is a bad asset class to be long of by default.
+
+TODAY
+
+490 pairs trading. **133 up, 342 down** — 27.1% green. 46 pairs are down more than 5%; 25 are up more than 5%.
+
+The majors barely moved: BTC -0.29%, ETH 0.01%, SOL -0.26%, BNB -0.11%.
+
+The damage is entirely in the names that ran yesterday: KAITO -28.6%, BABY -21.8%, BICO -19.8%, alongside HOLO and PROM.
+
+That is what a quiet tape with an unwinding speculative edge looks like. Nothing happened to Bitcoin today. Plenty happened to whatever was on a leaderboard yesterday.
+
+WHAT TO DO WITH THIS
+
+Do not read a gainers list as a shopping list — but do not read it as a blacklist either. Tenth place performs about like anything else. The specific thing worth avoiding is the top of it, and the reason is not mystical: by the time a move is extreme enough to rank first, the part you can still capture is small and the part that can be given back is large.
+
+The honest version of yesterday's line: **the further up that list a name sits, the more of its move is already behind it.**
+
+Bias: **stand aside**. 27.1% of the market is green, participation is falling across the names I track, and the strongest readings on my board point down on the majors.
+
+A limit worth stating: this study ranks within the hundred most-traded pairs, not all 490, so it measures the gainers list of a liquid universe rather than the full exchange. Extending it to the small end would probably make the top-place effect worse, not better — but I have not measured that, so I am not claiming it.
+
+Board and every figure: maix8.study/signals
+
+What is the largest one-day gain you have ever bought into, and how did it end?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Crypto #RiskManagement #Trading

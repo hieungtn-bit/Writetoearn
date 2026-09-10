@@ -1,0 +1,190 @@
+{
+  "measuredAt": "2026-08-14T20:49:39.190Z",
+  "stopAtr": 1.5,
+  "assets": {
+    "BTCUSDT": {
+      "price": 62915.63,
+      "atrPct": 2.138695672462768,
+      "rsi14": 42.10535448067471,
+      "change7dPct": -3.0922078844246634,
+      "change30dPct": -2.8424270202056103,
+      "rangePosition30d": 13.685312369823615,
+      "range30": {
+        "low": 62275,
+        "high": 66956.15
+      },
+      "turnoverUsd": 868456088.5608393,
+      "medianWeekPct": 9.51197348797115,
+      "overheadProfilePct": 94.75074238418658,
+      "overheadProxyPct": 98.14044172954978,
+      "poc": 63995.322625,
+      "valueArea": [
+        63375.07025,
+        65247.530249999996
+      ],
+      "priceVsValueArea": "below",
+      "distanceToPocPct": 1.7160960241517254,
+      "conditional": {
+        "10": {
+          "medianPct": 1.3452105177620188,
+          "baselineMedianPct": 0.14282566719474588,
+          "differencePct": 1.202384850567273,
+          "upSharePct": 57.692307692307686,
+          "days": 156,
+          "effectiveN": 15.6
+        },
+        "30": {
+          "medianPct": 3.4965581640372667,
+          "baselineMedianPct": 0.5061113409937423,
+          "differencePct": 2.9904468230435244,
+          "upSharePct": 59.61538461538461,
+          "days": 156,
+          "effectiveN": 5.2
+        }
+      },
+      "lookbacks": {
+        "180": {
+          "days": 180,
+          "long": "20/64",
+          "short": "24/64",
+          "leans": "short"
+        },
+        "270": {
+          "days": 270,
+          "long": "7/64",
+          "short": "61/64",
+          "leans": "short"
+        },
+        "365": {
+          "days": 365,
+          "long": "2/64",
+          "short": "64/64",
+          "leans": "short"
+        },
+        "540": {
+          "days": 540,
+          "long": "13/64",
+          "short": "52/64",
+          "leans": "short"
+        },
+        "730": {
+          "days": 730,
+          "long": "33/64",
+          "short": "22/64",
+          "leans": "long"
+        }
+      },
+      "leaningShort": 4,
+      "lookbackCount": 5,
+      "stop": {
+        "atr": 1.5,
+        "pct": 3.2080435086941517,
+        "shareOfMedianWeek": 0.33726371428085306,
+        "feeR": 0.06234329411617329
+      },
+      "call": {
+        "bias": "WAIT",
+        "reason": "both directions lose over the recent window",
+        "agreeing": null,
+        "windows": null,
+        "effectiveN": null,
+        "thin": null,
+        "turning": true,
+        "rawExpectancyR": null,
+        "trustedExpectancyR": null
+      }
+    },
+    "BNBUSDT": {
+      "price": 606.44,
+      "atrPct": 2.134169278330856,
+      "rsi14": 60.41002993421985,
+      "change7dPct": 2.340651737347487,
+      "change30dPct": 4.45956420635606,
+      "rangePosition30d": 78.27894088669963,
+      "range30": {
+        "low": 555.59,
+        "high": 620.55
+      },
+      "turnoverUsd": 54103567.67070068,
+      "medianWeekPct": 10.4288241906421,
+      "overheadProfilePct": 13.466247909407961,
+      "overheadProxyPct": 14.484611114527715,
+      "poc": 571.018,
+      "valueArea": [
+        562.7356,
+        596.8396
+      ],
+      "priceVsValueArea": "above",
+      "distanceToPocPct": -5.84097355055736,
+      "conditional": {
+        "10": {
+          "medianPct": 0.008566978193147445,
+          "baselineMedianPct": 0.6747638326585648,
+          "differencePct": -0.6661968544654173,
+          "upSharePct": 50,
+          "days": 178,
+          "effectiveN": 17.8
+        },
+        "30": {
+          "medianPct": 1.929687149429371,
+          "baselineMedianPct": 1.5844198712658963,
+          "differencePct": 0.3452672781634747,
+          "upSharePct": 54.49438202247191,
+          "days": 178,
+          "effectiveN": 5.933333333333334
+        }
+      },
+      "lookbacks": {
+        "180": {
+          "days": 180,
+          "long": "43/64",
+          "short": "2/64",
+          "leans": "long"
+        },
+        "270": {
+          "days": 270,
+          "long": "4/64",
+          "short": "41/64",
+          "leans": "short"
+        },
+        "365": {
+          "days": 365,
+          "long": "30/64",
+          "short": "30/64",
+          "leans": "long"
+        },
+        "540": {
+          "days": 540,
+          "long": "60/64",
+          "short": "3/64",
+          "leans": "long"
+        },
+        "730": {
+          "days": 730,
+          "long": "58/64",
+          "short": "0/64",
+          "leans": "long"
+        }
+      },
+      "leaningShort": 1,
+      "lookbackCount": 5,
+      "stop": {
+        "atr": 1.5,
+        "pct": 3.201253917496284,
+        "shareOfMedianWeek": 0.3069621137509255,
+        "feeR": 0.062475519016754834
+      },
+      "call": {
+        "bias": "LONG",
+        "reason": "long pays in 43 of 64 geometries",
+        "agreeing": 3,
+        "windows": 5,
+        "effectiveN": 5,
+        "thin": true,
+        "turning": false,
+        "rawExpectancyR": 0.32956560336343727,
+        "trustedExpectancyR": 0.18309200186857627
+      }
+    }
+  }
+}

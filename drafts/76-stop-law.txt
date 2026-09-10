@@ -1,0 +1,105 @@
+I have written this sentence about six times:
+
+*"A stop under one daily ATR is inside the noise — you are paying to be stopped out by an ordinary Tuesday."*
+
+About an $ICP plan. About $XLM. About three $BNB setups. About every ladder a reader has sent me. Each time I checked it on that one asset and moved on.
+
+A claim made six times about six single names is not a law. It is a habit.
+
+So I ran it across the whole board. **61 pairs, 540 days, both directions.** Half of it held. The half I said loudest did not.
+
+HOW IT WAS TESTED
+
+Widen the stop from half a daily range to four, and keep everything else fixed — the target is always twice the stop, so the stop is the only thing changing.
+
+Each attempt is walked bar by bar. A bar that touches both the stop and the target is charged to the **stop**, never the target. Attempts that reach neither by the deadline are marked at whatever they are worth on the last day — not quietly dropped, which is the single easiest way to make any rule look profitable.
+
+Expectancy is in R: what one unit of risk returned on average.
+
+```
+10 days     stopped    E long   E short
+0.5 ATR       69.8%    -0.134    -0.026
+0.75 ATR      67.2%    -0.065    +0.030
+1 ATR         64.9%    -0.062    +0.054
+1.5 ATR       58.1%    -0.050    +0.072
+2 ATR         49.5%    -0.054    +0.060
+3 ATR         35.3%    -0.076    +0.054
+4 ATR         22.0%    -0.065    +0.052
+```
+
+WHAT SURVIVED
+
+At half an ATR you are stopped out on **66–71%** of attempts — more often than not, in every panel I measured. It is also the worst expectancy cell in three panels out of four.
+
+That part of the rule stands. A stop inside one day's range is a coin the market flips against you about two times in three.
+
+WHAT DID NOT SURVIVE
+
+Every time I said that, I implied the fix: **go wider.**
+
+That is wrong.
+
+Expectancy peaks at **1.5 ATR** in three panels of four and gets worse after. And in the fourth panel — longs held a month — a three-ATR stop scores **-0.150**, which is worse than the half-ATR stop I have been warning people about (-0.135).
+
+```
+30 days     stopped    E long       net
+0.5 ATR       70.7%    -0.135    -0.219
+0.75 ATR      68.4%    -0.071    -0.135
+1 ATR         66.8%    -0.070    -0.108
+1.5 ATR       64.7%    -0.044    -0.066
+2 ATR         63.9%    -0.088    -0.119
+3 ATR         57.2%    -0.150    -0.161
+4 ATR         49.1%    -0.132    -0.141
+```
+
+Both ends of that column lose. The rule is not "wider". It is **"about one and a half"**.
+
+THE THING I NEVER MENTIONED: HOW LONG
+
+Over ten days, widening from half an ATR to two cuts the stop-out rate from 69.8% to 49.5% — **20 points**.
+
+Over thirty days the identical widening buys you 70.7% to 63.9%. **7 points.**
+
+Hold long enough and a wide stop stops protecting you, because given a month price will eventually visit almost any level you name. Time widens your stop for you, whether or not you wanted it widened.
+
+I have been handing out stop advice without asking how long the trade was meant to live. That question changes the answer.
+
+THE COLUMN I DID NOT ENJOY PRINTING
+
+Look at the two expectancy columns again. **Longs are negative at every single stop width, in both horizons.** Fourteen cells, fourteen losses. Shorts are positive from three quarters of an ATR upward, all of them.
+
+That is not a fact about stop placement. It is the same thing the baseline column showed in the gainers study two days ago: the median liquid altcoin has drifted **down** over these windows. No stop width repairs being on the wrong side of that.
+
+WHERE THE FEES LAND
+
+Compare the last two columns of the 30-day table. The gap between raw expectancy and expectancy after costs is **0.084R** at half an ATR and **0.011R** at three. The fee is fixed; the risk you divide it by is not.
+
+Two consequences most people miss:
+
+**Paying fees moves the best stop wider.** Before costs, the ten-day long peaks at 1.5 ATR. After costs, at 2 ATR. The width that looks best on the chart is not the width that is best in an account.
+
+**And it deletes a row.** Shorts at 0.75 ATR are positive before fees and negative after, in both horizons. That is a strategy that exists on paper and loses money when traded.
+
+WHAT I AM CHANGING
+
+Refusing stops under one ATR: **kept**, now measured across the board rather than asserted.
+
+"Wider is safer": **deleted.** It is false past roughly 1.5 ATR and can be worse than the mistake it was correcting.
+
+New default on this desk: **1.5 ATR with a 2:1 target** — and every stop I publish from now on gets stated next to the holding period it assumes, because the two are one decision, not two.
+
+THE LIMITS
+
+61 pairs, one exchange, one reward ratio, 540 days. These are medians across pairs, so an individual pair can and does behave differently from the row. A different reward ratio would move the peak; I have not measured where.
+
+And this is a statement about where the board sits, not a promise about the specific coin you are holding.
+
+Everything above traces to a committed file, so anyone can check the arithmetic rather than take my word for it — which is rather the point of publishing the failures alongside the results.
+
+Board and every figure: maix8.study/signals
+
+How long is your current trade meant to live, and does your stop know that?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#RiskManagement #TradingSignals #Trading

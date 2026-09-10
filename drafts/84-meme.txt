@@ -1,0 +1,54 @@
+A friend of mine wanted to get into crypto.
+
+He did his research the modern way: joined a Telegram group with forty thousand members and a pinned post about a guaranteed 10x.
+
+The admin took his deposit and vanished.
+
+He filed a police report. Months later — genuinely months — they tracked the man down and recovered the funds. The officer handed the money back and said:
+
+**"Lucky you got scammed. If you had actually bought the coin, we could not have got this back for you."**
+
+I laughed. Then I did the thing I always do, which is ruin a joke by measuring it.
+
+```
+scammed, then refunded             0.00%
+actually bought the coin          -16.7%
+```
+
+Across 80 pairs and **56,312 pair-days**, the median liquid altcoin returns **-16.7% over ninety days**. Not during a crash. That is the ordinary case, measured over years.
+
+The officer was right, and he was right by 16.7 percentage points.
+
+WHILE WE ARE HERE, THE 10x QUESTION
+
+Share of positions that **doubled** inside ninety days: between 3.47% and 5.16%.
+
+And measured yesterday: that number does not improve no matter how far the coin has already fallen. "It is down 90%, it has to bounce" has the same odds as everything else on the board.
+
+The pinned post promised a 10x. The measurement offers about one chance in twenty of a 2x.
+
+TODAY, FOR CONTEXT
+
+671 USDT pairs trading. **35.8% green.** The median pair is -0.72% on the day. $BTC is not what is hurting anyone here — the median altcoin is doing that on its own.
+
+THE PART THAT IS NOT A JOKE
+
+The scam was avoidable. The loss would not have been. Two different problems, and only one of them has a fix:
+
+**Nobody who can actually trade needs your deposit to do it.**
+
+**A guaranteed return is the guarantee that it is a lie.** Anything with a real edge has a bad week.
+
+**If withdrawing is harder than depositing, you already have your answer.**
+
+None of this means the asset class is a fraud. It means the *median* outcome is negative and the tail is what people screenshot. Those are two different sentences and only one of them ends up in a pinned message.
+
+Trade the base rate you can measure. Not the one somebody sent you.
+
+Board and every figure: maix8.study/signals
+
+What is the most confident promise anyone has ever made you about a coin?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Crypto #RiskManagement #Bitcoin

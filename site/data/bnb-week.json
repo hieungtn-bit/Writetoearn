@@ -1,0 +1,169 @@
+{
+  "measuredAt": "2026-08-10T01:20:32.843Z",
+  "symbol": "BNBUSDT",
+  "method": {
+    "weeksSampled": 104,
+    "note": "Completed calendar weeks only. A weekly plan sized off a daily ATR is the reason a stop looks tight on paper and gets swept mid-week.",
+    "openInterest": "OKX only; Binance futures is geo-blocked from this machine.",
+    "disclosure": "BNB is the token of the exchange this desk publishes on. Figures arguing against a long are carried in the same table as those arguing for it."
+  },
+  "price": 604.8,
+  "fundamentals": {
+    "marketCapUsd": 80497495246,
+    "marketCapRank": 4,
+    "volume24hUsd": 515329384,
+    "volumeToMarketCapPct": 0.6401806446587631,
+    "athUsd": 1369.99,
+    "athDate": "2025-10-13",
+    "fromAthPct": -55.87048080642924,
+    "circulatingSupply": 133164411.11,
+    "maxSupply": 200000000,
+    "supplyNotCirculatingPct": 33.417794445000006,
+    "change1yPct": -24.4
+  },
+  "technical": {
+    "change7dPct": 2.621532196487644,
+    "change30dPct": 5.246671887235705,
+    "rsi14": 64.87195725658903,
+    "atrPct": 2.113040589960746,
+    "realizedVol30d": 22.48952602465136,
+    "high30d": 612,
+    "low30d": 555.59,
+    "rangePosition30d": 87.23630561957091,
+    "sma20": 583.4414999999999,
+    "sma50": 575.4866,
+    "volumeZScoreCompleted": -0.09317306861956293,
+    "upDownVolumeRatio30d": 1.3709788941729772,
+    "upDownVolumeRatio90d": 0.7760716003659468,
+    "base": {
+      "days": 25,
+      "widthPct": 9.731566780526514,
+      "high": 612,
+      "fromBaseTopPct": -1.176470588235301
+    }
+  },
+  "positioning": {
+    "underwaterPct": 0,
+    "vsVwapPct": 4.2460860274865615,
+    "volumeTrendPct": -25.258038993049254,
+    "topThreeDaySharePct": 15.90949321290616,
+    "stage": "1 quiet",
+    "funding": {
+      "annualised7dPct": 4.147081792958193,
+      "annualisedPrior14dPct": 7.5388275763101555,
+      "negativeSharePct": 20.634920634920633
+    },
+    "okxOpenInterest": {
+      "coins": 74732.29,
+      "usd": 45175669.305
+    },
+    "liquidationClusters": {
+      "below": [
+        {
+          "level": 584.0279639091729,
+          "side": "long",
+          "sharePct": 5.997000210567374,
+          "distancePct": -3.434529776922468
+        },
+        {
+          "level": 600.3337702792643,
+          "side": "long",
+          "sharePct": 5.236601011007457,
+          "distancePct": -0.7384639088517941
+        },
+        {
+          "level": 595.9881596549252,
+          "side": "long",
+          "sharePct": 5.197463513781536,
+          "distancePct": -1.4569841840401332
+        }
+      ],
+      "above": [
+        {
+          "level": 610.8196904139985,
+          "side": "short",
+          "sharePct": 6.236553572030952,
+          "distancePct": 0.9953191822087648
+        },
+        {
+          "level": 612.4993105326785,
+          "side": "short",
+          "sharePct": 6.200011496912807,
+          "distancePct": 1.2730341489217034
+        },
+        {
+          "level": 606.4624794968727,
+          "side": "short",
+          "sharePct": 5.2502581609081975,
+          "distancePct": 0.274880869191918
+        }
+      ]
+    }
+  },
+  "weeklyRange": {
+    "weeks": 104,
+    "p25Pct": 6.731463649494465,
+    "medianPct": 10.005140385423848,
+    "p75Pct": 14.5964582353863,
+    "p90Pct": 20.310355960933094,
+    "positiveWeeksPct": 50.96153846153846,
+    "medianReturnPct": 0.06935943179204873
+  },
+  "dayPlan": {
+    "symbol": "BNBUSDT",
+    "side": "long",
+    "price": 604.8,
+    "atrPct": 2.113040589960746,
+    "stopAtr": 1.5,
+    "stop": 585.6304957678761,
+    "stopDistancePct": 3.1695608849411188,
+    "targets": [
+      {
+        "r": 1,
+        "price": 623.9695042321238
+      },
+      {
+        "r": 2,
+        "price": 643.1390084642477
+      },
+      {
+        "r": 3,
+        "price": 662.3085126963716
+      }
+    ],
+    "riskPct": 1,
+    "accountUsd": 1000,
+    "positionUsd": 315.5011171266953,
+    "maxLeverage": 26.323002397585416,
+    "liquidationAtMax": 585.6304957678761
+  },
+  "weekPlan": {
+    "symbol": "BNBUSDT",
+    "side": "long",
+    "price": 604.8,
+    "atrPct": 2.113040589960746,
+    "stopAtr": 2.367474726457979,
+    "stop": 574.5444554744782,
+    "stopDistancePct": 5.002570192711924,
+    "targets": [
+      {
+        "r": 1,
+        "price": 635.0555445255217
+      },
+      {
+        "r": 2,
+        "price": 665.3110890510434
+      },
+      {
+        "r": 3,
+        "price": 695.5666335765651
+      }
+    ],
+    "riskPct": 1,
+    "accountUsd": 1000,
+    "positionUsd": 199.89724511149615,
+    "maxLeverage": 17.793424963113903,
+    "liquidationAtMax": 574.5444554744784
+  },
+  "medianWeekOverDayStop": 3.1566329686106394
+}

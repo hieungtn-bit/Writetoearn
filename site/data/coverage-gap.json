@@ -1,0 +1,268 @@
+{
+  "measuredAt": "2026-08-12T02:08:20.178Z",
+  "tradingUsdtPairs": 489,
+  "weScan": 32,
+  "weScanPct": 6.5439672801636,
+  "coverage": [
+    {
+      "n": 10,
+      "covered": 1,
+      "coveredPct": 10,
+      "names": [
+        "HOLO 38.3%",
+        "CRWVB 17.6%",
+        "LSK 14.0%",
+        "NBISB 11.3%",
+        "LUNA 11.0%",
+        "OPEN 10.6%",
+        "FLOW 8.2%",
+        "USARB 8.2%",
+        "KORUB 8.0%",
+        "GIGGLE 7.4% (ours)"
+      ]
+    },
+    {
+      "n": 20,
+      "covered": 1,
+      "coveredPct": 5,
+      "names": [
+        "HOLO 38.3%",
+        "CRWVB 17.6%",
+        "LSK 14.0%",
+        "NBISB 11.3%",
+        "LUNA 11.0%",
+        "OPEN 10.6%",
+        "FLOW 8.2%",
+        "USARB 8.2%",
+        "KORUB 8.0%",
+        "GIGGLE 7.4% (ours)",
+        "LQTY 7.2%",
+        "RKLBB 7.2%",
+        "C 7.0%",
+        "PYR 6.8%",
+        "1MBABYDOGE 6.8%",
+        "CRCLB 6.6%",
+        "SNXXB 6.6%",
+        "DGB 6.6%",
+        "SMCIB 6.4%",
+        "AT 5.9%"
+      ]
+    },
+    {
+      "n": 30,
+      "covered": 2,
+      "coveredPct": 6.666666666666667,
+      "names": [
+        "HOLO 38.3%",
+        "CRWVB 17.6%",
+        "LSK 14.0%",
+        "NBISB 11.3%",
+        "LUNA 11.0%",
+        "OPEN 10.6%",
+        "FLOW 8.2%",
+        "USARB 8.2%",
+        "KORUB 8.0%",
+        "GIGGLE 7.4% (ours)",
+        "LQTY 7.2%",
+        "RKLBB 7.2%",
+        "C 7.0%",
+        "PYR 6.8%",
+        "1MBABYDOGE 6.8%",
+        "CRCLB 6.6%",
+        "SNXXB 6.6%",
+        "DGB 6.6%",
+        "SMCIB 6.4%",
+        "AT 5.9%",
+        "IRENB 5.8%",
+        "TWT 5.5%",
+        "ESP 5.3%",
+        "ID 5.0%",
+        "ASTSB 5.0%",
+        "HOME 4.9%",
+        "RE 4.8%",
+        "INJ 4.7% (ours)",
+        "MITO 4.6%",
+        "MVLLB 4.6%"
+      ]
+    },
+    {
+      "n": 50,
+      "covered": 5,
+      "coveredPct": 10,
+      "names": [
+        "HOLO 38.3%",
+        "CRWVB 17.6%",
+        "LSK 14.0%",
+        "NBISB 11.3%",
+        "LUNA 11.0%",
+        "OPEN 10.6%",
+        "FLOW 8.2%",
+        "USARB 8.2%",
+        "KORUB 8.0%",
+        "GIGGLE 7.4% (ours)",
+        "LQTY 7.2%",
+        "RKLBB 7.2%",
+        "C 7.0%",
+        "PYR 6.8%",
+        "1MBABYDOGE 6.8%",
+        "CRCLB 6.6%",
+        "SNXXB 6.6%",
+        "DGB 6.6%",
+        "SMCIB 6.4%",
+        "AT 5.9%",
+        "IRENB 5.8%",
+        "TWT 5.5%",
+        "ESP 5.3%",
+        "ID 5.0%",
+        "ASTSB 5.0%",
+        "HOME 4.9%",
+        "RE 4.8%",
+        "INJ 4.7% (ours)",
+        "MITO 4.6%",
+        "MVLLB 4.6%",
+        "CETUS 4.3%",
+        "COHRB 4.3%",
+        "SKHYB 4.3%",
+        "LINK 4.1% (ours)",
+        "KITE 3.9%",
+        "USTC 3.6%",
+        "CRDOB 3.4%",
+        "NOKB 3.4%",
+        "SYN 3.3%",
+        "DRAMB 3.3%",
+        "LITEB 3.3%",
+        "SNDKB 3.2%",
+        "DOGE 3.2% (ours)",
+        "CRV 3.2%",
+        "JTO 3.1%",
+        "BNB 3.0% (ours)",
+        "ASMLB 3.0%",
+        "HFT 3.0%",
+        "SXT 2.9%",
+        "FLNCB 2.9%"
+      ]
+    }
+  ],
+  "screenshot": [
+    {
+      "symbol": "HOLOUSDT",
+      "asset": "HOLO",
+      "changePct": 38.295,
+      "quoteVolumeUsd": 14753381.92353,
+      "inOurUniverse": false,
+      "rank": 1
+    },
+    {
+      "symbol": "PROMUSDT",
+      "asset": "PROM",
+      "changePct": -14.301,
+      "quoteVolumeUsd": 10668172.20873,
+      "inOurUniverse": false,
+      "rank": 481
+    },
+    {
+      "symbol": "LSKUSDT",
+      "asset": "LSK",
+      "changePct": 14.028,
+      "quoteVolumeUsd": 1809673.08394,
+      "inOurUniverse": false,
+      "rank": 3
+    },
+    {
+      "symbol": "CRWVBUSDT",
+      "asset": "CRWVB",
+      "changePct": 17.613,
+      "quoteVolumeUsd": 927937.9914,
+      "inOurUniverse": false,
+      "rank": 2
+    },
+    {
+      "symbol": "HOMEUSDT",
+      "asset": "HOME",
+      "changePct": 4.897,
+      "quoteVolumeUsd": 7117208.51476,
+      "inOurUniverse": false,
+      "rank": 26
+    },
+    {
+      "symbol": "NBISBUSDT",
+      "asset": "NBISB",
+      "changePct": 11.309,
+      "quoteVolumeUsd": 1737579.14698,
+      "inOurUniverse": false,
+      "rank": 4
+    },
+    {
+      "symbol": "SMCIBUSDT",
+      "asset": "SMCIB",
+      "changePct": 6.408,
+      "quoteVolumeUsd": 1829276.2466,
+      "inOurUniverse": false,
+      "rank": 19
+    },
+    {
+      "symbol": "FLOWUSDT",
+      "asset": "FLOW",
+      "changePct": 8.228,
+      "quoteVolumeUsd": 1199647.2751057,
+      "inOurUniverse": false,
+      "rank": 7
+    },
+    {
+      "symbol": "SCRTUSDT",
+      "asset": "SCRT",
+      "changePct": 1.869,
+      "quoteVolumeUsd": 511609.83406,
+      "inOurUniverse": false,
+      "rank": 68
+    },
+    {
+      "symbol": "DGBUSDT",
+      "asset": "DGB",
+      "changePct": 6.562,
+      "quoteVolumeUsd": 576917.202987,
+      "inOurUniverse": false,
+      "rank": 18
+    },
+    {
+      "symbol": "NEARUSDT",
+      "asset": "NEAR",
+      "changePct": 2.486,
+      "quoteVolumeUsd": 18394246.6197,
+      "inOurUniverse": true,
+      "rank": 56
+    },
+    {
+      "symbol": "ESPUSDT",
+      "asset": "ESP",
+      "changePct": 5.268,
+      "quoteVolumeUsd": 1685446.60349,
+      "inOurUniverse": false,
+      "rank": 23
+    }
+  ],
+  "gate": {
+    "minTurnoverUsd": 2000000,
+    "top30Movers": 30,
+    "aboveGate": 11,
+    "aboveGateNames": [
+      "HOLO 38.3% $14.8M",
+      "LUNA 11.0% $9.2M",
+      "KORUB 8.0% $4.8M",
+      "GIGGLE 7.4% $10.1M",
+      "CRCLB 6.6% $15.1M",
+      "SNXXB 6.6% $3.9M",
+      "ID 5.0% $2.6M",
+      "HOME 4.9% $7.1M",
+      "RE 4.8% $4.5M",
+      "INJ 4.7% $4.0M",
+      "MITO 4.6% $8.9M"
+    ]
+  },
+  "marketBreadth": {
+    "up": 140,
+    "down": 337,
+    "upOver5Pct": 23,
+    "upOver10Pct": 6
+  }
+}

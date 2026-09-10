@@ -1,0 +1,489 @@
+{
+  "measuredAt": "2026-08-20T12:24:46.410Z",
+  "source": "Binance spot 24hr tickers (rolling window); OKX perpetual funding",
+  "note": "Intraday scan. Writes no plan file — the morning ledger stands.",
+  "breadth": {
+    "pairs": 671,
+    "up": 467,
+    "down": 204,
+    "upSharePct": 69.59761549925484,
+    "downSharePct": 30.402384500745157,
+    "medianChangePct": 4.639,
+    "upOver5": 317,
+    "upOver10": 95,
+    "upOver20": 10,
+    "upOver30": 4,
+    "downOver5": 110,
+    "downOver10": 68
+  },
+  "retrace": {
+    "medianOffHighPct": -1.8204911092294607,
+    "withinOnePctOfHigh": 174,
+    "moreThanFivePctOffHigh": 175
+  },
+  "morningComparison": {
+    "day": "2026-08-20",
+    "measuredAt": "2026-08-20T07:57:15.392Z",
+    "upSharePct": 69.29955290611028,
+    "medianChangePct": 3.333,
+    "upSharePctDelta": 0.2980625931445644,
+    "medianChangePctDelta": 1.306,
+    "bookStopped": 19,
+    "bookPositions": 20,
+    "bookTotalR": -19.444990771903466
+  },
+  "claimsChecked": [
+    {
+      "symbol": "BTCUSDT",
+      "label": "BTC",
+      "kind": "floor",
+      "floorUsd": 70000,
+      "text": "above $70k, holding the highs",
+      "actualPrice": 71815.98,
+      "actualChangePct": 11.344,
+      "high24h": 72490,
+      "inRange": true,
+      "missPct": 2.594257142857126
+    },
+    {
+      "symbol": "ETHUSDT",
+      "label": "ETH",
+      "kind": "change",
+      "lowPct": 17,
+      "highPct": 20,
+      "text": "leading, +17-20%",
+      "actualPrice": 2279.99,
+      "actualChangePct": 18.551,
+      "high24h": 2333.65,
+      "inRange": true,
+      "missPct": 0
+    },
+    {
+      "symbol": "BNBUSDT",
+      "label": "BNB",
+      "kind": "band",
+      "lowUsd": 645,
+      "highUsd": 646,
+      "text": "around $645-646",
+      "actualPrice": 642.91,
+      "actualChangePct": 6.589,
+      "high24h": 649,
+      "inRange": false,
+      "missPct": -0.32403100775194593
+    }
+  ],
+  "claimsInRange": 2,
+  "claimsTotal": 3,
+  "ranked": [
+    {
+      "symbol": "ETHUSDT",
+      "price": 2279.99,
+      "changePct": 18.551
+    },
+    {
+      "symbol": "ARBUSDT",
+      "price": 0.0879,
+      "changePct": 13.713
+    },
+    {
+      "symbol": "SOLUSDT",
+      "price": 86.97,
+      "changePct": 12.248
+    },
+    {
+      "symbol": "BNBUSDT",
+      "price": 642.91,
+      "changePct": 6.589
+    }
+  ],
+  "rankedLeadRank": 13,
+  "resistance": {
+    "lowUsd": 649,
+    "highUsd": 652,
+    "symbol": "BNBUSDT",
+    "actualPrice": 642.91,
+    "high24h": 649,
+    "alreadyThroughIt": false,
+    "touchedIt": true,
+    "distanceToLowPct": 0.9472554478854089
+  },
+  "runners": {
+    "lowPct": 20,
+    "highPct": 30,
+    "text": "alts already +20-30%",
+    "inBand": 6,
+    "aboveBand": 4,
+    "inBandLiquid": 8,
+    "liquidFloorUsd": 2000000
+  },
+  "leaders": [
+    {
+      "symbol": "BOMEUSDT",
+      "changePct": 68.977,
+      "price": 0.0012822,
+      "turnoverUsd": 20270566.1502084
+    },
+    {
+      "symbol": "NEIROUSDT",
+      "changePct": 39.401,
+      "price": 0.00008753,
+      "turnoverUsd": 5537740.65251878
+    },
+    {
+      "symbol": "ORDIUSDT",
+      "changePct": 28.231,
+      "price": 4.356,
+      "turnoverUsd": 7080876.03778
+    },
+    {
+      "symbol": "PNUTUSDT",
+      "changePct": 27.913,
+      "price": 0.0527,
+      "turnoverUsd": 3539333.24551
+    },
+    {
+      "symbol": "METUSDT",
+      "changePct": 22.69,
+      "price": 0.2098,
+      "turnoverUsd": 6975750.97975
+    },
+    {
+      "symbol": "MSTRBUSDT",
+      "changePct": 22.481,
+      "price": 114.03,
+      "turnoverUsd": 11669998.90717
+    },
+    {
+      "symbol": "REDUSDT",
+      "changePct": 22.21,
+      "price": 0.1073,
+      "turnoverUsd": 6841937.1776
+    },
+    {
+      "symbol": "REUSDT",
+      "changePct": 21.747,
+      "price": 0.5212,
+      "turnoverUsd": 77833453.35195
+    },
+    {
+      "symbol": "PEPEUSDT",
+      "changePct": 19.847,
+      "price": 0.00000314,
+      "turnoverUsd": 62780973.80642769
+    },
+    {
+      "symbol": "AEROUSDT",
+      "changePct": 19.294,
+      "price": 0.4798,
+      "turnoverUsd": 3076054.44953
+    }
+  ],
+  "laggards": [
+    {
+      "symbol": "NFPUSDT",
+      "changePct": -66.168,
+      "price": 0.00181,
+      "turnoverUsd": 3834002.83185
+    },
+    {
+      "symbol": "VANRYUSDT",
+      "changePct": -37.128,
+      "price": 0.00074,
+      "turnoverUsd": 2320295.244185
+    },
+    {
+      "symbol": "SCRTUSDT",
+      "changePct": -17.692,
+      "price": 0.0214,
+      "turnoverUsd": 2680377.36471
+    },
+    {
+      "symbol": "BBUSDT",
+      "changePct": -16.451,
+      "price": 0.00904,
+      "turnoverUsd": 8005806.741738
+    },
+    {
+      "symbol": "TUTUSDT",
+      "changePct": -14.843,
+      "price": 0.0323,
+      "turnoverUsd": 12106784.99318
+    },
+    {
+      "symbol": "SNXXBUSDT",
+      "changePct": -13.412,
+      "price": 14.01,
+      "turnoverUsd": 15545468.7531
+    },
+    {
+      "symbol": "HEIUSDT",
+      "changePct": -10.237,
+      "price": 0.1289,
+      "turnoverUsd": 4281341.51755
+    },
+    {
+      "symbol": "SOXLBUSDT",
+      "changePct": -8.66,
+      "price": 117.6,
+      "turnoverUsd": 13682550.97138
+    },
+    {
+      "symbol": "SNDKBUSDT",
+      "changePct": -6.705,
+      "price": 1544.11,
+      "turnoverUsd": 53333785.093798
+    },
+    {
+      "symbol": "LRCUSDT",
+      "changePct": -6.238,
+      "price": 0.01879,
+      "turnoverUsd": 2891184.21049
+    }
+  ],
+  "funding": [
+    {
+      "instrument": "BTC-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.00996660489519,
+      "annualisedPct": 10.91343236023305,
+      "nextFundingTime": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "instrument": "ETH-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.95,
+      "nextFundingTime": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "instrument": "SOL-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.95,
+      "nextFundingTime": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "instrument": "BNB-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.005263212150480001,
+      "annualisedPct": 5.763217304775601,
+      "nextFundingTime": "2026-08-21T00:00:00.000Z"
+    }
+  ],
+  "engine": {
+    "scannedAt": "2026-08-20T12:06:15.857Z",
+    "rows": 100,
+    "tally": {
+      "total": 100,
+      "LONG": 59,
+      "SHORT": 36,
+      "WAIT": 5,
+      "turning": 40,
+      "untradeable": 18
+    },
+    "minEffectiveN": 12,
+    "agreementWindowDays": [
+      180,
+      270,
+      365,
+      540,
+      730
+    ],
+    "funnel": [
+      {
+        "bias": "LONG",
+        "rows": 59,
+        "haveFiveWindows": 29,
+        "unanimous": 5,
+        "unanimousSharePct": 17.24137931034483,
+        "deepEnough": 0,
+        "offered": 0,
+        "symbols": []
+      },
+      {
+        "bias": "SHORT",
+        "rows": 36,
+        "haveFiveWindows": 23,
+        "unanimous": 20,
+        "unanimousSharePct": 86.95652173913044,
+        "deepEnough": 6,
+        "offered": 5,
+        "symbols": [
+          "BONKUSDT",
+          "ARBUSDT",
+          "XRPUSDT",
+          "SUIUSDT",
+          "ADAUSDT"
+        ]
+      }
+    ],
+    "rowsWithFiveWindows": 52
+  },
+  "boardHistory": [
+    {
+      "scannedAt": "2026-08-11T16:19:05.654Z",
+      "day": "2026-08-11",
+      "rows": 32,
+      "long": 11,
+      "short": 19,
+      "longSharePct": 34.375,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-12T00:05:05.342Z",
+      "day": "2026-08-12",
+      "rows": 32,
+      "long": 12,
+      "short": 19,
+      "longSharePct": 37.5,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-12T02:15:15.197Z",
+      "day": "2026-08-12",
+      "rows": 100,
+      "long": 44,
+      "short": 46,
+      "longSharePct": 44,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-13T03:07:55.554Z",
+      "day": "2026-08-13",
+      "rows": 100,
+      "long": 46,
+      "short": 44,
+      "longSharePct": 46,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-14T05:27:17.003Z",
+      "day": "2026-08-14",
+      "rows": 94,
+      "long": 45,
+      "short": 42,
+      "longSharePct": 47.87234042553192,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-14T20:36:36.332Z",
+      "day": "2026-08-14",
+      "rows": 100,
+      "long": 46,
+      "short": 46,
+      "longSharePct": 46,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-15T23:58:34.092Z",
+      "day": "2026-08-15",
+      "rows": 77,
+      "long": 40,
+      "short": 30,
+      "longSharePct": 51.94805194805194,
+      "offered": 3,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-16T16:10:48.305Z",
+      "day": "2026-08-16",
+      "rows": 76,
+      "long": 39,
+      "short": 27,
+      "longSharePct": 51.31578947368421,
+      "offered": 2,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-17T04:46:39.428Z",
+      "day": "2026-08-17",
+      "rows": 84,
+      "long": 45,
+      "short": 31,
+      "longSharePct": 53.57142857142857,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-18T05:12:09.282Z",
+      "day": "2026-08-18",
+      "rows": 99,
+      "long": 54,
+      "short": 38,
+      "longSharePct": 54.54545454545454,
+      "offered": 3,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-19T10:01:51.658Z",
+      "day": "2026-08-19",
+      "rows": 90,
+      "long": 47,
+      "short": 35,
+      "longSharePct": 52.22222222222223,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-20T07:54:51.676Z",
+      "day": "2026-08-20",
+      "rows": 100,
+      "long": 56,
+      "short": 37,
+      "longSharePct": 56.00000000000001,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-20T12:06:15.857Z",
+      "day": "2026-08-20",
+      "rows": 100,
+      "long": 59,
+      "short": 36,
+      "longSharePct": 59,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    }
+  ],
+  "boardSummary": {
+    "editions": 7,
+    "positions": 24,
+    "editionsOfferingAnyLong": 0,
+    "longSharePctFirst": 46,
+    "longSharePctLast": 59,
+    "firstDay": "2026-08-14",
+    "lastDay": "2026-08-20"
+  },
+  "baseRates": {
+    "continuation1dPct": 50.69204152249135,
+    "continuation2dPct": 45.48611111111111,
+    "continuation3dPct": 42.1875,
+    "continuation3dWindows": 192,
+    "persistence10dPct": 49.55454241258156,
+    "persistence30dPct": 50.696446253713276
+  }
+}

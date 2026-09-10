@@ -1,0 +1,180 @@
+{
+  "measuredAt": "2026-08-16T16:19:36.065Z",
+  "pairs": 61,
+  "rebalances": 11,
+  "rules": {
+    "stopAtr": 1.5,
+    "rewardRatio": 2,
+    "horizonDays": 30,
+    "feePct": 0.2,
+    "persistenceHorizons": [
+      10,
+      30,
+      90
+    ]
+  },
+  "persistence": {
+    "10": {
+      "matchPct": 49.55454241258156,
+      "observations": 47816,
+      "effectiveN": 4781.6,
+      "zVsCoinToss": -0.6160599520180762,
+      "pairsAbove50": 31,
+      "pairs": 61,
+      "medianPairPct": 50.308008213552355
+    },
+    "30": {
+      "matchPct": 50.696446253713276,
+      "observations": 45445,
+      "effectiveN": 1514.8333333333333,
+      "zVsCoinToss": 0.5421257410112558,
+      "pairsAbove50": 37,
+      "pairs": 61,
+      "medianPairPct": 51.21293800539084
+    },
+    "90": {
+      "matchPct": 50.596858638743456,
+      "observations": 38200,
+      "effectiveN": 424.44444444444446,
+      "zVsCoinToss": 0.24593022464241907,
+      "pairsAbove50": 27,
+      "pairs": 61,
+      "medianPairPct": 48.044009779951104
+    }
+  },
+  "byAgreement": [
+    {
+      "agreeing": 1,
+      "trades": 19,
+      "meanNetR": -0.22065016088704517,
+      "winPct": 31.57894736842105,
+      "tStat": -0.7782506412738904
+    },
+    {
+      "agreeing": 2,
+      "trades": 14,
+      "meanNetR": 0.0750527542038824,
+      "winPct": 42.857142857142854,
+      "tStat": 0.20202145616776196
+    },
+    {
+      "agreeing": 3,
+      "trades": 13,
+      "meanNetR": -0.16618218861050862,
+      "winPct": 30.76923076923077,
+      "tStat": -0.4795671230984086
+    },
+    {
+      "agreeing": 4,
+      "trades": 21,
+      "meanNetR": 0.023180659348046674,
+      "winPct": 47.61904761904761,
+      "tStat": 0.09700744627549512
+    },
+    {
+      "agreeing": 5,
+      "trades": 156,
+      "meanNetR": 0.10957528096283393,
+      "winPct": 44.871794871794876,
+      "tStat": 1.0589158532645353
+    }
+  ],
+  "agreementSpreadR": 0.3302254418498791,
+  "agreementMonotone": false,
+  "fiveVsRest": {
+    "unanimousTrades": 156,
+    "unanimousMeanR": 0.10957528096283393,
+    "rejectedTrades": 67,
+    "rejectedMeanR": -0.0718684940839871,
+    "differenceR": 0.18144377504682102,
+    "welchT": 1.0065083642242107
+  },
+  "selectors": {
+    "momentum": {
+      "trades": 389,
+      "meanNetR": 0.05812864722476705,
+      "winPct": 43.70179948586118,
+      "tStat": 0.9055165030647059
+    },
+    "reversal": {
+      "trades": 389,
+      "meanNetR": -0.08030319343020242,
+      "winPct": 35.732647814910024,
+      "tStat": -1.2597568654194597
+    },
+    "boardDirection": {
+      "trades": 381,
+      "meanNetR": 0.06264344921263099,
+      "winPct": 43.30708661417323,
+      "tStat": 0.9600396561472073
+    },
+    "unanimous": {
+      "trades": 156,
+      "meanNetR": 0.10957528096283393,
+      "winPct": 44.871794871794876,
+      "tStat": 1.0589158532645353
+    }
+  },
+  "derived": {
+    "rowsConsidered": 389,
+    "withFiveWindows": 223,
+    "engineOverMomentumR": 0.004514801987863935,
+    "momentumPlusReversalR": -0.022174546205435373,
+    "priorWalk": {
+      "file": "research/self-backtest.json",
+      "pairs": 54,
+      "boardOnlyR": 0.005368031847404961,
+      "boardOnlyTrades": 395,
+      "algorithmR": -0.042823182175064006,
+      "algorithmTrades": 15
+    },
+    "runToRunGapR": 0.057275417365226025,
+    "gapOverClaimedEdge": 12.686141611345494
+  },
+  "dates": [
+    {
+      "date": "2025-09-20",
+      "rows": 35
+    },
+    {
+      "date": "2025-10-20",
+      "rows": 36
+    },
+    {
+      "date": "2025-11-19",
+      "rows": 34
+    },
+    {
+      "date": "2025-12-19",
+      "rows": 34
+    },
+    {
+      "date": "2026-01-18",
+      "rows": 34
+    },
+    {
+      "date": "2026-02-17",
+      "rows": 32
+    },
+    {
+      "date": "2026-03-19",
+      "rows": 31
+    },
+    {
+      "date": "2026-04-18",
+      "rows": 36
+    },
+    {
+      "date": "2026-05-18",
+      "rows": 35
+    },
+    {
+      "date": "2026-06-17",
+      "rows": 41
+    },
+    {
+      "date": "2026-07-17",
+      "rows": 41
+    }
+  ]
+}

@@ -1,21 +1,21 @@
-Tối nay $BTC lên hay xuống? Tôi không biết. Và tôi đo được rằng tôi không biết.
+Is $BTC going up or down tonight? I do not know. And I can measure that I do not know.
 
-17,518 giờ nến, hai năm, xếp theo giờ Việt Nam.
+17,518 hourly bars, two years, bucketed by Vietnam time.
 
-Phiên tối (19–24h) tăng giá 48.89% số giờ. Cả khối tối đóng cửa cao hơn 47.95% số phiên. Đồng xu. Lệch chuẩn -0.63 — tức không có gì.
+The evening session (19:00–24:00) closes green 48.89% of hours. The whole evening block closes higher 47.95% of sessions. A coin flip. Standard deviation -0.63 — which is nothing.
 
-Chỗ này suýt lừa được tôi. Thử 24 giờ với cùng một mốc thì kiểu gì cũng có một giờ trông "có ý nghĩa". Ô cao nhất bảng đạt 2.79 sigma — đúng mức nhiễu tạo ra khi thử 24 lần. Nếu không chốt khối giờ TRƯỚC khi chạy, tôi đã đăng một "khung giờ vàng" rất thuyết phục và hoàn toàn sai.
+This is where it nearly caught me. Test 24 hours against one benchmark and one of them will look "significant" no matter what. The best cell on the board reached 2.79 sigma — exactly the noise you manufacture by testing 24 times. Had I not fixed the session blocks BEFORE running it, I would have published a very convincing golden hour that was entirely false.
 
-Nhưng có một thứ thật, và nó lớn: biên độ.
+But there is something real here, and it is large: the range.
 
-Phiên tối 0.71% mỗi giờ, ngày chỉ 0.48%. Lệch 23.57 sigma. 21h là giờ dữ nhất ngày với 0.94%, hơn gấp đôi giờ trưa.
+The evening session moves 0.71% per hour against 0.48% in the day. That gap is 23.57 sigma. 21:00 is the wildest hour of the day at 0.94%, more than double midday.
 
-Dùng được ngay: nửa số phiên tối có biên độ 1.13–2.61%. Dừng lỗ hẹp hơn 1.74% sẽ bị quét bởi một đêm hoàn toàn bình thường, không cần tin gì cả.
+Usable today: half of all evening sessions range between 1.13% and 2.61%. A stop tighter than 1.74% gets taken out by a completely ordinary night, with no news required.
 
-Quan điểm: CHỜ. Giờ trong ngày không nói gì về hướng, nói rất nhiều về kích thước. Đó là chuyện cỡ lệnh, không phải chuyện đặt cửa nào.
+Bias: WAIT. The hour of day says nothing about direction and a great deal about size. This is a position-sizing fact, not a side to take.
 
-Bạn có đang để lệnh đòn bẩy chạy qua 21h không?
+Are you leaving leveraged positions open through 21:00?
 
-Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+Educational research, not financial advice. You are responsible for your own risk.
 
 #WriteToEarn #BinanceSquare

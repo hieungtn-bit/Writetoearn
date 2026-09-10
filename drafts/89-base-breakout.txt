@@ -1,0 +1,107 @@
+Someone sent me a base-breakout strategy. Not a paragraph of vibes — an actual specification: base length, volume multiple, breakout confirmation, a hard gate, stop placement, a scaled exit ladder, a time-stop.
+
+Almost nothing that arrives here can be run by a machine. This could. So I ran it instead of having an opinion about it.
+
+76 pairs, daily candles back to 2019, every threshold the spec left open written down before the run.
+
+WHAT IT RETURNS
+
+```
+                            setups     mean R   median R    win%       t
+as specified                   195     +0.258     -0.284     42%    1.79
+random, same month             168     +0.322     -0.705     34%    0.81
+```
+
+The strategy makes money: **+0.258R** per setup across 195 of them over 58 months.
+
+The second line is the finding. That is the **same symbol, the same calendar month, the same liquidity floor, the same stop rule, the same exit ladder** — and an entry picked at random. It returns +0.322R.
+
+**The entry rule is worth -0.064R.** The money is in the exit ladder, not in the base breakout.
+
+BUT NOT NOTHING
+
+I could stop there and it would be misleading, because the entry does do something real.
+
+**Median -0.284R against -0.705R.** Win rate 42% against 34%.
+
+The typical base-breakout trade is materially better than the typical random one. What it does not do is raise the average, because the random entries occasionally catch a monster that pays for all the rubbish. So the honest summary is: **the entry buys you a smoother path, not a higher expectancy.**
+
+Whether that is worth having depends on whether you can actually sit through the alternative. Most people cannot, which is not nothing.
+
+Also worth stating plainly: neither arm is statistically strong. t 1.79 and t 0.81, computed per month rather than per ticket.
+
+THE STOP IS THE PART THAT COSTS MONEY TODAY
+
+The spec says the stop goes below the breakout candle's low, and describes that as **"typically 4-8%"**.
+
+Run the rule and the median stop distance is **12.2%**.
+
+Of course it is. A bar that trades four times its average volume and closes above a month's high is a *wide* bar. The stop placement rule and the stated stop distance describe different trades.
+
+This is not academic. Position size is computed from the stop distance. Size for a 6% stop, place it where the rule says, and you are carrying roughly twice the risk you budgeted — on a strategy that is **stopped out 85% of the time** with a median hold of 7 days.
+
+THE HARD GATE DOES NOT BIND
+
+The signature idea is the early-stage gate: do not touch it if it is already up more than 55-60% from the base low.
+
+```
+gate            setups     mean R        t
+40%                145     +0.267     1.60
+50%                180     +0.231     1.51
+55%                189     +0.256     1.77
+60%                195     +0.258     1.79
+70%                198     +0.245     1.75
+100%               198     +0.245     1.75
+no gate            198     +0.245     1.75
+```
+
+Turning the gate **off entirely** changes the result from +0.267R to +0.245R. It rejects **3 setups out of 198**.
+
+The gate is not wrong. Those few rejected setups did lose. It simply is not the reason anything here works, because it almost never fires — the volume and base conditions have already excluded nearly everything it would have caught.
+
+THE THRESHOLDS DECIDE THE ANSWER
+
+The spec gives ranges. Here is what the ranges do.
+
+```
+base          vol   setups     mean R
+15 days        3x      440     +0.276
+15 days        4x      285     +0.224
+15 days        6x      142     +0.121
+20 days        3x      308     +0.321
+20 days        4x      195     +0.258
+20 days        6x       93     +0.047
+25 days        3x      221     +0.366
+25 days        4x      141     +0.311
+25 days        6x       68     +0.086
+```
+
+From +0.047R to +0.366R depending on two numbers nobody specified.
+
+And look at the 6x column. Tightening the volume filter — asking for a *stronger*, more selective signal — makes it worse at **every** base length. A real effect gets cleaner when you demand more of it. This one falls apart.
+
+TWO BUGS OF MINE, BEFORE YOU TRUST ANY OF IT
+
+1R here is the distance from entry to stop. My first control landed on days that closed near their low, making 1R almost zero and every subsequent move an enormous multiple of it. It reported random entry at -0.189R, which was pure artefact. Bounds now apply to both arms.
+
+And the control was originally drawn from the whole history while my own comment claimed it was month-matched. Real setups cluster into volatile stretches, so that was comparing a breakout month against a quiet one and calling the difference a strategy. Now matched on symbol and month; 27 setups found no control and are reported rather than dropped.
+
+The run is on daily candles. The spec asks for 4H, and its time-stop of 8-12 4H candles is implemented as two days. Within any bar the stop is checked before the targets.
+
+WHAT I WOULD TELL THE AUTHOR
+
+Keep the exit ladder. It is the part that works and it is better than most of what gets published.
+
+Fix the stop arithmetic before anything else — the gap between "4-8%" and 12.2% is a live sizing error, not a rounding difference.
+
+Stop crediting the gate. And before defending any threshold, check whether the strategy survives tightening it, because this one does not.
+
+Every figure: research/base-breakout.json, served at maix8.study/data/ — including the setups that failed.
+
+$BTC and the record: maix8.study/record
+
+If you run a strategy, do you know what a random entry with your exits would have returned?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Trading #RiskManagement #Crypto

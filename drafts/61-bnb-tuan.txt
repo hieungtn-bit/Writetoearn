@@ -1,98 +1,98 @@
-Trước hết một điều phải nói ngay: $BNB là token của chính sàn mà tôi đăng bài này lên. Tôi không làm mềm bất cứ con số nào vì lý do đó, và mọi con số chống lại lệnh mua đều nằm cùng bảng với những con số ủng hộ nó.
+One thing has to be said first: $BNB is the token of the exchange I am posting this on. I have softened no number because of that, and every figure that argues against a long sits on the same board as the figures that argue for one.
 
-CON SỐ HIẾM
+THE RARE NUMBER
 
-BNB ở 604.80. Trong 30 ngày qua, **0.0% khối lượng giao dịch nằm trên giá hiện tại**.
+BNB is at 604.80. Over the last 30 days, **0.0% of traded volume sits above the current price**.
 
-Không phải làm tròn. Không một ai mua BNB trong tháng vừa rồi đang lỗ.
+That is not rounding. Nobody who bought BNB in the past month is underwater.
 
-Tôi đo chỉ số này trên mọi đồng mỗi ngày. ICP đo được 27.3%, AVAX 65.7%. Số không là thứ tôi hầu như không gặp. Nó có nghĩa: không có tường người chờ hoà vốn để bán, không có nguồn xả nào treo trên đầu.
+I measure this on every asset every day. ICP reads 27.3%, AVAX 65.7%. Zero is something I almost never see. It means there is no wall of people waiting to break even and sell, and no supply hanging overhead.
 
-CẤU TRÚC GIÁ
+PRICE STRUCTURE
 
-Giá nằm trên cả hai đường trung bình — SMA20 583.44, SMA50 575.49 — và SMA20 nằm trên SMA50. Đó là cấu trúc tăng, không phải hồi phục trong xu hướng giảm.
+Price is above both moving averages — SMA20 at 583.44, SMA50 at 575.49 — and the SMA20 is above the SMA50. That is an uptrend structure, not a bounce inside a downtrend.
 
-Nền 25 ngày rộng 9.73%, giá cách đỉnh nền 1.18%. Chặt và sát.
+The 25-day base is 9.73% wide and price sits 1.18% below its top. Tight, and close.
 
-RSI 64.9. ATR 2.11% mỗi ngày — biến động thấp.
+RSI 64.9. ATR 2.11% per day — low volatility.
 
-BA CON SỐ CHỐNG LẠI
+THREE NUMBERS AGAINST
 
-**Một.** Vị trí trong biên 30 ngày: 87.2%. Bạn đang mua gần đỉnh tháng, không phải gần đáy.
+**One.** Position in the 30-day range: 87.2%. You would be buying near the top of the month, not near the bottom.
 
-**Hai.** Xu hướng khối lượng -25.3%. Khối lượng ba ngày gần nhất thấp hơn giai đoạn trước một phần tư. Giá lên nhưng người tham gia đang rời đi — đó là thứ tôi không thích thấy ở vùng đỉnh biên.
+**Two.** Volume trend -25.3%. The last three days traded a quarter less than the period before. Price is rising while participation leaves — that is the thing I least like to see at the top of a range.
 
-**Ba.** Dòng tiền 30 ngày là 1.37 (tiền vào ngày tăng nhiều hơn), nhưng 90 ngày vẫn 0.78 — dưới 1. Cú đảo chiều mới chỉ một tháng tuổi.
+**Three.** 30-day money flow is 1.37 (more money on up days), but the 90-day is still 0.78 — below 1. The turn is only a month old.
 
-ĐIỀU KHÔNG AI NÓI VỀ BNB
+WHAT NOBODY SAYS ABOUT BNB
 
-Khối lượng 24 giờ chia cho vốn hoá: **0.64%**.
+24-hour volume divided by market cap: **0.64%**.
 
-Tuần này tôi đo ICP 3.78% và AVAX 3.66%. BNB quay vòng chưa tới một phần năm tỷ lệ đó.
+This week I measured ICP at 3.78% and AVAX at 3.66%. BNB turns over less than a fifth of that rate.
 
-BNB được **giữ**, không được **giao dịch**. Điều đó cắt cả hai chiều: ít hàng đè lên mỗi nhịp tăng, nhưng cũng ít độ sâu để thoát ra khi cần.
+BNB is **held**, not **traded**. That cuts both ways: less supply pressing on every rally, but also less depth to get out through when you need it.
 
-Vốn hoá 80.5 tỷ đô, hạng 4. Cách đỉnh lịch sử 55.9% (2025-10-13). Một năm qua -24.4%. 33.4% nguồn cung tối đa chưa bao giờ lưu hành.
+Market cap $80.5 billion, rank 4. Down 55.9% from its all-time high (2025-10-13). Down 24.4% over the past year. 33.4% of max supply has never circulated.
 
-ĐÒN BẨY
+LEVERAGE
 
-Funding 4.15% một năm, hạ từ 7.54% của hai tuần trước. Đang nguội, không nóng lên. 20.6% số kỳ là âm.
+Funding is 4.15% annualised, down from 7.54% two weeks ago. Cooling, not heating. 20.6% of periods are negative.
 
-Cụm thanh lý gần nhất (mô hình ước lượng, không phải feed thật):
+Nearest liquidation clusters (model estimate, not a real feed):
 
-  trên   606.46   +0.27%   shorts
-  trên   610.82   +1.00%   shorts
-  dưới   600.33   -0.74%   longs
-  dưới   584.03   -3.43%   longs
+  above   606.46   +0.27%   shorts
+  above   610.82   +1.00%   shorts
+  below   600.33   -0.74%   longs
+  below   584.03   -3.43%   longs
 
-Cả bốn đều nằm trong biên độ một tuần bình thường. Kỳ vọng bị quét hai chiều trước khi có hướng thật.
+All four sit inside one ordinary week of range. Expect to be swept both ways before there is a real direction.
 
-SAI LẦM MÀ HẦU HẾT KẾ HOẠCH TUẦN MẮC PHẢI
+THE MISTAKE MOST WEEKLY PLANS MAKE
 
-Đây là phần quan trọng nhất bài này.
+This is the most important part of this post.
 
-Tôi đo 104 tuần hoàn tất của BNB. Biên độ một tuần, đỉnh tới đáy:
+I measured 104 completed weeks of BNB. One-week range, high to low:
 
-  p25        6.73%
-  trung vị   10.01%
-  p75        14.60%
-  p90        20.31%
+  p25       6.73%
+  median   10.01%
+  p75      14.60%
+  p90      20.31%
 
-Còn stop tiêu chuẩn tính theo ATR ngày là 3.17%.
+The standard stop derived from daily ATR is 3.17%.
 
-**Một tuần trung vị đi xa gấp 3.16 lần cái stop đó.**
+**A median week travels 3.16 times further than that stop.**
 
-Đặt stop theo ATR ngày rồi giữ lệnh cả tuần không phải quản trị rủi ro. Đó là đảm bảo bị quét bởi một tuần hoàn toàn bình thường, không cần tin tức gì.
+Setting a stop from daily ATR and then holding for a week is not risk management. It is a guarantee of being swept by a completely ordinary week, with no news required.
 
-KẾ HOẠCH TUẦN NÀY
+THE PLAN FOR THIS WEEK
 
-Stop đặt ở nửa biên độ tuần trung vị, không phải theo ATR ngày:
+The stop sits at half the median weekly range, not at daily ATR:
 
-  vào        604.80
-  cắt lỗ     574.54   −5.00%
+  entry      604.80
+  stop       574.54   −5.00%
   TP1        635.06   +5.00%
   TP2        665.31
   TP3        695.57
 
-  vốn        $200 cho mỗi $1,000 để rủi ro đúng 1%
-  đòn bẩy    tối đa 17.79x — cao hơn thì sàn thanh lý trước khi stop kịp chạy
+  size       $200 per $1,000 to risk exactly 1%
+  leverage   17.79x maximum — above that the exchange liquidates before the stop can run
 
-So sánh: kế hoạch trong ngày dùng stop 3.17% và cho phép $316 mỗi $1,000. Stop rộng hơn thì vị thế phải nhỏ hơn. Đó không phải nhược điểm, đó là cùng một rủi ro trải trên một khoảng cách trung thực.
+For comparison: the intraday plan uses a 3.17% stop and allows $316 per $1,000. A wider stop means a smaller position. That is not a drawback. It is the same risk spread across an honest distance.
 
-Vô hiệu hoá luận điểm: đóng cửa tuần dưới SMA50 ở 575.49.
+Invalidation: a weekly close below the SMA50 at 575.49.
 
-VÀ ĐÂY LÀ PHẦN LÀM TÔI KHÔNG PHẤN KHÍCH
+AND HERE IS WHY I AM NOT EXCITED
 
-Trong 104 tuần đó, BNB đóng cửa tăng 51.0% số tuần. Lợi suất tuần trung vị 0.07%.
+Across those 104 weeks, BNB closed higher 51.0% of them. The median weekly return is 0.07%.
 
-Đồng xu. Cấu trúc đẹp không đổi được điều đó.
+A coin flip. A beautiful structure does not change that.
 
-Thêm nữa, tôi đã đo trên 17,518 giờ nến rằng giờ trong ngày không nói gì về hướng nhưng nói rất nhiều về kích thước — biên độ khối tối lệch 23.57 sigma so với phần còn lại. Nếu bạn giữ lệnh đòn bẩy qua 21h giờ Việt Nam mà không nhìn, đó là lựa chọn chứ không phải tai nạn.
+On top of that, I measured across 17,518 hourly bars that the hour of day says nothing about direction but a great deal about size — the evening block's range sits 23.57 sigma away from the rest. If you hold a leveraged position through 21:00 Vietnam time without watching, that is a choice, not an accident.
 
-Quan điểm: CHỜ. Cấu trúc BNB là thứ sạch nhất tôi đo được trong nhóm lớn tuần này — không hàng kẹt, trên cả hai MA, nền chặt, funding nguội. Nhưng khối lượng đang rút khỏi vùng đỉnh biên, dòng tiền 90 ngày chưa đảo, và một tuần vẫn là đồng xu. Tôi chờ khối lượng xác nhận trước khi gọi đây là hơn một cấu trúc đẹp.
+Bias: WAIT. BNB's structure is the cleanest thing I measured in the large-cap group this week — no trapped supply, above both moving averages, a tight base, cooling funding. But volume is draining at the top of the range, the 90-day money flow has not turned, and a week is still a coin flip. I want volume to confirm before I call this more than a pretty structure.
 
-Bạn đặt stop theo ATR ngày hay theo biên độ khung thời gian bạn thực sự giữ lệnh?
+Do you set your stop from daily ATR, or from the range of the timeframe you actually hold?
 
-Nghiên cứu giáo dục, không phải lời khuyên đầu tư. Tự chịu trách nhiệm.
+Educational research, not financial advice. You are responsible for your own risk.
 
 #BNB #TradingPlan #RiskManagement #WriteToEarn

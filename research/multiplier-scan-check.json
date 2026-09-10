@@ -1,0 +1,563 @@
+{
+  "measuredAt": "2026-08-10T09:16:43.430Z",
+  "ranking": {
+    "byScore": [
+      "ICP",
+      "ENA",
+      "ONDO",
+      "ARB"
+    ],
+    "byExpectancy": [
+      "ENA",
+      "ARB",
+      "ICP",
+      "ONDO"
+    ],
+    "spearmanRho": 0,
+    "caveat": "Four items. Rho here is descriptive, not a significance test — it says the ordering is not demonstrated, not that it is disproved."
+  },
+  "volumeAudit": [
+    {
+      "asset": "ICP",
+      "said": "yếu",
+      "trendPct": 24.481214395517497,
+      "zScore": 1.1521897116828617,
+      "matches": false
+    },
+    {
+      "asset": "ENA",
+      "said": "cải thiện",
+      "trendPct": -51.962817143902114,
+      "zScore": -1.1226015790321475,
+      "matches": false
+    },
+    {
+      "asset": "ONDO",
+      "said": "ổn định",
+      "trendPct": -68.08874435801393,
+      "zScore": -0.8027750600333053,
+      "matches": false
+    }
+  ],
+  "method": {
+    "firstTouch": "Walked bar by bar. A bar touching both levels is charged to the stop.",
+    "overlap": "Windows overlap; effectiveN = n / horizon is the de-overlapped count.",
+    "marketCap": "CoinGecko. Binance futures is geo-blocked from this machine, so no funding or open interest is used.",
+    "note": "Prices move. Every figure here is from one fetch, timestamped above."
+  },
+  "rows": [
+    {
+      "asset": "ICP",
+      "claimed": {
+        "score": 7.6,
+        "priceBand": [
+          2.17,
+          2.21
+        ],
+        "marketCapBand": [
+          1210000000,
+          1230000000
+        ],
+        "fromAthPct": -99,
+        "resistance": 2.325,
+        "invalidation": 2.115,
+        "targets": {
+          "2x": 4.35,
+          "3x": 6.55
+        },
+        "volume": "yếu"
+      },
+      "measured": {
+        "price": 2.217,
+        "priceInsideClaimedBand": false,
+        "marketCapUsd": 1228146731,
+        "marketCapInsideClaimedBand": true,
+        "marketCapRank": 59,
+        "athUsd": 700.65,
+        "fromAthPct": -99.68357953329051,
+        "multipleToReclaimAth": 316.0351826792963,
+        "volumeZScoreCompleted": 1.1521897116828617,
+        "volume3dVsPrior10dPct": 69.70425515854583,
+        "volumeTrendPct": 24.481214395517497,
+        "underwaterPct": 7.384188680558261,
+        "stage": "2 expansion",
+        "rsi14": 57.07082079852023,
+        "atrPct": 3.641660393495992,
+        "rangePosition30d": 75.33783783783787,
+        "btcCorrelation30d": 0.5641112940082399,
+        "btcVarianceExplainedPct": 31.822155202765085
+      },
+      "geometry": {
+        "spot": {
+          "entry": 2.217,
+          "riskPct": 4.6008119079837595,
+          "targets": [
+            {
+              "label": "2x",
+              "price": 4.35,
+              "rewardPct": 96.21109607577804,
+              "rr": 20.911764705882355,
+              "actualMultiple": 1.9621109607577805
+            },
+            {
+              "label": "3x",
+              "price": 6.55,
+              "rewardPct": 195.44429409111407,
+              "rr": 42.480392156862756,
+              "actualMultiple": 2.954442940911141
+            }
+          ]
+        },
+        "trigger": {
+          "entry": 2.325,
+          "riskPct": 9.03225806451613,
+          "targets": [
+            {
+              "label": "2x",
+              "price": 4.35,
+              "rewardPct": 87.09677419354836,
+              "rr": 9.642857142857139,
+              "actualMultiple": 1.8709677419354835
+            },
+            {
+              "label": "3x",
+              "price": 6.55,
+              "rewardPct": 181.72043010752685,
+              "rr": 20.119047619047613,
+              "actualMultiple": 2.8172043010752685
+            }
+          ]
+        }
+      },
+      "doubling": [
+        {
+          "horizonDays": 90,
+          "bare": {
+            "n": 910,
+            "hitPct": 12.307692307692308,
+            "effectiveN": 10.11111111111111
+          },
+          "withStatedStop": {
+            "n": 910,
+            "upPct": 2.9670329670329667,
+            "downPct": 96.04395604395604,
+            "neitherPct": 0.9890109890109889,
+            "effectiveN": 10.11111111111111
+          },
+          "withStatedStopAfterWaiting": {
+            "n": 910,
+            "upPct": 5.604395604395605,
+            "downPct": 89.12087912087912,
+            "neitherPct": 5.274725274725275,
+            "effectiveN": 10.11111111111111
+          }
+        },
+        {
+          "horizonDays": 180,
+          "bare": {
+            "n": 820,
+            "hitPct": 21.463414634146343,
+            "effectiveN": 4.555555555555555
+          },
+          "withStatedStop": {
+            "n": 820,
+            "upPct": 4.024390243902439,
+            "downPct": 95.97560975609755,
+            "neitherPct": 0,
+            "effectiveN": 4.555555555555555
+          },
+          "withStatedStopAfterWaiting": {
+            "n": 820,
+            "upPct": 8.902439024390244,
+            "downPct": 91.09756097560975,
+            "neitherPct": 0,
+            "effectiveN": 4.555555555555555
+          }
+        }
+      ],
+      "expectancyR90d": -0.33998060762766646,
+      "candles": 1000
+    },
+    {
+      "asset": "ENA",
+      "claimed": {
+        "score": 7.2,
+        "priceBand": [
+          0.089,
+          0.092
+        ],
+        "marketCapBand": [
+          880000000,
+          880000000
+        ],
+        "fromAthPct": -90,
+        "resistance": 0.105,
+        "invalidation": 0.0775,
+        "targets": {
+          "2x": 0.18,
+          "3x": 0.27
+        },
+        "volume": "cải thiện"
+      },
+      "measured": {
+        "price": 0.0903,
+        "priceInsideClaimedBand": true,
+        "marketCapUsd": 889571977,
+        "marketCapInsideClaimedBand": true,
+        "marketCapRank": 73,
+        "athUsd": 1.52,
+        "fromAthPct": -94.05921052631578,
+        "multipleToReclaimAth": 16.832779623477297,
+        "volumeZScoreCompleted": -1.1226015790321475,
+        "volume3dVsPrior10dPct": -24.99069943645502,
+        "volumeTrendPct": -51.962817143902114,
+        "underwaterPct": 21.910083078058285,
+        "stage": "mixed",
+        "rsi14": 55.386827080055546,
+        "atrPct": 5.969305416761391,
+        "rangePosition30d": 62.73584905660381,
+        "btcCorrelation30d": 0.5741874591985683,
+        "btcVarianceExplainedPct": 32.96912383009075
+      },
+      "geometry": {
+        "spot": {
+          "entry": 0.0903,
+          "riskPct": 14.174972314507206,
+          "targets": [
+            {
+              "label": "2x",
+              "price": 0.18,
+              "rewardPct": 99.33554817275746,
+              "rr": 7.007812499999995,
+              "actualMultiple": 1.9933554817275745
+            },
+            {
+              "label": "3x",
+              "price": 0.27,
+              "rewardPct": 199.0033222591362,
+              "rr": 14.039062499999993,
+              "actualMultiple": 2.990033222591362
+            }
+          ]
+        },
+        "trigger": {
+          "entry": 0.105,
+          "riskPct": 26.190476190476186,
+          "targets": [
+            {
+              "label": "2x",
+              "price": 0.18,
+              "rewardPct": 71.42857142857142,
+              "rr": 2.7272727272727275,
+              "actualMultiple": 1.7142857142857142
+            },
+            {
+              "label": "3x",
+              "price": 0.27,
+              "rewardPct": 157.14285714285717,
+              "rr": 6.000000000000002,
+              "actualMultiple": 2.5714285714285716
+            }
+          ]
+        }
+      },
+      "doubling": [
+        {
+          "horizonDays": 90,
+          "bare": {
+            "n": 771,
+            "hitPct": 23.216601815823605,
+            "effectiveN": 8.566666666666666
+          },
+          "withStatedStop": {
+            "n": 771,
+            "upPct": 11.024643320363165,
+            "downPct": 88.45654993514916,
+            "neitherPct": 0.5188067444876783,
+            "effectiveN": 8.566666666666666
+          },
+          "withStatedStopAfterWaiting": {
+            "n": 771,
+            "upPct": 17.380025940337223,
+            "downPct": 77.56160830090792,
+            "neitherPct": 5.058365758754864,
+            "effectiveN": 8.566666666666666
+          }
+        },
+        {
+          "horizonDays": 180,
+          "bare": {
+            "n": 681,
+            "hitPct": 44.640234948605,
+            "effectiveN": 3.783333333333333
+          },
+          "withStatedStop": {
+            "n": 681,
+            "upPct": 12.481644640234949,
+            "downPct": 87.51835535976505,
+            "neitherPct": 0,
+            "effectiveN": 3.783333333333333
+          },
+          "withStatedStopAfterWaiting": {
+            "n": 681,
+            "upPct": 21.58590308370044,
+            "downPct": 78.41409691629956,
+            "neitherPct": 0,
+            "effectiveN": 3.783333333333333
+          }
+        }
+      ],
+      "expectancyR90d": -0.1119791666666673,
+      "candles": 861
+    },
+    {
+      "asset": "ONDO",
+      "claimed": {
+        "score": 7,
+        "priceBand": [
+          0.35,
+          0.38
+        ],
+        "marketCapBand": [
+          1700000000,
+          1900000000
+        ],
+        "fromAthPct": -80,
+        "resistance": 0.435,
+        "invalidation": 0.325,
+        "targets": {
+          "2x": 0.73
+        },
+        "volume": "ổn định"
+      },
+      "measured": {
+        "price": 0.3518,
+        "priceInsideClaimedBand": true,
+        "marketCapUsd": 1712514037,
+        "marketCapInsideClaimedBand": true,
+        "marketCapRank": 44,
+        "athUsd": 2.14,
+        "fromAthPct": -83.56074766355141,
+        "multipleToReclaimAth": 6.083001705514497,
+        "volumeZScoreCompleted": -0.8027750600333053,
+        "volume3dVsPrior10dPct": -21.898126628448633,
+        "volumeTrendPct": -68.08874435801393,
+        "underwaterPct": 82.29694468544186,
+        "stage": "mixed",
+        "rsi14": 43.74887233468541,
+        "atrPct": 5.798048399875936,
+        "rangePosition30d": 37.928221859706355,
+        "btcCorrelation30d": 0.37730219731067893,
+        "btcVarianceExplainedPct": 14.23569480954665
+      },
+      "geometry": {
+        "spot": {
+          "entry": 0.3518,
+          "riskPct": 7.61796475270039,
+          "targets": [
+            {
+              "label": "2x",
+              "price": 0.73,
+              "rewardPct": 107.50426378624218,
+              "rr": 14.111940298507477,
+              "actualMultiple": 2.075042637862422
+            }
+          ]
+        },
+        "trigger": {
+          "entry": 0.435,
+          "riskPct": 25.287356321839084,
+          "targets": [
+            {
+              "label": "2x",
+              "price": 0.73,
+              "rewardPct": 67.81609195402298,
+              "rr": 2.681818181818181,
+              "actualMultiple": 1.6781609195402298
+            }
+          ]
+        }
+      },
+      "doubling": [
+        {
+          "horizonDays": 90,
+          "bare": {
+            "n": 397,
+            "hitPct": 0.7556675062972292,
+            "effectiveN": 4.411111111111111
+          },
+          "withStatedStop": {
+            "n": 397,
+            "upPct": 0.7556675062972292,
+            "downPct": 81.36020151133502,
+            "neitherPct": 17.884130982367758,
+            "effectiveN": 4.411111111111111
+          },
+          "withStatedStopAfterWaiting": {
+            "n": 397,
+            "upPct": 20.151133501259448,
+            "downPct": 66.75062972292191,
+            "neitherPct": 13.09823677581864,
+            "effectiveN": 4.411111111111111
+          }
+        },
+        {
+          "horizonDays": 180,
+          "bare": {
+            "n": 307,
+            "hitPct": 0.6514657980456027,
+            "effectiveN": 1.7055555555555555
+          },
+          "withStatedStop": {
+            "n": 307,
+            "upPct": 0.32573289902280134,
+            "downPct": 99.0228013029316,
+            "neitherPct": 0.6514657980456027,
+            "effectiveN": 1.7055555555555555
+          },
+          "withStatedStopAfterWaiting": {
+            "n": 307,
+            "upPct": 2.6058631921824107,
+            "downPct": 97.39413680781759,
+            "neitherPct": 0,
+            "effectiveN": 1.7055555555555555
+          }
+        }
+      ],
+      "expectancyR90d": -0.7069626677694649,
+      "candles": 487
+    },
+    {
+      "asset": "ARB",
+      "claimed": {
+        "score": 6.7,
+        "priceBand": [
+          0.08,
+          0.08
+        ],
+        "marketCapBand": [
+          500000000,
+          500000000
+        ],
+        "fromAthPct": -97,
+        "resistance": 0.105,
+        "invalidation": 0.07,
+        "targets": {
+          "2x": 0.16,
+          "2.5x": 0.2
+        },
+        "volume": null
+      },
+      "measured": {
+        "price": 0.0801,
+        "priceInsideClaimedBand": false,
+        "marketCapUsd": 529735000,
+        "marketCapInsideClaimedBand": true,
+        "marketCapRank": 95,
+        "athUsd": 2.39,
+        "fromAthPct": -96.64853556485356,
+        "multipleToReclaimAth": 29.837702871410738,
+        "volumeZScoreCompleted": -0.5816962776387796,
+        "volume3dVsPrior10dPct": -26.464081660188555,
+        "volumeTrendPct": -54.1737810263288,
+        "underwaterPct": 75.74932841193326,
+        "stage": "mixed",
+        "rsi14": 46.36052185682045,
+        "atrPct": 4.562751384536268,
+        "rangePosition30d": 17.50972762645916,
+        "btcCorrelation30d": 0.42175278051938986,
+        "btcVarianceExplainedPct": 17.787540787583662
+      },
+      "geometry": {
+        "spot": {
+          "entry": 0.0801,
+          "riskPct": 12.609238451935079,
+          "targets": [
+            {
+              "label": "2x",
+              "price": 0.16,
+              "rewardPct": 99.75031210986268,
+              "rr": 7.910891089108913,
+              "actualMultiple": 1.9975031210986267
+            },
+            {
+              "label": "2.5x",
+              "price": 0.2,
+              "rewardPct": 149.68789013732834,
+              "rr": 11.871287128712872,
+              "actualMultiple": 2.4968789013732833
+            }
+          ]
+        },
+        "trigger": {
+          "entry": 0.105,
+          "riskPct": 33.33333333333333,
+          "targets": [
+            {
+              "label": "2x",
+              "price": 0.16,
+              "rewardPct": 52.380952380952394,
+              "rr": 1.5714285714285723,
+              "actualMultiple": 1.523809523809524
+            },
+            {
+              "label": "2.5x",
+              "price": 0.2,
+              "rewardPct": 90.47619047619048,
+              "rr": 2.7142857142857153,
+              "actualMultiple": 1.9047619047619049
+            }
+          ]
+        }
+      },
+      "doubling": [
+        {
+          "horizonDays": 90,
+          "bare": {
+            "n": 910,
+            "hitPct": 12.527472527472527,
+            "effectiveN": 10.11111111111111
+          },
+          "withStatedStop": {
+            "n": 910,
+            "upPct": 7.582417582417582,
+            "downPct": 87.6923076923077,
+            "neitherPct": 4.725274725274725,
+            "effectiveN": 10.11111111111111
+          },
+          "withStatedStopAfterWaiting": {
+            "n": 910,
+            "upPct": 19.78021978021978,
+            "downPct": 64.28571428571429,
+            "neitherPct": 15.934065934065933,
+            "effectiveN": 10.11111111111111
+          }
+        },
+        {
+          "horizonDays": 180,
+          "bare": {
+            "n": 820,
+            "hitPct": 20.365853658536583,
+            "effectiveN": 4.555555555555555
+          },
+          "withStatedStop": {
+            "n": 820,
+            "upPct": 10.365853658536585,
+            "downPct": 89.63414634146342,
+            "neitherPct": 0,
+            "effectiveN": 4.555555555555555
+          },
+          "withStatedStopAfterWaiting": {
+            "n": 820,
+            "upPct": 29.634146341463413,
+            "downPct": 70.36585365853658,
+            "neitherPct": 0,
+            "effectiveN": 4.555555555555555
+          }
+        }
+      ],
+      "expectancyR90d": -0.277086280056577,
+      "candles": 1000
+    }
+  ]
+}
