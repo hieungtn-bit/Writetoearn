@@ -8,16 +8,20 @@ luận từ đọc code. Lệnh tái hiện nằm trong từng mục.
 
 Trạng thái test khi bắt đầu: 287/288 pass. Một test đỏ — xem F16.
 
+**Cập nhật 2026-09-13 — nhóm `verify.mjs` đã sửa.** F1, F2, F3, F4 đã được sửa và
+khoá bằng 6 test hồi quy mới. Suite hiện 293/294 pass, test đỏ duy nhất còn lại vẫn
+là F16 (có sẵn từ trước, không liên quan). Chi tiết ở cuối tài liệu.
+
 ---
 
 ## Tóm tắt
 
 | # | Module | Vấn đề | Mức độ |
 |---|---|---|---|
-| F1 | `verify.mjs` | Số dưới 1 USD gần như không được kiểm tra | Nghiêm trọng |
-| F2 | `verify.mjs` | Cổng kiểm số mù dấu: `-3.21%` khớp `+3.21%` | Nghiêm trọng |
-| F3 | `verify.mjs` | Khoảng giá có gạch ngang làm mất số thứ hai | Nghiêm trọng |
-| F4 | `verify.mjs` | Từ `without` miễn trừ cho claim bịa về open interest | Nghiêm trọng |
+| F1 | `verify.mjs` | Số dưới 1 USD gần như không được kiểm tra | ✅ Đã sửa |
+| F2 | `verify.mjs` | Cổng kiểm số mù dấu: `-3.21%` khớp `+3.21%` | ✅ Đã sửa |
+| F3 | `verify.mjs` | Khoảng giá có gạch ngang làm mất số thứ hai | ✅ Đã sửa |
+| F4 | `verify.mjs` | Từ `without` miễn trừ cho claim bịa về open interest | ✅ Đã sửa |
 | F5 | `alert-score.mjs` | Alert cũ hơn 48h bị tính là "miss" | Nghiêm trọng |
 | F6 | `stage.mjs`, `lessons.mjs` | VWAP tính sai trọng số, lệch cả dấu | Cao |
 | F7 | `pulse.mjs` | `isEvent` chặn trên nến ngày chưa đóng | Cao |
@@ -38,6 +42,9 @@ Trạng thái test khi bắt đầu: 287/288 pass. Một test đỏ — xem F16.
 ---
 
 ## Nghiêm trọng — cổng kiểm số và bảng điểm
+
+> F1–F4 **đã sửa**. Phần mô tả dưới đây giữ nguyên để ghi lại lỗi là gì và tại sao
+> nó lọt được; bản sửa và cách kiểm chứng nằm ở mục *Bản sửa nhóm verify.mjs*.
 
 ### F1 — `verify.mjs`: số dưới 1 USD gần như không được kiểm tra
 
@@ -413,3 +420,113 @@ Không phải mọi thứ đều có lỗi. Các phần sau đã được kiểm
 4. **F7, F9** là lỗi làm detector mù hoặc báo sai cửa sổ — sửa sau nhóm trên.
 5. **F8** nên sửa cùng F17: gom regex về một chỗ rồi sửa một lần.
 6. **F16** sửa nhanh, để test suite về xanh trước khi làm các mục còn lại.
+
+---
+
+## Bản sửa nhóm `verify.mjs`
+
+Ngày: 2026-09-13. Phạm vi: F1, F2, F3, F4. Không chạm vào phát hiện nào khác.
+
+### Thay đổi
+
+**`matches()` — bỏ sàn tuyệt đối, thêm độ chính xác đã viết (F1, F2).**
+Sai số giờ là tương đối, không có sàn, cộng với nửa đơn vị ở chữ số cuối mà người
+viết thực sự dùng. `0.023` vẫn khớp `0.02266` vì đó đúng là kết quả làm tròn ở 3
+chữ số thập phân; `0.0270` thì không. Cùng hàm này thực thi luật dấu: một dấu
+viết ra là một claim và phải đúng chiều với nguồn; số **không có dấu** vẫn khớp
+theo độ lớn, vì câu văn đã mang chiều rồi.
+
+**`extractNumbers()` — bắt dấu, và biết đâu là dấu (F2, F3).**
+Thêm hai field: `sign` và `halfPlace`. Dấu chỉ được đọc khi nó *có thể* là dấu —
+lookbehind `(?<![\d.])` khiến một gạch ngang **nằm giữa hai chữ số** được hiểu là
+dấu phân cách khoảng, không phải dấu trừ. Nếu thiếu điều này, bản sửa F3 sẽ tạo ra
+lỗi mới: cận trên của mọi khoảng support/resistance trở thành một claim âm không
+trace được vào đâu.
+
+**`ISO_DATE` — chặn biên chữ số (F3).**
+`(?<!\d)…(?!\d)` để chỉ một nhãn ngày thật bị skip.
+
+**`collect*` — giữ dấu (F2).**
+Năm hàm thu thập không còn `Math.abs()`. Tập giá trị được phép giờ có dấu, nên một
+con số không dấu vẫn khớp như trước, còn con số có dấu thì bị ràng buộc thêm. Không
+nới lỏng chỗ nào.
+
+**`DISCLOSURE` — phải nói về dữ liệu thiếu (F4).**
+Từ trần trụi `without`, `cannot`, `don't have` bị thay bằng hai phần. `ABSENCE` là
+những cụm chỉ có thể mang nghĩa không lấy được số (`not available`, `geo-blocked`,
+`no source`) — tự đứng một mình là đủ. `INABILITY` thì không nói gì cả nếu đứng
+một mình: nó phụ thuộc hoàn toàn vào **thứ được nói là thiếu**, nên cái theo sau nó
+phải là dữ liệu (`access`, `source`, `feed`, `data`, `figures`, `readings`…) hoặc
+chính field đang bị disclaim.
+
+Và phạm vi của một sự bất lực dừng ở **ranh giới mệnh đề**, không phải ranh giới câu.
+Đây là chỗ bản sửa đầu tiên của tôi còn sai, và test tự viết ra đã bắt được:
+
+```
+"I cannot see open interest, but the long/short ratio is stretched."
+```
+
+Mệnh đề đầu disclaim open interest một cách trung thực. Mệnh đề sau là một claim
+bình thường về long/short ratio. Nếu không cắt ở dấu phẩy và `but`, mệnh đề sau
+**mượn** lời disclaim của mệnh đề đầu — tức là một lời thú nhận trung thực lại cấp
+phép cho một fabrication. Sau khi cắt, chỉ `longShortRatio` bị báo vi phạm.
+
+Kiểm tra cũng chuyển từ per-sentence sang **per-field**, vì một câu có thể disclaim
+field này và khẳng định field kia.
+
+**Một tightening nhỏ kèm theo.** Số nguyên **có dấu** mất quyền structural pass.
+Không ai viết `-3 charts`; một dấu đánh dấu con số là phép đo có chiều.
+
+### Kiểm chứng
+
+Một bản nháp trung thực với 10 con số vẫn qua toàn bộ cổng. Bốn cách làm sai, mỗi
+cách sửa đúng một chỗ trong cùng bản nháp đó:
+
+```
+honest draft                          ok: true   numbersChecked: 10
+sign flipped on the 24h change        blocked
+sub-dollar price nudged               blocked
+upper bound of a range invented       blocked
+OI claim hidden behind "without"      blocked
+```
+
+Các cách diễn đạt hợp lệ vẫn phải qua, và đã kiểm:
+
+```
+"Open interest is not available to me."                      PASSES
+"Without open interest data the picture is partial."         PASSES
+"I cannot see open interest from this host."                 PASSES
+"Open interest is geo-blocked here."                         PASSES
+"I cannot verify the long/short ratio without a futures feed." PASSES
+
+"Open interest rose sharply without any price follow-through." blocked
+"Open interest is climbing and bulls cannot be stopped."       blocked
+"Open interest rose and I cannot see why."                     blocked
+```
+
+Suite: **293/294 pass**, 6 test hồi quy mới. Test đỏ duy nhất còn lại là F16, có
+sẵn từ trước và không liên quan đến nhóm này.
+
+### Đánh đổi đã chấp nhận
+
+Luật dấu sẽ từ chối một bản nháp viết `-8.2%` cho một con số nguồn lưu dương với
+nghĩa "8.2% dưới đỉnh" — ví dụ `offExtremePct` trong `sides.mjs`. Đây là
+false-negative, không phải false-positive: vòng revision sẽ nói rõ con số không có
+trong brief và model viết lại. Cổng này fail-closed theo đúng nguyên tắc repo đã
+chọn, nên chiều sai này là chiều chấp nhận được.
+
+### F21 — phát hiện thêm trong lúc kiểm chứng
+
+`INDICATOR_LABEL` không phủ dạng viết tắt `200D` / `50D`. `\b\d{1,4}-day\b` bắt
+`200-day`, và `(?:SMA|EMA|MA|RSI|ATR|VWAP)\s?\d{1,4}` bắt `SMA200`, nhưng `200D`
+thì không — nên một bài viết "BTC just lost the 200D" fail trên đúng cái nhãn
+tham số mà `INDICATOR_LABEL` được thêm vào để tha.
+
+```
+verifyPost("... lost the 200D ...")
+-> figure "200" does not appear in the brief or the screen
+```
+
+Lỗi có sẵn từ trước, cùng họ với lý do `INDICATOR_LABEL` tồn tại, và **chưa sửa** —
+nó nằm ngoài bốn mục được yêu cầu. Mức độ: thấp. Hướng sửa: thêm nhánh
+`\b\d{1,4}\s?D\b` (và có thể `W`, `H`) vào `INDICATOR_LABEL`.

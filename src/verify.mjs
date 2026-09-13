@@ -44,17 +44,17 @@ const SUFFIXES = { k: 1e3, m: 1e6, b: 1e9 };
  */
 const WORD_SUFFIXES = { nghìn: 1e3, ngàn: 1e3, triệu: 1e6, tỷ: 1e9, tỉ: 1e9 };
 
-/**
- * Pulls every numeric literal out of the text, keeping enough context to tell
- * a percentage from a bare count.
- *
- * @returns {{raw: string, value: number, isPercent: boolean, hasDecimal: boolean}[]}
- */
 /** ISO dates: their parts are calendar labels, never market claims. */
 // A month label -- 2021-10 -- is a calendar reference exactly as a full date is.
 // Without the optional day, "2021-10" split into 2021 and 10 and the gate asked
 // the market data to vouch for the year.
-const ISO_DATE = /\d{4}-\d{2}(?:-\d{2}(?:T[\d:.]+Z?)?)?/g;
+//
+// The digit boundaries are load-bearing, not tidiness. A hyphenated level range
+// contains a date-shaped substring: "63250-64100" matches on "3250-64", and the
+// skip span that produced then swallowed the *upper bound of the range*, which
+// went out unchecked. Requiring a non-digit on both sides means only a real date
+// label is skipped.
+const ISO_DATE = /(?<!\d)\d{4}-\d{2}(?:-\d{2}(?:T[\d:.]+Z?)?)?(?!\d)/g;
 
 /**
  * Indicator period labels — the 200 in SMA200 is a parameter, not a price.
@@ -73,6 +73,17 @@ const INDICATOR_LABEL = /\b(?:SMA|EMA|MA|RSI|ATR|VWAP)\s?\d{1,4}\b|\b\d{1,4}-day
  */
 const INDEX_NAME = /\b(?:S&P|Nasdaq|Russell|FTSE|DAX|Nikkei|Dow|CAC)\s?\d{2,5}\b/gi;
 
+/**
+ * Pulls every numeric literal out of the text, keeping enough context to tell
+ * a percentage from a bare count.
+ *
+ * `value` is always a magnitude; a sign written in the draft is reported
+ * separately in `sign`, because the two are different kinds of claim. See
+ * `matches` for why that separation matters.
+ *
+ * @returns {{raw: string, value: number, sign: number, isPercent: boolean,
+ *            hasDecimal: boolean, halfPlace: number}[]}
+ */
 export function extractNumbers(text) {
   const out = [];
 
@@ -86,23 +97,43 @@ export function extractNumbers(text) {
   const insideDate = (i) => skipSpans.some(([a, b]) => i >= a && i < b);
   // A magnitude suffix has to sit flush against the digits and not begin a
   // word: without both guards, "66,956\n\nBias:" reads as 66,956 billion.
-  const re = /(\d[\d,]*(?:\.\d+)?)(?:\s*(nghìn|ngàn|triệu|tỷ|tỉ)|([KkMmBb])(?![A-Za-z]))?(\s*%)?/giu;
+  //
+  // The leading sign is captured, but only where a sign is what it can be. A
+  // hyphen *between two digits* is a range separator — "63250-64100" — and
+  // reading it as a minus would turn the upper bound of every level range into
+  // a negative claim that traces to nothing. Hence the lookbehind: the match may
+  // not begin immediately after a digit or a decimal point.
+  const re =
+    /(?<![\d.])([-+−])?(\d[\d,]*(?:\.\d+)?)(?:\s*(nghìn|ngàn|triệu|tỷ|tỉ)|([KkMmBb])(?![A-Za-z]))?(\s*%)?/giu;
 
   for (const m of text.matchAll(re)) {
     if (insideDate(m.index)) continue;
-    const [, digits, wordSuffix, suffix, percent] = m;
+    const [, signChar, digits, wordSuffix, suffix, percent] = m;
     const bare = digits.replace(/,/g, "");
     let value = Number(bare);
     if (!Number.isFinite(value)) continue;
 
-    if (suffix) value *= SUFFIXES[suffix.toLowerCase()];
-    if (wordSuffix) value *= WORD_SUFFIXES[wordSuffix.toLowerCase()];
+    const multiplier = suffix
+      ? SUFFIXES[suffix.toLowerCase()]
+      : wordSuffix
+        ? WORD_SUFFIXES[wordSuffix.toLowerCase()]
+        : 1;
+    value *= multiplier;
+
+    // Half a unit in the last place the writer actually wrote. "0.023" claims
+    // the value lies within 0.0005 of it; "0.0270" claims within 0.00005. This
+    // is what lets a correct rounding through without letting a wrong figure
+    // ride on a tolerance borrowed from a larger number.
+    const decimals = bare.includes(".") ? bare.split(".")[1].length : 0;
+    const halfPlace = 0.5 * 10 ** -decimals * multiplier;
 
     out.push({
       raw: m[0].trim(),
       value,
+      sign: signChar === "+" ? 1 : signChar ? -1 : 0,
       isPercent: Boolean(percent),
       hasDecimal: bare.includes("."),
+      halfPlace,
     });
   }
   return out;
@@ -156,7 +187,7 @@ function pushAssetNumbers(push, a) {
 export function collectScreenNumbers(screen) {
   const values = [];
   const push = (n) => {
-    if (typeof n === "number" && Number.isFinite(n)) values.push(Math.abs(n));
+    if (typeof n === "number" && Number.isFinite(n)) values.push(n);
   };
   for (const row of screen?.rows ?? []) pushAssetNumbers(push, row);
   if (screen?.baseRow) pushAssetNumbers(push, screen.baseRow);
@@ -186,7 +217,7 @@ export function collectScreenNumbers(screen) {
 export function collectCandleNumbers(candles) {
   const values = [];
   const push = (n) => {
-    if (typeof n === "number" && Number.isFinite(n)) values.push(Math.abs(n));
+    if (typeof n === "number" && Number.isFinite(n)) values.push(n);
   };
   const seriesList = Array.isArray(candles?.[0]) ? candles : [candles ?? []];
 
@@ -225,7 +256,7 @@ export function collectCandleNumbers(candles) {
 export function collectStageNumbers(stages) {
   const values = [];
   const push = (n) => {
-    if (typeof n === "number" && Number.isFinite(n)) values.push(Math.abs(n));
+    if (typeof n === "number" && Number.isFinite(n)) values.push(n);
   };
   for (const st of stages ?? []) {
     push(st.underwaterPct);
@@ -253,7 +284,7 @@ export function collectStageNumbers(stages) {
 export function collectStudyNumbers(study) {
   const values = [];
   const walk = (node) => {
-    if (typeof node === "number" && Number.isFinite(node)) values.push(Math.abs(node));
+    if (typeof node === "number" && Number.isFinite(node)) values.push(node);
     else if (node && typeof node === "object") for (const v of Object.values(node)) walk(v);
   };
   walk(study);
@@ -263,7 +294,7 @@ export function collectStudyNumbers(study) {
 export function collectBriefNumbers(brief) {
   const values = [];
   const push = (n) => {
-    if (typeof n === "number" && Number.isFinite(n)) values.push(Math.abs(n));
+    if (typeof n === "number" && Number.isFinite(n)) values.push(n);
   };
 
   for (const s of brief.spot ?? []) {
@@ -305,11 +336,34 @@ export function collectBriefNumbers(brief) {
   return values;
 }
 
-function matches(value, allowed) {
-  const target = Math.abs(value);
+/**
+ * Does one figure from the draft trace to a figure in the data?
+ *
+ * Two rules, each closing a hole the single relative tolerance had.
+ *
+ * **Scale.** The tolerance is relative, with no absolute floor. The floor used
+ * to be 1, which meant every value below a dollar was checked against a fixed
+ * ±0.005 — on a token at 0.02266 that admitted 0.0180 and 0.0270 alike, a
+ * twenty-percent error either way, and most of the universe the scanners surface
+ * trades under a dollar. What replaces the floor is the precision the writer
+ * chose: half a unit in the last place they wrote. "0.023" is a correct rounding
+ * of 0.02266 and passes; "0.0270" is not one and fails.
+ *
+ * **Sign.** An explicit sign is itself a claim and has to hold. Every figure
+ * used to be compared on magnitude alone, so inverting the direction of every
+ * number in a draft cleared the gate — "-3.21%" traced happily to a real
+ * +3.21%, which is the one error that misleads a reader about what the market
+ * did. An *unsigned* literal still matches on magnitude, because prose carries
+ * direction perfectly well: "BTC fell 3.21%" is true of a -3.21% reading.
+ */
+function matches(n, allowed) {
+  const target = n.value;
   return allowed.some((a) => {
-    const scale = Math.max(Math.abs(a), target, 1);
-    return Math.abs(a - target) / scale <= TOLERANCE;
+    // A zero reading has no direction to contradict.
+    if (n.sign && a !== 0 && Math.sign(a) !== n.sign) return false;
+    const source = Math.abs(a);
+    const scale = Math.max(source, target);
+    return Math.abs(source - target) <= Math.max(scale * TOLERANCE, n.halfPlace);
   });
 }
 
@@ -333,11 +387,13 @@ export function verifyNumbers(text, brief, { screen, candles, stages, study } = 
   let checked = 0;
 
   for (const n of extractNumbers(text)) {
-    const structural = !n.hasDecimal && !n.isPercent && n.value <= STRUCTURAL_MAX;
+    // A signed integer is never a count. Nobody writes "-3 charts"; a sign marks
+    // the number as a directional measurement, so it loses the structural pass.
+    const structural = !n.hasDecimal && !n.isPercent && !n.sign && n.value <= STRUCTURAL_MAX;
     if (structural) continue;
 
     checked++;
-    if (!matches(n.value, allowed)) unmatched.push({ raw: n.raw, value: n.value });
+    if (!matches(n, allowed)) unmatched.push({ raw: n.raw, value: n.value });
   }
 
   return { ok: unmatched.length === 0, unmatched, checked };
@@ -354,8 +410,56 @@ const FORBIDDEN = [
  * "Open interest is flat" is fabrication; "open interest is not available to
  * me" is the most honest sentence in the post, and blocking it would punish
  * exactly the behaviour the channel is built on.
+ *
+ * What the disclosure has to be *about* is the load-bearing part, and it was
+ * missing. The list used to carry bare `without`, `cannot` and `don't have`,
+ * which are among the commonest words in market prose — so "open interest rose
+ * sharply without any price follow-through" and "open interest is climbing and
+ * bulls cannot be stopped" both exempted themselves and published a figure the
+ * brief never had. A sentence is a disclosure when it says the *data* is
+ * missing, not merely when it contains a negation.
+ *
+ * So the test is in two parts. Some phrases can only mean the figure was not
+ * obtainable, and those stand alone. An inability discloses nothing by itself —
+ * it depends entirely on what is said to be missing, so the thing that follows
+ * it has to be either the data or the field being disclaimed.
  */
-const DISCLOSURE = /\b(not available|unavailable|cannot|can't|could not|couldn't|do not have|don't have|no data|not visible|not accessible|geo-blocked|no source|without)\b/i;
+
+/** Wording that can only mean the figure was never obtained. */
+const ABSENCE =
+  /\b(?:not available|unavailable|not visible|not accessible|geo-?blocked|no data|no source|no feed|not retrievable|not in the brief)\b/i;
+
+/** An inability. On its own this says nothing about the data — see `discloses`. */
+const INABILITY =
+  /\b(?:cannot|can't|could not|couldn't|do not have|don't have|have no|lacks?|lacking|without)\b/i;
+
+/** What has to be missing for an inability to amount to a disclosure. */
+const THE_READING = /\b(?:access|sources?|feeds?|data|figures?|numbers?|readings?|visibility)\b/i;
+
+/**
+ * Where an inability stops governing. A clause boundary is the edge of what a
+ * negation can be about: in "I cannot see open interest, but the long/short
+ * ratio is stretched" the inability covers the first clause and the second is an
+ * ordinary claim. Without this cut the second clause borrows the first one's
+ * disclaimer, which is how one honest admission licences one fabrication.
+ */
+const CLAUSE_END = /[,;:]|\b(?:but|however|though|although|while|whereas|yet|still)\b/i;
+
+/**
+ * Is this sentence disclaiming `field` rather than making a claim about it?
+ *
+ * The distinction lives entirely in what is said to be missing. "I cannot see
+ * open interest" and "without open interest data" disclaim it. "Bulls cannot be
+ * stopped" and "open interest rose without any price follow-through" are claims
+ * that happen to contain a negation, and the negation is about something else.
+ */
+function discloses(sentence, field) {
+  if (ABSENCE.test(sentence)) return true;
+  const at = sentence.search(INABILITY);
+  if (at < 0) return false;
+  const clause = sentence.slice(at).split(CLAUSE_END)[0];
+  return THE_READING.test(clause) || field.pattern.test(clause);
+}
 
 /**
  * Flags claims about data we never had, while allowing honest admissions that
@@ -368,9 +472,11 @@ export function verifyNoForbiddenClaims(text, brief) {
   const violations = new Set();
 
   for (const sentence of sentences) {
-    if (DISCLOSURE.test(sentence)) continue;
     for (const f of FORBIDDEN) {
-      if (missing.has(f.field) && f.pattern.test(sentence)) violations.add(f.field);
+      if (!missing.has(f.field) || !f.pattern.test(sentence)) continue;
+      // Per field, not per sentence: a sentence can disclaim one unavailable
+      // field while asserting the other.
+      if (!discloses(sentence, f)) violations.add(f.field);
     }
   }
   return { ok: violations.size === 0, violations: [...violations] };

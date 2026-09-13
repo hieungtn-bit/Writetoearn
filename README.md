@@ -107,11 +107,23 @@ checked against the data before anything is published:
   draft and matched against the fetched data, tolerant of rounding and
   abbreviation (`63,250` ≡ `63.2K` ≡ `$63250`). An unmatched price or
   percentage fails the post. Bare small integers (`3 charts`, `24h`) are
-  treated as structural and skipped — but anything with a decimal point or a
-  percent sign is checked.
+  treated as structural and skipped — but anything with a decimal point, a
+  percent sign or a written sign is checked.
+- **Tolerance follows the precision you wrote.** The slack is relative, with no
+  absolute floor, plus half a unit in the last place the draft actually used. So
+  `0.023` traces to a real `0.02266` because that is what it rounds to, while
+  `0.0270` does not. A fixed floor is what made every sub-dollar token — most of
+  the board — effectively unchecked.
+- **A written sign is a claim.** `-3.21%` has to trace to a reading that is
+  negative; it cannot borrow a real `+3.21%`. An *unsigned* figure still matches
+  on magnitude, because prose carries direction perfectly well: "BTC fell 3.21%"
+  is true of a `-3.21%` reading.
 - **Unavailable fields cannot be written about.** Open interest and long/short
   ratio have no source here, so any mention of them is blocked. "OI is flat" is
-  fabrication when there is no OI data, disclaimer or not.
+  fabrication when there is no OI data, disclaimer or not. Admitting the absence
+  is always allowed, but the admission has to be about the missing data — "OI
+  rose without any price follow-through" is not a disclosure, it is the
+  fabrication wearing one.
 - **Structure is enforced** — word count, cashtags, hashtags, disclaimer, and a
   call-to-action question.
 

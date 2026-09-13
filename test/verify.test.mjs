@@ -81,10 +81,138 @@ test("a small integer with a percent sign is still checked", () => {
   assert.equal(result.ok, false, "an integer percentage is a market claim");
 });
 
+// A sub-dollar brief, because that is where the tolerance used to stop working.
+// Most of the universe the scanners surface trades here.
+const centsBrief = {
+  spot: [
+    {
+      symbol: "SUSDT",
+      price: 0.02266,
+      change24hPct: 3.21,
+      high24h: 0.024,
+      low24h: 0.0221,
+      quoteVolume24h: 232_015,
+    },
+  ],
+  unavailable: [{ field: "openInterest" }, { field: "longShortRatio" }],
+};
+
+test("a sub-dollar price is checked at the precision it was written to", () => {
+  // The tolerance used to be floored at 1, which made it a flat +/-0.005 for
+  // every figure under a dollar: a fifth either way on a token at 0.02266.
+  assert.equal(verifyNumbers("S at 0.02266.", centsBrief).ok, true, "the exact figure traces");
+  assert.equal(
+    verifyNumbers("S at 0.023.", centsBrief).ok,
+    true,
+    "0.023 is what 0.02266 rounds to at three places, so it has to pass",
+  );
+  for (const invented of ["0.0270", "0.0250", "0.0180"]) {
+    assert.equal(
+      verifyNumbers(`S at ${invented}.`, centsBrief).ok,
+      false,
+      `${invented} is not 0.02266 and must not pass`,
+    );
+  }
+});
+
+test("an explicit sign is a claim and has to hold", () => {
+  // Every figure used to be compared on magnitude alone, so inverting the
+  // direction of a real number cleared the gate.
+  assert.equal(verifyNumbers("S moved 3.21% today.", centsBrief).ok, true, "unsigned: prose carries direction");
+  assert.equal(verifyNumbers("S moved +3.21% today.", centsBrief).ok, true, "the sign agrees");
+  assert.equal(
+    verifyNumbers("S moved -3.21% today.", centsBrief).ok,
+    false,
+    "a real +3.21% must not vouch for a written -3.21%",
+  );
+  // And the mirror, against a brief whose reading is genuinely negative.
+  assert.equal(verifyNumbers("BTC down -2.75% on the day.", brief).ok, true);
+  assert.equal(
+    verifyNumbers("BTC up +2.75% on the day.", brief).ok,
+    false,
+    "a real -2.746% must not vouch for a written +2.75%",
+  );
+});
+
+test("a hyphen between digits is a range, not a minus", () => {
+  // "63250-64100" contains a date-shaped substring. The skip span it produced
+  // used to swallow the upper bound of the range, which then published unchecked.
+  const found = extractNumbers("Support zone 63250-64100 matters.");
+  assert.deepEqual(found.map((f) => f.value), [63250, 64100], "both bounds survive extraction");
+  assert.deepEqual(found.map((f) => f.sign), [0, 0], "neither is read as negative");
+
+  const result = verifyNumbers("Support zone 63250-64100 matters.", brief);
+  assert.equal(result.checked, 2, "and both are actually checked");
+  assert.equal(result.ok, false, "64100 is in no source, so the post fails");
+
+  // The dates this guard had to keep working for.
+  assert.deepEqual(extractNumbers("On 2026-08-03 turnover was 0.62x.").map((n) => n.value), [0.62]);
+  assert.deepEqual(extractNumbers("From 2021-10 to 2022-11 it fell 74.8%.").map((n) => n.value), [74.8]);
+});
+
+test("a signed integer is a measurement, not a count", () => {
+  assert.equal(
+    verifyNumbers("Watching 3 charts over the last 24h.", centsBrief).ok,
+    true,
+    "bare small integers stay structural",
+  );
+  assert.equal(
+    verifyNumbers("Net flow came in at -47 on the session.", centsBrief).ok,
+    false,
+    "nobody writes a count as -47, so it loses the structural pass",
+  );
+});
+
 test("writing about unavailable fields is blocked", () => {
   assert.equal(verifyNoForbiddenClaims("Open interest is flat.", brief).ok, false);
   assert.equal(verifyNoForbiddenClaims("The long/short ratio is stretched.", brief).ok, false);
   assert.equal(verifyNoForbiddenClaims("Funding on OKX is positive.", brief).ok, true);
+});
+
+test("a disclosure has to be about the missing data, not just contain a negation", () => {
+  // `without`, `cannot` and `don't have` used to exempt a sentence on their own.
+  // They are among the commonest words in market prose, so the exemption covered
+  // exactly the fabrications the gate exists to stop.
+  for (const fabricated of [
+    "Open interest rose sharply without any price follow-through.",
+    "The long/short ratio tilted bullish without hesitation.",
+    "Open interest is climbing and bulls cannot be stopped.",
+    "Open interest is flat and we don't have much downside left.",
+    "Open interest rose and I cannot see why.",
+    "OI is expanding without a pause.",
+  ]) {
+    assert.equal(
+      verifyNoForbiddenClaims(fabricated, brief).ok,
+      false,
+      `a negation about something else must not licence: ${fabricated}`,
+    );
+  }
+
+  // Honest admissions are the behaviour the channel is built on and must survive.
+  for (const honest of [
+    "Open interest is not available to me.",
+    "Without open interest data the picture is partial.",
+    "I cannot see open interest from this host.",
+    "Open interest is geo-blocked here.",
+    "There is no source for the long/short ratio.",
+    "I don't have access to open interest.",
+    "I cannot verify the long/short ratio without a futures feed.",
+    "I don't have access to open interest, which is geo-blocked here.",
+  ]) {
+    assert.equal(
+      verifyNoForbiddenClaims(honest, brief).ok,
+      true,
+      `an admission of absence must pass: ${honest}`,
+    );
+  }
+});
+
+test("one field's disclaimer does not licence a claim about the other", () => {
+  // The inability governs its own clause and no further. Before this, the second
+  // clause borrowed the first one's disclaimer and published a figure the brief
+  // never had.
+  const mixed = "I cannot see open interest, but the long/short ratio is stretched.";
+  assert.deepEqual(verifyNoForbiddenClaims(mixed, brief).violations, ["longShortRatio"]);
 });
 
 test("unavailable-field checks only apply to fields actually missing", () => {
@@ -325,10 +453,16 @@ test("a candle series vouches for its own window, but not for spans inside it", 
 
   assert.ok(got.includes(100), "the window length is citable");
   assert.ok(got.includes(120), "so is the window high");
-  assert.ok(got.some((v) => Math.abs(v - 49.5) < 1e-9), "and the total move across it");
-  assert.ok(got.some((v) => Math.abs(v - 57.9) < 0.1), "and the fall from the window high");
+  // The sign is kept now. A fall is collected as a fall, so a draft that writes
+  // it as a rise has nothing to trace to.
+  assert.ok(got.some((v) => Math.abs(v + 49.5) < 1e-9), "and the total move across it, signed");
+  assert.ok(got.some((v) => Math.abs(v + 57.9) < 0.1), "and the fall from the window high, signed");
   assert.ok(
-    !got.some((v) => Math.abs(v - 25) < 1e-9),
+    !got.some((v) => Math.abs(v - 57.9) < 0.1),
+    "never as a gain of the same size",
+  );
+  assert.ok(
+    !got.some((v) => Math.abs(Math.abs(v) - 25) < 1e-9),
     "a span between two arbitrary candles is still not citable",
   );
 });
@@ -343,7 +477,7 @@ test("candle windows stay attached to the series that produced them", async () =
   // flat; kept apart, each reports its own move.
   const got = collectCandleNumbers([flat(100, 200), flat(200, 100)]);
   assert.ok(got.includes(100), "the doubling shows");
-  assert.ok(got.includes(50), "and so does the halving");
+  assert.ok(got.includes(-50), "and so does the halving, with its sign");
 });
 
 test("a month label is a calendar reference, not a market figure", async () => {
