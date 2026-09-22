@@ -1,0 +1,130 @@
+Same two questions as every edition, in the same order:
+
+**How is the market? And what do we do about it?**
+
+The rules underneath have not moved since the last one. When they change, that will be its own post with a measurement attached.
+
+HOW IS THE MARKET
+
+**671 USDT pairs.** 465 up, 200 down — 69.3% green. The median pair moved 3.33% on the day.
+
+That reads calm. The tails do not: **109 pairs are down more than 5%** and **67 more than 10%**, against 258 up more than 5%.
+
+So: a flat middle and a heavy tail. Bitcoin dominance 58.3%, Fear & Greed 62.
+
+My board scanned 100 pairs: **56 long, 37 short**, 7 stand aside. 41 rows carry a regime turn — the recent window disagreeing in sign with the longer history. 20 are too thin to trade at all.
+
+FIRST, WHAT THE LAST SET DID
+
+4 positions were published in the last edition (2026-08-19). After 22 hours, 0 reached target and 4 were stopped.
+
+```
+            status       move    result
+ARB        stopped      15.4%   -1.000R
+SUI        stopped      6.72%   -1.000R
+XRP        stopped      10.7%   -1.000R
+HBAR       stopped      5.61%   -1.000R
+```
+
+**0 of 4 ahead.** Median -1.000R, total -4.000R marked to market.
+
+And the tape was against every line: only **30.7% of the market moved the same way**, with the median pair at +3.33%. Every position was short into that. It does not excuse the result — the filters chose those positions and the market is not obliged to agree — but it is the same disclosure I make on the days this runs the other way.
+
+4 of these are closed and counted at their real result. I am not going to describe a stop as an open position.
+
+AND THE WHOLE BOOK, WHICH MATTERS MORE
+
+The last edition is a slice. **20 positions across 6 editions.** **19 stopped, 0 at target, 1 still open.**
+
+**0 of 20 ahead.** Median -1.000R, mean -0.972R, total -19.445R.
+
+This is what a pipeline with no demonstrated edge looks like when the market moves against it. The walk-forward number at the bottom of every edition said this was possible; today it happened, and the number was not decoration.
+
+WHAT SURVIVES THE FILTERS
+
+Three conditions, each traced to something measured rather than believed: liquid enough to fill, a sample of at least 12 independent episodes, and all five lookback windows agreeing on direction.
+
+```
+                            long    short
+signals on the board          56       37
+liquid enough to fill         44       33
+sample of 12+ episodes         4        5
+all 5 lookbacks agree          0        4
+```
+
+**56 long signals. 0 survive.** Again.
+
+They die at the sample step: only 4 longs on the whole board have an adequate sample, and none of those has all five windows behind it.
+
+WHAT WE DO
+
+**4 positions**, all short. Entry at the current price, stop and target from a **fixed rule** — 1.5 ATR stop, 2:1 target, 30 days — that I did not choose for these coins.
+
+That fixed geometry is the point. Optimising stop and target per pair keeps about a tenth of itself out of sample, so the shape of the trade is a rule here rather than a decision.
+
+```
+                entry         stop       target   size
+ADA            0.1841       0.1974       0.1574    138
+ARB            0.0890       0.0955       0.0761    138
+SUI            0.7015       0.7416       0.6214    175
+XRP             1.112        1.162        1.010    219
+```
+
+Size is the position on a 1000 account risking 1.00%. It is not the amount at risk — that is 10 on every line.
+
+Nothing was declined at the final step today.
+
+THE THREE WE FOLLOW
+
+$BTC, $BNB and $ICP get a line every edition whether or not they qualify, because people hold them and "it did not make the list" is an answer.
+
+```
+             price   range    vs VA    short
+BTC          69739   96.3%    above      3/5
+BNB         629.74   91.5%    above      1/5
+ICP          2.312   78.9%   inside      4/5
+```
+
+**BTC** — only 2 of 5 lookbacks agree. Price sits above its value area at 96.3% of its 30-day range, with the point of control at 64154.
+
+**BNB** — sample too thin — 5 independent episodes. It is the only one of the three whose lookbacks lean long, 4 of 5 of them — but it trades above its value area near the top of its range, and the sample is not there.
+
+**ICP** — sample too thin — 5 independent episodes. **4 of its 5 lookbacks lean short**, and it sits inside its value area at 78.9% of its 30-day range.
+
+No plan on any of the three today. Not a view about their future — a statement that they do not clear the same bar the 4 above did.
+
+THE RULES, SO YOU CAN HOLD ME TO THEM
+
+**Stop: 1.5 ATR.** Measured across 61 pairs; expectancy peaks there and decays either side.
+
+**Target: 2:1. Horizon: 30 days.** Fixed, never fitted per coin.
+
+**Minimum sample: 12 independent episodes.** Below that my own engine says thin, so I should not be trading it.
+
+**All five lookbacks must agree.** A direction that only pays measured one way is a property of the measurement.
+
+**Costs charged at 0.20% round trip**, every time, before anything is called an edge.
+
+If a day comes when those filters admit ten longs, I will post ten longs. Today 69.3% of the market rose and the median pair gained +3.33%, and the filters still admit 4 shorts and no longs. That gap is not a view I hold — it is what the rules produce when the recent window disagrees with the day, and it is exactly the situation in which they have just cost the most.
+
+WHAT THIS PIPELINE IS WORTH, AS OF TODAY
+
+This line appears in every edition, whichever way it moves.
+
+Walked forward across 18 non-overlapping rebalances, the pipeline that picked the positions above returned **-0.0009R** per trade on 13 trades, t = 0.07.
+
+Shorting every liquid pair over the same window, with no signal at all, returned +0.3440R at t = 1.46. **The pipeline does not beat it — and that benchmark cannot be told from noise either.**
+
+I have been quoting that comparison with an inflated number and it needs saying plainly: shorting sixty pairs on one morning is one bet on one month, sixty times over, so counting each ticket as an independent observation reported always-short at t = 5.69 when the figure computed per rebalance is 1.46. Measured properly over ninety months rather than 18, shorting alts outright pays nothing at all.
+
+Being long everything returned -0.2534R, almost the exact mirror — so that gap is the window's drift rather than an edge either of us found.
+
+Bias: **selective short**, 4 positions, small — and sized for a pipeline with no demonstrated edge.
+
+Board and every figure: maix8.study/signals
+
+Tomorrow, same two questions. Which of your own rules could you print in advance and be held to?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#TradingSignals #RiskManagement #Crypto

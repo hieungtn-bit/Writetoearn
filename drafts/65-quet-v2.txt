@@ -1,0 +1,102 @@
+Yesterday's 2x scan came back, corrected. It dropped the backwards volume descriptions, it brought the trapped-supply figure where it had one, it says to move the stop if you wait for a break, and it closes with the exact question I ended yesterday's post on: *what probability, measured over how many samples?*
+
+Marking it again on the errors it has already fixed would be cheating. So I did something else: **I filled in the two numbers it said it could not get, then tested the thing it actually changed.**
+
+THE TWO NUMBERS IT SAID WERE UNAVAILABLE
+
+For $SUI it wrote "no accurate free figure → confidence reduced". For $XLM it left the field empty.
+
+Both are computable from public candles in a single fetch. This is the share of the last 30 days' volume that traded **above the current price** — the people who are stuck, waiting to break even to get out:
+
+```
+$ICP         3.56%
+ENA          21.9%
+$SUI         60.7%             previously unavailable
+$XLM         92.5%             previously unavailable
+```
+
+XLM: **92.5%**. Almost the entire month's volume sits above the current price.
+
+The scan wrote of XLM: *"pretty structure on paper, but tends to fail without a volume break."* The worry points the right way — but this is the reason. It is not whether the wedge is pretty. It is that every time price ticks up, it walks into a wall of people waiting to leave.
+
+Two more XLM figures agree: volume trend -58.0%, RSI 37.0, position in the 30-day range 13.1%.
+
+And the two numbers it **did** give are not invented. It wrote roughly 22% for ENA; I measure 21.9% — a match.
+
+For ICP it wrote roughly 7%. I re-measure now: **3.56%**. The number has fallen, and it fell because price rose up through the trapped supply, not because anyone measured wrong. That is a reminder that this kind of figure decays by the hour, not by the day — writing in the afternoon and posting in the evening is enough to turn a true sentence false.
+
+WHAT IT CHANGED: THE TARGET, FROM 2X DOWN TO 1.5X
+
+This is the change most worth testing. Same stop, shorter target — the hit rate must rise and the reward must fall. Whether it comes out positive is a matter of **the product of the two**, not of either one.
+
+For ICP, using the exact stop the scan set for itself:
+
+```
+          90d hit          R:R    expectancy
+2x           3.2%        20.05       -0.317R
+1.5x         9.3%        10.03        0.039R
+```
+
+**They fixed it correctly.** Same coin, same stop, only the target changed, and the trade flips from a clear loss to positive.
+
+But two things must be said immediately, or I am selling you something that is not there.
+
+**One.** 0.039R is not an edge. It is *the absence of an obvious loss*. Those are different things.
+
+**Two.** That number rests on 910 overlapping windows, which is about **10.1 independent episodes**. Ten says nothing yet. I am publishing it because it is the best number I have, not because it is enough.
+
+AND "LOWER THE TARGET" IS NOT A RULE
+
+I ran the same comparison for all four on one ruler — the stop placed at each coin's own 30-day low, since the scan only set a stop for two of the four:
+
+```
+              1.5x            2x    smaller better?
+$ICP        0.048R       -0.320R              yes
+ENA        -0.223R       -0.094R               no
+$SUI       -0.010R        0.001R               no
+$XLM       -0.259R        0.215R               no
+```
+
+**One out of four.** For the other three, lowering the target made the trade *worse*.
+
+I have a suspicion about why: when the stop is very tight relative to that coin's own daily range, you are close to certain to be swept regardless of where the target is — so a smaller target just trades a smaller reward for the same death. XLM's structural stop is **0.75 times** one daily range. Less than a day.
+
+But I am **not** turning that suspicion into a rule, because I have four names. Four points fit any line you like. That is precisely the error I have been pointing out in others, so I will not commit it here.
+
+What can be said with confidence: **"lower the target to be safe" is not universally true.** Whether it holds depends on the coin, and the way to know is to measure rather than assume.
+
+ONE THING IT GOT WRONG
+
+The scan says of ICP: *"high BTC beta."*
+
+Beta is not correlation. Correlation says **how tightly** two things move together; beta says how far this asset travels when BTC moves one percent. An asset can be loosely correlated and have a very high beta, and the one that affects your position is the second.
+
+30-day beta, by regression:
+
+```
+              beta            r    BTC explains
+$ICP          0.80         0.55           30.8%
+ENA           1.61         0.57           32.5%
+$SUI          1.23         0.81           65.0%
+$XLM          0.87         0.65           41.7%
+```
+
+ICP's beta is **0.80** — below 1, and the **lowest in the group**. ICP moves *less* than BTC, not more. The genuinely high-beta name is ENA at 1.61.
+
+And the number nobody labelled: **SUI has r 0.81, and BTC explains 65.0% of its daily variance.** By far the highest here. Buying SUI at this point is close to buying BTC with an extra layer of idiosyncratic risk — not the independent trade that "L1 + institutional catalyst" suggests.
+
+WHERE I AM BLIND
+
+Binance funding and open interest: the futures endpoint is geo-blocked from this host. Real liquidation data: every source refuses without a paid API. No free data at this time.
+
+And the largest limit on the whole table above: a 90-day horizon over a thousand candles gives only about 10.1 independent episodes per coin. Every expectancy figure here should be read as a **direction**, not as a precise measurement.
+
+Bias: **WAIT**. ICP is still the cleanest name in the group — 3.56% trapped supply, volume expanding 25.3%, an expansion stage — and a 1.5x target with their stop is the first geometry in two days that is not clearly losing. But 0.039R over 10.1 independent episodes is not enough to call an opportunity. XLM's 92.5% trapped supply answers for itself.
+
+What deserves credit here: this scan corrected itself when new numbers arrived. Very few analyses do that, and it is what separates a method from a prediction.
+
+Are you willing to drop your thesis when the data changes?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Altcoins #RiskManagement #MarketAnalysis

@@ -1,0 +1,109 @@
+I scanned the exchange, then ran everything through the filters that survived this week's testing. Here is what the market looks like and what I would actually take.
+
+THE TAPE
+
+**671 USDT pairs.** 240 up, 419 down — **35.8% green.** The median pair is -0.72% on the day.
+
+111 pairs are down more than 5%. **62 are down more than 10%.** Only 51 are up more than 5%.
+
+That is not a market in trouble — it is a market grinding lower with the damage concentrated in the tail. Nothing dramatic happened to $BTC today. Plenty happened further down the list.
+
+MY BOARD LOOKS PERFECTLY BALANCED
+
+100 pairs scanned: **46 long, 46 short**, 8 stand aside. 36 rows carry a regime turn. 25 are too thin to trade at all.
+
+Forty-six each way. If I stopped there I could publish whatever narrative I liked.
+
+SO HERE IS THE FILTER, AND WHERE IT COMES FROM
+
+Every condition traces to something I measured this week rather than something I believe:
+
+**Liquid enough to fill.** A plan you cannot get into is not a plan.
+
+**At least 12 independent episodes.** My own engine already calls anything below that thin. I have been publishing thin rows anyway.
+
+**All five lookback windows agreeing.** A direction that only pays measured one way is a property of the measurement.
+
+```
+                              long    short
+signals on the board            46       46
+liquid enough                   36       37
+sample not thin                  4        7
+all 5 windows agree              0        6
+```
+
+**Forty-six long signals. Zero survive.**
+
+They mostly die at the sample step — only 4 longs on the whole board have a sample I would call adequate, and none of those has all five windows behind it.
+
+This is the same answer the out-of-sample test gave two days ago, arrived at from a different direction: long plans on this board held **−0.048R** and stayed positive on 27% of pairs, while shorts held +0.085R on 79%.
+
+THE PART THAT MAKES THIS DIFFERENT FROM A PICKS LIST
+
+I do **not** optimise the trade geometry.
+
+Two days ago I measured what happens when you search 64 stop-and-target combinations per coin and publish the winner: it keeps about a tenth of itself out of sample and beats a randomly chosen geometry on 49% of pairs — a coin flip.
+
+So every row below uses the **same fixed rule**: a 1.5 ATR stop, a 2:1 target, 30 days. Nobody chose it for these coins. It came from a study across 61 pairs this morning.
+
+A geometry nobody selected cannot be inflated by the selection. That is the entire reason to fix it.
+
+Scored over each coin's full history at that fixed geometry, after fees:
+
+```
+              stop    gross      net  windows
+ARB          7.58%    0.095    0.068       ok
+BONK         12.4%    0.080    0.064       ok
+SUI          5.31%    0.086    0.048       ok
+XRP          4.34%    0.089    0.043       ok
+XLM          5.60%    0.074    0.038       no
+FIL          7.64%   -0.021   -0.047       no
+```
+
+TWO GET CUT AT THE LAST STEP
+
+**FIL** loses outright at the fixed geometry — -0.047R after costs. Its board signal is real; the trade is not.
+
+**XLM** pays over the full history and **loses over the recent nine months**. When the two windows disagree in sign I do not take it, because I have no way to know which one you are about to live in.
+
+Naming the rejects matters. A recommendation that only shows what passed tells you nothing about how selective it was.
+
+WHAT I WOULD TAKE
+
+Four shorts. Entry at the current price, stop and target from the fixed rule, size at 1% of the account risked:
+
+```
+                entry        stop      target    size
+ARB            0.0744      0.0800      0.0631     132
+BONK         0.000002    0.000003    0.000002      81
+SUI            0.6782      0.7142      0.6061     188
+XRP            0.9992       1.043      0.9125     231
+```
+
+The last column is the **position size** on an account of 1000, not the amount at risk. On ARB the 7.58% stop means a position of 132 puts 10 at risk — 1.00% of the account.
+
+NOW THE HONEST SIZE OF THIS
+
+Median net expectancy across the four: **0.056R**.
+
+At 1.00% risked per position that is about **0.06% of your account per trade**, over a thirty-day horizon. Take all four and you are playing for well under half a percent, before anything goes wrong.
+
+That is what a real edge looks like after costs, and it is why the four posts before this one spent so much effort deleting things. Every metric I removed this week was one that made the number look bigger than it is.
+
+If you were hoping for a signal worth 3% a week, I do not have one, and neither does anyone showing you a backtest they optimised.
+
+WHAT WOULD CHANGE MY MIND
+
+A long row clearing all three filters. There is not one today; on a different tape there will be.
+
+Or the market turning up hard enough that the short side's window agreement breaks. 36 of 100 rows already carry a regime turn, so that is a live possibility rather than a courtesy.
+
+Bias: **selective short**, four positions, small, at a geometry I did not choose.
+
+Board and every figure: maix8.study/signals
+
+Would your last trade have survived a filter that threw away 96 of 100 rows?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#TradingSignals #RiskManagement #Crypto

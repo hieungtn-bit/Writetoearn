@@ -1,0 +1,81 @@
+{
+  "measuredAt": "2026-08-09T06:47:02.589Z",
+  "method": {
+    "baseDetector": "src/pbbe.mjs findBase — the same rule applied to both pairs, so 'cleaner base' is a width rather than an opinion",
+    "caveat": "A tight base is a description of the past. research/breakout-signal.mjs measured compression at 1.01x lift and 0.09 sigma across 43,088 pair-days; it forecasts nothing.",
+    "openInterest": "OKX only. Binance's futures endpoint is geo-blocked from this machine, so aggregate figures quoted elsewhere cannot be checked here.",
+    "unverified": "Throughput and transactions-per-second claims are off-chain data this repo cannot fetch, and are therefore not recorded."
+  },
+  "pairs": {
+    "ICP": {
+      "price": 2.19,
+      "marketCapUsd": 1216888957,
+      "marketCapRank": 58,
+      "globalVolume24hUsd": 45939018,
+      "binanceSpotVolume24hUsd": 5825165.48973,
+      "volumeToMarketCapPct": 3.775119967663574,
+      "change7dPct": 5.5,
+      "change30dPct": -6.6,
+      "athUsd": 700.65,
+      "fromAthPct": -99.68743309783773,
+      "multipleToReclaimAth": 319.93150684931504,
+      "base": {
+        "days": 25,
+        "widthPct": 12.345563107889895,
+        "high": 2.257,
+        "fromBaseTopPct": -2.968542312804612
+      },
+      "atrPct": 3.688919298714276,
+      "rsi14": 54.995841058430955,
+      "rangePosition30d": 58.3333333333333,
+      "underwaterPct": 27.332156404721108,
+      "volumeTrendPct": 8.083637309783034,
+      "topThreeDaySharePct": 15.74731314776971,
+      "stage": "1 quiet",
+      "okxOpenInterest": {
+        "coins": 1655445.68,
+        "usd": 3623770.59352
+      }
+    },
+    "AVAX": {
+      "price": 6.494,
+      "marketCapUsd": 2799721614,
+      "marketCapRank": 32,
+      "globalVolume24hUsd": 102417491,
+      "binanceSpotVolume24hUsd": 5118134.1171,
+      "volumeToMarketCapPct": 3.6581312401869397,
+      "change7dPct": -0.8,
+      "change30dPct": -5,
+      "athUsd": 144.96,
+      "fromAthPct": -95.52290286975717,
+      "multipleToReclaimAth": 22.335901386748844,
+      "base": {
+        "days": 25,
+        "widthPct": 14.526322248128606,
+        "high": 6.987,
+        "fromBaseTopPct": -7.055961070559613
+      },
+      "atrPct": 4.221009251755841,
+      "rsi14": 48.493767393927826,
+      "rangePosition30d": 47.94086589229142,
+      "underwaterPct": 65.66277534619546,
+      "volumeTrendPct": -56.48484215865911,
+      "topThreeDaySharePct": 21.1961968277247,
+      "stage": "mixed",
+      "okxOpenInterest": {
+        "coins": 1514559.5999999999,
+        "usd": 9827977.2444
+      }
+    }
+  },
+  "contrasts": {
+    "marketCapRatio": 2.300720700845344,
+    "globalVolumeRatio": 2.229422731674412,
+    "volumeToMarketCapRatio": 0.9690105934437261,
+    "baseWidthGapPp": 2.1807591402387114,
+    "fromBaseTopGapPp": 4.087418757755001,
+    "underwaterGapPp": 38.330618941474356,
+    "volumeTrendGapPp": 64.56847946844215,
+    "athDrawdownGapPp": -4.164530228080551
+  }
+}

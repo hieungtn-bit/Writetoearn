@@ -1,21 +1,21 @@
-Bộ ngưỡng funding này được chép khắp nơi: "lành mạnh" -0.005% đến 0.01% mỗi 8 tiếng, trên 0.015% là long đông, trên 0.04% là cực đoan.
+This set of funding thresholds gets copied everywhere: "healthy" is -0.005% to 0.01% per 8 hours, above 0.015% means longs are crowded, above 0.04% is extreme.
 
-Tôi đo trên 279 kỳ funding $BTC. Hai trong bốn ngưỡng **chưa từng xảy ra một lần nào**.
+I measured it across 279 $BTC funding periods. Two of the four thresholds **have never happened once**.
 
-Funding sàn này bị chặn cứng ở 0.0100%. Phân vị 95 bằng phân vị 99 bằng luôn giá trị lớn nhất — dấu hiệu của cái trần, không phải thị trường yên. Nên mốc 0.015% và 0.04% nằm ngoài vùng chạm tới được.
+Funding on this venue is hard-capped at 0.0100%. The 95th percentile equals the 99th equals the maximum — the signature of a ceiling, not of a calm market. So 0.015% and 0.04% sit outside the reachable range entirely.
 
-Dải "lành mạnh" thì ngược lại: trải từ phân vị 4.30 đến 93.55. Nó ôm gần trọn phân phối — đang mô tả cái bình thường, không chẩn đoán gì.
+The "healthy" band has the opposite problem: it spans the 4.30th to the 93.55th percentile. It contains almost the whole distribution. It describes what is normal; it diagnoses nothing.
 
-Con số hôm nay ai cũng gọi "dương nhẹ" nằm ở **phân vị 54.12**.
+Today's reading, the one everybody calls "mildly positive", sits at the **54.12nd percentile**.
 
-Phần công bằng: ý đằng sau **đúng hướng**. Funding chạm trần thì lợi suất sau yếu hơn ở cả ba khung — -0.86 điểm sau một ngày, -2.06 sau ba, -2.43 sau bảy. Không con nào vượt hai sigma, và tôi chỉ có ba tháng dữ liệu.
+To be fair to it: the idea behind the thresholds points **the right way**. When funding pins to the cap, forward returns are weaker across all three horizons — -0.86 points after one day, -2.06 after three, -2.43 after seven. None of them clears two sigma, and I only have three months of data.
 
-Và 22.22% số kỳ là âm — short trả cho long.
+And 22.22% of periods are negative — shorts paying longs.
 
-Quan điểm: CHỜ. Ngưỡng không nói nó lấy từ đâu thì không phải phép đo, chỉ là con số nghe có vẻ đúng.
+Bias: WAIT. A threshold that will not say where it came from is not a measurement. It is a number that sounds right.
 
-Bạn đang dùng ngưỡng funding nào, và nó đến từ đâu?
+Which funding thresholds are you using, and where did they come from?
 
-Nghiên cứu giáo dục, không phải lời khuyên đầu tư.
+Educational research, not financial advice.
 
 #FundingRate #OpenInterest #WriteToEarn

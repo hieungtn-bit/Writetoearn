@@ -1,0 +1,119 @@
+{
+  "measuredAt": "2026-08-05T07:10:40.727Z",
+  "method": {
+    "interval": "1h",
+    "lookbackHours": 168,
+    "horizonHours": 12,
+    "targetGainPct": 10,
+    "alertThresholdZ": 5,
+    "buckets": "trigger-hour return: >+2, 0..+2, -2..0, <-2",
+    "note": "Buckets fixed before the run. Each is tested against the pooled alert group, because beating a random hour only restates the known result."
+  },
+  "pairsSampled": 60,
+  "baseline": {
+    "n": 30971,
+    "followThroughPct": 6.5932646669464985,
+    "endedHigherPct": 48.542184624325984,
+    "medianGainPct": 1.3893761841274443,
+    "medianDrawdownPct": -1.4180458732881762,
+    "medianEndPct": 0
+  },
+  "allAlerts": {
+    "n": 397,
+    "followThroughPct": 28.71536523929471,
+    "endedHigherPct": 54.65994962216625,
+    "medianGainPct": 3.7556334501752664,
+    "medianDrawdownPct": -2.7900146842878115,
+    "medianEndPct": 0.2673796791443639,
+    "differencePp": 22.122100572348213,
+    "standardErrorPp": 7.881091032056473,
+    "sigmas": 2.8069845256660773
+  },
+  "buckets": {
+    "upHard": {
+      "n": 132,
+      "followThroughPct": 42.42424242424242,
+      "endedHigherPct": 54.54545454545454,
+      "medianGainPct": 7.855731225296447,
+      "medianDrawdownPct": -6.156909292797803,
+      "medianEndPct": 1.140654542162567,
+      "liftVsRandomHour": 6.434481939868815,
+      "liftVsAllAlerts": 1.4774056353003722,
+      "vsAllAlerts": {
+        "differencePp": 13.708877184947715,
+        "standardErrorPp": 16.850170337368535,
+        "sigmas": 0.8135749912596202
+      },
+      "vsRandomHour": {
+        "differencePp": 35.830977757295926,
+        "standardErrorPp": 14.909523205400681,
+        "sigmas": 2.4032276058510615
+      }
+    },
+    "upMild": {
+      "n": 91,
+      "followThroughPct": 20.87912087912088,
+      "endedHigherPct": 58.24175824175825,
+      "medianGainPct": 2.082275266632805,
+      "medianDrawdownPct": -1.1600928074245953,
+      "medianEndPct": 0.2601461167186736,
+      "liftVsRandomHour": 3.1667348322588285,
+      "liftVsAllAlerts": 0.7271062271062272,
+      "vsAllAlerts": {
+        "differencePp": -7.83624436017383,
+        "standardErrorPp": 16.72470492836332,
+        "sigmas": -0.4685430561399259
+      },
+      "vsRandomHour": {
+        "differencePp": 14.28585621217438,
+        "standardErrorPp": 14.76757924491578,
+        "sigmas": 0.9673796886576892
+      }
+    },
+    "downMild": {
+      "n": 89,
+      "followThroughPct": 7.865168539325842,
+      "endedHigherPct": 50.56179775280899,
+      "medianGainPct": 1.5446608462055034,
+      "medianDrawdownPct": -1.1112495845795989,
+      "medianEndPct": 0.009987016878065802,
+      "liftVsRandomHour": 1.1929095731217465,
+      "liftVsAllAlerts": 0.2739010447466982,
+      "vsAllAlerts": {
+        "differencePp": -20.85019669996887,
+        "standardErrorPp": 12.63247406453592,
+        "sigmas": -1.6505236102960361
+      },
+      "vsRandomHour": {
+        "differencePp": 1.2719038723793443,
+        "standardErrorPp": 9.896718789842405,
+        "sigmas": 0.12851773394680824
+      }
+    },
+    "downHard": {
+      "n": 85,
+      "followThroughPct": 37.64705882352941,
+      "endedHigherPct": 55.294117647058826,
+      "medianGainPct": 5.198237885462564,
+      "medianDrawdownPct": -4.848484848484846,
+      "medianEndPct": 0.5555555555555536,
+      "liftVsRandomHour": 5.709926830673504,
+      "liftVsAllAlerts": 1.3110423116615069,
+      "vsAllAlerts": {
+        "differencePp": 8.9316935842347,
+        "standardErrorPp": 19.83106925960973,
+        "sigmas": 0.45038890577756346
+      },
+      "vsRandomHour": {
+        "differencePp": 31.053794156582914,
+        "standardErrorPp": 18.210901948928424,
+        "sigmas": 1.7052309788758266
+      }
+    }
+  },
+  "triggerReturnVsOutcome": {
+    "withGain": 0.058641839006020005,
+    "withEnd": 0.014844733081824968,
+    "note": "Across the alert group only. A near-zero correlation means the 1h column carries no information about what follows."
+  }
+}

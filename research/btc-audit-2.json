@@ -1,0 +1,245 @@
+{
+  "measuredAt": "2026-08-15T23:52:45.568Z",
+  "note": {
+    "statedPriceBand": [
+      63000,
+      63100
+    ],
+    "statedSma50": 63500,
+    "statedSma200": 69000,
+    "statedRsi": [
+      44,
+      45
+    ],
+    "statedMacdNegative": true,
+    "statedSupport": [
+      62200,
+      62600
+    ],
+    "statedResistance": [
+      63400,
+      63700
+    ],
+    "statedBtcDominancePct": [
+      56.1,
+      56.4
+    ],
+    "statedMvrv": [
+      1.2,
+      1.24
+    ],
+    "long": {
+      "entry": [
+        63500,
+        63700
+      ],
+      "stop": [
+        62200,
+        62400
+      ],
+      "tp1": [
+        65200,
+        65500
+      ],
+      "tp2": [
+        66500,
+        67000
+      ],
+      "statedRr": [
+        1.8,
+        2.2
+      ]
+    },
+    "short": {
+      "entry": [
+        62100,
+        62300
+      ],
+      "stop": [
+        63400,
+        63600
+      ],
+      "tp1": [
+        60500,
+        60800
+      ],
+      "tp2": [
+        59000,
+        59500
+      ],
+      "statedRr": [
+        1.8,
+        2.2
+      ]
+    },
+    "statedIcpPrice": [
+      2.25,
+      2.28
+    ],
+    "statedIcpLow": 2,
+    "statedIcpLowDate": "2026-08-01",
+    "statedBmtPrice": 0.0163,
+    "yesterday": {
+      "longStopInAtr": 1.32,
+      "shortStopInAtr": 1.17,
+      "longTp1Rr": 1.06,
+      "shortTp1Rr": 0.97,
+      "longTp2Rr": 1.75,
+      "shortTp2Rr": 1.77
+    }
+  },
+  "btc": {
+    "price": 63094.98,
+    "atrPct": 2.0106240883036213,
+    "day": "2026-08-15",
+    "priceInStatedBand": true,
+    "sma50": 63566.62619999999,
+    "sma200": 69412.27995000003,
+    "belowSma50": true,
+    "belowSma200": true,
+    "sma50Matches": true,
+    "sma200Matches": true,
+    "rsi14": 43.27375566067137,
+    "rsiMatches": true,
+    "macd": {
+      "line": -189.92698283409845,
+      "signal": -39.62247923628528,
+      "histogram": -150.30450359781318,
+      "negative": true
+    },
+    "macdMatches": true,
+    "profile": {
+      "pocPrice": 63995.322625,
+      "valueAreaLow": 63328.25875,
+      "valueAreaHigh": 65317.7475,
+      "overheadPct": 89.397985826757,
+      "totalQuoteVolume": 24769455671.25888,
+      "binWidth": 23.40574999999997
+    },
+    "priceVsValueArea": "below",
+    "resistanceContainsPoc": false,
+    "medianWeekPct": 9.441061812677049,
+    "change7dPct": -2.8749157207377714
+  },
+  "measuredReadings": {
+    "btcDominancePct": 56.16631230946623,
+    "dominanceMatches": true,
+    "fearGreed": 34
+  },
+  "geometry": {
+    "long": {
+      "entry": 63600,
+      "stop": 62300,
+      "riskPct": 2.044025157232704,
+      "stopInAtr": 1.0166122892505798,
+      "feeR": 0.09784615384615386,
+      "tp1": {
+        "target": 65350,
+        "rewardPct": 2.751572327044025,
+        "rr": 1.3461538461538463,
+        "breakEvenHitPct": 42.62295081967213
+      },
+      "tp2": {
+        "target": 66750,
+        "rewardPct": 4.952830188679245,
+        "rr": 2.4230769230769234,
+        "breakEvenHitPct": 29.213483146067414
+      },
+      "statedRr": [
+        1.8,
+        2.2
+      ],
+      "tp1MeetsStated": false,
+      "tp2MeetsStated": true
+    },
+    "short": {
+      "entry": 62200,
+      "stop": 63500,
+      "riskPct": 2.090032154340836,
+      "stopInAtr": 1.0394942378832295,
+      "feeR": 0.0956923076923077,
+      "tp1": {
+        "target": 60650,
+        "rewardPct": 2.491961414790997,
+        "rr": 1.1923076923076925,
+        "breakEvenHitPct": 45.614035087719294
+      },
+      "tp2": {
+        "target": 59250,
+        "rewardPct": 4.742765273311897,
+        "rr": 2.269230769230769,
+        "breakEvenHitPct": 30.58823529411765
+      },
+      "statedRr": [
+        1.8,
+        2.2
+      ],
+      "tp1MeetsStated": false,
+      "tp2MeetsStated": true
+    }
+  },
+  "movement": {
+    "longStopInAtr": {
+      "yesterday": 1.32,
+      "today": 1.0166122892505798,
+      "tighter": true
+    },
+    "shortStopInAtr": {
+      "yesterday": 1.17,
+      "today": 1.0394942378832295,
+      "tighter": true
+    },
+    "bothStopsNowUnderOneAtr": false,
+    "longTp2Rr": {
+      "yesterday": 1.75,
+      "today": 2.4230769230769234,
+      "improved": true
+    },
+    "shortTp2Rr": {
+      "yesterday": 1.77,
+      "today": 2.269230769230769,
+      "improved": true
+    },
+    "tp2NowMeetsStated": true,
+    "tp1StillShort": true
+  },
+  "alts": {
+    "ICPUSDT": {
+      "price": 2.232,
+      "overheadPct": 22.046507247100102,
+      "volumeTrend30dPct": -14.304859120698493,
+      "rangePosition30d": 59.05707196029785,
+      "atrPct": 4.316082417091867,
+      "change7dPct": 1.4545454545454557,
+      "turnoverUsd": 3062257.055977333,
+      "augustLow": 1.994,
+      "augustLowDay": "2026-08-01",
+      "valueArea": [
+        2.068555,
+        2.229755
+      ],
+      "priceVsValueArea": "above"
+    },
+    "BMTUSDT": {
+      "price": 0.01489,
+      "overheadPct": 94.89062538857127,
+      "volumeTrend30dPct": 7.074612461383256,
+      "rangePosition30d": 12.278558338423947,
+      "atrPct": 28.909316885302854,
+      "change7dPct": 13.490853658536592,
+      "turnoverUsd": 4436374.365394834,
+      "augustLow": 0.01154,
+      "augustLowDay": "2026-08-01",
+      "valueArea": [
+        0.0147988,
+        0.034606500000000005
+      ],
+      "priceVsValueArea": "inside"
+    }
+  },
+  "unverifiable": [
+    "MVRV, NUPL, SOPR, realized and STH cost basis — on-chain hosts blocked here",
+    "ETF net flows and AUM — no free source reachable from this host",
+    "exchange netflow and whale accumulation — same"
+  ]
+}

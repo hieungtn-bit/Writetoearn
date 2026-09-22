@@ -1,0 +1,156 @@
+{
+  "measuredAt": "2026-08-19T02:02:35.960Z",
+  "symbol": "BTCUSDT",
+  "source": "Binance spot candles; open interest and taker flow from data.binance.vision futures metrics dumps",
+  "daysOfCandles": 580,
+  "daysWithMetrics": 538,
+  "openInterest": {
+    "days": 538,
+    "firstDate": "2025-02-26",
+    "lastDate": "2026-08-17",
+    "oiUsdFirst": 7530554909.869202,
+    "oiUsdLast": 6935490288.4465,
+    "oiUsdMedian": 7969890735.70298,
+    "oiUsdMin": 5161589390.294881,
+    "oiUsdMax": 12330194373.732128
+  },
+  "firstDate": "2025-01-17",
+  "lastDate": "2026-08-19",
+  "note": "Windows are non-overlapping: at a three-day horizon only every third day is read, so one move is never counted three times.",
+  "unreachableSources": [
+    {
+      "name": "Farside Investors, ETF flow",
+      "status": 403
+    },
+    {
+      "name": "Reuters, SEC proposal",
+      "status": 401
+    }
+  ],
+  "baseRate": [
+    {
+      "horizonDays": 1,
+      "windows": 578,
+      "sameDirectionPct": 50.69204152249135,
+      "zVsCoinToss": 0.33275613232308093,
+      "meanForwardPct": -0.05863222902603154,
+      "medianForwardPct": -0.05822628583020406,
+      "tStat": -0.6277890059346442
+    },
+    {
+      "horizonDays": 2,
+      "windows": 288,
+      "sameDirectionPct": 45.48611111111111,
+      "zVsCoinToss": -1.532064692570855,
+      "meanForwardPct": -0.10500906217025846,
+      "medianForwardPct": -0.06489090553007393,
+      "tStat": -0.5640406221470361
+    },
+    {
+      "horizonDays": 3,
+      "windows": 192,
+      "sameDirectionPct": 42.1875,
+      "zVsCoinToss": -2.1650635094610964,
+      "meanForwardPct": -0.15962157882048691,
+      "medianForwardPct": -0.006578746902541344,
+      "tStat": -0.5539875940122139
+    }
+  ],
+  "conditionedOnOpenInterest": [
+    {
+      "horizonDays": 1,
+      "withData": 537,
+      "oiRising": {
+        "windows": 256,
+        "sameDirectionPct": 49.609375,
+        "zVsCoinToss": -0.125,
+        "meanForwardPct": -0.04975089176058192,
+        "medianForwardPct": -0.05094415908922234,
+        "tStat": -0.3834638566549204
+      },
+      "oiFalling": {
+        "windows": 281,
+        "sameDirectionPct": 51.95729537366548,
+        "zVsCoinToss": 0.6562049848990827,
+        "meanForwardPct": -0.0014679721239332665,
+        "medianForwardPct": 0.02074447357851561,
+        "tStat": -0.01015691081076877
+      },
+      "differencePct": -2.347920373665481
+    },
+    {
+      "horizonDays": 2,
+      "withData": 268,
+      "oiRising": {
+        "windows": 129,
+        "sameDirectionPct": 46.51162790697674,
+        "zVsCoinToss": -0.7924058156930616,
+        "meanForwardPct": -0.12505438129411547,
+        "medianForwardPct": -0.06056647914176594,
+        "tStat": -0.518412280702905
+      },
+      "oiFalling": {
+        "windows": 139,
+        "sameDirectionPct": 45.32374100719424,
+        "zVsCoinToss": -1.102645608583962,
+        "meanForwardPct": 0.024307834379818417,
+        "medianForwardPct": 0.05365510488353209,
+        "tStat": 0.0807277382530034
+      },
+      "differencePct": 1.187886899782498
+    },
+    {
+      "horizonDays": 3,
+      "withData": 179,
+      "oiRising": {
+        "windows": 86,
+        "sameDirectionPct": 50,
+        "zVsCoinToss": 0,
+        "meanForwardPct": -0.5226515449340382,
+        "medianForwardPct": -0.4014553934975962,
+        "tStat": -1.3888403961846079
+      },
+      "oiFalling": {
+        "windows": 93,
+        "sameDirectionPct": 35.483870967741936,
+        "zVsCoinToss": -2.799769575772148,
+        "meanForwardPct": 0.35427499649895755,
+        "medianForwardPct": 0.6863047072598549,
+        "tStat": 0.7593298872481151
+      },
+      "differencePct": 14.516129032258064
+    }
+  ],
+  "largeMovesOnly": [
+    {
+      "horizonDays": 1,
+      "thresholdPct": 2.9260705624643277,
+      "windows": 80,
+      "sameDirectionPct": 51.24999999999999,
+      "zVsCoinToss": 0.2236067977499782,
+      "meanForwardPct": -0.34299726288999394,
+      "medianForwardPct": -0.2809615948970723,
+      "tStat": -0.9303047606285726
+    },
+    {
+      "horizonDays": 2,
+      "thresholdPct": 2.901072833466384,
+      "windows": 40,
+      "sameDirectionPct": 42.5,
+      "zVsCoinToss": -0.9486832980505139,
+      "meanForwardPct": -0.40256006558494517,
+      "medianForwardPct": 0.09126404490316098,
+      "tStat": -0.5441652488028427
+    },
+    {
+      "horizonDays": 3,
+      "thresholdPct": 2.7463729176228355,
+      "windows": 22,
+      "sameDirectionPct": 36.36363636363637,
+      "zVsCoinToss": -1.2792042981336627,
+      "meanForwardPct": 1.4786138871633667,
+      "medianForwardPct": 1.8934257075887362,
+      "tStat": 1.3575164124652948
+    }
+  ]
+}

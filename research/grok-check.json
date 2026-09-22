@@ -1,0 +1,124 @@
+{
+  "measuredAt": "2026-08-20T08:20:38.602Z",
+  "source": "Binance spot 24hr tickers; OKX for pairs Binance spot does not list",
+  "claimsChecked": [
+    {
+      "symbol": "BTCUSDT",
+      "label": "BTC",
+      "kind": "price",
+      "lowUsd": 69500,
+      "highUsd": 69800,
+      "actualPrice": 71225.86,
+      "actualChangePct": 10.793,
+      "inRange": false,
+      "missUsd": 1425.8600000000006,
+      "missPct": 2.042779369627512
+    },
+    {
+      "symbol": "ETHUSDT",
+      "label": "ETH",
+      "kind": "change",
+      "lowPct": 17,
+      "highPct": 18,
+      "actualChangePct": 18.593,
+      "actualPrice": 2273.22,
+      "inRange": false,
+      "missPct": 0.593
+    },
+    {
+      "symbol": "SOLUSDT",
+      "label": "SOL",
+      "kind": "change",
+      "lowPct": 11,
+      "highPct": 12,
+      "actualChangePct": 13.306,
+      "actualPrice": 87.37,
+      "inRange": false,
+      "missPct": 1.3059999999999992
+    }
+  ],
+  "claimsInRange": 0,
+  "claimsTotal": 3,
+  "leaderboard": [
+    {
+      "symbol": "ETHUSDT",
+      "price": 2273.22,
+      "changePct": 18.593,
+      "low": 1916.01,
+      "high": 2333.65
+    },
+    {
+      "symbol": "ARBUSDT",
+      "price": 0.0899,
+      "changePct": 16.905,
+      "low": 0.0768,
+      "high": 0.0907
+    },
+    {
+      "symbol": "ENAUSDT",
+      "price": 0.0966,
+      "changePct": 13.647,
+      "low": 0.0837,
+      "high": 0.0976
+    },
+    {
+      "symbol": "SOLUSDT",
+      "price": 87.37,
+      "changePct": 13.306,
+      "low": 77.07,
+      "high": 87.63
+    },
+    {
+      "symbol": "BNBUSDT",
+      "price": 642.21,
+      "changePct": 6.61,
+      "low": 602.01,
+      "high": 645
+    }
+  ],
+  "hype": {
+    "venue": "OKX perpetual",
+    "price": 70.889,
+    "changePct": 21.685319967042016
+  },
+  "unreachable": [
+    {
+      "name": "CoinGlass, liquidation totals",
+      "status": 503
+    },
+    {
+      "name": "Binance futures API, open interest",
+      "status": 451
+    }
+  ],
+  "ownResult": {
+    "day": "2026-08-20",
+    "upSharePct": 69.29955290611028,
+    "medianChangePct": 3.333,
+    "ourPositions": 20,
+    "ourStopped": 19,
+    "ourAhead": 0,
+    "ourTotalR": -19.444990771903466,
+    "ourBiasToday": "short"
+  },
+  "claimedLevels": {
+    "retestLowUsd": 68200,
+    "retestHighUsd": 68700,
+    "invalidationUsd": 68000
+  },
+  "claimedUnverified": {
+    "liquidations24hUsdBn": 2.6,
+    "verified": false
+  },
+  "priorDisclosure": {
+    "day": "2026-08-18",
+    "withPositionsPct": 78.5,
+    "source": "drafts/brief-2026-08-18.txt"
+  },
+  "procedure": {
+    "persistence30dPct": 50.696446253713276,
+    "persistence10dPct": 49.55454241258156,
+    "continuation1dPct": 50.69204152249135,
+    "continuation3dPct": 42.1875
+  }
+}

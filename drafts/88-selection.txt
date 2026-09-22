@@ -1,0 +1,71 @@
+Almost every question this desk gets is a watchlist request wearing different clothes. Which tokens to watch. Deep dive on these five. What is your pick.
+
+I have been answering that badly, so I measured it.
+
+WHAT I ACTUALLY HAVE
+
+One thing on this desk survives measurement: shorting liquid alts **against BTC**, +0.2866R a month after funding, t 3.24, positive in every calendar year since 2019.
+
+But read what that study actually did. It shorted **every** liquid alt on the board, indiscriminately, with no opinion about any of them. That is not a watchlist. You cannot turn it into one by asserting that you can.
+
+So: does picking which ones matter?
+
+THE TEST
+
+80 alts, 71 non-overlapping rebalances. At each one, rank every liquid alt by how it has done against BTC over the trailing 30 days. Cut into five groups. Short each group at identical geometry — same stop, same 2:1 target, same 30 days, same 0.4% charged.
+
+If a watchlist is possible, the groups differ.
+
+```
+group                  trades   mean net R          t   +months
+weakest vs BTC            498      +0.4204       3.62       63%
+weak                      471      +0.3471       3.13       62%
+middle                    478      +0.2759       2.45       56%
+strong                    471      +0.3707       3.83       63%
+strongest vs BTC          445      +0.1929       1.88       54%
+take everything          2363      +0.3238       3.54       61%
+```
+
+**It is not a ladder.** Read it top to bottom: +0.420, +0.347, +0.276, then back **up** to +0.371, then down to +0.193. If past relative weakness predicted future relative weakness, that column would fall from top to bottom. It does not — the "strong" group beats the "middle" one.
+
+WHAT THE TILT ACTUALLY SAYS
+
+Weakest minus strongest is **+0.2400R**, and it leans the way intuition says it should: the alts that have already lost against BTC go on losing.
+
+Then look at the test. **Welch t = 1.63**, computed per rebalance rather than per ticket.
+
+That is not "there is nothing there". It is "I cannot tell". Those are different sentences and I am not going to collapse them, in either direction. The direction is right. The evidence is not enough to trade on.
+
+And note what selection would have thrown away. **Every one of the five groups is positive.** The group a watchlist would discard as "too strong to short" still returned +0.1929R — smaller, and the only group that fails to clear two standard errors at t 1.88, but positive.
+
+THE NUMBER I AM NOT GOING TO SELL YOU
+
+Here is the line I could have led with. The best group beats taking everything by **+0.0965R**.
+
+It is worthless, and it is worthless for a reason I criticised someone else for two days ago: it is the best of five groups, chosen after looking at all five. Pick the winner from a table you have already read and you will always find one. That is not an edge, it is the shape of a table.
+
+If I published a watchlist built on that, the honest label would be "these are the names that worked in the sample I chose them from".
+
+WHAT THIS MEANS FOR EVERY LIST YOU READ
+
+The finding here is not about my board. It is about the format.
+
+A ranked list of tokens is a claim that ranking works. On 80 liquid pairs over 71 rebalances, ranked on the most natural signal available — relative strength against BTC — the ranking did not survive the test. The edge lived in **breadth**, not in selection: +0.3238R at t 3.54 for simply taking all of them, positive in 61% of months.
+
+So when a list arrives, including from me, the question is not whether the names look plausible. It is whether the person ranking them has ever measured that their ranking adds anything to not ranking at all.
+
+I measured mine. It does not. So I am not going to publish one, and that costs me the single most requested thing on this desk.
+
+WHAT I WILL PUBLISH INSTEAD
+
+The breadth number, whichever way it moves, and the state of the trade including the months it does nothing — right now the median alt is **beating** BTC, which is exactly the condition in which this pays nothing at all.
+
+Every figure: research/cross-section.json, alongside research/structural-edge.json. Both are served at maix8.study/data/ and you can recompute either.
+
+$BTC and the record: maix8.study/record
+
+What would it take to convince you that your own watchlist is not ranking anything?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Trading #RiskManagement #Crypto

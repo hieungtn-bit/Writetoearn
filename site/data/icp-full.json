@@ -1,0 +1,388 @@
+{
+  "measuredAt": "2026-08-11T01:09:28.377Z",
+  "symbol": "ICPUSDT",
+  "price": 2.357,
+  "method": {
+    "candles": 1000,
+    "conditional": "Forward returns from days matching a state, against the unconditional rate over the same candles. Overlapping windows are de-overlapped by the horizon before any sigma.",
+    "excursion": "Worst drawdown measured only on episodes that reached the target, so it answers how bad it gets when the trade is right.",
+    "unavailable": "Binance futures is geo-blocked from this host. Funding and open interest are OKX only, labelled as such. No liquidation feed at any price this desk pays."
+  },
+  "fundamentals": {
+    "marketCapUsd": 1303847459,
+    "marketCapRank": 56,
+    "volume24hUsd": 64940931,
+    "volumeToMarketCapPct": 4.980715385970623,
+    "athUsd": 700.65,
+    "athDate": "2021-05-10",
+    "fromAthPct": -99.66359808749019,
+    "multipleToReclaimAth": 297.26347051336444,
+    "change7dPct": 11.3,
+    "change30dPct": 4.6,
+    "change1yPct": -58.1,
+    "supply": {
+      "circulating": 555351769.8295453,
+      "total": 555351898.9964489,
+      "max": null,
+      "genesisDate": null
+    },
+    "hasMaxSupply": false
+  },
+  "structure": {
+    "daily": {
+      "rsi14": 66.40295123946318,
+      "sma20": 2.1337,
+      "sma50": 2.1734199999999997,
+      "sma200": 2.448599999999999,
+      "atrPct": 3.7967907166830903,
+      "aboveAll": false,
+      "goldenCross": false
+    },
+    "h4": {
+      "rsi14": 72.92396819057211,
+      "sma50": 2.1319799999999995,
+      "sma200": 2.15891
+    },
+    "weekly": {
+      "rsi14": 43.199585038266235,
+      "sma20": 2.3789000000000002,
+      "sma50": 3.1094000000000013
+    },
+    "base": {
+      "days": 25,
+      "widthPct": 16.896635650497068,
+      "high": 2.355,
+      "low": 1.994,
+      "fromBaseTopPct": 0.0849256900212314
+    },
+    "high30d": 2.374,
+    "low30d": 1.994,
+    "rangePosition30d": 95.52631578947371,
+    "high90d": 3.231,
+    "low90d": 1.994,
+    "high365d": 9.849
+  },
+  "todayVolZ": 4.324320035760822,
+  "positioning": {
+    "underwaterPct": 0,
+    "vsVwapPct": 9.15037124529723,
+    "volumeTrendPct": 69.58768469805953,
+    "concentrationPct": 20.52347668777249,
+    "stage": "2 expansion",
+    "upDownVolumeRatio30d": 1.3988560134085395,
+    "upDownVolumeRatio90d": 1.0437648009787055,
+    "funding": {
+      "annualised7dPct": 9.479482992413264,
+      "annualisedPrior14dPct": 4.622684842260176,
+      "negativeSharePct": 17.46031746031746
+    }
+  },
+  "book": {
+    "mid": 2.3565,
+    "spreadPct": 0.042435815828573475,
+    "depth": [
+      {
+        "pct": 0.5,
+        "bidUsd": 61840.24177,
+        "askUsd": 39084.155020000006
+      },
+      {
+        "pct": 1,
+        "bidUsd": 103475.52947000001,
+        "askUsd": 70656.0738
+      },
+      {
+        "pct": 2,
+        "bidUsd": 142806.4137,
+        "askUsd": 154095.91781999997
+      },
+      {
+        "pct": 5,
+        "bidUsd": 242817.40497,
+        "askUsd": 226020.78501000005
+      }
+    ]
+  },
+  "btcLink": [
+    {
+      "days": 30,
+      "beta": 0.6367073129298094,
+      "r": 0.40747340830712026,
+      "varianceExplainedPct": 16.603457847742114
+    },
+    {
+      "days": 90,
+      "beta": 0.6279321276903833,
+      "r": 0.30259263386351565,
+      "varianceExplainedPct": 9.156230206845963
+    }
+  ],
+  "btcContext": {
+    "price": 63988.01,
+    "sma50": 63386.275199999975,
+    "sma200": 69916.13695000001,
+    "rangePosition30d": 42.15482598544592,
+    "rsi14": 48.50352006658478
+  },
+  "weeklyRange": {
+    "weeks": 104,
+    "p25Pct": 13.919925512104278,
+    "medianPct": 19.597993732022335,
+    "p75Pct": 28.834532374100725,
+    "p90Pct": 42.35
+  },
+  "conditionals": [
+    {
+      "key": "hotVolumeHighInRange",
+      "label": "volZ ≥ 3 and range position ≥ 85 — today's state",
+      "byHorizon": [
+        {
+          "horizonDays": 5,
+          "conditional": {
+            "n": 16,
+            "medianEndPct": -3.884199909208447,
+            "higherPct": 43.75,
+            "medianBestPct": 10.450845930332452,
+            "medianWorstPct": -9.249871531346354,
+            "p10EndPct": -22.237082066869295,
+            "p90EndPct": 7.446221731936009
+          },
+          "baseline": {
+            "n": 965,
+            "medianEndPct": -1.5052888527257835,
+            "higherPct": 42.38341968911917,
+            "medianBestPct": 5.98380656610471,
+            "medianWorstPct": -7.097322566935826,
+            "p10EndPct": -12.530276118197959,
+            "p90EndPct": 12.452290076335881
+          },
+          "edgePp": 1.3665803108808277,
+          "effectiveN": 3.2,
+          "sigmasDeOverlapped": 0.04946960150764308
+        },
+        {
+          "horizonDays": 10,
+          "conditional": {
+            "n": 16,
+            "medianEndPct": -7.697320767765703,
+            "higherPct": 31.25,
+            "medianBestPct": 10.895032599690202,
+            "medianWorstPct": -15.216992091167326,
+            "p10EndPct": -33.00911854103343,
+            "p90EndPct": 28.576446825327118
+          },
+          "baseline": {
+            "n": 960,
+            "medianEndPct": -2.5351493945364343,
+            "higherPct": 40.9375,
+            "medianBestPct": 8.019998546527418,
+            "medianWorstPct": -10.13863961914392,
+            "p10EndPct": -18.44237391128215,
+            "p90EndPct": 17.918761037902463
+          },
+          "edgePp": -9.6875,
+          "effectiveN": 1.6,
+          "sigmasDeOverlapped": -0.24920407247125304
+        },
+        {
+          "horizonDays": 30,
+          "conditional": {
+            "n": 16,
+            "medianEndPct": -20.36841974118608,
+            "higherPct": 6.25,
+            "medianBestPct": 14.668740234061984,
+            "medianWorstPct": -31.14932743326149,
+            "p10EndPct": -58.334346504559264,
+            "p90EndPct": -5.11304347826086
+          },
+          "baseline": {
+            "n": 940,
+            "medianEndPct": -5.134089422050159,
+            "higherPct": 38.51063829787234,
+            "medianBestPct": 16.78067888297158,
+            "medianWorstPct": -17.501513873984358,
+            "p10EndPct": -29.76118803933373,
+            "p90EndPct": 24.59283387622151
+          },
+          "edgePp": -32.26063829787234,
+          "effectiveN": 0.5333333333333333,
+          "sigmasDeOverlapped": -0.4841522662090537
+        }
+      ]
+    },
+    {
+      "key": "hotVolume",
+      "label": "volZ ≥ 3, any range position",
+      "byHorizon": [
+        {
+          "horizonDays": 5,
+          "conditional": {
+            "n": 37,
+            "medianEndPct": -1.277669698722328,
+            "higherPct": 45.94594594594595,
+            "medianBestPct": 12.119083165012734,
+            "medianWorstPct": -8.978649740334676,
+            "p10EndPct": -14.688394626734203,
+            "p90EndPct": 45.626204238920984
+          },
+          "baseline": {
+            "n": 965,
+            "medianEndPct": -1.5052888527257835,
+            "higherPct": 42.38341968911917,
+            "medianBestPct": 5.98380656610471,
+            "medianWorstPct": -7.097322566935826,
+            "p10EndPct": -12.530276118197959,
+            "p90EndPct": 12.452290076335881
+          },
+          "edgePp": 3.5625262568267786,
+          "effectiveN": 7.4,
+          "sigmasDeOverlapped": 0.19611110977072566
+        },
+        {
+          "horizonDays": 10,
+          "conditional": {
+            "n": 37,
+            "medianEndPct": -4.136789851075562,
+            "higherPct": 35.13513513513514,
+            "medianBestPct": 12.66525941562049,
+            "medianWorstPct": -13.08743472947449,
+            "p10EndPct": -24.155722326454043,
+            "p90EndPct": 28.576446825327118
+          },
+          "baseline": {
+            "n": 960,
+            "medianEndPct": -2.5351493945364343,
+            "higherPct": 40.9375,
+            "medianBestPct": 8.019998546527418,
+            "medianWorstPct": -10.13863961914392,
+            "p10EndPct": -18.44237391128215,
+            "p90EndPct": 17.918761037902463
+          },
+          "edgePp": -5.802364864864863,
+          "effectiveN": 3.7,
+          "sigmasDeOverlapped": -0.22698090596568557
+        },
+        {
+          "horizonDays": 30,
+          "conditional": {
+            "n": 37,
+            "medianEndPct": -11.711576095137733,
+            "higherPct": 29.72972972972973,
+            "medianBestPct": 18.281890783509613,
+            "medianWorstPct": -22.372210223182154,
+            "p10EndPct": -40.243902439024396,
+            "p90EndPct": 29.009009009009002
+          },
+          "baseline": {
+            "n": 940,
+            "medianEndPct": -5.134089422050159,
+            "higherPct": 38.51063829787234,
+            "medianBestPct": 16.78067888297158,
+            "medianWorstPct": -17.501513873984358,
+            "p10EndPct": -29.76118803933373,
+            "p90EndPct": 24.59283387622151
+          },
+          "edgePp": -8.78090856814261,
+          "effectiveN": 1.2333333333333334,
+          "sigmasDeOverlapped": -0.20039613395009903
+        }
+      ]
+    },
+    {
+      "key": "highInRange",
+      "label": "range position ≥ 85, any volume",
+      "byHorizon": [
+        {
+          "horizonDays": 5,
+          "conditional": {
+            "n": 55,
+            "medianEndPct": -5.259719046063383,
+            "higherPct": 40,
+            "medianBestPct": 8.933801991798473,
+            "medianWorstPct": -9.250000000000004,
+            "p10EndPct": -17.367830598793997,
+            "p90EndPct": 13.21247754368773
+          },
+          "baseline": {
+            "n": 965,
+            "medianEndPct": -1.5052888527257835,
+            "higherPct": 42.38341968911917,
+            "medianBestPct": 5.98380656610471,
+            "medianWorstPct": -7.097322566935826,
+            "p10EndPct": -12.530276118197959,
+            "p90EndPct": 12.452290076335881
+          },
+          "edgePp": -2.3834196891191723,
+          "effectiveN": 11,
+          "sigmasDeOverlapped": -0.15996505836471653
+        },
+        {
+          "horizonDays": 10,
+          "conditional": {
+            "n": 55,
+            "medianEndPct": -7.846889952153113,
+            "higherPct": 25.454545454545453,
+            "medianBestPct": 8.933801991798473,
+            "medianWorstPct": -15.682103838344775,
+            "p10EndPct": -23.5630918299934,
+            "p90EndPct": 6.833313865202673
+          },
+          "baseline": {
+            "n": 960,
+            "medianEndPct": -2.5351493945364343,
+            "higherPct": 40.9375,
+            "medianBestPct": 8.019998546527418,
+            "medianWorstPct": -10.13863961914392,
+            "p10EndPct": -18.44237391128215,
+            "p90EndPct": 17.918761037902463
+          },
+          "edgePp": -15.482954545454547,
+          "effectiveN": 5.5,
+          "sigmasDeOverlapped": -0.7384457782664697
+        },
+        {
+          "horizonDays": 30,
+          "conditional": {
+            "n": 55,
+            "medianEndPct": -16.775563541326367,
+            "higherPct": 12.727272727272727,
+            "medianBestPct": 12.497706001101117,
+            "medianWorstPct": -27.77815816501198,
+            "p10EndPct": -35.13513513513513,
+            "p90EndPct": 2.490609178507275
+          },
+          "baseline": {
+            "n": 940,
+            "medianEndPct": -5.134089422050159,
+            "higherPct": 38.51063829787234,
+            "medianBestPct": 16.78067888297158,
+            "medianWorstPct": -17.501513873984358,
+            "p10EndPct": -29.76118803933373,
+            "p90EndPct": 24.59283387622151
+          },
+          "edgePp": -25.783365570599614,
+          "effectiveN": 1.8333333333333333,
+          "sigmasDeOverlapped": -0.7174142070713683
+        }
+      ]
+    }
+  ],
+  "plan": {
+    "stopAtr": 4,
+    "rr": 3,
+    "horizonDays": 90,
+    "entry": 2.357,
+    "stopPct": 15.187162866732361,
+    "stop": 1.9990385712311185,
+    "targetPct": 45.56148860019708,
+    "target": 3.4308842863066458,
+    "breakevenWinRatePct": 25,
+    "positionUsdPer1000": 65.84508303328401,
+    "maxLeverage": 6.584508303328401,
+    "excursion": {
+      "winners": 249,
+      "medianWorstPct": -7.614678899082583,
+      "p90WorstPct": -13.781265326140268
+    }
+  }
+}

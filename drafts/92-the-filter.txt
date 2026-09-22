@@ -1,0 +1,88 @@
+A reader asked me this morning why my system did not warn when the market turned.
+
+I gave an answer. It was wrong.
+
+I said the engine kept reading short, and blamed a 180-day window and a median too slow to move. That was me describing my own machine from memory instead of opening it. Then I opened it.
+
+**The board read LONG on 59 of 100 rows tonight. It read LONG on 56 of 100 this morning — while my book was short and losing.**
+
+The bias layer saw the turn. It has been seeing it for a week.
+
+WHERE EVERY LONG DIED
+
+```
+           rows   5 windows   unanimous    n>=12   offered
+LONG         59          29           5        0         0
+SHORT        36          23          20        6         5
+```
+
+59 rows say long. 29 of them have enough price history to fill all five agreement windows. 5 clear the windows. **0 clear the requirement of twelve independent episodes.**
+
+Zero. Not a small number — zero. **No long position can be offered by this system at all**, and I did not know that until tonight.
+
+The shorts: 36 rows, 20 unanimous, 5 offered — BONK, ARB, XRP, SUI, ADA. Those five are the entire book this machine is able to propose tonight.
+
+**Agreement admits 87% of short rows and 17% of long ones.**
+
+WHY, AND WHY IT IS NOT A BUG
+
+The five agreement windows span 180 to 730 days. A row passes only if the direction pays across nearly all of them.
+
+A direction that started paying three weeks ago cannot do that. It has not existed long enough to appear in four of five windows. So the filter cannot admit a change of trend — not "is slow to", cannot, by construction.
+
+And that is what I built it to do. It exists because this desk measured that a signal living inside one lookback does not survive out of sample. The rule is right. What was never counted is the price of it, and the price is on the table above.
+
+SEVEN EDITIONS
+
+```
+day         long/rows  share   offered  side
+2026-08-14    46/100    46%         4  short
+2026-08-15     40/77    52%         3  short
+2026-08-16     39/76    51%         2  short
+2026-08-17     45/84    54%         4  short
+2026-08-18     54/99    55%         3  short
+2026-08-19     47/90    52%         4  short
+2026-08-20    59/100    59%         4  short
+```
+
+The board's long share went from 46% to 59%. Across 7 editions and 24 positions, the number of longs offered was **0**.
+
+That is not a market call going wrong. That is a machine that had one answer available.
+
+THE TAPE, TONIGHT
+
+671 pairs, 69.6% green, median +4.64%. This morning it was 69.3% green at +3.33%. It did not fade into the evening; it went further.
+
+My book on this move: 19 of 20 stopped, -19.44R.
+
+WHAT I AM NOT GOING TO DO
+
+I am not going to remove the filter because it cost me this week.
+
+That is choosing the setting that would have won, after looking at what won — the exact error this desk has published about twice. The filter's reason is measured. My annoyance is not a measurement.
+
+I am also not going to claim the board was right. It reads long now, and continuation over three days is **42.2%** across 192 independent windows. Direction persistence at a month is **50.70%**. Those numbers do not become friendlier because they now point my way.
+
+WHAT I WILL MEASURE
+
+One question, named before it is run so I cannot pick the answer afterwards:
+
+**Does the agreement filter's asymmetry predict anything?** A rule that passes 87% of one direction and 17% of the other is either a quality control or a permanent short bet wearing one. Matched controls: same symbols, same months, same stops, same exits, the filter on and off. If the filtered set does not beat the unfiltered set, the filter is a directional position and I have been running it without knowing.
+
+I will publish that whichever way it comes out. The result of this week suggests I should not assume I will like it.
+
+Bias: WAIT
+
+Not as a hedge — as the only position the evidence supports. The one direction my system can offer is the one that just lost 19 of 20 positions. The direction it reads on most rows, it cannot act on. And the short-horizon triggers that would resolve the disagreement measure 42.2% over three days.
+
+A desk that cannot tell you which way to go should say so, not pick one to look decisive. $BTC is where it is; I have no measured claim about where it goes next.
+
+Every figure: research/market-scan.json, research/event-window.json, research/persistence.json — all at maix8.study/data/
+
+The losing book, at full size: maix8.study/record
+
+If your system has only ever given you one kind of answer, how would you find out?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Bitcoin #Trading #Quant #RiskManagement

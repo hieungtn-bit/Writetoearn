@@ -1,0 +1,246 @@
+{
+  "measuredAt": "2026-08-10T09:53:27.404Z",
+  "symbol": "ICPUSDT",
+  "interval": "4h",
+  "method": {
+    "bars": 1000,
+    "recentWindowBars": 60,
+    "firstTouch": "Walked bar by bar. A bar touching both levels is charged to the stop.",
+    "overlap": "Windows overlap; effectiveN = n / horizon is the de-overlapped count.",
+    "supportDefinition": "A support test is price within nearPct of its trailing 20-bar low. The bounce rate is reported against the unconditional rate over the same bars, because a rate without a baseline says nothing.",
+    "unavailable": "Binance futures is geo-blocked from this host; nothing here uses funding or open interest."
+  },
+  "note": {
+    "priceBand": [
+      2.18,
+      2.21
+    ],
+    "rangeLow": 2.08,
+    "rangeHigh": 2.26,
+    "supportNear": [
+      2.15,
+      2.17
+    ],
+    "supportMain": [
+      2.08,
+      2.12
+    ],
+    "supportDeep": [
+      2,
+      2.05
+    ],
+    "resistNear": [
+      2.22,
+      2.26
+    ],
+    "resistNext": [
+      2.3,
+      2.35
+    ],
+    "resistFar": [
+      2.4,
+      2.45
+    ],
+    "rsiBand": [
+      55,
+      65
+    ],
+    "trade": {
+      "entry": 2.135,
+      "stop": 2.075,
+      "targets": [
+        2.26,
+        2.35
+      ]
+    },
+    "recentSessions": 60
+  },
+  "now": {
+    "price": 2.232,
+    "priceInsideClaimedBand": false,
+    "rsi14": 65.98035367964918,
+    "rsiInsideClaimedBand": false,
+    "sma10": 2.1932,
+    "sma20": 2.15115,
+    "sma50": 2.1141399999999995,
+    "sma200": 2.156805,
+    "atr4hPct": 1.569968515155969,
+    "atrDailyPct": 3.6203870741592614,
+    "volumeZScoreCompleted": -0.2089977123881308,
+    "volume6barsVsPrior24Pct": 4.667039552201824
+  },
+  "range": {
+    "claimed": [
+      2.08,
+      2.26
+    ],
+    "claimedWidthPct": 8.653846153846146,
+    "actualLow": 1.994,
+    "actualHigh": 2.257,
+    "actualWidthPct": 13.18956870611836,
+    "bars": 60,
+    "widthInDailyAtr": 2.3903096482731123,
+    "closesOutsidePct": 33.33333333333333,
+    "tradedAboveClaimedHigh": false,
+    "tradedBelowClaimedLow": true
+  },
+  "zones": {
+    "supportNear": {
+      "zone": [
+        2.15,
+        2.17
+      ],
+      "visits": 0,
+      "higherAfter": 0,
+      "lowerAfter": 0,
+      "brokeThroughDown": 0,
+      "lookaheadBars": 12
+    },
+    "supportMain": {
+      "zone": [
+        2.08,
+        2.12
+      ],
+      "visits": 36,
+      "higherAfter": 11,
+      "lowerAfter": 5,
+      "brokeThroughDown": 20,
+      "lookaheadBars": 12
+    },
+    "supportDeep": {
+      "zone": [
+        2,
+        2.05
+      ],
+      "visits": 9,
+      "higherAfter": 9,
+      "lowerAfter": 0,
+      "brokeThroughDown": 0,
+      "lookaheadBars": 12
+    },
+    "resistNear": {
+      "zone": [
+        2.22,
+        2.26
+      ],
+      "visits": 0,
+      "higherAfter": 0,
+      "lowerAfter": 0,
+      "brokeThroughDown": 0,
+      "lookaheadBars": 12
+    },
+    "resistNext": {
+      "zone": [
+        2.3,
+        2.35
+      ],
+      "visits": 0,
+      "higherAfter": 0,
+      "lowerAfter": 0,
+      "brokeThroughDown": 0,
+      "lookaheadBars": 12
+    }
+  },
+  "support": [
+    {
+      "lookbackBars": 20,
+      "nearPct": 0.5,
+      "lookaheadBars": 12,
+      "tests": 84,
+      "bouncePct": 58.333333333333336,
+      "baselineBars": 968,
+      "baselineUpPct": 45.66115702479338,
+      "edgePp": 12.672176308539953,
+      "effectiveTests": 7,
+      "sigmasNaive": 2.331643774628293,
+      "sigmasDeOverlapped": 0.6730875804679801
+    },
+    {
+      "lookbackBars": 20,
+      "nearPct": 1,
+      "lookaheadBars": 12,
+      "tests": 135,
+      "bouncePct": 59.25925925925925,
+      "baselineBars": 968,
+      "baselineUpPct": 45.66115702479338,
+      "edgePp": 13.59810223446587,
+      "effectiveTests": 11.25,
+      "sigmasNaive": 3.171878453665186,
+      "sigmasDeOverlapped": 0.9156424395301844
+    },
+    {
+      "lookbackBars": 20,
+      "nearPct": 2,
+      "lookaheadBars": 12,
+      "tests": 245,
+      "bouncePct": 54.69387755102041,
+      "baselineBars": 968,
+      "baselineUpPct": 45.66115702479338,
+      "edgePp": 9.032720526227024,
+      "effectiveTests": 20.416666666666668,
+      "sigmasNaive": 2.8383958687441204,
+      "sigmasDeOverlapped": 0.8193743094430699
+    }
+  ],
+  "trade": {
+    "entry": 2.135,
+    "stop": 2.075,
+    "riskPct": 2.810304449648693,
+    "stopIn4hAtr": 1.7900387316808721,
+    "stopInDailyAtr": 0.7762441949114823,
+    "targets": [
+      {
+        "target": 2.26,
+        "rewardPct": 5.854800936768156,
+        "rr": 2.08333333333335,
+        "breakevenWinRatePct": 32.43243243243226,
+        "byHorizon": [
+          {
+            "horizonBars": 12,
+            "n": 988,
+            "upPct": 17.00404858299595,
+            "downPct": 54.453441295546554,
+            "neitherPct": 28.542510121457486,
+            "effectiveN": 82.33333333333333,
+            "expectancyR": -0.19028340080971384
+          },
+          {
+            "horizonBars": 30,
+            "n": 970,
+            "upPct": 24.948453608247423,
+            "downPct": 69.0721649484536,
+            "neitherPct": 5.979381443298969,
+            "effectiveN": 32.333333333333336,
+            "expectancyR": -0.17096219931271062
+          }
+        ]
+      },
+      {
+        "target": 2.35,
+        "rewardPct": 10.070257611241228,
+        "rr": 3.5833333333333615,
+        "breakevenWinRatePct": 21.818181818181685,
+        "byHorizon": [
+          {
+            "horizonBars": 12,
+            "n": 988,
+            "upPct": 8.097165991902834,
+            "downPct": 56.174089068825914,
+            "neitherPct": 35.72874493927126,
+            "effectiveN": 82.33333333333333,
+            "expectancyR": -0.271592442645072
+          },
+          {
+            "horizonBars": 30,
+            "n": 970,
+            "upPct": 15.154639175257731,
+            "downPct": 73.50515463917526,
+            "neitherPct": 11.34020618556701,
+            "effectiveN": 32.333333333333336,
+            "expectancyR": -0.1920103092783464
+          }
+        ]
+      }
+    ]
+  }
+}

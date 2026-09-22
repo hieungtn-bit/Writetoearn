@@ -1,0 +1,11 @@
+{
+  "measuredAt": "2026-08-03T01:42:59.733Z",
+  "note": "How many USDT spot pairs clear each turnover floor right now. A scan can only honestly pick from this universe.",
+  "thresholdsUsd": {
+    "low": 2000000,
+    "high": 10000000
+  },
+  "usdtPairs": 662,
+  "pairsAboveLow": 88,
+  "pairsAboveHigh": 29
+}

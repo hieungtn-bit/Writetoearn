@@ -1,0 +1,52 @@
+<!doctype html><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#0b0e11}
+  svg{display:block}
+  text{font-family:"DejaVu Sans",system-ui,sans-serif;fill:#e8eaed}
+  .kicker{font-size:19px;letter-spacing:3.5px;fill:#f0b90b;font-weight:700}
+  .title{font-size:40px;font-weight:800;letter-spacing:-0.5px}
+  .sub{font-size:17px;fill:#9aa3ad}
+  .val{font-size:26px;font-weight:800}
+  .lab{font-size:19px;font-weight:800}
+  .note{font-size:14px;fill:#8b949e}
+  .stat{font-size:22px;font-weight:700}
+  .statlab{font-size:15px;fill:#8b949e}
+  .mark{font-size:17px;font-weight:700;fill:#f0b90b;letter-spacing:1px}
+</style>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0b0e11"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#c98500"/>
+
+  <text x="64" y="56" class="kicker">I POINTED TODAY'S TEST AT MY OWN BOARD</text>
+  <text x="1136" y="56" text-anchor="end" class="mark">MAIX8</text>
+
+  <text x="64" y="118" class="title">My board's best plan, out of sample,</text>
+  <text x="64" y="164" class="title">is worth about a coin flip.</text>
+  <text x="64" y="200" class="sub">Median expectancy in R · chosen on 270 days, scored on the next 270 · 96 pair-directions</text>
+
+  <line x1="64" x2="1136" y1="500" y2="500" stroke="#252a31" stroke-width="1"/>
+
+  
+  <text x="256" y="236" text-anchor="middle" class="lab">what the board shows</text>
+  <text x="256" y="257" text-anchor="middle" class="note">best of 64, on its own window</text>
+  <rect x="168" y="270" width="176" height="230" rx="4" fill="#5a636d"/>
+  <text x="256" y="308" text-anchor="middle" class="val" fill="#e8eaed">+0.143R</text>
+  <text x="592" y="236" text-anchor="middle" class="lab">what it then did</text>
+  <text x="592" y="257" text-anchor="middle" class="note">same plan, data it never saw</text>
+  <rect x="504" y="475.5428609304833" width="176" height="24.4571390695167" rx="4" fill="#c98500"/>
+  <text x="592" y="461.5428609304833" text-anchor="middle" class="val" fill="#c98500">+0.015R</text>
+  <text x="928" y="236" text-anchor="middle" class="lab">picking at random</text>
+  <text x="928" y="257" text-anchor="middle" class="note">any geometry, same window</text>
+  <rect x="840" y="483.51643964992354" width="176" height="16.483560350076438" rx="4" fill="#c98500"/>
+  <text x="928" y="469.51643964992354" text-anchor="middle" class="val" fill="#c98500">+0.010R</text>
+
+  <line x1="64" x2="1136" y1="546" y2="546" stroke="#252a31" stroke-width="1"/>
+  <text x="64" y="582" class="stat">49%</text>
+  <text x="64" y="604" class="statlab">Of pairs where choosing beat not choosing</text>
+
+  <text x="620" y="582" class="stat">27%</text>
+  <text x="620" y="604" class="statlab">Long plans still positive out of sample</text>
+
+  <text x="1136" y="582" text-anchor="end" class="stat">79%</text>
+  <text x="1136" y="604" text-anchor="end" class="statlab">Short plans still positive</text>
+</svg>

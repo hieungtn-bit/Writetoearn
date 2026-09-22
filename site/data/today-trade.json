@@ -1,0 +1,293 @@
+{
+  "measuredAt": "2026-08-11T08:09:59.543Z",
+  "method": {
+    "firstTouch": "Walked bar by bar. A bar touching both levels is charged to the stop.",
+    "overlap": "Windows overlap; effectiveN = n / horizon is the de-overlapped count.",
+    "ranking": "Candidates ranked by the share of geometries that pay, not by the single best cell. One bright cell in a field of losses is a search artefact.",
+    "distribution": "Every historical episode walked to resolution; unresolved ones closed at the market. Reported as percentiles, because an expected value is a number nobody experiences.",
+    "unavailable": "Binance futures is geo-blocked from this host. Funding is OKX. No liquidation or open-interest feed."
+  },
+  "btc": {
+    "price": 64069.91,
+    "claimedBand": [
+      63900,
+      64000
+    ],
+    "insideClaimedBand": false,
+    "sma50": 63387.91319999998,
+    "sma200": 69916.54645000001,
+    "belowSma200": true,
+    "rangePosition30d": 43.750950073862256,
+    "rsi14": 49.02133351272607,
+    "atrPct": 2.067084952928984,
+    "dominanceClaimedPct": 56.55,
+    "dominancePct": 56.53651674714892
+  },
+  "candidates": [
+    {
+      "asset": "ICP",
+      "price": 2.307,
+      "atrPct": 3.9502910418325787,
+      "rsi14": 63.46094193336084,
+      "rangePosition30d": 77.66749379652607,
+      "underwaterPct": 4.854731451868401,
+      "volumeTrendPct": 111.40166136487213,
+      "stage": "mixed",
+      "volumeZScoreCompleted": 4.324320035760822,
+      "upDownVolumeRatio30d": 1.492635804263203,
+      "quoteVolume24hUsd": 4356199.1725,
+      "funding": {
+        "annualised7dPct": 9.801031005320045,
+        "annualisedPrior14dPct": 4.58636134335456
+      },
+      "beta": 0.6373393409514018,
+      "r": 0.41819995123527753,
+      "varianceExplainedPct": 17.489119921318853,
+      "positiveCells": 13,
+      "cellsTried": 90,
+      "cellsRejectedAsUntradeable": 0,
+      "positiveSharePct": 14.444444444444443,
+      "medianExpectancyR": -0.07729132569558102,
+      "best": {
+        "stopAtr": 4,
+        "stopPct": 15.801164167330315,
+        "rr": 3,
+        "horizonDays": 90,
+        "targetPct": 47.40349250199095,
+        "n": 910,
+        "upPct": 28.13186813186813,
+        "downPct": 64.94505494505495,
+        "unresolvedPct": 6.923076923076923,
+        "expectancyR": 0.19450549450549448,
+        "expectancyFullR": 0.23536479455912004,
+        "effectiveN": 10.11111111111111
+      },
+      "candles": 1000
+    },
+    {
+      "asset": "ENA",
+      "price": 0.0904,
+      "atrPct": 5.873266114360786,
+      "rsi14": 55.73370335845558,
+      "rangePosition30d": 63.207547169811306,
+      "underwaterPct": 21.68989600293562,
+      "volumeTrendPct": -41.710011566775705,
+      "stage": "mixed",
+      "volumeZScoreCompleted": -0.4899685630198121,
+      "upDownVolumeRatio30d": 0.9183442769382157,
+      "quoteVolume24hUsd": 4538900.485008,
+      "funding": {
+        "annualised7dPct": 4.826071554874574,
+        "annualisedPrior14dPct": 4.569109805692368
+      },
+      "beta": 1.5207282489385126,
+      "r": 0.5508360685774306,
+      "varianceExplainedPct": 30.342037444583987,
+      "positiveCells": 0,
+      "cellsTried": 90,
+      "cellsRejectedAsUntradeable": 0,
+      "positiveSharePct": 0,
+      "medianExpectancyR": -0.07325170538419028,
+      "best": {
+        "stopAtr": 1,
+        "stopPct": 5.873266114360786,
+        "rr": 3,
+        "horizonDays": 90,
+        "targetPct": 17.61979834308236,
+        "n": 772,
+        "upPct": 24.481865284974095,
+        "downPct": 75.51813471502591,
+        "unresolvedPct": 0,
+        "expectancyR": -0.020725388601036232,
+        "expectancyFullR": -0.02072538860103627,
+        "effectiveN": 8.577777777777778
+      },
+      "candles": 862
+    },
+    {
+      "asset": "SUI",
+      "price": 0.6878,
+      "atrPct": 3.4939161977718562,
+      "rsi14": 44.32534995169857,
+      "rangePosition30d": 21.26929674099481,
+      "underwaterPct": 78.52244791325161,
+      "volumeTrendPct": -35.79316378611986,
+      "stage": "1 quiet",
+      "volumeZScoreCompleted": -0.12587866480106966,
+      "upDownVolumeRatio30d": 0.8204125585186108,
+      "quoteVolume24hUsd": 2419927.93227,
+      "funding": {
+        "annualised7dPct": 8.651294552312773,
+        "annualisedPrior14dPct": 1.9333292072061508
+      },
+      "beta": 1.1922421699702994,
+      "r": 0.799942674519873,
+      "varianceExplainedPct": 63.99082825180075,
+      "positiveCells": 10,
+      "cellsTried": 90,
+      "cellsRejectedAsUntradeable": 0,
+      "positiveSharePct": 11.11111111111111,
+      "medianExpectancyR": -0.08440918865514835,
+      "best": {
+        "stopAtr": 4,
+        "stopPct": 13.975664791087425,
+        "rr": 3,
+        "horizonDays": 90,
+        "targetPct": 41.926994373262275,
+        "n": 910,
+        "upPct": 27.692307692307693,
+        "downPct": 71.97802197802197,
+        "unresolvedPct": 0.32967032967032966,
+        "expectancyR": 0.11098901098901104,
+        "expectancyFullR": 0.11211404645736536,
+        "effectiveN": 10.11111111111111
+      },
+      "candles": 1000
+    },
+    {
+      "asset": "CRV",
+      "price": 0.2606,
+      "atrPct": 4.8822329165330505,
+      "rsi14": 75.94102854401336,
+      "rangePosition30d": 83.06451612903226,
+      "underwaterPct": 6.650909440974044,
+      "volumeTrendPct": 191.15636733691474,
+      "stage": "2 expansion",
+      "volumeZScoreCompleted": 3.840745905057838,
+      "upDownVolumeRatio30d": 1.4397134934242184,
+      "quoteVolume24hUsd": 4100682.03242,
+      "funding": {
+        "annualised7dPct": 7.419439644439615,
+        "annualisedPrior14dPct": 6.4396667526429585
+      },
+      "beta": 0.18640848443490024,
+      "r": 0.0880638136795465,
+      "varianceExplainedPct": 0.775523527978588,
+      "positiveCells": 3,
+      "cellsTried": 90,
+      "cellsRejectedAsUntradeable": 0,
+      "positiveSharePct": 3.3333333333333335,
+      "medianExpectancyR": -0.11971057471017751,
+      "best": {
+        "stopAtr": 2,
+        "stopPct": 9.764465833066101,
+        "rr": 1,
+        "horizonDays": 90,
+        "targetPct": 9.764465833066101,
+        "n": 910,
+        "upPct": 51.318681318681314,
+        "downPct": 48.68131868131868,
+        "unresolvedPct": 0,
+        "expectancyR": 0.026373626373626335,
+        "expectancyFullR": 0.026373626373626374,
+        "effectiveN": 10.11111111111111
+      },
+      "candles": 1000
+    },
+    {
+      "asset": "BICO",
+      "price": 0.03963,
+      "atrPct": 25.55850777781225,
+      "rsi14": 60.974981652537444,
+      "rangePosition30d": 36.04621635347892,
+      "underwaterPct": 64.35741368644987,
+      "volumeTrendPct": 340.40397116394877,
+      "stage": "mixed",
+      "volumeZScoreCompleted": 0.5278430259808559,
+      "upDownVolumeRatio30d": 1.920384183850448,
+      "quoteVolume24hUsd": 11633366.8897967,
+      "funding": {
+        "annualised7dPct": -148.87751102468474,
+        "annualisedPrior14dPct": -11.968563405130336
+      },
+      "beta": 2.572993264084808,
+      "r": 0.2744849861204764,
+      "varianceExplainedPct": 7.534200760555812,
+      "positiveCells": 4,
+      "cellsTried": 45,
+      "cellsRejectedAsUntradeable": 45,
+      "positiveSharePct": 8.88888888888889,
+      "medianExpectancyR": -0.054239213852627095,
+      "best": {
+        "stopAtr": 1.5,
+        "stopPct": 38.33776166671837,
+        "rr": 3,
+        "horizonDays": 90,
+        "targetPct": 115.01328500015512,
+        "n": 910,
+        "upPct": 16.263736263736263,
+        "downPct": 52.74725274725275,
+        "unresolvedPct": 30.98901098901099,
+        "expectancyR": -0.03956043956043953,
+        "expectancyFullR": 0.0591661536314702,
+        "effectiveN": 10.11111111111111
+      },
+      "candles": 1000
+    }
+  ],
+  "ranked": [
+    {
+      "asset": "ICP",
+      "positiveSharePct": 14.444444444444443,
+      "medianExpectancyR": -0.07729132569558102
+    },
+    {
+      "asset": "SUI",
+      "positiveSharePct": 11.11111111111111,
+      "medianExpectancyR": -0.08440918865514835
+    },
+    {
+      "asset": "BICO",
+      "positiveSharePct": 8.88888888888889,
+      "medianExpectancyR": -0.054239213852627095
+    },
+    {
+      "asset": "CRV",
+      "positiveSharePct": 3.3333333333333335,
+      "medianExpectancyR": -0.11971057471017751
+    },
+    {
+      "asset": "ENA",
+      "positiveSharePct": 0,
+      "medianExpectancyR": -0.07325170538419028
+    }
+  ],
+  "plan": {
+    "asset": "ICP",
+    "entry": 2.307,
+    "stop": 1.9424671426596896,
+    "stopPct": 15.801164167330315,
+    "target": 3.400598572020931,
+    "targetPct": 47.40349250199095,
+    "horizonDays": 90,
+    "rr": 3,
+    "hitPct": 28.13186813186813,
+    "stopHitPct": 64.94505494505495,
+    "breakevenWinRatePct": 25,
+    "expectancyR": 0.19450549450549448,
+    "expectancyFullR": 0.23536479455912004,
+    "unresolvedPct": 6.923076923076923,
+    "positionUsdPer1000": 63.286476199491005,
+    "maxLeverage": 6.3286476199491,
+    "expectedUsdPer1000": 2.3536479455912005
+  },
+  "distribution": {
+    "episodes": 910,
+    "effectiveN": 10.11111111111111,
+    "winSharePct": 33.51648351648351,
+    "lossSharePct": 66.48351648351648,
+    "meanPct": 3.7190377580386373,
+    "medianPct": -15.801164167330315,
+    "p10Pct": -15.801164167330315,
+    "p25Pct": -15.801164167330315,
+    "p75Pct": 47.40349250199095,
+    "p90Pct": 47.40349250199095,
+    "worstPct": -15.801164167330315,
+    "bestPct": 47.40349250199095,
+    "drawdownOnWinners": {
+      "n": 256,
+      "medianPct": -7.958498417835047,
+      "p10Pct": -14.370748299319736
+    }
+  }
+}

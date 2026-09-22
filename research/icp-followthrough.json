@@ -1,0 +1,55 @@
+{
+  "measuredAt": "2026-08-22T00:01:09.157Z",
+  "symbol": "ICPUSDT",
+  "source": "Binance spot hourly klines",
+  "postPublishedAt": "2026-08-21T13:49:10.262Z",
+  "postSlug": "icp-plan-checked",
+  "plannedTriggerUsd": 2.5,
+  "plannedEntry": {
+    "lowUsd": 2.5,
+    "highUsd": 2.53
+  },
+  "plannedStopUsd": 2.3899999999999997,
+  "plannedTp1Usd": 2.675,
+  "plannedTp2Usd": 2.875,
+  "claimedStopRiskPct": 4.970178926441352,
+  "publishedClaim": {
+    "daysTakingPlanStopFromOpenPct": 29.652669777086572,
+    "medianDailyRangePct": 6.988783433994827,
+    "tp1R": 1.2800000000000011
+  },
+  "fill": {
+    "at": "2026-08-21T15:00:00.000Z",
+    "priceUsd": 2.5
+  },
+  "result": {
+    "entryUsd": 2.5,
+    "riskUsd": 0.11000000000000032,
+    "hoursHeld": 10,
+    "worstUsd": 2.426,
+    "bestUsd": 2.563,
+    "markUsd": 2.522,
+    "worstExcursionR": -0.6727272727272694,
+    "bestExcursionR": 0.5727272727272725,
+    "markR": 0.19999999999999757,
+    "stoppedAt": null,
+    "tp1At": null,
+    "tp2At": null,
+    "stopMarginUsd": 0.036000000000000476,
+    "stopMarginR": 0.32727272727273066
+  },
+  "relative": {
+    "icpPct": 0.8799999999999919,
+    "btcPct": 1.257768170939233,
+    "excessPct": -0.3777681709392411
+  },
+  "board": {
+    "scannedAt": "2026-08-21T23:57:56.227Z",
+    "bias": "LONG",
+    "agreeing": 1,
+    "windows": 5,
+    "effectiveN": 5,
+    "priceUsd": 2.526
+  },
+  "hoursOfTape": 11
+}

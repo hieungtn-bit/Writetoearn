@@ -1,0 +1,533 @@
+{
+  "measuredAt": "2026-08-22T00:02:04.994Z",
+  "previousRun": {
+    "measuredAt": "2026-08-22T00:02:03.488Z",
+    "claimsInRange": 1,
+    "claimsChecked": [
+      {
+        "label": "BTC",
+        "inRange": false,
+        "actualChangePct": 7.216,
+        "actualPrice": 78440.01
+      },
+      {
+        "label": "ICP",
+        "inRange": true,
+        "actualChangePct": 5.774,
+        "actualPrice": 2.528
+      }
+    ]
+  },
+  "source": "Binance spot 24hr tickers (rolling window); OKX perpetual funding",
+  "note": "Intraday scan. Writes no plan file — the morning ledger stands.",
+  "breadth": {
+    "pairs": 671,
+    "up": 494,
+    "down": 177,
+    "upSharePct": 73.6214605067064,
+    "downSharePct": 26.37853949329359,
+    "medianChangePct": 5.462,
+    "upOver5": 351,
+    "upOver10": 142,
+    "upOver20": 21,
+    "upOver30": 4,
+    "downOver5": 95,
+    "downOver10": 64
+  },
+  "retrace": {
+    "medianOffHighPct": -1.6828478964401206,
+    "withinOnePctOfHigh": 205,
+    "moreThanFivePctOffHigh": 162
+  },
+  "morningComparison": {
+    "day": "2026-08-21",
+    "measuredAt": "2026-08-21T23:59:10.646Z",
+    "upSharePct": 73.32339791356185,
+    "medianChangePct": 5.386,
+    "upSharePctDelta": 0.2980625931445502,
+    "medianChangePctDelta": 0.07599999999999962,
+    "bookStopped": 24,
+    "bookPositions": 24,
+    "bookTotalR": -24
+  },
+  "claimsChecked": [
+    {
+      "symbol": "BTCUSDT",
+      "label": "BTC",
+      "kind": "band",
+      "lowUsd": 77000,
+      "highUsd": 78000,
+      "text": "holding $77k-78k",
+      "actualPrice": 78434.61,
+      "actualChangePct": 7.227,
+      "high24h": 79500,
+      "inRange": false,
+      "missPct": 0.5571923076923113
+    },
+    {
+      "symbol": "ICPUSDT",
+      "label": "ICP",
+      "kind": "floor",
+      "floorUsd": 2.5,
+      "text": "broke $2.50, pulling back healthily",
+      "actualPrice": 2.528,
+      "actualChangePct": 5.774,
+      "high24h": 2.563,
+      "inRange": true,
+      "missPct": 1.1200000000000099
+    }
+  ],
+  "claimsInRange": 1,
+  "claimsTotal": 2,
+  "ranked": [
+    {
+      "symbol": "ENAUSDT",
+      "price": 0.1423,
+      "changePct": 21.003
+    },
+    {
+      "symbol": "XRPUSDT",
+      "price": 1.4574,
+      "changePct": 14.892
+    },
+    {
+      "symbol": "ICPUSDT",
+      "price": 2.528,
+      "changePct": 5.774
+    }
+  ],
+  "rankedLeadRank": 16,
+  "runners": {
+    "lowPct": 20,
+    "highPct": 40,
+    "text": "few clean early-stage setups left",
+    "inBand": 19,
+    "aboveBand": 2,
+    "inBandLiquid": 19,
+    "liquidFloorUsd": 2000000
+  },
+  "leaders": [
+    {
+      "symbol": "GALAUSDT",
+      "changePct": 36.894,
+      "price": 0.002204,
+      "turnoverUsd": 18860716.204264,
+      "turnoverUsdRounded": 19000000
+    },
+    {
+      "symbol": "ENSUSDT",
+      "changePct": 31.778,
+      "price": 5.93,
+      "turnoverUsd": 4646108.6275,
+      "turnoverUsdRounded": 5000000
+    },
+    {
+      "symbol": "PEPEUSDT",
+      "changePct": 29.907,
+      "price": 0.00000417,
+      "turnoverUsd": 106809691.01172958,
+      "turnoverUsdRounded": 107000000
+    },
+    {
+      "symbol": "STXUSDT",
+      "changePct": 29.829,
+      "price": 0.1902,
+      "turnoverUsd": 3445558.6656,
+      "turnoverUsdRounded": 3000000
+    },
+    {
+      "symbol": "ZECUSDT",
+      "changePct": 29.744,
+      "price": 736.97,
+      "turnoverUsd": 368362168.66557,
+      "turnoverUsdRounded": 368000000
+    },
+    {
+      "symbol": "BCHUSDT",
+      "changePct": 29.019,
+      "price": 288.1,
+      "turnoverUsd": 62037578.26,
+      "turnoverUsdRounded": 62000000
+    },
+    {
+      "symbol": "FLOKIUSDT",
+      "changePct": 25.384,
+      "price": 0.00002939,
+      "turnoverUsd": 8366760.0711108,
+      "turnoverUsdRounded": 8000000
+    },
+    {
+      "symbol": "PENGUUSDT",
+      "changePct": 24.76,
+      "price": 0.008974,
+      "turnoverUsd": 25904893.895742,
+      "turnoverUsdRounded": 26000000
+    },
+    {
+      "symbol": "KMNOUSDT",
+      "changePct": 24.75,
+      "price": 0.02621,
+      "turnoverUsd": 2219018.37074,
+      "turnoverUsdRounded": 2000000
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "changePct": 23.931,
+      "price": 122.94,
+      "turnoverUsd": 47271622.57969,
+      "turnoverUsdRounded": 47000000
+    }
+  ],
+  "laggards": [
+    {
+      "symbol": "NFPUSDT",
+      "changePct": -66.168,
+      "price": 0.00181,
+      "turnoverUsd": 3834002.83185,
+      "turnoverUsdRounded": 4000000
+    },
+    {
+      "symbol": "VANRYUSDT",
+      "changePct": -37.128,
+      "price": 0.00074,
+      "turnoverUsd": 2320295.244185,
+      "turnoverUsdRounded": 2000000
+    },
+    {
+      "symbol": "ONGUSDT",
+      "changePct": -20.367,
+      "price": 0.09192,
+      "turnoverUsd": 31619903.03454,
+      "turnoverUsdRounded": 32000000
+    },
+    {
+      "symbol": "ACEUSDT",
+      "changePct": -9.256,
+      "price": 0.2294,
+      "turnoverUsd": 25357810.05658,
+      "turnoverUsdRounded": 25000000
+    },
+    {
+      "symbol": "SANTOSUSDT",
+      "changePct": -7.626,
+      "price": 0.533,
+      "turnoverUsd": 2535946.93589,
+      "turnoverUsdRounded": 3000000
+    },
+    {
+      "symbol": "LRCUSDT",
+      "changePct": -6.238,
+      "price": 0.01879,
+      "turnoverUsd": 2891184.21049,
+      "turnoverUsdRounded": 3000000
+    },
+    {
+      "symbol": "EPICUSDT",
+      "changePct": -4.679,
+      "price": 0.3606,
+      "turnoverUsd": 2026866.85904,
+      "turnoverUsdRounded": 2000000
+    },
+    {
+      "symbol": "SCRTUSDT",
+      "changePct": -2.475,
+      "price": 0.0197,
+      "turnoverUsd": 3724274.83282,
+      "turnoverUsdRounded": 4000000
+    },
+    {
+      "symbol": "HEIUSDT",
+      "changePct": -2.386,
+      "price": 0.135,
+      "turnoverUsd": 2601510.49866,
+      "turnoverUsdRounded": 3000000
+    },
+    {
+      "symbol": "INTCBUSDT",
+      "changePct": -2.304,
+      "price": 89.9,
+      "turnoverUsd": 2031254.40074,
+      "turnoverUsdRounded": 2000000
+    }
+  ],
+  "funding": [
+    {
+      "instrument": "BTC-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.95,
+      "nextFundingTime": "2026-08-22T16:00:00.000Z"
+    },
+    {
+      "instrument": "ETH-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.95,
+      "nextFundingTime": "2026-08-22T16:00:00.000Z"
+    },
+    {
+      "instrument": "XRP-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.95,
+      "nextFundingTime": "2026-08-22T16:00:00.000Z"
+    },
+    {
+      "instrument": "ICP-USDT-SWAP",
+      "venue": "OKX perpetual",
+      "ratePct": 0.01,
+      "annualisedPct": 10.95,
+      "nextFundingTime": "2026-08-22T16:00:00.000Z"
+    }
+  ],
+  "fearGreed": {
+    "value": 71,
+    "label": "Greed",
+    "source": "alternative.me"
+  },
+  "dominancePct": 58.9685227034138,
+  "claimedDominance": {
+    "lowPct": 59,
+    "highPct": 60
+  },
+  "engine": {
+    "scannedAt": "2026-08-21T23:57:56.227Z",
+    "rows": 100,
+    "tally": {
+      "total": 100,
+      "LONG": 55,
+      "SHORT": 41,
+      "WAIT": 4,
+      "turning": 41,
+      "untradeable": 23
+    },
+    "minEffectiveN": 12,
+    "agreementWindowDays": [
+      180,
+      270,
+      365,
+      540,
+      730
+    ],
+    "funnel": [
+      {
+        "bias": "LONG",
+        "rows": 55,
+        "haveFiveWindows": 30,
+        "unanimous": 5,
+        "unanimousSharePct": 16.666666666666664,
+        "deepEnough": 0,
+        "offered": 0,
+        "symbols": []
+      },
+      {
+        "bias": "SHORT",
+        "rows": 41,
+        "haveFiveWindows": 27,
+        "unanimous": 24,
+        "unanimousSharePct": 88.88888888888889,
+        "deepEnough": 6,
+        "offered": 5,
+        "symbols": [
+          "BONKUSDT",
+          "ARBUSDT",
+          "SUIUSDT",
+          "ADAUSDT",
+          "FILUSDT"
+        ]
+      }
+    ],
+    "rowsWithFiveWindows": 57
+  },
+  "boardHistory": [
+    {
+      "scannedAt": "2026-08-11T16:19:05.654Z",
+      "day": "2026-08-11",
+      "rows": 32,
+      "long": 11,
+      "short": 19,
+      "longSharePct": 34.375,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-12T00:05:05.342Z",
+      "day": "2026-08-12",
+      "rows": 32,
+      "long": 12,
+      "short": 19,
+      "longSharePct": 37.5,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-12T02:15:15.197Z",
+      "day": "2026-08-12",
+      "rows": 100,
+      "long": 44,
+      "short": 46,
+      "longSharePct": 44,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-13T03:07:55.554Z",
+      "day": "2026-08-13",
+      "rows": 100,
+      "long": 46,
+      "short": 44,
+      "longSharePct": 46,
+      "offered": 0,
+      "offeredDirections": []
+    },
+    {
+      "scannedAt": "2026-08-14T05:27:17.003Z",
+      "day": "2026-08-14",
+      "rows": 94,
+      "long": 45,
+      "short": 42,
+      "longSharePct": 47.87234042553192,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-14T20:36:36.332Z",
+      "day": "2026-08-14",
+      "rows": 100,
+      "long": 46,
+      "short": 46,
+      "longSharePct": 46,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-15T23:58:34.092Z",
+      "day": "2026-08-15",
+      "rows": 77,
+      "long": 40,
+      "short": 30,
+      "longSharePct": 51.94805194805194,
+      "offered": 3,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-16T16:10:48.305Z",
+      "day": "2026-08-16",
+      "rows": 76,
+      "long": 39,
+      "short": 27,
+      "longSharePct": 51.31578947368421,
+      "offered": 2,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-17T04:46:39.428Z",
+      "day": "2026-08-17",
+      "rows": 84,
+      "long": 45,
+      "short": 31,
+      "longSharePct": 53.57142857142857,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-18T05:12:09.282Z",
+      "day": "2026-08-18",
+      "rows": 99,
+      "long": 54,
+      "short": 38,
+      "longSharePct": 54.54545454545454,
+      "offered": 3,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-19T10:01:51.658Z",
+      "day": "2026-08-19",
+      "rows": 90,
+      "long": 47,
+      "short": 35,
+      "longSharePct": 52.22222222222223,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-20T07:54:51.676Z",
+      "day": "2026-08-20",
+      "rows": 100,
+      "long": 56,
+      "short": 37,
+      "longSharePct": 56.00000000000001,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-20T12:06:15.857Z",
+      "day": "2026-08-20",
+      "rows": 100,
+      "long": 59,
+      "short": 36,
+      "longSharePct": 59,
+      "offered": 4,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-21T00:48:57.511Z",
+      "day": "2026-08-21",
+      "rows": 100,
+      "long": 55,
+      "short": 41,
+      "longSharePct": 55.00000000000001,
+      "offered": 5,
+      "offeredDirections": [
+        "short"
+      ]
+    },
+    {
+      "scannedAt": "2026-08-21T23:57:56.227Z",
+      "day": "2026-08-21",
+      "rows": 100,
+      "long": 55,
+      "short": 41,
+      "longSharePct": 55.00000000000001,
+      "offered": 5,
+      "offeredDirections": [
+        "short"
+      ]
+    }
+  ],
+  "boardSummary": {
+    "editions": 8,
+    "positions": 29,
+    "editionsOfferingAnyLong": 0,
+    "longSharePctFirst": 46,
+    "longSharePctLast": 55.00000000000001,
+    "firstDay": "2026-08-14",
+    "lastDay": "2026-08-21"
+  },
+  "baseRates": {
+    "continuation1dPct": 50.69204152249135,
+    "continuation2dPct": 45.48611111111111,
+    "continuation3dPct": 42.1875,
+    "continuation3dWindows": 192,
+    "persistence10dPct": 49.55454241258156,
+    "persistence30dPct": 50.696446253713276
+  }
+}

@@ -1,0 +1,91 @@
+A reader sent me a full ICP plan. Break and hold above $2.48-2.5, enter $2.5-2.53, stop under $2.38-2.4, take 40-50% off at $2.65-2.7, run the rest to $2.85-2.9. Claimed reward-to-risk: 1:2.5 to 1:3.
+
+Credit where it is due — this is a *rule*. Levels, a stop, two targets, an invalidation, a position size. Most of what gets forwarded to me is a mood with a chart attached. You can test this one, which is exactly what I did.
+
+$ICP is at **$2.486** as I write. The trigger is live, not hypothetical.
+
+CHECK ONE: THE ARITHMETIC
+
+This one is not a matter of judgement. It is division.
+
+Entry $2.515, stop $2.390. Risk: **4.97%.**
+
+- First target $2.675 = **1.28R**
+- Second target $2.875 = **2.88R**
+
+The far target does roughly match the claim. But the plan says take 40-50% off at the *first* one — and the first one pays 1.28R.
+
+Take the partial, run the rest to the second target, never get stopped, nothing left open. That perfect run pays **2.16R**, against a claimed 2.5-3R.
+
+So the headline number is the far target's ratio, quoted for a plan whose own management means you never collect it in full. Not dishonest — easy to do, and worth catching, because position sizing is done off that number.
+
+CHECK TWO: THE STOP AGAINST THE INSTRUMENT
+
+ICP's median daily range is **6.99%**. Entry to first target is 6.36%. **A median day covers more ground than the whole first leg of this trade.**
+
+Now the stops, measured across 1,929 days since 2021-05-11. For each one: from that day's open, did price trade that far down before the day ended?
+
+- Main stop, 4.97%: **29.7% of days.**
+- Fallback stop, 1.75%: **71.9% of days.**
+
+The fallback scenario — long $2.28-2.3, stop under $2.25 — risks 1.75% on a pair where **72% of all days** would take it from the open alone. That is not a stop protecting a thesis. It is a bet on the entry candle.
+
+The main stop is defensible. The fallback one is not, and it is the scenario a reader is most likely to reach for, because it is the one that fires when the breakout does not.
+
+CHECK THREE: THE RULE, WALKED FORWARD
+
+The levels only exist today, so to test the *method* I turned it into a rule: close above the highest high of the prior 20 days, entered at the **next open** (a rule that enters on the triggering close is reading a price you could not have traded), same stop, same targets, same partial, stop to breakeven after the first target, 30-day horizon, 0.2% round turn, stop charged first on any bar hitting both.
+
+Control: random entries in the **same calendar months**, identical geometry and management.
+
+```
+                       n     mean   median    win
+breakouts             74    +0.09    -1.04    43%
+  volume up           71    +0.14    -1.04    45%
+  volume flat          3    -1.04    -1.04     0%
+random control       370    +0.32    +0.54    51%
+```
+
+The breakouts came in behind random entries. Median result: **-1.04R** — the typical outcome is a full stop.
+
+**Now the part that matters more than that table.** 74 signals inside 30-day horizons is **2.5 independent episodes**. That is not enough to convict this rule of anything. If it had come in *ahead* of the control I would be writing the same sentence.
+
+So: not shown to work. Also not shown to fail. Anyone telling you either way from this sample is selling.
+
+One thing the table does show cleanly: the volume condition. "Volume clearly above average" sounds like a filter. It excluded **3 of 74** signals. A 20-day high on a day volume is below its 20-day average is nearly a contradiction, so the condition mostly agrees with the trigger it is supposed to confirm. It feels like a second opinion. It is an echo.
+
+WHAT I WOULD CHANGE, AND WHAT THAT BUYS
+
+The obvious move here is to say "use a stop at 1.5 ATR like I do" and stop typing. So I ran it.
+
+Same breakouts, stop 7.41% (1.5 ATR), target 14.83%, no partial: **-0.01R** against the plan's +0.09R.
+
+It is not better. What it does buy is real but narrow: only **15.4%** of days take that stop from the open, against 29.7% for the plan's. The trade gets decided by whether the thesis was right instead of by which candle you entered on. That is worth having. It is not an edge, and I am not going to dress it up as one.
+
+WHAT MY OWN BOARD SAYS
+
+ICP is one of three names I follow whether or not they qualify, because readers hold them.
+
+It does not qualify. Sample too thin — the same refusal it has drawn for weeks. It is not in my book today and I am not putting it there because a level is close.
+
+WHAT I WOULD ACTUALLY DO WITH THIS PLAN
+
+Keep: the structure. Levels defined in advance, an invalidation at $2.28, a base invalidation at $2, 1-1.5% risk per trade, no averaging down. None of that depends on the forecast being right, which is why it is the part worth keeping.
+
+Fix: the sizing number. Size off 1.28R, not 2.5R, because 1.28R is what the first exit actually pays.
+
+Drop: the fallback long at $2.28-2.3 with a stop at $2.25. Widen that stop or skip the scenario.
+
+Treat as unknown: whether the breakout trigger works at all. 2.5 independent episodes is not evidence, in either direction.
+
+Bias: WAIT
+
+Every figure: research/icp-strategy.json at maix8.study/data/ — all 74 breakouts and the control, so you can disagree with the numbers rather than with me.
+
+My own losing book, same page: maix8.study/record
+
+If a plan's headline reward-to-risk comes from a target its own rules tell you to exit before, what were you sizing off?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#ICP #Bitcoin #Trading #RiskManagement

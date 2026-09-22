@@ -1,0 +1,93 @@
+A reader sent me an AI-sector scan and asked for the technicals. $RENDER first, $TAO second, FET momentum, ICP structurally nicer but a weaker story.
+
+Every line of it rests on a premise nobody checks: that these coins belong together, and that belonging tells you something.
+
+I usually find a premise like that dissolves. This one did not, so that goes first.
+
+IS "AI" A SECTOR, OR A LABEL
+
+If it is a sector, its members should move together for reasons beyond the market. So: regress each pair's daily returns on BTC's over 180 days, and keep the residual — the part BTC does not explain. Then measure how correlated those residuals are inside the group.
+
+**0.405** across 45 pairs.
+
+That number means nothing on its own; alts are correlated. So the same statistic ran on **200 random baskets** of the same size, drawn from the 260 liquid pairs outside the group, over the same window.
+
+**0.116, give or take 0.049.**
+
+The AI basket sits at the **100th percentile — z +5.92.** Drop any single member and the weakest it gets is z +4.50, without ARKM.
+
+So the group is real. These names move with each other in a way a random basket of liquid alts does not, after BTC is taken out. The reader's premise holds and I did not expect it to.
+
+WHICH MAKES THE RANKING WORTH CHECKING
+
+```
+pair         beta   alpha/day     180d    today
+TAO          1.14     +0.068%   +13.0%    +5.9%
+IO           1.03     +0.054%   +10.2%    +7.7%
+ICP          0.78     +0.033%    +6.2%    +6.3%
+VIRTUAL      1.40     -0.017%    -3.0%   +14.4%
+AIXBT        1.24     -0.024%    -4.2%   +11.9%
+RENDER       1.06     -0.035%    -6.1%    +9.6%
+WLD          1.07     -0.040%    -6.9%   +11.5%
+FET          1.38     -0.065%   -11.0%   +18.5%
+ARKM         1.12     -0.065%   -11.1%   +15.5%
+GRT          1.02     -0.320%   -43.8%   +14.0%
+```
+
+Alpha here is the daily return left after removing each pair's BTC exposure. It is what "owning the AI theme" paid you beyond simply owning beta.
+
+**RENDER, ranked first, is -0.035% a day — about -6.1% compounded over the window, 6th of 10.**
+
+**TAO, ranked second, is +0.068% a day — +13.0%.**
+
+Their betas are 1.06 and 1.14. Nearly identical exposure to the market, opposite results on top of it. This is not one being a leveraged version of the other.
+
+If the reason to hold an AI name is that the theme pays beyond beta, then the theme has been paying through TAO and not through RENDER, and the ranking is upside down at the top.
+
+I would not trade that on its own — 180 days of daily alpha is a single window and the ordering can flip. But it is the number the ranking should have been made from, and it points the other way.
+
+DOES RENDER HAVE A BASE
+
+The brief keeps RENDER out of its base-breakout screen for not having enough base. That is correct, and here is the number it did not carry.
+
+A base is a range that is tight relative to what the pair normally covers in a day. So: how many daily ranges wide is it, and where in it does price sit.
+
+```
+20d       $1.226-1.536  25.3% wide   7.1 daily ranges  above the range
+40d       $1.226-1.565  27.7% wide   7.7 daily ranges        95% up it
+60d       $1.226-1.641  33.8% wide   9.5 daily ranges        78% up it
+```
+
+**7.1 daily ranges wide, and price is above the range.** That is not a base. It is a trend sitting near its high.
+
+Compare it with what a consolidation looks like: two or three daily ranges, price somewhere in the middle. RENDER is nowhere near that on any window I checked.
+
+So the screen was right to reject it, for exactly the reason given. Worth saying plainly, because "the filter said no" is usually where people stop reading.
+
+WHAT ELSE CHECKS OUT
+
+2 of the 4 quoted prices sit inside their bands right now, and **every one of the four is within 3% of the middle of its band**: $RENDER $1.549, TAO $230.8, FET $0.1731, $ICP $2.559.
+
+I ran this check twice while writing. RENDER was inside its $1.48-1.53 band on the first pass and above it on the second, minutes apart. Which is the honest caveat on every price a scan quotes, mine included: the band was right when it was written.
+
+One thing to flag: the brief quotes AKT at about $0.58. **This exchange does not list it.** Not a mistake about the price — a price I cannot check from here, so I am not repeating it.
+
+WHAT I WOULD ACTUALLY DO WITH THIS
+
+The sector result is the useful part, and not for picking a name. It says these pairs share a risk. Holding RENDER and TAO and FET is closer to holding one position three times than to holding three, and position sizing that treats them as independent is understating exposure by a lot.
+
+That is a portfolio conclusion, not a trade idea, which is why nobody writes it.
+
+My own board: RENDER is not in it — it sits outside the scanned universe on turnover at $6.8M. ICP is followed and still refused on sample depth. Neither is in today's book, which took 4 shorts.
+
+Bias: WAIT
+
+Every figure: research/ai-sector.json at maix8.study/data/ — the full basket, all 200 control baskets, and the leave-one-out.
+
+The book, all of it stopped: maix8.study/record
+
+If three of your positions share one risk, how many positions do you have?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#RENDER #Bitcoin #Trading #Quant

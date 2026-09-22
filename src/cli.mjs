@@ -22,7 +22,8 @@ import { probeDurationSeconds } from "./media.mjs";
 import { collectBrief, formatBrief } from "./market.mjs";
 import { fetchKlines } from "./analysis.mjs";
 import { FORMATS, crontabLines, getFormat } from "./slots.mjs";
-import { extractClaim, formatScoreboard, scoreDueClaims } from "./scoreboard.mjs";
+import { extractClaim, formatScoreboard, retargetClaim, scoreDueClaims } from "./scoreboard.mjs";
+import { formatDoctor, runDoctor } from "./doctor.mjs";
 import { ALT_UNIVERSE, findOutliers, formatScreen, screen } from "./screen.mjs";
 import { formatPulse, pulse } from "./pulse.mjs";
 import { DEFAULT_MIN_Z, alertsFrom, formatIntraday, scanIntraday } from "./intraday.mjs";
@@ -104,7 +105,9 @@ Usage
   wte site [--out <dir>]              Build the indexable research site
   wte ship <draft.txt> --title <t>    Publish to Square, add to the site,
            [--cover <img>] [--slug <s>]  commit and push. The push deploys.
-           [--no-push] [--dry-run]
+           [--no-push] [--dry-run]       --claim-asset/--claim-bias set the
+           [--claim-asset <SYM>]         logged call when a post states more
+           [--claim-bias <b>]            than one bias.
   wte deploy [--ref <b>] [--sha <c>]  Rebuild the live site from this commit
   wte team [--format <f>] [--dry-run] Full daily run: analyst picks the angle,
                                       writer drafts, checker + critic gate it
@@ -200,6 +203,8 @@ export async function main(argv = process.argv.slice(2)) {
       return cmdTeam(flags, argv);
     case "check":
       return cmdCheck(rest, flags);
+    case "doctor":
+      return cmdDoctor(flags);
     default:
       throw new ValidationError(`Unknown command "${command}". Run \`wte help\`.`);
   }
@@ -516,6 +521,22 @@ async function cmdAuto(flags, argv) {
 }
 
 /** Settles matured calls and prints the scoreboard. */
+/**
+ * Asks the wiring questions no unit test covers.
+ *
+ * Exits non-zero on a failed check so it can gate a publishing session in a
+ * shell without anyone having to read the output.
+ */
+async function cmdDoctor(flags) {
+  const report = await runDoctor();
+  if (flags.json) {
+    print(report, flags);
+    return report.worst === "fail" ? 1 : 0;
+  }
+  console.log(formatDoctor(report));
+  return report.worst === "fail" ? 1 : 0;
+}
+
 async function cmdScore(flags) {
   const store = new Store();
   const hours = flags.hours ? Number(flags.hours) : 24;
@@ -1303,6 +1324,69 @@ async function cmdShip([file], flags, argv) {
   const next = addArticle(manifest, { ...entry, squareId, published: new Date().toISOString() });
   fs.writeFileSync(manifestPath, `${JSON.stringify(next, null, 2)}\n`);
   console.log(`  Site: /${slug}/ added to the manifest`);
+
+  /**
+   * Log what the article committed to, exactly as the slot-post path does.
+   *
+   * This was missing, and the cost was invisible until someone asked for a
+   * scoreboard: every article published through `ship` cleared the gate,
+   * reached Square, reached the site — and never entered the track record. The
+   * channel's whole differentiator is scoring its own calls in public, and it
+   * was quietly scoring none of them.
+   *
+   * A brief is fetched here rather than reused because ship does not take one:
+   * the claim needs the price at publication to be scoreable at all, and a
+   * claim without it is a row the scoreboard has to skip. If the fetch fails
+   * the post still stands — losing the record is bad, refusing to record the
+   * publication that already happened is worse.
+   */
+  try {
+    const brief = await collectBrief({ newsHours: 24 });
+    const claim = extractClaim(text, brief);
+    const publishedAt = new Date().toISOString();
+
+    /**
+     * An ambiguous bias is recorded with no asset, on purpose.
+     *
+     * The alternative is what happened once: a post arguing that BNB should be
+     * left alone was logged as a BNB short, because BNB was the word it used
+     * most. A gap in the record is visible and fixable; a confident wrong entry
+     * is neither. `--claim-asset` sets it when the human knows the answer, and
+     * `retargetClaim` moves the price and levels with the symbol — assigning
+     * the symbol alone once left BTC's numbers on four XRP and SUI calls,
+     * which settled at -100.00% and were printed as wins.
+     */
+    if (flags["claim-asset"]) {
+      Object.assign(claim, retargetClaim(claim, brief, flags["claim-asset"]));
+      if (claim.priceAtPost == null) {
+        console.error(`  Call: ${claim.asset} is outside the brief — entry price will be recovered from candles at scoring.`);
+      }
+    }
+    if (flags["claim-bias"]) claim.bias = String(flags["claim-bias"]);
+    if (claim.ambiguous) {
+      console.error(`  Call: AMBIGUOUS — ${claim.ambiguityReason}`);
+      console.error("        Recorded without an asset, so the scoreboard will skip it.");
+      console.error("        Re-run with --claim-asset <SYMBOL> --claim-bias <bias> to set it.");
+    }
+    store.recordClaim({
+      ...claim,
+      postId: squareId ?? `unlinked-${Date.now()}`,
+      shareLink: outcome.result?.shareLink ?? null,
+      format: "article",
+      publishedAt,
+    });
+    store.recordHistory({
+      format: "article",
+      asset: claim.asset,
+      bias: claim.bias,
+      angle: entry.title,
+      hook: text.split("\n")[0].slice(0, 120),
+      publishedAt,
+    });
+    console.log(`  Call: ${claim.asset ?? "no asset"} / ${claim.bias ?? "no bias"} logged for scoring`);
+  } catch (err) {
+    console.error(`  Call: NOT logged (${err.message.trim()}) — score this one by hand.`);
+  }
 
   if (flags["no-push"]) {
     console.log("\n--no-push set: commit and push yourself to deploy.");

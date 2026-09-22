@@ -20,14 +20,23 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
  * so a transient failure here is expected rather than exceptional. An
  * unattended slot run that gives up on the first 503 silently loses the post.
  */
-export async function fetchKlines(symbol, { interval = "1d", limit = 200, fetchImpl = globalThis.fetch } = {}) {
+export async function fetchKlines(
+  symbol,
+  { interval = "1d", limit = 200, startTime, endTime, fetchImpl = globalThis.fetch } = {},
+) {
   let lastError;
+
+  // The endpoint returns at most 1000 rows per call, so anything reaching
+  // further back has to page. Callers that page supply an explicit window;
+  // omitting both keeps the original "most recent N" behaviour untouched.
+  const window = `${startTime == null ? "" : `&startTime=${startTime}`}`
+    + `${endTime == null ? "" : `&endTime=${endTime}`}`;
 
   for (let attempt = 0; attempt <= RETRY_DELAYS_MS.length; attempt++) {
     if (attempt) await sleep(RETRY_DELAYS_MS[attempt - 1]);
     try {
       const res = await fetchImpl(
-        `${SPOT_BASE}/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`,
+        `${SPOT_BASE}/klines?symbol=${symbol}&interval=${interval}&limit=${limit}${window}`,
         { signal: AbortSignal.timeout(TIMEOUT_MS) },
       );
       if (!res.ok) throw new Error(`klines ${symbol} ${interval}: HTTP ${res.status}`);
@@ -314,7 +323,18 @@ export async function analyzeAsset(symbol, { fetchImpl = globalThis.fetch, candl
      */
     upDownVolumeRatio30d: upDownRatio(daily.slice(-30)),
     upDownVolumeRatio90d: daily.length >= 90 ? upDownRatio(daily.slice(-90)) : NaN,
-    quoteVolumeLatest: volumes.at(-1),
+    /**
+     * Turnover on the current bar — which is still forming.
+     *
+     * Named for what it is. A scan run at 11:00 UTC reads eleven hours of
+     * trading here, and comparing that to a full-day liquidity threshold marks
+     * healthy pairs as thin purely because of the clock. Every neighbouring
+     * field above deliberately drops this bar; anything gating on turnover
+     * should use `avgQuoteVolume30d` instead.
+     */
+    quoteVolumePartialDay: volumes.at(-1),
+    /** The last bar that is actually finished. */
+    quoteVolumeLastCompleteDay: volumes.length > 1 ? volumes.at(-2) : NaN,
     rangeCompressionPct: rangeCompression(daily),
     returns: logReturns(closes.slice(-31)),
   };

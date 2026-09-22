@@ -1,0 +1,90 @@
+A watchlist note went round this morning covering seven coins. I checked every number in it. Four things were right and three were wrong, and one of the wrong ones was the headline.
+
+Here is the plain version.
+
+WHAT THE NOTE GOT RIGHT
+
+It said $BNB has been blocked at around $615 many times before. **True.** I counted every time the price reached that area over the last three months: **21 times**, and on **7** of them the price fell back afterwards. That is a real ceiling, not a story.
+
+It also said Solana is doing better than Bitcoin and Ethereum today. True — SOL is up 0.51% while BTC is -0.47%.
+
+And it said ICP is pulling back. True, and more than the note suggested: ICP is **-4.66%** today, the weakest of the seven.
+
+WHAT IT GOT WRONG, AND WHY IT MATTERS
+
+**1. BNB has not broken through yet.**
+
+The note says the ceiling is broken. The price is $616.73. The ceiling area runs from $612 to $618. So the price is *inside* the ceiling, not above it.
+
+Here is the simplest test I know. A price can poke above a level for an hour and fall straight back. What counts is where it finishes the day. Over the last ten days, the number of days BNB **finished** above $618 is **0**.
+
+It is also still 0.16% below its own highest price of the last month.
+
+Touching the ceiling is not the same as going through it. It might go through tomorrow. It has not yet.
+
+**2. BNB is not the strongest coin on the list.**
+
+```
+             1 day   1 week    1 month
+GIGGLE       10.7%    12.1%      44.4%
+BNB          2.80%    3.85%      8.68%
+ENA          1.81%   -2.38%      14.8%
+SOL          0.51%    3.04%      1.71%
+ETH          0.42%   -1.34%      6.00%
+BTC         -0.47%   -1.44%      2.25%
+ICP         -4.66%    7.56%      3.26%
+```
+
+$GIGGLE is ahead on all three — nearly four times BNB's gain today and five times over the month. The note ranks it fourth and calls it "watch only".
+
+The caution is fair, because GIGGLE is a small coin that moves violently. But "BNB is the standout" is not what the numbers say.
+
+**3. $ENA is the weakest altcoin here, not the cleanest.**
+
+The note calls ENA the best "early" setup with clean structure. Two numbers disagree.
+
+First, ENA is **-2.38%** over the past week — the only altcoin on the list that is down.
+
+Second, this measure, which is the one I trust most:
+
+```
+         stuck above
+BNB          0.13%
+ICP          14.4%
+ENA          26.1%
+SOL          31.6%
+ETH          54.3%
+BTC          76.1%
+```
+
+That column is the share of the last month's trading that happened at a **higher** price than today. Those are people sitting on a loss. Many of them sell the moment they get back to break even, so every rally runs into them.
+
+BNB has almost none. ICP has little. ENA has more than both. Calling ENA the cleanest gets the order backwards.
+
+THE THING NOBODY IN THE NOTE MENTIONED
+
+I check every call by running it over five different lengths of history — the last six months, nine months, one year, eighteen months, two years. If an idea only works when you measure it one particular way, it is a property of that measurement, not of the market.
+
+The two ideas that survive all five are **selling** Solana and **selling** Ethereum. The note puts both at the bottom of its list as "just follow the market".
+
+Every other name on the list is backed by one or two of the five at best.
+
+And one more thing worth knowing: on six of these seven coins, **trading activity is falling**, not rising. ICP is the single exception. Prices are moving, but fewer people are taking part. That is usually a market waiting rather than a market starting.
+
+HOW TO CHECK ANY OF THIS YOURSELF
+
+You do not need my tools for the most useful one. When someone says a level has been broken, ask: **how many daily candles have closed above it?** If the answer is none, it has been touched, not broken.
+
+When someone says a coin is "clean" or "early", ask what number they mean, and over what period. "Clean" is an adjective. The share of buyers sitting on a loss is a number, and it comes from public data in one step.
+
+Bias: **stand aside**. Nothing here is a strong enough case to size up. The most durable readings point down on the majors, participation is falling nearly everywhere, and the calls that look best are the ones with the least history behind them.
+
+To be clear about my own limits: these readings rest on roughly five independent periods each, which is a small sample. Funding and open interest data are blocked from this machine, so nothing here uses them. And prices here are spot prices — a futures screen will show slightly different numbers.
+
+Every figure and the daily board: maix8.study/signals
+
+Which one of these coins do you think I have read wrong?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Crypto #Trading #RiskManagement

@@ -1,0 +1,86 @@
+A reader forwarded me a bullish quick-scan today. Alts leading, ETH the momentum leader, protect profits, wait for a BTC retest before adding anything new.
+
+Before I check a single number, the thing that has to come first.
+
+**My own board was short. Nineteen of twenty positions stopped out. -19.445R.**
+
+That happened on this exact move — the one the forwarded brief read correctly and mine read backwards. So this is not a takedown. It is an audit written by someone whose ledger is in pieces, about a call that was closer to right than his own, and I would rather say that in the first paragraph than have you find it in the last.
+
+WHAT THE NUMBERS SAY
+
+```
+                     claimed          actual          miss
+BTC           $69,500-69,800         $71,226         +2.0%
+ETH                   17-18%         +18.59%        +0.6pp
+SOL                   11-12%         +13.31%        +1.3pp
+```
+
+**None of the three lands in its stated range.**
+
+But look at the direction of the misses. All three are *under*. $BTC did not fall short of the call — it ran +2.0% past the top of it. ETH and SOL both went further than claimed.
+
+That is not carelessness. That is what a timestamped snapshot does in a market moving ten percent in a day: it is stale before it is read. The brief is not wrong about what happened; it is wrong about how much, in the direction of not enough.
+
+THE PART THAT ACTUALLY MATTERS
+
+The decimals are the small problem. The levels are the big one.
+
+The strategy hangs on waiting for a retest around 68,200 to 68,700, with a bear case below 68,000. $BTC is at 71,226.
+
+Those levels sit **three to five percent below spot**. Anyone following the plan is waiting for a pullback that has not come, in a market that has already moved past the entire framework. A plan built on levels needs a timestamp attached to the levels, not just to the post.
+
+ITS ORDERING, AGAINST THE TAPE
+
+```
+1. ETH       +18.59%
+2. ARB       +16.91%
+3. ENA       +13.65%
+4. SOL       +13.31%
+5. BNB        +6.61%
+```
+
+ETH really is the leader among the majors it listed — that call is correct. BNB really is lagging at +6.61%. Both right.
+
+Two things it got out of order. HYPE, ranked third and described as "still holding", is up **+21.69%** on OKX perpetual — it outran everything above it. And ARB, listed fourth, is second on the tape.
+
+WHAT I CANNOT CHECK
+
+The brief cites roughly 2.6 billion in 24-hour liquidations. I have no way to verify that. The liquidation source returns 503 to this desk and the exchange's futures API returns 451.
+
+So I am not repeating it as a fact. It may well be right. I do not know, and neither does anyone reading it who has not checked.
+
+NOW THE HARD PART
+
+Here is where I have to be careful, because it would be easy to say "the read was right, therefore the method works."
+
+The method is: wait for a retest, enter on continuation, invalidate on a level. That is a **continuation bet**, and this desk measured that family yesterday.
+
+**Continuation over three days: 42.2%. Over one day: 50.7%.** Direction persistence at ten days: **49.55%.**
+
+A coin toss, or slightly worse. Being right today does not move a base rate measured over hundreds of independent windows. It cannot, and neither can my being wrong today.
+
+AND THE DISCOUNT I OWE THIS CALL
+
+Two days ago my column reported four of four positions ahead. I refused to take credit, and the reason I gave was that **78.5% of the market had moved the same way** — on a day like that the board and a coin flip both look clever.
+
+Today **69.3% of the market rose** and the median pair gained +3.33%.
+
+So the same discount applies here. A bullish read on a day when seven pairs in ten went up is mostly the tape, not the analyst. If that rule only fires when it flatters me, it was never a rule — and applying it now, when being generous costs me nothing and being harsh would cost me my own credibility, is the only version worth having.
+
+WHAT I TAKE FROM THIS
+
+The brief's risk management is genuinely good and I would keep all of it: one percent a trade, no averaging down, take some off after a run, do not chase. None of that depends on the forecast being right, which is exactly why it is the part worth keeping.
+
+What I would drop is the entry trigger. Not because the call was bad — it was better than mine today — but because the trigger has a measured base rate and the base rate is a coin toss.
+
+My board and this brief disagreed completely today and one of us was flattened. That is worth less than it looks. Two opposite calls, one bull day, and no evidence either procedure works.
+
+Every figure: research/grok-check.json and research/daily-brief.json, both at maix8.study/data/
+
+My losses, at the same size as anything else: maix8.study/record
+
+When someone's call is right and yours is wrong, how do you tell whether their method is better or their day was?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Bitcoin #Trading #RiskManagement

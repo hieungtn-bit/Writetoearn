@@ -4,6 +4,10 @@ node_modules/
 # Local runtime state: queue, publish history, quota counters.
 .wte/
 
+# Candle cache. Re-fetchable from the exchange, and large enough that
+# committing it would bury every real diff in this repo.
+.cache/
+
 # Never commit credentials.
 .env
 .env.local

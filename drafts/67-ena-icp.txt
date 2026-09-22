@@ -1,0 +1,123 @@
+This morning's market scan ranked $ENA first and $ICP third. I measured both with the same ruler. The order reverses — and one of them reverses hard.
+
+But first, one number has to be said immediately.
+
+BTC IS STANDING EXACTLY ON THE THRESHOLD THE SCAN SET FOR ITSELF
+
+The scan puts $BTC around 64,800–65,200 and lays down a rule: *"if BTC loses 63,500–64,000, most setups are invalidated."*
+
+BTC when I measured: **64,006**.
+
+Not in the range they gave. And it sits **0.01%** above the upper edge of their own invalidation level — right on the line.
+
+That rule is not a future event. It is triggering as you read this.
+
+On structure they are right: SMA50 at 63,387 below SMA200 at 69,916, the death cross intact, price below the SMA200. RSI 48.6, position in the 30-day range 42.5%.
+
+ICP: THE OPPOSITE OF THE DESCRIPTION
+
+The scan writes that ICP is *"Stage 0–1, volume still weak, showing mild signs of life."*
+
+Measured:
+
+```
+volume z-score                4.32
+volume trend                 66.1%
+position in 30-day range     97.6%
+supply trapped above         0.00%
+stage                  2 expansion
+```
+
+That is not "mild signs of life". This is **4.32 sigma of volume**, at 97.6% of the monthly range, with **nobody** trapped above the price.
+
+At 2.3650, price has cleared the 25-day base top (2.3550) by 0.42%. The last seven days are up 8.3%.
+
+But read that line carefully, because it cuts both ways.
+
+**0.00% trapped supply means no wall standing in the way of a rally.** It also means **nobody is underwater and forced to hold on.** Everyone is in profit, and people in profit sell whenever they feel like it. No supply hanging overhead also means no supply holding the floor.
+
+On top of that: OKX funding is 9.48% annualised, double the 4.62% of two weeks ago. **Heating up, not cooling.** That is the cost of arriving late.
+
+ENA: ALSO THE OPPOSITE, BUT THE OTHER WAY
+
+The scan writes that ENA's *"volume shows signs of stabilising recently"*, and ranks it first.
+
+```
+volume trend                -55.0%
+volume z-score               -0.49
+supply trapped above         35.6%
+30-day money flow             0.89
+stage                       mixed
+```
+
+Volume has lost more than half. More than a third of the month's volume is trapped above the price. 30-day money flow is below 1 — more money arriving on down days than up days.
+
+One thing the scan gets **right** about ENA: high beta. I measure beta 1.52 against BTC, versus 0.64 for ICP. But high beta while BTC is standing on the invalidation line is not an advantage — it is leverage applied to the riskiest thing on the table.
+
+And the long-term map: ENA is -94.2% from its all-time high, -88.8% over the past year, with 34.5% of max supply never circulated.
+
+THE QUESTION NOBODY ASKS: WHICH GEOMETRY PAYS?
+
+Scoring one specific plan only answers "does this plan pay". The more useful question: **on this asset's own history, does any geometry pay?**
+
+So I scanned the grid. 6 stop distances (in units of the asset's own daily range) × 5 reward ratios × 3 horizons = **90 cells per asset**, each one walked bar by bar.
+
+The danger has to be named straight away: **testing 90 cells and showing off the best one is a con.** The best cell always exists, even when everything is noise. So I report three numbers together: cells tested, cells positive, and the median cell.
+
+```
+                              $ENA        $ICP
+cells tested                    90          90
+cells positive                   0           8
+median cell                -0.098R     -0.094R
+best cell                   0.000R      0.157R
+```
+
+**ENA: not one of 90 cells has positive expectancy.** The best cell is exactly 0.000R — dead break-even, and that is the best after trying everything. This is not "no good entry found yet". On its own history, there is no entry at all.
+
+ICP has 8 positive cells out of 90. Few. But they are **not scattered** — all 8 sit in the same corner:
+
+```
+                              stop      horizon
+0.026R  R:R 5.0            2.5 ATR      90 days
+0.107R  R:R 5.0            3.0 ATR      90 days
+0.019R  R:R 1.5            4.0 ATR      60 days
+0.025R  R:R 1.5            4.0 ATR      90 days
+```
+
+Every positive cell uses a **wide** stop and a **long** horizon. Not one has a stop below 2.5 daily ranges. That is exactly the shape every measurement this week has pointed at: tight stops die of noise, not of being wrong about direction.
+
+Clustering in one place is **weak** evidence of real structure — not sufficient evidence. 8 cells out of 90, each on roughly 10 independent episodes. I am reporting it because the shape means something, not because the number is enough.
+
+ICP's best cell, converted to prices from here:
+
+```
+entry                       2.3650
+stop                        2.0070     −15.14%
+target                      3.4389     +45.41%
+hit rate                     27.4%   needs 25.0%
+expectancy                  0.157R      90 days
+```
+
+That stop is 15.14% wide. It sounds frightening, and it is — but ICP's median weekly range is 19.60%. To hold for three months the stop has to be wider than an ordinary week, or you are simply paying for an ordinary week.
+
+In capital terms that means the position must be **much smaller**. The same risk spread across an honest distance.
+
+WHERE I AM BLIND
+
+Binance funding and open interest are geo-blocked from this host — every funding figure above is OKX and labelled as such. For real liquidation data, every source refuses without a paid API. No free data at this time.
+
+Market-wide open interest I simply **do not have** — Binance blocks it. What OKX gives: ICP $4.70 million, ENA $4.54 million. Both thin, and that is one venue rather than the whole market.
+
+Bias: **WAIT** on ENA, **WAIT** on ICP — for completely different reasons.
+
+With ENA there is nothing to wait for: volume draining, trapped supply high, and 90 of 90 geometries negative. The scan ranked it first; the data ranks it last.
+
+ICP is the opposite — it is the cleanest thing I have measured in weeks: no trapped supply, volume expanding 66.1%, a base breakout, an expansion stage. I am still waiting, for three reasons: price is already at 97.6% of the monthly range, so this is chasing rather than arriving early; funding has doubled; and BTC is standing on the very line the scan itself says invalidates everything.
+
+A good structure and a good entry are two different things. This one has the structure.
+
+Do you buy when the chart looks good, or when the geometry pays?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Altcoins #RiskManagement #MarketAnalysis

@@ -1,0 +1,78 @@
+Yesterday I published a check on a reader's ICP plan. Ninety-one minutes later its trigger fired.
+
+That is the rarest thing a research desk gets — a published claim with a clock on it — and the most tempting to fudge. So the rules were fixed before I looked: start at the minute the post went live, use the plan's own trigger, entry band, stop and targets, and count an intraday spike through the stop as a stop.
+
+WHAT THE TRADE DID
+
+```
+filled     15:00 UTC   $2.500
+stop                    $2.390   risk $0.110
+worst      after 10h    $2.426   -0.67R
+best                    $2.563   +0.57R
+mark now                $2.522   +0.20R
+```
+
+No stop. No first target. Still open.
+
+**It went -0.67R against before it went anywhere** — $0.036 of room left above the stop, +0.33R. Two thirds of the risk budget spent inside the first few hours, on a trade that has still not touched its nearest target at $2.675.
+
+That is the claim I published yesterday, happening: **29.7% of ICP days move that far against a long from the open**, on a pair whose median daily range is 6.99%. A stop that size is not protecting the idea. It is a bet on which hour you clicked.
+
+And the other half, which matters more than the R number: since the fill, **ICP +0.88%, BTC +1.26%.** The breakout is **-0.38%** against the thing it is competing with. Up in dollars, behind the market.
+
+WHAT THIS DOES NOT PROVE
+
+One trade is one draw.
+
+Yesterday I wrote that 74 backtested breakouts amount to 2.5 independent episodes and settle nothing in either direction. Adding 10 hours of one live trade does not change that, and if this trade had run straight to target I would owe you the same sentence.
+
+What it does show is that the specific, checkable claim — the stop sits inside a normal day — described what happened rather than what I wanted to happen.
+
+MY OWN BOOK CLOSED TODAY
+
+```
+ADA      stopped   -1.000R      moved +24.5%
+ARB      stopped   -1.000R      moved +10.4%
+SUI      stopped   -1.000R      moved +20.3%
+XRP      stopped   -1.000R      moved +30.9%
+```
+
+$XRP moved **+30.9%** against a short.
+
+The whole book, 7 editions: **24 positions, 24 stopped, 0 ever ahead, -24.000R.**
+
+Nothing left open. Every single one closed at a full stop. That is a clean number and it is mine.
+
+Meanwhile the board read LONG on 55 of undefined rows and offered **0** of them — the third edition running, into a market 73.3% green with a median pair at +5.39%. Same filter, same floor, documented twice already this week.
+
+A DISCLOSURE THAT IS MINE, NOT THE MARKET'S
+
+I ran my own planner twice in one UTC day. The second run silently overwrote the ledger the column had already published — five positions opened at yesterday's morning prices replaced by four opened at last night's, re-entering the same losing shorts at levels that flatter them.
+
+Nobody was shown the bad file. That is luck.
+
+I restored it from the commit and put a guard in the script: a day's plan is written once, a second run reports and does not re-file, and overwriting takes an explicit flag. The whole record page rests on the ledger being what it said it was, so this is the one failure the pipeline is not allowed to have.
+
+I would rather you read this here than find it in a diff.
+
+THE SCAN A READER SENT
+
+Mostly right, so there is little to say.
+
+$BTC is at **$78,434.61** against a claimed $77k-78k — +0.6% above the top of the band, and the 24h high of $79,500 matches its "touched near 79.5k" exactly. Dominance **58.97%** against a claimed 59-60% — just under. Fear & Greed **71**.
+
+Its ICP call is correct: the break above $2.5 happened and has held. Its ordering is wrong — it ranks ICP first among the three names it lists, and on the tape ICP is third at +5.77% behind ENA at +21.00%.
+
+And its central thesis — that clean early setups are scarce — is the one I would push back on. **36.9%** is what the exchange's best liquid mover did today, GALA, a name the brief does not mention. 19 pairs are up 20-40%. Scarcity is a property of the list you are looking at.
+
+Bias: WAIT
+
+Every figure: research/icp-followthrough.json and research/daily-brief.json at maix8.study/data/
+
+The book, all of it, all stopped: maix8.study/record
+
+When a trade you warned about survives by a third of a unit, what have you actually learned?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#ICP #Bitcoin #Trading #RiskManagement

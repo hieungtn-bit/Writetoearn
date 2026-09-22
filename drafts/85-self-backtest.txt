@@ -1,0 +1,101 @@
+All week I have been testing the pieces of my own system. The stop width was half wrong. The early detector did not survive fees. The per-pair optimiser keeps a tenth of itself. Trapped supply predicts nothing.
+
+I never tested what those pieces add up to.
+
+Yesterday I launched a daily column built on exactly that pipeline. So today I walked the whole thing forward through history, and it lost to a rule with no thinking in it at all.
+
+HOW IT WAS TESTED
+
+Pick a date in the past. Score every pair using **only candles that existed on that date**. Apply the filters. Apply the fixed geometry. Open whatever survives, and score what actually happened over the next 30 days.
+
+Repeat every 30 days — the same length as the holding period, so no two rebalances overlap — across 11 of them and 54 pairs.
+
+Then compare against rules that require no intelligence whatsoever.
+
+A BUG IN THE TEST, BEFORE THE RESULTS
+
+The first version walked a single array index across every pair. Pairs have different amounts of history, so the same position in one coin's series is a different calendar day in another's. It was averaging decisions taken years apart and calling them one rebalance.
+
+It printed dates from two years before the walk was supposed to start. That is how I caught it. Fixed by indexing every series by date and looking that date up per pair.
+
+I am telling you because a post claiming a clean walk-forward should show what nearly went wrong inside it.
+
+WHAT THE FILTERS THREW AWAY
+
+```
+pair-dates considered              403
+sample of 12+ episodes              40
+all 5 lookbacks agree               23
+pays at the fixed geometry          15
+```
+
+**3.72%.** Out of 403 chances to act, the pipeline took 15. 5 of the 11 rebalances produced **no position at all**.
+
+That is not automatically bad. Selectivity is only worth it if what you keep beats what you discard.
+
+THE RESULT
+
+```
+                trades  mean net R     win%       t
+the algorithm       15     -0.0428    40.0%   -0.13
+board only         395     +0.0054    40.3%    0.08
+always short       403     +0.3217    52.9%    4.94
+always long        403     -0.3505    25.8%   -6.29
+coin flip          403     -0.0860    37.2%   -1.41
+```
+
+**Shorting every liquid pair — no signal, no filters, no board, no thought — returned +0.3217R per trade.**
+
+**My algorithm returned -0.0428R.**
+
+It lost by **0.365R a trade** to the crudest rule available, while taking 3.72% as many trades.
+
+And look at the board-only row: the engine's direction with the filters stripped off returns +0.0054R across 395 trades. That is zero. The direction-picking, which is the part I said survived out-of-sample testing two days ago, adds essentially nothing here.
+
+NOW THE PART THAT STOPS ME REWRITING EVERYTHING AS A SHORT BOT
+
+Read the always-long row. It lost **-0.3505R** per trade.
+
+Add the two together: **-0.0288R.** Almost exactly zero.
+
+That is not two findings. It is one: **the market fell over these 330 days**, and any constant direction was going to pay or lose by roughly the size of that drift. Always-short is a leveraged bet on one window, not a strategy, and switching to it would be the same overfitting I have spent the week criticising — just in a more embarrassing direction.
+
+The t-statistic on always-short is 4.94, which looks impressive until you notice it is measuring a trend, not an edge.
+
+WHAT THE 15 TRADES ACTUALLY SAY
+
+Very little, and I want to be exact about that.
+
+t = **-0.13** on 15 trades. That is indistinguishable from zero in either direction. I cannot tell you the algorithm is bad. I can tell you there is **no evidence it is good**, which after four months of building it is the finding.
+
+One detail does sting. Of the 15 positions it took, **5 were longs** — including $ZEC three separate times — in a window where being long cost 0.351R a trade. The filters had five lookback windows, a sample floor and a geometry test, and they still pointed uphill in a falling market five times.
+
+WHAT THIS DOES TO YESTERDAY'S COLUMN
+
+It does not cancel it, and I am not going to pretend the timing is comfortable.
+
+Everything the column has proposed so far has been short, which happens to align with the only thing that paid in this window. But the *reason* I gave — the filters — is not what was doing the work, and readers were entitled to that before they were entitled to my picks.
+
+So the column changes in one specific way starting with the next edition: **it prints this result beside the positions.** Every edition, the same line: what the pipeline returned when walked forward, and how that compares to doing nothing clever. If that number stays negative, the column will say so while it keeps publishing.
+
+WHAT I AM NOT DOING
+
+Not deleting the filters. 15 trades cannot justify tearing down a system any more than they can justify keeping it, and a pipeline that trades 4% of the time needs years, not months, to be judged.
+
+Not switching to always-short. See above.
+
+Not quietly widening the test until it passes. The configuration was fixed before I ran it: 54 pairs, 11 non-overlapping rebalances, costs charged at 0.20% every time.
+
+WHAT I AM DOING
+
+Running the walk again every week, with the same settings, and publishing the number whichever way it moves. And working on the actual problem this exposed, which is not the stop or the metric or the ranking — it is that the filters select for **consistency in the past** and nothing in them selects for **direction that persists**.
+
+That is a real engineering problem with a real test attached, and I would rather have it than the four months I spent not knowing.
+
+$BTC and the board and every figure: maix8.study/signals
+
+Have you walked your own rules forward, or only backward?
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Trading #RiskManagement #Crypto

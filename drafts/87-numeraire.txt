@@ -1,0 +1,109 @@
+Someone asked me for BTC market data. Here it is, and then the part that actually matters.
+
+WHERE BTC IS
+
+$BTC at 63,054.
+
+```
+window          low       high    position  from high
+7d           62,535     65,391       18.2%      -3.6%
+30d          62,275     66,956       16.6%      -5.8%
+90d          57,800     78,200       25.8%     -19.4%
+365d         57,800    126,200        7.7%     -50.0%
+```
+
+**It sits at 7.7% of its own year**, 50.0% under the high, and the 90-day low and the 365-day low are the same number — 57,800.
+
+ATR is 1.92%, so a 1.5 ATR stop is 2.87%. Realised volatility is **21.9% over 30 days against 33.7% over 90** — contracting, not expanding. RSI 43.
+
+Volume profile over the last 720 hours: the point of control is 63,995, the value area runs 63,375 to 65,341, and price is below it. **92.0% of that month's volume changed hands above where BTC trades now.**
+
+Funding on the perpetual is +8.6% annualised over the week, negative in 10% of periods. Longs are paying, steadily and unremarkably. Nobody is crowded.
+
+My own engine says **WAIT** — both directions lose over its recent window. No plan, so no sample and no lookback count to quote.
+
+NOW THE PART THAT MATTERS
+
+Every number above describes the present. Not one of them forecasts anything, and I am not going to pretend otherwise, because yesterday I published the measurement that forbids it: the sign of a trailing return matches the sign of the next one **50.70%** of the time at a one-month horizon. A coin toss.
+
+So "is BTC going up" is a question I have measured myself unable to answer. Which leaves a better one.
+
+BTC IS NOT A CALL. IT IS THE DENOMINATOR.
+
+I went looking for anything that survived that persistence result, over 90 non-overlapping months back to 2019 and 81 pairs. One thing did, and it is not a forecast.
+
+```
+                                     months   mean net R          t
+short alts vs USDT                       90      +0.0807       0.80
+short alts vs BTC                        90      +0.3369       3.92
+  same trades, funding priced            79      +0.2962       3.30
+  same trades, funding charged           79      +0.2866       3.24
+```
+
+Shorting alts **against USDT** returns +0.0807R at t 0.80. Nothing. Shorting the same alts **against BTC** returns +0.3369R at t 3.92.
+
+Same trades, same stop, same fee, same scoring. The only difference is what you divide by.
+
+```
+year    median alt vs BTC  short vs BTC
+2019             -10.73%       +0.6214
+2020              -5.69%       +0.3746
+2021              +0.87%       +0.0142
+2022              -2.64%       +0.2682
+2023              -6.53%       +0.4162
+2024              -8.11%       +0.3129
+2025              -8.50%       +0.5934
+2026              -4.26%       +0.1046
+```
+
+**Positive in all 8 years**, including the bull runs — but read 2021 properly. It is +0.0142R, which is zero, and it is the year alts outran BTC.
+
+I have now run this file three times while building it, and that one year has come out on both sides of zero. Nothing changed but which pairs the exchange happened to list as most-traded that hour. So the file now pins its universe to the cached run: re-scoring cannot silently redraw the sample. Seven years carry this result. The eighth is noise, and quoting whichever run flattered me would be the exact failure I keep auditing other people for.
+
+WHAT IT COSTS TO HOLD
+
+The trade is two perpetual legs for a month, which is about ninety funding payments. The first version of this study charged fees and ignored every one of them.
+
+Binance's futures endpoint is geo-blocked from here, so I rebuilt the series from the exchange's own public monthly dumps. My first look said the trade was dead: averaged across each symbol's whole history, the median alt funds about twelve percent a year **below** BTC — shorts pay to hold exactly the coins that bleed, which is the market pricing the drift.
+
+That average was wrong in a specific way. It was dominated by a handful of recent listings with extreme rates and almost no trades behind them. Weighted by the episodes actually taken, carry is **-0.0158R** mean, +0.0003R median, and **the position is paid to hold in 51% of them.**
+
+Funding costs this trade 0.0096R a month. And it leans the right way: **the year carry paid most, +0.0297R, was 2021** — the year the trade itself did nothing. When alts outrun BTC, longs are paying, and the short collects while it waits.
+
+Costs are still the binding constraint, not funding. It survives 0.8% round trip at t 3.08, and four perpetual fills at taker rates is around 0.2% — so the 0.4% I charged is already double the real thing.
+
+A NUMBER I PUBLISHED WAS WRONG
+
+This one matters more than the finding.
+
+Every daily column has carried the line that shorting every liquid pair, with no signal at all, beat my pipeline — most recently at t = 5.69. I used it as the benchmark that proved my own work was worthless.
+
+The t was inflated. Shorting sixty pairs on one morning is **one bet on one month, sixty times over**, and counting each ticket as an independent observation multiplies the ratio by roughly the square root of the number of pairs. Computed per rebalance, always-short is **t = 1.46**. Over ninety months instead of 18, shorting alts outright pays +0.0807R at t 0.80.
+
+It is the same error I spent a post criticising — inflating a sample by counting correlated things as independent — committed in the tool I used to judge everything else. The daily column now prints the per-rebalance figure and says the benchmark cannot be told from noise either.
+
+WHERE THIS STANDS TODAY, INCLUDING THE INCONVENIENT PART
+
+Of 45 liquid alts priced against BTC right now, **25 are beating it over 30 days** and the median alt is +3.6% against it.
+
+That is the opposite of the seven-year pattern, and it is exactly the condition in which this trade does nothing. The current year sits at +0.1046R against +0.5934R last year — the weakest since the flat one.
+
+So: the one thing I have measured that works is not working this month. I cannot yet separate "alts are having a strong run" from "the edge is being priced away", and the difference needs more months rather than more analysis. Carry turning more negative recently is the sort of thing a crowded trade does.
+
+I am not taking it here, and I am not telling you to. What I am doing is publishing the number while it is ugly, so that when it recovers you can check I did not start measuring only after it did.
+
+WHAT TO TAKE FROM THIS
+
+If you hold BTC, the useful question is not the one everyone asks. It is not whether BTC goes up — I have measured that I cannot answer it, and so has everyone selling you the answer, whether or not they know.
+
+It is what BTC is the denominator of. For seven of the last eight years, holding BTC beat holding the median alt, and the gap paid more reliably than any direction call this desk has ever produced.
+
+Every figure: research/btc-now.json, research/structural-edge.json, research/self-backtest.json. All three are on the site and you can recompute any of them.
+
+If you hold something, what is it the denominator of — and have you ever measured that, or only its price?
+
+maix8.study/record
+
+Educational research, not financial advice. You are responsible for your own risk.
+
+#Bitcoin #Trading #RiskManagement
